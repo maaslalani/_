@@ -15,19 +15,24 @@ nnoremap S :%s//g<Left><Left>
 vnoremap S :s//g<Left><Left>
 
 nnoremap <Leader>t :tabnew<CR>
-nnoremap <Silent> <expr> <Leader>e g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+nnoremap <Leader>e :NERDTreeToggle<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+
+nnoremap <C-w>\ :vsp<CR>
+nnoremap <C-w>- :sp<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-tnoremap <C-h> <C-\><C-n><C-h>
-tnoremap <C-j> <C-\><C-n><C-j>
-tnoremap <C-k> <C-\><C-n><C-k>
-tnoremap <C-l> <C-\><C-n><C-l>
+tnoremap <ESC> <C-\><C-n>
+
+tnoremap <C-h> <C-\><C-n><C-w><C-h>
+tnoremap <C-j> <C-\><C-n><C-w><C-j>
+tnoremap <C-k> <C-\><C-n><C-w><C-k>
+tnoremap <C-l> <C-\><C-n><C-w><C-l>
 
 " Commands
 :command W w
@@ -74,6 +79,9 @@ set printfont=PragmataPro:h12
 set fillchars+=vert:│
 set scrolloff=3
 
+set splitbelow
+set splitright
+
 set autoindent
 set autoread
 set autowrite
@@ -110,4 +118,5 @@ let g:ale_sign_warning = '~'
 " Terminal
 augroup _term
   autocmd TermOpen term://* set nonu nornu
+  autocmd TermOpen term://* startinsert
 augroup END
