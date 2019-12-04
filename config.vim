@@ -10,16 +10,24 @@ let mapleader="\<Space>"
 map <Space> <Nop>
 map Q :q<CR>
 
+nnoremap s a<bs>
 nnoremap S :%s//g<Left><Left>
 vnoremap S :s//g<Left><Left>
 
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <Leader>t :tabnew<CR>
+nnoremap <Silent> <expr> <Leader>e g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+tnoremap <C-h> <C-\><C-n><C-h>
+tnoremap <C-j> <C-\><C-n><C-j>
+tnoremap <C-k> <C-\><C-n><C-k>
+tnoremap <C-l> <C-\><C-n><C-l>
 
 " Commands
 :command W w
@@ -29,15 +37,14 @@ nnoremap <C-l> <C-w>l
 :command Wq wq
 :command Qw wq
 
-:command E NERDTree
 :command Af ALEFix
 :command Tf TestFile
 
 " Configuration
 set nocompatible
 set synmaxcol=300
-set ttyfast
 set lazyredraw
+set ttyfast
 set clipboard=unnamed
 set noerrorbells visualbell t_vb=
 set encoding=utf-8
@@ -70,7 +77,7 @@ set scrolloff=3
 set autoindent
 set autoread
 set autowrite
-set showmode
+set noshowmode
 set showcmd
 set hidden
 set nocursorline
@@ -82,8 +89,9 @@ set background=dark
 filetype plugin indent on
 
 " Colors
-colorscheme gruvbox
+colorscheme nord
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 
 augroup nvim
   au!
@@ -95,8 +103,7 @@ let NERDTreeShowHidden=1
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
+let g:lightline = { 'colorscheme': 'nord' }
 let g:ale_sign_error = '*'
 let g:ale_sign_warning = '~'
 
@@ -104,5 +111,3 @@ let g:ale_sign_warning = '~'
 augroup _term
   autocmd TermOpen term://* set nonu nornu
 augroup END
-
-tnoremap <Esc> <C-\><C-n>

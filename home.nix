@@ -7,6 +7,7 @@
     pkgs.git
     pkgs.htop
     pkgs.ripgrep
+    pkgs.starship
     pkgs.tree
     pkgs.zsh
   ];
@@ -38,6 +39,9 @@
       save = 50000;
     };
     shellAliases = import ./aliases.nix;
+    initExtraBeforeCompInit = ''
+      eval $(${pkgs.starship}/bin/starship init zsh)
+    '';
     initExtra = builtins.readFile ./init.zsh;
     plugins = [
       {
@@ -81,8 +85,8 @@
       vim-go
       vim-fish
       rust-vim
-      gruvbox
-      vim-airline
+      nord-vim
+      lightline-vim
       vim-surround
       vim-repeat
       vim-commentary
