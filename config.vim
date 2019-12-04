@@ -91,6 +91,7 @@ augroup nvim
 augroup END
 
 " Plugins
+let NERDTreeShowHidden=1
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1

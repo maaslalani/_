@@ -1,5 +1,7 @@
 {
-  ls = "gls --color=auto -F";
+  _ = "cd ~/_";
+
+  hms = "home-manager switch";
 
   tree = "command tree -I 'Godep*' -I 'node_modules*'";
 

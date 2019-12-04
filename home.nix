@@ -2,12 +2,31 @@
 
 {
   home.packages = [
-    pkgs.htop
+    pkgs.bat
     pkgs.fortune
+    pkgs.git
+    pkgs.htop
+    pkgs.ripgrep
+    pkgs.tree
+    pkgs.zsh
   ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Maas Lalani";
+    userEmail = "maaslalani1@gmail.com";
+    extraConfig = {
+      github.user = "maaslalani";
+      credential.helper = "osxkeychain";
+      diff.algorithm = "patience";
+      protocol.version = "2";
+      color.ui = true;
+      pull.rebase = true;
+    };
+  };
 
   programs.zsh = {
     enable = true;
