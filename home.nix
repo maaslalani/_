@@ -80,21 +80,20 @@
     vimAlias = true;
     extraConfig = builtins.readFile ./config.vim;
     plugins = with pkgs.vimPlugins; [
-      vim-nix
-      vim-ruby
-      vim-go
-      vim-fish
-      rust-vim
-      nord-vim
-      lightline-vim
-      vim-surround
-      vim-repeat
-      vim-commentary
-      vim-sneak
-      supertab
       ale
+      lightline-vim
       nerdtree
+      nord-vim
+      rust-vim
+      supertab
+      vim-commentary
       vim-fugitive
+      vim-go
+      vim-nix
+      vim-repeat
+      vim-ruby
+      vim-surround
+      vim-sneak
     ];
   };
 }
