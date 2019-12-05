@@ -26,8 +26,11 @@ tnoremap <C-w>- :sp<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 tnoremap <C-]> <C-\><C-n>
+tmap <C-x> <C-\><C-n>:q<CR>
 
 tnoremap <silent> <C-h> <C-\><C-n><C-w>h
 tnoremap <silent> <C-j> <C-\><C-n><C-w>j
@@ -95,7 +98,6 @@ set nocursorline
 set ruler
 set laststatus=2
 set concealcursor=""
-set background=dark
 
 filetype plugin indent on
 
