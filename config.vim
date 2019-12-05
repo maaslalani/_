@@ -21,18 +21,18 @@ nnoremap <Leader>q :q<CR>
 
 nnoremap <C-w>\ :vsp<CR>
 nnoremap <C-w>- :sp<CR>
+tnoremap <C-w>\ :vsp<CR>
+tnoremap <C-w>- :sp<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
-tnoremap <ESC> <C-\><C-n>
+tnoremap <C-]> <C-\><C-n>
 
-tnoremap <C-h> <C-\><C-n><C-w><C-h>
-tnoremap <C-j> <C-\><C-n><C-w><C-j>
-tnoremap <C-k> <C-\><C-n><C-w><C-k>
-tnoremap <C-l> <C-\><C-n><C-w><C-l>
+tnoremap <silent> <C-h> <C-\><C-n><C-w>h
+tnoremap <silent> <C-j> <C-\><C-n><C-w>j
+tnoremap <silent> <C-k> <C-\><C-n><C-w>k
+tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 
 " Commands
 :command W w
@@ -44,6 +44,9 @@ tnoremap <C-l> <C-\><C-n><C-w><C-l>
 
 :command Af ALEFix
 :command Tf TestFile
+
+:command VTerm vsp | term
+:command Term sp | term
 
 " Configuration
 set nocompatible
@@ -119,4 +122,5 @@ let g:ale_sign_warning = '~'
 augroup _term
   autocmd TermOpen term://* set nonu nornu
   autocmd TermOpen term://* startinsert
+  autocmd BufWinEnter,WinEnter term://* startinsert
 augroup END
