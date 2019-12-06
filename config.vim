@@ -10,27 +10,37 @@ let mapleader="\<Space>"
 map <Space> <Nop>
 map Q :q<CR>
 
+" Replace
 nnoremap s a<bs>
 nnoremap S :%s//g<Left><Left>
 vnoremap S :s//g<Left><Left>
 
+" Leader
 nnoremap <Leader>t :tabnew<CR>
 nnoremap <Leader>e :NERDTreeToggle<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
-nnoremap <C-w>\ :vsp<CR>
-nnoremap <C-w>- :sp<CR>
-tnoremap <C-w>\ :vsp<CR>
-tnoremap <C-w>- :sp<CR>
+" Window
+nnoremap <C-a>\ :vsp<CR>
+nnoremap <C-a>- :sp<CR>
+nnoremap <C-a>c :tabnew<CR>
+nnoremap <C-a>n gt
+nnoremap <C-a>p gT
+nnoremap <C-a>x :q<CR>
 
+tnoremap <C-a>\ :vsp<CR>
+tnoremap <C-a>- :sp<CR>
+tnoremap <C-a>c <C-\><C-n>:tabnew<CR>
+tnoremap <C-a>n <C-\><C-n>gt
+tnoremap <C-a>p <C-\><C-n>gT
+tnoremap <C-a>x <C-\><C-n>:q<CR>
+
+" Navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-tnoremap <C-]> <C-\><C-n>
-tmap <C-x> <C-\><C-n>:q<CR>
 
 tnoremap <silent> <C-h> <C-\><C-n><C-w>h
 tnoremap <silent> <C-j> <C-\><C-n><C-w>j
@@ -53,13 +63,23 @@ tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 
 " Configuration
 set nocompatible
-set synmaxcol=300
-set lazyredraw
 set ttyfast
-set clipboard=unnamed
-set noerrorbells visualbell t_vb=
+set lazyredraw
 set encoding=utf-8
+
+" Wrap
+set synmaxcol=300
 set nowrap
+
+" Clipboard
+set clipboard=unnamed
+
+" Bells
+set noerrorbells
+set visualbell
+set t_vb=
+
+" Tabs
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -72,28 +92,39 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Wild
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=.git
+set wildignore+=vendor/gems/*
+set wildignore+=*/tmp/*
+set wildignore+=*.zip
 
+" Number
 set number
 set numberwidth=1
+
+" Timeout
 set notimeout
 set ttimeout
 set timeoutlen=50
+
+" Characters
 set backspace=indent,eol,start
 set printfont=PragmataPro:h12
 set fillchars+=vert:│
-set scrolloff=3
 
+" Splits
 set splitbelow
 set splitright
 
 set autoindent
 set autoread
 set autowrite
+
 set noshowmode
 set showcmd
 set hidden
+
 set nocursorline
 set ruler
 set laststatus=2
@@ -105,11 +136,6 @@ filetype plugin indent on
 colorscheme nord
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-
-augroup nvim
-  au!
-  au VimEnter * doautoa Syntax,FileType
-augroup END
 
 " Plugins
 let NERDTreeShowHidden=1
@@ -125,4 +151,9 @@ augroup _term
   autocmd TermOpen term://* set nonu nornu
   autocmd TermOpen term://* startinsert
   autocmd BufWinEnter,WinEnter term://* startinsert
+augroup END
+
+augroup nvim
+  au!
+  au VimEnter * doautoa Syntax,FileType
 augroup END

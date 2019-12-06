@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  fullName = "Maas Lalani";
+  email = "maaslalani1@gmail.com";
+  githubHandle = "maaslalani";
+
+  sourceFile = file: "[ -f ${file} ] && source ${file}";
+in
 {
   home.packages = [
     pkgs.bat
@@ -18,16 +25,23 @@
 
   programs.git = {
     enable = true;
-    userName = "Maas Lalani";
-    userEmail = "maaslalani1@gmail.com";
+    userName = fullName;
+    userEmail = email;
     extraConfig = {
-      github.user = "maaslalani";
+      github.user = githubHandle;
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
       protocol.version = "2";
       color.ui = true;
       pull.rebase = true;
     };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
   };
 
   programs.zsh = {
@@ -40,10 +54,10 @@
       save = 50000;
     };
     shellAliases = import ./aliases.nix;
-    initExtraBeforeCompInit = ''
-      eval $(${pkgs.starship}/bin/starship init zsh)
+    initExtra = ''
+      ${sourceFile "~/.nix-profile/etc/profile.d/nix.sh"}
+      ${sourceFile "/opt/dev/dev.sh"}
     '';
-    initExtra = builtins.readFile ./init.zsh;
     plugins = [
       {
         name = "zsh-autosuggestions";
