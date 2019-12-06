@@ -12,8 +12,9 @@
     pkgs.zsh
   ];
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
@@ -65,12 +66,10 @@
     ];
 
     sessionVariables = rec {
-      NVIM_TUI_ENABLE_TRUE_COLOR = "1";
-      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=3";
-      DEV_ALLOW_ITERM2_INTEGRATION = "1";
       EDITOR = "vim";
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
+      NVIM_TUI_ENABLE_TRUE_COLOR = "1";
       GOPATH = "$HOME";
     };
   };
