@@ -9,7 +9,7 @@
 
   gb = "git branch";
   gco = "git checkout";
-  gcom = "gco master";
+  gcom = "git checkout master";
 
   ga = "git add";
   gc = "git commit";
