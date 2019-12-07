@@ -58,6 +58,7 @@ tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 :command Af ALEFix
 :command Tf TestFile
 
+:command TTerm tabnew | term
 :command VTerm vsp | term
 :command Term sp | term
 
