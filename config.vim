@@ -20,32 +20,6 @@ nnoremap <Leader>e :NERDTreeToggle<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
-" Window
-nnoremap <C-a>\ :vsp<CR>
-nnoremap <C-a>- :sp<CR>
-nnoremap <C-a>c :tabnew<CR>
-nnoremap <C-a>n gt
-nnoremap <C-a>p gT
-nnoremap <C-a>x :q<CR>
-
-tnoremap <C-a>\ <C-\><C-n>:VTerm<CR>
-tnoremap <C-a>- <C-\><C-n>:Term<CR>
-tnoremap <C-a>c <C-\><C-n>:TTerm<CR>
-tnoremap <C-a>n <C-\><C-n>gt
-tnoremap <C-a>p <C-\><C-n>gT
-tnoremap <C-a>x <C-\><C-n>:q<CR>
-
-" Navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-tnoremap <silent> <C-h> <C-\><C-n><C-w>h
-tnoremap <silent> <C-j> <C-\><C-n><C-w>j
-tnoremap <silent> <C-k> <C-\><C-n><C-w>k
-tnoremap <silent> <C-l> <C-\><C-n><C-w>l
-
 " Commands
 :command W w
 :command Q q
@@ -130,8 +104,6 @@ filetype plugin indent on
 
 " Colors
 colorscheme nord
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
 
 " Plugins
 let NERDTreeShowHidden=1
@@ -141,13 +113,6 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 let g:lightline = { 'colorscheme': 'nord' }
 let g:ale_sign_error = '*'
 let g:ale_sign_warning = '~'
-
-" Terminal
-augroup _term
-  autocmd TermOpen term://* set nonu nornu
-  autocmd TermOpen term://* startinsert
-  autocmd BufWinEnter,WinEnter term://* startinsert
-augroup END
 
 augroup nvim
   au!

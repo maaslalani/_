@@ -22,7 +22,7 @@
   programs.zsh.enable = true;
 
   system.defaults.dock.autohide = true;
-  system.defaults.dock.orientation = "right";
+  system.defaults.dock.orientation = "left";
   system.defaults.dock.showhidden = true;
   system.defaults.dock.mru-spaces = false;
 
