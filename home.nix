@@ -1,11 +1,14 @@
 { config, pkgs, ... }:
 
 let
+  NIX_PATH = "~/.nix-profile/etc/profile.d/nix.sh";
+  DEV_PATH = "/opt/dev/dev.sh";
+
+  sourceFile = file: "[ -f ${file} ] && source ${file}";
+
   fullName = "Maas Lalani";
   email = "maaslalani1@gmail.com";
   githubHandle = "maaslalani";
-
-  sourceFile = file: "[ -f ${file} ] && source ${file}";
 in
 {
   home.packages = [
@@ -55,8 +58,8 @@ in
     };
     shellAliases = import ./aliases.nix;
     initExtra = ''
-      ${sourceFile "~/.nix-profile/etc/profile.d/nix.sh"}
-      ${sourceFile "/opt/dev/dev.sh"}
+      ${sourceFile NIX_PATH}
+      ${sourceFile DEV_PATH}
     '';
     plugins = [
       {
@@ -97,16 +100,12 @@ in
       lightline-vim
       nerdtree
       nord-vim
-      rust-vim
       supertab
       vim-commentary
       vim-fugitive
-      vim-go
-      vim-nix
       vim-repeat
-      vim-ruby
+      vim-polyglot
       vim-surround
-      vim-sneak
     ];
   };
 }

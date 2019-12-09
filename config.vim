@@ -11,7 +11,6 @@ map <Space> <Nop>
 map Q :q<CR>
 
 " Replace
-nnoremap s a<bs>
 nnoremap S :%s//g<Left><Left>
 vnoremap S :s//g<Left><Left>
 
@@ -29,9 +28,9 @@ nnoremap <C-a>n gt
 nnoremap <C-a>p gT
 nnoremap <C-a>x :q<CR>
 
-tnoremap <C-a>\ :vsp<CR>
-tnoremap <C-a>- :sp<CR>
-tnoremap <C-a>c <C-\><C-n>:tabnew<CR>
+tnoremap <C-a>\ <C-\><C-n>:VTerm<CR>
+tnoremap <C-a>- <C-\><C-n>:Term<CR>
+tnoremap <C-a>c <C-\><C-n>:TTerm<CR>
 tnoremap <C-a>n <C-\><C-n>gt
 tnoremap <C-a>p <C-\><C-n>gT
 tnoremap <C-a>x <C-\><C-n>:q<CR>
@@ -50,10 +49,6 @@ tnoremap <silent> <C-l> <C-\><C-n><C-w>l
 " Commands
 :command W w
 :command Q q
-:command WQ wq
-:command QW wq
-:command Wq wq
-:command Qw wq
 
 :command Af ALEFix
 :command Tf TestFile
