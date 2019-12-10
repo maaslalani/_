@@ -13,6 +13,7 @@
     ctags
     htop
     ripgrep
+    screen
     tree
     zsh
   ];

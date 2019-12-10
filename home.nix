@@ -16,14 +16,27 @@ in
     pkgs.fortune
     pkgs.git
     pkgs.htop
+    pkgs.reattach-to-user-namespace
     pkgs.ripgrep
     pkgs.starship
     pkgs.tree
+    pkgs.tmux
     pkgs.zsh
   ];
 
   programs.home-manager = {
     enable = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    disableConfirmationPrompt = true;
+    escapeTime = 0;
+    extraConfig = builtins.readFile ./tmuxrc;
+    keyMode = "vi";
+    shortcut = "a";
+    terminal = "screen-256color";
   };
 
   programs.git = {
@@ -86,7 +99,6 @@ in
       EDITOR = "vim";
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
-      NVIM_TUI_ENABLE_TRUE_COLOR = "1";
       GOPATH = "$HOME";
     };
   };
@@ -94,7 +106,7 @@ in
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    extraConfig = builtins.readFile ./config.vim;
+    extraConfig = builtins.readFile ./vimrc;
     plugins = with pkgs.vimPlugins; [
       ale
       lightline-vim

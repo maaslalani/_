@@ -114,6 +114,7 @@ let g:lightline = { 'colorscheme': 'nord' }
 let g:ale_sign_error = '*'
 let g:ale_sign_warning = '~'
 
+" Terminal
 augroup nvim
   au!
   au VimEnter * doautoa Syntax,FileType
