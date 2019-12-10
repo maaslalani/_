@@ -1,20 +1,13 @@
-set -g status-position bottom
-set -g status-justify right
-set -g status-right-length 100
-set -g status-left-length 100
-set -g status-left '#[bg=cyan]  #S  #[bg=blue]  ~/#{b:pane_current_path} '
-set -g status-right ' #[bg=blue]  %H:%M %a #[bg=green] #P '
 set -g status-bg black
-set -g status-fg black
-set -g pane-border-style 'fg=black,bg=default'
-set -g pane-active-border-style 'fg=black,bg=default'
-set -g window-active-style 'bg=default'
-set -g window-style 'bg=default'
+set -g status-position top
+set -g status-justify left
+set -g status-right ' #[bg=white]  %H:%M %a '
 
 setw -g window-status-format '#[fg=white] #I #W '
-setw -g window-status-current-format '#[fg=green] #I #W '
+setw -g window-status-current-format '#[bg=white,fg=black] #I #W '
+
+set -g pane-border-style 'fg=black,bg=default'
+set -g pane-active-border-style 'fg=black,bg=default'
 
 bind \\ split-window -h -c '#{pane_current_path}'
-bind - split-window -v -c '#{pane_current_path}'
-bind c new-window -c '#{pane_current_path}'
-bind -n C-x setw synchronize-panes
+bind - split-window -c '#{pane_current_path}'

@@ -35,6 +35,7 @@ in
     escapeTime = 0;
     extraConfig = builtins.readFile ./tmuxrc;
     keyMode = "vi";
+    customPaneNavigationAndResize = true;
     shortcut = "a";
     terminal = "screen-256color";
   };
