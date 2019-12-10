@@ -33,7 +33,7 @@ in
     baseIndex = 1;
     disableConfirmationPrompt = true;
     escapeTime = 0;
-    extraConfig = builtins.readFile ./tmuxrc;
+    extraConfig = import ./tmux.nix;
     keyMode = "vi";
     customPaneNavigationAndResize = true;
     shortcut = "a";
