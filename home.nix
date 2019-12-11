@@ -110,7 +110,6 @@ in
     extraConfig = import ./vim.nix;
     plugins = with pkgs.vimPlugins; [
       ale
-      lightline-vim
       nerdtree
       nord-vim
       supertab

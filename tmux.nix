@@ -8,7 +8,7 @@ let
 
   status = {
     bg = "black";
-    position = "top";
+    position = "bottom";
     justify = "left";
     right = "' #[bg=white]  %H:%M %a '";
   };

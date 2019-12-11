@@ -31,7 +31,7 @@ let
     split          = [ "splitbelow" "splitright" ];
     auto           = [ "autoindent" "autoread" "autowrite" ];
     show           = [ "noshowmode" "showcmd" "hidden" ];
-    cursor         = [ "nocursorline" "ruler" "laststatus=2" "concealcursor=\"\"" ];
+    cursor         = [ "nocursorline" "ruler" "laststatus=0" "concealcursor=\"\"" ];
   };
 
   commands = {
@@ -86,7 +86,6 @@ in
   let NERDTreeShowHidden=${toString plugins.NERDTree.ShowHidden}
   let g:SuperTabDefaultCompletionType = ${plugins.SuperTab.CompletionType}
   let g:SuperTabClosePreviewOnPopupClose = ${toString plugins.SuperTab.ClosePreviewOnPopupClose}
-  let g:lightline = { 'colorscheme': '${colorscheme}' }
   let g:ale_sign_error = ${plugins.ALE.sign.error}
   let g:ale_sign_warning = ${plugins.ALE.sign.warning}
   augroup nvim
