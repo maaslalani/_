@@ -107,7 +107,7 @@ in
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    extraConfig = builtins.readFile ./vimrc;
+    extraConfig = import ./vim.nix;
     plugins = with pkgs.vimPlugins; [
       ale
       lightline-vim

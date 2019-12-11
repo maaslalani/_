@@ -1,4 +1,10 @@
+with builtins;
 let
+  attrsToConfig = setting: config:
+  (f: attrs: map (name: f name attrs.${name})
+  (attrNames attrs))
+  (name: value: "set -g ${setting}-" + name + " " + value)
+  config;
 
   status = {
     bg = "black";
@@ -8,8 +14,8 @@ let
   };
 
   window = {
-    status-format = "#[fg=white] #I #W ";
-    status-current-format = "#[bg=white,fg=black] #I #W ";
+    status-format = "'#[fg=white] #I #W '";
+    status-current-format = "'#[bg=white,fg=black] #I #W '";
   };
 
   pane = rec {
@@ -17,22 +23,15 @@ let
     active-border-style = border-style;
   };
 
-  attrsToConfig = setting: config:
-    (f: attrs: map (name: f name attrs.${name})
-    (builtins.attrNames attrs))
-    (name: value: "set -g ${setting}-" + name + " " + value)
-    config;
-
-  statusString = builtins.concatStringsSep "\n"(attrsToConfig "status" status);
-  windowString = builtins.concatStringsSep "\n"(attrsToConfig "window" window);
-  paneString = builtins.concatStringsSep "\n"(attrsToConfig "pane" pane);
-
+  statusString = concatStringsSep "\n"(attrsToConfig "status" status);
+  windowString = concatStringsSep "\n"(attrsToConfig "window" window);
+  paneString = concatStringsSep "\n"(attrsToConfig "pane" pane);
 in
-  ''
-    ${statusString}
-    ${windowString}
-    ${paneString}
+''
+  ${statusString}
+  ${windowString}
+  ${paneString}
 
-    bind \\ split-window -h
-    bind - split-window
-  ''
+  bind \\ split-window -h
+  bind - split-window
+''
