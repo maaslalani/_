@@ -38,6 +38,7 @@ in
     customPaneNavigationAndResize = true;
     shortcut = "a";
     terminal = "screen-256color";
+    secureSocket = false;
   };
 
   programs.git = {
