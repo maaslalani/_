@@ -1,95 +1,87 @@
 with builtins;
 let
-  listToSettings = list:
-  concatStringsSep "\n"(map (setting: "set " + setting) list);
+  lib = import <nixpkgs/lib>;
 
-  setToSettings = settings:
-  concatStringsSep "\n\n"(map listToSettings (attrValues settings));
+  settings = concatStringsSep "\n" (map (setting: "set " + setting) [
+    "nobackup" "nowb" "noswapfile" "undodir=~/.undo" "undofile"
+    "nocompatible" "encoding=utf-8" "lazyredraw" "ttyfast"
+    "synmaxcol=300" "nowrap"
+    "clipboard=unnamed"
+    "noerrorbells" "visualbell" "t_vb="
+    "tabstop=2" "shiftwidth=2" "softtabstop=2" "expandtab"
+    "list listchars=tab:»·,trail:·"
+    "hlsearch" "incsearch" "ignorecase" "smartcase"
+    "wildmode=list:longest,list:full" "wildignore+=.git"
+    "number" "numberwidth=1"
+    "notimeout" "ttimeout" "timeoutlen=50"
+    "backspace=indent,eol,start" "printfont=PragmataPro:h12" "fillchars+=vert:│"
+    "splitbelow" "splitright"
+    "autoindent" "autoread" "autowrite"
+    "noshowmode" "showcmd" "hidden"
+    "nocursorline" "ruler" "laststatus=0" "concealcursor=\"\""
+  ]);
 
-  setToMapping = {type ? "n", leader ? false, recursive ? true, trigger, action}:
-  "${type}${if !recursive then "nore" else ""}map ${if leader then "<Leader>" else ""}${trigger} ${action}";
+  leaderKey = "<Space>";
 
-  mapsToMapping = maps:
-  concatStringsSep "\n" (map setToMapping maps);
-
-  boolToString = bool:
-  if bool then "on" else "off";
-
-  settings = {
-    backups        = [ "nobackup" "nowb" "noswapfile" "undodir=~/.undo" "undofile" ];
-    configuration  = [ "nocompatible" "encoding=utf-8" "lazyredraw" "ttyfast" ];
-    wrap           = [ "synmaxcol=300" "nowrap" ];
-    clipboard      = [ "clipboard=unnamed" ];
-    bells          = [ "noerrorbells" "visualbell" "t_vb=" ];
-    tabs           = [ "tabstop=2" "shiftwidth=2" "softtabstop=2" "expandtab" ];
-    list           = [ "list listchars=tab:»·,trail:·" ];
-    search         = [ "hlsearch" "incsearch" "ignorecase" "smartcase" ];
-    wild           = [ "wildmode=list:longest,list:full" "wildignore+=.git" ];
-    number         = [ "number" "numberwidth=1" ];
-    timeout        = [ "notimeout" "ttimeout" "timeoutlen=50" ];
-    characters     = [ "backspace=indent,eol,start" "printfont=PragmataPro:h12" "fillchars+=vert:│" ];
-    split          = [ "splitbelow" "splitright" ];
-    auto           = [ "autoindent" "autoread" "autowrite" ];
-    show           = [ "noshowmode" "showcmd" "hidden" ];
-    cursor         = [ "nocursorline" "ruler" "laststatus=0" "concealcursor=\"\"" ];
+  maps = mapsToConfig {
+    n.L.t = ":tabnew<CR>";
+    n.L.e = ":NERDTreeToggle<CR>";
+    n.L.w = ":w<CR>";
+    n.L.q = ":q<CR>";
+    n.Q = ":q<CR>";
+    n.S = ":%s//g<Left><Left>";
+    v.S = ":s//g<Left><Left>";
   };
 
-  commands = {
-    W      = "w";
-    Q      = "q";
-    Af     = "ALEFix";
-    Tf     = "TestFile";
-    TTerm  = "tabnew | term";
-    VTerm  = "vsp | term";
-    Term   = "sp | term";
+  tokens = {
+    n = "nmap ";
+    v = "vmap ";
+    L = leaderKey;
   };
 
-  leaderKey = "\"\\<Space>\"";
+  mapAttrsToConfig = lib.mapAttrsRecursive (path: value: path ++ [value]);
+  collectLists = lib.collect isList;
+  parseTokens = map (parseToken);
+  parseToken = tokens: concatStringsSep "" (map (getToken) tokens);
+  getToken = token: if tokens ? ${token} then tokens.${token} else "${token} ";
+  mapsToConfig = maps: concatStringsSep "\n" (parseTokens (collectLists (mapAttrsToConfig maps)));
 
-  maps = [
-    { trigger = "S"; action = ":%s//g<Left><Left>"; }
-    { trigger = "S"; action = ":s//g<Left><Left>"; type = "v"; }
-    { trigger = "Q"; action = ":q<CR>"; }
-    { trigger = "t"; action = ":tabnew<CR>"; leader = true; }
-    { trigger = "e"; action = ":NERDTreeToggle<CR>"; leader = true; }
-    { trigger = "w"; action = ":w<CR>"; leader = true; }
-    { trigger = "q"; action = ":q<CR>"; leader = true; }
-    { trigger = "${leaderKey}"; action = "<Nop>"; }
-  ];
+  commands = concatStringsSep "\n" (attrValues (mapAttrs (name: value: ":command ${name} ${value}") {
+    W = "w";
+    Q = "q";
+    Af = "ALEFix";
+    Tf = "TestFile";
+    TTerm = "tabnew | term";
+    VTerm = "vsp | term";
+    Term = "sp | term";
+  }));
 
-  filetype = {
+  filetype = concatStringsSep "\n" (attrValues (mapAttrs (name: value: "filetype ${name} ${if value then "on" else "off"}") {
     plugin = true;
     indent = true;
-  };
+  }));
 
   colorscheme = "nord";
 
-  plugins = {
-    NERDTree.ShowHidden = 1;
-    SuperTab = {
-      CompletionType = "\"context\"";
-      ClosePreviewOnPopupClose = 1;
-    };
-    ALE = {
-      sign.error = "\"*\"";
-      sign.warning = "\"~\"";
-    };
-  };
 in
-''
-  ${setToSettings settings}
-  let mapleader=${leaderKey}
-  ${mapsToMapping maps}
-  filetype plugin ${boolToString filetype.plugin}
-  filetype indent ${boolToString filetype.indent}
-  colorscheme ${colorscheme}
-  let NERDTreeShowHidden=${toString plugins.NERDTree.ShowHidden}
-  let g:SuperTabDefaultCompletionType = ${plugins.SuperTab.CompletionType}
-  let g:SuperTabClosePreviewOnPopupClose = ${toString plugins.SuperTab.ClosePreviewOnPopupClose}
-  let g:ale_sign_error = ${plugins.ALE.sign.error}
-  let g:ale_sign_warning = ${plugins.ALE.sign.warning}
-  augroup nvim
-    au!
-    au VimEnter * doautoa Syntax,FileType
-  augroup END
-''
+  ''
+    ${settings}
+    ${maps}
+    ${commands}
+
+    nmap ${leaderKey} <Nop>
+    colorscheme ${colorscheme}
+
+    ${filetype}
+
+    let NERDTreeShowHidden = 1
+    let g:SuperTabDefaultCompletionType = 'context'
+    let g:SuperTabClosePreviewOnPopupClose = 1
+    let g:ale_sign_error = '*'
+    let g:ale_sign_warning = '~'
+
+    augroup nvim
+      au!
+      au VimEnter * doautoa Syntax,FileType
+    augroup END
+  ''
