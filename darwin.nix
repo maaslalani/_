@@ -9,7 +9,6 @@
   environment.systemPackages = with pkgs; [
     fd
     fzf
-    git
     ctags
     htop
     ripgrep

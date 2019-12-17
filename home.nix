@@ -14,7 +14,6 @@ in
   home.packages = [
     pkgs.bat
     pkgs.fortune
-    pkgs.git
     pkgs.htop
     pkgs.reattach-to-user-namespace
     pkgs.ripgrep

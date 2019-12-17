@@ -15,6 +15,6 @@ in
   set -g pane-border-style fg=black,bg=default
   set -g pane-active-border-style fg=black,bg=default
 
-  bind \\ split-window -h
+  bind \ split-window -h
   bind - split-window
 ''
