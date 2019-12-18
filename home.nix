@@ -26,6 +26,10 @@ in
     enable = true;
   };
 
+  programs.fzf = {
+    enable = true;
+  };
+
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -109,6 +113,7 @@ in
     extraConfig = import ./vim.nix;
     plugins = with pkgs.vimPlugins; [
       ale
+      fzf-vim
       nerdtree
       nord-vim
       supertab
