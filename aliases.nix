@@ -17,6 +17,7 @@
   grh = "git reset --hard";
 
   gp = "git push";
+  gpf = "git push --force-with-lease";
   gl = "git pull";
   gd = "git diff";
   gs = "git status";

@@ -1,7 +1,5 @@
 with builtins;
 let
-  lib = import <nixpkgs/lib>;
-
   settings = concatStringsSep "\n" (map (setting: "set " + setting) [
     "nobackup" "nowb" "noswapfile" "undodir=~/.undo" "undofile"
     "nocompatible" "encoding=utf-8" "lazyredraw" "ttyfast"
@@ -23,28 +21,16 @@ let
 
   leaderKey = "<Space>";
 
-  maps = mapsToConfig {
-    n.L.t = ":tabnew<CR>";
-    n.L.e = ":NERDTreeToggle<CR>";
-    n.L.w = ":w<CR>";
-    n.L.q = ":q<CR>";
-    n.Q = ":q<CR>";
-    n.S = ":%s//g<Left><Left>";
-    v.S = ":s//g<Left><Left>";
-  };
-
-  tokens = {
-    n = "nmap ";
-    v = "vmap ";
-    L = leaderKey;
-  };
-
-  mapAttrsToConfig = lib.mapAttrsRecursive (path: value: path ++ [value]);
-  collectLists = lib.collect isList;
-  parseTokens = map (parseToken);
-  parseToken = tokens: concatStringsSep "" (map (getToken) tokens);
-  getToken = token: if tokens ? ${token} then tokens.${token} else "${token} ";
-  mapsToConfig = maps: concatStringsSep "\n" (parseTokens (collectLists (mapAttrsToConfig maps)));
+  maps = concatStringsSep "\n" (attrValues (mapAttrs (name: value: "${name} ${value}") {
+    "nmap ${leaderKey}" = "<Nop>";
+    "nmap ${leaderKey}t" = ":tabnew<CR>";
+    "nmap ${leaderKey}e" = ":NERDTreeToggle<CR>";
+    "nmap ${leaderKey}w" = ":w<CR>";
+    "nmap ${leaderKey}q" = ":q<CR>";
+    "nmap Q" = ":q<CR>";
+    "nmap S" = ":%s//g<Left><Left>";
+    "vmap S" = ":s//g<Left><Left>";
+  }));
 
   commands = concatStringsSep "\n" (attrValues (mapAttrs (name: value: ":command ${name} ${value}") {
     W = "w";
@@ -69,7 +55,6 @@ in
     ${maps}
     ${commands}
 
-    nmap ${leaderKey} <Nop>
     colorscheme ${colorscheme}
 
     ${filetype}

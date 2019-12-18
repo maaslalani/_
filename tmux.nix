@@ -1,20 +1,33 @@
+with builtins;
 let
+  settings = concatStringsSep "\n" (attrValues (mapAttrs (name: value: "set -g ${name} ${value}") {
+    default-terminal = "'tmux-256color-italic'";
+    status-style = "bg=black";
+    status-position = "bottom";
+    status-justify = "left";
+    status-right-style = "bg=white,fg=black";
+    status-right = "'  %H:%M %a '";
+    pane-border-style = "fg=black,bg=default";
+    pane-active-border-style = "fg=black,bg=default";
+    window-status-style = "bg=black,fg=white";
+    window-status-current-style = "fg=black,bg=white";
+    window-status-format = "' #I #W '";
+    window-status-current-format = "' #I #W '";
+  }));
+
+  splits = {
+    vertical = "\\";
+    horiztonal = "-";
+  };
 in
 ''
-  set -g status-style bg=black
-  set -g status-position bottom
-  set -g status-justify left
-  set -g status-right-style bg=white,fg=black
-  set -g status-right '  %H:%M %a '
+  ${settings}
 
-  setw -g window-status-style bg=black,fg=white
-  setw -g window-status-current-style fg=black,bg=white
-  setw -g window-status-format ' #I #W '
-  setw -g window-status-current-format ' #I #W '
+  bind ${splits.vertical} split-window -h
+  bind ${splits.horiztonal} split-window
 
-  set -g pane-border-style fg=black,bg=default
-  set -g pane-active-border-style fg=black,bg=default
+  bind -n C-p send-keys Up
+  bind -n C-n send-keys Down
 
-  bind \ split-window -h
-  bind - split-window
+  set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
 ''

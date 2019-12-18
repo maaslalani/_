@@ -15,7 +15,6 @@ in
     pkgs.bat
     pkgs.fortune
     pkgs.htop
-    pkgs.reattach-to-user-namespace
     pkgs.ripgrep
     pkgs.starship
     pkgs.tree
@@ -36,7 +35,7 @@ in
     keyMode = "vi";
     customPaneNavigationAndResize = true;
     shortcut = "a";
-    terminal = "screen-256color";
+    terminal = "xterm-256color";
     secureSocket = false;
   };
 
