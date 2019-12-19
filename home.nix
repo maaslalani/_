@@ -15,6 +15,7 @@ in
     pkgs.bat
     pkgs.fortune
     pkgs.htop
+    pkgs.reattach-to-user-namespace
     pkgs.ripgrep
     pkgs.starship
     pkgs.tree
