@@ -46,8 +46,8 @@ in
   ${settings}
   ${window}
 
-  bind ${splits.vertical} split-window -h
-  bind ${splits.horiztonal} split-window
+  bind ${splits.vertical} split-window -h -c '#{pane_current_path}'
+  bind ${splits.horiztonal} split-window -c '#{pane_current_path}'
 
   bind -n C-p send-keys Up
   bind -n C-n send-keys Down

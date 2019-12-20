@@ -26,53 +26,52 @@ let
   leaderKey = "<Space>";
 
   attrsToConfig = prefix: attrs:
-  attrsToConfig' (prefix + " ") attrs;
-
-  attrsToConfig' = prefix: attrs:
   concatStringsSep "\n"
   (attrValues (mapAttrs (name: value: prefix + "${name} ${value}") attrs));
 
-  maps =
-    attrsToConfig "map" {
+  maps = concatStringsSep "\n" (attrValues {
+    normal = attrsToConfig "nmap " {
       Q = ":q<CR>";
       S = ":%s//g<Left><Left>";
-    }
-    + attrsToConfig' "map ${leaderKey}" {
+    };
+
+    visual = attrsToConfig "vmap " {
+      S = ":s//g<Left><Left>";
+    };
+
+    leader = attrsToConfig "map ${leaderKey}" {
       "" = "<Nop>";
       t = ":tabnew<CR>";
       e = ":NERDTreeToggle<CR>";
       w = ":w<CR>";
       q = ":q<CR>";
-    }
-    + attrsToConfig "vmap" {
-      S = ":s//g<Left><Left>";
     };
+  });
 
-    commands = attrsToConfig ":command" {
-      W = "w";
-      Q = "q";
-      Af = "ALEFix";
-      Tf = "TestFile";
-      TTerm = "tabnew | term";
-      VTerm = "vsp | term";
-      Term = "sp | term";
-    };
+  commands = attrsToConfig ":command " {
+    W = "w";
+    Q = "q";
+    Af = "ALEFix";
+    Tf = "TestFile";
+    TTerm = "tabnew | term";
+    VTerm = "vsp | term";
+    Term = "sp | term";
+  };
 
-    filetype = attrsToConfig "filetype" {
-      plugin = "on";
-      indent = "on";
-    };
+  filetype = attrsToConfig "filetype " {
+    plugin = "on";
+    indent = "on";
+  };
 
-    colorscheme = "nord";
+  colorscheme = "nord";
 in
 ''
   ${settings}
   ${maps}
   ${commands}
+  ${filetype}
 
   colorscheme ${colorscheme}
-
-  ${filetype}
 
   let NERDTreeShowHidden = 1
   let g:SuperTabDefaultCompletionType = 'context'

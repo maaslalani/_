@@ -31,4 +31,10 @@
   gri = "git rebase -i";
   grc = "git rebase --continue";
   gra = "git rebase --abort";
+
+  tksv = "tmux kill-server";
+  tkss = "tmux kill-session -t";
+  ta = "tmux attach -t";
+  tls = "tmux list-sessions";
+  tn = "tmux new-session -s";
 }
