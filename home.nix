@@ -12,6 +12,7 @@ let
 in
 {
   home.packages = [
+    pkgs.alacritty
     pkgs.bat
     pkgs.fortune
     pkgs.htop
@@ -25,6 +26,11 @@ in
 
   programs.home-manager = {
     enable = true;
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = import ./alacritty.nix;
   };
 
   programs.fzf = {
