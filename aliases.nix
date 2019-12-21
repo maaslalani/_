@@ -16,6 +16,7 @@
   gr = "git reset";
   grh = "git reset --hard";
 
+
   gp = "git push";
   gpf = "git push --force-with-lease";
   gl = "git pull";
@@ -28,9 +29,10 @@
   gcp = "git cherry-pick";
   gcpa = "git cherry-pick --abort";
 
-  gri = "git rebase -i";
-  grc = "git rebase --continue";
-  gra = "git rebase --abort";
+  grb = "git rebase";
+  grbi = "git rebase -i";
+  grbc = "git rebase --continue";
+  grba = "git rebase --abort";
 
   gpsup = "git push --set-upstream origin $(git branch --show-current)";
 
