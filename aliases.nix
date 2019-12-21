@@ -32,6 +32,8 @@
   grc = "git rebase --continue";
   gra = "git rebase --abort";
 
+  gpsup = "git push --set-upstream origin $(git branch --show-current)";
+
   tksv = "tmux kill-server";
   tkss = "tmux kill-session -t";
   ta = "tmux attach -t";
