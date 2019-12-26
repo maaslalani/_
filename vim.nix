@@ -1,54 +1,85 @@
 with builtins;
 let
-  settings = concatStringsSep "\n" (map (setting: "set " + setting) [
-    "nobackup" "nowb" "noswapfile"
-    "undodir=~/.undo" "undofile"
-    "clipboard=unnamed" "nocompatible"
-    "encoding=utf-8" "lazyredraw" "ttyfast"
-    "synmaxcol=300" "nowrap"
-    "noerrorbells" "visualbell" "t_vb="
-    "tabstop=2" "shiftwidth=2" "softtabstop=2"
-    "expandtab" "list listchars=tab:»·,trail:·"
-    "hlsearch" "incsearch" "ignorecase" "smartcase"
-    "wildmode=list:longest" "wildignore+=.git"
-    "number" "numberwidth=1"
-    "backspace=indent,eol,start"
-    "printfont=PragmataPro:h12"
-    "fillchars+=vert:│"
-    "splitbelow" "splitright"
-    "autoindent" "autoread" "autowrite"
-    "notimeout" "ttimeout" "timeoutlen=50"
-    "noshowmode" "showcmd" "hidden"
-    "nocursorline" "ruler" "laststatus=0"
-    "concealcursor=\"\""
-  ]);
+  prefixString = prefix: string: prefix + string;
+  combineAttr = name: value: "${name} ${value}";
+  combineAttrs = attrs: attrValues (mapAttrs (combineAttr) attrs);
+  config' = prefix: attrs: join (map (string: prefix + string) (combineAttrs attrs));
+  config = prefix: attrs: config' "${prefix} " attrs;
+  join = concatStringsSep "\n";
+
+  optional = boolean: value: if boolean then (value) else "";
+  no = value: optional (isBool value && !value) "no";
+  equalValue = value: optional (!isBool value) "=${toString value}";
+  settingsAttr = name: value: "set ${no value}${name}${equalValue value}";
+
+  settings = {
+    backup = false;
+    wb = false;
+    swapfile = false;
+    undofile = true;
+    undodir = "~/.undo";
+    clipboard = "unnamed";
+    compatible = false;
+    encoding = "utf-8";
+    lazyredraw = true;
+    ttyfast = true;
+    synmaxcol = 300;
+    wrap = false;
+    errorbells = false;
+    visualbell = true;
+    t_vb = "";
+    tabstop = 2;
+    shiftwidth = 2;
+    softtabstop = 2;
+    expandtab = true;
+    hlsearch = true;
+    incsearch = true;
+    ignorecase = true;
+    smartcase = true;
+    wildmode = "list:longest";
+    number = true;
+    numberwidth = 1;
+    backspace = "indent,eol,start";
+    printfont = "PragmataPro:h12";
+    splitbelow = true;
+    splitright = true;
+    autoindent = true;
+    autoread = true;
+    autowrite = true;
+    timeout = false;
+    ttimeout = true;
+    timeoutlen = 50;
+    showmode = false;
+    showcmd = true;
+    hidden = true;
+    cursorline = false;
+    ruler = true;
+    laststatus = 0;
+    concealcursor = "\"\"";
+  };
 
   leaderKey = "<Space>";
 
-  attrsToConfig = prefix: attrs:
-  concatStringsSep "\n"
-  (attrValues (mapAttrs (name: value: prefix + "${name} ${value}") attrs));
-
-  maps = concatStringsSep "\n" (attrValues {
-    normal = attrsToConfig "nmap " {
+  maps = {
+    normal = {
       Q = ":q<CR>";
       S = ":%s//g<Left><Left>";
     };
 
-    visual = attrsToConfig "vmap " {
-      S = ":s//g<Left><Left>";
-    };
-
-    leader = attrsToConfig "map ${leaderKey}" {
+    leader = {
       "" = "<Nop>";
       t = ":tabnew<CR>";
       e = ":NERDTreeToggle<CR>";
       w = ":w<CR>";
       q = ":q<CR>";
     };
-  });
 
-  commands = attrsToConfig ":command " {
+    visual = {
+      S = ":s//g<Left><Left>";
+    };
+  };
+
+  commands = {
     W = "w";
     Q = "q";
     Af = "ALEFix";
@@ -58,7 +89,7 @@ let
     Term = "sp | term";
   };
 
-  filetype = attrsToConfig "filetype " {
+  filetype = {
     plugin = "on";
     indent = "on";
   };
@@ -66,10 +97,14 @@ let
   colorscheme = "nord";
 in
 ''
-  ${settings}
-  ${maps}
-  ${commands}
-  ${filetype}
+  ${join (attrValues (mapAttrs (settingsAttr) settings))}
+
+  ${config ":command" commands}
+  ${config "filetype" filetype}
+
+  ${config "nmap" maps.normal}
+  ${config "vmap" maps.visual}
+  ${config' "map ${leaderKey}" maps.leader}
 
   colorscheme ${colorscheme}
 
