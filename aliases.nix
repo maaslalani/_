@@ -42,7 +42,6 @@
   tls = "tmux list-sessions";
   tn = "tmux new-session -s";
 
-  ".." = "cd ..";
   "..." = "cd ../..";
   "...." = "cd ../../..";
 }

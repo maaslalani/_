@@ -124,11 +124,11 @@ in
       nerdtree
       nord-vim
       supertab
-      vim-commentary
-      vim-fugitive
-      vim-repeat
-      vim-polyglot
-      vim-surround
+      commentary
+      fugitive
+      repeat
+      polyglot
+      surround
     ];
   };
 }

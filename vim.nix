@@ -72,6 +72,8 @@ let
       e = ":NERDTreeToggle<CR>";
       w = ":w<CR>";
       q = ":q<CR>";
+      f = ":FZF<CR>";
+      r = ":Rg<CR>";
     };
 
     visual = {
