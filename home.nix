@@ -16,9 +16,11 @@ in
       pkgs.bat
       pkgs.fortune
       pkgs.htop
+      pkgs.pandoc
       pkgs.reattach-to-user-namespace
       pkgs.ripgrep
       pkgs.starship
+      pkgs.texlive.combined.scheme-basic
       pkgs.tree
       pkgs.tmux
       pkgs.zsh
