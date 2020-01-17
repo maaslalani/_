@@ -136,7 +136,6 @@ in
         repeat
         supertab
         surround
-        vim-pandoc
       ];
     };
   }

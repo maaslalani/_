@@ -74,6 +74,7 @@ let
       q = ":q<CR>";
       f = ":FZF<CR>";
       r = ":Rg<CR>";
+      sp = ":set spell!<CR>";
     };
 
     visual = {
@@ -89,6 +90,8 @@ let
     TTerm = "tabnew | term";
     VTerm = "vsp | term";
     Term = "sp | term";
+    Preview = "silent !pandoc % -o %:r.pdf && open %:r.pdf && rm %:r.pdf";
+    Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
   };
 
   filetype = {
@@ -115,7 +118,6 @@ in
   let g:SuperTabClosePreviewOnPopupClose = 1
   let g:ale_sign_error = '*'
   let g:ale_sign_warning = '~'
-  let g:pandoc#modules#disabled = ["folding"]
 
   augroup nvim
     au!

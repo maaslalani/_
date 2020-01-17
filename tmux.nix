@@ -17,7 +17,7 @@ let
   attrToSetting = name: value: "set -g ${name} ${value}";
 
   settings = attrsToConfig (with colours; {
-    default-terminal = "'screen-256color'";
+    default-terminal = "'xterm-256color'";
 
     status-style = bg colours.black;
     status-right-style = "${bg bright.black},${fg white}";

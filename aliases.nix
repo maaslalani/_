@@ -16,7 +16,6 @@
   gr = "git reset";
   grh = "git reset --hard";
 
-
   gp = "git push";
   gpf = "git push --force-with-lease";
   gl = "git pull";
@@ -41,6 +40,9 @@
   ta = "tmux attach -t";
   tls = "tmux list-sessions";
   tn = "tmux new-session -s";
+
+  md = "mkdir";
+  lsa = "ls -a";
 
   "..." = "cd ../..";
   "...." = "cd ../../..";
