@@ -20,7 +20,7 @@ in
       pkgs.reattach-to-user-namespace
       pkgs.ripgrep
       pkgs.starship
-      pkgs.texlive.combined.scheme-basic
+      pkgs.texlive.combined.scheme-medium
       pkgs.tree
       pkgs.tmux
       pkgs.zsh
@@ -52,19 +52,19 @@ in
       secureSocket = false;
     };
 
-    # programs.git = {
-    #   enable = true;
-    #   userName = fullName;
-    #   userEmail = email;
-    #   extraConfig = {
-    #     github.user = githubHandle;
-    #     credential.helper = "osxkeychain";
-    #     diff.algorithm = "patience";
-    #     protocol.version = "2";
-    #     color.ui = true;
-    #     pull.rebase = true;
-    #   };
-    # };
+    programs.git = {
+      enable = true;
+      userName = fullName;
+      userEmail = email;
+      extraConfig = {
+        github.user = githubHandle;
+        credential.helper = "osxkeychain";
+        diff.algorithm = "patience";
+        protocol.version = "2";
+        color.ui = true;
+        pull.rebase = true;
+      };
+    };
 
     programs.starship = {
       enable = true;
@@ -127,15 +127,16 @@ in
       extraConfig = import ./vim.nix;
       plugins = with pkgs.vimPlugins; [
         ale
+        commentary
+        fugitive
         fzf-vim
         nerdtree
         nord-vim
-        supertab
-        commentary
-        fugitive
-        repeat
         polyglot
+        repeat
+        supertab
         surround
+        vim-pandoc
       ];
     };
   }

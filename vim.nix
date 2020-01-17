@@ -115,6 +115,7 @@ in
   let g:SuperTabClosePreviewOnPopupClose = 1
   let g:ale_sign_error = '*'
   let g:ale_sign_warning = '~'
+  let g:pandoc#modules#disabled = ["folding"]
 
   augroup nvim
     au!
