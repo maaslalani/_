@@ -15,8 +15,10 @@ in
       pkgs.alacritty
       pkgs.bat
       pkgs.fortune
+      pkgs.fd
       pkgs.htop
       pkgs.pandoc
+      pkgs.go
       pkgs.reattach-to-user-namespace
       pkgs.ripgrep
       pkgs.starship
@@ -128,14 +130,12 @@ in
       plugins = with pkgs.vimPlugins; [
         ale
         commentary
+        coc-nvim
         fugitive
         fzf-vim
         nerdtree
         nord-vim
         polyglot
-        repeat
-        supertab
-        surround
       ];
     };
   }

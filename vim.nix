@@ -51,6 +51,7 @@ let
     timeoutlen = 50;
     showmode = false;
     showcmd = true;
+    updatetime = 300;
     hidden = true;
     cursorline = false;
     ruler = true;
@@ -66,6 +67,13 @@ let
       S = ":%s//g<Left><Left>";
     };
 
+    silent = {
+      gd = "<Plug>(coc-definition)";
+      gy = "<Plug>(coc-type-definition)";
+      gi = "<Plug>(coc-implementation)";
+      gr = "<Plug>(coc-references)";
+    };
+
     leader = {
       "" = "<Nop>";
       t = ":tabnew<CR>";
@@ -75,6 +83,7 @@ let
       f = ":FZF<CR>";
       r = ":Rg<CR>";
       sp = ":set spell!<CR>";
+      rn = "<Plug>(coc-rename)";
     };
 
     visual = {
@@ -82,7 +91,7 @@ let
     };
   };
 
-  commands = {
+  commands = rec {
     W = "w";
     Q = "q";
     Af = "ALEFix";
@@ -90,8 +99,8 @@ let
     TTerm = "tabnew | term";
     VTerm = "vsp | term";
     Term = "sp | term";
-    Preview = "silent !pandoc % -o %:r.pdf && open %:r.pdf && rm %:r.pdf";
     Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
+    Preview = "${Pdf} && sleep 1 && rm %:r.pdf";
   };
 
   filetype = {
@@ -108,16 +117,31 @@ in
   ${config "filetype" filetype}
 
   ${config "nmap" maps.normal}
+  ${config "nmap <silent>" maps.silent}
   ${config "vmap" maps.visual}
   ${config' "map ${leaderKey}" maps.leader}
 
   colorscheme ${colorscheme}
 
   let NERDTreeShowHidden = 1
-  let g:SuperTabDefaultCompletionType = 'context'
-  let g:SuperTabClosePreviewOnPopupClose = 1
   let g:ale_sign_error = '*'
   let g:ale_sign_warning = '~'
+
+  inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  set shortmess+=c
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
   augroup nvim
     au!
