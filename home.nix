@@ -19,6 +19,7 @@ in
       pkgs.htop
       pkgs.pandoc
       pkgs.go
+      pkgs.rustup
       pkgs.reattach-to-user-namespace
       pkgs.ripgrep
       pkgs.starship
@@ -115,7 +116,8 @@ in
         EDITOR = "vim";
         VISUAL = EDITOR;
         GIT_EDITOR = EDITOR;
-        GOPATH = "$HOME";
+        GOPATH = "$HOME/go";
+        GO111MODULE = "on";
         FZF_DEFAULT_OPTS = "
         --color=fg:-1,bg:-1,hl:#88c0d0,fg+:#b48ead,bg+:#2e3440,hl+:#b48ead,info:#88c0d0
         --color=prompt:#88c0d0,pointer:#b48ead,marker:#b48ead,spinner:#81a1c1,header:#81a1c1
@@ -136,6 +138,7 @@ in
         nerdtree
         nord-vim
         polyglot
+        vim-go
       ];
     };
   }
