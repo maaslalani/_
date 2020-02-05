@@ -9,7 +9,6 @@
   environment.systemPackages = with pkgs; [
     ctags
     fd
-    fzf
     htop
     ripgrep
     screen

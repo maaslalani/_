@@ -80,10 +80,9 @@ let
       e = ":NERDTreeToggle<CR>";
       w = ":w<CR>";
       q = ":q<CR>";
-      f = ":FZF<CR>";
+      f = ":FZF --color=16,gutter:-1<CR>";
       r = ":Rg<CR>";
       sp = ":set spell!<CR>";
-      rn = "<Plug>(coc-rename)";
     };
 
     visual = {
@@ -119,7 +118,7 @@ in
   ${config "nmap" maps.normal}
   ${config "nmap <silent>" maps.silent}
   ${config "vmap" maps.visual}
-  ${config' "map ${leaderKey}" maps.leader}
+  ${config' "map <silent> ${leaderKey}" maps.leader}
 
   colorscheme ${colorscheme}
 
