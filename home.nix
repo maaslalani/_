@@ -15,6 +15,7 @@
     pkgs.texlive.combined.scheme-medium
     pkgs.tmux
     pkgs.tree
+    pkgs.yarn
     pkgs.zsh
   ];
 
