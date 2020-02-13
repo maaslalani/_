@@ -95,9 +95,6 @@ let
     Q = "q";
     Af = "ALEFix";
     Tf = "TestFile";
-    TTerm = "tabnew | term";
-    VTerm = "vsp | term";
-    Term = "sp | term";
     Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
     Preview = "${Pdf} && sleep 1 && rm %:r.pdf";
   };
