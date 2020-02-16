@@ -48,15 +48,12 @@
     vimAlias = true;
     extraConfig = import ./vim.nix;
     plugins = with pkgs.vimPlugins; [
-      ale
       coc-nvim
       commentary
-      fugitive
       fzf-vim
       nerdtree
       nord-vim
       polyglot
-      vim-go
     ];
   };
 
