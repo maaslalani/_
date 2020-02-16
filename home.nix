@@ -9,7 +9,6 @@
     pkgs.htop
     pkgs.pandoc
     pkgs.ranger
-    pkgs.reattach-to-user-namespace
     pkgs.ripgrep
     pkgs.rustup
     pkgs.starship
