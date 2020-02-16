@@ -2,6 +2,7 @@
   home.packages = [
     pkgs.alacritty
     pkgs.bat
+    pkgs.exa
     pkgs.fd
     pkgs.fortune
     pkgs.go
