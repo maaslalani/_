@@ -28,7 +28,8 @@
 
   hms = "home-manager switch";
 
-  ls = "exa -Fla";
+  ls = "exa";
+  lsa = "exa -Fla";
   md = "mkdir";
 
   ta = "tmux attach -t";
