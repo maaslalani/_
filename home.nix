@@ -55,6 +55,7 @@
       nerdtree
       nord-vim
       polyglot
+      vim-go
     ];
   };
 
