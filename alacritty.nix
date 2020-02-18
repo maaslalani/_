@@ -24,6 +24,18 @@
   };
 
   font = {
+    normal = {
+      family = "Fira Code";
+      style = "Regular";
+    };
+    bold = {
+      family = "Fira Code";
+      style = "Bold";
+    };
+    italic = {
+      family = "Fira Code";
+      style = "Italic";
+    };
     size = 15;
     use_thin_strokes = true;
   };
