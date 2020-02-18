@@ -31,11 +31,13 @@ in
 
     sessionVariables = rec {
       EDITOR = "vim";
-      VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
+      VISUAL = EDITOR;
       KEYTIMEOUT = 1;
+
       GOPATH = "$HOME/go";
       GO111MODULE = "on";
+
       FZF_DEFAULT_OPTS = "
       --color=hl:6,fg+:5,bg+:0,hl+:5,info:6,prompt:6
       --color=pointer:5,marker:5,spinner:4,header:4
