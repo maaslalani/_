@@ -93,7 +93,6 @@ let
   commands = rec {
     W = "w";
     Q = "q";
-    Af = "ALEFix";
     Tf = "TestFile";
     Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
     Preview = "${Pdf} && sleep 1 && rm %:r.pdf";
@@ -120,8 +119,6 @@ in
   colorscheme ${colorscheme}
 
   let NERDTreeShowHidden = 1
-  let g:ale_sign_error = '*'
-  let g:ale_sign_warning = '~'
 
   inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

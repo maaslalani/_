@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home.packages = [
     pkgs.alacritty
     pkgs.bat

@@ -43,6 +43,7 @@
   tabspaces = 4;
 
   draw_bold_text_with_bright_colors = false;
+
   colors = {
     primary = {
       background = "0x2E3440";

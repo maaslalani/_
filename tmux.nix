@@ -38,7 +38,7 @@ let
   });
 
   splits = {
-    vertical = "\\";
+    vertical = "|";
     horiztonal = "-";
   };
 in
