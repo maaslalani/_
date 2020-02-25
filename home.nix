@@ -18,6 +18,7 @@
     pkgs.tmux
     pkgs.tree
     pkgs.yarn
+    pkgs.z-lua
     pkgs.zsh
   ];
 
@@ -28,6 +29,7 @@
   programs.neovim.enable = true;
   programs.starship.enable = true;
   programs.tmux.enable = true;
+  programs.z-lua.enable = true;
 
   programs.alacritty = {
     settings = import ./alacritty.nix;
