@@ -55,6 +55,7 @@
     plugins = with pkgs.vimPlugins; [
       coc-nvim
       commentary
+      fugitive
       fzf-vim
       nerdtree
       nord-vim

@@ -120,4 +120,6 @@ in
   colorscheme ${colorscheme}
 
   let NERDTreeShowHidden = 1
+
+  let g:SuperTabDefaultCompletionType = "<c-n>"
 ''
