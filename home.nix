@@ -59,6 +59,7 @@
       nerdtree
       nord-vim
       polyglot
+      supertab
       vim-go
     ];
   };

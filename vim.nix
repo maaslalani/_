@@ -93,6 +93,7 @@ let
   commands = rec {
     W = "w";
     Q = "q";
+    Wc = "!wc %";
     Tf = "TestFile";
     Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
     Preview = "${Pdf} && sleep 1 && rm %:r.pdf";
@@ -119,25 +120,4 @@ in
   colorscheme ${colorscheme}
 
   let NERDTreeShowHidden = 1
-
-  inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-  set shortmess+=c
-
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-
-  inoremap <silent><expr> <c-space> coc#refresh()
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-  augroup nvim
-    au!
-    au VimEnter * doautoa Syntax,FileType
-  augroup END
 ''
