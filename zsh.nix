@@ -27,6 +27,10 @@ in
 
       ${sourceFile NIX_PATH}
       ${sourceFile DEV_PATH}
+
+      if command -v tmux>/dev/null; then
+       [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
+      fi
     '';
 
     sessionVariables = rec {

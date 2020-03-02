@@ -27,6 +27,7 @@
   gs = "git status";
 
   hms = "home-manager switch";
+  ncg = "nix-collect-garbage";
 
   ls = "exa";
   lsa = "exa -Fla";
