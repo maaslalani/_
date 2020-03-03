@@ -37,6 +37,12 @@ let
     window-status-format = "' #I:#W '";
   });
 
+  message = attrsToConfig (with colours; {
+    message-command-style = "${fg cyan},${bg grey}";
+    message-style = "${fg grey},${bg cyan}";
+    mode-style = "${fg grey},${bg cyan}";
+  });
+
   splits = {
     vertical = "=";
     horiztonal = "-";
@@ -45,6 +51,7 @@ in
 ''
   ${settings}
   ${window}
+  ${message}
 
   bind ${splits.vertical} split-window -h -c '#{pane_current_path}'
   bind ${splits.horiztonal} split-window -c '#{pane_current_path}'
