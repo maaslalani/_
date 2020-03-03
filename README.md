@@ -8,6 +8,7 @@ This repository contains my dotfiles which are managed through [Nix](https://nix
 * Shell: [zsh](./zsh.nix)
 * Terminal Emulator: [alacritty](./alacritty.nix)
 * Terminal multiplexer: [tmux](./tmux.nix)
+* Operating System: [darwin](./darwin.nix)
 
 ## Packages
 All the packages I use are listed in [home.nix](./home.nix) inside `home.packages`.
@@ -35,6 +36,5 @@ My favourites include:
 * [vim-go](https://github.com/fatih/vim-go)
 
 ### Zsh
-![]()
 * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)

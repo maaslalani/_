@@ -19,7 +19,7 @@ let
   settings = attrsToConfig (with colours; {
     default-terminal = "'xterm-256color'";
 
-    status-style = bg colours.black;
+    status-style = bg black;
     status-right-style = "${bg bright.black},${fg white}";
     status-position = "bottom";
     status-justify = "left";
@@ -38,7 +38,7 @@ let
   });
 
   splits = {
-    vertical = "|";
+    vertical = "=";
     horiztonal = "-";
   };
 in
@@ -52,6 +52,4 @@ in
 
   bind -n C-p send-keys Up
   bind -n C-n send-keys Down
-
-  bind r source-file ~/.tmux.conf
 ''
