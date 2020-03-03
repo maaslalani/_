@@ -25,6 +25,7 @@
   grbi = "git rebase -i";
   grh = "git reset --hard";
   gs = "git status";
+  gsw = "git switch";
 
   hms = "home-manager switch";
   ncg = "nix-collect-garbage";
