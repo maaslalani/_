@@ -38,9 +38,9 @@ let
   });
 
   message = attrsToConfig (with colours; {
-    message-command-style = "${fg cyan},${bg grey}";
-    message-style = "${fg grey},${bg cyan}";
-    mode-style = "${fg grey},${bg cyan}";
+    message-command-style = "${fg white},${bg grey}";
+    message-style = "${fg cyan},${bg grey}";
+    mode-style = "${fg cyan},${bg grey}";
   });
 
   splits = {
