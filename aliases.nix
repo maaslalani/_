@@ -34,8 +34,6 @@
   lsa = "exa -Fla";
   md = "mkdir";
 
-  fm = "ranger";
-
   ta = "tmux attach -t";
   tkss = "tmux kill-session -t";
   tksv = "tmux kill-server";

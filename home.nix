@@ -1,4 +1,5 @@
 { config, pkgs, ... }:
+
 {
   home.packages = [
     pkgs.alacritty
@@ -10,7 +11,6 @@
     pkgs.go
     pkgs.htop
     pkgs.pandoc
-    pkgs.ranger
     pkgs.ripgrep
     pkgs.rustup
     pkgs.starship
