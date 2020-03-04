@@ -57,6 +57,7 @@
       commentary
       fugitive
       fzf-vim
+      vim-hardtime
       nerdtree
       nord-vim
       polyglot
