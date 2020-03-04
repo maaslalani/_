@@ -28,9 +28,7 @@ in
       ${sourceFile NIX_PATH}
       ${sourceFile DEV_PATH}
 
-      if command -v tmux>/dev/null; then
-       [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
-      fi
+      [ -z "$TMUX" ] && tmux new-session -A -s "#"
     '';
 
     sessionVariables = rec {
