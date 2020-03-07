@@ -57,12 +57,13 @@
       commentary
       fugitive
       fzf-vim
-      vim-hardtime
+      goyo-vim
       nerdtree
       nord-vim
       polyglot
       supertab
       vim-go
+      vim-hardtime
     ];
   };
 
