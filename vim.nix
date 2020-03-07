@@ -122,4 +122,9 @@ in
   let NERDTreeShowHidden = 1
   let g:SuperTabDefaultCompletionType = "<c-n>"
   let g:hardtime_default_on = 1
+
+  augroup Markdown
+    autocmd!
+    autocmd FileType markdown set wrap
+  augroup END
 ''
