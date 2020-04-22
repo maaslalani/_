@@ -63,7 +63,6 @@
       polyglot
       supertab
       vim-go
-      vim-hardtime
     ];
   };
 
