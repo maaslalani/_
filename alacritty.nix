@@ -30,7 +30,7 @@
     };
     bold = {
       family = "Fira Code";
-      style = "Bold";
+      style = "Regular";
     };
     italic = {
       family = "Fira Code";
