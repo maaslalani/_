@@ -56,6 +56,7 @@
     plugins = with pkgs.vimPlugins; [
       coc-nvim
       commentary
+      emmet-vim
       fugitive
       fzf-vim
       goyo-vim
