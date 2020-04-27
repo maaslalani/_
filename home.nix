@@ -7,6 +7,7 @@
     pkgs.coreutils
     pkgs.exa
     pkgs.fd
+    pkgs.ffmpeg
     pkgs.fortune
     pkgs.go
     pkgs.htop
