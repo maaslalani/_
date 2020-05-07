@@ -10,6 +10,7 @@
     pkgs.ffmpeg
     pkgs.fortune
     pkgs.go
+    pkgs.golint
     pkgs.htop
     pkgs.pandoc
     pkgs.ripgrep

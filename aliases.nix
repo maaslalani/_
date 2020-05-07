@@ -4,6 +4,8 @@
 
   _ = "cd ~/_";
 
+  dstroy = "fd -H .DS_Store | xargs sudo rm";
+
   ga = "git add";
   gb = "git branch";
   gc = "git commit";
