@@ -76,6 +76,7 @@ let
 
     leader = {
       "" = "<Nop>";
+      a = ":ALEFix<CR>";
       t = ":tabnew<CR>";
       e = ":NERDTreeToggle<CR>";
       w = ":w<CR>";
@@ -94,6 +95,7 @@ let
     W = "w";
     Q = "q";
     Wc = "!wc %";
+    Af = "ALEFix";
     Tf = "TestFile";
     Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
     Preview = "${Pdf} && sleep 1 && rm %:r.pdf";
@@ -121,7 +123,23 @@ in
 
   let NERDTreeShowHidden = 1
   let g:SuperTabDefaultCompletionType = "<c-n>"
-  let g:hardtime_default_on = 1
+  let g:ale_sign_error = '*'
+  let g:ale_sign_warning = '~'
+
+  let g:ale_linters = {
+  \  'python': ['pylint'],
+  \  'ruby': ['rubocop'],
+  \  'javascript': ['eslint', 'flow'],
+  \}
+
+  let g:ale_fixers = {
+  \  'python': ['yapf'],
+  \  'ruby': ['rubocop'],
+  \  'javascript': ['eslint', 'prettier'],
+  \  'json': ['prettier'],
+  \  'css': ['prettier'],
+  \  'markdown': ['prettier'],
+  \}
 
   augroup Markdown
     autocmd!
