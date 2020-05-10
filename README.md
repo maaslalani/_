@@ -25,7 +25,6 @@ My favourites include:
 ## Plugins
 ### Neovim
 ![Vim Setup](../assets/vim.png?raw=true)
-* [coc-nvim](https://github.com/neoclide/coc.nvim)
 * [commentary](https://github.com/tpope/vim-commentary)
 * [fugitive](https://github.com/tpope/vim-fugitive)
 * [fzf-vim](https://github.com/junegunn/fzf.vim)
