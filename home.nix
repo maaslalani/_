@@ -5,6 +5,7 @@
     pkgs.alacritty
     pkgs.bat
     pkgs.coreutils
+    pkgs.errcheck
     pkgs.exa
     pkgs.fd
     pkgs.ffmpeg
@@ -15,6 +16,7 @@
     pkgs.pandoc
     pkgs.ripgrep
     pkgs.rustup
+    pkgs.sops
     pkgs.starship
     pkgs.texlive.combined.scheme-medium
     pkgs.tmux
