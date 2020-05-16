@@ -63,10 +63,10 @@
       emmet-vim
       fugitive
       fzf-vim
-      nerdtree
       nord-vim
       polyglot
       supertab
+      vim-dirvish
       vim-go
     ];
   };

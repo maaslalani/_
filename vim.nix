@@ -78,7 +78,7 @@ let
       "" = "<Nop>";
       a = ":ALEFix<CR>";
       t = ":tabnew<CR>";
-      e = ":NERDTreeToggle<CR>";
+      e = ":Dirvish<CR>";
       w = ":w<CR>";
       q = ":q<CR>";
       f = ":FZF --color=16,gutter:-1<CR>";
@@ -121,7 +121,6 @@ in
 
   colorscheme ${colorscheme}
 
-  let NERDTreeShowHidden = 1
   let g:SuperTabDefaultCompletionType = "<c-n>"
   let g:ale_sign_error = '*'
   let g:ale_sign_warning = '~'
