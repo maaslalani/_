@@ -68,10 +68,6 @@ let
     };
 
     silent = {
-      gd = "<Plug>(coc-definition)";
-      gy = "<Plug>(coc-type-definition)";
-      gi = "<Plug>(coc-implementation)";
-      gr = "<Plug>(coc-references)";
     };
 
     leader = {
@@ -120,6 +116,8 @@ in
   ${config' "map <silent> ${leaderKey}" maps.leader}
 
   colorscheme ${colorscheme}
+
+  let loaded_netrw = 0
 
   let g:SuperTabDefaultCompletionType = "<c-n>"
   let g:ale_sign_error = '*'
