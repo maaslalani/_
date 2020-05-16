@@ -28,10 +28,10 @@ My favourites include:
 * [commentary](https://github.com/tpope/vim-commentary)
 * [fugitive](https://github.com/tpope/vim-fugitive)
 * [fzf-vim](https://github.com/junegunn/fzf.vim)
-* [nerdtree](https://github.com/preservim/nerdtree)
 * [nord-vim](https://github.com/arcticicestudio/nord-vim)
 * [polyglot](https://github.com/sheerun/vim-polyglot)
 * [supertab](https://github.com/ervandew/supertab)
+* [vim-dirvish](https://github.com/justinmk/vim-dirvish)
 * [vim-go](https://github.com/fatih/vim-go)
 
 ### Zsh
