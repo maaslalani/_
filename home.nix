@@ -2,7 +2,6 @@
 
 {
   home.packages = [
-    pkgs.alacritty
     pkgs.bat
     pkgs.coreutils
     pkgs.errcheck
@@ -17,9 +16,7 @@
     pkgs.ripgrep
     pkgs.rustup
     pkgs.sops
-    pkgs.starship
     pkgs.texlive.combined.scheme-medium
-    pkgs.tmux
     pkgs.tree
     pkgs.yarn
     pkgs.z-lua
@@ -33,7 +30,6 @@
   programs.neovim.enable = true;
   programs.starship.enable = true;
   programs.tmux.enable = true;
-  programs.z-lua.enable = true;
 
   programs.alacritty = {
     settings = import ./alacritty.nix;

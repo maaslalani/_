@@ -1,6 +1,7 @@
 {
   "..." = "cd ../..";
   "...." = "cd ../../..";
+  "....." = "cd ../../../..";
 
   _ = "cd ~/_";
 
@@ -9,25 +10,39 @@
   ga = "git add";
   gb = "git branch";
   gc = "git commit";
+
   gco = "git checkout";
   gcom = "git checkout master";
+
   gcp = "git cherry-pick";
   gcpa = "git cherry-pick --abort";
+
   gd = "git diff";
+
   gl = "git pull";
+
   gm = "git merge";
   gma = "git merge --abort";
+
   gp = "git push";
   gpf = "git push --force-with-lease";
   gpsup = "git push --set-upstream origin $(git branch --show-current)";
-  gr = "git reset";
+
   grb = "git rebase";
+  grbm = "git rebase master";
   grba = "git rebase --abort";
   grbc = "git rebase --continue";
   grbi = "git rebase -i";
+
+  gr = "git reset";
   grh = "git reset --hard";
+
   gs = "git status";
+
   gsw = "git switch";
+  gswm = "git switch master";
+
+  grs = "git restore";
 
   hms = "home-manager switch";
   ncg = "nix-collect-garbage";
