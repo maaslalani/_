@@ -2,7 +2,6 @@
 
 {
   home.packages = [
-    pkgs.bat
     pkgs.coreutils
     pkgs.errcheck
     pkgs.exa
@@ -19,20 +18,28 @@
     pkgs.texlive.combined.scheme-medium
     pkgs.tree
     pkgs.yarn
-    pkgs.z-lua
     pkgs.zsh
   ];
 
   programs.alacritty.enable = true;
+  programs.bat.enable = true;
   programs.fzf.enable = true;
   programs.git.enable = true;
   programs.home-manager.enable = true;
   programs.neovim.enable = true;
   programs.starship.enable = true;
   programs.tmux.enable = true;
+  programs.z-lua.enable = true;
 
   programs.alacritty = {
     settings = import ./alacritty.nix;
+  };
+
+  programs.bat = {
+    config = {
+      theme = "Nord";
+      pager = "less -RF";
+    };
   };
 
   programs.git = {
@@ -66,6 +73,7 @@
       supertab
       vim-dirvish
       vim-go
+      vim-signature
     ];
   };
 
