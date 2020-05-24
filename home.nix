@@ -11,11 +11,9 @@
     pkgs.go
     pkgs.golint
     pkgs.htop
-    pkgs.pandoc
     pkgs.ripgrep
     pkgs.rustup
     pkgs.sops
-    pkgs.texlive.combined.scheme-medium
     pkgs.tree
     pkgs.yarn
     pkgs.zsh

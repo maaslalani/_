@@ -17,7 +17,6 @@ My favourites include:
 * [bat](https://github.com/sharkdp/bat)
 * [exa](https://github.com/ogham/exa)
 * [fd](https://github.com/sharkdp/fd)
-* [pandoc](https://github.com/jgm/pandoc)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
 * [starship](https://github.com/starship/starship)
 * [z-lua](https://github.com/skywind3000/z.lua)

@@ -99,9 +99,6 @@ let
     Q = "q";
     Wc = "!wc %";
     Af = "ALEFix";
-    Tf = "TestFile";
-    Pdf = "silent !pandoc % -o %:r.pdf && open %:r.pdf";
-    Preview = "${Pdf} && sleep 1 && rm %:r.pdf";
   };
 
   filetype = {
