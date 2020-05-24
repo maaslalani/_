@@ -19,9 +19,10 @@ let
     backspace = "indent,eol,start";
     backup = false;
     clipboard = "unnamed";
+    cmdheight = 1;
     compatible = false;
     concealcursor = "\"\"";
-    cursorline = false;
+    cursorline = true;
     encoding = "utf-8";
     errorbells = false;
     expandtab = true;
@@ -38,6 +39,7 @@ let
     shiftwidth = 2;
     showcmd = true;
     showmode = false;
+    signcolumn = "yes";
     smartcase = true;
     softtabstop = 2;
     splitbelow = true;
@@ -57,6 +59,7 @@ let
     wb = false;
     wildmode = "list:longest";
     wrap = false;
+    writebackup = false;
   };
 
   leaderKey = "<Space>";
@@ -68,6 +71,10 @@ let
     };
 
     silent = {
+      gd = "<Plug>(coc-definition)";
+      gy = "<Plug>(coc-type-definition)";
+      gi = "<Plug>(coc-implementation)";
+      gr = "<Plug>(coc-references)";
     };
 
     leader = {
@@ -122,21 +129,6 @@ in
   let g:SuperTabDefaultCompletionType = "<c-n>"
   let g:ale_sign_error = '*'
   let g:ale_sign_warning = '~'
-
-  let g:ale_linters = {
-  \  'python': ['pylint'],
-  \  'ruby': ['rubocop'],
-  \  'javascript': ['eslint', 'flow'],
-  \}
-
-  let g:ale_fixers = {
-  \  'python': ['yapf'],
-  \  'ruby': ['rubocop'],
-  \  'javascript': ['eslint', 'prettier'],
-  \  'json': ['prettier'],
-  \  'css': ['prettier'],
-  \  'markdown': ['prettier'],
-  \}
 
   augroup Markdown
     autocmd!

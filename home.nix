@@ -55,10 +55,12 @@
     plugins = with pkgs.vimPlugins; [
       ale
       auto-pairs
+      coc-nvim
       commentary
       emmet-vim
       fugitive
       fzf-vim
+      gitgutter
       nord-vim
       polyglot
       supertab
