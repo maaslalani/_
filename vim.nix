@@ -124,11 +124,7 @@ in
   let loaded_netrw = 0
 
   let g:SuperTabDefaultCompletionType = "<c-n>"
+
   let g:ale_sign_error = '*'
   let g:ale_sign_warning = '~'
-
-  augroup Markdown
-    autocmd!
-    autocmd FileType markdown set wrap
-  augroup END
 ''
