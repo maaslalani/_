@@ -1,4 +1,4 @@
-{
+rec {
   "..." = "cd ../..";
   "...." = "cd ../../..";
   "....." = "cd ../../../..";
@@ -56,6 +56,14 @@
   tksv = "tmux kill-server";
   tls = "tmux list-sessions";
   tn = "tmux new-session -s";
+
+  kcx = "kubectl config current-context";
+  kcxa = "kubectl config get-contexts -o name";
+  kchcx = "kubectl config use-context $(${kcxa} | fzf)";
+
+  kns = "kubectl config view --minify --output=jsonpath='{..namespace}'";
+  knsa = "kubectl get namespaces -o=custom-columns=NAME:.metadata.name --no-headers";
+  kchns = "kubectl config set-context --current --namespace=$(${knsa} | fzf)";
 
   tree = "command tree -I 'Godep*' -I 'node_modules*'";
   weather = "curl http://v2.wttr.in";

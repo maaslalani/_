@@ -77,6 +77,11 @@
 
   programs.starship = {
     enableZshIntegration = true;
+    settings = {
+      kubernetes = {
+        disabled = false;
+      };
+    };
   };
 
   programs.tmux = {
