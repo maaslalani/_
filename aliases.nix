@@ -41,6 +41,7 @@ rec {
 
   gsw = "git switch";
   gswm = "git switch master";
+  gswf = "git branch | fzf | xargs git switch";
 
   grs = "git restore";
 
@@ -59,11 +60,11 @@ rec {
 
   kcx = "kubectl config current-context";
   kcxa = "kubectl config get-contexts -o name";
-  kchcx = "kubectl config use-context $(${kcxa} | fzf)";
+  kchcx = "${kcxa} | fzf | xargs kubectl config use-context";
 
   kns = "kubectl config view --minify --output=jsonpath='{..namespace}'";
   knsa = "kubectl get namespaces -o=custom-columns=NAME:.metadata.name --no-headers";
-  kchns = "kubectl config set-context --current --namespace=$(${knsa} | fzf)";
+  kchns = "${knsa} | fzf | xargs -I{} kubectl config set-context --current --namespace={}";
 
   tree = "command tree -I 'Godep*' -I 'node_modules*'";
   weather = "curl http://v2.wttr.in";
