@@ -21,6 +21,7 @@ in
       bindkey '^P' up-history
       bindkey '^N' down-history
       bindkey '^?' backward-delete-char
+      bindkey '^[[Z' reverse-menu-complete
 
       ${sourceFile NIX_PATH}
       ${sourceFile DEV_PATH}
