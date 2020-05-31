@@ -10,8 +10,8 @@ in
     enableAutosuggestions = true;
     history = {
       path = "~/.zsh_history";
-      size = 50000;
-      save = 50000;
+      size = 1000;
+      save = 1000;
     };
     shellAliases = import ./aliases.nix;
     initExtra = ''
@@ -24,7 +24,11 @@ in
       bindkey '^[[Z' reverse-menu-complete
 
       ${sourceFile NIX_PATH}
-      ${sourceFile DEV_PATH}
+
+      dev() {
+        ${sourceFile DEV_PATH}
+        dev "$@"
+      }
 
       [ -z "$TMUX" ] && tmux new-session -A -s "#"
     '';
