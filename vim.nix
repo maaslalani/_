@@ -81,7 +81,6 @@ let
       "" = "<Nop>";
       a = ":ALEFix<CR>";
       t = ":tabnew<CR>";
-      e = ":Dirvish<CR>";
       w = ":w<CR>";
       q = ":q<CR>";
       f = ":FZF --color=16,gutter:-1<CR>";
