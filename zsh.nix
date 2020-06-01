@@ -24,11 +24,7 @@ in
       bindkey '^[[Z' reverse-menu-complete
 
       ${sourceFile NIX_PATH}
-
-      dev() {
-        ${sourceFile DEV_PATH}
-        dev "$@"
-      }
+      ${sourceFile DEV_PATH}
 
       [ -z "$TMUX" ] && tmux new-session -A -s "#"
     '';
