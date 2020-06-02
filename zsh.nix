@@ -26,10 +26,10 @@ in
       ${sourceFile NIX_PATH}
       ${sourceFile DEV_PATH}
 
-      [ -z "$TMUX" ] && tmux new-session -A -s "#"
+      [ -z "$TMUX" ] && tmux new-session -A -s -
     '';
 
-    sessionVariables = rec {
+    sessionVariables = with builtins; rec {
       EDITOR = "vim";
       GIT_EDITOR = EDITOR;
       VISUAL = EDITOR;
@@ -44,6 +44,9 @@ in
 
       KEYTIMEOUT = 1;
 
-      KUBECONFIG = "/Users/maas/.kube/config:/Users/maas/.kube/config.shopify.cloudplatform";
+      KUBECONFIG = builtins.concatStringsSep ":" [
+        "$HOME/.kube/config"
+        "$HOME/.kube/config.shopify.cloudplatform"
+      ];
     };
   }
