@@ -40,6 +40,8 @@ rec {
 
   gs = "git status";
 
+  glo = "git log";
+
   gsw = "git switch";
   gswm = "git switch master";
   gswf = "git branch | fzf | xargs git switch";
