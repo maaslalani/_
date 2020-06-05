@@ -14,6 +14,7 @@
     pkgs.ripgrep
     pkgs.rustup
     pkgs.sops
+    pkgs.spotify-tui
     pkgs.tree
     pkgs.yarn
     pkgs.zsh
