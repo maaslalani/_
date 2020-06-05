@@ -72,6 +72,7 @@
       vim-dirvish
       vim-go
       vim-signature
+      vim-test
     ];
   };
 

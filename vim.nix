@@ -86,6 +86,8 @@ let
       f = ":FZF --color=16,gutter:-1<CR>";
       r = ":Rg<CR>";
       sp = ":set spell!<CR>";
+      gb = ":Gblame<CR>";
+      gd = ":Gdiff<CR>";
     };
 
     visual = {
@@ -93,11 +95,12 @@ let
     };
   };
 
-  commands = rec {
+  commands = {
     W = "w";
     Q = "q";
     Wc = "!wc %";
     Af = "ALEFix";
+    Tf = "TestFile";
   };
 
   filetype = {

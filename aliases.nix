@@ -18,6 +18,7 @@ rec {
   gcpa = "git cherry-pick --abort";
 
   gd = "git diff";
+  gdm = "git diff master";
 
   gl = "git pull";
 
