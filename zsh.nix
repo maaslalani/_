@@ -10,5 +10,11 @@ in
       ${sourceFile DEV_PATH}
     '';
     sessionVariables = with builtins; rec {
+      EDITOR = "vim";
+      KEYTIMEOUT = 1;
+      KUBECONFIG = builtins.concatStringsSep ":" [
+        "$HOME/.kube/config"
+        "$HOME/.kube/config.shopify.cloudplatform"
+      ];
     };
   }
