@@ -5,6 +5,7 @@ let
 in
   {
     enable = true;
+    shellAliases = import ./aliases.nix;
     initExtra = ''
       ${sourceFile DEV_PATH}
     '';
