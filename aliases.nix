@@ -71,7 +71,10 @@ rec {
 
   tree = "command tree -I 'Godep*' -I 'node_modules*'";
   weather = "curl http://v2.wttr.in";
-  v = "vim .";
+
+  v = "nvim .";
+  vi = "nvim";
+  vim = "nvim";
 
   sz = "source ~/.zshrc";
 }

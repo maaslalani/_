@@ -19,6 +19,7 @@ in
         "$HOME/.kube/config"
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
+      PATH = "$PATH:$HOME/.nix-profile/bin";
       PROMPT = import ./prompt.nix;
     };
   }
