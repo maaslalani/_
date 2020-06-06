@@ -7,7 +7,10 @@ in
     enable = true;
     shellAliases = import ./aliases.nix;
     initExtra = ''
-      ${sourceFile DEV_PATH}
+      dev() {
+        ${sourceFile DEV_PATH}
+        dev $@
+      }
     '';
     sessionVariables = with builtins; rec {
       EDITOR = "vim";
@@ -16,5 +19,6 @@ in
         "$HOME/.kube/config"
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
+      PROMPT = import ./prompt.nix;
     };
   }

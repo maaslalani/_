@@ -24,7 +24,6 @@
   programs.git.enable = true;
   programs.home-manager.enable = true;
   programs.neovim.enable = true;
-  programs.starship.enable = true;
   programs.tmux.enable = true;
 
   programs.alacritty = {
@@ -36,6 +35,24 @@
       theme = "Nord";
       pager = "less -RF";
     };
+  };
+
+  programs.fzf = rec {
+    defaultCommand = "fd --type f";
+    defaultOptions = [
+      "--color=${builtins.concatStringsSep "," [
+        "bg+:0" "fg+:5" "header:4" "hl+:5" "hl:6" "info:6"
+        "marker:5" "pointer:5" "prompt:6" "spinner:4"
+      ]}"
+    ];
+    fileWidgetCommand = "fd --type f";
+    fileWidgetOptions = [
+      "--color=${builtins.concatStringsSep "," [
+        "bg+:0" "fg+:5" "header:4" "hl+:5" "hl:6" "info:6"
+        "marker:5" "pointer:5" "prompt:6" "spinner:4"
+      ]}"
+    ];
+    enableZshIntegration = true;
   };
 
   programs.git = {
@@ -72,15 +89,6 @@
       vim-signature
       vim-test
     ];
-  };
-
-  programs.starship = {
-    enableZshIntegration = true;
-    settings = {
-      kubernetes = {
-        disabled = false;
-      };
-    };
   };
 
   programs.tmux = {
