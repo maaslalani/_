@@ -89,7 +89,6 @@
     disableConfirmationPrompt = true;
     escapeTime = 0;
     extraConfig = import ./tmux.nix;
-    keyMode = "vi";
     secureSocket = false;
     shortcut = "a";
     terminal = "xterm-256color";
