@@ -2,7 +2,6 @@
 
 {
   home.packages = [
-    pkgs.coreutils
     pkgs.errcheck
     pkgs.exa
     pkgs.fd
@@ -25,8 +24,8 @@
   programs.git.enable = true;
   programs.home-manager.enable = true;
   programs.neovim.enable = true;
+  programs.starship.enable = true;
   programs.tmux.enable = true;
-  programs.z-lua.enable = true;
 
   programs.alacritty = {
     settings = import ./alacritty.nix;
@@ -73,6 +72,15 @@
       vim-signature
       vim-test
     ];
+  };
+
+  programs.starship = {
+    enableZshIntegration = true;
+    settings = {
+      kubernetes = {
+        disabled = false;
+      };
+    };
   };
 
   programs.tmux = {
