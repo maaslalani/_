@@ -11,6 +11,7 @@ in
         ${sourceFile DEV_PATH}
         dev $@
       }
+      PROMPT=${import ./prompt.nix}
     '';
     sessionVariables = with builtins; rec {
       EDITOR = "vim";
@@ -20,6 +21,6 @@ in
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
       PATH = "$PATH:$HOME/.nix-profile/bin";
-      PROMPT = import ./prompt.nix;
+      NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
     };
   }
