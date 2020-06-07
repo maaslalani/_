@@ -1,6 +1,6 @@
 let
   directory = "%1~";
-  git = "$(GIT_BRANCH)";
+  git = "\\$GIT_BRANCH";
 
   color = color: text: "%F{${color}}${text}%f";
 

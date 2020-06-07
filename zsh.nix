@@ -14,11 +14,14 @@ in
       }
 
       precmd() {
-        GIT_BRANCH=$(git symbolic-ref HEAD --short)
+        if test -d .git; then
+          GIT_BRANCH=$(git symbolic-ref --short HEAD)
+        else
+          GIT_BRANCH=""
+        fi
       }
 
-      PROMPT=${import ./prompt.nix}
-      setopt PROMPT_SUBST
+      setopt prompt_subst
     '';
     sessionVariables = with builtins; rec {
       EDITOR = "vim";
@@ -28,6 +31,7 @@ in
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
       PATH = "$PATH:$HOME/.nix-profile/bin";
+      PS1 = import ./prompt.nix;
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
     };
   }
