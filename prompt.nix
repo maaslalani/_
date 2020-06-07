@@ -1,11 +1,11 @@
 let
   directory = "%1~";
-  git = "$(git symbolic-ref --short HEAD)";
+  git = "$vcs";
 
   color = color: text: "%F{${color}}${text}%f";
   green = color "green";
   red = color "red";
   magenta = color "magenta";
 in
-''${directory} ${magenta git}
+''${directory}
 %(?.${green "❯"}.${red "❯"}) ''

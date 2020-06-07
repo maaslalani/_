@@ -6,12 +6,12 @@ in
   {
     enable = true;
     shellAliases = import ./aliases.nix;
+    defaultKeymap = "viins";
     initExtra = ''
       dev() {
         ${sourceFile DEV_PATH}
         dev $@
       }
-      PROMPT=${import ./prompt.nix}
     '';
     sessionVariables = with builtins; rec {
       EDITOR = "vim";
@@ -22,5 +22,6 @@ in
       ];
       PATH = "$PATH:$HOME/.nix-profile/bin";
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
+      PROMPT = import ./prompt.nix;
     };
   }

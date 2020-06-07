@@ -32,8 +32,8 @@
 
   programs.bat = {
     config = {
-      theme = "Nord";
       pager = "less -RF";
+      theme = "Nord";
     };
   };
 
@@ -45,6 +45,7 @@
         "marker:5" "pointer:5" "prompt:6" "spinner:4"
       ]}"
     ];
+    enableZshIntegration = true;
     fileWidgetCommand = "fd --type f";
     fileWidgetOptions = [
       "--color=${builtins.concatStringsSep "," [
@@ -52,25 +53,22 @@
         "marker:5" "pointer:5" "prompt:6" "spinner:4"
       ]}"
     ];
-    enableZshIntegration = true;
   };
 
   programs.git = {
-    userName = "Maas Lalani";
-    userEmail = "maaslalani1@gmail.com";
     extraConfig = {
-      github.user = "maaslalani";
+      color.ui = true;
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
+      github.user = "maaslalani";
       protocol.version = "2";
-      color.ui = true;
       pull.rebase = true;
     };
+    userEmail = "maaslalani1@gmail.com";
+    userName = "Maas Lalani";
   };
 
   programs.neovim = {
-    viAlias = true;
-    vimAlias = true;
     extraConfig = import ./vim.nix;
     plugins = with pkgs.vimPlugins; [
       ale
@@ -89,6 +87,8 @@
       vim-signature
       vim-test
     ];
+    viAlias = true;
+    vimAlias = true;
   };
 
   programs.tmux = {
@@ -97,6 +97,7 @@
     disableConfirmationPrompt = true;
     escapeTime = 0;
     extraConfig = import ./tmux.nix;
+    keyMode = "vi";
     secureSocket = false;
     shortcut = "a";
     terminal = "xterm-256color";
