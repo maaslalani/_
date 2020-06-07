@@ -12,6 +12,10 @@ in
         ${sourceFile DEV_PATH}
         dev $@
       }
+
+      precmd() {
+        GIT_BRANCH=$(git symbolic-ref HEAD --short)
+      }
     '';
     sessionVariables = with builtins; rec {
       EDITOR = "vim";

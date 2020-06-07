@@ -1,8 +1,9 @@
 let
   directory = "%1~";
-  git = "$vcs";
+  git = "$GIT_BRANCH";
 
   color = color: text: "%F{${color}}${text}%f";
+
   green = color "green";
   red = color "red";
   magenta = color "magenta";
