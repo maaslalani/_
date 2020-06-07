@@ -4,9 +4,11 @@ let
 
   color = color: text: "%F{${color}}${text}%f";
 
+  blue = color "blue";
+  cyan = color "cyan";
   green = color "green";
-  red = color "red";
   magenta = color "magenta";
+  red = color "red";
 in
-''${directory} ${magenta git}
+''${blue directory} ${magenta git}
 %(?.${green "❯"}.${red "❯"}) ''

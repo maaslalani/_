@@ -4,6 +4,8 @@ let
   sourceFile = file: "[ -f ${file} ] && source ${file}";
 in
   {
+    autocd = true;
+    dotDir = ".config/zsh";
     enable = true;
     shellAliases = import ./aliases.nix;
     defaultKeymap = "viins";
@@ -31,7 +33,7 @@ in
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
       PATH = "$PATH:$HOME/.nix-profile/bin";
-      PS1 = import ./prompt.nix;
+      PROMPT = import ./prompt.nix;
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
     };
   }

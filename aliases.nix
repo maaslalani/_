@@ -61,6 +61,8 @@ rec {
   tls = "tmux list-sessions";
   tn = "tmux new-session -s";
 
+  ks = "echo $(${kcx}):$(${kns})";
+
   kcx = "kubectl config current-context";
   kcxa = "kubectl config get-contexts -o name";
   kchcx = "${kcxa} | fzf | xargs kubectl config use-context";
@@ -76,5 +78,5 @@ rec {
   vi = "nvim";
   vim = "nvim";
 
-  sz = "source ~/.zshrc";
+  sz = "source ~/.config/zsh/.zshrc";
 }
