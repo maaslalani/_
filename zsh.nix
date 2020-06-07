@@ -13,6 +13,8 @@ in
         dev $@
       }
 
+      setopt PROMPT_SUBST
+
       precmd() {
         GIT_BRANCH=$(git symbolic-ref HEAD --short)
       }
