@@ -18,8 +18,6 @@ My favourites include:
 * [exa](https://github.com/ogham/exa)
 * [fd](https://github.com/sharkdp/fd)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
-* [starship](https://github.com/starship/starship)
-* [z-lua](https://github.com/skywind3000/z.lua)
 
 ## Plugins
 ### Neovim
@@ -32,7 +30,3 @@ My favourites include:
 * [supertab](https://github.com/ervandew/supertab)
 * [vim-dirvish](https://github.com/justinmk/vim-dirvish)
 * [vim-go](https://github.com/fatih/vim-go)
-
-### Zsh
-* [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-* [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
