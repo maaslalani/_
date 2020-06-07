@@ -52,7 +52,7 @@ let
     timeoutlen = 50;
     ttimeout = true;
     ttyfast = true;
-    undodir = "~/.undo";
+    undodir = "~/.config/nvim/.undo";
     undofile = true;
     updatetime = 300;
     visualbell = true;
