@@ -51,8 +51,8 @@ rec {
   hms = "home-manager switch";
   ncg = "nix-collect-garbage";
 
-  ls = "exa";
-  lsa = "exa -Fla";
+  lsa = "ls -lah";
+
   md = "mkdir";
 
   ta = "tmux attach -t";

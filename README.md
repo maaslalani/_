@@ -15,7 +15,6 @@ All the packages I use are listed in [home.nix](./home.nix) inside `home.package
 
 My favourites include:
 * [bat](https://github.com/sharkdp/bat)
-* [exa](https://github.com/ogham/exa)
 * [fd](https://github.com/sharkdp/fd)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
 
