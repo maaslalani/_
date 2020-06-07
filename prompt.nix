@@ -8,5 +8,5 @@ let
   red = color "red";
   magenta = color "magenta";
 in
-''${directory}
+''${directory} ${magenta git}
 %(?.${green "❯"}.${red "❯"}) ''
