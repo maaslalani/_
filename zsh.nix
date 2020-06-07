@@ -10,6 +10,9 @@ in
     shellAliases = import ./aliases.nix;
     defaultKeymap = "viins";
     initExtra = ''
+      bindkey '^P' up-history
+      bindkey '^N' down-history
+
       dev() {
         ${sourceFile DEV_PATH}
         dev $@
@@ -28,10 +31,11 @@ in
     sessionVariables = with builtins; rec {
       EDITOR = "vim";
       KEYTIMEOUT = 1;
-      KUBECONFIG = builtins.concatStringsSep ":" [
+      KUBECONFIG = concatStringsSep ":" [
         "$HOME/.kube/config"
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
+      TERM = "xterm-256color";
       PATH = "$PATH:$HOME/.nix-profile/bin";
       PROMPT = import ./prompt.nix;
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
