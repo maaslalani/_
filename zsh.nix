@@ -13,11 +13,12 @@ in
         dev $@
       }
 
-      setopt PROMPT_SUBST
-
       precmd() {
         GIT_BRANCH=$(git symbolic-ref HEAD --short)
       }
+
+      PROMPT=${import ./prompt.nix}
+      setopt PROMPT_SUBST
     '';
     sessionVariables = with builtins; rec {
       EDITOR = "vim";
@@ -28,6 +29,5 @@ in
       ];
       PATH = "$PATH:$HOME/.nix-profile/bin";
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
-      PROMPT = import ./prompt.nix;
     };
   }
