@@ -102,5 +102,17 @@
     terminal = "xterm-256color";
   };
 
-  programs.zsh = import ./zsh.nix // {};
+  programs.zsh = import ./zsh.nix // {
+    plugins = [
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-syntax-highlighting";
+          rev = "932e29a0c75411cb618f02995b66c0a4a25699bc";
+          sha256 = "0w8x5ilpwx90s2s2y56vbzq92ircmrf0l5x8hz4g1nx3qzawv6af";
+        };
+      }
+    ];
+  };
 }
