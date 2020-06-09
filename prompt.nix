@@ -1,5 +1,5 @@
 let
-  directory = "%1~";
+  directory = "%2~";
   git = "\\$GIT_BRANCH";
 
   color = color: text: "%F{${color}}${text}%f";
