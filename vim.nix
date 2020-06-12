@@ -57,7 +57,8 @@ let
     updatetime = 300;
     visualbell = true;
     wb = false;
-    wildmode = "list:longest";
+    wildmenu = true;
+    wildmode = "longest:full,full";
     wrap = false;
     writebackup = false;
   };
