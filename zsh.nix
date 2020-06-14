@@ -1,9 +1,7 @@
 let
-  DEV_PATH = "/opt/dev/dev.sh";
-
-  sourceFile = file: "[ -f ${file} ] && source ${file}";
-
+  pathJoin = builtins.concatStringsSep ":";
   prompt = import ./prompt.nix;
+  sourceFile = file: "[ -f ${file} ] && source ${file}";
 in
   {
     autocd = true;
@@ -18,7 +16,7 @@ in
       bindkey '^[[Z' reverse-menu-complete
 
       dev() {
-        ${sourceFile DEV_PATH}
+        ${sourceFile "opt/dev/dev.sh"}
         dev $@
       }
 
@@ -26,17 +24,23 @@ in
 
       setopt prompt_subst
     '';
-    sessionVariables = with builtins; rec {
+    sessionVariables = {
       EDITOR = "vim";
       KEYTIMEOUT = 1;
-      KUBECONFIG = concatStringsSep ":" [
+      KUBECONFIG = pathJoin [
         "$HOME/.kube/config"
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
       TERM = "xterm-256color";
-      PATH = "$PATH:$HOME/.nix-profile/bin";
+      PATH = pathJoin [
+        "$PATH"
+        "$HOME/.nix-profile/bin"
+      ];
       PROMPT = prompt.ps1;
-      NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
+      NIX_PATH = pathJoin [
+        "$NIX_PATH"
+        "$HOME/.nix-defexpr/channels"
+      ];
       PASSWORD_STORE_DIR = "$HOME/.config/pass";
     };
   }
