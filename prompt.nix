@@ -5,9 +5,11 @@ let
   # conflicts
   # ahead / behind
   # untracked changes
+  git_untracked = "\\$GIT_UNTRACKED";
   # stashes
   git_stash = "\\$GIT_STASH";
   # modified
+  git_modified = "\\$GIT_MODIFIED";
   # staged
   # deleted
 
@@ -26,7 +28,8 @@ in
           GIT_BRANCH=$(git branch --show-current)
           GIT_STATUS=$(git status --porcelain)
           [[ -n $(git stash list) ]] && GIT_STASH="$" || GIT_STASH=""
-          ${contains "$(git status --porcelain)" "M"} && echo Modified || echo "not modified"
+          ${contains "$GIT_STATUS" "M"} && GIT_MODIFIED="x" || GIT_MODIFIED=""
+          ${contains "$GIT_STATUS" "?"} && GIT_UNTRACKED="?" || GIT_UNTRACKED=""
 
         else
           unset GIT_BRANCH
@@ -35,5 +38,6 @@ in
         fi
       }
     '';
-    ps1 = "${blue directory} ${magenta git} ${red git_stash}\n%(?.${green "❯"}.${red "❯"}) ";
+    ps1 = "${blue directory} ${magenta git} ${red git_stash}${red git_modified}${red git_untracked}
+    \n%(?.${green "❯"}.${red "❯"}) ";
   }
