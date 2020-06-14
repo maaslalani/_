@@ -2,7 +2,7 @@ let
   directory = "%2~";
 
   gitBranch = "\\$GIT_BRANCH";
-  gitDirty = "\\$GIT_DIRTY";
+  gitStatus = "\\$GIT_STATUS";
 
   color = color: text: "%F{${color}}${text}%f";
 
@@ -16,12 +16,12 @@ in
       precmd() {
         if test -d .git; then
           GIT_BRANCH=$(git branch --show-current)
-          [[ -n $(git status --porcelain) ]] && GIT_DIRTY="[?]" || GIT_DIRTY=""
+          GIT_STATUS=$(git status --porcelain | cut -c2 | tr -d ' \n')
         else
           unset GIT_BRANCH
-          unset GIT_DIRTY
+          unset GIT_STATUS
         fi
       }
     '';
-    ps1 = "${blue directory} ${magenta gitBranch} ${red gitDirty} \n%(?.${green "❯"}.${red "❯"}) ";
+    ps1 = "${blue directory} ${magenta gitBranch} ${red gitStatus} \n%(?.${green "❯"}.${red "❯"}) ";
   }
