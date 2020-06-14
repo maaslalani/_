@@ -1,20 +1,13 @@
 let
   directory = "%2~";
-  # branch
-  git = "\\$GIT_BRANCH";
-  # conflicts
-  # ahead / behind
-  # untracked changes
+
+  git_branch = "\\$GIT_BRANCH";
   git_untracked = "\\$GIT_UNTRACKED";
-  # stashes
   git_stash = "\\$GIT_STASH";
-  # modified
-  git_modified = "\\$GIT_MODIFIED";
-  # staged
-  # deleted
+  git_dirty = "\\$GIT_DIRTY";
+  # ahead / behind
 
   color = color: text: "%F{${color}}${text}%f";
-  contains = string: substring: ''[[ "${string}" =~ "${substring}" ]]'';
 
   blue = color "blue";
   green = color "green";
@@ -26,11 +19,8 @@ in
       precmd() {
         if test -d .git; then
           GIT_BRANCH=$(git branch --show-current)
-          GIT_STATUS=$(git status --porcelain)
           [[ -n $(git stash list) ]] && GIT_STASH="$" || GIT_STASH=""
-          ${contains "$GIT_STATUS" "M"} && GIT_MODIFIED="x" || GIT_MODIFIED=""
-          ${contains "$GIT_STATUS" "?"} && GIT_UNTRACKED="?" || GIT_UNTRACKED=""
-
+          [[ -n $(git status --porcelain) ]] && GIT_DIRTY="?" || GIT_DIRTY=""
         else
           unset GIT_BRANCH
           unset GIT_STASH
@@ -38,6 +28,5 @@ in
         fi
       }
     '';
-    ps1 = "${blue directory} ${magenta git} ${red git_stash}${red git_modified}${red git_untracked}
-    \n%(?.${green "❯"}.${red "❯"}) ";
+    ps1 = "${blue directory} ${magenta git_branch} ${red git_stash}${red git_dirty}${red git_untracked} \n%(?.${green "❯"}.${red "❯"}) ";
   }
