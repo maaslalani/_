@@ -39,6 +39,7 @@ rec {
   grh = "git reset --hard";
 
   gs = "git status";
+  gss = "git status --short";
 
   glo = "git log";
 

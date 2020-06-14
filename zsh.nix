@@ -2,6 +2,8 @@ let
   DEV_PATH = "/opt/dev/dev.sh";
 
   sourceFile = file: "[ -f ${file} ] && source ${file}";
+
+  prompt = import ./prompt.nix;
 in
   {
     autocd = true;
@@ -12,19 +14,15 @@ in
     initExtra = ''
       bindkey '^P' up-history
       bindkey '^N' down-history
+      bindkey '^?' backward-delete-char
+      bindkey '^[[Z' reverse-menu-complete
 
       dev() {
         ${sourceFile DEV_PATH}
         dev $@
       }
 
-      precmd() {
-        if test -d .git; then
-          GIT_BRANCH=$(git symbolic-ref --short HEAD)
-        else
-          GIT_BRANCH=""
-        fi
-      }
+      ${prompt.precmd}
 
       setopt prompt_subst
     '';
@@ -37,7 +35,7 @@ in
       ];
       TERM = "xterm-256color";
       PATH = "$PATH:$HOME/.nix-profile/bin";
-      PROMPT = import ./prompt.nix;
+      PROMPT = prompt.ps1;
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
       PASSWORD_STORE_DIR = "$HOME/.config/pass";
     };
