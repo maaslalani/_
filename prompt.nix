@@ -1,8 +1,8 @@
 let
   directory = "%2~";
 
-  git_branch = "(\\$GIT_BRANCH)";
-  git_dirty = "\\$GIT_DIRTY";
+  gitBranch = "\\$GIT_BRANCH";
+  gitDirty = "\\$GIT_DIRTY";
 
   color = color: text: "%F{${color}}${text}%f";
 
@@ -23,5 +23,5 @@ in
         fi
       }
     '';
-    ps1 = "${blue directory} ${magenta git_branch} ${red git_dirty} \n%(?.${green "❯"}.${red "❯"}) ";
+    ps1 = "${blue directory} ${magenta gitBranch} ${red gitDirty} \n%(?.${green "❯"}.${red "❯"}) ";
   }
