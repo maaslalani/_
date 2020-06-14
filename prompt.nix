@@ -1,12 +1,20 @@
 let
   directory = "%2~";
+  # branch
   git = "\\$GIT_BRANCH";
-  git_status = "\\$GIT_STATUS";
+  # conflicts
+  # ahead / behind
+  # untracked changes
+  # stashes
+  git_stash = "\\$GIT_STASH";
+  # modified
+  # staged
+  # deleted
 
   color = color: text: "%F{${color}}${text}%f";
+  contains = string: substring: ''[[ "${string}" =~ "${substring}" ]]'';
 
   blue = color "blue";
-  cyan = color "cyan";
   green = color "green";
   magenta = color "magenta";
   red = color "red";
@@ -16,10 +24,16 @@ in
       precmd() {
         if test -d .git; then
           GIT_BRANCH=$(git branch --show-current)
+          GIT_STATUS=$(git status --porcelain)
+          [[ -n $(git stash list) ]] && GIT_STASH="$" || GIT_STASH=""
+          ${contains "$(git status --porcelain)" "M"} && echo Modified || echo "not modified"
+
         else
-          GIT_BRANCH=""
+          unset GIT_BRANCH
+          unset GIT_STASH
+          unset GIT_STATUS
         fi
       }
     '';
-    ps1 = "${blue directory} ${magenta git}\n%(?.${green "❯"}.${red "❯"}) ";
+    ps1 = "${blue directory} ${magenta git} ${red git_stash}\n%(?.${green "❯"}.${red "❯"}) ";
   }
