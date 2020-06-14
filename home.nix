@@ -6,9 +6,11 @@
     pkgs.fd
     pkgs.ffmpeg
     pkgs.fortune
+    pkgs.gnupg
     pkgs.go
     pkgs.golint
     pkgs.htop
+    pkgs.pass
     pkgs.ripgrep
     pkgs.rustup
     pkgs.sops

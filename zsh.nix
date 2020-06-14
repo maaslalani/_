@@ -39,5 +39,6 @@ in
       PATH = "$PATH:$HOME/.nix-profile/bin";
       PROMPT = import ./prompt.nix;
       NIX_PATH = "$NIX_PATH:$HOME/.nix-defexpr/channels";
+      PASSWORD_STORE_DIR = "$HOME/.config/pass";
     };
   }
