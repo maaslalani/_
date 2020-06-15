@@ -16,7 +16,7 @@ in
       bindkey '^[[Z' reverse-menu-complete
 
       dev() {
-        ${sourceFile "opt/dev/dev.sh"}
+        ${sourceFile "/opt/dev/dev.sh"}
         dev $@
       }
 
