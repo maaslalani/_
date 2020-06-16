@@ -15,7 +15,7 @@ in
     precmd = ''
       precmd() {
         if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
-          GIT_BRANCH=$(git branch --show-current)
+          GIT_BRANCH="($(git branch --show-current))"
           GIT_STATUS=$(git status --porcelain | cut -c2 | tr -d ' \n')
         else
           unset GIT_BRANCH
