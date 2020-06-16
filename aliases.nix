@@ -72,6 +72,8 @@ rec {
   knsa = "kubectl get namespaces -o=custom-columns=NAME:.metadata.name --no-headers";
   kchns = "${knsa} | fzf | xargs -I{} kubectl config set-context --current --namespace={}";
 
+  todo = "$EDITOR ~/notes/tasks.md";
+
   tree = "command tree -I 'Godep*' -I 'node_modules*'";
   weather = "curl http://v2.wttr.in";
 
