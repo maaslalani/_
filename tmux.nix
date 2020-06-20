@@ -13,6 +13,7 @@ let
     status-left = "''";
     pane-border-style = "fg=black,bg=default";
     pane-active-border-style = "fg=black,bg=default";
+    mouse = "on";
   };
 
   window = {

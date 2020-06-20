@@ -73,26 +73,27 @@ let
 
     silent = {
       gd = "<Plug>(coc-definition)";
-      gy = "<Plug>(coc-type-definition)";
       gi = "<Plug>(coc-implementation)";
       gr = "<Plug>(coc-references)";
+      gy = "<Plug>(coc-type-definition)";
     };
 
     leader = {
       "" = "<Nop>";
       a = ":ALEFix<CR>";
-      t = ":tabnew<CR>";
-      w = ":w<CR>";
-      q = ":q<CR>";
       f = ":FZF --color=16,gutter:-1<CR>";
-      r = ":Rg<CR>";
-      sp = ":set spell!<CR>";
       gb = ":Gblame<CR>";
       gd = ":Gdiff<CR>";
+      o = ":silent !open <cWORD><CR>";
+      q = ":q<CR>";
+      r = ":Rg<CR>";
+      t = ":tabnew<CR>";
+      w = ":w<CR>";
     };
 
     visual = {
       S = ":s//g<Left><Left>";
+      s = ":sort<CR>";
     };
   };
 
@@ -118,7 +119,7 @@ in
   ${config "filetype" filetype}
 
   ${config "nmap" maps.normal}
-  ${config "nmap <silent>" maps.silent}
+  ${config "nnoremap <silent>" maps.silent}
   ${config "vmap" maps.visual}
   ${config' "map <silent> ${leaderKey}" maps.leader}
 
