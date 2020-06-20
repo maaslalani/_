@@ -8,6 +8,8 @@ in
     shellAliases = import ./aliases.nix;
     defaultKeymap = "viins";
     initExtra = ''
+      setopt prompt_subst
+
       bindkey -s '^V' '^Uvim .^M'
       bindkey '^P' up-history
       bindkey '^N' down-history
@@ -20,8 +22,6 @@ in
       }
 
       ${prompt.precmd}
-
-      setopt prompt_subst
     '';
     sessionVariables = {
       EDITOR = "nvim";

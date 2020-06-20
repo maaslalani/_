@@ -2,6 +2,7 @@
 
 {
   home.packages = [
+    pkgs.coreutils
     pkgs.errcheck
     pkgs.fd
     pkgs.ffmpeg
