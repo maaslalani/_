@@ -8,11 +8,11 @@ in
     shellAliases = import ./aliases.nix;
     defaultKeymap = "viins";
     initExtra = ''
-      bindkey -s ^V ^Uvim .^M
-      bindkey ^P up-history
-      bindkey ^N down-history
-      bindkey ^? backward-delete-char
-      bindkey ^[[Z reverse-menu-complete
+      bindkey -s '^V' '^Uvim .^M'
+      bindkey '^P' up-history
+      bindkey '^N' down-history
+      bindkey '^?' backward-delete-char
+      bindkey '^[[Z' reverse-menu-complete
 
       dev() {
         source /opt/dev/dev.sh
