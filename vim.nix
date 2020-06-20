@@ -81,7 +81,7 @@ let
     leader = {
       "" = "<Nop>";
       a = ":ALEFix<CR>";
-      f = ":FZF --color=16,gutter:-1<CR>";
+      f = ":FZF<CR>";
       gb = ":Gblame<CR>";
       gd = ":Gdiff<CR>";
       o = ":silent !open <cWORD><CR>";
