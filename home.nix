@@ -24,11 +24,11 @@
     pkgs.yarn
   ];
 
-  programs.alacritty = import ./alacritty.nix;
-  programs.bat = import ./bat.nix;
-  programs.fzf = import ./fzf.nix;
-  programs.git = import ./git.nix;
-  programs.neovim = import ./vim.nix { pkgs = pkgs; };
-  programs.tmux = import ./tmux.nix;
-  programs.zsh = import ./zsh.nix { pkgs = pkgs; };
+  programs.alacritty = import ./terminal/alacritty.nix;
+  programs.bat = import ./programs/bat.nix;
+  programs.fzf = import ./programs/fzf.nix;
+  programs.git = import ./programs/git.nix;
+  programs.neovim = import ./editor/vim.nix { pkgs = pkgs; };
+  programs.tmux = import ./terminal/tmux.nix;
+  programs.zsh = import ./shell/zsh.nix { pkgs = pkgs; };
 }
