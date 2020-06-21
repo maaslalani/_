@@ -2,6 +2,7 @@ with builtins;
 let
   togglesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${if v then "" else "no"}${n}"))) a));
   settingsConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${n}=${toString v}"))) a));
+  variablesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("let ${n}='${toString v}'"))) a));
   mapConfig = p: a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("${p}${n} ${v}"))) a));
 
   toggles = {
@@ -103,13 +104,21 @@ let
     indent = "on";
   };
 
+  variables = {
+    loaded_netrw = 0;
+    SuperTabDefaultCompletionType = "<c-n>";
+    ale_sign_error = "*";
+    ale_sign_warning = "~";
+  };
+
   colorscheme = "nord";
-in
-''
+
+in ''
   colorscheme ${colorscheme}
 
   ${settingsConfig settings}
   ${togglesConfig toggles}
+  ${variablesConfig variables}
 
   ${mapConfig ":command " commands}
   ${mapConfig "filetype " filetype}
@@ -117,9 +126,4 @@ in
   ${mapConfig "nnoremap <silent> " maps.silent}
   ${mapConfig "vmap " maps.visual}
   ${mapConfig "map <silent> ${leaderKey}" maps.leader}
-
-  let loaded_netrw = 0
-  let g:SuperTabDefaultCompletionType = "<c-n>"
-  let g:ale_sign_error = '*'
-  let g:ale_sign_warning = '~'
 ''
