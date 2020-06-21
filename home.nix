@@ -14,6 +14,7 @@
     pkgs.pass
     pkgs.ripgrep
     pkgs.rustup
+    pkgs.sd
     pkgs.sops
     pkgs.spotify-tui
     pkgs.tree
