@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   users.users.maas = {
     description = "Maas Lalani";

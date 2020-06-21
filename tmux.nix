@@ -33,13 +33,24 @@ let
     vertical = "|";
     horiztonal = "-";
   };
-in
-''
-  ${attrsToConfig settings}
-  ${attrsToConfig window}
-  ${attrsToConfig message}
 
-  bind ${splits.vertical} split-window -h -c "#{pane_current_path}"
-  bind ${splits.horiztonal} split-window -c "#{pane_current_path}"
-  bind c new-window -c "#{pane_current_path}"
-''
+in {
+  baseIndex = 1;
+  customPaneNavigationAndResize = true;
+  disableConfirmationPrompt = true;
+  enable = true;
+  escapeTime = 0;
+  keyMode = "vi";
+  secureSocket = false;
+  shortcut = "a";
+  terminal = "xterm-256color";
+  extraConfig = ''
+    ${attrsToConfig settings}
+    ${attrsToConfig window}
+    ${attrsToConfig message}
+
+    bind ${splits.vertical} split-window -h -c "#{pane_current_path}"
+    bind ${splits.horiztonal} split-window -c "#{pane_current_path}"
+    bind c new-window -c "#{pane_current_path}"
+  '';
+}

@@ -1,9 +1,12 @@
+{ pkgs }:
 with builtins;
 let
   togglesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${if v then "" else "no"}${n}"))) a));
   settingsConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${n}=${toString v}"))) a));
   variablesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("let ${n}='${toString v}'"))) a));
   mapConfig = p: a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("${p}${n} ${v}"))) a));
+
+  colorscheme = "nord";
 
   toggles = {
     autoindent = true;
@@ -111,19 +114,39 @@ let
     ale_sign_warning = "~";
   };
 
-  colorscheme = "nord";
+in {
+  enable = true;
+  extraConfig = ''
+    colorscheme ${colorscheme}
 
-in ''
-  colorscheme ${colorscheme}
+    ${settingsConfig settings}
+    ${togglesConfig toggles}
+    ${variablesConfig variables}
 
-  ${settingsConfig settings}
-  ${togglesConfig toggles}
-  ${variablesConfig variables}
-
-  ${mapConfig ":command " commands}
-  ${mapConfig "filetype " filetype}
-  ${mapConfig "nmap " maps.normal}
-  ${mapConfig "nnoremap <silent> " maps.silent}
-  ${mapConfig "vmap " maps.visual}
-  ${mapConfig "map <silent> ${leaderKey}" maps.leader}
-''
+    ${mapConfig ":command " commands}
+    ${mapConfig "filetype " filetype}
+    ${mapConfig "nmap " maps.normal}
+    ${mapConfig "nnoremap <silent> " maps.silent}
+    ${mapConfig "vmap " maps.visual}
+    ${mapConfig "map <silent> ${leaderKey}" maps.leader}
+  '';
+  vimAlias = true;
+  viAlias = true;
+  plugins = with pkgs.vimPlugins; [
+    ale
+    auto-pairs
+    coc-nvim
+    commentary
+    emmet-vim
+    fugitive
+    fzf-vim
+    gitgutter
+    nord-vim
+    polyglot
+    supertab
+    vim-dirvish
+    vim-go
+    vim-signature
+    vim-test
+  ];
+}
