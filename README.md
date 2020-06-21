@@ -16,11 +16,16 @@ All the packages I use are listed in [home.nix](./home.nix) inside `home.package
 My favourites include:
 * [bat](https://github.com/sharkdp/bat)
 * [fd](https://github.com/sharkdp/fd)
+* [ffmpeg](https://ffmpeg.org/)
+* [fzf](https://github.com/junegunn/fzf)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
 
 ## Plugins
 ### Neovim
 ![Vim Setup](../assets/vim.png?raw=true)
+* [ale](https://github.com/dense-analysis/ale)
+* [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+* [coc-nvim](https://github.com/neoclide/coc.nvim)
 * [commentary](https://github.com/tpope/vim-commentary)
 * [fugitive](https://github.com/tpope/vim-fugitive)
 * [fzf-vim](https://github.com/junegunn/fzf.vim)
