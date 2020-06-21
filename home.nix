@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
-
 {
   home.packages = [
     pkgs.coreutils
     pkgs.errcheck
+    pkgs.exa
     pkgs.fd
     pkgs.ffmpeg
     pkgs.fortune

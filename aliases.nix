@@ -52,7 +52,8 @@ rec {
   hms = "home-manager switch";
   ncg = "nix-collect-garbage";
 
-  lsa = "ls -lah";
+  ls = "exa";
+  lsa = "exa -Fla";
 
   md = "mkdir";
 

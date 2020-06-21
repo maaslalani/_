@@ -31,7 +31,6 @@ in
         "$HOME/.kube/config"
         "$HOME/.kube/config.shopify.cloudplatform"
       ];
-      LSCOLORS = "exfxcxdxbxegedabagacad";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       NIX_PATH = concatStringsSep ":" [
         "$NIX_PATH"
