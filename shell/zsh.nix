@@ -39,6 +39,7 @@ with builtins; {
     ];
     PATH = concatStringsSep ":" [
       "$HOME/.nix-profile/bin"
+      "/usr/local/bin"
       "$PATH"
     ];
     PROMPT = prompt.ps1;
