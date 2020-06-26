@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  programs.home-manager.enable = true;
+
   home.packages = [
     pkgs.coreutils
     pkgs.errcheck
@@ -24,7 +26,6 @@
     pkgs.yarn
   ];
 
-  programs.home-manager.enable = true;
   programs.alacritty = import ./terminal/alacritty.nix;
   programs.bat = import ./programs/bat.nix;
   programs.fzf = import ./programs/fzf.nix;
