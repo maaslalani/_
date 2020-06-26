@@ -15,7 +15,7 @@
     zsh
   ];
 
-  environment.darwinConfig = "/Users/maas/.nixpkgs/darwin-configuration.nix";
+  environment.darwinConfig = "$HOME/_/darwin.nix";
   environment.shells = [ pkgs.zsh ];
   programs.zsh.enable = true;
 
