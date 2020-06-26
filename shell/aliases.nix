@@ -62,6 +62,7 @@ rec {
   tksv = "tmux kill-server";
   tls = "tmux list-sessions";
   tn = "tmux new-session -s";
+  tns = "tmux new-session -A -s `basename $(pwd)`";
 
   ks = "echo $(${kcx}):$(${kns})";
 

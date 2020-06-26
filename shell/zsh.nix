@@ -11,7 +11,9 @@ with builtins; {
   initExtra = ''
     setopt prompt_subst
 
-    bindkey -s '^V' '^Uvim .^M'
+    [ -z $TMUX ] && bindkey -s '^A' '^Utns^M'
+
+    bindkey -s '^V' '^Uv^M'
     bindkey '^P' up-history
     bindkey '^N' down-history
     bindkey '^?' backward-delete-char
