@@ -1,10 +1,11 @@
 { pkgs }:
 with builtins;
 let
-  togglesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${if v then "" else "no"}${n}"))) a));
-  settingsConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${n}=${toString v}"))) a));
-  variablesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("let ${n}='${toString v}'"))) a));
+  autocmdConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("autocmd ${n} ${v}"))) a));
   mapConfig = p: a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("${p}${n} ${v}"))) a));
+  settingsConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${n}=${toString v}"))) a));
+  togglesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${if v then "" else "no"}${n}"))) a));
+  variablesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("let ${n}='${toString v}'"))) a));
 
   colorscheme = "nord";
 
@@ -115,21 +116,28 @@ let
     ale_sign_warning = "~";
   };
 
+  autocmd = {
+    TermOpen = "* setlocal nonumber signcolumn=no";
+    CmdLineEnter = ": set nosmartcase";
+    CmdLineLeave = ": set smartcase";
+  };
+
 in {
   enable = true;
   extraConfig = ''
     colorscheme ${colorscheme}
 
+    ${autocmdConfig autocmd}
     ${settingsConfig settings}
     ${togglesConfig toggles}
     ${variablesConfig variables}
 
     ${mapConfig ":command " commands}
     ${mapConfig "filetype " filetype}
+    ${mapConfig "map <silent> ${leaderKey}" maps.leader}
     ${mapConfig "nmap " maps.normal}
     ${mapConfig "nnoremap <silent> " maps.silent}
     ${mapConfig "vmap " maps.visual}
-    ${mapConfig "map <silent> ${leaderKey}" maps.leader}
   '';
   vimAlias = true;
   viAlias = true;
