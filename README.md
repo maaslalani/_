@@ -4,10 +4,10 @@ This repository contains my dotfiles which are managed through [Nix](https://nix
 ![Home Setup](../assets/alacritty.png?raw=true)
 
 ## Setup
-* Editor: [neovim](./vim.nix)
-* Shell: [zsh](./zsh.nix)
-* Terminal Emulator: [alacritty](./alacritty.nix)
-* Terminal multiplexer: [tmux](./tmux.nix)
+* Editor: [neovim](./editor/vim.nix)
+* Shell: [zsh](./shell/zsh.nix)
+* Terminal Emulator: [alacritty](./terminal/alacritty.nix)
+* Terminal multiplexer: [tmux](./terminal/tmux.nix)
 * Operating System: [darwin](./darwin.nix)
 
 ## Packages
