@@ -4,6 +4,7 @@
 
   home.packages = [
     pkgs.coreutils
+    pkgs.chafa
     pkgs.errcheck
     pkgs.exa
     pkgs.fd
