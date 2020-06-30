@@ -3,14 +3,15 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.coreutils
     pkgs.chafa
+    pkgs.coreutils
     pkgs.errcheck
     pkgs.exa
     pkgs.fd
     pkgs.ffmpeg
     pkgs.fortune
     pkgs.git
+    pkgs.glow
     pkgs.gnupg
     pkgs.go
     pkgs.golint

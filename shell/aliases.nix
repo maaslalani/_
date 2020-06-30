@@ -38,6 +38,9 @@ rec {
   gr = "git reset";
   grh = "git reset --hard";
 
+  gst = "git stash";
+  gstp = "git stash pop";
+
   gs = "git status";
   gss = "git status --short";
 
