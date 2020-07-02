@@ -25,6 +25,7 @@
     pkgs.sops
     pkgs.spotify-tui
     pkgs.tree
+    pkgs.watchexec
     pkgs.yarn
   ];
 
