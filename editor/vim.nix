@@ -44,7 +44,6 @@ let
 
   settings = {
     backspace = "indent,eol,start";
-    clipboard = "unnamed";
     cmdheight = 1;
     concealcursor = "\"\"";
     encoding = "utf-8";
@@ -89,6 +88,8 @@ let
     r = ":Rg<CR>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
+    y = "\"*y";
+    p = "\"*p";
   };
 
   maps.visual = {
