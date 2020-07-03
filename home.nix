@@ -17,6 +17,7 @@
     pkgs.golint
     pkgs.google-cloud-sdk
     pkgs.htop
+    pkgs.jq
     pkgs.kubectl
     pkgs.kubectx
     pkgs.nodejs
