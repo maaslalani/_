@@ -84,12 +84,12 @@ let
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
     o = ":silent !open <cWORD><CR>";
+    p = "\"*p";
     q = ":q<CR>";
     r = ":Rg<CR>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
-    p = "\"*p";
   };
 
   maps.visual = {
