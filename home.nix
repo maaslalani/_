@@ -15,8 +15,10 @@
     pkgs.gnupg
     pkgs.go
     pkgs.golint
+    pkgs.google-cloud-sdk
     pkgs.htop
     pkgs.kubectl
+    pkgs.kubectx
     pkgs.nodejs
     pkgs.pass
     pkgs.ripgrep

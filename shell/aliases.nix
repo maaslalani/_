@@ -40,14 +40,6 @@ rec {
 
   hms = "home-manager switch";
 
-  kchcx = "${kcxa} | fzf | xargs kubectl config use-context";
-  kchns = "${knsa} | fzf | xargs -I{} kubectl config set-context --current --namespace={}";
-  kcx = "kubectl config current-context";
-  kcxa = "kubectl config get-contexts -o name";
-  kns = "kubectl config view --minify --output=jsonpath='{..namespace}'";
-  knsa = "kubectl get namespaces -o=custom-columns=NAME:.metadata.name --no-headers";
-  ks = "echo $(${kcx}):$(${kns})";
-
   ls = "exa";
   lsa = "exa -Fla";
 

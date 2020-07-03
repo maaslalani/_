@@ -6,6 +6,7 @@ with builtins; {
   autocd = true;
   dotDir = ".config/zsh";
   enable = true;
+  enableCompletion = true;
   shellAliases = import ./aliases.nix;
   defaultKeymap = "viins";
   initExtra = ''
@@ -54,15 +55,6 @@ with builtins; {
         repo = "zsh-syntax-highlighting";
         rev = "932e29a0c75411cb618f02995b66c0a4a25699bc";
         sha256 = "0w8x5ilpwx90s2s2y56vbzq92ircmrf0l5x8hz4g1nx3qzawv6af";
-      };
-    }
-    {
-      name = "zsh-autosuggestions";
-      src = pkgs.fetchFromGitHub {
-        owner = "zsh-users";
-        repo = "zsh-autosuggestions";
-        rev = "v0.6.3";
-        sha256 = "1h8h2mz9wpjpymgl2p7pc146c1jgb3dggpvzwm9ln3in336wl95c";
       };
     }
   ];
