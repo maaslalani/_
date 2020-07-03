@@ -1,8 +1,8 @@
 { pkgs, ... }:
+with builtins;
 let
   prompt = import ./prompt.nix;
-in
-with builtins; {
+in {
   autocd = true;
   dotDir = ".config/zsh";
   enable = true;
