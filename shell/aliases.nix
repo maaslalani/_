@@ -51,6 +51,10 @@ rec {
   no = "ntbk open";
   ns = "ntbk search";
 
+  ra = "reminders add";
+  rc = "reminders complete";
+  rl = "reminders list";
+
   sz = "source ~/.config/zsh/.zshrc";
 
   ta = "tmux attach -t";
