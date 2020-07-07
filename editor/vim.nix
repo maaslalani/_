@@ -7,7 +7,7 @@ let
   togglesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${if v then "" else "no"}${n}"))) a));
   variablesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("let ${n}='${toString v}'"))) a));
 
-  colorscheme = "gruvbox";
+  colorscheme = "nord";
 
   toggles = {
     autoindent = true;
@@ -31,7 +31,6 @@ let
     splitbelow = true;
     splitright = true;
     swapfile = false;
-    termguicolors = true;
     timeout = false;
     ttimeout = true;
     ttyfast = true;
@@ -152,7 +151,7 @@ in {
     fugitive
     fzf-vim
     gitgutter
-    gruvbox
+    nord-vim
     polyglot
     supertab
     vim-dirvish

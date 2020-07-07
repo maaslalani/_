@@ -8,13 +8,13 @@ let
   };
 
   pane = {
-    border-style = "fg=brightblack,bg=default";
-    active-border-style = "fg=brightblack,bg=default";
+    border-style = "fg=black,bg=default";
+    active-border-style = "fg=black,bg=default";
   };
 
   status = {
     style = "bg=black";
-    right-style = "bg=colour0,fg=white";
+    right-style = "bg=brightblack,fg=white";
     justify = "left";
     right = "'  %H:%M  '";
     left = "''";
@@ -22,7 +22,7 @@ let
 
   window = {
     status-style = "fg=white,bg=colour0";
-    status-current-style = "fg=cyan,bg=colour0";
+    status-current-style = "fg=cyan,bg=brightblack";
     status-current-format = "' #I:#W '";
     status-format = "' #I:#W '";
   };
