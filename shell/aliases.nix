@@ -4,6 +4,8 @@ rec {
   "....." = "cd ../../../..";
   _ = "cd ~/_";
 
+  dev_ = "/opt/dev/bin/dev";
+
   dstroy = "fd -H .DS_Store | xargs sudo rm";
 
   ga = "git add";
