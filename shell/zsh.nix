@@ -40,6 +40,7 @@ in {
     PATH = concatStringsSep ":" [
       "$HOME/.nix-profile/bin"
       "$HOME/.cargo/bin"
+      "$HOME/go/bin"
       "/usr/local/bin"
       "$PATH"
     ];
