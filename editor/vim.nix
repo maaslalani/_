@@ -97,6 +97,10 @@ let
     s = ":sort<CR>";
   };
 
+  maps.insert = {
+    "<C-l>" = "<Plug>(coc-snippets-expand)";
+  };
+
   commands = {
     W = "w";
     Q = "q";
@@ -139,6 +143,7 @@ in {
     ${mapConfig "nmap " maps.normal}
     ${mapConfig "nnoremap <silent> " maps.silent}
     ${mapConfig "vmap " maps.visual}
+    ${mapConfig "imap " maps.insert}
   '';
   vimAlias = true;
   viAlias = true;
