@@ -1,65 +1,67 @@
 { pkgs }:
 with builtins;
 let
-  autocmdConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("autocmd ${n} ${v}"))) a));
-  mapConfig = p: a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("${p}${n} ${v}"))) a));
-  settingsConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${n}=${toString v}"))) a));
-  togglesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("set ${if v then "" else "no"}${n}"))) a));
-  variablesConfig = a: concatStringsSep "\n" (attrValues ((mapAttrs (n: v: ("let ${n}='${toString v}'"))) a));
+  config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
+
+  autocmdConfig   = config (n: v: ("autocmd ${n} ${v}"));
+  mapConfig    = p: config (n: v: ("${p}${n} ${v}"));
+  settingsConfig  = config (n: v: ("set ${n}=${toString v}"));
+  togglesConfig   = config (n: v: ("set ${if v then "" else "no"}${n}"));
+  variablesConfig = config (n: v: ("let ${n}='${toString v}'"));
 
   colorscheme = "nord";
 
   toggles = {
-    autoindent = true;
-    autoread = true;
-    autowrite = true;
-    backup = false;
-    compatible = false;
-    cursorline = true;
-    errorbells = false;
-    expandtab = true;
-    hidden = true;
-    hlsearch = true;
-    ignorecase = true;
-    incsearch = true;
-    lazyredraw = true;
-    number = true;
-    ruler = true;
-    showcmd = true;
-    showmode = false;
-    smartcase = true;
-    splitbelow = true;
-    splitright = true;
-    swapfile = false;
-    timeout = false;
-    ttimeout = true;
-    ttyfast = true;
-    undofile = true;
-    visualbell = true;
-    wb = false;
-    wildmenu = true;
-    wrap = false;
-    writebackup = false;
+    autoindent   = true;
+    autoread     = true;
+    autowrite    = true;
+    backup       = false;
+    compatible   = false;
+    cursorline   = true;
+    errorbells   = false;
+    expandtab    = true;
+    hidden       = true;
+    hlsearch     = true;
+    ignorecase   = true;
+    incsearch    = true;
+    lazyredraw   = true;
+    number       = true;
+    ruler        = true;
+    showcmd      = true;
+    showmode     = false;
+    smartcase    = true;
+    splitbelow   = true;
+    splitright   = true;
+    swapfile     = false;
+    timeout      = false;
+    ttimeout     = true;
+    ttyfast      = true;
+    undofile     = true;
+    visualbell   = true;
+    wb           = false;
+    wildmenu     = true;
+    wrap         = false;
+    writebackup  = false;
   };
 
   settings = {
-    backspace = "indent,eol,start";
-    cmdheight = 1;
+    backspace     = "indent,eol,start";
+    cmdheight     = 1;
     concealcursor = "\"\"";
-    encoding = "utf-8";
-    laststatus = 0;
-    numberwidth = 1;
-    printfont = "PragmataPro:h12";
-    shiftwidth = 2;
-    signcolumn = "yes";
-    softtabstop = 2;
-    synmaxcol = 300;
-    t_vb = "";
-    tabstop = 2;
-    timeoutlen = 50;
-    undodir = "~/.config/nvim/.undo";
-    updatetime = 300;
-    wildmode = "longest:full,full";
+    encoding      = "utf-8";
+    laststatus    = 0;
+    numberwidth   = 1;
+    printfont     = "PragmataPro:h12";
+    shiftwidth    = 2;
+    signcolumn    = "yes";
+    softtabstop   = 2;
+    synmaxcol     = 300;
+    t_vb          = "";
+    tabstop       = 2;
+    timeoutlen    = 50;
+    undodir       = "~/.config/nvim/.undo";
+    updatetime    = 300;
+    wildmode      = "longest:full,full";
   };
 
   leaderKey = "<Space>";
@@ -78,18 +80,18 @@ let
 
   maps.leader = {
     "" = "<Nop>";
-    a = ":ALEFix<CR>";
-    d = ":r !date<CR>";
-    f = ":FZF<CR>";
+    a  = ":ALEFix<CR>";
+    d  = ":r !date<CR>";
+    f  = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
-    o = ":silent !open <cWORD><CR>";
-    p = "\"*p";
-    q = ":q<CR>";
-    r = ":Rg<CR>";
-    t = ":tabnew<CR>";
-    w = ":w<CR>";
-    y = "\"*y";
+    o  = ":silent !open <cWORD><CR>";
+    p  = "\"*p";
+    q  = ":q<CR>";
+    r  = ":Rg<CR>";
+    t  = ":tabnew<CR>";
+    w  = ":w<CR>";
+    y  = "\"*y";
   };
 
   maps.visual = {
@@ -102,8 +104,8 @@ let
   };
 
   commands = {
-    W = "w";
-    Q = "q";
+    W  = "w";
+    Q  = "q";
     Wc = "!wc %";
     Af = "ALEFix";
     Tf = "TestFile";
@@ -115,14 +117,15 @@ let
   };
 
   variables = {
-    loaded_netrw = 0;
-    SuperTabDefaultCompletionType = "<c-n>";
-    ale_sign_error = "*";
+    loaded_netrw     = 0;
+    ale_sign_error   = "*";
     ale_sign_warning = "~";
+
+    SuperTabDefaultCompletionType = "<c-n>";
   };
 
   autocmd = {
-    TermOpen = "* setlocal nonumber signcolumn=no";
+    TermOpen     = "* setlocal nonumber signcolumn=no";
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
   };
