@@ -31,7 +31,7 @@
       italic.family = "Fira Code";
 
       normal.style  = "Regular";
-      bold.style    = "Bold";
+      bold.style    = "Medium";
       italic.style  = "Italic";
 
       size = 15;
