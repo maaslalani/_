@@ -4,7 +4,7 @@
     window = {
       dimensions = {
         columns = 0;
-        lines = 0;
+        lines   = 0;
       };
 
       padding = {
@@ -26,18 +26,14 @@
     };
 
     font = {
-      normal = {
-        family = "Fira Code";
-        style = "Regular";
-      };
-      bold = {
-        family = "Fira Code";
-        style = "Regular";
-      };
-      italic = {
-        family = "Fira Code";
-        style = "Italic";
-      };
+      normal.family = "Fira Code";
+      bold.family   = "Fira Code";
+      italic.family = "Fira Code";
+
+      normal.style  = "Regular";
+      bold.style    = "Bold";
+      italic.style  = "Italic";
+
       size = 15;
       use_thin_strokes = true;
     };
@@ -47,32 +43,26 @@
     draw_bold_text_with_bright_colors = false;
 
     colors = {
-      primary = {
-        background = "0x2E3440";
-        foreground = "0xD8DEE9";
-      };
+      primary.background = "0x2E3440";
+      primary.foreground = "0xD8DEE9";
 
-      normal = {
-        black = "0x3B4252";
-        red = "0xBF616A";
-        green = "0xA3BE8C";
-        yellow = "0xEBCB8B";
-        blue = "0x81A1C1";
-        magenta = "0xB48EAD";
-        cyan = "0x88C0D0";
-        white = "0xE5E9F0";
-      };
+      normal.black   = "0x3B4252";
+      normal.red     = "0xBF616A";
+      normal.green   = "0xA3BE8C";
+      normal.yellow  = "0xEBCB8B";
+      normal.blue    = "0x81A1C1";
+      normal.magenta = "0xB48EAD";
+      normal.cyan    = "0x88C0D0";
+      normal.white   = "0xE5E9F0";
 
-      bright = {
-        black = "0x4C566A";
-        red = "0xBF616A";
-        green = "0xA3BE8C";
-        yellow = "0xEBCB8B";
-        blue = "0x81A1C1";
-        magenta = "0xB48EAD";
-        cyan = "0x8FBCBB";
-        white = "0xECEFF4";
-      };
+      bright.black   = "0x4C566A";
+      bright.red     = "0xBF616A";
+      bright.green   = "0xA3BE8C";
+      bright.yellow  = "0xEBCB8B";
+      bright.blue    = "0x81A1C1";
+      bright.magenta = "0xB48EAD";
+      bright.cyan    = "0x8FBCBB";
+      bright.white   = "0xECEFF4";
     };
 
     visual_bell = {
