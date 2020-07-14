@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   programs.home-manager.enable = true;
 
   home.packages = [
@@ -33,10 +32,11 @@
   ];
 
   programs.alacritty = import ./terminal/alacritty.nix;
-  programs.bat = import ./programs/bat.nix;
-  programs.fzf = import ./programs/fzf.nix;
-  programs.git = import ./programs/git.nix;
-  programs.neovim = import ./editor/vim.nix { pkgs = pkgs; };
-  programs.tmux = import ./terminal/tmux.nix;
-  programs.zsh = import ./shell/zsh.nix { pkgs = pkgs; };
+  programs.bat       = import ./programs/bat.nix;
+  programs.fzf       = import ./programs/fzf.nix;
+  programs.git       = import ./programs/git.nix;
+  programs.tmux      = import ./terminal/tmux.nix;
+
+  programs.neovim    = import ./editor/vim.nix { pkgs = pkgs; };
+  programs.zsh       = import ./shell/zsh.nix  { pkgs = pkgs; };
 }

@@ -6,10 +6,10 @@ let
 
   color = color: text: "%F{${color}}${text}%f";
 
-  blue = color "blue";
-  green = color "green";
+  blue    = color "blue";
+  green   = color "green";
   magenta = color "magenta";
-  red = color "red";
+  red     = color "red";
 in {
   precmd = ''
     precmd() {
