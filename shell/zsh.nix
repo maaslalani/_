@@ -24,30 +24,7 @@ in {
 
     ${prompt.precmd}
   '';
-  sessionVariables = {
-    EDITOR = "nvim";
-    CLICOLOR = 1;
-    KEYTIMEOUT = 1;
-    KUBECONFIG = concatStringsSep ":" [
-      "$HOME/.kube/config"
-      "$HOME/.kube/config.shopify.cloudplatform"
-    ];
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    NIX_PATH = concatStringsSep ":" [
-      "$NIX_PATH"
-      "$HOME/.nix-defexpr/channels"
-    ];
-    PATH = concatStringsSep ":" [
-      "$HOME/.nix-profile/bin"
-      "$HOME/.cargo/bin"
-      "$HOME/go/bin"
-      "/usr/local/bin"
-      "$PATH"
-    ];
-    PROMPT = prompt.ps1;
-    PASSWORD_STORE_DIR = "$HOME/.config/pass";
-    TERM = "xterm-256color";
-  };
+  sessionVariables = import ./env.nix;
   plugins = [
     {
       name = "zsh-syntax-highlighting";
