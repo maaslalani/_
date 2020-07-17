@@ -6,6 +6,7 @@ in {
   autocd = true;
   dotDir = ".config/zsh";
   enable = true;
+  enableCompletion = true;
   shellAliases = import ./aliases.nix;
   defaultKeymap = "viins";
   initExtra = ''
