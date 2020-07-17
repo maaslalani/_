@@ -17,6 +17,8 @@ in {
     bindkey '^?' backward-delete-char
     bindkey '^[[Z' reverse-menu-complete
 
+    zstyle ':completion:*' menu select
+
     dev() {
       source /opt/dev/dev.sh
       dev $@
