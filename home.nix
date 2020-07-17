@@ -18,6 +18,7 @@
     pkgs.google-cloud-sdk
     pkgs.htop
     pkgs.jq
+    pkgs.kind
     pkgs.kubectl
     pkgs.kubectx
     pkgs.nodejs
