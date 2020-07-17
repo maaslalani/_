@@ -1,6 +1,6 @@
 let
   prompt = import ./prompt.nix;
-in with builtins; {
+in with builtins; rec {
   EDITOR = "nvim";
   CLICOLOR = 1;
   KEYTIMEOUT = 1;
@@ -13,10 +13,11 @@ in with builtins; {
     "$NIX_PATH"
     "$HOME/.nix-defexpr/channels"
   ];
+  GOPATH = "$HOME/.config/go";
   PATH = concatStringsSep ":" [
     "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
-    "$HOME/go/bin"
+    "${GOPATH}/bin"
     "/usr/local/bin"
     "$PATH"
   ];
