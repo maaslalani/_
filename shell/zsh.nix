@@ -6,9 +6,12 @@ in {
   autocd = true;
   dotDir = ".config/zsh";
   enable = true;
-  enableCompletion = true;
   shellAliases = import ./aliases.nix;
   defaultKeymap = "viins";
+  initExtraBeforeCompInit = ''
+    fpath+="$HOME/.nix-profile/share/zsh/site-functions"
+    fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
+  '';
   initExtra = ''
     setopt prompt_subst
 

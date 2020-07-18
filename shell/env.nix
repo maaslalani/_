@@ -21,10 +21,6 @@ in with builtins; rec {
     "/usr/local/bin"
     "$PATH"
   ];
-  FPATH = concatStringsSep ":" [
-    "$HOME/.nix-profile/share/zsh/site-functions"
-    "$FPATH"
-  ];
   PROMPT = prompt.ps1;
   PASSWORD_STORE_DIR = "$HOME/.config/pass";
   TERM = "xterm-256color";
