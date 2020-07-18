@@ -162,6 +162,7 @@ in {
     nord-vim
     polyglot
     supertab
+    tabular
     vim-dirvish
     vim-go
     vim-signature
