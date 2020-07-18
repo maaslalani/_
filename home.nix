@@ -3,13 +3,11 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.chafa
     pkgs.coreutils
     pkgs.errcheck
     pkgs.exa
     pkgs.fd
     pkgs.ffmpeg
-    pkgs.fortune
     pkgs.git
     pkgs.glow
     pkgs.gnupg
@@ -18,18 +16,12 @@
     pkgs.google-cloud-sdk
     pkgs.htop
     pkgs.jq
-    pkgs.kind
     pkgs.kubectl
     pkgs.kubectx
-    pkgs.nodejs
     pkgs.pass
     pkgs.ripgrep
     pkgs.rustup
-    pkgs.sd
     pkgs.sops
-    pkgs.spotify-tui
-    pkgs.tree
-    pkgs.watchexec
     pkgs.yarn
   ];
 
