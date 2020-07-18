@@ -4,6 +4,7 @@
 
   home.packages = [
     pkgs.coreutils
+    pkgs.docker
     pkgs.errcheck
     pkgs.exa
     pkgs.fd
