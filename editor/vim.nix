@@ -81,7 +81,7 @@ let
   maps.leader = {
     "" = "<Nop>";
     a  = ":ALEFix<CR>";
-    d  = ":r !date<CR>";
+    d  = ":r !date -I<CR>";
     f  = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
