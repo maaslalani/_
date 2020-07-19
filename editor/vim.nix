@@ -167,5 +167,6 @@ in {
     vim-go
     vim-signature
     vim-test
+    vimwiki
   ];
 }
