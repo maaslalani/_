@@ -69,7 +69,6 @@ let
   maps.normal = {
     Q = ":q<CR>";
     S = ":%s//g<Left><Left>";
-    "<C-w>" = "<Plug>VimwikiIndex";
   };
 
   maps.silent = {
@@ -81,6 +80,7 @@ let
 
   maps.leader = {
     "" = "<Nop>";
+    "<Space>" = "<Plug>VimwikiIndex";
     a  = ":ALEFix<CR>";
     d  = ":r !date -I<CR>";
     f  = ":FZF<CR>";
