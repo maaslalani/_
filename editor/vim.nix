@@ -79,21 +79,23 @@ let
   };
 
   maps.leader = {
-    "" = "<Nop>";
     "<Space>" = "<Plug>VimwikiIndex";
-    a  = ":ALEFix<CR>";
+
+    "" = "<Nop>";
+    a   = ":ALEFix<CR>";
     di  = "<Plug>VimwikiDiaryIndex";
     dn  = "<Plug>VimwikiMakeDiaryNote";
-    f  = ":FZF<CR>";
-    gb = ":Gblame<CR>";
-    gd = ":Gdiff<CR>";
-    o  = ":silent !open <cWORD><CR>";
-    p  = "\"*p";
-    q  = ":q<CR>";
-    r  = ":Rg<CR>";
-    t  = ":tabnew<CR>";
-    w  = ":w<CR>";
-    y  = "\"*y";
+    dgl = "<Plug>VimwikiDiaryGenerateLinks";
+    f   = ":FZF<CR>";
+    gb  = ":Gblame<CR>";
+    gd  = ":Gdiff<CR>";
+    o   = ":silent !open <cWORD><CR>";
+    p   = "\"*p";
+    q   = ":q<CR>";
+    r   = ":Rg<CR>";
+    t   = ":tabnew<CR>";
+    w   = ":w<CR>";
+    y   = "\"*y";
   };
 
   maps.visual = {
