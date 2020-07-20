@@ -130,8 +130,6 @@ let
     TermOpen     = "* setlocal nonumber signcolumn=no";
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
-    BufWinLeave  = "*.md mkview";
-    BufWinEnter  = "*.md silent loadview";
   };
 
 in {
