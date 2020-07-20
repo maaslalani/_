@@ -82,7 +82,8 @@ let
     "" = "<Nop>";
     "<Space>" = "<Plug>VimwikiIndex";
     a  = ":ALEFix<CR>";
-    d  = ":r !date -I<CR>";
+    di  = "<Plug>VimwikiDiaryIndex";
+    dn  = "<Plug>VimwikiMakeDiaryNote";
     f  = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
