@@ -7,7 +7,7 @@ let
   mapConfig    = p: config (n: v: ("${p}${n} ${v}"));
   settingsConfig  = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig   = config (n: v: ("set ${if v then "" else "no"}${n}"));
-  variablesConfig = config (n: v: ("let ${n}='${toString v}'"));
+  variablesConfig = config (n: v: ("let ${n}=${toString v}"));
 
   colorscheme = "nord";
 
@@ -69,6 +69,7 @@ let
   maps.normal = {
     Q = ":q<CR>";
     S = ":%s//g<Left><Left>";
+    "<C-w>" = "<Plug>VimwikiIndex";
   };
 
   maps.silent = {
@@ -117,11 +118,12 @@ let
   };
 
   variables = {
-    loaded_netrw     = 0;
-    ale_sign_error   = "*";
-    ale_sign_warning = "~";
+    loaded_netrw     = "'0'";
+    ale_sign_error   = "'*'";
+    ale_sign_warning = "'~'";
 
-    SuperTabDefaultCompletionType = "<c-n>";
+    SuperTabDefaultCompletionType = "'<c-n>'";
+    vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md'}]";
   };
 
   autocmd = {
