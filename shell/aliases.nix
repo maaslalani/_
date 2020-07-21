@@ -45,16 +45,6 @@ rec {
 
   md = "mkdir";
 
-  n = "ntbk";
-  ng = "ntbk grep";
-  nls = "ntbk list";
-  no = "ntbk open";
-  ns = "ntbk search";
-
-  ra = "reminders add";
-  rc = "reminders complete";
-  rl = "reminders list";
-
   sz = "source ~/.config/zsh/.zshrc";
 
   ta = "tmux attach -t";
@@ -63,10 +53,6 @@ rec {
   tls = "tmux list-sessions";
   tn = "tmux new-session -s";
   tns = "tmux new-session -A -s `basename $(pwd)`";
-
-  todo = "ntbk open tasks";
-
-  tree = "command tree -I 'Godep*' -I 'node_modules*'";
 
   v = "nvim .";
   vi = "nvim";
