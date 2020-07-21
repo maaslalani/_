@@ -11,6 +11,9 @@ in {
   initExtraBeforeCompInit = ''
     fpath+="$HOME/.nix-profile/share/zsh/site-functions"
     fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
+
+    zstyle ':completion:*' menu select
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
   '';
   initExtra = ''
     setopt prompt_subst
@@ -19,8 +22,6 @@ in {
     bindkey '^N' down-history
     bindkey '^?' backward-delete-char
     bindkey '^[[Z' reverse-menu-complete
-
-    zstyle ':completion:*' menu select
 
     dev() {
       source /opt/dev/dev.sh
