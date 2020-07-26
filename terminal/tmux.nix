@@ -1,6 +1,7 @@
 with builtins;
 let
-  attrsToConfig = p: a: concatStringsSep "\n" ((a: attrValues (mapAttrs (n: v: "set -g ${p}${n} ${v}") a)) a);
+  config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
+  attrsToConfig = p: config (n: v: ("set -g ${p}${n} ${v}"));
 
   settings = {
     default-terminal = "'xterm-256color'";
@@ -60,5 +61,6 @@ in {
     bind ${splits.vertical} split-window -h -c "#{pane_current_path}"
     bind ${splits.horiztonal} split-window -c "#{pane_current_path}"
     bind c new-window -c "#{pane_current_path}"
+    bind = set-window-option synchronize-panes
   '';
 }
