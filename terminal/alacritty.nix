@@ -32,7 +32,7 @@
 
       normal.style  = "Regular";
       bold.style    = "Medium";
-      italic.style  = "Italic";
+      italic.style  = "Light";
 
       size = 15;
       use_thin_strokes = true;
