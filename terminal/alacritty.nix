@@ -4,7 +4,7 @@
     window = {
       dimensions = {
         columns = 0;
-        lines   = 0;
+        lines = 0;
       };
 
       padding = {

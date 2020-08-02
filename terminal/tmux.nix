@@ -2,6 +2,7 @@ with builtins;
 let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   attrsToConfig = p: config (n: v: ("set -g ${p}${n} ${v}"));
+  bindToConfig = config (n: v: ("bind ${n} ${v}"));
 
   settings = {
     default-terminal = "'xterm-256color'";
@@ -40,6 +41,13 @@ let
     horiztonal = "-";
   };
 
+  bind = {
+    "|" = "split-window -h -c \"#{pane_current_path}\"";
+    "-" = "split-window -c \"#{pane_current_path}\"";
+    "c" = "new-window -c \"#{pane_current_path}\"";
+    "=" = "set-window-option synchronize-panes";
+  };
+
 in {
   baseIndex = 1;
   customPaneNavigationAndResize = true;
@@ -58,9 +66,6 @@ in {
     ${attrsToConfig "status-" status}
     ${attrsToConfig "mode-" mode}
 
-    bind ${splits.vertical} split-window -h -c "#{pane_current_path}"
-    bind ${splits.horiztonal} split-window -c "#{pane_current_path}"
-    bind c new-window -c "#{pane_current_path}"
-    bind = set-window-option synchronize-panes
+    ${bindToConfig bind}
   '';
 }
