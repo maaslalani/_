@@ -36,15 +36,12 @@ let
 
   mode.style = "fg=cyan,bg=colour0";
 
-  splits = {
-    vertical = "|";
-    horiztonal = "-";
-  };
+  currentPath = "-c \"#{pane_current_path}\"";
 
-  bind = {
-    "|" = "split-window -h -c \"#{pane_current_path}\"";
-    "-" = "split-window -c \"#{pane_current_path}\"";
-    "c" = "new-window -c \"#{pane_current_path}\"";
+  binds = {
+    "|" = "split-window -h ${currentPath}";
+    "-" = "split-window ${currentPath}";
+    "c" = "new-window ${currentPath}";
     "=" = "set-window-option synchronize-panes";
   };
 
@@ -65,7 +62,6 @@ in {
     ${attrsToConfig "message-" message}
     ${attrsToConfig "status-" status}
     ${attrsToConfig "mode-" mode}
-
-    ${bindToConfig bind}
+    ${bindToConfig binds}
   '';
 }
