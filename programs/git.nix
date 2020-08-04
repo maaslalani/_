@@ -10,4 +10,8 @@
   };
   userEmail = "maaslalani1@gmail.com";
   userName = "Maas Lalani";
+  aliases = {
+    hist = "log --graph --pretty='''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset''' --all";
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d";
+  };
 }
