@@ -21,7 +21,6 @@
     scrolling = {
       history = 10000;
       multiplier = 3;
-      auto_scroll = false;
     };
 
     font = {
@@ -36,8 +35,6 @@
       size = 15;
       use_thin_strokes = true;
     };
-
-    tabspaces = 4;
 
     draw_bold_text_with_bright_colors = false;
 
