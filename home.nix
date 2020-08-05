@@ -19,6 +19,7 @@
     pkgs.jq
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.nodejs
     pkgs.pass
     pkgs.ripgrep
     pkgs.rustup
