@@ -23,10 +23,7 @@ in {
     bindkey '^?' backward-delete-char
     bindkey '^[[Z' reverse-menu-complete
 
-    dev() {
-      source /opt/dev/dev.sh
-      dev $@
-    }
+    source /opt/dev/dev.sh
 
     ${prompt.precmd}
   '';
