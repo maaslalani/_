@@ -8,7 +8,7 @@
     protocol.version = "2";
     pull.rebase = true;
   };
-  userEmail = "maaslalani1@gmail.com";
+  userEmail = "maaslalani0@gmail.com";
   userName = "Maas Lalani";
   aliases = {
     hist = "log --graph --pretty='''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset''' --all";
