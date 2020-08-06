@@ -6,6 +6,7 @@ rec {
 
   dstroy = "fd -H .DS_Store | xargs sudo rm";
 
+  g = "git";
   ga = "git add";
   gb = "git branch";
   gc = "git commit";
