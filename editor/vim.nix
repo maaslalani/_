@@ -67,7 +67,6 @@ let
   leaderKey = "<Space>";
 
   maps.normal = {
-    "<BS>" = "<Plug>(dirvish_up)";
     Q = ":q<CR>";
     S = ":%s//g<Left><Left>";
   };
