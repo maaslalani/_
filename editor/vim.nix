@@ -84,9 +84,6 @@ let
 
     "" = "<Nop>";
     a = ":ALEFix<CR>";
-    di = "<Plug>VimwikiDiaryIndex";
-    dn = "<Plug>VimwikiMakeDiaryNote";
-    dgl = "<Plug>VimwikiDiaryGenerateLinks";
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
