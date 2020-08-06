@@ -17,7 +17,6 @@ rec {
   gcpa = "${gcp} --abort";
   gd = "git diff";
   gdm = "${gd} master";
-  gh = "git hist";
   gl = "git pull";
   glo = "git log";
   gm = "git merge";
