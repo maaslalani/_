@@ -25,7 +25,6 @@
     pkgs.rustup
     pkgs.sops
     pkgs.yarn
-    pkgs.z-lua
   ];
 
   programs.alacritty = import ./terminal/alacritty.nix;
@@ -34,6 +33,7 @@
   programs.fzf = import ./programs/fzf.nix;
   programs.git = import ./programs/git.nix;
   programs.taskwarrior = import ./programs/task.nix;
+  programs.z-lua = import ./programs/z.nix;
 
   programs.neovim = import ./editor/vim.nix { pkgs = pkgs; };
   programs.tmux = import ./terminal/tmux.nix;
