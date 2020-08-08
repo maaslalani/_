@@ -25,6 +25,7 @@
     pkgs.rustup
     pkgs.sops
     pkgs.yarn
+    pkgs.z-lua
   ];
 
   programs.alacritty = import ./terminal/alacritty.nix;
