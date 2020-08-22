@@ -122,8 +122,7 @@ let
     ale_sign_warning = "'~'";
 
     SuperTabDefaultCompletionType = "'<c-n>'";
-    vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md'}]";
-    fzf_layout = "{ 'window': { 'width': 0.6, 'height': 0.6 } }";
+    vimwiki_list = "[{'path': '~/wiki/'}]";
   };
 
   autocmd = {
