@@ -60,5 +60,5 @@ rec {
   vim = "nvim";
 
   weather = "curl http://v2.wttr.in";
-  wiki = "vim ~/wiki/index.md";
+  wiki = "vim ~/wiki/index.wiki";
 }
