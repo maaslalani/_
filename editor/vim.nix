@@ -80,8 +80,6 @@ let
   };
 
   maps.leader = {
-    "<Space>" = "<Plug>VimwikiIndex";
-
     "" = "<Nop>";
     a = ":ALEFix<CR>";
     f = ":FZF<CR>";
@@ -125,6 +123,7 @@ let
 
     SuperTabDefaultCompletionType = "'<c-n>'";
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md'}]";
+    fzf_layout = "{ 'window': { 'width': 0.6, 'height': 0.6 } }";
   };
 
   autocmd = {
