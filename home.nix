@@ -25,6 +25,7 @@
     pkgs.rustup
     pkgs.sops
     pkgs.yarn
+    pkgs.rename
   ];
 
   programs.alacritty = import ./terminal/alacritty.nix;
