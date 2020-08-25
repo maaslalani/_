@@ -4,7 +4,7 @@ rec {
   "....." = "cd ../../../..";
   _ = "cd ~/_";
 
-  dstroy = "fd -H .DS_Store | xargs sudo rm";
+  dstroy = "find . -name '.DS_Store' -type f -delete";
 
   g = "git";
   ga = "git add";
