@@ -21,11 +21,12 @@
     pkgs.kubectx
     pkgs.nodejs
     pkgs.pass
+    pkgs.rename
     pkgs.ripgrep
     pkgs.rustup
     pkgs.sops
+    pkgs.vault
     pkgs.yarn
-    pkgs.rename
   ];
 
   programs.alacritty = import ./terminal/alacritty.nix;
