@@ -55,9 +55,9 @@ rec {
   tn = "tmux new-session -s";
   tns = "tmux new-session -A -s `basename $(pwd)`";
 
-  v = "nvim .";
-  vi = "nvim";
-  vim = "nvim";
+  vi = "/usr/local/bin/nvim/bin/nvim -u /nix/store/jzxdzshcff4frg1gjlxpck1a9f5abya8-vimrc";
+  v = "${vi} .";
+  vim = "${vi}";
 
   weather = "curl http://v2.wttr.in";
   wiki = "vim ~/wiki/index.wiki";
