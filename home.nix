@@ -12,7 +12,6 @@
     pkgs.git
     pkgs.glow
     pkgs.gnupg
-    pkgs.go
     pkgs.golint
     pkgs.google-cloud-sdk
     pkgs.htop
