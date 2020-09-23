@@ -51,6 +51,7 @@ rec {
   t = "task";
   ta = "task add";
   td = "task done";
+  tm = "task mod";
 
   tkss = "tmux kill-session -t";
   tksv = "tmux kill-server";
