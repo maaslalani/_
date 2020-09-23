@@ -48,14 +48,11 @@ rec {
 
   sz = "source ~/.config/zsh/.zshrc";
 
-  t = "task";
-  ta = "task add";
-  td = "task done";
-  tm = "task mod";
-
+  ta = "tmux attach -t";
   tkss = "tmux kill-session -t";
   tksv = "tmux kill-server";
   tls = "tmux list-sessions";
+  tn = "tmux new-session -s";
   tns = "tmux new-session -A -s `basename $(pwd)`";
 
   vi = "/usr/local/bin/nvim/bin/nvim -u /nix/store/jzxdzshcff4frg1gjlxpck1a9f5abya8-vimrc";
