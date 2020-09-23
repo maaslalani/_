@@ -18,10 +18,17 @@ in with builtins; rec {
     "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
     "${GOPATH}/bin"
+    "$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin"
+    "$GOBO/../spec/$ISE_PLATFORM/bin"
     "/usr/local/bin"
+    "/opt/local/bin"
     "$PATH"
   ];
   PROMPT = prompt.ps1;
   PASSWORD_STORE_DIR = "$HOME/.config/pass";
   TERM = "xterm-256color";
+  MATHMODELS = "/Users/maas/mathmodels";
+  ISE_PLATFORM = "macosx-x86-64";
+  ISE_EIFFEL = "/Applications/MacPorts/Eiffel_19.05";
+  GOBO = "$ISE_EIFFEL/library/gobo/svn";
 }
