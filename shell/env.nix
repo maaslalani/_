@@ -27,7 +27,7 @@ in with builtins; rec {
   PROMPT = prompt.ps1;
   PASSWORD_STORE_DIR = "$HOME/.config/pass";
   TERM = "xterm-256color";
-  MATHMODELS = "/Users/maas/mathmodels";
+  MATHMODELS = "/Users/maas/Documents/School/EECS3311/mathmodels";
   ISE_PLATFORM = "macosx-x86-64";
   ISE_EIFFEL = "/Applications/MacPorts/Eiffel_19.05";
   GOBO = "$ISE_EIFFEL/library/gobo/svn";
