@@ -49,7 +49,7 @@ let
     cmdheight = 1;
     concealcursor = "\"\"";
     encoding = "utf-8";
-    laststatus = 0;
+    laststatus = 2;
     numberwidth = 1;
     printfont = "PragmataPro:h12";
     shiftwidth = 2;
@@ -65,6 +65,8 @@ let
   };
 
   leaderKey = "<Space>";
+  navigationKey = "<C-a>";
+  terminalEscapeKey = "<C-\\><C-n>";
 
   maps.normal = {
     "<BS>" = "<Plug>(dirvish_up)";
@@ -77,6 +79,12 @@ let
     gi = "<Plug>(coc-implementation)";
     gr = "<Plug>(coc-references)";
     gy = "<Plug>(coc-type-definition)";
+    "${navigationKey}<Bar>" = ":vsp+term<CR>i";
+    "${navigationKey}-" = ":sp+term<CR>i";
+    "${navigationKey}h" = "<ESC><C-w>h";
+    "${navigationKey}j" = "<ESC><C-w>j";
+    "${navigationKey}k" = "<ESC><C-w>k";
+    "${navigationKey}l" = "<ESC><C-w>l";
   };
 
   maps.leader = {
@@ -92,8 +100,6 @@ let
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
-    v = ":vsp+term<CR>i";
-    s = ":sp+term<CR>i";
   };
 
   maps.visual = {
@@ -106,8 +112,13 @@ let
   };
 
   maps.terminal = {
-    "<ESC>" = "<C-\\><C-n>";
-    "${leaderKey}q" = "exit<CR><CR>";
+    "${leaderKey}q" = "exit<CR>${terminalEscapeKey}:q<CR>";
+    "${navigationKey}<Bar>" = "${terminalEscapeKey}:vsp+term<CR>";
+    "${navigationKey}-" = "${terminalEscapeKey}:sp+term<CR>";
+    "${navigationKey}h" = "${terminalEscapeKey}<C-w>h";
+    "${navigationKey}j" = "${terminalEscapeKey}<C-w>j";
+    "${navigationKey}k" = "${terminalEscapeKey}<C-w>k";
+    "${navigationKey}l" = "${terminalEscapeKey}<C-w>l";
   };
 
   commands = {
@@ -133,7 +144,7 @@ let
   };
 
   autocmd = {
-    TermOpen     = "* setlocal nonumber signcolumn=no";
+    TermOpen = "* setlocal nonumber signcolumn=no";
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
   };

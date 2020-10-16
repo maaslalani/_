@@ -40,3 +40,4 @@
   programs.tmux = import ./terminal/tmux.nix;
   programs.zsh = import ./shell/zsh.nix { pkgs = pkgs; };
 }
+
