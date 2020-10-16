@@ -49,7 +49,7 @@ let
     cmdheight = 1;
     concealcursor = "\"\"";
     encoding = "utf-8";
-    laststatus = 2;
+    laststatus = 0;
     numberwidth = 1;
     printfont = "PragmataPro:h12";
     shiftwidth = 2;
@@ -112,7 +112,7 @@ let
   };
 
   maps.terminal = {
-    "${leaderKey}q" = "exit<CR>${terminalEscapeKey}:q<CR>";
+    "${navigationKey}x" = "exit<CR>${terminalEscapeKey}:q<CR>";
     "${navigationKey}<Bar>" = "${terminalEscapeKey}:vsp+term<CR>";
     "${navigationKey}-" = "${terminalEscapeKey}:sp+term<CR>";
     "${navigationKey}h" = "${terminalEscapeKey}<C-w>h";
