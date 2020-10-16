@@ -92,6 +92,8 @@ let
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
+    v = ":vsp+term<CR>i";
+    s = ":sp+term<CR>i";
   };
 
   maps.visual = {
@@ -100,7 +102,12 @@ let
   };
 
   maps.insert = {
-    "<C-l>" = "<Plug>(coc-snippets-expand)";
+
+  };
+
+  maps.terminal = {
+    "<ESC>" = "<C-\\><C-n>";
+    "${leaderKey}q" = "exit<CR><CR>";
   };
 
   commands = {
@@ -148,6 +155,7 @@ in {
     ${mapConfig "nnoremap <silent> " maps.silent}
     ${mapConfig "vmap " maps.visual}
     ${mapConfig "imap " maps.insert}
+    ${mapConfig "tmap " maps.terminal}
   '';
   vimAlias = true;
   viAlias = true;

@@ -55,7 +55,7 @@ rec {
   tn = "tmux new-session -s";
   tns = "tmux new-session -A -s `basename $(pwd)`";
 
-  vi = "/usr/local/bin/nvim/bin/nvim -u /nix/store/jzxdzshcff4frg1gjlxpck1a9f5abya8-vimrc";
+  vi = "nvim";
   v = "${vi} .";
   vim = "${vi}";
 
