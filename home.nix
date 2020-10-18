@@ -3,7 +3,6 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.abduco
     pkgs.coreutils
     pkgs.docker
     pkgs.errcheck
