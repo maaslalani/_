@@ -48,6 +48,8 @@ rec {
 
   sz = "source ~/.config/zsh/.zshrc";
 
+  ncg = "nix-collect-garbage";
+
   ta = "tmux attach -t";
   tkss = "tmux kill-session -t";
   tksv = "tmux kill-server";
