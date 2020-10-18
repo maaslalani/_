@@ -79,12 +79,6 @@ let
     gi = "<Plug>(coc-implementation)";
     gr = "<Plug>(coc-references)";
     gy = "<Plug>(coc-type-definition)";
-    "${navigationKey}<Bar>" = ":vsp+term<CR>i";
-    "${navigationKey}-" = ":sp+term<CR>i";
-    "${navigationKey}h" = "<ESC><C-w>h";
-    "${navigationKey}j" = "<ESC><C-w>j";
-    "${navigationKey}k" = "<ESC><C-w>k";
-    "${navigationKey}l" = "<ESC><C-w>l";
   };
 
   maps.leader = {
@@ -107,19 +101,7 @@ let
     s = ":sort<CR>";
   };
 
-  maps.insert = {
-
-  };
-
-  maps.terminal = {
-    "${navigationKey}x" = "exit<CR>${terminalEscapeKey}:q<CR>";
-    "${navigationKey}<Bar>" = "${terminalEscapeKey}:vsp+term<CR>";
-    "${navigationKey}-" = "${terminalEscapeKey}:sp+term<CR>";
-    "${navigationKey}h" = "${terminalEscapeKey}<C-w>h";
-    "${navigationKey}j" = "${terminalEscapeKey}<C-w>j";
-    "${navigationKey}k" = "${terminalEscapeKey}<C-w>k";
-    "${navigationKey}l" = "${terminalEscapeKey}<C-w>l";
-  };
+  maps.insert = {};
 
   commands = {
     W = "w";
@@ -138,6 +120,7 @@ let
     loaded_netrw = "'0'";
     ale_sign_error = "'*'";
     ale_sign_warning = "'~'";
+    ale_fixers = "{'*':['remove_trailing_lines','trim_whitespace'],'javascript':['eslint'],'go':['gofmt','goimports']}";
 
     SuperTabDefaultCompletionType = "'<c-n>'";
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
@@ -166,7 +149,6 @@ in {
     ${mapConfig "nnoremap <silent> " maps.silent}
     ${mapConfig "vmap " maps.visual}
     ${mapConfig "imap " maps.insert}
-    ${mapConfig "tmap " maps.terminal}
   '';
   vimAlias = true;
   viAlias = true;
