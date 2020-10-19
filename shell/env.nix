@@ -14,15 +14,22 @@ in with builtins; rec {
     "$HOME/.nix-defexpr/channels"
   ];
   GOPATH = "$HOME/.config/go";
+  GOBIN = "${GOPATH}/bin";
+  CARGO_BIN = "$HOME/.cargo/bin";
+  NIX_BIN = "$HOME/.nix-profile/bin";
   PATH = concatStringsSep ":" [
-    "$HOME/.nix-profile/bin"
-    "$HOME/.cargo/bin"
-    "${GOPATH}/bin"
+    "/nix/var/nix/gcroots/dev-profiles/user-extra-profile"
+    NIX_BIN
+    CARGO_BIN
+    GOBIN
+    "/usr/local/bin"
+    "/usr/bin"
+    "/bin"
+    "/opt/local/bin"
+    "/opt/dev/bin/user"
+    "/opt/dev/bin"
     "$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin"
     "$GOBO/../spec/$ISE_PLATFORM/bin"
-    "/usr/local/bin"
-    "/opt/local/bin"
-    "$PATH"
   ];
   PROMPT = prompt.ps1;
   PASSWORD_STORE_DIR = "$HOME/.config/pass";
