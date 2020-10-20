@@ -11,6 +11,7 @@ rec {
   gb = "git branch";
   gbc = "${gb} --show-current";
   gc = "git commit";
+  gca = "${gc} --amend";
   gco = "git checkout";
   gcom = "${gco} master";
   gcp = "git cherry-pick";
