@@ -18,6 +18,8 @@ with builtins; {
     pkgs.jq
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.lazydocker
+    pkgs.lazygit
     pkgs.nodejs
     pkgs.pass
     pkgs.rename
