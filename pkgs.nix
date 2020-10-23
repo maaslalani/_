@@ -28,6 +28,7 @@
   pkgs.yarn
 ] ++ [
   pkgs.gopls
+  pkgs.nodePackages.typescript
   pkgs.nodePackages.typescript-language-server
   pkgs.rnix-lsp
   pkgs.solargraph
