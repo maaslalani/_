@@ -138,6 +138,7 @@ let
 
 in {
   enable = true;
+  package = pkgs.neovim-nightly;
   extraConfig = ''
     colorscheme ${colorscheme}
 
@@ -166,11 +167,12 @@ in {
     fzf-vim
     gitgutter
     nord-vim
+    completion-nvim
+    nvim-lspconfig
     polyglot
     supertab
     tabular
     vim-dirvish
-    vim-go
     vim-signature
     vim-test
     vimwiki

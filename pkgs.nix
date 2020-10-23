@@ -5,6 +5,8 @@
   pkgs.errcheck
   pkgs.exa
   pkgs.fd
+  pkgs.go
+  pkgs.nodejs
   pkgs.ffmpeg
   pkgs.git
   pkgs.glow
@@ -14,7 +16,6 @@
   pkgs.htop
   pkgs.jq
   pkgs.kubectl
-  pkgs.kubectx
   pkgs.lazydocker
   pkgs.lazygit
   pkgs.nodejs
