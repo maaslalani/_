@@ -47,12 +47,14 @@ let
   settings = {
     backspace = "indent,eol,start";
     cmdheight = 1;
+    completeopt = "menuone,noinsert,noselect";
     concealcursor = "\"\"";
     encoding = "utf-8";
     laststatus = 0;
     numberwidth = 1;
     printfont = "PragmataPro:h12";
     shiftwidth = 2;
+    shortmess = "filnxtToOFc";
     signcolumn = "yes";
     softtabstop = 2;
     synmaxcol = 300;
@@ -98,7 +100,10 @@ let
     s = ":sort<CR>";
   };
 
-  maps.insert = {};
+  maps.insert = {
+    "<expr> <Tab>" = "pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"";
+    "<expr> <S-Tab>" = "pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"";
+  };
 
   commands = {
     W = "w";
@@ -113,15 +118,16 @@ let
   };
 
   variables = {
-    loaded_netrw = "'0'";
     SuperTabDefaultCompletionType = "'<c-n>'";
+    completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
+    loaded_netrw = "'0'";
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
 
   autocmd = {
-    TermOpen = "* setlocal nonumber signcolumn=no";
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
+    TermOpen = "* setlocal nonumber signcolumn=no";
   };
 
 in {
@@ -142,6 +148,16 @@ in {
     ${mapConfig "nnoremap <silent> " maps.silent}
     ${mapConfig "vmap " maps.visual}
     ${mapConfig "imap " maps.insert}
+
+    lua <<EOF
+    vim.cmd('packadd nvim-lspconfig')
+    vim.cmd('packadd completion-nvim')
+    require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
+    require'nvim_lsp'.gopls.setup{ on_attach=require'completion'.on_attach }
+    require'nvim_lsp'.rnix.setup{ on_attach=require'completion'.on_attach }
+    require'nvim_lsp'.terraformls.setup{ on_attach=require'completion'.on_attach }
+    require'nvim_lsp'.solargraph.setup{ on_attach=require'completion'.on_attach }
+    EOF
   '';
   vimAlias = true;
   viAlias = true;
@@ -156,7 +172,6 @@ in {
     completion-nvim
     nvim-lspconfig
     polyglot
-    supertab
     tabular
     vim-dirvish
     vim-signature

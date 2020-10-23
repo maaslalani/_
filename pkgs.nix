@@ -5,12 +5,11 @@
   pkgs.errcheck
   pkgs.exa
   pkgs.fd
-  pkgs.go
-  pkgs.nodejs
   pkgs.ffmpeg
   pkgs.git
   pkgs.glow
   pkgs.gnupg
+  pkgs.go
   pkgs.golint
   pkgs.google-cloud-sdk
   pkgs.htop
@@ -19,13 +18,18 @@
   pkgs.lazydocker
   pkgs.lazygit
   pkgs.nodejs
+  pkgs.nodejs
   pkgs.pass
   pkgs.rename
   pkgs.ripgrep
-  pkgs.rnix-lsp
   pkgs.rustup
   pkgs.sops
-  pkgs.terraform-lsp
   pkgs.vault
   pkgs.yarn
+] ++ [
+  pkgs.gopls
+  pkgs.nodePackages.typescript-language-server
+  pkgs.rnix-lsp
+  pkgs.solargraph
+  pkgs.terraform-lsp
 ]
