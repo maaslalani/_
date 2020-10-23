@@ -30,6 +30,7 @@
   pkgs.gopls
   pkgs.nodePackages.typescript
   pkgs.nodePackages.typescript-language-server
+  pkgs.rls
   pkgs.rnix-lsp
   pkgs.solargraph
   pkgs.terraform-lsp
