@@ -79,12 +79,14 @@ let
     gi = "<Plug>(coc-implementation)";
     gr = "<Plug>(coc-references)";
     gy = "<Plug>(coc-type-definition)";
+    gh = ":call CocActionAsync('doHover')<CR>";
   };
 
   maps.leader = {
     "" = "<Nop>";
     a = ":ALEFix<CR>";
     c = ":Commands<CR>";
+    cr = "<Plug>(coc-rename)";
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
