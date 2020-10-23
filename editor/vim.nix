@@ -75,18 +75,11 @@ let
   };
 
   maps.silent = {
-    gd = "<Plug>(coc-definition)";
-    gi = "<Plug>(coc-implementation)";
-    gr = "<Plug>(coc-references)";
-    gy = "<Plug>(coc-type-definition)";
-    gh = ":call CocActionAsync('doHover')<CR>";
   };
 
   maps.leader = {
     "" = "<Nop>";
-    a = ":ALEFix<CR>";
     c = ":Commands<CR>";
-    cr = "<Plug>(coc-rename)";
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
@@ -111,7 +104,6 @@ let
     W = "w";
     Q = "q";
     Wc = "!wc %";
-    Af = "ALEFix";
     Tf = "TestFile";
   };
 
@@ -122,10 +114,6 @@ let
 
   variables = {
     loaded_netrw = "'0'";
-    ale_sign_error = "'*'";
-    ale_sign_warning = "'~'";
-    ale_fixers = "{'*':['remove_trailing_lines','trim_whitespace'],'javascript':['eslint'],'go':['gofmt','goimports']}";
-
     SuperTabDefaultCompletionType = "'<c-n>'";
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
@@ -158,9 +146,7 @@ in {
   vimAlias = true;
   viAlias = true;
   plugins = with pkgs.vimPlugins; [
-    ale
     auto-pairs
-    coc-nvim
     commentary
     emmet-vim
     fugitive

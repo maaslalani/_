@@ -14,6 +14,4 @@
   programs.zsh = import ./shell/zsh.nix { inherit pkgs; };
 
   home.packages = import ./pkgs.nix { inherit pkgs; };
-
-  xdg.configFile."nvim/coc-settings.json".text = builtins.toJSON(import ./editor/completion.nix);
 }
