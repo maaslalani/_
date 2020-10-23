@@ -21,8 +21,10 @@
   pkgs.pass
   pkgs.rename
   pkgs.ripgrep
+  pkgs.rnix-lsp
   pkgs.rustup
   pkgs.sops
+  pkgs.terraform-lsp
   pkgs.vault
   pkgs.yarn
 ]
