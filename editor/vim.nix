@@ -2,12 +2,14 @@
 with builtins;
 let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
+  configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
+  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{ on_attach=require'completion'.on_attach }");
 
   colorscheme = "nord";
 
@@ -130,6 +132,14 @@ let
     TermOpen = "* setlocal nonumber signcolumn=no";
   };
 
+  languageServers = [
+    "gopls"
+    "rnix"
+    "solargraph"
+    "terraformls"
+    "tsserver"
+  ];
+
 in {
   enable = true;
   package = pkgs.neovim-nightly;
@@ -152,11 +162,7 @@ in {
     lua <<EOF
     vim.cmd('packadd nvim-lspconfig')
     vim.cmd('packadd completion-nvim')
-    require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
-    require'nvim_lsp'.gopls.setup{ on_attach=require'completion'.on_attach }
-    require'nvim_lsp'.rnix.setup{ on_attach=require'completion'.on_attach }
-    require'nvim_lsp'.terraformls.setup{ on_attach=require'completion'.on_attach }
-    require'nvim_lsp'.solargraph.setup{ on_attach=require'completion'.on_attach }
+    ${lspConfig languageServers}
     EOF
   '';
   vimAlias = true;
