@@ -1,6 +1,5 @@
 { pkgs }:
-with builtins;
-let
+with builtins; let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   configArray = f: a: concatStringsSep "\n" (map f a);
 
@@ -9,7 +8,7 @@ let
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
-  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=require'completion'.on_attach}");
+  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach_lsp}");
 
   colorscheme = "nord";
 
@@ -127,9 +126,9 @@ let
     SuperTabDefaultCompletionType = "'<c-n>'";
     completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
     diagnostic_auto_popup_while_jump = "1";
-    diagnostic_enable_underline = "0";
+    diagnostic_enable_underline = "1";
     diagnostic_enable_virtual_text = "1";
-    diagnostic_insert_delay = "1";
+    diagnostic_insert_delay = "0";
     loaded_netrw = "'0'";
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
@@ -170,6 +169,13 @@ in {
     lua <<EOF
     vim.cmd('packadd nvim-lspconfig')
     vim.cmd('packadd completion-nvim')
+    vim.cmd('packadd diagnostic-nvim')
+
+    function on_attach_lsp(client)
+    require'completion'.on_attach(client)
+    require'diagnostic'.on_attach(client)
+    end
+
     ${lspConfig languageServers}
     EOF
   '';
@@ -179,6 +185,7 @@ in {
     auto-pairs
     commentary
     completion-nvim
+    diagnostic-nvim
     emmet-vim
     fugitive
     fzf-vim
