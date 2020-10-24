@@ -11,6 +11,8 @@ rec {
   gb = "git branch";
   gbc = "${gb} --show-current";
   gc = "git commit";
+  gcam = "${gc} -am";
+  gcm = "${gc} -m";
   gca = "${gc} --amend";
   gco = "git checkout";
   gcom = "${gco} master";
@@ -33,8 +35,8 @@ rec {
   gr = "git reset";
   grh = "${gr} --hard";
   grs = "git restore";
-  gs = "git status";
-  gss = "${gs} --short";
+  gs = "${gss} --short";
+  gss = "git status";
   gst = "git stash";
   gstp = "${gst} pop";
   gsw = "git switch";
