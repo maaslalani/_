@@ -142,7 +142,6 @@ let
 
   languageServers = [
     "gopls"
-    "rls"
     "rnix"
     "solargraph"
     "terraformls"

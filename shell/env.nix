@@ -30,6 +30,7 @@ in with builtins; rec {
     "/opt/dev/bin"
     "$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin"
     "$GOBO/../spec/$ISE_PLATFORM/bin"
+    "$PATH"
   ];
   PROMPT = prompt.ps1;
   PASSWORD_STORE_DIR = "$HOME/.config/pass";
