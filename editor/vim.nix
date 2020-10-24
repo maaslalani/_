@@ -4,11 +4,11 @@ with builtins; let
   configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
+  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach}");
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
-  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach}");
 
   colorscheme = "nord";
 
@@ -81,7 +81,7 @@ with builtins; let
     gd = "<cmd>lua vim.lsp.buf.declaration()<CR>";
     gD = "<cmd>lua vim.lsp.buf.definition()<CR>";
     gr = "<cmd>lua vim.lsp.buf.references()<CR>";
-    K = "<cmd>lua vim.lsp.buf.hover()<CR>";
+    gh = "<cmd>lua vim.lsp.buf.hover()<CR>";
   };
 
   maps.leader = {
