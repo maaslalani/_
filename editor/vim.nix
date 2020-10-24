@@ -186,7 +186,6 @@ in {
     commentary
     completion-nvim
     diagnostic-nvim
-    emmet-vim
     fugitive
     fzf-vim
     gitgutter

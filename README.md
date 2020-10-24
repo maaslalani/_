@@ -11,7 +11,7 @@ This repository contains my dotfiles which are managed through [Nix](https://nix
 * Operating System: [darwin](./darwin.nix)
 
 ## Packages
-All the packages I use are listed in [home.nix](./home.nix) inside `home.packages`.
+All the packages I have installed are listed in [pkgs.nix](./pkgs.nix).
 
 My favourites include:
 * [bat](https://github.com/sharkdp/bat)
@@ -23,14 +23,10 @@ My favourites include:
 ## Plugins
 ### Neovim
 ![Vim Setup](../assets/vim.png?raw=true)
-* [ale](https://github.com/dense-analysis/ale)
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs)
-* [coc-nvim](https://github.com/neoclide/coc.nvim)
 * [commentary](https://github.com/tpope/vim-commentary)
 * [fugitive](https://github.com/tpope/vim-fugitive)
 * [fzf-vim](https://github.com/junegunn/fzf.vim)
 * [nord-vim](https://github.com/arcticicestudio/nord-vim)
 * [polyglot](https://github.com/sheerun/vim-polyglot)
-* [supertab](https://github.com/ervandew/supertab)
 * [vim-dirvish](https://github.com/justinmk/vim-dirvish)
-* [vim-go](https://github.com/fatih/vim-go)
