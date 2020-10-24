@@ -5,7 +5,7 @@
   programs.bat = import ./programs/bat.nix;
   programs.fzf = import ./programs/fzf.nix;
   programs.git = import ./programs/git.nix;
-  programs.home-manager = import ./programs/home.nix;
+  programs.home-manager = import ./programs/manager.nix;
   programs.neovim = import ./editor/vim.nix { inherit pkgs; };
   programs.taskwarrior = import ./programs/task.nix;
   programs.tmux = import ./terminal/tmux.nix;
