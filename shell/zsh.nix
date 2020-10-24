@@ -1,8 +1,5 @@
 { pkgs, ... }:
-with builtins;
-let
-  prompt = import ./prompt.nix;
-in {
+with builtins; {
   autocd = true;
   dotDir = ".config/zsh";
   enable = true;
@@ -25,7 +22,7 @@ in {
 
     source /opt/dev/dev.sh
 
-    ${prompt.precmd}
+    ${(import ./prompt.nix).precmd}
   '';
   sessionVariables = import ./env.nix;
   plugins = [
