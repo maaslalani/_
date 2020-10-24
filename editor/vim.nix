@@ -8,7 +8,7 @@ with builtins; let
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
-  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach_lsp}");
+  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach}");
 
   colorscheme = "nord";
 
@@ -171,7 +171,7 @@ in {
     vim.cmd('packadd completion-nvim')
     vim.cmd('packadd diagnostic-nvim')
 
-    function on_attach_lsp(client)
+    function on_attach(client)
     require'completion'.on_attach(client)
     require'diagnostic'.on_attach(client)
     end
