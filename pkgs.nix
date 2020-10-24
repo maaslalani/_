@@ -15,12 +15,8 @@
   pkgs.htop
   pkgs.jq
   pkgs.kubectl
-  pkgs.lazydocker
-  pkgs.lazygit
-  pkgs.nodejs
   pkgs.nodejs
   pkgs.pass
-  pkgs.rename
   pkgs.ripgrep
   pkgs.rustup
   pkgs.sops
