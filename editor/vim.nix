@@ -128,10 +128,10 @@ with builtins; let
     UltiSnipsJumpBackwardTrigger = "'<c-h>'";
     UltiSnipsJumpForwardTrigger = "'<c-l>'";
     completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
-    diagnostic_auto_popup_while_jump = "'1'";
-    diagnostic_enable_underline = "'1'";
-    diagnostic_enable_virtual_text = "'1'";
-    diagnostic_insert_delay = "'0'";
+    diagnostic_auto_popup_while_jump = 1;
+    diagnostic_enable_underline = 1;
+    diagnostic_enable_virtual_text = 1;
+    diagnostic_insert_delay = 0;
     loaded_netrw = "'0'";
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
