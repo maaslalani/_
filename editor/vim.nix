@@ -6,6 +6,7 @@ with builtins; let
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
   lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach}");
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
+  packsConfig = configArray (v: "packadd ${v}");
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
@@ -137,6 +138,7 @@ with builtins; let
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
     TermOpen = "* setlocal nonumber signcolumn=no";
+    BufWritePre = "*.go lua goimports()";
   };
 
   languageServers = [
@@ -145,6 +147,12 @@ with builtins; let
     "solargraph"
     "terraformls"
     "tsserver"
+  ];
+
+  packs = [
+    "nvim-lspconfig"
+    "completion-nvim"
+    "diagnostic-nvim"
   ];
 
 in {
@@ -157,6 +165,7 @@ in {
     ${settingsConfig settings}
     ${togglesConfig toggles}
     ${variablesConfig variables}
+    ${packsConfig packs}
 
     ${mapConfig ":command " commands}
     ${mapConfig "filetype " filetype}
@@ -167,15 +176,7 @@ in {
     ${mapConfig "imap " maps.insert}
 
     lua <<EOF
-    vim.cmd('packadd nvim-lspconfig')
-    vim.cmd('packadd completion-nvim')
-    vim.cmd('packadd diagnostic-nvim')
-
-    function on_attach(client)
-    require'completion'.on_attach(client)
-    require'diagnostic'.on_attach(client)
-    end
-
+    ${readFile ./config.lua}
     ${lspConfig languageServers}
     EOF
   '';
