@@ -124,9 +124,6 @@ with builtins; let
   };
 
   variables = {
-    UltiSnipsExpandTrigger = "'<c-y>'";
-    UltiSnipsJumpBackwardTrigger = "'<c-h>'";
-    UltiSnipsJumpForwardTrigger = "'<c-l>'";
     completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
     diagnostic_auto_popup_while_jump = 1;
     diagnostic_enable_underline = 1;
@@ -195,10 +192,8 @@ in {
     nord-vim
     nvim-lspconfig
     polyglot
-    ultisnips
     vim-dirvish
     vim-signature
-    vim-snippets
     vimwiki
   ];
 }
