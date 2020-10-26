@@ -4,7 +4,7 @@ with builtins; let
   configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
-  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=require'completion'.on_attach}");
+  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach}");
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   packsConfig = configArray (v: "packadd ${v}");
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
@@ -125,6 +125,10 @@ with builtins; let
 
   variables = {
     completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
+    diagnostic_auto_popup_while_jump = 1;
+    diagnostic_enable_underline = 1;
+    diagnostic_enable_virtual_text = 1;
+    diagnostic_insert_delay = 0;
     loaded_netrw = 0;
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
@@ -147,6 +151,7 @@ with builtins; let
   packs = [
     "nvim-lspconfig"
     "completion-nvim"
+    "diagnostic-nvim"
   ];
 
 in {
@@ -180,6 +185,7 @@ in {
     auto-pairs
     commentary
     completion-nvim
+    diagnostic-nvim
     fugitive
     fzf-vim
     gitgutter

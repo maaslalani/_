@@ -1,3 +1,8 @@
+function on_attach(client)
+  require'completion'.on_attach(client)
+  require'diagnostic'.on_attach(client)
+end
+
 function goimports()
   local params = vim.lsp.util.make_range_params()
   params.context = { source = { organizeImports = true } }
