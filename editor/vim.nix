@@ -184,16 +184,17 @@ in {
   plugins = with pkgs.vimPlugins; [
     auto-pairs
     commentary
-    completion-nvim
-    diagnostic-nvim
     fugitive
     fzf-vim
     gitgutter
     nord-vim
-    nvim-lspconfig
     polyglot
     vim-dirvish
     vim-signature
     vimwiki
-  ];
+  ] ++ (with (import <nixpkgs-unstable>{}).vimPlugins; [
+    completion-nvim
+    diagnostic-nvim
+    nvim-lspconfig
+  ]);
 }
