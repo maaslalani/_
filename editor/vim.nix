@@ -96,6 +96,8 @@ with builtins; let
     q = ":q<CR>";
     r = ":Rg!<CR>";
     t = ":tabnew<CR>";
+    n = ":NextDiagnosticCycle<CR>";
+    N = ":PrevDiagnosticCycle<CR>";
     w = ":w<CR>";
     y = "\"*y";
     "/" = ":BLines!<CR>";
