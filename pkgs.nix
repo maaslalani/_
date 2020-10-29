@@ -28,5 +28,4 @@
   pkgs.nodePackages.typescript-language-server
   pkgs.rnix-lsp
   pkgs.solargraph
-  pkgs.terraform-lsp
 ]

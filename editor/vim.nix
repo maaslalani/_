@@ -146,7 +146,6 @@ with builtins; let
     "gopls"
     "rnix"
     "solargraph"
-    "terraformls"
     "tsserver"
   ];
 
