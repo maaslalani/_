@@ -193,9 +193,8 @@ in {
     vim-dirvish
     vim-signature
     vimwiki
-  ] ++ (with (import <nixpkgs-unstable>{}).vimPlugins; [
     completion-nvim
     diagnostic-nvim
     nvim-lspconfig
-  ]);
+  ];
 }
