@@ -68,5 +68,5 @@ rec {
   scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; vim $FILE +startinsert && pbcopy < $FILE; rm $FILE";
 
   weather = "curl http://v2.wttr.in";
-  wiki = "vim ~/wiki/index.wiki";
+  wiki = "cd ~/wiki && vim ~/wiki/index.wiki";
 }
