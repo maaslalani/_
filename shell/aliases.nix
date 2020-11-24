@@ -27,6 +27,7 @@ rec {
   gp = "git push";
   gpf = "${gp} --force-with-lease";
   gpsup = "${gp} --set-upstream origin `${gbc}`";
+  gpos = "${gp} origin +@:staging";
   grb = "git rebase";
   grba = "${grb} --abort";
   grbc = "${grb} --continue";
