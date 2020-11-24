@@ -1,7 +1,14 @@
 function on_attach(client)
   require'completion'.on_attach(client)
-  require'diagnostic'.on_attach(client)
 end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+  }
+)
 
 function goimports()
   local params = vim.lsp.util.make_range_params()

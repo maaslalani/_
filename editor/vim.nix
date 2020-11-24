@@ -96,8 +96,8 @@ with builtins; let
     q = ":q<CR>";
     r = ":Rg!<CR>";
     t = ":tabnew<CR>";
-    n = ":NextDiagnosticCycle<CR>";
-    N = ":PrevDiagnosticCycle<CR>";
+    n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
+    N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     w = ":w<CR>";
     y = "\"*y";
     "/" = ":BLines!<CR>";
@@ -152,7 +152,6 @@ with builtins; let
   packs = [
     "nvim-lspconfig"
     "completion-nvim"
-    "diagnostic-nvim"
   ];
 
 in {
@@ -194,7 +193,6 @@ in {
     vim-signature
     vimwiki
     completion-nvim
-    diagnostic-nvim
     nvim-lspconfig
   ];
 }
