@@ -54,6 +54,7 @@ with builtins; let
     encoding = "utf-8";
     laststatus = 0;
     numberwidth = 1;
+    omnifunc = "v:lua.vim.lsp.omnifunc";
     printfont = "PragmataPro:h12";
     shiftwidth = 2;
     shortmess = "filnxtToOFc";
@@ -80,6 +81,14 @@ with builtins; let
 
   maps.silent = {
     gh = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
+    gD = "<cmd>lua vim.lsp.buf.definition()<CR>";
+    K = "<cmd>lua vim.lsp.buf.hover()<CR>";
+    gI = "<cmd>lua vim.lsp.buf.implementation()<CR>";
+    gt = "<cmd>lua vim.lsp.buf.type_definition()<CR>";
+    gr = "<cmd>lua vim.lsp.buf.references()<CR>";
+    g0 = "<cmd>lua vim.lsp.buf.document_symbol()<CR>";
+    gW = "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>";
+    gd = "<cmd>lua vim.lsp.buf.declaration()<CR>";
   };
 
   maps.leader = {
