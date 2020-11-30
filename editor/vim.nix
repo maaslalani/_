@@ -4,7 +4,7 @@ with builtins; let
   configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
-  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=on_attach}");
+  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=require'completion'.on_attach}");
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   packsConfig = configArray (v: "packadd ${v}");
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
