@@ -79,10 +79,7 @@ with builtins; let
   };
 
   maps.silent = {
-    gd = "<cmd>lua vim.lsp.buf.declaration()<CR>";
-    gD = "<cmd>lua vim.lsp.buf.definition()<CR>";
-    gr = "<cmd>lua vim.lsp.buf.references()<CR>";
-    gh = "<cmd>lua vim.lsp.buf.hover()<CR>";
+    gh = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
   };
 
   maps.leader = {
