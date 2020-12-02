@@ -20,6 +20,7 @@
   pkgs.ripgrep
   pkgs.rustup
   pkgs.sops
+  pkgs.tree
   pkgs.vault
   pkgs.yarn
 ] ++ [
