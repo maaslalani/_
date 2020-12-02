@@ -93,20 +93,21 @@ with builtins; let
 
   maps.leader = {
     "" = "<Nop>";
+    "/" = ":BLines!<CR>";
+    N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     c = ":Commands<CR>";
+    e = ":Dirvish<CR>";
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
+    n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
     o = ":silent !open <cWORD><CR>";
     p = "\"*p";
     q = ":q<CR>";
     r = ":Rg!<CR>";
     t = ":tabnew<CR>";
-    n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
-    N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     w = ":w<CR>";
     y = "\"*y";
-    "/" = ":BLines!<CR>";
   };
 
   maps.visual = {
@@ -115,20 +116,21 @@ with builtins; let
   };
 
   maps.insert = {
-    "<expr> <Tab>" = "pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"";
     "<expr> <S-Tab>" = "pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"";
+    "<expr> <Tab>" = "pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"";
   };
 
   commands = {
-    W = "w";
+    E = "Dirvish";
     Q = "q";
-    Wc = "!wc %";
     Tf = "TestFile";
+    W = "w";
+    Wc = "!wc %";
   };
 
   filetype = {
-    plugin = "on";
     indent = "on";
+    plugin = "on";
   };
 
   variables = {
@@ -155,8 +157,8 @@ with builtins; let
   ];
 
   packs = [
-    "nvim-lspconfig"
     "completion-nvim"
+    "nvim-lspconfig"
   ];
 
 in {
