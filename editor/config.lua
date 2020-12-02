@@ -17,13 +17,20 @@ lsp.gopls.setup {
     },
   },
 }
-lsp.bashls.setup { on_attach = completion.on_attach }
-lsp.dockerls.setup { on_attach = completion.on_attach }
-lsp.omnisharp.setup { on_attach = completion.on_attach }
-lsp.rnix.setup { on_attach = completion.on_attach }
-lsp.solargraph.setup { on_attach = completion.on_attach }
-lsp.sumneko_lua.setup { on_attach = completion.on_attach }
-lsp.tsserver.setup { on_attach = completion.on_attach }
+
+local servers = {
+  'bashls',
+  'dockerls',
+  'omnisharp',
+  'rnix',
+  'solargraph',
+  'sumneko_lua',
+  'tsserver',
+}
+
+for _, server in pairs(servers) do
+  lsp[server].setup { on_attach = completion.on_attach }
+end
 
 function Goimports(timeoutms)
   local context = { source = { organizeImports = true } }

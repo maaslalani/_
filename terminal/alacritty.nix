@@ -1,6 +1,9 @@
 {
   enable = true;
   settings = {
+
+
+
     window = {
       dimensions = {
         columns = 0;
@@ -25,12 +28,12 @@
 
     font = {
       normal.family = "Hack";
-      bold.family   = "Hack";
+      bold.family = "Hack";
       italic.family = "Hack";
 
-      normal.style  = "Regular";
-      bold.style    = "Medium";
-      italic.style  = "Italic";
+      normal.style = "Regular";
+      bold.style = "Medium";
+      italic.style = "Italic";
 
       size = 15.5;
     };
@@ -41,23 +44,23 @@
       primary.background = "0x2E3440";
       primary.foreground = "0xD8DEE9";
 
-      normal.black   = "0x3B4252";
-      normal.red     = "0xBF616A";
-      normal.green   = "0xA3BE8C";
-      normal.yellow  = "0xEBCB8B";
-      normal.blue    = "0x81A1C1";
+      normal.black = "0x3B4252";
+      normal.red = "0xBF616A";
+      normal.green = "0xA3BE8C";
+      normal.yellow = "0xEBCB8B";
+      normal.blue = "0x81A1C1";
       normal.magenta = "0xB48EAD";
-      normal.cyan    = "0x88C0D0";
-      normal.white   = "0xE5E9F0";
+      normal.cyan = "0x88C0D0";
+      normal.white = "0xE5E9F0";
 
-      bright.black   = "0x4C566A";
-      bright.red     = "0xBF616A";
-      bright.green   = "0xA3BE8C";
-      bright.yellow  = "0xEBCB8B";
-      bright.blue    = "0x81A1C1";
+      bright.black = "0x4C566A";
+      bright.red = "0xBF616A";
+      bright.green = "0xA3BE8C";
+      bright.yellow = "0xEBCB8B";
+      bright.blue = "0x81A1C1";
       bright.magenta = "0xB48EAD";
-      bright.cyan    = "0x8FBCBB";
-      bright.white   = "0xECEFF4";
+      bright.cyan = "0x8FBCBB";
+      bright.white = "0xECEFF4";
     };
 
     visual_bell = {
