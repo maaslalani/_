@@ -145,7 +145,6 @@ with builtins; let
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
     TermOpen = "* setlocal nonumber signcolumn=no";
-    BufWritePre = "*.go lua goimports()";
   };
 
   languageServers = [
@@ -181,7 +180,6 @@ in {
     ${mapConfig "imap " maps.insert}
 
     lua <<EOF
-    ${readFile ./config.lua}
     ${lspConfig languageServers}
     EOF
   '';
@@ -190,15 +188,15 @@ in {
   plugins = with pkgs.vimPlugins; [
     auto-pairs
     commentary
+    completion-nvim
     fugitive
     fzf-vim
     gitgutter
     nord-vim
+    nvim-lspconfig
     polyglot
     vim-dirvish
     vim-signature
     vimwiki
-    completion-nvim
-    nvim-lspconfig
   ];
 }
