@@ -4,9 +4,7 @@ with builtins; let
   configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
-  lspConfig = configArray (v: "require'nvim_lsp'.${v}.setup{on_attach=require'completion'.on_attach}");
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
-  packsConfig = configArray (v: "packadd ${v}");
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
@@ -147,19 +145,8 @@ with builtins; let
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
     TermOpen = "* setlocal nonumber signcolumn=no";
+    "BufWritePre *.go" = "lua goimports(1000)";
   };
-
-  languageServers = [
-    "gopls"
-    "rnix"
-    "solargraph"
-    "tsserver"
-  ];
-
-  packs = [
-    "completion-nvim"
-    "nvim-lspconfig"
-  ];
 
 in {
   enable = true;
@@ -171,7 +158,6 @@ in {
     ${settingsConfig settings}
     ${togglesConfig toggles}
     ${variablesConfig variables}
-    ${packsConfig packs}
 
     ${mapConfig ":command " commands}
     ${mapConfig "filetype " filetype}
@@ -182,7 +168,7 @@ in {
     ${mapConfig "imap " maps.insert}
 
     lua <<EOF
-    ${lspConfig languageServers}
+    ${builtins.readFile ./config.lua}
     EOF
   '';
   vimAlias = true;
