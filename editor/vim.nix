@@ -98,6 +98,7 @@ with builtins; let
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
+    l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
     o = ":silent !open <cWORD><CR>";
     p = "\"*p";
@@ -148,7 +149,8 @@ with builtins; let
     "BufWritePre *.go" = "lua goimports(1000)";
   };
 
-in {
+in
+{
   enable = true;
   package = pkgs.neovim-nightly;
   extraConfig = ''

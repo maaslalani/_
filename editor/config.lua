@@ -6,7 +6,7 @@ vim.cmd("packadd completion-nvim")
 vim.cmd("packadd nvim-lspconfig")
 
 lsp.gopls.setup {
-  on_attach = require'completion'.on_attach,
+  on_attach = completion.on_attach,
   cmd = {"gopls", "serve"},
   settings = {
     gopls = {
