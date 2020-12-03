@@ -146,7 +146,7 @@ with builtins; let
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
     TermOpen = "* setlocal nonumber signcolumn=no";
-    "BufWritePre *.go" = "lua goimports(1000)";
+    "BufWritePre *.go" = "lua Goimports(1000)";
   };
 
 in
