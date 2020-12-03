@@ -169,6 +169,15 @@ in
     ${mapConfig "vmap " maps.visual}
     ${mapConfig "imap " maps.insert}
 
+    hi LspDiagnosticsDefaultWarning ctermfg=3 guifg=#EBCB8B
+    hi LspDiagnosticsSignWarning ctermfg=3 guifg=#EBCB8B
+    hi LspDiagnosticsDefaultError ctermfg=1 guifg=#BF616A
+    hi LspDiagnosticsSignError ctermfg=1 guifg=#BF616A
+    hi LspDiagnosticsDefaultInformation ctermfg=6 guifg=#88C0D0
+    hi LspDiagnosticsSignInformation ctermfg=6 guifg=#88C0D0
+    hi LspDiagnosticsDefaultHint ctermfg=12 guifg=#5E81AC
+    hi LspDiagnosticsSignHint ctermfg=12 guifg=#5E81AC
+
     lua <<EOF
     ${builtins.readFile ./config.lua}
     EOF
