@@ -29,4 +29,3 @@ My favourites include:
 * [fzf-vim](https://github.com/junegunn/fzf.vim)
 * [nord-vim](https://github.com/arcticicestudio/nord-vim)
 * [polyglot](https://github.com/sheerun/vim-polyglot)
-* [vim-dirvish](https://github.com/justinmk/vim-dirvish)
