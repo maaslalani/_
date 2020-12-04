@@ -1,5 +1,6 @@
 { pkgs }:
 [
+  pkgs.cachix
   pkgs.coreutils
   pkgs.docker
   pkgs.errcheck
