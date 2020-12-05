@@ -4,6 +4,7 @@ with builtins; let
   configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
+  highlightsConfig = config (n: v: ("hi ${n} ${v}"));
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
@@ -139,6 +140,17 @@ with builtins; let
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
 
+  highlights = {
+    LspDiagnosticsDefaultWarning = "ctermfg=3 guifg=#EBCB8B";
+    LspDiagnosticsSignWarning = "ctermfg=3 guifg=#EBCB8B";
+    LspDiagnosticsDefaultError = "ctermfg=1 guifg=#BF616A";
+    LspDiagnosticsSignError = "ctermfg=1 guifg=#BF616A";
+    LspDiagnosticsDefaultInformation = "ctermfg=6 guifg=#88C0D0";
+    LspDiagnosticsSignInformation = "ctermfg=6 guifg=#88C0D0";
+    LspDiagnosticsDefaultHint = "ctermfg=12 guifg=#5E81AC";
+    LspDiagnosticsSignHint = "ctermfg=12 guifg=#5E81AC";
+  };
+
   autocmd = {
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
@@ -154,6 +166,7 @@ in
     colorscheme ${colorscheme}
 
     ${autocmdConfig autocmd}
+    ${highlightsConfig highlights}
     ${settingsConfig settings}
     ${togglesConfig toggles}
     ${variablesConfig variables}
@@ -165,15 +178,6 @@ in
     ${mapConfig "nnoremap <silent> " maps.silent}
     ${mapConfig "vmap " maps.visual}
     ${mapConfig "imap " maps.insert}
-
-    hi LspDiagnosticsDefaultWarning ctermfg=3 guifg=#EBCB8B
-    hi LspDiagnosticsSignWarning ctermfg=3 guifg=#EBCB8B
-    hi LspDiagnosticsDefaultError ctermfg=1 guifg=#BF616A
-    hi LspDiagnosticsSignError ctermfg=1 guifg=#BF616A
-    hi LspDiagnosticsDefaultInformation ctermfg=6 guifg=#88C0D0
-    hi LspDiagnosticsSignInformation ctermfg=6 guifg=#88C0D0
-    hi LspDiagnosticsDefaultHint ctermfg=12 guifg=#5E81AC
-    hi LspDiagnosticsSignHint ctermfg=12 guifg=#5E81AC
 
     lua <<EOF
     ${builtins.readFile ./config.lua}
