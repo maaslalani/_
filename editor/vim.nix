@@ -196,7 +196,7 @@ in
     gitgutter
     nord-vim
     nvim-lspconfig
-    nvim-treesitter
+    polyglot
     vim-signature
     vimwiki
   ];

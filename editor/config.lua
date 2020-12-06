@@ -1,7 +1,6 @@
 local vim = vim
 local lsp = require'nvim_lsp'
 local completion = require'completion'
-local treesitter = require'nvim-treesitter.configs'
 
 vim.cmd("packadd completion-nvim")
 vim.cmd("packadd nvim-lspconfig")
@@ -45,10 +44,3 @@ function Goimports()
   end
   vim.lsp.buf.formatting()
 end
-
-treesitter.setup {
-  ensure_installed = {"nix"},
-  highlight = {
-    enable = true,
-  },
-}
