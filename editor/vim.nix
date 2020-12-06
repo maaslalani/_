@@ -95,6 +95,7 @@ with builtins; let
     "/" = ":BLines!<CR>";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     c = ":Commands<CR>";
+    e = ":15 Lex<CR>";
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
@@ -103,7 +104,7 @@ with builtins; let
     o = ":silent !open <cWORD><CR>";
     p = "\"*p";
     q = ":q<CR>";
-    r = ":Rg!<CR>";
+    r = ":Rg<CR>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
@@ -137,6 +138,7 @@ with builtins; let
     diagnostic_enable_underline = 1;
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
+    netrw_banner = 0;
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
 
