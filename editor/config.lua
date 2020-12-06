@@ -1,6 +1,7 @@
 local vim = vim
 local lsp = require'nvim_lsp'
 local completion = require'completion'
+local treesitter = require'nvim-treesitter.configs'
 
 vim.cmd("packadd completion-nvim")
 vim.cmd("packadd nvim-lspconfig")
@@ -32,6 +33,7 @@ for _, server in pairs(servers) do
   lsp[server].setup { on_attach = completion.on_attach }
 end
 
+
 function Goimports()
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, "t", true } }
@@ -43,3 +45,9 @@ function Goimports()
   end
   vim.lsp.buf.formatting()
 end
+
+treesitter.setup {
+  highlight = {
+    enable = true,
+  },
+}
