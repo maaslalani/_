@@ -10,7 +10,6 @@
     fd
     htop
     ripgrep
-    screen
     tree
     zsh
   ];

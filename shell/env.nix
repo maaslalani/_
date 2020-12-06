@@ -1,6 +1,7 @@
 rec {
   CARGO_BIN = "$HOME/.cargo/bin";
   CLICOLOR = 1;
+  COLORTERM = "truecolor";
   EDITOR = "nvim";
   EIFFEL_BIN = "$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin";
   GOBIN = "${GOPATH}/bin";

@@ -28,6 +28,8 @@
   pkgs.gopls
   pkgs.nodePackages.typescript
   pkgs.nodePackages.typescript-language-server
+  pkgs.nodePackages.bash-language-server
+  pkgs.nodePackages.dockerfile-language-server-nodejs
   pkgs.rnix-lsp
   pkgs.solargraph
 ]

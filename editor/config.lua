@@ -47,6 +47,7 @@ function Goimports()
 end
 
 treesitter.setup {
+  ensure_installed = {"nix"},
   highlight = {
     enable = true,
   },
