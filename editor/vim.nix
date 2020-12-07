@@ -78,7 +78,6 @@ with builtins; let
   };
 
   maps.silent = {
-    "-" = ":Exp<CR>";
     gh = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
     gD = "<cmd>lua vim.lsp.buf.definition()<CR>";
     K = "<cmd>lua vim.lsp.buf.hover()<CR>";
