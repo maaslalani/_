@@ -31,8 +31,8 @@ with builtins; {
       src = pkgs.fetchFromGitHub {
         owner = "zsh-users";
         repo = "zsh-syntax-highlighting";
-        rev = "932e29a0c75411cb618f02995b66c0a4a25699bc";
-        sha256 = "0w8x5ilpwx90s2s2y56vbzq92ircmrf0l5x8hz4g1nx3qzawv6af";
+        rev = "1715f39a4680a27abd57fc30c98a95fdf191be45";
+        sha256 = "1kpxima0fnypl7fak4snxnf6nj36nvp1gqwpx1ailyrgxa8641j0";
       };
     }
   ];
