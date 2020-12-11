@@ -73,6 +73,7 @@ with builtins; let
   terminalEscapeKey = "<C-\\><C-n>";
 
   maps.normal = {
+    "<BS>" = "<Plug>(dirvish_up)";
     Q = ":q<CR>";
     S = ":%s//g<Left><Left>";
   };
@@ -91,6 +92,7 @@ with builtins; let
     "/" = ":BLines!<CR>";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     c = ":Commands<CR>";
+    e = ":Dirvish<CR>";
     f = ":FZF<CR>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
@@ -116,6 +118,7 @@ with builtins; let
   };
 
   commands = {
+    E = "Dirvish";
     Q = "q";
     Tf = "TestFile";
     W = "w";
@@ -133,6 +136,7 @@ with builtins; let
     diagnostic_enable_underline = 1;
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
+    loaded_netrw = 0;
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
 
@@ -191,6 +195,7 @@ in
     nord-vim
     nvim-lspconfig
     polyglot
+    vim-dirvish
     vim-signature
     vimwiki
   ];
