@@ -82,10 +82,7 @@ with builtins; let
     gD = "<cmd>lua vim.lsp.buf.definition()<CR>";
     K = "<cmd>lua vim.lsp.buf.hover()<CR>";
     gI = "<cmd>lua vim.lsp.buf.implementation()<CR>";
-    gt = "<cmd>lua vim.lsp.buf.type_definition()<CR>";
     gr = "<cmd>lua vim.lsp.buf.references()<CR>";
-    g0 = "<cmd>lua vim.lsp.buf.document_symbol()<CR>";
-    gW = "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>";
     gd = "<cmd>lua vim.lsp.buf.declaration()<CR>";
   };
 
