@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   nixpkgs = with builtins; {
-    overlays = map (name: import (./overlays + ("/" + name))) (attrNames (readDir ./overlays));
+    overlays = map (name: import (./overlays + "/${name}")) (attrNames (readDir ./overlays));
   };
 
   home = {
