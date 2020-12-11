@@ -1,7 +1,6 @@
 { pkgs, ... }:
-with builtins;
 {
-  nixpkgs = {
+  nixpkgs = with builtins; {
     overlays = map (name: import (./overlays + ("/" + name))) (attrNames (readDir ./overlays));
   };
 
