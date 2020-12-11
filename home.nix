@@ -1,14 +1,24 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
+with builtins;
 {
-  home.packages = import ./pkgs.nix { inherit pkgs; };
-  programs.alacritty = import ./terminal/alacritty.nix;
-  programs.bat = import ./programs/bat.nix;
-  programs.fzf = import ./programs/fzf.nix;
-  programs.git = import ./programs/git.nix;
-  programs.home-manager = import ./programs/manager.nix;
-  programs.neovim = import ./editor/vim.nix { inherit pkgs; };
-  programs.taskwarrior = import ./programs/task.nix;
-  programs.tmux = import ./terminal/tmux.nix;
-  programs.z-lua = import ./programs/z.nix;
-  programs.zsh = import ./shell/zsh.nix { inherit pkgs; };
+  nixpkgs = {
+    overlays = map (name: import (./overlays + ("/" + name))) (attrNames (readDir ./overlays));
+  };
+
+  home = {
+    packages = import ./pkgs.nix { inherit pkgs; };
+  };
+
+  programs = {
+    alacritty = import ./terminal/alacritty.nix;
+    bat = import ./programs/bat.nix;
+    fzf = import ./programs/fzf.nix;
+    git = import ./programs/git.nix;
+    home-manager = import ./programs/manager.nix;
+    neovim = import ./editor/vim.nix { inherit pkgs; };
+    taskwarrior = import ./programs/task.nix;
+    tmux = import ./terminal/tmux.nix;
+    z-lua = import ./programs/z.nix;
+    zsh = import ./shell/zsh.nix { inherit pkgs; };
+  };
 }
