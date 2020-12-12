@@ -44,7 +44,7 @@ rec {
   gswm = "${gsw} master";
 
   hmg = "nix build --out-link ~/.config/nixpkgs/result --impure --experimental-features 'nix-command flakes' '.#home'";
-  hms = "nix-shell -p nixUnstable --command \"${hmg}\"; ~/.config/nixpkgs/result/activate";
+  hms = "nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
 
   ls = "exa";
   lsa = "exa -Fla";
