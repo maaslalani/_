@@ -101,7 +101,7 @@ with builtins; let
     o = ":silent !open <cWORD><CR>";
     p = "\"*p";
     q = ":q<CR>";
-    r = ":Rg!<CR>";
+    r = ":Rg<CR>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
