@@ -7,12 +7,10 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, ... }@inputs:
-  {
+  outputs = { self, ... }@inputs: {
     homeConfigurations = {
       home = inputs.home-manager.lib.homeManagerConfiguration {
-        configuration = { pkgs, ... }:
-        {
+        configuration = { pkgs, ... }: {
           nixpkgs.overlays = [
             inputs.neovim-nightly-overlay.overlay
           ];

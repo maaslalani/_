@@ -158,45 +158,45 @@ with builtins; let
     "BufWritePre *.go" = "lua Goimports()";
   };
 
-in
-{
-  enable = true;
-  package = pkgs.neovim-nightly;
-  extraConfig = ''
-    colorscheme ${colorscheme}
+  in
+  {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    extraConfig = ''
+      colorscheme ${colorscheme}
 
-    ${autocmdConfig autocmd}
-    ${highlightsConfig highlights}
-    ${settingsConfig settings}
-    ${togglesConfig toggles}
-    ${variablesConfig variables}
+      ${autocmdConfig autocmd}
+      ${highlightsConfig highlights}
+      ${settingsConfig settings}
+      ${togglesConfig toggles}
+      ${variablesConfig variables}
 
-    ${mapConfig ":command " commands}
-    ${mapConfig "filetype " filetype}
-    ${mapConfig "map <silent> ${leaderKey}" maps.leader}
-    ${mapConfig "nmap " maps.normal}
-    ${mapConfig "nnoremap <silent> " maps.silent}
-    ${mapConfig "vmap " maps.visual}
-    ${mapConfig "imap " maps.insert}
+      ${mapConfig ":command " commands}
+      ${mapConfig "filetype " filetype}
+      ${mapConfig "map <silent> ${leaderKey}" maps.leader}
+      ${mapConfig "nmap " maps.normal}
+      ${mapConfig "nnoremap <silent> " maps.silent}
+      ${mapConfig "vmap " maps.visual}
+      ${mapConfig "imap " maps.insert}
 
-    lua <<EOF
-    ${builtins.readFile ./config.lua}
-    EOF
-  '';
-  vimAlias = true;
-  viAlias = true;
-  plugins = with pkgs.vimPlugins; [
-    auto-pairs
-    commentary
-    completion-nvim
-    fugitive
-    fzf-vim
-    gitgutter
-    nord-vim
-    nvim-lspconfig
-    polyglot
-    vim-dirvish
-    vim-signature
-    vimwiki
-  ];
-}
+      lua <<EOF
+      ${builtins.readFile ./config.lua}
+      EOF
+    '';
+    vimAlias = true;
+    viAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      auto-pairs
+      commentary
+      completion-nvim
+      fugitive
+      fzf-vim
+      gitgutter
+      nord-vim
+      nvim-lspconfig
+      polyglot
+      vim-dirvish
+      vim-signature
+      vimwiki
+    ];
+  }
