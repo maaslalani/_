@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  nixpkgs = with builtins; {
-    overlays = map (name: import (./overlays + "/${name}")) (attrNames (readDir ./overlays));
-  };
-
   home = {
     packages = import ./pkgs.nix { inherit pkgs; };
   };

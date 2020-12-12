@@ -43,7 +43,7 @@ rec {
   gsw = "git switch";
   gswm = "${gsw} master";
 
-  hms = "home-manager switch";
+  hms = "nix build ~/_#home --impure && ~/_/result/activate && rm -r result";
 
   ls = "exa";
   lsa = "exa -Fla";
