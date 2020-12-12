@@ -194,7 +194,7 @@ with builtins; let
       gitgutter
       nord-vim
       nvim-lspconfig
-      polyglot
+      vim-nix
       vim-dirvish
       vim-signature
       vimwiki
