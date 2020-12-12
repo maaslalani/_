@@ -43,7 +43,7 @@ rec {
   gsw = "git switch";
   gswm = "${gsw} master";
 
-  hms = "nix build ~/_#home --impure";
+  hms = "nix-shell -p nixUnstable --command \"nix build --impure --experimental-features 'nix-command flakes' '.#home'\"";
 
   ls = "exa";
   lsa = "exa -Fla";
