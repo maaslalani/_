@@ -184,6 +184,7 @@ with builtins; let
       gitgutter
       nvim-lspconfig
       nvim-telescope
+      nvim-treesitter
       plenary-nvim
       popup-nvim
       vim-dirvish

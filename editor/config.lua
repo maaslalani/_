@@ -121,7 +121,7 @@ function M:colors()
     {'Define',c.nord9,c.none,s.NONE},
     {'Delimiter',c.nord6,c.none,s.NONE},
     {'Directory',c.nord8,c.none,s.NONE},
-    {'EndOfBuffer',c.none, c.none},
+    {'EndOfBuffer',c.nord1, c.none},
     {'Error',c.nord11,c.none,s.bold},
     {'ErrorMsg',c.nord5,c.nord11,s.bold},
     {'Exception',c.nord9,c.none,s.NONE},
@@ -158,9 +158,9 @@ function M:colors()
     {'StorageClass',c.nord9,c.none,s.NONE},
     {'String',c.nord14,c.none,s.NONE},
     {'Structure',c.nord9,c.none,s.NONE},
-    {'TabLine',c.nord4,c.nord2},
-    {'TabLineSel',c.fg,c.nord10,s.bold},
-    {'TabLineSelSeparator',c.nord10,c.none},
+    {'TabLine',c.nord4,c.nord0},
+    {'TabLineFill',c.nord3,c.nord0},
+    {'TabLineSel',c.nord7,c.nord3,s.bold},
     {'TabLineSeparator',c.nord2,c.none},
     {'Tag',c.nord4,c.none,s.NONE},
     {'Title',c.nord4,c.none},
@@ -181,9 +181,21 @@ function M:colors()
   return merge({
     vim_groups,
     M:lsp(),
+    M:health(),
     M:treesitter(),
     M:telescope(),
   })
+end
+
+function M:health()
+  return {
+    {"healthError",c.nord11,c.nord1},
+    {"healthSuccess",c.nord14,c.nord1},
+    {"healthWarning",c.nord13,c.nord1},
+    {"TermCursorNC",c.nord1,c.nord1},
+    {"IncSearch",c.nord6,c.nord10,s.underline},
+    {"Search",c.nord1,c.nord8},
+  }
 end
 
 function M:lsp()
@@ -201,6 +213,7 @@ function M:telescope()
     {'TelescopePromptPrefix', c.fg:dark(.2)},
     {'TelescopeSelection', c.nord6:light(), c.nord3, s.bold},
     {'TelescopeMatching', c.nord6:light()},
+    {'TelescopeBorder', c.nord3},
   }
 end
 
