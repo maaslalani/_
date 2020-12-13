@@ -133,12 +133,12 @@ function M:colors()
   }
 
   return merge({
-      vim_groups,
-      M:lsp(),
-      M:health(),
-      M:treesitter(),
-      M:telescope(),
-    })
+    vim_groups,
+    M:lsp(),
+    M:health(),
+    M:treesitter(),
+    M:telescope(),
+  })
 end
 
 function M:health()
@@ -225,19 +225,19 @@ function M:treesitter()
   end
 
   return merge({
-      highlights,
-      {
-        {'TSPunctDelimiter', c.white},
-        {'TSTagDelimiter', c.cyan},
-        {'TSPunctSpecial', c.orange},
-        {'TSVariableBuiltin', c.brightwhite:dark(), c.none, s.bold},
-        {'TSConstBuiltin', c.brightwhite:dark(.3), c.none, s.bold},
-        {'TSTypeBuiltin', c.blue:dark(.2), c.none, s.bold},
-        {'TSFuncBuiltin', c.cyan:light(.1), c.none, s.bold},
-        {'TSVariableBuiltin', c.magenta:dark(.2)},
-        {'TSField', c.cyan},
-      },
-    })
+    highlights,
+    {
+      {'TSPunctDelimiter', c.white},
+      {'TSTagDelimiter', c.cyan},
+      {'TSPunctSpecial', c.orange},
+      {'TSVariableBuiltin', c.brightwhite:dark(), c.none, s.bold},
+      {'TSConstBuiltin', c.brightwhite:dark(.3), c.none, s.bold},
+      {'TSTypeBuiltin', c.blue:dark(.2), c.none, s.bold},
+      {'TSFuncBuiltin', c.cyan:light(.1), c.none, s.bold},
+      {'TSVariableBuiltin', c.magenta:dark(.2)},
+      {'TSField', c.cyan},
+    },
+  })
 end
 
 M.use{}
