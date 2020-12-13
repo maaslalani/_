@@ -5,7 +5,6 @@ with builtins; let
   configArray = f: a: concatStringsSep "\n" (map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
-  highlightsConfig = config (n: v: ("hi ${n} ${v}"));
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
@@ -75,6 +74,10 @@ with builtins; let
     "<BS>" = "<Plug>(dirvish_up)";
     Q = ":q<CR>";
     S = ":%s//g<Left><Left>";
+    "<C-h>" = "<C-w>h";
+    "<C-j>" = "<C-w>j";
+    "<C-k>" = "<C-w>k";
+    "<C-l>" = "<C-w>l";
   };
 
   maps.silent = {
@@ -103,6 +106,7 @@ with builtins; let
     r = "<cmd>Telescope live_grep<cr>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
+    W = ":w<CR>";
     y = "\"*y";
   };
 
@@ -139,9 +143,6 @@ with builtins; let
     vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
 
-  highlights = {
-  };
-
   autocmd = {
     CmdLineEnter = ": set nosmartcase";
     CmdLineLeave = ": set smartcase";
@@ -149,47 +150,45 @@ with builtins; let
     "BufWritePre *.go" = "lua Goimports()";
   };
 
-  in
-  {
-    enable = true;
-    package = pkgs.neovim-nightly;
-    extraConfig = ''
-      ${autocmdConfig autocmd}
-      ${highlightsConfig highlights}
-      ${settingsConfig settings}
-      ${togglesConfig toggles}
-      ${variablesConfig variables}
+in {
+  enable = true;
+  package = pkgs.neovim-nightly;
+  extraConfig = ''
+    ${autocmdConfig autocmd}
+    ${settingsConfig settings}
+    ${togglesConfig toggles}
+    ${variablesConfig variables}
 
-      ${mapConfig ":command " commands}
-      ${mapConfig "filetype " filetype}
-      ${mapConfig "map <silent> ${leaderKey}" maps.leader}
-      ${mapConfig "nmap " maps.normal}
-      ${mapConfig "nnoremap <silent> " maps.silent}
-      ${mapConfig "vmap " maps.visual}
-      ${mapConfig "imap " maps.insert}
-      lua <<EOF
-      ${builtins.readFile ./config.lua}
-      EOF
-    '';
-    vimAlias = true;
-    viAlias = true;
-    plugins = with pkgs.vimPlugins // customPlugins; [
-      auto-pairs
-      colorbuddy
-      colorizer
-      commentary
-      completion-nvim
-      fugitive
-      fzf-vim
-      gitgutter
-      nvim-lspconfig
-      nvim-telescope
-      nvim-treesitter
-      plenary-nvim
-      popup-nvim
-      vim-dirvish
-      vim-nix
-      vim-signature
-      vimwiki
-    ];
-  }
+    ${mapConfig ":command " commands}
+    ${mapConfig "filetype " filetype}
+    ${mapConfig "map <silent> ${leaderKey}" maps.leader}
+    ${mapConfig "nmap " maps.normal}
+    ${mapConfig "nnoremap <silent> " maps.silent}
+    ${mapConfig "vmap " maps.visual}
+    ${mapConfig "imap " maps.insert}
+    lua <<EOF
+    ${builtins.readFile ./config.lua}
+    EOF
+  '';
+  vimAlias = true;
+  viAlias = true;
+  plugins = with pkgs.vimPlugins // customPlugins; [
+    auto-pairs
+    colorbuddy
+    colorizer
+    commentary
+    completion-nvim
+    fugitive
+    fzf-vim
+    gitgutter
+    nvim-lspconfig
+    nvim-telescope
+    nvim-treesitter
+    plenary-nvim
+    popup-nvim
+    vim-dirvish
+    vim-nix
+    vim-signature
+    vimwiki
+  ];
+}

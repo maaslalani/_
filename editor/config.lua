@@ -10,6 +10,18 @@ require'nvim-treesitter.configs'.setup {
       ["\\d"] = "Number",
     },
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
 }
 
 lsp.gopls.setup {
@@ -145,6 +157,8 @@ function M:colors()
     {'Include',c.nord7,c.none,s.NONE},
     {'Keyword',c.nord9,c.none,s.NONE},
     {'Label',c.nord9,c.none,s.NONE},
+    {'Folded',c.nord3,c.nord1,s.NONE},
+    {'FoldColumn',c.nord3,c.nord0,s.NONE},
     {'Line',c.nord12,c.none,s.bold},
     {'LineNr',c.nord3,c.none,s.NONE},
     {'MatchParen',c.nord8,c.nord3},
