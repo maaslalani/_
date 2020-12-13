@@ -106,7 +106,7 @@ with builtins; let
     r = "<cmd>Telescope live_grep<cr>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
-    W = ":w<CR>";
+    W = ":w!<CR>";
     y = "\"*y";
   };
 

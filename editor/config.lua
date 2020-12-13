@@ -84,28 +84,23 @@ local highlight_to_groups = function(highlight)
 end
 
 function M:setup()
-  local themeColors = {
-    '#2E3440',
-    '#3B4252',
-    '#434C5E',
-    '#4C566A',
-    '#D8DEE9',
-    '#E5E9F0',
-    '#ECEFF4',
-    '#8FBCBB',
-    '#88C0D0',
-    '#81A1C1',
-    '#5E81AC',
-    '#BF616A',
-    '#D08770',
-    '#EBCB8B',
-    '#A3BE8C',
-    '#B48EAD',
-  }
-
-  for i, color in ipairs(themeColors) do Color.new('nord' .. i - 1, color) end
-  Color.new('fg', '#D8DEE9')
-  Color.new('bg', '#2E3440')
+  Color.new('black',       '#3B4252')
+  Color.new('brightblack', '#434C5E')
+  Color.new('gray',        '#4C566A')
+  Color.new('fg',          '#D8DEE9')
+  Color.new('white',       '#E5E9F0')
+  Color.new('brightwhite', '#ECEFF4')
+  Color.new('lightcyan',   '#8FBCBB')
+  Color.new('cyan',        '#88C0D0')
+  Color.new('lightblue',   '#81A1C1')
+  Color.new('blue',        '#5E81AC')
+  Color.new('red',         '#BF616A')
+  Color.new('orange',      '#D08770')
+  Color.new('yellow',      '#EBCB8B')
+  Color.new('green',       '#A3BE8C')
+  Color.new('magenta',     '#B48EAD')
+  Color.new('fg',          '#D8DEE9')
+  Color.new('bg',          '#2E3440')
 end
 
 function M:use()
@@ -129,76 +124,76 @@ end
 
 function M:colors()
   local vim_groups = {
-    {'Boolean',c.nord9,c.none,s.NONE},
-    {'Character',c.nord14,c.none,s.NONE},
-    {'ColorColumn', c.none, c.nord1},
-    {'Comment',c.nord3,c.none,s.NONE},
-    {'Conceal',c.nord3,c.none},
-    {'Conditional',c.nord9,c.none,s.NONE},
-    {'Constant',c.nord4,c.none,s.NONE},
-    {'Cursor', c.nord0, c.nord4},
-    {'CursorColumn',c.nord1,c.none,s.NONE},
-    {'CursorLine', c.none, c.nord0},
-    {'CursorLineNr',c.nord5,c.none,s.NONE},
-    {'Define',c.nord8,c.none,s.NONE},
-    {'Delimiter',c.nord6,c.none,s.NONE},
-    {'Directory',c.nord8,c.none,s.NONE},
-    {'EndOfBuffer',c.nord1, c.none},
-    {'Error',c.nord11,c.none,s.bold},
-    {'ErrorMsg',c.nord5,c.nord11,s.bold},
-    {'Exception',c.nord9,c.none,s.NONE},
-    {'Float',c.nord15,c.none,s.NONE},
-    {'Function',c.nord8,c.none,s.bold},
-    {'GitGutterAdd',c.nord14, c.none},
-    {'GitGutterChange',c.nord13, c.none},
-    {'GitGutterChangeDelete',c.nord11, c.none},
-    {'GitGutterDelete',c.nord11, c.none},
-    {'Identifier',c.nord7,c.none,s.NONE},
-    {'Include',c.nord7,c.none,s.NONE},
-    {'Keyword',c.nord9,c.none,s.NONE},
-    {'Label',c.nord9,c.none,s.NONE},
-    {'Folded',c.nord3,c.nord1,s.NONE},
-    {'FoldColumn',c.nord3,c.nord0,s.NONE},
-    {'Line',c.nord12,c.none,s.bold},
-    {'LineNr',c.nord3,c.none,s.NONE},
-    {'MatchParen',c.nord8,c.nord3},
+    {'Boolean',c.lightblue,c.none,s.NONE},
+    {'Character',c.green,c.none,s.NONE},
+    {'ColorColumn', c.none, c.black},
+    {'Comment',c.gray,c.none,s.NONE},
+    {'Conceal',c.gray,c.none},
+    {'Conditional',c.lightblue,c.none,s.NONE},
+    {'Constant',c.fg,c.none,s.NONE},
+    {'Cursor', c.bg, c.fg},
+    {'CursorColumn',c.black,c.none,s.NONE},
+    {'CursorLine', c.none, c.bg},
+    {'CursorLineNr',c.white,c.none,s.NONE},
+    {'Define',c.cyan,c.none,s.NONE},
+    {'Delimiter',c.brightwhite,c.none,s.NONE},
+    {'Directory',c.cyan,c.none,s.NONE},
+    {'EndOfBuffer',c.black, c.none},
+    {'Error',c.red,c.none,s.bold},
+    {'ErrorMsg',c.white,c.red,s.bold},
+    {'Exception',c.lightblue,c.none,s.NONE},
+    {'Float',c.orange,c.none,s.NONE},
+    {'Function',c.cyan,c.none,s.bold},
+    {'GitGutterAdd',c.green, c.none},
+    {'GitGutterChange',c.yellow, c.none},
+    {'GitGutterChangeDelete',c.red, c.none},
+    {'GitGutterDelete',c.red, c.none},
+    {'Identifier',c.lightcyan,c.none,s.NONE},
+    {'Include',c.lightcyan,c.none,s.NONE},
+    {'Keyword',c.lightblue,c.none,s.NONE},
+    {'Label',c.lightblue,c.none,s.NONE},
+    {'Folded',c.gray,c.black,s.NONE},
+    {'FoldColumn',c.gray,c.bg,s.NONE},
+    {'Line',c.orange,c.none,s.bold},
+    {'LineNr',c.gray,c.none,s.NONE},
+    {'MatchParen',c.cyan,c.gray},
     {'NonText',c.none,c.none},
     {'Normal',c.fg,c.bg},
-    {'Number',c.nord15,c.none,s.NONE},
-    {'Operator',c.nord8,c.none,s.NONE},
-    {'PMenu',c.nord4,c.nord1},
-    {'PMenuSel',c.nord15,c.nord2},
-    {'PmenuSbar',c.nord4,c.nord2},
-    {'PmenuThumb',c.none,c.nord3},
-    {'PreProc',c.nord9,c.none,s.NONE},
-    {'Repeat',c.nord9,c.none,s.NONE},
+    {'Number',c.magenta,c.none,s.NONE},
+    {'Operator',c.cyan,c.none,s.NONE},
+    {'PMenu',c.fg,c.black},
+    {'PMenuSel',c.magenta,c.brightblack},
+    {'PmenuSbar',c.fg,c.brightblack},
+    {'PmenuThumb',c.none,c.gray},
+    {'PreProc',c.lightblue,c.none,s.NONE},
+    {'Repeat',c.lightblue,c.none,s.NONE},
     {'SignColumn',c.none,c.none,s.NONE},
-    {'Special',c.nord4,c.none,s.NONE},
-    {'SpecialChar',c.nord13,c.none,s.NONE},
-    {'SpecialComment',c.nord8,c.none,s.NONE},
-    {'SpecialKey',c.nord3,c.nord3},
-    {'SpellBad',c.nord11,c.nord0},
-    {'SpellCap',c.nord13,c.nord0},
-    {'SpellLocal',c.nord5,c.nord0},
-    {'SpellRare',c.nord6,c.nord0},
-    {'Statement',c.nord10,c.none,s.NONE},
-    {'StorageClass',c.nord9,c.none,s.NONE},
-    {'String',c.nord14,c.none,s.NONE},
-    {'Structure',c.nord9,c.none,s.NONE},
-    {'TabLine',c.nord4,c.nord0},
-    {'TabLineFill',c.nord3,c.nord0},
-    {'TabLineSel',c.nord7,c.nord3,s.bold},
-    {'TabLineSeparator',c.nord2,c.none},
-    {'Tag',c.nord4,c.none,s.NONE},
-    {'Title',c.nord4,c.none},
-    {'Todo',c.nord13,c.none,s.NONE},
-    {'Type',c.nord9,c.none,s.italic},
-    {'Typedef',c.nord9,c.none,s.NONE},
-    {'VertSplit',c.nord3,c.none},
-    {'Visual',c.nord4,c.nord2},
-    {'VisualNOS',c.nord2,c.nord1},
-    {'WarningMsg',c.nord5,c.nord12,s.bold},
-    {'iCursor',c.nord0, c.nord4},
+    {'Special',c.fg,c.none,s.NONE},
+    {'SpecialChar',c.yellow,c.none,s.NONE},
+    {'SpecialComment',c.cyan,c.none,s.NONE},
+    {'SpecialKey',c.gray,c.gray},
+    {'SpellBad',c.red,c.bg},
+    {'SpellCap',c.yellow,c.bg},
+    {'SpellLocal',c.white,c.bg},
+    {'SpellRare',c.brightwhite,c.bg},
+    {'Statement',c.blue,c.none,s.NONE},
+    {'StorageClass',c.lightblue,c.none,s.NONE},
+    {'String',c.green,c.none,s.NONE},
+    {'Structure',c.lightblue,c.none,s.NONE},
+    {'TabLine',c.fg,c.bg},
+    {'TabLineFill',c.gray,c.bg},
+    {'TabLineSel',c.lightcyan,c.gray,s.bold},
+    {'TabLineSeparator',c.brightblack,c.none},
+    {'Tag',c.fg,c.none,s.NONE},
+    {'Title',c.fg,c.none},
+    {'Todo',c.yellow,c.none,s.NONE},
+    {'Type',c.lightblue,c.none,s.italic},
+    {'Typedef',c.lightblue,c.none,s.NONE},
+    {'VertSplit',c.gray,c.none},
+    {'Visual',c.fg,c.brightblack},
+    {'VisualNOS',c.brightblack,c.black},
+    {'WarningMsg',c.white,c.orange,s.bold},
+    {'iCursor',c.bg, c.fg},
   }
 
   return merge({
@@ -212,31 +207,31 @@ end
 
 function M:health()
   return {
-    {"healthError",c.nord11,c.nord1},
-    {"healthSuccess",c.nord14,c.nord1},
-    {"healthWarning",c.nord13,c.nord1},
-    {"TermCursorNC",c.nord1,c.nord1},
-    {"IncSearch",c.nord6,c.nord10,s.underline},
-    {"Search",c.nord1,c.nord8},
+    {"healthError",c.red,c.black},
+    {"healthSuccess",c.green,c.black},
+    {"healthWarning",c.yellow,c.black},
+    {"TermCursorNC",c.black,c.black},
+    {"IncSearch",c.brightwhite,c.blue,s.underline},
+    {"Search",c.black,c.cyan},
   }
 end
 
 function M:lsp()
   return {
-    {'LspDiagnosticsDefaultHint', c.nord10, c.none},
-    {'LspDiagnosticsDefaultError', c.nord11, c.none},
-    {'LspDiagnosticsDefaultWarning', c.nord13, c.none},
-    {'LspDiagnosticsDefaultInformation', c.nord8, c.none},
+    {'LspDiagnosticsDefaultHint', c.blue, c.none},
+    {'LspDiagnosticsDefaultError', c.red, c.none},
+    {'LspDiagnosticsDefaultWarning', c.yellow, c.none},
+    {'LspDiagnosticsDefaultInformation', c.cyan, c.none},
   }
 end
 
 function M:telescope()
   return {
-    {'TelescopeNormal', c.nord4, c.nord0},
+    {'TelescopeNormal', c.fg, c.bg},
     {'TelescopePromptPrefix', c.fg:dark(.2)},
-    {'TelescopeSelection', c.nord6:light(), c.nord3, s.bold},
-    {'TelescopeMatching', c.nord6:light()},
-    {'TelescopeBorder', c.nord3},
+    {'TelescopeSelection', c.brightwhite:light(), c.gray, s.bold},
+    {'TelescopeMatching', c.brightwhite:light()},
+    {'TelescopeBorder', c.gray},
   }
 end
 
@@ -264,26 +259,26 @@ function M:treesitter()
   local text = {'TSText', 'TSStrong', 'TSEmphasis', 'TSUnderline', 'TSTitle', 'TSLiteral', 'TSURI'}
 
   local groups = {
-    {error, c.nord1:light(), c.nord9:dark(.5), s.none},
-    {punctuation, c.nord3:dark(.35)},
-    {constants, c.nord5:light()},
-    {string, c.nord10:light():light():saturate(.25)},
-    {boolean, c.nord2:light()},
-    {functions, c.nord14},
-    {methods, c.nord14:light(.1), c.none, s.italic},
-    {fields, c.nord8:light()},
-    {number, c.nord6:light()},
-    {parameters, c.nord6:dark()},
-    {operators, c.nord3:dark():dark()},
-    {forwords, c.nord8:saturate(.1):light(), c.none},
-    {keyword, c.nord4:dark(.2):saturate(.01):light(.2), c.none, s.italic},
-    {constructors, c.nord10},
-    {types, c.nord10},
-    {includes, c.nord4},
-    {labels, c.nord4:light()},
-    {namespaces, c.nord14:light()},
-    {variables, c.nord10:light(.2)},
-    {tags, c.nord10:light()},
+    {error, c.black:light(), c.lightblue:dark(.5), s.none},
+    {punctuation, c.gray:dark(.35)},
+    {constants, c.white:light()},
+    {string, c.blue:light():light():saturate(.25)},
+    {boolean, c.brightblack:light()},
+    {functions, c.green},
+    {methods, c.green:light(.1), c.none, s.italic},
+    {fields, c.cyan:light()},
+    {number, c.orange:light()},
+    {parameters, c.brightwhite:dark()},
+    {operators, c.gray:dark():dark()},
+    {forwords, c.cyan:saturate(.1):light(), c.none},
+    {keyword, c.fg:dark(.2):saturate(.01):light(.2), c.none, s.italic},
+    {constructors, c.blue},
+    {types, c.blue},
+    {includes, c.fg},
+    {labels, c.fg:light()},
+    {namespaces, c.green:light()},
+    {variables, c.blue:light(.2)},
+    {tags, c.blue:light()},
     {text, c.fg},
   }
 
@@ -296,15 +291,15 @@ function M:treesitter()
   return merge({
     highlights,
     {
-      {'TSPunctDelimiter', c.nord3:dark():dark():saturate(.1)},
-      {'TSTagDelimiter', c.nord8:dark(.15)},
-      {'TSPunctSpecial', c.nord12:dark():dark():light(.3)},
-      {'TSVariableBuiltin', c.nord6:dark(), c.none, s.bold},
-      {'TSConstBuiltin', c.nord6:dark(.3), c.none, s.bold},
-      {'TSTypeBuiltin', c.nord10:dark(.2), c.none, s.bold},
-      {'TSFuncBuiltin', c.nord8:light(.1), c.none, s.bold},
-      {'TSVariableBuiltin', c.nord12:dark(.2)},
-      {'TSField', c.nord8},
+      {'TSPunctDelimiter', c.gray:dark():dark():saturate(.1)},
+      {'TSTagDelimiter', c.cyan:dark(.15)},
+      {'TSPunctSpecial', c.orange:dark():dark():light(.3)},
+      {'TSVariableBuiltin', c.brightwhite:dark(), c.none, s.bold},
+      {'TSConstBuiltin', c.brightwhite:dark(.3), c.none, s.bold},
+      {'TSTypeBuiltin', c.blue:dark(.2), c.none, s.bold},
+      {'TSFuncBuiltin', c.cyan:light(.1), c.none, s.bold},
+      {'TSVariableBuiltin', c.magenta:dark(.2)},
+      {'TSField', c.cyan},
     },
   })
 end
