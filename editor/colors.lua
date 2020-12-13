@@ -72,13 +72,15 @@ function M:colors()
     {'CursorLine', c.none, c.bg},
     {'CursorLineNr',c.white,c.none,s.NONE},
     {'Define',c.cyan,c.none,s.NONE},
-    {'Delimiter',c.brightwhite,c.none,s.NONE},
+    {'Delimiter',c.white,c.none,s.NONE},
     {'Directory',c.cyan,c.none,s.NONE},
     {'EndOfBuffer',c.black, c.none},
     {'Error',c.red,c.bg,s.NONE},
     {'ErrorMsg',c.fg,c.red,s.NONE},
     {'Exception',c.lightblue,c.none,s.NONE},
     {'Float',c.magenta,c.none,s.NONE},
+    {'FoldColumn',c.gray,c.bg,s.NONE},
+    {'Folded',c.gray,c.black,s.NONE},
     {'Function',c.lightblue,c.none,s.NONE},
     {'GitGutterAdd',c.green, c.none},
     {'GitGutterChange',c.yellow, c.none},
@@ -86,10 +88,8 @@ function M:colors()
     {'GitGutterDelete',c.red, c.none},
     {'Identifier',c.lightcyan,c.none,s.NONE},
     {'Include',c.lightcyan,c.none,s.NONE},
-    {'Keyword',c.lightblue,c.none,s.NONE},
+    {'Keyword',c.blue,c.none,s.NONE},
     {'Label',c.lightblue,c.none,s.NONE},
-    {'Folded',c.gray,c.black,s.NONE},
-    {'FoldColumn',c.gray,c.bg,s.NONE},
     {'Line',c.orange,c.none,s.NONE},
     {'LineNr',c.gray,c.none,s.NONE},
     {'MatchParen',c.cyan,c.gray},
@@ -113,6 +113,8 @@ function M:colors()
     {'SpellLocal',c.white,c.bg},
     {'SpellRare',c.brightwhite,c.bg},
     {'Statement',c.blue,c.none,s.NONE},
+    {'StatusLine',c.fg,c.brightblack,s.NONE},
+    {'StatusLineNC',c.fg,c.black,s.NONE},
     {'StorageClass',c.lightblue,c.none,s.NONE},
     {'String',c.green,c.none,s.NONE},
     {'Structure',c.lightblue,c.none,s.NONE},
@@ -123,8 +125,9 @@ function M:colors()
     {'Tag',c.fg,c.none,s.NONE},
     {'Title',c.fg,c.none},
     {'Todo',c.yellow,c.none,s.NONE},
-    {'Type',c.lightcyan,c.none,s.NONE},
-    {'Typedef',c.lightcyan,c.none,s.NONE},
+    {'Tooltip',c.fg,c.brightblack},
+    {'Type',c.lightblue,c.none,s.NONE},
+    {'Typedef',c.lightblue,c.none,s.NONE},
     {'VertSplit',c.gray,c.none},
     {'Visual',c.fg,c.brightblack},
     {'VisualNOS',c.brightblack,c.black},
@@ -172,27 +175,27 @@ function M:telescope()
 end
 
 function M:treesitter()
-  local error = {'TSError'}
-  local punctuation = {'TSPunctDelimiter', 'TSPunctBracket', 'TSPunctSpecial'}
+  local boolean = {'TSBoolean'}
   local constants = {'TSConstant', 'TsConstBuiltin', 'TSConstMacro'}
   local constructors = {'TSConstructor'}
-  local string = {'TSStringRegex', 'TSString', 'TSStringEscape'}
-  local boolean = {'TSBoolean'}
-  local functions = {'TSFunction', 'TSFuncBuiltin', 'TSFuncMacro'}
-  local methods = {'TSMethod'}
+  local error = {'TSError'}
   local fields = {'TSField', 'TSProperty'}
-  local number = {'TSNumber', 'TSFloat'}
-  local parameters = {'TSParameter', 'TSParameterReference'}
-  local operators = {'TSOperator'}
   local forwords = {'TSConditional', 'TSRepeat'}
-  local keyword = {'TSKeyword', 'TSKeywordOperator'}
-  local types = {'TSType', 'TSTypeBuiltin'}
-  local labels = {'TSLabel'}
-  local namespaces = {'TSNamespace'}
+  local functions = {'TSFunction', 'TSFuncBuiltin', 'TSFuncMacro'}
   local includes = {'TSInclude'}
-  local variables = {'TSVariable', 'TSVariableBuiltin'}
+  local keyword = {'TSKeyword', 'TSKeywordFunction'}
+  local labels = {'TSLabel'}
+  local methods = {'TSMethod'}
+  local namespaces = {'TSNamespace'}
+  local number = {'TSNumber', 'TSFloat'}
+  local operators = {'TSOperator'}
+  local parameters = {'TSParameter', 'TSParameterReference'}
+  local punctuation = {'TSPunctDelimiter', 'TSPunctBracket', 'TSPunctSpecial'}
+  local string = {'TSStringRegex', 'TSString', 'TSStringEscape'}
   local tags = {'TSTag', 'TSTagDelimiter'}
   local text = {'TSText', 'TSStrong', 'TSEmphasis', 'TSUnderline', 'TSTitle', 'TSLiteral', 'TSURI'}
+  local types = {'TSType', 'TSTypeBuiltin'}
+  local variables = {'TSVariable', 'TSVariableBuiltin'}
 
   local groups = {
     {boolean, c.lightblue},
@@ -201,21 +204,21 @@ function M:treesitter()
     {error, c.red, c.bg, s.NONE},
     {fields, c.cyan},
     {forwords, c.lightblue, c.none},
-    {functions, c.lightblue},
+    {functions, c.cyan},
     {includes, c.lightcyan},
-    {keyword, c.lightblue},
+    {keyword, c.lightblue, c.bg, s.NONE},
     {labels, c.lightblue},
-    {methods, c.lightblue},
-    {namespaces, c.green:light()},
+    {methods, c.cyan},
+    {namespaces, c.cyan},
     {number, c.magenta},
     {operators, c.blue},
     {parameters, c.cyan},
     {punctuation, c.white},
     {string, c.green},
     {tags, c.blue:light()},
-    {text, c.fg},
+    {text, c.fg, c.bg},
     {types, c.lightcyan},
-    {variables, c.cyan},
+    {variables, c.cyan, c.bg, s.NONE},
   }
 
   local highlights = {}
@@ -227,15 +230,7 @@ function M:treesitter()
   return merge({
     highlights,
     {
-      {'TSPunctDelimiter', c.brightwhite},
-      {'TSTagDelimiter', c.cyan},
-      {'TSPunctSpecial', c.brightwhite},
-      {'TSVariableBuiltin', c.brightwhite:dark(), c.none, s.NONE},
-      {'TSConstBuiltin', c.brightwhite:dark(.3), c.none, s.NONE},
-      {'TSTypeBuiltin', c.lightcyan, c.none, s.NONE},
-      {'TSFuncBuiltin', c.magenta, c.none, s.NONE},
-      {'TSVariableBuiltin', c.magenta},
-      {'TSField', c.cyan},
+      {'TSPunctSpecial', c.magenta},
     },
   })
 end

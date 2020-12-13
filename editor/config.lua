@@ -7,7 +7,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     custom_captures = {
       ["require"] = "Identifier",
-      ["\\d"] = "Number",
+      ["\\."] = "TSPunctSpecial",
     },
   },
   incremental_selection = {
