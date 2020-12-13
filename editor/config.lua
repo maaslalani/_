@@ -130,8 +130,8 @@ function M:colors()
     {'Function',c.nord8,c.none,s.bold},
     {'Identifier',c.nord4,c.none,s.NONE},
     {'Include',c.nord9,c.none,s.NONE},
-    {'Keyword',c.nord9,c.none,s.italic},
-    {'Label',c.nord9,c.none,s.italic},
+    {'Keyword',c.nord9,c.none,s.NONE},
+    {'Label',c.nord9,c.none,s.NONE},
     {'Line',c.nord12,c.none,s.bold},
     {'LineNr',c.nord3,c.none,s.NONE},
     {'MatchParen',c.nord8,c.nord3},
@@ -188,8 +188,8 @@ end
 
 function M:lsp()
   return {
-    {'LspDiagnosticsDefaultHint', c.nord10:saturate(.05):light(), c.none},
-    {'LspDiagnosticsDefaultError', c.nord11:dark():saturate(.5), c.none},
+    {'LspDiagnosticsDefaultHint', c.nord10, c.none},
+    {'LspDiagnosticsDefaultError', c.nord11, c.none},
     {'LspDiagnosticsDefaultWarning', c.nord13, c.none},
     {'LspDiagnosticsDefaultInformation', c.nord8, c.none},
   }
