@@ -32,7 +32,6 @@ for _, server in pairs(servers) do
   lsp[server].setup { on_attach = completion.on_attach }
 end
 
-
 function Goimports()
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, "t", true } }

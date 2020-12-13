@@ -1,5 +1,6 @@
 { pkgs }:
 with builtins; let
+  customPlugins = import ./plugins.nix { inherit pkgs; };
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   configArray = f: a: concatStringsSep "\n" (map f a);
 
@@ -93,7 +94,7 @@ with builtins; let
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     c = ":Commands<CR>";
     e = ":Dirvish<CR>";
-    f = ":FZF<CR>";
+    f = "<cmd>Telescope find_files<cr>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
     l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
@@ -101,7 +102,7 @@ with builtins; let
     o = ":silent !open <cWORD><CR>";
     p = "\"*p";
     q = ":q<CR>";
-    r = ":Rg<CR>";
+    r = "<cmd>Telescope live_grep<cr>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
@@ -185,7 +186,7 @@ with builtins; let
     '';
     vimAlias = true;
     viAlias = true;
-    plugins = with pkgs.vimPlugins; [
+    plugins = with pkgs.vimPlugins // customPlugins; [
       auto-pairs
       commentary
       completion-nvim
@@ -198,5 +199,8 @@ with builtins; let
       vim-dirvish
       vim-signature
       vimwiki
+      popup-nvim
+      plenary-nvim
+      nvim-telescope
     ];
   }
