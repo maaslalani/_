@@ -150,45 +150,47 @@ with builtins; let
     "BufWritePre *.go" = "lua Goimports()";
   };
 
-in {
-  enable = true;
-  package = pkgs.neovim-nightly;
-  extraConfig = ''
-    ${autocmdConfig autocmd}
-    ${settingsConfig settings}
-    ${togglesConfig toggles}
-    ${variablesConfig variables}
+  in {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    extraConfig = ''
+      ${autocmdConfig autocmd}
+      ${settingsConfig settings}
+      ${togglesConfig toggles}
+      ${variablesConfig variables}
 
-    ${mapConfig ":command " commands}
-    ${mapConfig "filetype " filetype}
-    ${mapConfig "map <silent> ${leaderKey}" maps.leader}
-    ${mapConfig "nmap " maps.normal}
-    ${mapConfig "nnoremap <silent> " maps.silent}
-    ${mapConfig "vmap " maps.visual}
-    ${mapConfig "imap " maps.insert}
-    lua <<EOF
-    ${builtins.readFile ./config.lua}
-    EOF
-  '';
-  vimAlias = true;
-  viAlias = true;
-  plugins = with pkgs.vimPlugins // customPlugins; [
-    auto-pairs
-    colorbuddy
-    colorizer
-    commentary
-    completion-nvim
-    fugitive
-    fzf-vim
-    gitgutter
-    nvim-lspconfig
-    nvim-telescope
-    nvim-treesitter
-    plenary-nvim
-    popup-nvim
-    vim-dirvish
-    vim-nix
-    vim-signature
-    vimwiki
-  ];
-}
+      ${mapConfig ":command " commands}
+      ${mapConfig "filetype " filetype}
+      ${mapConfig "map <silent> ${leaderKey}" maps.leader}
+      ${mapConfig "nmap " maps.normal}
+      ${mapConfig "nnoremap <silent> " maps.silent}
+      ${mapConfig "vmap " maps.visual}
+      ${mapConfig "imap " maps.insert}
+      lua <<EOF
+      ${builtins.readFile ./config.lua}
+      ${builtins.readFile ./colors.lua}
+      EOF
+
+    '';
+    vimAlias = true;
+    viAlias = true;
+    plugins = with pkgs.vimPlugins // customPlugins; [
+      auto-pairs
+      colorbuddy
+      colorizer
+      commentary
+      completion-nvim
+      fugitive
+      fzf-vim
+      gitgutter
+      nvim-lspconfig
+      nvim-telescope
+      plenary-nvim
+      popup-nvim
+      treesitter
+      vim-dirvish
+      vim-nix
+      vim-signature
+      vimwiki
+    ];
+  }

@@ -43,4 +43,15 @@
     };
     dependencies = [];
   };
+
+  treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-treesitter";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "nvim-treesitter";
+      rev = "a5baf151bd78a88c88078b197657f277bcf06058";
+      sha256 = "2Sf6+qO4T26IcHaMGSaKmYbvR6pWkgmLXsJFA/HH/W4=";
+    };
+    dependencies = [];
+  };
 }
