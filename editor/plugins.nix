@@ -32,4 +32,15 @@
     };
     dependencies = [];
   };
+
+  colorbuddy = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "colorbuddy-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "tjdevries";
+      repo = "colorbuddy.nvim";
+      rev = "ee11ea2e0305de55f3a8ba9e9996ed72bbdc99e5";
+      sha256 = "cEzT9RhE+voYgwY53xjNH5j88Uk+L/DmIDsFMN5plm8=";
+    };
+    dependencies = [];
+  };
 }

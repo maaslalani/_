@@ -11,8 +11,6 @@ with builtins; let
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
 
-  colorscheme = "nord";
-
   toggles = {
     autoindent = true;
     autoread = true;
@@ -142,14 +140,6 @@ with builtins; let
   };
 
   highlights = {
-    LspDiagnosticsDefaultWarning = "ctermfg=3 guifg=#EBCB8B";
-    LspDiagnosticsSignWarning = "ctermfg=3 guifg=#EBCB8B";
-    LspDiagnosticsDefaultError = "ctermfg=1 guifg=#BF616A";
-    LspDiagnosticsSignError = "ctermfg=1 guifg=#BF616A";
-    LspDiagnosticsDefaultInformation = "ctermfg=6 guifg=#88C0D0";
-    LspDiagnosticsSignInformation = "ctermfg=6 guifg=#88C0D0";
-    LspDiagnosticsDefaultHint = "ctermfg=12 guifg=#5E81AC";
-    LspDiagnosticsSignHint = "ctermfg=12 guifg=#5E81AC";
   };
 
   autocmd = {
@@ -164,8 +154,6 @@ with builtins; let
     enable = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
-      colorscheme ${colorscheme}
-
       ${autocmdConfig autocmd}
       ${highlightsConfig highlights}
       ${settingsConfig settings}
@@ -179,7 +167,6 @@ with builtins; let
       ${mapConfig "nnoremap <silent> " maps.silent}
       ${mapConfig "vmap " maps.visual}
       ${mapConfig "imap " maps.insert}
-
       lua <<EOF
       ${builtins.readFile ./config.lua}
       EOF
@@ -188,19 +175,20 @@ with builtins; let
     viAlias = true;
     plugins = with pkgs.vimPlugins // customPlugins; [
       auto-pairs
+      colorbuddy
+      colorizer
       commentary
       completion-nvim
       fugitive
       fzf-vim
       gitgutter
-      nord-vim
       nvim-lspconfig
-      vim-nix
+      nvim-telescope
+      plenary-nvim
+      popup-nvim
       vim-dirvish
+      vim-nix
       vim-signature
       vimwiki
-      popup-nvim
-      plenary-nvim
-      nvim-telescope
     ];
   }
