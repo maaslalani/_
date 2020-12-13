@@ -2,6 +2,16 @@ local vim = vim
 local lsp = require'nvim_lsp'
 local completion = require'completion'
 
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+      ["require"] = "Identifier",
+      ["\\d"] = "Number",
+    },
+  },
+}
+
 lsp.gopls.setup {
   on_attach = completion.on_attach,
   cmd = {'gopls', 'serve'},
@@ -118,7 +128,7 @@ function M:colors()
     {'CursorColumn',c.nord1,c.none,s.NONE},
     {'CursorLine', c.none, c.nord0},
     {'CursorLineNr',c.nord5,c.none,s.NONE},
-    {'Define',c.nord9,c.none,s.NONE},
+    {'Define',c.nord8,c.none,s.NONE},
     {'Delimiter',c.nord6,c.none,s.NONE},
     {'Directory',c.nord8,c.none,s.NONE},
     {'EndOfBuffer',c.nord1, c.none},
@@ -126,10 +136,13 @@ function M:colors()
     {'ErrorMsg',c.nord5,c.nord11,s.bold},
     {'Exception',c.nord9,c.none,s.NONE},
     {'Float',c.nord15,c.none,s.NONE},
-    {'Function',c.nord8,c.none,s.NONE},
     {'Function',c.nord8,c.none,s.bold},
-    {'Identifier',c.nord4,c.none,s.NONE},
-    {'Include',c.nord9,c.none,s.NONE},
+    {'GitGutterAdd',c.nord14, c.none},
+    {'GitGutterChange',c.nord13, c.none},
+    {'GitGutterChangeDelete',c.nord11, c.none},
+    {'GitGutterDelete',c.nord11, c.none},
+    {'Identifier',c.nord7,c.none,s.NONE},
+    {'Include',c.nord7,c.none,s.NONE},
     {'Keyword',c.nord9,c.none,s.NONE},
     {'Label',c.nord9,c.none,s.NONE},
     {'Line',c.nord12,c.none,s.bold},
@@ -138,11 +151,11 @@ function M:colors()
     {'NonText',c.none,c.none},
     {'Normal',c.fg,c.bg},
     {'Number',c.nord15,c.none,s.NONE},
-    {'Operator',c.nord9,c.none,s.NONE},
-    {'PMenu',c.nord4,c.nord2},
-    {'PMenuSel',c.nord6,c.nord9},
+    {'Operator',c.nord8,c.none,s.NONE},
+    {'PMenu',c.nord4,c.nord1},
+    {'PMenuSel',c.nord15,c.nord2},
     {'PmenuSbar',c.nord4,c.nord2},
-    {'PmenuThumb',c.nord8,c.nord3},
+    {'PmenuThumb',c.none,c.nord3},
     {'PreProc',c.nord9,c.none,s.NONE},
     {'Repeat',c.nord9,c.none,s.NONE},
     {'SignColumn',c.none,c.none,s.NONE},
@@ -154,7 +167,7 @@ function M:colors()
     {'SpellCap',c.nord13,c.nord0},
     {'SpellLocal',c.nord5,c.nord0},
     {'SpellRare',c.nord6,c.nord0},
-    {'Statement',c.nord9,c.none,s.NONE},
+    {'Statement',c.nord10,c.none,s.NONE},
     {'StorageClass',c.nord9,c.none,s.NONE},
     {'String',c.nord14,c.none,s.NONE},
     {'Structure',c.nord9,c.none,s.NONE},
@@ -172,10 +185,6 @@ function M:colors()
     {'VisualNOS',c.nord2,c.nord1},
     {'WarningMsg',c.nord5,c.nord12,s.bold},
     {'iCursor',c.nord0, c.nord4},
-    {'GitGutterAdd',c.nord14, c.none},
-    {'GitGutterChange',c.nord13, c.none},
-    {'GitGutterDelete',c.nord11, c.none},
-    {'GitGutterChangeDelete',c.nord11, c.none},
   }
 
   return merge({
