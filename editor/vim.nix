@@ -1,5 +1,6 @@
 { pkgs }:
-with builtins; let
+with builtins;
+let
   customPlugins = import ./plugins.nix { inherit pkgs; };
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   configArray = f: a: concatStringsSep "\n" (map f a);
@@ -91,6 +92,7 @@ with builtins; let
 
   maps.leader = {
     "" = "<Nop>";
+    "=" = "migg=G`imi";
     "/" = ":BLines!<CR>";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     c = ":Commands<CR>";

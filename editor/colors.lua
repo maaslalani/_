@@ -75,11 +75,11 @@ function M:colors()
     {'Delimiter',c.brightwhite,c.none,s.NONE},
     {'Directory',c.cyan,c.none,s.NONE},
     {'EndOfBuffer',c.black, c.none},
-    {'Error',c.fg,c.red,s.bold},
-    {'ErrorMsg',c.white,c.red,s.bold},
+    {'Error',c.red,c.bg,s.NONE},
+    {'ErrorMsg',c.fg,c.red,s.NONE},
     {'Exception',c.lightblue,c.none,s.NONE},
     {'Float',c.magenta,c.none,s.NONE},
-    {'Function',c.cyan,c.none,s.bold},
+    {'Function',c.lightblue,c.none,s.NONE},
     {'GitGutterAdd',c.green, c.none},
     {'GitGutterChange',c.yellow, c.none},
     {'GitGutterChangeDelete',c.red, c.none},
@@ -90,7 +90,7 @@ function M:colors()
     {'Label',c.lightblue,c.none,s.NONE},
     {'Folded',c.gray,c.black,s.NONE},
     {'FoldColumn',c.gray,c.bg,s.NONE},
-    {'Line',c.orange,c.none,s.bold},
+    {'Line',c.orange,c.none,s.NONE},
     {'LineNr',c.gray,c.none,s.NONE},
     {'MatchParen',c.cyan,c.gray},
     {'NonText',c.none,c.none},
@@ -118,17 +118,17 @@ function M:colors()
     {'Structure',c.lightblue,c.none,s.NONE},
     {'TabLine',c.fg,c.bg},
     {'TabLineFill',c.gray,c.bg},
-    {'TabLineSel',c.lightcyan,c.gray,s.bold},
+    {'TabLineSel',c.lightcyan,c.gray,s.NONE},
     {'TabLineSeparator',c.brightblack,c.none},
     {'Tag',c.fg,c.none,s.NONE},
     {'Title',c.fg,c.none},
     {'Todo',c.yellow,c.none,s.NONE},
-    {'Type',c.lightblue,c.none,s.italic},
-    {'Typedef',c.lightblue,c.none,s.NONE},
+    {'Type',c.lightcyan,c.none,s.NONE},
+    {'Typedef',c.lightcyan,c.none,s.NONE},
     {'VertSplit',c.gray,c.none},
     {'Visual',c.fg,c.brightblack},
     {'VisualNOS',c.brightblack,c.black},
-    {'WarningMsg',c.white,c.orange,s.bold},
+    {'WarningMsg',c.white,c.orange,s.NONE},
     {'iCursor',c.bg, c.fg},
   }
 
@@ -165,15 +165,15 @@ function M:telescope()
   return {
     {'TelescopeNormal', c.fg, c.bg},
     {'TelescopePromptPrefix', c.fg:dark(.2)},
-    {'TelescopeSelection', c.brightwhite:light(), c.gray, s.bold},
-    {'TelescopeMatching', c.brightwhite:light()},
+    {'TelescopeSelection', c.magenta, c.brightblack, s.NONE},
+    {'TelescopeMatching', c.magenta},
     {'TelescopeBorder', c.gray},
   }
 end
 
 function M:treesitter()
   local error = {'TSError'}
-  local punctuation = {'TSPunctDelimiter', 'TSPunctBracket', 'TSPunchSpecial'}
+  local punctuation = {'TSPunctDelimiter', 'TSPunctBracket', 'TSPunctSpecial'}
   local constants = {'TSConstant', 'TsConstBuiltin', 'TSConstMacro'}
   local constructors = {'TSConstructor'}
   local string = {'TSStringRegex', 'TSString', 'TSStringEscape'}
@@ -197,24 +197,24 @@ function M:treesitter()
   local groups = {
     {boolean, c.lightblue},
     {constants, c.cyan},
-    {constructors, c.cyan},
-    {error, c.fg, c.red, s.bold},
-    {fields, c.lightcyan},
-    {forwords, c.blue, c.none},
-    {functions, c.cyan},
+    {constructors, c.white},
+    {error, c.red, c.bg, s.NONE},
+    {fields, c.cyan},
+    {forwords, c.lightblue, c.none},
+    {functions, c.lightblue},
     {includes, c.lightcyan},
-    {keyword, c.cyan},
-    {labels, c.lightcyan},
-    {methods, c.lightcyan},
+    {keyword, c.lightblue},
+    {labels, c.lightblue},
+    {methods, c.lightblue},
     {namespaces, c.green:light()},
     {number, c.magenta},
     {operators, c.blue},
-    {parameters, c.brightwhite:dark()},
+    {parameters, c.cyan},
     {punctuation, c.white},
     {string, c.green},
     {tags, c.blue:light()},
     {text, c.fg},
-    {types, c.blue},
+    {types, c.lightcyan},
     {variables, c.cyan},
   }
 
@@ -227,14 +227,14 @@ function M:treesitter()
   return merge({
     highlights,
     {
-      {'TSPunctDelimiter', c.white},
+      {'TSPunctDelimiter', c.brightwhite},
       {'TSTagDelimiter', c.cyan},
-      {'TSPunctSpecial', c.orange},
-      {'TSVariableBuiltin', c.brightwhite:dark(), c.none, s.bold},
-      {'TSConstBuiltin', c.brightwhite:dark(.3), c.none, s.bold},
-      {'TSTypeBuiltin', c.blue:dark(.2), c.none, s.bold},
-      {'TSFuncBuiltin', c.cyan:light(.1), c.none, s.bold},
-      {'TSVariableBuiltin', c.magenta:dark(.2)},
+      {'TSPunctSpecial', c.brightwhite},
+      {'TSVariableBuiltin', c.brightwhite:dark(), c.none, s.NONE},
+      {'TSConstBuiltin', c.brightwhite:dark(.3), c.none, s.NONE},
+      {'TSTypeBuiltin', c.lightcyan, c.none, s.NONE},
+      {'TSFuncBuiltin', c.magenta, c.none, s.NONE},
+      {'TSVariableBuiltin', c.magenta},
       {'TSField', c.cyan},
     },
   })
