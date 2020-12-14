@@ -31,6 +31,7 @@ with builtins; let
     splitbelow = true;
     splitright = true;
     swapfile = false;
+    termguicolors = true;
     timeout = false;
     ttimeout = true;
     ttyfast = true;
@@ -176,7 +177,7 @@ in {
     '';
     vimAlias = true;
     viAlias = true;
-    plugins = with pkgs.vimPlugins; with pkgs.vimUtils; [
+    plugins = with pkgs.vimPlugins; [
       auto-pairs
       commentary
       completion-nvim
@@ -188,6 +189,7 @@ in {
       vim-nix
       vim-signature
       vimwiki
+    ] ++ (with pkgs.vimUtils; [
       (buildVimPluginFrom2Nix {
         name = "nvim-telescope";
         src = pkgs.fetchFromGitHub {
@@ -238,6 +240,6 @@ in {
         };
         dependencies = [];
       })
-    ];
+    ]);
   };
 }

@@ -7,6 +7,7 @@ treesitter.setup { highlight = { enable = true } }
 -- Language Server Protocol
 local completion = require'completion'
 local lsp = require'nvim_lsp'
+
 lsp.bashls.setup { on_attach = completion.on_attach }
 lsp.dockerls.setup { on_attach = completion.on_attach }
 lsp.omnisharp.setup { on_attach = completion.on_attach }
