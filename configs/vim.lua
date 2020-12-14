@@ -91,7 +91,8 @@ function M:use()
 end
 
 function M:colors()
-  local vim_groups = {
+  return {
+
     {'Boolean', c.lightblue, c.none},
     {'Character', c.green, c.none},
     {'ColorColumn', c.none, c.black},
@@ -139,7 +140,7 @@ function M:colors()
     {'Repeat', c.lightblue, c.none},
     {'Search', c.bg, c.yellow},
     {'SignColumn', c.black, c.bg},
-    {'SignatureMarkText', c.blue, c.bg},
+    {'SignatureMarkText', c.cyan, c.bg},
     {'SignatureMarkerText', c.yellow, c.bg},
     {'Special', c.blue, c.none},
     {'SpecialChar', c.yellow, c.none},
@@ -166,12 +167,19 @@ function M:colors()
     {'Todo', c.yellow, c.none},
     {'Type', c.lightblue, c.none},
     {'Typedef', c.lightblue, c.none},
+    {'Underlined', c.cyan, c.none, s.underline},
     {'VertSplit', c.brightblack, c.bg},
     {'Visual', c.none, c.brightblack},
     {'VisualNOS', c.none, c.brightblack},
     {'WarningMsg', c.bg, c.yellow},
     {'WarningMsg',c.white,c.orange,s.NONE},
     {'WildMenu', c.cyan, c.black},
+
+    {'NvimInternalError', c.fg, c.red},
+    {'RedrawDebugClear', c.fg, c.yellow},
+    {'RedrawDebugComposed', c.fg, c.green},
+    {'RedrawDebugNormal', c.bg, c.white},
+    {'RedrawDebugRecompose', c.fg, c.red},
     {'healthError', c.red, c.black},
     {'healthSuccess', c.green, c.black},
     {'healthWarning', c.yellow, c.black},
@@ -314,8 +322,6 @@ function M:colors()
     {"IncSearch",c.brightwhite,c.blue,s.underline},
     {"Search",c.black,c.cyan},
   }
-
-  return vim_groups
 end
 
 M.use{}
