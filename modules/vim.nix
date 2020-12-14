@@ -114,7 +114,7 @@ with builtins; let
     "<" = "<gv";
     ">" = ">gv";
     S = ":s//g<Left><Left>";
-    s = ":sort<CR>";
+    s = ":sort | w | e<CR>";
   };
 
   maps.insert = {
