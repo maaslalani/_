@@ -75,9 +75,9 @@ let
     "<BS>" = "<Plug>(dirvish_up)";
     Q = ":q<CR>";
     S = ":%s//g<Left><Left>";
-    "<C-h>" = "<C-w>h";
     "<C-j>" = "<C-w>j";
     "<C-k>" = "<C-w>k";
+    "<C-h>" = "<C-w>h";
     "<C-l>" = "<C-w>l";
   };
 

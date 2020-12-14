@@ -8,6 +8,7 @@ rec {
 
   g = "git";
   ga = "git add";
+  gap = "${ga} --patch";
   gb = "git branch";
   gbc = "${gb} --show-current";
   gc = "git commit";
