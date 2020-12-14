@@ -1,5 +1,5 @@
-with builtins;
-let
+{ config, pkgs, libs, ... }:
+with builtins; let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   attrsToConfig = p: config (n: v: ("set -g ${p}${n} ${v}"));
   bindToConfig = config (n: v: ("bind ${n} ${v}"));
@@ -47,22 +47,24 @@ let
   };
 
 in {
-  baseIndex = 1;
-  customPaneNavigationAndResize = true;
-  disableConfirmationPrompt = true;
-  enable = true;
-  escapeTime = 0;
-  keyMode = "vi";
-  secureSocket = false;
-  shortcut = "a";
-  terminal = "xterm-256color";
-  extraConfig = ''
-    ${attrsToConfig "" settings}
-    ${attrsToConfig "pane-" pane}
-    ${attrsToConfig "window-" window}
-    ${attrsToConfig "message-" message}
-    ${attrsToConfig "status-" status}
-    ${attrsToConfig "mode-" mode}
-    ${bindToConfig binds}
-  '';
+  programs.tmux = {
+    baseIndex = 1;
+    customPaneNavigationAndResize = true;
+    disableConfirmationPrompt = true;
+    enable = true;
+    escapeTime = 0;
+    keyMode = "vi";
+    secureSocket = false;
+    shortcut = "a";
+    terminal = "xterm-256color";
+    extraConfig = ''
+      ${attrsToConfig "" settings}
+      ${attrsToConfig "pane-" pane}
+      ${attrsToConfig "window-" window}
+      ${attrsToConfig "message-" message}
+      ${attrsToConfig "status-" status}
+      ${attrsToConfig "mode-" mode}
+      ${bindToConfig binds}
+    '';
+  };
 }

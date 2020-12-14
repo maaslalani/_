@@ -12,16 +12,18 @@
           nixpkgs.overlays = [
             inputs.neovim-nightly-overlay.overlay
           ];
-          programs.alacritty = import ./terminal/alacritty.nix;
-          programs.bat = import ./programs/bat.nix;
-          programs.fzf = import ./programs/fzf.nix;
-          programs.git = import ./programs/git.nix;
-          programs.home-manager = import ./programs/manager.nix;
-          programs.neovim = import ./editor/vim.nix { inherit pkgs; };
-          programs.taskwarrior = import ./programs/task.nix;
-          programs.tmux = import ./terminal/tmux.nix;
-          programs.z-lua = import ./programs/z.nix;
-          programs.zsh = import ./shell/zsh.nix { inherit pkgs; };
+          imports = [
+            ./editor/vim.nix
+            ./modules/alacritty.nix
+            ./modules/fzf.nix
+            ./modules/git.nix
+            ./modules/tmux.nix
+            ./modules/zsh.nix
+          ];
+          programs.bat.enable = true;
+          programs.home-manager.enable = true;
+          programs.taskwarrior.enable = true;
+          programs.z-lua.enable = true;
           home.packages = [
             pkgs.cachix
             pkgs.coreutils

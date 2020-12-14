@@ -1,6 +1,5 @@
-{ pkgs }:
-with builtins;
-let
+{ config, pkgs, lib, ... }:
+with builtins; let
   customPlugins = import ./plugins.nix { inherit pkgs; };
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   configArray = f: a: concatStringsSep "\n" (map f a);
@@ -154,7 +153,8 @@ let
     "BufWritePre *.go" = "lua Goimports()";
   };
 
-  in {
+in {
+  programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
@@ -196,4 +196,5 @@ let
       vim-signature
       vimwiki
     ];
-  }
+  };
+}
