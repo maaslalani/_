@@ -113,6 +113,8 @@ let
   };
 
   maps.visual = {
+    "<" = "<gv";
+    ">" = ">gv";
     S = ":s//g<Left><Left>";
     s = ":sort<CR>";
   };
