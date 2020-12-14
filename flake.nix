@@ -16,13 +16,13 @@
             inputs.neovim-nightly-overlay.overlay
           ];
           imports = [
-            ./editor/vim.nix
             ./modules/alacritty.nix
             ./modules/fzf.nix
             ./modules/git.nix
-            ./modules/tmux.nix
-            ./modules/zsh.nix
             ./modules/packages.nix
+            ./modules/tmux.nix
+            ./modules/vim.nix
+            ./modules/zsh.nix
           ];
         };
       };

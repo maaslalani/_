@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
 {
+  programs.bat.config.theme = "Nord";
   programs.bat.enable = true;
   programs.home-manager.enable = true;
+  programs.taskwarrior.colorTheme = "dark-16";
   programs.taskwarrior.enable = true;
   programs.z-lua.enable = true;
 
