@@ -29,6 +29,7 @@
     ripgrep
     rnix-lsp
     rustup
+    sd
     solargraph
     sops
     tree
