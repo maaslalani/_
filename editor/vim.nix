@@ -179,7 +179,6 @@ let
     plugins = with pkgs.vimPlugins // customPlugins; [
       auto-pairs
       colorbuddy
-      colorizer
       commentary
       completion-nvim
       fugitive
