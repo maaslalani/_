@@ -139,6 +139,8 @@ function M:colors()
     {'Repeat', c.lightblue, c.none},
     {'Search', c.bg, c.yellow},
     {'SignColumn', c.black, c.bg},
+    {'SignatureMarkText', c.blue, c.bg},
+    {'SignatureMarkerText', c.yellow, c.bg},
     {'Special', c.blue, c.none},
     {'SpecialChar', c.yellow, c.none},
     {'SpecialComment', c.cyan, c.none},
@@ -317,4 +319,3 @@ function M:colors()
 end
 
 M.use{}
-
