@@ -4,14 +4,13 @@ This repository contains my dotfiles which are managed through [Nix](https://nix
 ![Home Setup](../assets/alacritty.png?raw=true)
 
 ## Setup
-* Editor: [neovim](./editor/vim.nix)
-* Shell: [zsh](./shell/zsh.nix)
-* Terminal Emulator: [alacritty](./terminal/alacritty.nix)
-* Terminal multiplexer: [tmux](./terminal/tmux.nix)
-* Operating System: [darwin](./darwin.nix)
+* Editor: [neovim](./modules/vim.nix)
+* Shell: [zsh](./modules/zsh.nix)
+* Terminal Emulator: [alacritty](./modules/alacritty.nix)
+* Terminal multiplexer: [tmux](./modules/tmux.nix)
 
 ## Packages
-All the packages I have installed are listed in [pkgs.nix](./pkgs.nix).
+All the packages I have installed are listed in [packages.nix](./modules/packages.nix).
 
 My favourites include:
 * [bat](https://github.com/sharkdp/bat)
