@@ -1,13 +1,19 @@
 local vim = vim
-local lsp = require'nvim_lsp'
+
+-- Treesitter
+local treesitter = require'nvim-treesitter.configs'
+treesitter.setup { highlight = { enable = true } }
+
+-- Language Server Protocol
 local completion = require'completion'
-
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  },
-}
-
+local lsp = require'nvim_lsp'
+lsp.bashls.setup { on_attach = completion.on_attach }
+lsp.dockerls.setup { on_attach = completion.on_attach }
+lsp.omnisharp.setup { on_attach = completion.on_attach }
+lsp.rnix.setup { on_attach = completion.on_attach }
+lsp.solargraph.setup { on_attach = completion.on_attach }
+lsp.sumneko_lua.setup { on_attach = completion.on_attach }
+lsp.tsserver.setup { on_attach = completion.on_attach }
 lsp.gopls.setup {
   on_attach = completion.on_attach,
   cmd = {'gopls', 'serve'},
@@ -21,20 +27,6 @@ lsp.gopls.setup {
   },
 }
 
-local servers = {
-  'bashls',
-  'dockerls',
-  'omnisharp',
-  'rnix',
-  'solargraph',
-  'sumneko_lua',
-  'tsserver',
-}
-
-for _, server in pairs(servers) do
-  lsp[server].setup { on_attach = completion.on_attach }
-end
-
 function Goimports()
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, 't', true } }
@@ -47,6 +39,7 @@ function Goimports()
   vim.lsp.buf.formatting()
 end
 
+-- Colorscheme
 local Color, c, Group = require'colorbuddy'.setup()
 local s = require'colorbuddy.style'.styles
 local M = {}
@@ -93,6 +86,10 @@ end
 function M:colors()
   return {
 
+    -- Vim Groups
+    {"IncSearch",c.brightwhite,c.blue,s.underline},
+    {"Search",c.black,c.cyan},
+    {"TermCursorNC",c.black,c.black},
     {'Boolean', c.lightblue, c.none},
     {'Character', c.green, c.none},
     {'ColorColumn', c.none, c.black},
@@ -137,6 +134,10 @@ function M:colors()
     {'PreProc', c.lightblue, c.none},
     {'Question', c.white, c.none},
     {'QuickFixLine', c.bg, c.yellow},
+    {'RedrawDebugClear', c.fg, c.yellow},
+    {'RedrawDebugComposed', c.fg, c.green},
+    {'RedrawDebugNormal', c.bg, c.white},
+    {'RedrawDebugRecompose', c.fg, c.red},
     {'Repeat', c.lightblue, c.none},
     {'Search', c.bg, c.yellow},
     {'SignColumn', c.black, c.bg},
@@ -175,15 +176,16 @@ function M:colors()
     {'WarningMsg',c.white,c.orange,s.NONE},
     {'WildMenu', c.cyan, c.black},
 
+    -- Neovim Groups
     {'NvimInternalError', c.fg, c.red},
-    {'RedrawDebugClear', c.fg, c.yellow},
-    {'RedrawDebugComposed', c.fg, c.green},
-    {'RedrawDebugNormal', c.bg, c.white},
-    {'RedrawDebugRecompose', c.fg, c.red},
+
+    -- Health Checks
     {'healthError', c.red, c.black},
     {'healthSuccess', c.green, c.black},
     {'healthWarning', c.yellow, c.black},
 
+
+    -- Diffs
     {'DiffAdd', c.green, c.black},
     {'DiffChange', c.yellow, c.black},
     {'DiffDelete', c.red, c.black},
@@ -199,6 +201,7 @@ function M:colors()
     {'diffRemoved', c.red, c.black},
     {'gitconfigVariable', c.lightcyan, c.none},
 
+    -- Treesitter
     {'TSAnnotation', c.orange, c.none},
     {'TSAttribute', c.lightcyan, c.none},
     {'TSBoolean', c.lightblue, c.none},
@@ -249,6 +252,7 @@ function M:colors()
     {'TSVariable', c.white, c.none},
     {'TSVariableBuiltin', c.lightblue, c.none},
 
+    -- HTML
     {'htmlArg', c.cyan, c.none},
     {'htmlBold', c.cyan, c.none},
     {'htmlEndTag', c.brightwhite, c.none},
@@ -267,6 +271,7 @@ function M:colors()
     {'htmlTagName', c.blue, c.none},
     {'htmlTitle', c.brightwhite, c.none},
 
+    -- Markdown
     {'markdownBlockquote', c.gray, c.none},
     {'markdownBold', c.cyan, c.none},
     {'markdownCode', c.green, c.none},
@@ -291,6 +296,7 @@ function M:colors()
     {'markdownRule', c.gray, c.none},
     {'markdownUrl', c.lightcyan, c.none},
 
+    -- Git
     {'GitGutterAdd', c.green, c.none},
     {'GitGutterChange', c.yellow, c.none},
     {'GitGutterChangeDelete', c.red, c.none},
@@ -299,6 +305,7 @@ function M:colors()
     {'gitcommitSelectedFile', c.green, c.none},
     {'gitcommitUntrackedFile', c.red, c.none},
 
+    -- LSP
     {'LSPDiagnosticsDefaultWarning', c.yellow, c.none},
     {'LspDiagnosticsDefaultError', c.red, c.none},
     {'LspDiagnosticsDefaultHint', c.blue, c.none},
@@ -308,19 +315,12 @@ function M:colors()
     {'LspDiagnosticsUnderlineInformation', c.none, c.none, s.underline},
     {'LspDiagnosticsUnderlineWarning', c.none, c.none, s.underline},
 
+    -- Telescope
     {'TelescopeBorder', c.gray},
     {'TelescopeMatching', c.magenta},
     {'TelescopeNormal', c.fg, c.bg},
     {'TelescopePromptPrefix', c.fg:dark(.2)},
     {'TelescopeSelection', c.magenta, c.brightblack, s.NONE},
-
-    {"healthError",c.red,c.black},
-    {"healthSuccess",c.green,c.black},
-    {"healthWarning",c.yellow,c.black},
-
-    {"TermCursorNC",c.black,c.black},
-    {"IncSearch",c.brightwhite,c.blue,s.underline},
-    {"Search",c.black,c.cyan},
   }
 end
 
