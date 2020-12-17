@@ -28,6 +28,7 @@
     pass
     ripgrep
     rnix-lsp
+    reattach-to-user-namespace
     rustup
     sd
     solargraph

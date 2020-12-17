@@ -147,9 +147,9 @@ with builtins; let
   };
 
   autocmd = {
-    CmdLineEnter = ": set nosmartcase";
-    CmdLineLeave = ": set smartcase";
-    TermOpen = "* setlocal nonumber signcolumn=no";
+    "CmdLineEnter :" = "set nosmartcase";
+    "CmdLineLeave :" = "set smartcase";
+    "TermOpen *" = "setlocal nonumber signcolumn=no";
     "BufWritePre *.go" = "lua Goimports()";
   };
 
