@@ -21,11 +21,12 @@ My favourites include:
 
 ## Plugins
 ### Neovim
-![Vim Setup](../assets/vim.png?raw=true)
+![Neovim Setup](../assets/vim.png?raw=true)
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+* [colorbuddy](https://github.com/tjdevries/colorbuddy.nvim)
 * [commentary](https://github.com/tpope/vim-commentary)
 * [fugitive](https://github.com/tpope/vim-fugitive)
-* [fzf-vim](https://github.com/junegunn/fzf.vim)
-* [nord-vim](https://github.com/arcticicestudio/nord-vim)
-* [polyglot](https://github.com/sheerun/vim-polyglot)
+* [nordbuddy](https://github.com/maaslalani/nordbuddy)
+* [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)
+* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 * [vim-dirvish](https://github.com/justinmk/vim-dirvish)
