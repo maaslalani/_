@@ -172,7 +172,7 @@ in {
       ${mapConfig "vmap " maps.visual}
       ${mapConfig "imap " maps.insert}
       lua <<EOF
-      ${builtins.readFile ../configs/vim.lua}
+      ${builtins.readFile ../configs/init.lua}
       EOF
 
     '';
