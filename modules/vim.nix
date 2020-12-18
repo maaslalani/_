@@ -151,6 +151,7 @@ with builtins; let
     "CmdLineLeave :" = "set smartcase";
     "TermOpen *" = "setlocal nonumber signcolumn=no";
     "BufWritePre *.go" = "lua Goimports()";
+    "BufEnter *.nix" = "set ft=nix";
   };
 
 in {
