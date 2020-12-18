@@ -14,6 +14,7 @@
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = [
             inputs.neovim-nightly-overlay.overlay
+            (import ./overlays.nix).overlay
           ];
           imports = [
             ./modules/alacritty.nix
