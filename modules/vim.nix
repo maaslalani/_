@@ -180,17 +180,17 @@ in {
     viAlias = true;
     plugins = with pkgs.vimPlugins; with pkgs; [
       auto-pairs
-      colorbuddy-nvim
+      colorbuddy
       commentary
       completion-nvim
       fugitive
       gitgutter
-      nordbuddy-nvim
+      nordbuddy
       nvim-lspconfig
-      plenary-nvim
-      popup-nvim
-      telescope-nvim
-      nvim-treesitter
+      plenary
+      popup
+      telescope
+      treesitter
       vim-dirvish
       vim-signature
       vimwiki
