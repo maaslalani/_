@@ -187,6 +187,8 @@ in {
       lua <<EOF
       ${lspConfig lsp.servers}
       ${builtins.readFile ../configs/init.lua}
+      require'nordbuddy'.use{}
+      require'nvim-treesitter.configs'.setup { highlight = { enable = true }, indent = { enable = true } }
       EOF
     '';
     vimAlias = true;

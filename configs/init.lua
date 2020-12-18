@@ -1,10 +1,5 @@
 local vim = vim
 
--- Treesitter
-local treesitter = require'nvim-treesitter.configs'
-treesitter.setup { highlight = { enable = true }, indent = { enable = true } }
-
--- Go Imports
 function Goimports()
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, 't', true } }
@@ -16,6 +11,3 @@ function Goimports()
   end
   vim.lsp.buf.formatting()
 end
-
--- Nord Colorscheme
-require'nordbuddy'.use{}
