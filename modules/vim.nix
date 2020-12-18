@@ -240,6 +240,16 @@ in {
         };
         dependencies = [];
       })
+      (buildVimPluginFrom2Nix {
+        name = "nordbuddy";
+        src = pkgs.fetchFromGitHub {
+          owner = "maaslalani";
+          repo = "nordbuddy";
+          rev = "f68c5c56a08420543e8e1335614d10d2de95dadd";
+          sha256 = "4g4karsbKNdlD+QIFRvNu15fAPdwvpYL45QcXcsZ1g8=";
+        };
+        dependencies = [];
+      })
     ]);
   };
 }
