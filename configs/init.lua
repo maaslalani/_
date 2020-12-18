@@ -17,7 +17,6 @@ lsp.sumneko_lua.setup { on_attach = completion.on_attach }
 lsp.tsserver.setup { on_attach = completion.on_attach }
 lsp.gopls.setup {
   on_attach = completion.on_attach,
-  cmd = {'gopls', 'serve'},
   settings = {
     gopls = {
       analyses = {

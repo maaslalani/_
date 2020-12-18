@@ -6,13 +6,12 @@
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   /* Neovim Plugins */
-  inputs.colorbuddy = { url =  "github:tjdevries/colorbuddy.nvim"; flake = false; };
-  inputs.nordbuddy  = { url = "github:maaslalani/nordbuddy"; flake = false; };
-  inputs.plenary    = { url =  "github:nvim-lua/plenary.nvim"; flake = false; };
-  inputs.popup      = { url =  "github:nvim-lua/popup.nvim"; flake = false; };
-  inputs.symbols    = { url = "github:nvim-telescope/telescope-symbols.nvim"; flake = false; };
-  inputs.telescope  = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-  inputs.treesitter = { url =  "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+  inputs.colorbuddy = { url = "github:tjdevries/colorbuddy.nvim";       flake = false; };
+  inputs.nordbuddy  = { url = "github:maaslalani/nordbuddy";            flake = false; };
+  inputs.plenary    = { url = "github:nvim-lua/plenary.nvim";           flake = false; };
+  inputs.popup      = { url = "github:nvim-lua/popup.nvim";             flake = false; };
+  inputs.telescope  = { url = "github:nvim-telescope/telescope.nvim";   flake = false; };
+  inputs.treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
