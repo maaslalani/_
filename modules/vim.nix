@@ -245,8 +245,8 @@ in {
         src = pkgs.fetchFromGitHub {
           owner = "maaslalani";
           repo = "nordbuddy";
-          rev = "f68c5c56a08420543e8e1335614d10d2de95dadd";
-          sha256 = "4g4karsbKNdlD+QIFRvNu15fAPdwvpYL45QcXcsZ1g8=";
+          rev = "005778c5902c1311f8c3d54f4182abfed87d6604";
+          sha256 = "DLzxXDeEN7SAU1hvV3Y+FTC1malPi/U4rS1K5eyCGzI=";
         };
         dependencies = [];
       })
