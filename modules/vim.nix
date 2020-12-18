@@ -8,6 +8,7 @@ with builtins; let
   settingsConfig = config (n: v: ("set ${n}=${toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${toString v}"));
+  lspConfig = configArray (s: "require'nvim_lsp'.${s}.setup { on_attach = require'completion'.on_attach }");
 
   toggles = {
     autoindent = true;
@@ -154,6 +155,18 @@ with builtins; let
     "BufEnter *.nix" = "set ft=nix";
   };
 
+  lsp = {
+    servers = [
+      "bashls"
+      "dockerls"
+      "omnisharp"
+      "rnix"
+      "solargraph"
+      "sumneko_lua"
+      "tsserver"
+    ];
+  };
+
 in {
   programs.neovim = {
     enable = true;
@@ -172,9 +185,9 @@ in {
       ${mapConfig "vmap " maps.visual}
       ${mapConfig "imap " maps.insert}
       lua <<EOF
+      ${lspConfig lsp.servers}
       ${builtins.readFile ../configs/init.lua}
       EOF
-
     '';
     vimAlias = true;
     viAlias = true;
