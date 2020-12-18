@@ -6,11 +6,12 @@
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   /* Neovim Plugins */
-  inputs.nordbuddy  = { url = "github:maaslalani/nordbuddy"; flake = false; };
-  inputs.telescope  = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-  inputs.popup      = { url =  "github:nvim-lua/popup.nvim"; flake = false; };
-  inputs.plenary    = { url =  "github:nvim-lua/plenary.nvim"; flake = false; };
   inputs.colorbuddy = { url =  "github:tjdevries/colorbuddy.nvim"; flake = false; };
+  inputs.nordbuddy  = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.plenary    = { url =  "github:nvim-lua/plenary.nvim"; flake = false; };
+  inputs.popup      = { url =  "github:nvim-lua/popup.nvim"; flake = false; };
+  inputs.symbols    = { url = "github:nvim-telescope/telescope-symbols.nvim"; flake = false; };
+  inputs.telescope  = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
   inputs.treesitter = { url =  "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs: {
@@ -22,11 +23,12 @@
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = [
           (self: super: with self.vimUtils; {
-             nordbuddy  = buildVimPluginFrom2Nix { name = "nordbuddy";  src = inputs.nordbuddy; };
-             telescope  = buildVimPluginFrom2Nix { name = "telescope";  src = inputs.telescope; };
-             popup      = buildVimPluginFrom2Nix { name = "popup";      src = inputs.popup; };
-             plenary    = buildVimPluginFrom2Nix { name = "plenary";    src = inputs.plenary; };
              colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
+             nordbuddy  = buildVimPluginFrom2Nix { name = "nordbuddy";  src = inputs.nordbuddy; };
+             plenary    = buildVimPluginFrom2Nix { name = "plenary";    src = inputs.plenary; };
+             popup      = buildVimPluginFrom2Nix { name = "popup";      src = inputs.popup; };
+             symbols    = buildVimPluginFrom2Nix { name = "symbols";    src = inputs.symbols; };
+             telescope  = buildVimPluginFrom2Nix { name = "telescope";  src = inputs.telescope; };
              treesitter = buildVimPluginFrom2Nix { name = "treesitter"; src = inputs.treesitter; };
            })
           inputs.neovim-nightly-overlay.overlay

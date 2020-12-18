@@ -190,6 +190,7 @@ in {
       plenary
       popup
       telescope
+      symbols
       treesitter
       vim-dirvish
       vim-signature
