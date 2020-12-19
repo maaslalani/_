@@ -95,12 +95,12 @@ with builtins; let
     "=" = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     W = ":w!<CR>";
+    a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
     c = ":Commands<CR>";
     e = ":Dirvish<CR>";
     f = "<cmd>Telescope fd<cr>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
-    a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
     l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
     o = ":silent !open <cWORD><CR>";
@@ -139,7 +139,7 @@ with builtins; let
 
   variables = {
     completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
-    diagnostic_auto_popup_while_jump = 1;
+    diagnostic_auto_popup_while_jump = 0;
     diagnostic_enable_underline = 1;
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
