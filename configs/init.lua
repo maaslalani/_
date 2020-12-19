@@ -1,5 +1,6 @@
 local vim = vim
 
+-- Go Imports
 function Goimports()
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, 't', true } }
@@ -11,3 +12,16 @@ function Goimports()
   end
   vim.lsp.buf.formatting()
 end
+
+require'nvim_lsp'.gopls.setup {
+  cmd = {"gopls", "serve"},
+  on_attach = require'completion'.on_attach,
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+}
