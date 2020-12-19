@@ -83,24 +83,24 @@ with builtins; let
 
   maps.silent = {
     gh = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
-    gD = "<cmd>lua vim.lsp.buf.definition()<CR>";
     K = "<cmd>lua vim.lsp.buf.hover()<CR>";
     gI = "<cmd>lua vim.lsp.buf.implementation()<CR>";
     gr = "<cmd>lua vim.lsp.buf.references()<CR>";
-    gd = "<cmd>lua vim.lsp.buf.declaration()<CR>";
+    gd = "<cmd>lua vim.lsp.buf.definition()<CR>";
   };
 
   maps.leader = {
     "" = "<Nop>";
     "/" = ":BLines!<CR>";
-    "=" = "migg=G`imi";
+    "=" = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     W = ":w!<CR>";
     c = ":Commands<CR>";
     e = ":Dirvish<CR>";
-    f = "<cmd>Telescope find_files<cr>";
+    f = "<cmd>Telescope fd<cr>";
     gb = ":Gblame<CR>";
     gd = ":Gdiff<CR>";
+    a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
     l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
     o = ":silent !open <cWORD><CR>";
@@ -128,7 +128,6 @@ with builtins; let
   commands = {
     E = "Dirvish";
     Q = "q";
-    Tf = "TestFile";
     W = "w";
     Wc = "!wc %";
   };
@@ -152,7 +151,6 @@ with builtins; let
     "CmdLineEnter :" = "set nosmartcase";
     "CmdLineLeave :" = "set smartcase";
     "TermOpen *" = "setlocal nonumber signcolumn=no";
-    "BufWritePre *.go" = "lua Goimports()";
     "BufEnter *.nix" = "set ft=nix";
   };
 
@@ -188,29 +186,37 @@ in
       ${mapConfig "imap " maps.insert}
       lua <<EOF
       ${lspConfig lsp.servers}
-      ${builtins.readFile ../configs/init.lua}
       require'nordbuddy'.use{}
       require'nvim-treesitter.configs'.setup { highlight = { enable = true }, indent = { enable = true } }
+      require'nvim_lsp'.gopls.setup {
+        on_attach = require'completion'.on_attach,
+        settings = { gopls = { analyses = { unusedparams = true }, staticcheck = true } },
+      }
       EOF
     '';
     vimAlias = true;
     viAlias = true;
-    plugins = with pkgs.vimPlugins; with pkgs; [
-      auto-pairs
-      colorbuddy
-      commentary
-      completion-nvim
-      fugitive
-      gitgutter
-      nordbuddy
-      nvim-lspconfig
-      plenary
-      popup
-      telescope
-      treesitter
-      vim-dirvish
-      vim-signature
-      vimwiki
-    ];
+    plugins = (
+      with pkgs.vimPlugins; [
+        auto-pairs
+        commentary
+        completion-nvim
+        fugitive
+        gitgutter
+        nvim-lspconfig
+        vim-dirvish
+        vim-signature
+        vimwiki
+      ]
+    ) ++ (
+      with pkgs; [
+        nordbuddy
+        colorbuddy
+        plenary
+        popup
+        telescope
+        treesitter
+      ]
+    );
   };
 }
