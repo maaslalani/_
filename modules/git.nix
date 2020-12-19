@@ -3,7 +3,8 @@ let
   user = "maaslalani";
   name = "Maas Lalani";
   email = "${user}0@gmail.com";
-in {
+in
+{
   programs.git = {
     enable = true;
     extraConfig = {

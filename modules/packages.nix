@@ -20,26 +20,27 @@
     gnupg
     go
     google-cloud-sdk
-    gopls
     htop
     jq
     kubectl
     nodejs
     pass
     ripgrep
-    rnix-lsp
-    reattach-to-user-namespace
     rustup
     sd
-    solargraph
     sops
     tree
     vault
     yarn
-  ] ++ (with pkgs.nodePackages; [
-    bash-language-server
-    dockerfile-language-server-nodejs
-    typescript
-    typescript-language-server
-  ]);
+  ] ++ (
+    with pkgs; with pkgs.nodePackages; [
+      rnix-lsp
+      bash-language-server
+      solargraph
+      dockerfile-language-server-nodejs
+      typescript
+      typescript-language-server
+      gopls
+    ]
+  );
 }

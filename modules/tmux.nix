@@ -46,7 +46,8 @@ with builtins; let
     "=" = "set-window-option synchronize-panes";
   };
 
-in {
+in
+{
   programs.tmux = {
     baseIndex = 1;
     customPaneNavigationAndResize = true;

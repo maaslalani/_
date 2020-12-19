@@ -1,7 +1,8 @@
 { config, pkgs, libs, ... }:
 let
   color = color: text: "%F{${color}}${text}%f";
-in {
+in
+{
   programs.zsh = {
     autocd = true;
     dotDir = ".config/zsh";
@@ -109,23 +110,24 @@ in {
     '';
     sessionVariables = let
       pathJoin = builtins.concatStringsSep ":";
-    in rec {
-      CARGO_BIN = "$HOME/.cargo/bin";
-      CLICOLOR = 1;
-      COLORTERM = "truecolor";
-      EDITOR = "nvim";
-      GOBIN = "${GOPATH}/bin";
-      GOPATH = "$HOME/.config/go";
-      KEYTIMEOUT = 1;
-      KUBECONFIG =  pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
-      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-      NIX_BIN = "$HOME/.nix-profile/bin";
-      NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-      PASSWORD_STORE_DIR = "$HOME/.config/pass";
-      PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
-      PROMPT = "${color "blue" "%2~"} ${color "magenta" "\\$GIT_BRANCH"} ${color "red" "\\$GIT_STATUS"} \n%(?.${color "green" "❯"}.${color "red" "❯"}) ";
-      TERM = "xterm-256color";
-    };
+    in
+      rec {
+        CARGO_BIN = "$HOME/.cargo/bin";
+        CLICOLOR = 1;
+        COLORTERM = "truecolor";
+        EDITOR = "nvim";
+        GOBIN = "${GOPATH}/bin";
+        GOPATH = "$HOME/.config/go";
+        KEYTIMEOUT = 1;
+        KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
+        MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+        NIX_BIN = "$HOME/.nix-profile/bin";
+        NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
+        PASSWORD_STORE_DIR = "$HOME/.config/pass";
+        PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
+        PROMPT = "${color "blue" "%2~"} ${color "magenta" "\\$GIT_BRANCH"} ${color "red" "\\$GIT_STATUS"} \n%(?.${color "green" "❯"}.${color "red" "❯"}) ";
+        TERM = "xterm-256color";
+      };
     plugins = [
       {
         name = "zsh-syntax-highlighting";
