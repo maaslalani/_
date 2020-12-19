@@ -92,9 +92,10 @@ with builtins; let
 
   maps.leader = {
     "" = "<Nop>";
-    "=" = "migg=G`imi";
     "/" = ":BLines!<CR>";
+    "=" = "migg=G`imi";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
+    W = ":w!<CR>";
     c = ":Commands<CR>";
     e = ":Dirvish<CR>";
     f = "<cmd>Telescope find_files<cr>";
@@ -106,9 +107,9 @@ with builtins; let
     p = "\"*p";
     q = ":q<CR>";
     r = "<cmd>Telescope live_grep<cr>";
+    sl = ":luafile %<CR>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
-    W = ":w!<CR>";
     y = "\"*y";
   };
 
@@ -167,7 +168,8 @@ with builtins; let
     ];
   };
 
-in {
+in
+{
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
