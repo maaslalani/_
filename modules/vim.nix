@@ -143,7 +143,6 @@ with builtins; let
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
     loaded_netrw = 0;
-    vimwiki_list = "[{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]";
   };
 
   autocmd = {
@@ -207,7 +206,6 @@ in
         nvim-lspconfig
         vim-dirvish
         vim-signature
-        vimwiki
       ]
     ) ++ (
       with pkgs; [
