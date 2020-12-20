@@ -55,7 +55,10 @@ in
     enable = true;
     escapeTime = 0;
     keyMode = "vi";
+    newSession = false;
     secureSocket = false;
+    sensibleOnTop = true;
+    shell = "zsh";
     shortcut = "a";
     terminal = "xterm-256color";
     extraConfig = ''
