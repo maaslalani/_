@@ -53,6 +53,7 @@ with builtins; let
     laststatus = 0;
     numberwidth = 1;
     omnifunc = "v:lua.vim.lsp.omnifunc";
+    diffopt = "filler,internal,algorithm:histogram,indent-heuristic";
     printfont = "PragmataPro:h12";
     shiftwidth = 2;
     shortmess = "filnxtToOFc";
@@ -91,12 +92,10 @@ with builtins; let
 
   maps.leader = {
     "" = "<Nop>";
-    "/" = ":BLines!<CR>";
     "=" = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
     W = ":w!<CR>";
     a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-    c = ":Commands<CR>";
     e = ":Dirvish<CR>";
     f = "<cmd>Telescope fd<cr>";
     gb = ":Gblame<CR>";
@@ -179,11 +178,13 @@ in
 
       ${mapConfig ":command " commands}
       ${mapConfig "filetype " filetype}
+
+      ${mapConfig "imap " maps.insert}
       ${mapConfig "map <silent> ${leaderKey}" maps.leader}
       ${mapConfig "nmap " maps.normal}
       ${mapConfig "nnoremap <silent> " maps.silent}
       ${mapConfig "vmap " maps.visual}
-      ${mapConfig "imap " maps.insert}
+
       lua <<EOF
       ${lspConfig lsp.servers}
       require'nordbuddy'.use{}
