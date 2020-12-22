@@ -98,8 +98,6 @@ with builtins; let
     a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
     e = ":Dirvish<CR>";
     f = "<cmd>Telescope fd<cr>";
-    gb = ":Gblame<CR>";
-    gd = ":Gdiff<CR>";
     l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
     n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
     o = ":silent !open <cWORD><CR>";
@@ -201,11 +199,9 @@ in
         auto-pairs
         commentary
         completion-nvim
-        fugitive
         gitgutter
         nvim-lspconfig
         vim-dirvish
-        vim-signature
       ]
     ) ++ (
       with pkgs; [
