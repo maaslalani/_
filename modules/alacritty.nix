@@ -26,7 +26,7 @@
 
       font = {
         bold.family = "Hack";
-        bold.style = "Medium";
+        bold.style = "Bold";
         italic.family = "Hack";
         italic.style = "Italic";
         normal.family = "Hack";
