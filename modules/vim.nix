@@ -144,10 +144,11 @@ let
   };
 
   autocmd = {
+    "BufEnter *.nix" = "set ft=nix";
+    "BufEnter *.lock" = "set ft=json";
     "CmdLineEnter :" = "set nosmartcase";
     "CmdLineLeave :" = "set smartcase";
     "TermOpen *" = "setlocal nonumber signcolumn=no";
-    "BufEnter *.nix" = "set ft=nix";
   };
 
   lsp = {
