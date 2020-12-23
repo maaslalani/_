@@ -105,6 +105,7 @@ with builtins; let
     q = ":q<CR>";
     r = "<cmd>Telescope live_grep<cr>";
     sl = ":luafile %<CR>";
+    so = ":sort<CR>";
     t = ":tabnew<CR>";
     w = ":w<CR>";
     y = "\"*y";
@@ -113,8 +114,7 @@ with builtins; let
   maps.visual = {
     "<" = "<gv";
     ">" = ">gv";
-    S = ":s//g<Left><Left>";
-    s = ":sort<CR>";
+    s = ":s//g<Left><Left>";
   };
 
   maps.insert = {
@@ -202,6 +202,7 @@ in
         gitgutter
         nvim-lspconfig
         vim-dirvish
+        vim-surround
       ]
     ) ++ (
       with pkgs; [
