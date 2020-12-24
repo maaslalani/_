@@ -8,7 +8,13 @@ let
   settingsConfig = config (n: v: ("set ${n}=${builtins.toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${builtins.toString v}"));
-  lspConfig = configArray (s: "require'nvim_lsp'.${s}.setup { on_attach = require'completion'.on_attach }");
+
+  join = a: builtins.concatStringsSep "\n" (builtins.attrValues a);
+  expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${builtins.toString v},";
+  expandAttrs = a: join (builtins.mapAttrs (expandAttr) a);
+  luaFunction = p: v: "${p} {\n${expandAttrs v}\n}";
+  lspSetup = a: join (builtins.mapAttrs (k: v: luaFunction "require'nvim_lsp'.${k}.setup" v) a);
+  treesitterSetup = luaFunction "require'nvim-treesitter.configs'.setup";
 
   leaderKey = "<Space>";
 
@@ -151,18 +157,29 @@ let
     "TermOpen *" = "setlocal nonumber signcolumn=no";
   };
 
-  lsp = {
-    servers = [
-      "bashls"
-      "dockerls"
-      "omnisharp"
-      "rnix"
-      "solargraph"
-      "sumneko_lua"
-      "tsserver"
-    ];
+  nvim.treesitter = {
+    highlight.enable = "true";
+    indent.enable = "true";
   };
 
+  completion = "require'completion'.on_attach";
+
+  lsp = {
+    bashls.on_attach = completion;
+    dockerls.on_attach = completion;
+    omnisharp.on_attach = completion;
+    rnix.on_attach = completion;
+    solargraph.on_attach = completion;
+    sumneko_lua.on_attach = completion;
+    tsserver.on_attach = completion;
+    gopls.on_attach = completion;
+    gopls.settings.gopls = {
+      analyses = {
+        unusedparams = "true";
+        staticcheck = "true";
+      };
+    };
+  };
 in
 {
   programs.neovim = {
@@ -184,13 +201,9 @@ in
       ${mapConfig "vmap " maps.visual}
 
       lua <<EOF
-      ${lspConfig lsp.servers}
       require'nordbuddy'.use{}
-      require'nvim-treesitter.configs'.setup { highlight = { enable = true }, indent = { enable = true } }
-      require'nvim_lsp'.gopls.setup {
-        on_attach = require'completion'.on_attach,
-        settings = { gopls = { analyses = { unusedparams = true }, staticcheck = true } },
-      }
+      ${lspSetup lsp}
+      ${treesitterSetup nvim.treesitter}
       EOF
     '';
     vimAlias = true;
