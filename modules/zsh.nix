@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }:
+{ config, pkgs, lib, ... }:
 let
   color = color: text: "%F{${color}}${text}%f";
 in
