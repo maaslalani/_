@@ -1,7 +1,13 @@
 { config, pkgs, lib, ... }:
 let
-  config = f: a: builtins.concatStringsSep "\n" (builtins.attrValues (builtins.mapAttrs f a));
-  configArray = f: a: builtins.concatStringsSep "\n" (builtins.map f a);
+  joinLines = builtins.concatStringsSep "\n";
+  joinValues = a: joinLines (builtins.attrValues a);
+
+  boolToStr = v: if v then "true" else "false";
+  toStr = v: if builtins.isBool v then boolToStr v else builtins.toString v;
+
+  config = f: a: joinLines (builtins.attrValues (builtins.mapAttrs f a));
+  configArray = f: a: joinLines (builtins.map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
   mapConfig = p: config (n: v: ("${p}${n} ${v}"));
@@ -9,12 +15,10 @@ let
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${builtins.toString v}"));
 
-  join = a: builtins.concatStringsSep "\n" (builtins.attrValues a);
-  expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${builtins.toString v},";
-  expandAttrs = a: join (builtins.mapAttrs (expandAttr) a);
-  luaFunction = p: v: "${p} {\n${expandAttrs v}\n}";
-  lspSetup = a: join (builtins.mapAttrs (k: v: luaFunction "require'nvim_lsp'.${k}.setup" v) a);
-  treesitterSetup = luaFunction "require'nvim-treesitter.configs'.setup";
+  expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
+  expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
+  lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'nvim_lsp'.${k}.setup { ${expandAttrs v} }") a);
+  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
 
@@ -101,6 +105,7 @@ let
       N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
       W = ":w!<CR>";
       a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+      cd = ":cd %:p:h<CR>:pwd<CR>";
       e = ":Dirvish<CR>";
       f = "<cmd>Telescope fd<cr>";
       l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
@@ -158,13 +163,13 @@ let
   };
 
   nvim.treesitter = {
-    highlight.enable = "true";
-    indent.enable = "true";
+    highlight.enable = true;
+    indent.enable = true;
   };
 
   completion = "require'completion'.on_attach";
 
-  lsp = {
+  nvim.lsp = {
     bashls.on_attach = completion;
     dockerls.on_attach = completion;
     gopls.on_attach = completion;
@@ -176,8 +181,8 @@ let
     tsserver.on_attach = completion;
     gopls.settings.gopls = {
       analyses = {
-        unusedparams = "true";
-        staticcheck = "true";
+        unusedparams = true;
+        staticcheck = true;
       };
     };
   };
@@ -203,7 +208,7 @@ in
 
       lua <<EOF
       require'nordbuddy'.use{}
-      ${lspSetup lsp}
+      ${lspSetup nvim.lsp}
       ${treesitterSetup nvim.treesitter}
       EOF
     '';
