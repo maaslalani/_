@@ -36,11 +36,12 @@
     with pkgs; with pkgs.nodePackages; [
       rnix-lsp
       bash-language-server
-      solargraph
       dockerfile-language-server-nodejs
+      gopls
+      solargraph
+      terraform-ls
       typescript
       typescript-language-server
-      gopls
     ]
   );
 }
