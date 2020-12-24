@@ -22,15 +22,20 @@
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = [
             (
-              self: super: with self.vimUtils; {
-                colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
-                nordbuddy = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
-                plenary = buildVimPluginFrom2Nix { name = "plenary"; src = inputs.plenary; };
-                popup = buildVimPluginFrom2Nix { name = "popup"; src = inputs.popup; };
-                symbols = buildVimPluginFrom2Nix { name = "symbols"; src = inputs.symbols; };
-                telescope = buildVimPluginFrom2Nix { name = "telescope"; src = inputs.telescope; };
-                treesitter = buildVimPluginFrom2Nix { name = "treesitter"; src = inputs.treesitter; };
-              }
+              self: super: let
+                plug = n: self.vimUtils.buildVimPluginFrom2Nix {
+                  name = n;
+                  src = inputs.${n};
+                };
+              in
+                {
+                  colorbuddy = plug "colorbuddy";
+                  nordbuddy = plug "nordbuddy";
+                  plenary = plug "plenary";
+                  popup = plug "popup";
+                  telescope = plug "telescope";
+                  treesitter = plug "treesitter";
+                }
             )
             inputs.neovim-nightly-overlay.overlay
           ];
