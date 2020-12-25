@@ -116,6 +116,7 @@ let
       r = "<cmd>Telescope live_grep<cr>";
       sl = ":luafile %<CR>";
       so = ":sort<CR>";
+      sp = ":set spell<CR>";
       t = ":tabnew<CR>";
       w = ":w<CR>";
       y = "\"*y";

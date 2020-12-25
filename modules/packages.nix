@@ -29,6 +29,7 @@
     rustup
     sd
     sops
+    terraform
     tree
     vault
     yarn
