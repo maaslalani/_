@@ -16,6 +16,7 @@
     fd
     ffmpeg
     git
+    gitAndTools.gh
     glow
     gnupg
     go

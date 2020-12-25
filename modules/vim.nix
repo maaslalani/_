@@ -173,13 +173,13 @@ let
   nvim.lsp = {
     bashls.on_attach = completion;
     dockerls.on_attach = completion;
-    gopls.on_attach = completion;
     omnisharp.on_attach = completion;
     rnix.on_attach = completion;
     solargraph.on_attach = completion;
     sumneko_lua.on_attach = completion;
     terraformls.on_attach = completion;
     tsserver.on_attach = completion;
+    gopls.on_attach = completion;
     gopls.settings.gopls = {
       analyses = {
         unusedparams = true;
@@ -227,8 +227,8 @@ in
       ]
     ) ++ (
       with pkgs; [
-        nordbuddy
         colorbuddy
+        nordbuddy
         plenary
         popup
         telescope
