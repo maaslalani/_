@@ -83,7 +83,7 @@ let
   maps = {
     normal = {
       "<BS>" = "<Plug>(dirvish_up)";
-      Q = ":q<CR>";
+      Q = "<Nop>";
       S = ":%s//g<Left><Left>";
       "<C-j>" = "<C-w>j";
       "<C-k>" = "<C-w>k";
@@ -103,6 +103,7 @@ let
       "" = "<Nop>";
       "=" = "<cmd>lua vim.lsp.buf.formatting()<CR>";
       N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
+      Q = ":q!<CR>";
       W = ":w!<CR>";
       a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
       cd = ":cd %:p:h<CR>:pwd<CR>";
