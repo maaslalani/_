@@ -17,7 +17,6 @@
     ffmpeg
     git
     gitAndTools.gh
-    glow
     gnupg
     go
     google-cloud-sdk
