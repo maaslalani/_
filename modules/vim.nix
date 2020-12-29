@@ -110,6 +110,7 @@ let
       e = ":Dirvish<CR>";
       f = "<cmd>Telescope fd<cr>";
       l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
+      ms = "<cmd>Mksession<CR>";
       n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
       o = ":silent !open <cWORD><CR>";
       p = "\"*p";
@@ -140,6 +141,7 @@ let
     Q = "q";
     W = "w";
     Wc = "!wc %";
+    Mksession = "mksession! $VIM_SESSION_PATH | qa";
   };
 
   filetype = {

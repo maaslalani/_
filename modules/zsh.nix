@@ -70,6 +70,7 @@ in
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
       tns = "tmux new-session -s `basename $(pwd)`";
+      tnvs = "tmux new -A -s default \"vim -S $VIM_SESSION_PATH; $SHELL\"";
 
       vi = "nvim";
       v = "${vi} .";
@@ -126,6 +127,7 @@ in
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
         PROMPT = "${color "blue" "%2~"} ${color "magenta" "\\$GIT_BRANCH"} ${color "red" "\\$GIT_STATUS"} \n%(?.${color "green" "❯"}.${color "red" "❯"}) ";
         TERM = "xterm-256color";
+        VIM_SESSION_PATH = "/tmp/session.vim";
       };
     plugins = [
       {
