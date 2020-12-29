@@ -69,8 +69,7 @@ in
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
-      tn = "tmux new-session -s";
-      tns = "tmux new-session -A -s `basename $(pwd)`";
+      tns = "tmux new-session -s `basename $(pwd)`";
 
       vi = "nvim";
       v = "${vi} .";
