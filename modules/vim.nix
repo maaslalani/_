@@ -161,6 +161,7 @@ let
   autocmd = {
     "BufEnter *.nix" = "set ft=nix";
     "BufEnter *.lock" = "set ft=json";
+    "BufEnter *.graphql" = "set ft=graphql";
     "CmdLineEnter :" = "set nosmartcase";
     "CmdLineLeave :" = "set smartcase";
     "TermOpen *" = "setlocal nonumber signcolumn=no";
