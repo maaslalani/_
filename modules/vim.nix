@@ -117,7 +117,6 @@ let
       q = "<cmd>q<CR>";
       r = "<cmd>Telescope live_grep<cr>";
       sl = "<cmd>luafile %<CR>";
-      so = "<cmd>sort<CR>";
       sp = "<cmd>setlocal spell<CR>";
       t = "<cmd>tabnew<CR>";
       w = "<cmd>w<CR>";
@@ -127,7 +126,8 @@ let
     visual = {
       "<" = "<gv";
       ">" = ">gv";
-      s = ":s//g<Left><Left>";
+      ss = ":s//g<Left><Left>";
+      so = "<cmd>sort | we<CR>";
     };
 
     insert = {
@@ -153,6 +153,7 @@ let
     completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']";
     diagnostic_auto_popup_while_jump = 0;
     diagnostic_enable_underline = 1;
+
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
     loaded_netrw = 0;
