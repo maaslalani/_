@@ -127,7 +127,7 @@ let
       "<" = "<gv";
       ">" = ">gv";
       ss = ":s//g<Left><Left>";
-      so = "<cmd>sort | we<CR>";
+      so = ":sort <bar>w<bar>e<CR>";
     };
 
     insert = {

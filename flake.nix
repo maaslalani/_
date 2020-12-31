@@ -1,9 +1,9 @@
 {
   description = "home";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-  inputs.neovim-nightly-overlay.url = "github:mjlbach/neovim-nightly-overlay";
-  inputs.home-manager.url = "github:rycee/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.home-manager.url = "github:rycee/home-manager";
+  inputs.neovim-nightly-overlay.url = "github:mjlbach/neovim-nightly-overlay";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   /* Neovim Plugins */
   inputs.colorbuddy = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
