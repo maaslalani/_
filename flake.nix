@@ -46,7 +46,7 @@
             ./modules/packages.nix
             ./modules/tmux.nix
             ./modules/vim.nix
-            ./modules/zsh.nix
+            ./modules/shell.nix
           ];
         };
       };
