@@ -11,6 +11,7 @@
     cachix
     coreutils
     docker
+    entr
     errcheck
     exa
     fd
