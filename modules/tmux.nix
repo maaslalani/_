@@ -55,7 +55,7 @@ in
     enable = true;
     escapeTime = 0;
     keyMode = "vi";
-    newSession = true;
+    newSession = false;
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
