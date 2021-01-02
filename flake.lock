@@ -157,11 +157,11 @@
     "nordbuddy": {
       "flake": false,
       "locked": {
-        "lastModified": 1609021268,
-        "narHash": "sha256-1DqQjCBZwpzAcuSFnxHlu9Oa+zi2biUNMCIVwppsCFU=",
+        "lastModified": 1609610040,
+        "narHash": "sha256-+hZwOCYdIWFUvGbI9fz2paTl+RVFKKZzE8/r26hpoFk=",
         "owner": "maaslalani",
         "repo": "nordbuddy",
-        "rev": "5382c2789d54f72503990c7d5ff3fa4292454060",
+        "rev": "619d45d3ba13ce5da4dae688a369f298b3128727",
         "type": "github"
       },
       "original": {
