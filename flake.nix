@@ -1,8 +1,8 @@
 {
   description = "home";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.home-manager.url = "github:rycee/home-manager";
-  inputs.neovim-nightly-overlay.url = "github:mjlbach/neovim-nightly-overlay";
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   /* Neovim Plugins */
