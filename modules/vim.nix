@@ -231,13 +231,16 @@ in
         vim-surround
       ]
     ) ++ (
+      with pkgs.unstable.vimPlugins; [
+        plenary-nvim
+        popup-nvim
+        telescope-nvim
+        nvim-treesitter
+      ]
+    ) ++ (
       with pkgs; [
         colorbuddy
         nordbuddy
-        plenary
-        popup
-        telescope
-        treesitter
       ]
     );
   };

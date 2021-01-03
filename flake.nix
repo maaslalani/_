@@ -8,29 +8,16 @@
   /* Neovim Plugins */
   inputs.colorbuddy = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
   inputs.nordbuddy = { url = "github:maaslalani/nordbuddy"; flake = false; };
-  inputs.plenary = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
-  inputs.popup = { url = "github:nvim-lua/popup.nvim"; flake = false; };
-  inputs.telescope = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-  inputs.treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs:
     let
       overlays = [
         (
-          self: super: let
-            plug = n: self.vimUtils.buildVimPluginFrom2Nix {
-              name = n;
-              src = inputs.${n};
-            };
-          in
-            {
-              colorbuddy = plug "colorbuddy";
-              nordbuddy = plug "nordbuddy";
-              plenary = plug "plenary";
-              popup = plug "popup";
-              telescope = plug "telescope";
-              treesitter = plug "treesitter";
-            }
+          self: super: {
+            colorbuddy = self.vimUtils.buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
+            nordbuddy = self.vimUtils.buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
+            unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
+          }
         )
         inputs.neovim-nightly-overlay.overlay
       ];
