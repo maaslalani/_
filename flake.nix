@@ -13,9 +13,9 @@
     let
       overlays = [
         (
-          self: super: {
-            colorbuddy = self.vimUtils.buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
-            nordbuddy = self.vimUtils.buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
+          self: super: with self.vimUtils; {
+            colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
+            nordbuddy = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
             unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
           }
         )
