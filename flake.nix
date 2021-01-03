@@ -9,39 +9,35 @@
   inputs.colorbuddy = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
   inputs.nordbuddy = { url = "github:maaslalani/nordbuddy"; flake = false; };
 
-  outputs = { self, ... }@inputs:
-    let
-      overlays = [
-        (
-          self: super: with self.vimUtils; {
-            colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
-            nordbuddy = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
-            unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
-          }
-        )
-        inputs.neovim-nightly-overlay.overlay
-      ];
-    in
-      {
-        homeConfigurations = {
-          home = inputs.home-manager.lib.homeManagerConfiguration {
-            system = "x86_64-darwin";
-            homeDirectory = "/Users/maas";
-            username = "maas";
-            configuration = { pkgs, ... }: {
-              nixpkgs.overlays = overlays;
-              imports = [
-                ./modules/alacritty.nix
-                ./modules/fzf.nix
-                ./modules/git.nix
-                ./modules/packages.nix
-                ./modules/tmux.nix
-                ./modules/vim.nix
-                ./modules/shell.nix
-              ];
-            };
-          };
+  outputs = { self, ... }@inputs: {
+    homeConfigurations = {
+      home = inputs.home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-darwin";
+        homeDirectory = "/Users/maas";
+        username = "maas";
+        configuration = { pkgs, ... }: {
+          nixpkgs.overlays = [
+            (
+              self: super: with self.vimUtils; {
+                colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
+                nordbuddy = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
+                unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
+              }
+            )
+            inputs.neovim-nightly-overlay.overlay
+          ];
+          imports = [
+            ./modules/alacritty.nix
+            ./modules/fzf.nix
+            ./modules/git.nix
+            ./modules/packages.nix
+            ./modules/tmux.nix
+            ./modules/vim.nix
+            ./modules/shell.nix
+          ];
         };
-        home = self.homeConfigurations.home.activationPackage;
       };
+    };
+    home = self.homeConfigurations.home.activationPackage;
+  };
 }

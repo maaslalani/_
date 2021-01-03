@@ -17,7 +17,7 @@ let
 
   expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
-  lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'nvim_lsp'.${k}.setup { ${expandAttrs v} }") a);
+  lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
   treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
@@ -221,21 +221,18 @@ in
     vimAlias = true;
     viAlias = true;
     plugins = (
-      with pkgs.vimPlugins; [
+      with pkgs.unstable.vimPlugins; [
         auto-pairs
         commentary
         completion-nvim
         gitgutter
         nvim-lspconfig
-        vim-dirvish
-        vim-surround
-      ]
-    ) ++ (
-      with pkgs.unstable.vimPlugins; [
+        nvim-treesitter
         plenary-nvim
         popup-nvim
         telescope-nvim
-        nvim-treesitter
+        vim-dirvish
+        vim-surround
       ]
     ) ++ (
       with pkgs; [
