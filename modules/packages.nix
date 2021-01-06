@@ -24,6 +24,7 @@
     htop
     jq
     kubectl
+    mosh
     nodejs
     pass
     ripgrep
