@@ -1,7 +1,7 @@
 {
   description = "home";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.home-manager.url = "github:nix-community/home-manager/99f0074";
+  inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
