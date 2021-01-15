@@ -34,6 +34,7 @@
     terraform
     tree
     vault
+    watch
     yarn
   ] ++ (
     with pkgs; with pkgs.nodePackages; [

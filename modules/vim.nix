@@ -232,6 +232,7 @@ in
         popup-nvim
         telescope-nvim
         vim-dirvish
+        vim-fugitive
         vim-surround
       ]
     ) ++ (
