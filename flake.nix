@@ -31,9 +31,11 @@
             ./modules/fzf.nix
             ./modules/git.nix
             ./modules/packages.nix
+            ./modules/shell.nix
+            ./modules/skhd.nix
             ./modules/tmux.nix
             ./modules/vim.nix
-            ./modules/shell.nix
+            ./modules/yabai.nix
           ];
         };
       };

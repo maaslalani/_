@@ -30,11 +30,13 @@
     ripgrep
     rustup
     sd
+    skhd
     sops
     terraform
     tree
     vault
     watch
+    yabai
     yarn
   ] ++ (
     with pkgs; with pkgs.nodePackages; [
