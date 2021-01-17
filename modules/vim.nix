@@ -227,7 +227,6 @@ in
         completion-nvim
         gitgutter
         nvim-lspconfig
-        nvim-treesitter
         plenary-nvim
         popup-nvim
         telescope-nvim
@@ -239,6 +238,7 @@ in
       with pkgs; [
         colorbuddy
         nordbuddy
+        treesitter
       ]
     );
   };

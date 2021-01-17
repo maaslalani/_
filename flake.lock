@@ -192,7 +192,24 @@
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
-        "nordbuddy": "nordbuddy"
+        "nordbuddy": "nordbuddy",
+        "treesitter": "treesitter"
+      }
+    },
+    "treesitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1610695288,
+        "narHash": "sha256-STeiPaR2u3DzT26xVD6FOpntXuIFfei9uvqwXJ0MceA=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "1c3fb201c65b42a3752b299d31b1fcf40e3c38e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "type": "github"
       }
     }
   },
