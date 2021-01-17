@@ -57,7 +57,7 @@
         primary.foreground = "0xD8DEE9";
       };
 
-      visual_bell = {
+      bell = {
         animation = "EaseOutExpo";
         color = "0xffffff";
         duration = 0;
