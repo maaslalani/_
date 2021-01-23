@@ -107,8 +107,12 @@ let
       W = "<cmd>w!<CR>";
       a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
       cd = "<cmd>cd %:p:h<CR><cmd>pwd<CR>";
+      cn = "<cmd>cnext<CR>";
+      cp = "<cmd>cprev<CR>";
       e = "<cmd>Dirvish<CR>";
       f = "<cmd>Telescope fd<CR>";
+      gb = "<cmd>Gblame<CR>";
+      gd = "<cmd>Gdiff<CR>";
       l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
       ms = "<cmd>Mksession<CR>";
       n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
@@ -117,7 +121,7 @@ let
       q = "<cmd>q<CR>";
       r = "<cmd>Telescope live_grep<cr>";
       sl = "<cmd>luafile %<CR>";
-      sp = "<cmd>setlocal spell<CR>";
+      sp = "<cmd>setlocal spell!<CR>";
       t = "<cmd>tabnew<CR>";
       w = "<cmd>w<CR>";
       y = "\"*y";
