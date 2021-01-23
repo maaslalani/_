@@ -135,8 +135,8 @@ in
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "1715f39a4680a27abd57fc30c98a95fdf191be45";
-          sha256 = "1kpxima0fnypl7fak4snxnf6nj36nvp1gqwpx1ailyrgxa8641j0";
+          rev = "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0";
+          sha256 = "8gyZe6OPVLMdfruHJAHcyYeuiyvMTLvuX1UnUOv8eg8=";
         };
       }
     ];
