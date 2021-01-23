@@ -83,12 +83,12 @@ let
   maps = {
     normal = {
       "<BS>" = "<Plug>(dirvish_up)";
-      Q = "<Nop>";
-      S = ":%s//g<Left><Left>";
+      "<C-h>" = "<C-w>h";
       "<C-j>" = "<C-w>j";
       "<C-k>" = "<C-w>k";
-      "<C-h>" = "<C-w>h";
       "<C-l>" = "<C-w>l";
+      Q = "<Nop>";
+      S = ":%s//g<Left><Left>";
     };
 
     silent = {
@@ -163,6 +163,7 @@ let
     "BufEnter *.nix" = "set ft=nix";
     "BufEnter *.lock" = "set ft=json";
     "BufEnter *.graphql" = "set ft=graphql";
+    "BufWrite *.go" = "lua vim.lsp.buf.formatting()";
     "CmdLineEnter :" = "set nosmartcase";
     "CmdLineLeave :" = "set smartcase";
     "TermOpen *" = "setlocal nonumber signcolumn=no";
