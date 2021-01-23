@@ -136,6 +136,12 @@ let
     };
   };
 
+  abbrev = {
+    insert = {
+      iferr = "if err != nil {<CR><CR>}<Up><Tab>";
+    };
+  };
+
   commands = {
     E = "Dirvish";
     Q = "q";
@@ -212,6 +218,8 @@ in
       ${mapConfig "nmap " maps.normal}
       ${mapConfig "nnoremap <silent> " maps.silent}
       ${mapConfig "vmap " maps.visual}
+
+      ${mapConfig "iabbrev " abbrev.insert}
 
       lua <<EOF
       require'nordbuddy'.use{}
