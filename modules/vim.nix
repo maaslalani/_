@@ -120,6 +120,7 @@ let
       p = "\"*p";
       q = "<cmd>q<CR>";
       r = "<cmd>Telescope live_grep<cr>";
+      rn = "<cmd>lua vim.lsp.buf.rename()<CR>";
       sl = "<cmd>luafile %<CR>";
       sp = "<cmd>setlocal spell!<CR>";
       t = "<cmd>tabnew<CR>";
