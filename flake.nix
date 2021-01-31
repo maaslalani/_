@@ -8,7 +8,6 @@
   /* Neovim Plugins */
   inputs.colorbuddy = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
   inputs.nordbuddy = { url = "github:maaslalani/nordbuddy"; flake = false; };
-  inputs.treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
@@ -22,7 +21,6 @@
               self: super: with self.vimUtils; {
                 colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
                 nordbuddy = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
-                treesitter = buildVimPluginFrom2Nix { name = "treesitter"; src = inputs.treesitter; };
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
               }
             )

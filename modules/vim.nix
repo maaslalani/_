@@ -246,12 +246,12 @@ in
         vim-dirvish
         vim-fugitive
         vim-surround
+        nvim-treesitter
       ]
     ) ++ (
       with pkgs; [
         colorbuddy
         nordbuddy
-        treesitter
       ]
     );
   };
