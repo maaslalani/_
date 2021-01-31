@@ -113,14 +113,12 @@ let
       f = "<cmd>Telescope fd<CR>";
       gb = "<cmd>Gblame<CR>";
       gd = "<cmd>Gdiff<CR>";
-      l = "<cmd>lua vim.lsp.buf.formatting()<CR>";
       ms = "<cmd>Mksession<CR>";
       n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
       o = "<cmd>silent !open <cWORD><CR>";
       p = "\"*p";
       q = "<cmd>q<CR>";
       r = "<cmd>Telescope live_grep<cr>";
-      rn = "<cmd>lua vim.lsp.buf.rename()<CR>";
       sl = "<cmd>luafile %<CR>";
       sp = "<cmd>setlocal spell!<CR>";
       t = "<cmd>tabnew<CR>";
@@ -153,6 +151,7 @@ let
     W = "w";
     Wc = "!wc %";
     Mksession = "mksession! $VIM_SESSION_PATH | qa";
+    Rename = "lua vim.lsp.buf.rename()";
   };
 
   filetype = {
