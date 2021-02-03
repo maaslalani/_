@@ -10,7 +10,6 @@
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.neuron-nvim = { url = "github:oberblastmeister/neuron.nvim"; flake = false; };
 
-
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
       spin = inputs.home-manager.lib.homeManagerConfiguration {
