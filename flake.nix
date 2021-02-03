@@ -11,6 +11,17 @@
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
+      spin = inputs.home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        homeDirectory = "/home/spin";
+        username = "spin";
+        configuration = { pkgs, ... }: {
+          imports = [
+            ./modules/shell.nix
+            ./modules/tmux.nix
+          ];
+        };
+      };
       home = inputs.home-manager.lib.homeManagerConfiguration {
         system = "x86_64-darwin";
         homeDirectory = "/Users/maas";
@@ -41,5 +52,6 @@
       };
     };
     home = self.homeConfigurations.home.activationPackage;
+    spin = self.homeConfigurations.spin.activationPackage;
   };
 }
