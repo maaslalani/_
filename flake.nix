@@ -6,8 +6,10 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   /* Neovim Plugins */
-  inputs.colorbuddy = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
-  inputs.nordbuddy = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.colorbuddy-nvim = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
+  inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.neuron-nvim = { url = "github:oberblastmeister/neuron.nvim"; flake = false; };
+
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
@@ -30,8 +32,9 @@
           nixpkgs.overlays = [
             (
               self: super: with self.vimUtils; {
-                colorbuddy = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy; };
-                nordbuddy = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy; };
+                colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
+                nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+                neuron-nvim = buildVimPluginFrom2Nix { name = "neuron"; src = inputs.neuron-nvim; };
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
               }
             )

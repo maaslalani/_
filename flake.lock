@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "colorbuddy": {
+    "colorbuddy-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1604675384,
@@ -122,6 +122,22 @@
         "type": "github"
       }
     },
+    "neuron-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1610242211,
+        "narHash": "sha256-KvEJA5QRsDvzHpVLCC46nrgeSueZlWdV1Dq8+dHoyRw=",
+        "owner": "oberblastmeister",
+        "repo": "neuron.nvim",
+        "rev": "22af0a714c3838ffda9a04e508cea2bdc7143ed5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oberblastmeister",
+        "repo": "neuron.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1611921119,
@@ -154,7 +170,7 @@
         "type": "github"
       }
     },
-    "nordbuddy": {
+    "nordbuddy-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1609610040,
@@ -188,11 +204,12 @@
     },
     "root": {
       "inputs": {
-        "colorbuddy": "colorbuddy",
+        "colorbuddy-nvim": "colorbuddy-nvim",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "neuron-nvim": "neuron-nvim",
         "nixpkgs": "nixpkgs_2",
-        "nordbuddy": "nordbuddy"
+        "nordbuddy-nvim": "nordbuddy-nvim"
       }
     }
   },

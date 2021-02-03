@@ -229,6 +229,13 @@ in
       require'nordbuddy'.use{}
       ${lspSetup nvim.lsp}
       ${treesitterSetup nvim.treesitter}
+      require'neuron'.setup {
+        virtual_titles = true,
+        mappings = true,
+        run = nil,
+        neuron_dir = "~/wiki",
+        leader = "gz",
+      }
       EOF
     '';
     vimAlias = true;
@@ -250,8 +257,9 @@ in
       ]
     ) ++ (
       with pkgs; [
-        colorbuddy
-        nordbuddy
+        colorbuddy-nvim
+        neuron-nvim
+        nordbuddy-nvim
       ]
     );
   };

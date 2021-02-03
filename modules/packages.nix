@@ -25,6 +25,7 @@
     jq
     kubectl
     mosh
+    neuron-notes
     nodejs
     pass
     ripgrep
