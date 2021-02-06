@@ -18,6 +18,7 @@ My favourites include:
 * [ffmpeg](https://ffmpeg.org/)
 * [fzf](https://github.com/junegunn/fzf)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
+* [entr](https://github.com/eradman/entr)
 
 ## Plugins
 ### Neovim
