@@ -19,7 +19,6 @@ let
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
   lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
   treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }";
-  neuronSetup = a: "require'neuron'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
 
@@ -204,12 +203,6 @@ let
       };
     };
   };
-
-  nvim.neuron = {
-    virtual_titles = true;
-    neuron_dir = "'~/wiki'";
-    leader = "'gz'";
-  };
 in
 {
   programs.neovim = {
@@ -236,7 +229,6 @@ in
       require'nordbuddy'.use{}
       ${lspSetup nvim.lsp}
       ${treesitterSetup nvim.treesitter}
-      ${neuronSetup nvim.neuron}
       EOF
     '';
     vimAlias = true;
@@ -259,7 +251,6 @@ in
     ) ++ (
       with pkgs; [
         colorbuddy-nvim
-        neuron-nvim
         nordbuddy-nvim
       ]
     );
