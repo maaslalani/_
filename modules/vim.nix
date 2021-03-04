@@ -18,7 +18,7 @@ let
   expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
   lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
-  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }";
+  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }; require('telescope').load_extension('fzy_native')";
 
   leaderKey = "<Space>";
 
@@ -182,6 +182,12 @@ let
   nvim.treesitter = {
     highlight.enable = true;
     indent.enable = true;
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = true;
+        override_file_sorter = true;
+      };
+    };
   };
 
   completion = "require'completion'.on_attach";
@@ -240,13 +246,14 @@ in
         completion-nvim
         gitgutter
         nvim-lspconfig
+        nvim-treesitter
         plenary-nvim
         popup-nvim
+        telescope-fzy-native-nvim
         telescope-nvim
         vim-dirvish
         vim-fugitive
         vim-surround
-        nvim-treesitter
       ]
     ) ++ (
       with pkgs; [

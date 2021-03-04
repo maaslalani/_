@@ -52,7 +52,7 @@ in
       gstp = "${gst} pop";
       gsw = "git switch";
       gswm = "${gsw} master";
-      grph = "git rev-parse HEAD";
+      grev = "git rev-parse HEAD";
 
       hmg = "nix build --out-link ~/.config/nixpkgs/result --impure --experimental-features 'nix-command flakes' '/Users/maas/_#home'";
       hms = "nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
