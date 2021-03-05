@@ -106,8 +106,10 @@ let
       Q = "<cmd>q!<CR>";
       W = "<cmd>w!<CR>";
       a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+      cq = "<cmd>cclose<CR>";
       cd = "<cmd>cd %:p:h<CR><cmd>pwd<CR>";
       cn = "<cmd>cnext<CR>";
+      co = "<cmd>copen<CR>";
       cp = "<cmd>cprev<CR>";
       e = "<cmd>Dirvish<CR>";
       f = "<cmd>Telescope fd<CR>";
