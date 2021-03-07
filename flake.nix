@@ -17,8 +17,11 @@
         username = "spin";
         configuration = { pkgs, ... }: {
           imports = [
+            ./modules/fzf.nix
+            ./modules/packages.nix
             ./modules/shell.nix
             ./modules/tmux.nix
+            ./modules/vim.nix
           ];
         };
       };
