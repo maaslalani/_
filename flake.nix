@@ -16,10 +16,20 @@
         homeDirectory = "/home/spin";
         username = "spin";
         configuration = { pkgs, ... }: {
+          nixpkgs.overlays = [
+            (
+              self: super: with self.vimUtils; {
+                colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
+                nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+                unstable = inputs.nixpkgs.legacyPackages.x86_64-linux;
+              }
+            )
+            inputs.neovim-nightly-overlay.overlay
+          ];
           imports = [
             ./modules/fzf.nix
-            ./modules/packages.nix
             ./modules/shell.nix
+            ./modules/core.nix
             ./modules/tmux.nix
             ./modules/vim.nix
           ];
