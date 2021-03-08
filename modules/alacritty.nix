@@ -31,7 +31,7 @@
         italic.style = "Italic";
         normal.family = "Hack";
         normal.style = "Regular";
-        size = 16;
+        size = 17.5;
       };
 
       colors = {
