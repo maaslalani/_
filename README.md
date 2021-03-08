@@ -30,4 +30,3 @@ My favourites include:
 * [nordbuddy](https://github.com/maaslalani/nordbuddy)
 * [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-* [vim-dirvish](https://github.com/justinmk/vim-dirvish)

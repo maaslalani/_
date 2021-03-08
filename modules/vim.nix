@@ -82,7 +82,7 @@ let
 
   maps = {
     normal = {
-      "<BS>" = "<Plug>(dirvish_up)";
+      "<BS>" = "-";
       "<C-h>" = "<C-w>h";
       "<C-j>" = "<C-w>j";
       "<C-k>" = "<C-w>k";
@@ -111,7 +111,7 @@ let
       cn = "<cmd>cnext<CR>";
       co = "<cmd>copen<CR>";
       cp = "<cmd>cprev<CR>";
-      e = "<cmd>Dirvish<CR>";
+      e = "<cmd>Explore<CR>";
       f = "<cmd>Telescope fd<CR>";
       gb = "<cmd>Gblame<CR>";
       gd = "<cmd>Gdiff<CR>";
@@ -148,7 +148,7 @@ let
   };
 
   commands = {
-    E = "Dirvish";
+    E = "Explore";
     Q = "q";
     W = "w";
     Wc = "!wc %";
@@ -168,7 +168,11 @@ let
 
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
-    loaded_netrw = 0;
+
+    netrw_keepdir = 0;
+    netrw_winsize = 30;
+    netrw_banner = 0;
+    netrw_localcopydircmd = "'cp -r'";
   };
 
   autocmd = {
@@ -253,7 +257,6 @@ in
         popup-nvim
         telescope-fzy-native-nvim
         telescope-nvim
-        vim-dirvish
         vim-fugitive
         vim-surround
       ]
