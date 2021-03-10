@@ -169,8 +169,6 @@ let
     diagnostic_enable_virtual_text = 1;
     diagnostic_insert_delay = 0;
 
-    netrw_keepdir = 0;
-    netrw_winsize = 30;
     netrw_banner = 0;
     netrw_localcopydircmd = "'cp -r'";
   };
