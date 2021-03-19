@@ -27,9 +27,10 @@
             inputs.neovim-nightly-overlay.overlay
           ];
           imports = [
-            ./modules/fzf.nix
-            ./modules/shell.nix
             ./modules/core.nix
+            ./modules/fzf.nix
+            ./modules/gh.nix
+            ./modules/shell.nix
             ./modules/tmux.nix
             ./modules/vim.nix
           ];
@@ -53,6 +54,7 @@
           imports = [
             ./modules/alacritty.nix
             ./modules/fzf.nix
+            ./modules/gh.nix
             ./modules/git.nix
             ./modules/packages.nix
             ./modules/shell.nix
