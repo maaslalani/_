@@ -3,11 +3,11 @@
     "colorbuddy-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1604675384,
-        "narHash": "sha256-cEzT9RhE+voYgwY53xjNH5j88Uk+L/DmIDsFMN5plm8=",
+        "lastModified": 1616601631,
+        "narHash": "sha256-64opQEFJvmGsCnIZwYF1gUHQflGIcgKAgMhNkE/s8l8=",
         "owner": "tjdevries",
         "repo": "colorbuddy.nvim",
-        "rev": "ee11ea2e0305de55f3a8ba9e9996ed72bbdc99e5",
+        "rev": "cb9e044ebf0b690a56ebb4018cf300703f8dbec1",
         "type": "github"
       },
       "original": {
@@ -70,11 +70,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1614824659,
-        "narHash": "sha256-fbYrkg3K5tg9qOcANY3mMe9T8YFqgQAK4xpHaoKyuRU=",
+        "lastModified": 1616318638,
+        "narHash": "sha256-E6ABXtzw6bHmrIirB1sJL6S2MEa3sfcvRLzRa92frCo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "39e49918562f28cfce01fbaf3ddeecbb52ea5416",
+        "rev": "ddcd476603dfd3388b1dc8234fa9d550156a51f5",
         "type": "github"
       },
       "original": {
