@@ -237,6 +237,8 @@ in
 
       lua <<EOF
       require'nordbuddy'.use{}
+      require'gitsigns'.setup{}
+      require'neogit'.setup{}
       ${lspSetup nvim.lsp}
       ${treesitterSetup nvim.treesitter}
     '';
@@ -247,20 +249,20 @@ in
         auto-pairs
         commentary
         completion-nvim
-        gitgutter
         nvim-lspconfig
         nvim-treesitter
         plenary-nvim
         popup-nvim
         telescope-fzy-native-nvim
         telescope-nvim
-        vim-fugitive
         vim-surround
       ]
     ) ++ (
       with pkgs; [
         colorbuddy-nvim
         nordbuddy-nvim
+        gitsigns-nvim
+        neogit
       ]
     );
   };

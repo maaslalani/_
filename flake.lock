@@ -63,6 +63,22 @@
         "type": "github"
       }
     },
+    "gitsigns-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1616839918,
+        "narHash": "sha256-404xcgxuz3FA4uTmQLaD3OSFzGMzsSNGzh0BZNz9rCg=",
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "rev": "4ac3ea179d0f751ed1d9300fae63719f55085d7b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -80,6 +96,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "neogit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1616854068,
+        "narHash": "sha256-7x04nTXs9Q13kTCalX+tFMR729GWNCnmDm/8PiWm0h8=",
+        "owner": "TimUntersberger",
+        "repo": "neogit",
+        "rev": "2f504fcf734ddb6b281a93e01782ecb0dae0774e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TimUntersberger",
+        "repo": "neogit",
         "type": "github"
       }
     },
@@ -189,7 +221,9 @@
     "root": {
       "inputs": {
         "colorbuddy-nvim": "colorbuddy-nvim",
+        "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
+        "neogit": "neogit",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nordbuddy-nvim": "nordbuddy-nvim"
