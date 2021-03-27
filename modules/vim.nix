@@ -19,6 +19,7 @@ let
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
   lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
   treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }; require('telescope').load_extension('fzy_native')";
+  neogitSetup = a: "require'neogit'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
 
@@ -213,6 +214,11 @@ let
       };
     };
   };
+
+  nvim.neogit = {
+    disable_signs = "true";
+    disable_context_highlighting = "false";
+  };
 in
 {
   programs.neovim = {
@@ -238,7 +244,7 @@ in
       lua <<EOF
       require'nordbuddy'.use{}
       require'gitsigns'.setup{}
-      require'neogit'.setup{}
+      ${neogitSetup nvim.neogit}
       ${lspSetup nvim.lsp}
       ${treesitterSetup nvim.treesitter}
     '';
@@ -247,6 +253,7 @@ in
     plugins = (
       with pkgs.unstable.vimPlugins; [
         auto-pairs
+        colorizer
         commentary
         completion-nvim
         nvim-lspconfig
@@ -260,9 +267,9 @@ in
     ) ++ (
       with pkgs; [
         colorbuddy-nvim
-        nordbuddy-nvim
         gitsigns-nvim
         neogit
+        nordbuddy-nvim
       ]
     );
   };
