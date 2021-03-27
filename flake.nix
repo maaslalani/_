@@ -23,6 +23,8 @@
               self: super: with self.vimUtils; {
                 colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
                 nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+                gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
+                neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-linux;
               }
             )
@@ -47,9 +49,9 @@
             (
               self: super: with self.vimUtils; {
                 colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
-                nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
                 gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
                 neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
+                nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
               }
             )
