@@ -44,6 +44,7 @@ with builtins; let
     "-" = "split-window ${currentPath}";
     "c" = "new-window ${currentPath}";
     "=" = "set-window-option synchronize-panes";
+    "C-a" = "send-prefix";
   };
 
 in
