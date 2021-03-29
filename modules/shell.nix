@@ -109,6 +109,10 @@ in
           unset GIT_STATUS
         fi
       }
+
+      if [ -z "$TMUX" ]; then
+        tmux attach -t default || tmux new -s default
+      fi
     '';
     sessionVariables = let
       pathJoin = builtins.concatStringsSep ":";
