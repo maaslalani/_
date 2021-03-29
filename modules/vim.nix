@@ -256,7 +256,6 @@ in
         commentary
         completion-nvim
         nvim-lspconfig
-        nvim-treesitter
         plenary-nvim
         popup-nvim
         telescope-fzy-native-nvim
@@ -270,6 +269,7 @@ in
         gitsigns-nvim
         neogit
         nordbuddy-nvim
+        nvim-treesitter
       ]
     );
   };

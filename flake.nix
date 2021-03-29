@@ -10,6 +10,7 @@
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neogit = { url = "github:TimUntersberger/neogit"; flake = false; };
+  inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
@@ -25,6 +26,7 @@
                 nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
                 gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
                 neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
+                nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-linux;
               }
             )
@@ -52,6 +54,7 @@
                 gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
                 neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
                 nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+                nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
               }
             )
