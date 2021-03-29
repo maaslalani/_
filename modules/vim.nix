@@ -64,6 +64,7 @@ let
     concealcursor = "\"\"";
     encoding = "utf-8";
     laststatus = 2;
+    statusline = "%<%t\\ %m%h\\ %=\\ %l,%c\\ %y";
     numberwidth = 1;
     omnifunc = "v:lua.vim.lsp.omnifunc";
     diffopt = "filler,internal,algorithm:histogram,indent-heuristic";
