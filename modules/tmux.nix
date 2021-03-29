@@ -16,16 +16,16 @@ with builtins; let
   };
 
   status = {
-    style = "bg=black";
-    right-style = "bg=brightblack,fg=white";
+    style = "bg=default";
+    right-style = "bg=default,fg=white";
     justify = "left";
     right = "'  %H:%M  '";
     left = "''";
   };
 
   window = {
-    status-style = "fg=white,bg=colour0";
-    status-current-style = "fg=cyan,bg=brightblack";
+    status-style = "fg=white,bg=default";
+    status-current-style = "fg=cyan,bg=default";
     status-current-format = "' #I:#W '";
     status-format = "' #I:#W '";
   };

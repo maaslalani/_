@@ -18,7 +18,7 @@ let
   expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
   lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
-  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }; require('telescope').load_extension('fzy_native')";
+  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }; require'telescope'.load_extension('fzy_native')";
   neogitSetup = a: "require'neogit'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
@@ -63,7 +63,7 @@ let
     completeopt = "menuone,noinsert,noselect";
     concealcursor = "\"\"";
     encoding = "utf-8";
-    laststatus = 0;
+    laststatus = 2;
     numberwidth = 1;
     omnifunc = "v:lua.vim.lsp.omnifunc";
     diffopt = "filler,internal,algorithm:histogram,indent-heuristic";
@@ -107,15 +107,14 @@ let
       Q = "<cmd>q!<CR>";
       W = "<cmd>w!<CR>";
       a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-      cq = "<cmd>cclose<CR>";
       cd = "<cmd>cd %:p:h<CR><cmd>pwd<CR>";
       cn = "<cmd>cnext<CR>";
       co = "<cmd>copen<CR>";
       cp = "<cmd>cprev<CR>";
+      cq = "<cmd>cclose<CR>";
       e = "<cmd>Explore<CR>";
       f = "<cmd>Telescope fd<CR>";
-      gb = "<cmd>Gblame<CR>";
-      gd = "<cmd>Gdiff<CR>";
+      gt = "<cmd>Neogit<CR>";
       ms = "<cmd>Mksession<CR>";
       n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
       o = "<cmd>silent !open <cWORD><CR>";
@@ -244,8 +243,8 @@ in
       lua <<EOF
       require'nordbuddy'.use{}
       require'gitsigns'.setup{}
-      ${neogitSetup nvim.neogit}
       ${lspSetup nvim.lsp}
+      ${neogitSetup nvim.neogit}
       ${treesitterSetup nvim.treesitter}
     '';
     vimAlias = true;
@@ -263,6 +262,7 @@ in
         telescope-fzy-native-nvim
         telescope-nvim
         vim-surround
+        vim-test
       ]
     ) ++ (
       with pkgs; [
