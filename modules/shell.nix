@@ -131,7 +131,7 @@ in
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
         PASSWORD_STORE_DIR = "$HOME/.config/pass";
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
-        PROMPT = "${color "blue" "%2~"} ${color "magenta" "\\$GIT_BRANCH"} ${color "red" "\\$GIT_STATUS"} \n%(?.${color "green" "❯"}.${color "red" "❯"}) ";
+        PROMPT = "${color "red" "["}${color "yellow" "\\$USER"}${color "green" "@"}${color "blue" "\\$HOST"}${color "red" "]"} ${color "blue" "%2~"} ${color "magenta" "\\$GIT_BRANCH"} ${color "red" "\\$GIT_STATUS"} \n%(?.${color "green" "❯"}.${color "red" "❯"}) ";
         TERM = "xterm-256color";
         VIM_SESSION_PATH = "/tmp/session.vim";
       };
