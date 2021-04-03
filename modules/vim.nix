@@ -18,8 +18,9 @@ let
   expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
   lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
-  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }; require'telescope'.load_extension('fzy_native')";
+  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }";
   neogitSetup = a: "require'neogit'.setup { ${expandAttrs a} }";
+  lualineSetup = a: "require'lualine'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
 
@@ -219,6 +220,13 @@ let
     disable_signs = "true";
     disable_context_highlighting = "false";
   };
+
+  nvim.lualine = {
+    options = {
+      theme = "'nord'";
+      icons_enabled = "false";
+    };
+  };
 in
 {
   programs.neovim = {
@@ -242,11 +250,13 @@ in
       ${mapConfig "iabbrev " abbrev.insert}
 
       lua <<EOF
-      require'nordbuddy'.use{}
-      require'gitsigns'.setup{}
       ${lspSetup nvim.lsp}
       ${neogitSetup nvim.neogit}
       ${treesitterSetup nvim.treesitter}
+      ${lualineSetup nvim.lualine}
+      require'nordbuddy'.use{}
+      require'gitsigns'.setup{}
+      require'telescope'.load_extension('fzy_native')
     '';
     vimAlias = true;
     viAlias = true;
@@ -256,6 +266,7 @@ in
         colorizer
         commentary
         completion-nvim
+        lualine-nvim
         nvim-lspconfig
         plenary-nvim
         popup-nvim

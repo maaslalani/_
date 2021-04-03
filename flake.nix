@@ -13,24 +13,31 @@
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs: {
-    homeConfigurations = {
+    homeConfigurations = rec {
+      overlays = [
+        (
+          self: super: with self.vimUtils; {
+            colorbuddy-nvim  = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
+            nordbuddy-nvim   = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+            gitsigns-nvim    = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
+            neogit           = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
+            nvim-treesitter  = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
+          }
+        )
+        inputs.neovim-nightly-overlay.overlay
+      ];
+
       spin = inputs.home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
         homeDirectory = "/home/spin";
         username = "spin";
         configuration = { pkgs, ... }: {
-          nixpkgs.overlays = [
+          nixpkgs.overlays = overlays ++ [
             (
-              self: super: with self.vimUtils; {
-                colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
-                nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
-                gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
-                neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
-                nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
+              self: super: {
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-linux;
               }
             )
-            inputs.neovim-nightly-overlay.overlay
           ];
           imports = [
             ./modules/core.nix
@@ -47,18 +54,12 @@
         homeDirectory = "/Users/maas";
         username = "maas";
         configuration = { pkgs, ... }: {
-          nixpkgs.overlays = [
+          nixpkgs.overlays = overlays ++ [
             (
-              self: super: with self.vimUtils; {
-                colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
-                gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
-                neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
-                nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
-                nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
+              self: super: {
                 unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
               }
             )
-            inputs.neovim-nightly-overlay.overlay
           ];
           imports = [
             ./modules/alacritty.nix
