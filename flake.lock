@@ -104,13 +104,13 @@
       "locked": {
         "lastModified": 1616854068,
         "narHash": "sha256-7x04nTXs9Q13kTCalX+tFMR729GWNCnmDm/8PiWm0h8=",
-        "owner": "TimUntersberger",
+        "owner": "timuntersberger",
         "repo": "neogit",
         "rev": "2f504fcf734ddb6b281a93e01782ecb0dae0774e",
         "type": "github"
       },
       "original": {
-        "owner": "TimUntersberger",
+        "owner": "timuntersberger",
         "repo": "neogit",
         "type": "github"
       }

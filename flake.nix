@@ -9,7 +9,7 @@
   inputs.colorbuddy-nvim = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-  inputs.neogit = { url = "github:TimUntersberger/neogit"; flake = false; };
+  inputs.neogit = { url = "github:timuntersberger/neogit"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
 
   outputs = { self, ... }@inputs: {
