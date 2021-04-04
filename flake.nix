@@ -17,11 +17,11 @@
       overlays = [
         (
           self: super: with self.vimUtils; {
-            colorbuddy-nvim  = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
-            nordbuddy-nvim   = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
-            gitsigns-nvim    = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
-            neogit           = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
-            nvim-treesitter  = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
+            colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
+            nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+            gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
+            neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
+            nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
           }
         )
         inputs.neovim-nightly-overlay.overlay
