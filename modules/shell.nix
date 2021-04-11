@@ -126,7 +126,7 @@ in
         GOPATH = "$HOME/.config/go";
         KEYTIMEOUT = 1;
         KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
-        MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+        MANPAGER = "nvim +Man!";
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
         PASSWORD_STORE_DIR = "$HOME/.config/pass";
