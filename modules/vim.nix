@@ -113,7 +113,7 @@ let
       cn = "<cmd>cnext<CR>";
       co = "<cmd>copen<CR>";
       cp = "<cmd>cprev<CR>";
-      cq = "<cmd>cclose<CR>";
+      cc = "<cmd>cclose<CR>";
       e = "<cmd>Explore<CR>";
       f = "<cmd>Telescope fd<CR>";
       gt = "<cmd>Neogit<CR>";
@@ -133,7 +133,7 @@ let
     visual = {
       "<" = "<gv";
       ">" = ">gv";
-      ss = ":s//g<Left><Left>";
+      S = ":s//g<Left><Left>";
       so = ":sort <bar>w<bar>e<CR>";
     };
 
@@ -272,7 +272,6 @@ in
         popup-nvim
         telescope-fzy-native-nvim
         telescope-nvim
-        vim-surround
         vim-test
       ]
     ) ++ (
