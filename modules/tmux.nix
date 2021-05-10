@@ -31,8 +31,8 @@ with builtins; let
   };
 
   message = {
-    command-style = "fg=white,bg=colour0";
-    style = "fg=cyan,bg=colour0";
+    command-style = "fg=white,bg=default";
+    style = "fg=cyan,bg=default";
   };
 
   mode.style = "fg=cyan,bg=colour0";
