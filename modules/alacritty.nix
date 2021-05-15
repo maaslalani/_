@@ -26,8 +26,8 @@
 
       font = {
         bold.family = "Fira Code";
-        bold.style = "SemiBold";
-        italic.family = "Hack";
+        bold.style = "Medium";
+        italic.family = "Fira Code";
         italic.style = "Italic";
         normal.family = "Fira Code";
         normal.style = "Regular";

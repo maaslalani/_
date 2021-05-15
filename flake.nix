@@ -11,7 +11,7 @@
   inputs.neogit = { url = "github:timuntersberger/neogit"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
-  inputs.pears-nvim = { url = "https://github.com/steelsojka/pears.nvim"; flake = false; };
+  inputs.pears-nvim = { url = "github:steelsojka/pears.nvim"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {

@@ -18,9 +18,7 @@ let
   expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
   expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
   lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
-  treesitterSetup = a: "require'nvim-treesitter.configs'.setup { ${expandAttrs a} }";
-  neogitSetup = a: "require'neogit'.setup { ${expandAttrs a} }";
-  lualineSetup = a: "require'lualine'.setup { ${expandAttrs a} }";
+  requireSetup = p: a: "require'${p}'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
 
@@ -222,6 +220,9 @@ let
     disable_context_highlighting = "false";
   };
 
+  nvim.colorizer = {};
+  nvim.gitsigns = {};
+  nvim.pears = {};
   nvim.lualine = {
     options = {
       theme = "'nord'";
@@ -241,30 +242,29 @@ in
 
       ${mapConfig ":command " commands}
       ${mapConfig "filetype " filetype}
-
       ${mapConfig "imap " maps.insert}
       ${mapConfig "map <silent> ${leaderKey}" maps.leader}
       ${mapConfig "nmap " maps.normal}
       ${mapConfig "nnoremap <silent> " maps.silent}
       ${mapConfig "vmap " maps.visual}
-
       ${mapConfig "iabbrev " abbrev.insert}
+
+      colorscheme nordbuddy
 
       lua <<EOF
       ${lspSetup nvim.lsp}
-      ${neogitSetup nvim.neogit}
-      ${treesitterSetup nvim.treesitter}
-      ${lualineSetup nvim.lualine}
-      require'colorizer'.setup{ '*'; }
-      require'gitsigns'.setup{}
-      require'nordbuddy'.use{}
-      require'pears'.setup{}
+      ${requireSetup "colorizer" nvim.colorizer}
+      ${requireSetup "gitsigns" nvim.gitsigns}
+      ${requireSetup "lualine" nvim.lualine}
+      ${requireSetup "neogit" nvim.neogit}
+      ${requireSetup "nvim-treesitter.configs" nvim.treesitter}
+
+      require'pears'.setup()
     '';
     vimAlias = true;
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
-        pears-nvim
         commentary
         completion-nvim
         lualine-nvim
@@ -282,6 +282,7 @@ in
         neogit
         nordbuddy-nvim
         nvim-treesitter
+        pears-nvim
       ]
     );
   };
