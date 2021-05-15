@@ -173,7 +173,7 @@ let
 
     netrw_banner = 0;
     netrw_localcopydircmd = "'cp -r'";
-    netrw_localrmdir="'rm -r'";
+    netrw_localrmdir = "'rm -r'";
   };
 
   autocmd = {
@@ -255,23 +255,23 @@ in
       ${neogitSetup nvim.neogit}
       ${treesitterSetup nvim.treesitter}
       ${lualineSetup nvim.lualine}
-      require'nordbuddy'.use{}
+      require'colorizer'.setup{ '*'; }
       require'gitsigns'.setup{}
-      require'telescope'.load_extension('fzy_native')
+      require'nordbuddy'.use{}
+      require'pears'.setup{}
     '';
     vimAlias = true;
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
-        auto-pairs
-        colorizer
+        pears-nvim
         commentary
         completion-nvim
         lualine-nvim
+        nvim-colorizer-lua
         nvim-lspconfig
         plenary-nvim
         popup-nvim
-        telescope-fzy-native-nvim
         telescope-nvim
         vim-test
       ]
