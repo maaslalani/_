@@ -25,13 +25,13 @@
       };
 
       font = {
-        bold.family = "Hack";
-        bold.style = "Bold";
+        bold.family = "Fira Code";
+        bold.style = "SemiBold";
         italic.family = "Hack";
         italic.style = "Italic";
-        normal.family = "Hack";
+        normal.family = "Fira Code";
         normal.style = "Regular";
-        size = 17.5;
+        size = 18.5;
       };
 
       colors = {

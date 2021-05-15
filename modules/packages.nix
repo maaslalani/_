@@ -16,6 +16,7 @@
     exa
     fd
     ffmpeg
+    fira-code
     git
     gnupg
     go

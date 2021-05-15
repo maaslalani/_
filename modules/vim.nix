@@ -173,6 +173,7 @@ let
 
     netrw_banner = 0;
     netrw_localcopydircmd = "'cp -r'";
+    netrw_localrmdir="'rm -r'";
   };
 
   autocmd = {
