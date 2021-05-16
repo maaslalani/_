@@ -28,8 +28,8 @@ in
         line-numbers-minus-style = "#CB443F #1D1D2B";
         line-numbers-zero-style = "#4C566A";
         line-numbers-plus-style = "#3EB64F #1D1D2B";
-        line-numbers-left-format = "{nm:^4}";
-        line-numbers-right-format = "{np:^4}";
+        line-numbers-left-format = "{nm:^5}";
+        line-numbers-right-format = "{np:^5}";
       };
     };
     userEmail = email;
