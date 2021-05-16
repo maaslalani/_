@@ -47,22 +47,6 @@
         "type": "github"
       }
     },
-    "gitsigns-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1621031020,
-        "narHash": "sha256-D4/w8YaUc5GcOyba/puMZ2S70UpnBYv8Ae7pmutu/4E=",
-        "owner": "lewis6991",
-        "repo": "gitsigns.nvim",
-        "rev": "016ad5a5d7d3f2d824ffd6b5b27f63a382b251ea",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lewis6991",
-        "repo": "gitsigns.nvim",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -174,48 +158,13 @@
         "type": "github"
       }
     },
-    "nvim-treesitter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1620774744,
-        "narHash": "sha256-dWsb+jiKtI6xDFKjOK68NDC7sBBpFkXyYY+SDRI6zOk=",
-        "owner": "nvim-treesitter",
-        "repo": "nvim-treesitter",
-        "rev": "efbb1c66d27eb5b4bfbcc1f59d3384e0641c8214",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-treesitter",
-        "repo": "nvim-treesitter",
-        "type": "github"
-      }
-    },
-    "pears-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1620060790,
-        "narHash": "sha256-w0XL3c/2EKAqCfmkSQHF4vFnG0mYA5RhigH9ttFGMWU=",
-        "owner": "steelsojka",
-        "repo": "pears.nvim",
-        "rev": "a0a569720ffedb608c2cf0ceafd0e2ba59bb1989",
-        "type": "github"
-      },
-      "original": {
-        "owner": "steelsojka",
-        "repo": "pears.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "colorbuddy-nvim": "colorbuddy-nvim",
-        "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
-        "nordbuddy-nvim": "nordbuddy-nvim",
-        "nvim-treesitter": "nvim-treesitter",
-        "pears-nvim": "pears-nvim"
+        "nordbuddy-nvim": "nordbuddy-nvim"
       }
     }
   },

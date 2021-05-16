@@ -214,9 +214,9 @@ let
     };
   };
 
+  nvim.autopairs = {};
   nvim.colorizer = {};
   nvim.gitsigns = {};
-  nvim.pears = {};
   nvim.lualine = {
     options = {
       theme = "'nord'";
@@ -247,12 +247,12 @@ in
 
       lua <<EOF
       ${lspSetup nvim.lsp}
+      ${requireSetup "nvim-autopairs" nvim.autopairs}
       ${requireSetup "colorizer" nvim.colorizer}
       ${requireSetup "gitsigns" nvim.gitsigns}
       ${requireSetup "lualine" nvim.lualine}
       ${requireSetup "nvim-treesitter.configs" nvim.treesitter}
 
-      require'pears'.setup()
     '';
     vimAlias = true;
     viAlias = true;
@@ -260,9 +260,12 @@ in
       with pkgs.unstable.vimPlugins; [
         commentary
         completion-nvim
+        gitsigns-nvim
         lualine-nvim
+        nvim-autopairs
         nvim-colorizer-lua
         nvim-lspconfig
+        nvim-treesitter
         plenary-nvim
         popup-nvim
         telescope-nvim
@@ -271,10 +274,7 @@ in
     ) ++ (
       with pkgs; [
         colorbuddy-nvim
-        gitsigns-nvim
         nordbuddy-nvim
-        nvim-treesitter
-        pears-nvim
       ]
     );
   };
