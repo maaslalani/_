@@ -98,6 +98,12 @@ let
       gI = "<cmd>lua vim.lsp.buf.implementation()<CR>";
       gr = "<cmd>lua vim.lsp.buf.references()<CR>";
       gd = "<cmd>lua vim.lsp.buf.definition()<CR>";
+
+      "t<C-f>" = "<cmd>TestFile<CR>";
+      "t<C-l>" = "<cmd>TestLast<CR>";
+      "t<C-n>" = "<cmd>TestNearest<CR>";
+      "t<C-s>" = "<cmd>TestSuite<CR>";
+      "t<C-v>" = "<cmd>TestVisit<CR>";
     };
 
     leader = {
