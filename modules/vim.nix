@@ -162,6 +162,7 @@ let
     Q = "q";
     W = "w";
     Wc = "!wc %";
+    Wiki = "e ~/wiki/index.md | cd ~/wiki";
     Mksession = "mksession! $VIM_SESSION_PATH | qa";
     Rename = "lua vim.lsp.buf.rename()";
   };
