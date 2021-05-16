@@ -45,7 +45,7 @@ let
     splitright = true;
     swapfile = false;
     termguicolors = true;
-    timeout = false;
+    timeout = true;
     ttimeout = true;
     ttyfast = true;
     undofile = true;
@@ -75,7 +75,8 @@ let
     synmaxcol = 300;
     t_vb = "";
     tabstop = 2;
-    timeoutlen = 50;
+    timeoutlen = 500;
+    ttimeoutlen = 0;
     undodir = "~/.config/nvim/.undo";
     updatetime = 300;
     wildmode = "longest:full,full";
@@ -258,7 +259,7 @@ in
       ${requireSetup "gitsigns" nvim.gitsigns}
       ${requireSetup "lualine" nvim.lualine}
       ${requireSetup "nvim-treesitter.configs" nvim.treesitter}
-
+      EOF
     '';
     vimAlias = true;
     viAlias = true;
@@ -276,6 +277,7 @@ in
         popup-nvim
         telescope-nvim
         vim-test
+        which-key-nvim
       ]
     ) ++ (
       with pkgs; [
