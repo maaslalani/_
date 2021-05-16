@@ -54,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1620692082,
-        "narHash": "sha256-s/eBXs4OI47yPWNTKoAg4f/H7wMLyO+VEMmobXkzfI8=",
+        "lastModified": 1621135068,
+        "narHash": "sha256-aPJlgosfLp3QtPDFLf/N7qNpIo5Q45MpYyzlaACL2G4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "23769994e8f7b212d9a257799173b120ed87736b",
+        "rev": "77188bcd6e2c6c7a99253b36f08ed7b65f2901d2",
         "type": "github"
       },
       "original": {
@@ -128,11 +128,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1621084586,
-        "narHash": "sha256-raHuJ7ohDLDPqohJzZxhaER7sSh4/1xR6YcUYMj3c3E=",
+        "lastModified": 1621151593,
+        "narHash": "sha256-wC8kXOdXwI3YyAeqv6LKZCmjqnjXovHI1UzOrma4kWA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e83b3f3394834c41c0d25017f6808d65c3d6f880",
+        "rev": "f2c015d33d1b36070c64b726662db42c6c87b7be",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
     "nordbuddy-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1621105077,
-        "narHash": "sha256-bxwGfaCb3eRUC1OzQckGPj3Hu5Cne6BUEyedlA85iFM=",
+        "lastModified": 1621158769,
+        "narHash": "sha256-XLsPrIjwueWoStmFQUmJm/QYOIPI5pa8+bJA2twBSbU=",
         "owner": "maaslalani",
         "repo": "nordbuddy",
-        "rev": "6806e5447af317eafbca7015822adbbb2004ef67",
+        "rev": "3b1bd7a1d4b66c54c50171351053eacdffee9dbb",
         "type": "github"
       },
       "original": {
