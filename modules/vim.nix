@@ -93,11 +93,16 @@ let
     };
 
     silent = {
-      gh = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
+      gH = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
       K = "<cmd>lua vim.lsp.buf.hover()<CR>";
       gI = "<cmd>lua vim.lsp.buf.implementation()<CR>";
       gr = "<cmd>lua vim.lsp.buf.references()<CR>";
       gd = "<cmd>lua vim.lsp.buf.definition()<CR>";
+      ghr = "<cmd>Gitsigns reset_hunk<CR>";
+      ghs = "<cmd>Gitsigns preview_hunk<CR>";
+      ghn = "<cmd>Gitsigns next_hunk<CR>";
+      ghp = "<cmd>Gitsigns prev_hunk<CR>";
+      gb = "<cmd>Gitsigns blame_line<CR>";
 
       "t<C-f>" = "<cmd>TestFile<CR>";
       "t<C-l>" = "<cmd>TestLast<CR>";
