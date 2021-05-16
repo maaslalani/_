@@ -114,7 +114,6 @@ let
       cc = "<cmd>cclose<CR>";
       e = "<cmd>Explore<CR>";
       f = "<cmd>Telescope fd<CR>";
-      gt = "<cmd>Neogit<CR>";
       ms = "<cmd>Mksession<CR>";
       n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
       o = "<cmd>silent !open <cWORD><CR>";
@@ -215,11 +214,6 @@ let
     };
   };
 
-  nvim.neogit = {
-    disable_signs = "false";
-    disable_context_highlighting = "false";
-  };
-
   nvim.colorizer = {};
   nvim.gitsigns = {};
   nvim.pears = {};
@@ -256,7 +250,6 @@ in
       ${requireSetup "colorizer" nvim.colorizer}
       ${requireSetup "gitsigns" nvim.gitsigns}
       ${requireSetup "lualine" nvim.lualine}
-      ${requireSetup "neogit" nvim.neogit}
       ${requireSetup "nvim-treesitter.configs" nvim.treesitter}
 
       require'pears'.setup()
@@ -279,7 +272,6 @@ in
       with pkgs; [
         colorbuddy-nvim
         gitsigns-nvim
-        neogit
         nordbuddy-nvim
         nvim-treesitter
         pears-nvim
