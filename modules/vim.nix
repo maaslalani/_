@@ -216,7 +216,7 @@ let
   };
 
   nvim.neogit = {
-    disable_signs = "true";
+    disable_signs = "false";
     disable_context_highlighting = "false";
   };
 
