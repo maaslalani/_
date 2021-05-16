@@ -192,12 +192,6 @@ let
   nvim.treesitter = {
     highlight.enable = true;
     indent.enable = true;
-    extensions = {
-      fzy_native = {
-        override_generic_sorter = true;
-        override_file_sorter = true;
-      };
-    };
   };
 
   completion = "require'completion'.on_attach";
