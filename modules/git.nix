@@ -10,7 +10,7 @@ in
     extraConfig = {
       color.ui = true;
       credential.helper = "osxkeychain";
-      diff.algorithm = "patience";
+      diff.algorithm = "histogram";
       github.user = user;
       protocol.version = "2";
       pull.rebase = true;
