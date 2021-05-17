@@ -5,7 +5,7 @@
     package = pkgs.neovim-nightly;
     extraConfig = ''
       lua <<EOF
-      ${builtins.readFile ./init.lua}
+      ${import ../lua/init.nix}
       EOF
     '';
     vimAlias = true;
@@ -18,6 +18,7 @@
         lualine-nvim
         nvim-autopairs
         nvim-colorizer-lua
+        nvim-dap
         nvim-lspconfig
         nvim-treesitter
         plenary-nvim
