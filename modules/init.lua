@@ -236,4 +236,10 @@ wk.register({
 
 wk.setup {
   ignore_missing = false,
+  plugins = {
+    spelling = {
+      enabled = true,
+      suggestions = 20,
+    },
+  },
 }
