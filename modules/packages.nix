@@ -40,10 +40,10 @@
     yarn
   ] ++ (
     with pkgs; with pkgs.nodePackages; [
-      rnix-lsp
       bash-language-server
       dockerfile-language-server-nodejs
       gopls
+      rnix-lsp
       solargraph
       terraform-ls
       typescript

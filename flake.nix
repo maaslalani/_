@@ -8,6 +8,7 @@
   /* Neovim Plugins */
   inputs.colorbuddy-nvim = { url = "github:tjdevries/colorbuddy.nvim"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
@@ -16,6 +17,7 @@
           self: super: with self.vimUtils; {
             colorbuddy-nvim = buildVimPluginFrom2Nix { name = "colorbuddy"; src = inputs.colorbuddy-nvim; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+            which-key-nvim = buildVimPluginFrom2Nix { name = "which-key"; src = inputs.which-key-nvim; };
           }
         )
         inputs.neovim-nightly-overlay.overlay

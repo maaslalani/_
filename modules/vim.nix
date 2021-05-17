@@ -10,15 +10,9 @@ let
   configArray = f: a: joinLines (builtins.map f a);
 
   autocmdConfig = config (n: v: ("autocmd ${n} ${v}"));
-  mapConfig = p: config (n: v: ("${p}${n} ${v}"));
   settingsConfig = config (n: v: ("set ${n}=${builtins.toString v}"));
   togglesConfig = config (n: v: ("set ${if v then "" else "no"}${n}"));
   variablesConfig = config (n: v: ("let ${n}=${builtins.toString v}"));
-
-  expandAttr = k: v: if builtins.isAttrs v then "${k} = { ${expandAttrs v} }," else "${k} = ${toStr v},";
-  expandAttrs = a: joinValues (builtins.mapAttrs (expandAttr) a);
-  lspSetup = a: joinValues (builtins.mapAttrs (k: v: "require'lspconfig'.${k}.setup { ${expandAttrs v} }") a);
-  requireSetup = p: a: "require'${p}'.setup { ${expandAttrs a} }";
 
   leaderKey = "<Space>";
 
@@ -82,92 +76,6 @@ let
     wildmode = "longest:full,full";
   };
 
-  maps = {
-    normal = {
-      "<BS>" = "-";
-      "<C-h>" = "<C-w>h";
-      "<C-j>" = "<C-w>j";
-      "<C-k>" = "<C-w>k";
-      "<C-l>" = "<C-w>l";
-      Q = "<Nop>";
-      S = ":%s//g<Left><Left>";
-    };
-
-    silent = {
-      gH = "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>";
-      K = "<cmd>lua vim.lsp.buf.hover()<CR>";
-      gI = "<cmd>lua vim.lsp.buf.implementation()<CR>";
-      gr = "<cmd>lua vim.lsp.buf.references()<CR>";
-      gd = "<cmd>lua vim.lsp.buf.definition()<CR>";
-      ghr = "<cmd>Gitsigns reset_hunk<CR>";
-      ghs = "<cmd>Gitsigns preview_hunk<CR>";
-      ghn = "<cmd>Gitsigns next_hunk<CR>";
-      ghp = "<cmd>Gitsigns prev_hunk<CR>";
-      gb = "<cmd>Gitsigns blame_line<CR>";
-
-      "t<C-f>" = "<cmd>TestFile<CR>";
-      "t<C-l>" = "<cmd>TestLast<CR>";
-      "t<C-n>" = "<cmd>TestNearest<CR>";
-      "t<C-s>" = "<cmd>TestSuite<CR>";
-      "t<C-v>" = "<cmd>TestVisit<CR>";
-    };
-
-    leader = {
-      "" = "<Nop>";
-      "=" = "<cmd>lua vim.lsp.buf.formatting()<CR>";
-      N = "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>";
-      Q = "<cmd>q!<CR>";
-      W = "<cmd>w!<CR>";
-      a = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-      cd = "<cmd>cd %:p:h<CR><cmd>pwd<CR>";
-      cn = "<cmd>cnext<CR>";
-      co = "<cmd>copen<CR>";
-      cp = "<cmd>cprev<CR>";
-      cc = "<cmd>cclose<CR>";
-      e = "<cmd>Explore<CR>";
-      f = "<cmd>Telescope fd<CR>";
-      ms = "<cmd>Mksession<CR>";
-      n = "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>";
-      o = "<cmd>silent !open <cWORD><CR>";
-      p = "\"*p";
-      q = "<cmd>q<CR>";
-      r = "<cmd>Telescope live_grep<cr>";
-      sl = "<cmd>luafile %<CR>";
-      sp = "<cmd>setlocal spell!<CR>";
-      t = "<cmd>tabnew<CR>";
-      w = "<cmd>w<CR>";
-      y = "\"*y";
-    };
-
-    visual = {
-      "<" = "<gv";
-      ">" = ">gv";
-      S = ":s//g<Left><Left>";
-      so = ":sort <bar>w<bar>e<CR>";
-    };
-
-    insert = {
-      "<expr> <S-Tab>" = "pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"";
-      "<expr> <Tab>" = "pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"";
-    };
-  };
-
-  abbrev = {
-    insert = {
-      iferr = "if err != nil {<CR><CR>}<Up><Tab>";
-    };
-  };
-
-  commands = {
-    E = "Explore";
-    Q = "q";
-    W = "w";
-    Wc = "!wc %";
-    Wiki = "e ~/wiki/index.md | cd ~/wiki";
-    Mksession = "mksession! $VIM_SESSION_PATH | qa";
-    Rename = "lua vim.lsp.buf.rename()";
-  };
-
   filetype = {
     indent = "on";
     plugin = "on";
@@ -195,41 +103,6 @@ let
     "CmdLineLeave :" = "set smartcase";
     "TermOpen *" = "setlocal nonumber signcolumn=no";
   };
-
-  nvim.treesitter = {
-    highlight.enable = true;
-    indent.enable = true;
-  };
-
-  completion = "require'completion'.on_attach";
-
-  nvim.lsp = {
-    bashls.on_attach = completion;
-    dockerls.on_attach = completion;
-    omnisharp.on_attach = completion;
-    rnix.on_attach = completion;
-    solargraph.on_attach = completion;
-    sumneko_lua.on_attach = completion;
-    terraformls.on_attach = completion;
-    tsserver.on_attach = completion;
-    gopls.on_attach = completion;
-    gopls.settings.gopls = {
-      analyses = {
-        unusedparams = true;
-        staticcheck = true;
-      };
-    };
-  };
-
-  nvim.autopairs = {};
-  nvim.colorizer = {};
-  nvim.gitsigns = {};
-  nvim.lualine = {
-    options = {
-      theme = "'nord'";
-      icons_enabled = "false";
-    };
-  };
 in
 {
   programs.neovim = {
@@ -241,24 +114,11 @@ in
       ${togglesConfig toggles}
       ${variablesConfig variables}
 
-      ${mapConfig ":command " commands}
-      ${mapConfig "filetype " filetype}
-      ${mapConfig "imap " maps.insert}
-      ${mapConfig "map <silent> ${leaderKey}" maps.leader}
-      ${mapConfig "nmap " maps.normal}
-      ${mapConfig "nnoremap <silent> " maps.silent}
-      ${mapConfig "vmap " maps.visual}
-      ${mapConfig "iabbrev " abbrev.insert}
-
       colorscheme nordbuddy
+      let mapleader="\<SPACE>"
 
       lua <<EOF
-      ${lspSetup nvim.lsp}
-      ${requireSetup "nvim-autopairs" nvim.autopairs}
-      ${requireSetup "colorizer" nvim.colorizer}
-      ${requireSetup "gitsigns" nvim.gitsigns}
-      ${requireSetup "lualine" nvim.lualine}
-      ${requireSetup "nvim-treesitter.configs" nvim.treesitter}
+      ${builtins.readFile ./init.lua}
       EOF
     '';
     vimAlias = true;
@@ -277,12 +137,12 @@ in
         popup-nvim
         telescope-nvim
         vim-test
-        which-key-nvim
       ]
     ) ++ (
       with pkgs; [
         colorbuddy-nvim
         nordbuddy-nvim
+        which-key-nvim
       ]
     );
   };
