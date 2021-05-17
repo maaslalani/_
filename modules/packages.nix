@@ -25,6 +25,7 @@
     jq
     kubectl
     mosh
+    ninja
     nodejs
     pass
     ripgrep

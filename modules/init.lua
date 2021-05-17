@@ -124,6 +124,33 @@ lsp.gopls.setup {
   },
 }
 
+local sumneko_root_path = "/Users/" .. vim.fn.expand('$USER') .. "/.config/nvim/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+
+lsp.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';')
+      },
+      diagnostics = {
+        globals = {'vim'}
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 -- Whichkey
 local wk = require'which-key'
 
@@ -181,8 +208,8 @@ wk.register({
   },
   q = { "<cmd>q<cr>", "Quit" },
   w = { "<cmd>w<cr>", "Save" },
-  p = { "<cmd>\"*p<cr>", "Paste" },
-  y = { "<cmd>\"*y<cr>", "Copy" },
+  p = { "\"*p<cr>", "Paste" },
+  y = { "\"*y<cr>", "Copy" },
 }, { prefix = "<leader>" })
 
 wk.register({
