@@ -114,6 +114,7 @@ lsp.dockerls.setup { on_attach = completion }
 lsp.omnisharp.setup { on_attach = completion }
 lsp.rnix.setup { on_attach = completion }
 lsp.solargraph.setup { on_attach = completion }
+lsp.sorbet.setup { on_attach = completion }
 lsp.terraformls.setup { on_attach = completion }
 lsp.tsserver.setup { on_attach = completion }
 lsp.gopls.setup {
