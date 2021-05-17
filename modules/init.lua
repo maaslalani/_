@@ -1,3 +1,83 @@
+local o = vim.o
+local g = vim.g
+local cmd = vim.cmd
+
+cmd 'autocmd BufEnter *.nix set ft=nix'
+cmd 'autocmd BufEnter *.lock set ft=json'
+cmd 'autocmd BufEnter *.graphql set ft=graphql'
+cmd 'autocmd BufWrite *.go lua vim.lsp.buf.formatting()'
+cmd 'autocmd CmdLineEnter : set nosmartcase'
+cmd 'autocmd CmdLineLeave : set smartcase'
+cmd 'autocmd TermOpen * setlocal nonumber signcolumn=no'
+
+g.mapleader = ' '
+g.completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']"
+g.diagnostic_auto_popup_while_jump = 0
+g.diagnostic_enable_underline = 1
+g.diagnostic_enable_virtual_text = 1
+g.diagnostic_insert_delay = 0
+
+g.netrw_banner = 0
+g.netrw_localcopydircmd = 'cp -r'
+g.netrw_localrmdir = 'rm -r'
+
+o.autoindent = true
+o.autoread = true
+o.autowrite = true
+o.backspace = 'indent,eol,start'
+o.backup = false
+o.cmdheight = 1
+o.compatible = false
+o.completeopt = 'menuone,noinsert,noselect'
+o.concealcursor = ''
+o.cursorline = true
+o.diffopt = 'filler,internal,algorithm:histogram,indent-heuristic'
+o.encoding = 'utf-8'
+o.errorbells = false
+o.expandtab = true
+o.hidden = true
+o.hlsearch = true
+o.ignorecase = true
+o.incsearch = true
+o.laststatus = 2
+o.lazyredraw = true
+o.number = true
+o.numberwidth = 1
+o.omnifunc = 'v:lua.vim.lsp.omnifunc'
+o.printfont = 'PragmataPro:h12'
+o.ruler = true
+o.shiftwidth = 2
+o.shortmess = 'filnxtToOFc'
+o.showcmd = true
+o.showmode = false
+o.signcolumn = 'yes'
+o.smartcase = true
+o.softtabstop = 2
+o.splitbelow = true
+o.splitright = true
+o.statusline = '%<%t\\ %m%h\\ %=\\ %l,%c\\ %y'
+o.swapfile = false
+o.synmaxcol = 300
+o.t_vb = ''
+o.tabstop = 2
+o.termguicolors = true
+o.timeout = true
+o.timeoutlen = 500
+o.ttimeout = true
+o.ttimeoutlen = 0
+o.ttyfast = true
+o.undofile = true
+o.updatetime = 300
+o.visualbell = true
+o.wb = false
+o.wildmenu = true
+o.wildmode = 'longest:full,full'
+o.wrap = false
+o.writebackup = false
+
+-- Nordbuddy
+require'colorbuddy'.colorscheme'nordbuddy'
+
 -- Autopairs
 require'nvim-autopairs'.setup{}
 
