@@ -1,6 +1,13 @@
+-- Autopairs
 require'nvim-autopairs'.setup{}
+
+-- Colorizer
 require'colorizer'.setup{}
+
+-- Gitsigns
 require'gitsigns'.setup{}
+
+-- Lualine
 require'lualine'.setup{
   options = {
     theme = 'nord',
@@ -8,6 +15,7 @@ require'lualine'.setup{
   },
 }
 
+-- Treesitter
 require'nvim-treesitter.configs'.setup{
   highlight = {
     enable = true,
@@ -17,21 +25,26 @@ require'nvim-treesitter.configs'.setup{
   },
 }
 
-require'lspconfig'.bashls.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.dockerls.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.omnisharp.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.rnix.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.solargraph.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.terraformls.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.tsserver.setup { on_attach = require'completion'.on_attach, }
-require'lspconfig'.gopls.setup {
-  on_attach = require'completion'.on_attach,
+-- LSP
+local lsp = require'lspconfig'
+local completion = require'completion'.on_attach
+
+lsp.bashls.setup { on_attach = completion }
+lsp.dockerls.setup { on_attach = completion }
+lsp.omnisharp.setup { on_attach = completion }
+lsp.rnix.setup { on_attach = completion }
+lsp.solargraph.setup { on_attach = completion }
+lsp.terraformls.setup { on_attach = completion }
+lsp.tsserver.setup { on_attach = completion }
+lsp.gopls.setup {
+  on_attach = completion,
   analyses = {
     unusedparams = true,
     staticcheck = true,
   },
 }
 
+-- Whichkey
 local wk = require'which-key'
 
 wk.register({
@@ -41,6 +54,10 @@ wk.register({
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     n = { "<cmd>enew<cr>", "New File" },
     r = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+    s = {
+      name = "source",
+      l = { "<cmd>luafile %<cr>", "Lua" },
+    },
   },
   l = {
     name = "lsp",
