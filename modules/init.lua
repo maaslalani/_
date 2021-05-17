@@ -82,7 +82,7 @@ require'colorbuddy'.colorscheme'nordbuddy'
 require'nvim-autopairs'.setup{}
 
 -- Colorizer
-require'colorizer'.setup{}
+require'colorizer'.setup{ '*'; }
 
 -- Gitsigns
 require'gitsigns'.setup{}
