@@ -82,6 +82,7 @@ wk.register({
   g = {
     d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto Definition" },
     r = { "<cmd>lua vim.lsp.buf.references()<cr>", "Goto References" },
+    c = "Commentary",
   },
   ["<bs>"] = { "-", "Back" },
 })
