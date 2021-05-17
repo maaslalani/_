@@ -1,8 +1,12 @@
-''
-${builtins.readFile ./vars.lua}
-${builtins.readFile ./opts.lua}
-${builtins.readFile ./plug.lua}
-${builtins.readFile ./lsp.lua}
-${builtins.readFile ./maps.lua}
-${builtins.readFile ./autocmd.lua}
-''
+with builtins;
+let
+  files = [
+    ./vars.lua
+    ./opts.lua
+    ./plug.lua
+    ./lsp.lua
+    ./maps.lua
+    ./autocmd.lua
+  ];
+in
+''${concatStringsSep "\n" (map readFile files)}''
