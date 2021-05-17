@@ -2,6 +2,24 @@
 local wk = require'which-key'
 
 wk.register({
+  d = {
+    name = "debug",
+    c = { ":lua require'dap'.continue()<cr>", "Continue" },
+    s = {
+      name = "step",
+      s = { ":lua require'dap'.step_over()<cr>", "Step Over" },
+      i = { ":lua require'dap'.step_into()<cr>", "Step Into" },
+      o = { ":lua require'dap'.step_out()<cr>", "Step Out" },
+    },
+    b = {
+      name = "breakpoint",
+      t = { ":lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+      s = { ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Set Breakpoint" },
+      l = { ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>", "Set Logpoint" },
+    },
+    r = { ":lua require'dap'.repl.open()<cr>", "REPL" },
+    ["."] = { ":lua require'dap'.run_last()<cr>", "Run Last" },
+  },
   f = {
     name = "file",
     e = { "<cmd>Explore<cr>", "File Explorer" },
