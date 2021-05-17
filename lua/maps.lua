@@ -1,7 +1,11 @@
 -- maps are defined using whichkey
-local wk = require'which-key'
+local whichkey = require'which-key'
 
-wk.register({
+local VISUAL = 'v'
+local NORMAL = 'n'
+local LEADER = '<leader>'
+
+whichkey.register({
   d = {
     name = "debug",
     c = { ":lua require'dap'.continue()<cr>", "Continue" },
@@ -75,9 +79,9 @@ wk.register({
   w = { "<cmd>w<cr>", "Save" },
   p = { "\"*p<cr>", "Paste" },
   y = { "\"*y<cr>", "Copy" },
-}, { prefix = "<leader>" })
+}, { prefix = LEADER, mode = NORMAL })
 
-wk.register({
+whichkey.register({
   K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
   g = {
     d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto Definition" },
@@ -85,21 +89,18 @@ wk.register({
     c = "Commentary",
   },
   ["<bs>"] = { "-", "Back" },
-})
+}, { mode = NORMAL })
 
-wk.register({
+whichkey.register({
   ["<"] = { "<gv", "Dedent" },
   [">"] = { ">gv", "Indent" },
   S = { ":s//g<left><left>", "Replace" },
-  so = { ":sort <bar>w<bar>e<cr>", "Sort" }
-}, { mode = "v" })
+  so = { ":sort <bar>w<bar>e<cr>", "Sort" },
+  ["<leader>y"] = { "\"*y", "Copy" },
+  ["<leader>p"] = { "\"*p", "Paste" },
+}, { mode = VISUAL })
 
-wk.register({
-  ["<expr> <s-tab>"] = "pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"",
-  ["<expr> <tab>"] = "pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"",
-}, { mode = "i" })
-
-wk.setup {
+whichkey.setup {
   ignore_missing = false,
   plugins = {
     spelling = {
