@@ -8,7 +8,9 @@ require'nvim-autopairs'.setup{}
 require'colorizer'.setup{ '*'; }
 
 -- gitsigns
-require'gitsigns'.setup{}
+require'gitsigns'.setup{
+  keymaps = {}
+}
 
 -- lualine
 require'lualine'.setup{
@@ -20,8 +22,6 @@ require'lualine'.setup{
 
 -- treesitter
 require'nvim-treesitter.configs'.setup{
-  ensure_installed = 'all',
-
   highlight = {
     enable = true,
   },
