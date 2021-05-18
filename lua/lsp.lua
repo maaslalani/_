@@ -1,17 +1,15 @@
 -- lsp
 local lsp = require'lspconfig'
-local completion = require'completion'.on_attach
 
-lsp.bashls.setup { on_attach = completion }
-lsp.dockerls.setup { on_attach = completion }
-lsp.omnisharp.setup { on_attach = completion }
-lsp.rnix.setup { on_attach = completion }
-lsp.solargraph.setup { on_attach = completion }
-lsp.sorbet.setup { on_attach = completion }
-lsp.terraformls.setup { on_attach = completion }
-lsp.tsserver.setup { on_attach = completion }
+lsp.bashls.setup {}
+lsp.dockerls.setup {}
+lsp.omnisharp.setup {}
+lsp.rnix.setup {}
+lsp.solargraph.setup {}
+lsp.sorbet.setup {}
+lsp.terraformls.setup {}
+lsp.tsserver.setup {}
 lsp.gopls.setup {
-  on_attach = completion,
   analyses = {
     unusedparams = true,
     staticcheck = true,

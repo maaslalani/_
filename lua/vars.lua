@@ -2,9 +2,6 @@ local g = vim.g
 
 g.mapleader = ' '
 
--- completion options
-g.completion_matching_strategy_list = "['exact', 'substring', 'fuzzy']"
-
 -- diagnostic options
 g.diagnostic_auto_popup_while_jump = 0
 g.diagnostic_enable_underline = 1
