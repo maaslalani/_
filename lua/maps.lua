@@ -90,6 +90,13 @@ whichkey.register({
     c = "Commentary",
   },
   ["<bs>"] = { "-", "Back" },
+  [";"] = {
+    f = { "<cmd>TestFile<cr>", "Test File" },
+    l = { "<cmd>TestLast<cr>", "Test Last" },
+    n = { "<cmd>TestNearest<cr>", "Test Nearest" },
+    s = { "<cmd>TestSuite<cr>", "Test Suite" },
+    v = { "<cmd>TestVisit<cr>", "Test Visit" },
+  },
 }, { mode = NORMAL })
 
 whichkey.register({
