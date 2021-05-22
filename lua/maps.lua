@@ -109,9 +109,9 @@ whichkey.register({
 }, { mode = VISUAL })
 
 whichkey.register({
-  ["<expr><cr>"] = { "compe#confirm('<cr>')", "Confirm" },
+  ["<c-space>"] = { 'compe#complete()', 'Trigger completion', expr=true },
+  ["<cr>"] = { "compe#confirm('<cr>')", "Confirm", expr=true },
 }, { mode = INSERT })
-
 
 whichkey.setup {
   ignore_missing = false,
