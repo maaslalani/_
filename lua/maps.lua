@@ -102,8 +102,7 @@ whichkey.register({
 }, { mode = VISUAL })
 
 whichkey.register({
-  ["<expr> <C-Space>"] = { "compe#complete()", "Complete" },
-  ["<expr> <cr>"] = { "compe#confirm('<cr>')", "Confirm" },
+  ["<expr><cr>"] = { "compe#confirm('<cr>')", "Confirm" },
 }, { mode = INSERT })
 
 

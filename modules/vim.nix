@@ -27,6 +27,7 @@
         telescope-nvim
         vim-test
         vim-vsnip
+        vim-vsnip-integ
       ]
     ) ++ (
       with pkgs; [
