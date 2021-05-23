@@ -22,6 +22,7 @@
     gnupg
     go
     google-cloud-sdk
+    graphviz
     htop
     jq
     kubectl
@@ -29,7 +30,6 @@
     ninja
     nodejs
     pandoc
-    texlive.combined.scheme-medium
     pass
     ripgrep
     rustup
@@ -37,6 +37,7 @@
     skhd
     sops
     terraform
+    texlive.combined.scheme-medium
     tree
     vault
     watch
