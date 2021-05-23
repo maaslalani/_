@@ -9,6 +9,7 @@ lsp.solargraph.setup {}
 lsp.sorbet.setup {}
 lsp.terraformls.setup {}
 lsp.tsserver.setup {}
+lsp.texlab.setup {}
 lsp.gopls.setup {
   analyses = {
     unusedparams = true,

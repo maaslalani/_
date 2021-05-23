@@ -28,6 +28,8 @@
     mosh
     ninja
     nodejs
+    pandoc
+    texlive.combined.scheme-medium
     pass
     ripgrep
     rustup
@@ -48,6 +50,7 @@
       rnix-lsp
       solargraph
       terraform-ls
+      texlab
       typescript
       typescript-language-server
     ]
