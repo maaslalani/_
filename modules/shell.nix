@@ -1,6 +1,11 @@
 { config, pkgs, lib, ... }:
 let
   color = color: text: "%F{${color}}${text}%f";
+  cyan = color "cyan";
+  blue = color "blue";
+  magenta = color "magenta";
+  red = color "red";
+  green = color "green";
 in
 {
   programs.zsh = {
@@ -98,7 +103,9 @@ in
       bindkey '^?' backward-delete-char
       bindkey '^[[Z' reverse-menu-complete
 
-      source /opt/dev/dev.sh
+      if [ -f /opt/dev/dev.sh ]; then
+        source /opt/dev/dev.sh
+      fi
 
       precmd() {
         if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
@@ -118,6 +125,7 @@ in
       pathJoin = builtins.concatStringsSep ":";
     in
       rec {
+        BROWSER = "Brave Browser";
         CARGO_BIN = "$HOME/.cargo/bin";
         CLICOLOR = 1;
         COLORTERM = "truecolor";
@@ -131,7 +139,7 @@ in
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
         PASSWORD_STORE_DIR = "$HOME/.config/pass";
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
-        PROMPT = "${color "cyan" "\\$USER"}${color "blue" "@\\$HOST"} ${color "blue" "%3~"} ${color "magenta" "\\$GIT_BRANCH"} ${color "red" "\\$GIT_STATUS"} \n%(?.${color "green" "❯"}.${color "red" "❯"}) ";
+        PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         TERM = "xterm-256color";
         VIM_SESSION_PATH = "/tmp/session.vim";
       };

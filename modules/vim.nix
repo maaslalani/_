@@ -13,7 +13,6 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         commentary
-        friendly-snippets
         gitsigns-nvim
         lualine-nvim
         nvim-autopairs
@@ -26,8 +25,6 @@
         popup-nvim
         telescope-nvim
         vim-test
-        vim-vsnip
-        vim-vsnip-integ
       ]
     ) ++ (
       with pkgs; [
