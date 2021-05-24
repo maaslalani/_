@@ -71,6 +71,7 @@ in
       sz = "source ~/.config/zsh/.zshrc";
 
       ncg = "nix-collect-garbage";
+      ns = " open https://search.nixos.org/packages\\?channel=unstable";
 
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";
