@@ -25,11 +25,11 @@
       };
 
       font = {
-        bold.family = "Hack";
+        bold.family = "Hack Nerd Font Mono";
         bold.style = "Medium";
-        italic.family = "Hack";
+        italic.family = "Hack Nerd Font Mono";
         italic.style = "Italic";
-        normal.family = "Hack";
+        normal.family = "Hack Nerd Font Mono";
         normal.style = "Regular";
         size = 18.5;
       };
