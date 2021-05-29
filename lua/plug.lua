@@ -93,3 +93,11 @@ require'compe'.setup {
     ultisnips = true;
   };
 }
+
+-- neorg
+require('neorg').setup {
+  load = {
+    ["core.defaults"] = {},
+    ["core.norg.concealer"] = {},
+  }
+}

@@ -67,6 +67,22 @@
         "type": "github"
       }
     },
+    "neorg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622314099,
+        "narHash": "sha256-wJDiyi6wXEV3qr7Q0dkz4rIBB5p1LGcxYgmik6gwhxk=",
+        "owner": "vhyrro",
+        "repo": "neorg",
+        "rev": "1567e63ea186eeaa0381b779cb1dcd792ad0390d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vhyrro",
+        "repo": "neorg",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -162,6 +178,7 @@
       "inputs": {
         "colorbuddy-nvim": "colorbuddy-nvim",
         "home-manager": "home-manager",
+        "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nordbuddy-nvim": "nordbuddy-nvim"

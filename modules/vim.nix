@@ -31,6 +31,7 @@
       with pkgs; [
         colorbuddy-nvim
         nordbuddy-nvim
+        neorg
       ]
     );
   };
