@@ -164,24 +164,7 @@
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
-        "nordbuddy-nvim": "nordbuddy-nvim",
-        "which-key-nvim": "which-key-nvim"
-      }
-    },
-    "which-key-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1622149817,
-        "narHash": "sha256-eCKQ+cl2pztyjyEQTPe09vokNyavVYuhBNreBU0Tb8M=",
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "rev": "20682f189a0c452203f6365f66eccb0407b20936",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "type": "github"
+        "nordbuddy-nvim": "nordbuddy-nvim"
       }
     }
   },

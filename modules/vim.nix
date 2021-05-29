@@ -25,12 +25,12 @@
         popup-nvim
         telescope-nvim
         vim-test
+        which-key-nvim
       ]
     ) ++ (
       with pkgs; [
         colorbuddy-nvim
         nordbuddy-nvim
-        which-key-nvim
       ]
     );
   };
