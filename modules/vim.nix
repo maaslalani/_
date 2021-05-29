@@ -25,6 +25,7 @@
         popup-nvim
         telescope-nvim
         vim-test
+        vimwiki
         which-key-nvim
       ]
     ) ++ (
