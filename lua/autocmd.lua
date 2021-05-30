@@ -12,3 +12,6 @@ cmd 'autocmd CmdLineLeave : set smartcase'
 
 -- terminal
 cmd 'autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no'
+
+-- vimwiki
+cmd 'autocmd FileType vimwiki lua whichkeyvimwiki()'

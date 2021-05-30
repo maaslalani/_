@@ -91,11 +91,41 @@ whichkey.register({
   },
   ["<bs>"] = { "-", "Back" },
   [";"] = {
+    name = "test",
     f = { "<cmd>TestFile<cr>", "Test File" },
     l = { "<cmd>TestLast<cr>", "Test Last" },
     n = { "<cmd>TestNearest<cr>", "Test Nearest" },
     s = { "<cmd>TestSuite<cr>", "Test Suite" },
     v = { "<cmd>TestVisit<cr>", "Test Visit" },
+  },
+}, { mode = NORMAL })
+
+_G.whichkeyvimwiki = function()
+  whichkey.register({
+    ["<cr>"] = { "<Plug>VimwikiFollowLink", "Follow Link" },
+    ["<bs>"] = { "<Plug>VimwikiGoBackLink", "Back Link" },
+    ["<c-o>"] = { "<Plug>VimwikiGoBackLink", "Back Link" },
+    ["<tab>"] = { "<Plug>VimwikiNextLink", "Next Link" },
+    ["<s-tab>"] = { "<Plug>VimwikiPrevLink", "Prev Link" },
+    n = { "<Plug>VimwikiNextLink", "Next Link" },
+    N = { "<Plug>VimwikiPrevLink", "Prev Link" },
+    [","] = {
+      t = {
+        name = "task",
+        d = { "<Plug>VimwikiToggleListItem", "Toggle Task" },
+        n = { "<Plug>VimwikiNextTask", "Next Task" },
+      },
+    },
+  }, { mode = NORMAL, buffer = vim.api.nvim_get_current_buf()})
+end
+
+whichkey.register({
+  [","] = {
+    name = "wiki",
+    [","] = { "<Plug>VimwikiIndex", "Open Wiki" },
+    n = { "<Plug>VimwikiGoto", "Goto Wiki Page" },
+    x = { "<Plug>VimwikiDeleteFIle", "Delete Wiki Page" },
+    r = { "<Plug>VimwikiRenameFIle", "Rename Wiki Page" },
   },
 }, { mode = NORMAL })
 
