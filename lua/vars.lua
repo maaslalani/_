@@ -15,3 +15,5 @@ g.netrw_localrmdir = 'rm -r'
 
 -- vimwiki
 g.vimwiki_list = {{path = '~/wiki'}}
+g.vimwiki_hl_headers = 1
+g.vimwiki_hl_cb_checked = 1
