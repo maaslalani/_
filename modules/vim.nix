@@ -17,7 +17,6 @@
         lualine-nvim
         nvim-autopairs
         nvim-colorizer-lua
-        nvim-compe
         nvim-dap
         nvim-lspconfig
         nvim-treesitter
@@ -32,7 +31,6 @@
       with pkgs; [
         colorbuddy-nvim
         nordbuddy-nvim
-        neorg
       ]
     );
   };
