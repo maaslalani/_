@@ -61,3 +61,8 @@ dap.configurations.go = {{
   request = "launch",
   program = "${file}"
 }}
+
+-- gitsigns
+require'gitsigns'.setup {
+  keymaps = {},
+}

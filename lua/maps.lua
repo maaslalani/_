@@ -61,6 +61,17 @@ whichkey.register({
     q = { "<cmd>cclose<cr>", "Close List" },
     o = { "<cmd>copen<cr>", "Open List" },
   },
+  g = {
+    name = "git",
+    b = { "<cmd>Gitsigns blame_line<cr>", "Blame Line" },
+    h = {
+      name = "hunk",
+      r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
+      s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+      n = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
+      p = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
+    },
+  },
   s = {
     name = "search",
     r = { ":%s//g<left><left>", "Replace" }
