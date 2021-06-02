@@ -13,7 +13,7 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         commentary
-        gitsigns-nvim
+        completion-nvim
         lualine-nvim
         nvim-autopairs
         nvim-colorizer-lua

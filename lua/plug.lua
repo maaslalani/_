@@ -7,11 +7,6 @@ require'nvim-autopairs'.setup{}
 -- colorizer
 require'colorizer'.setup{ '*'; }
 
--- gitsigns
-require'gitsigns'.setup{
-  keymaps = {}
-}
-
 -- lualine
 require'lualine'.setup{
   options = {
