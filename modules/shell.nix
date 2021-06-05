@@ -12,6 +12,9 @@ in
     autocd = true;
     dotDir = ".config/zsh";
     enable = true;
+    history = {
+      path = "$ZDOTDIR/.zsh_history";
+    };
     shellAliases = rec {
       "..." = "cd ../..";
       "...." = "cd ../../..";

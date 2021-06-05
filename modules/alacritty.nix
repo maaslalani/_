@@ -20,16 +20,14 @@
       };
 
       scrolling = {
-        history = 10000;
+        history = 100000;
         multiplier = 3;
       };
 
       font = {
-        bold.family = "Hack Nerd Font Mono";
+        bold.family = "Hack";
         bold.style = "Medium";
-        italic.family = "Hack Nerd Font Mono";
         italic.style = "Italic";
-        normal.family = "Hack Nerd Font Mono";
         normal.style = "Regular";
         size = 18.5;
       };

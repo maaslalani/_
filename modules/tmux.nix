@@ -8,6 +8,7 @@ with builtins; let
     default-terminal = "'xterm-256color'";
     mouse = "on";
     terminal-overrides = "',xterm-256color:Tc'";
+    automatic-rename = "off";
   };
 
   pane = {

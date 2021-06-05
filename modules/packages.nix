@@ -17,7 +17,6 @@
     exa
     fd
     ffmpeg
-    fira-code
     git
     gnupg
     go
@@ -27,7 +26,7 @@
     jq
     kubectl
     mosh
-    nerdfonts
+    nerd-fonts
     ninja
     nodejs
     pandoc
@@ -38,7 +37,6 @@
     skhd
     sops
     terraform
-    texlive.combined.scheme-medium
     tree
     vault
     watch
@@ -55,6 +53,7 @@
       texlab
       typescript
       typescript-language-server
+      texlive.combined.scheme-medium
     ]
   );
 }
