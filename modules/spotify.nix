@@ -6,6 +6,7 @@ let
     global = {
       username = "maaslalaniii";
       password_cmd = "pass spotify";
+      backend = "portaudio";
     };
   };
 
