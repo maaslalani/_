@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "completion-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622569563,
+        "narHash": "sha256-KiAkAY0a8ZrBavmFTaGxQOxBcEECPUC9AiC8A7OuZVw=",
+        "owner": "nvim-lua",
+        "repo": "completion-nvim",
+        "rev": "c8db953a8e9f4bc8183e31831297cf84d6f521b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-lua",
+        "repo": "completion-nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -177,6 +193,7 @@
     "root": {
       "inputs": {
         "colorbuddy-nvim": "colorbuddy-nvim",
+        "completion-nvim": "completion-nvim",
         "home-manager": "home-manager",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

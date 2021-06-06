@@ -19,3 +19,18 @@ g.vimwiki_hl_headers = 1
 g.vimwiki_hl_cb_checked = 1
 g.vimwiki_global_ext = 0
 g.vimwiki_key_mappings = { global = 0, html = 0, links = 0 }
+
+-- completion-nvim
+g.completion_chain_complete_list = {
+  default = {
+    default = {
+      { complete_items = { 'lsp', 'snippet' }},
+      { mode = '<c-p>'},
+      { mode = '<c-n>'}
+    },
+    comment = {},
+    string = {{
+      complete_items = { 'path' }
+    }},
+  },
+}

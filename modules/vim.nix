@@ -13,7 +13,6 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         commentary
-        completion-nvim
         gitsigns-nvim
         lualine-nvim
         nvim-autopairs
@@ -32,6 +31,7 @@
       with pkgs; [
         colorbuddy-nvim
         nordbuddy-nvim
+        completion-nvim
       ]
     );
   };

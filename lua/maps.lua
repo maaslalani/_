@@ -138,6 +138,11 @@ whichkey.register({
   ["<leader>p"] = { "\"*p", "Paste" },
 }, { mode = VISUAL })
 
+whichkey.register({
+  ["<tab>"] = { 'pumvisible() ? "\\<c-n>" : "\\<tab>"', "Next Completion", expr=true },
+  ["<s-tab>"] = { 'pumvisible() ? "\\<c-p>" : "\\<s-tab>"', "Previous Completion", expr=true },
+}, { mode = INSERT })
+
 whichkey.setup {
   ignore_missing = false,
   plugins = {
