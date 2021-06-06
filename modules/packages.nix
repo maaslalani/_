@@ -36,6 +36,8 @@
     sd
     skhd
     sops
+    spotify-tui
+    spotifyd
     terraform
     tree
     vault
