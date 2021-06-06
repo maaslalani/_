@@ -73,6 +73,8 @@ in
 
       sz = "source ~/.config/zsh/.zshrc";
 
+      spd = "spotifyd --no-daemon >/dev/null &";
+
       ncg = "nix-collect-garbage";
       ns = " open https://search.nixos.org/packages\\?channel=unstable";
 
