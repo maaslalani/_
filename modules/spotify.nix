@@ -1,5 +1,7 @@
 { config, pkgs, libs, ... }:
 let
+  path = ".config/spotifyd";
+  file = "spotifyd.conf";
   settings = {
     global = {
       username = "maaslalaniii";
@@ -8,8 +10,8 @@ let
   };
 
   toml = pkgs.formats.toml {};
-  config = toml.generate "spotifyd.conf" settings;
+  config = toml.generate file settings;
 in
 {
-  home.file.".config/spotifyd/spotifyd.conf".source = config;
+  home.file."${path}/${file}".source = config;
 }
