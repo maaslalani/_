@@ -11,7 +11,7 @@ g.diagnostic_insert_delay = 0
 -- netrw options
 g.netrw_banner = 0
 g.netrw_localcopydircmd = 'cp -r'
-g.netrw_localrmdir = 'rm -r'
+g.netrw_rmdir_cmd = 'rm -r'
 
 -- vimwiki
 g.vimwiki_list = {{path = '~/wiki'}}
