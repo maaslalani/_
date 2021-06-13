@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "colorbuddy-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1618594206,
-        "narHash": "sha256-Ezj4wNrU1+T1JfTSC8mR6udvCqifED5AfChfXqGv7qU=",
-        "owner": "tjdevries",
-        "repo": "colorbuddy.nvim",
-        "rev": "87c80e3f4a590d0387d9b128d1f1fc456759408a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tjdevries",
-        "repo": "colorbuddy.nvim",
-        "type": "github"
-      }
-    },
     "completion-nvim": {
       "flake": false,
       "locked": {
@@ -192,7 +176,6 @@
     },
     "root": {
       "inputs": {
-        "colorbuddy-nvim": "colorbuddy-nvim",
         "completion-nvim": "completion-nvim",
         "home-manager": "home-manager",
         "neorg": "neorg",

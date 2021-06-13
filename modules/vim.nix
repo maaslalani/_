@@ -12,6 +12,7 @@
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
+        colorbuddy-nvim
         commentary
         gitsigns-nvim
         lualine-nvim
@@ -29,7 +30,6 @@
       ]
     ) ++ (
       with pkgs; [
-        colorbuddy-nvim
         nordbuddy-nvim
         completion-nvim
       ]
