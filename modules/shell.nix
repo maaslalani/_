@@ -33,11 +33,10 @@ in
       gcam = "${gc} -am";
       gcm = "${gc} -m";
       gco = "git checkout";
-      gcom = "${gco} master";
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
       gd = "git diff";
-      gdm = "${gd} master";
+      gdm = "${gd} master || ${gd} main";
       gl = "git pull";
       glo = "git log";
       gm = "git merge";
@@ -51,7 +50,7 @@ in
       grba = "${grb} --abort";
       grbc = "${grb} --continue";
       grbi = "${grb} --interactive";
-      grbm = "${grb} master";
+      grbm = "${grb} master || ${grb} main";
       grev = "git rev-parse HEAD";
       grh = "${gr} --hard";
       grpo = "git remote prune origin";
@@ -61,7 +60,7 @@ in
       gst = "git stash";
       gstp = "${gst} pop";
       gsw = "git switch";
-      gswm = "${gsw} master";
+      gswm = "${gsw} master || ${gsw} main";
 
       hmg = "nix build --out-link ~/.config/nixpkgs/result --impure --experimental-features 'nix-command flakes' '/Users/maas/_#home'";
       hms = "nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
