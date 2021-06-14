@@ -21,6 +21,7 @@
     gnupg
     go
     google-cloud-sdk
+    graph-easy
     graphviz
     htop
     jq
