@@ -133,18 +133,17 @@ in
     in
       rec {
         BROWSER = "Brave Browser";
-        CARGO_BIN = "$HOME/.cargo/bin";
+        CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
         CLICOLOR = 1;
         COLORTERM = "truecolor";
         EDITOR = "nvim";
         GOBIN = "${GOPATH}/bin";
-        GOPATH = "$HOME/.config/go";
+        GOPATH = "${config.xdg.configHome}/go";
         KEYTIMEOUT = 1;
         KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
         MANPAGER = "nvim +Man!";
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-        PASSWORD_STORE_DIR = "$HOME/.config/pass";
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         TERM = "xterm-256color";

@@ -63,6 +63,7 @@
             ./modules/gh.nix
             ./modules/git.nix
             ./modules/packages.nix
+            ./modules/pass.nix
             ./modules/shell.nix
             ./modules/skhd.nix
             ./modules/spotify.nix

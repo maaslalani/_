@@ -31,7 +31,6 @@
     ninja
     nodejs
     pandoc
-    pass
     ripgrep
     rustup
     sd
