@@ -23,7 +23,6 @@
         nvim-treesitter
         plenary-nvim
         popup-nvim
-        telescope-nvim
         vim-test
         vimwiki
         which-key-nvim
@@ -32,6 +31,7 @@
       with pkgs; [
         nordbuddy-nvim
         completion-nvim
+        telescope-nvim
       ]
     );
   };

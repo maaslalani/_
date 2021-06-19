@@ -9,6 +9,7 @@
   inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
@@ -18,6 +19,7 @@
             completion-nvim = buildVimPluginFrom2Nix { name = "completion-nvim"; src = inputs.completion-nvim; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+            telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src= inputs.telescope-nvim; };
           }
         )
         inputs.neovim-nightly-overlay.overlay

@@ -181,7 +181,24 @@
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
-        "nordbuddy-nvim": "nordbuddy-nvim"
+        "nordbuddy-nvim": "nordbuddy-nvim",
+        "telescope-nvim": "telescope-nvim"
+      }
+    },
+    "telescope-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1623700246,
+        "narHash": "sha256-N9S+zn/Wk+rg93zmLWbAbGPmkouu9O3+BAA0hpSnT8w=",
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "rev": "6ac5ee0854fe02d651cadf2fc97a2463ff92f322",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "type": "github"
       }
     }
   },
