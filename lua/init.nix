@@ -1,8 +1,6 @@
 with builtins;
 let
   files = [
-    ./vars.lua
-    ./opts.lua
     ./plug.lua
     ./lsp.lua
     ./maps.lua

@@ -6,6 +6,7 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   /* Neovim Plugins */
+  inputs.aniseed = { url = "github:Olical/aniseed"; flake = false; };
   inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.lua-snip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
@@ -23,6 +24,7 @@
       overlays = [
         (
           self: super: with self.vimUtils; {
+            aniseed = buildVimPluginFrom2Nix { name = "aniseed"; src = inputs.aniseed; };
             completion-nvim = buildVimPluginFrom2Nix { name = "completion-nvim"; src = inputs.completion-nvim; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             lua-snip = buildVimPluginFrom2Nix { name = "lua-snip"; src = inputs.lua-snip; };

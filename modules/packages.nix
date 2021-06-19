@@ -27,7 +27,6 @@
     jq
     kubectl
     mosh
-    nerdfonts
     ninja
     nodejs
     pandoc

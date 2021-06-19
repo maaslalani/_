@@ -64,7 +64,7 @@ in
       gswm = "${gsw} master || ${gsw} main";
 
       hmg = "nix build --out-link ~/.config/nixpkgs/result --impure --experimental-features 'nix-command flakes' '/Users/maas/_#home'";
-      hms = "nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
+      hms = "rm -rf ~/.config/nvim/lua && nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
 
       ls = "exa";
       lsa = "exa -Fla";
