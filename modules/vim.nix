@@ -4,8 +4,8 @@
     enable = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
-      lua <<EOF
-      ${import ../lua/init.nix}
+        lua <<EOF
+        ${import ../lua/init.nix}
       EOF
     '';
     vimAlias = true;
@@ -14,24 +14,24 @@
       with pkgs.unstable.vimPlugins; [
         colorbuddy-nvim
         commentary
-        gitsigns-nvim
         lualine-nvim
         nvim-autopairs
         nvim-colorizer-lua
-        nvim-dap
         nvim-lspconfig
-        nvim-treesitter
-        plenary-nvim
         popup-nvim
-        vim-test
         vimwiki
-        which-key-nvim
       ]
     ) ++ (
       with pkgs; [
-        nordbuddy-nvim
         completion-nvim
+        gitsigns-nvim
+        nordbuddy-nvim
+        nvim-dap
+        nvim-treesitter
+        plenary-nvim
         telescope-nvim
+        vim-test
+        which-key-nvim
       ]
     );
   };

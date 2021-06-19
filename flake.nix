@@ -7,9 +7,15 @@
 
   /* Neovim Plugins */
   inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
+  inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.nvim-dap = { url = "github:mfussenegger/nvim-dap"; flake = false; };
+  inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+  inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
   inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
+  inputs.vim-test = { url = "github:vim-test/vim-test"; flake = false; };
+  inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
@@ -17,9 +23,15 @@
         (
           self: super: with self.vimUtils; {
             completion-nvim = buildVimPluginFrom2Nix { name = "completion-nvim"; src = inputs.completion-nvim; };
+            gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
-            telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src= inputs.telescope-nvim; };
+            nvim-dap = buildVimPluginFrom2Nix { name = "nvim-dap"; src = inputs.nvim-dap; };
+            nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
+            plenary-nvim = buildVimPluginFrom2Nix { name = "plenary-nvim"; src = inputs.plenary-nvim; };
+            telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src = inputs.telescope-nvim; };
+            vim-test = buildVimPluginFrom2Nix { name = "vim-test"; src = inputs.vim-test; };
+            which-key-nvim = buildVimPluginFrom2Nix { name = "which-key-nvim"; src = inputs.which-key-nvim; };
           }
         )
         inputs.neovim-nightly-overlay.overlay
