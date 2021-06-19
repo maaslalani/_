@@ -83,6 +83,22 @@
         "type": "github"
       }
     },
+    "lua-snip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1624036110,
+        "narHash": "sha256-LeM5FguQHglggAm7BNcxD8mRYBR+H8p7+/muF9VGFBc=",
+        "owner": "L3MON4D3",
+        "repo": "LuaSnip",
+        "rev": "6aed450e36b4f7d818097d048706ecd35cfa8ed3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "L3MON4D3",
+        "repo": "LuaSnip",
+        "type": "github"
+      }
+    },
     "neorg": {
       "flake": false,
       "locked": {
@@ -243,6 +259,7 @@
         "completion-nvim": "completion-nvim",
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
+        "lua-snip": "lua-snip",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",

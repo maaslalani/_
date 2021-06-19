@@ -25,6 +25,7 @@
       with pkgs; [
         completion-nvim
         gitsigns-nvim
+        lua-snip
         nordbuddy-nvim
         nvim-dap
         nvim-treesitter

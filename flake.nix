@@ -8,6 +8,7 @@
   /* Neovim Plugins */
   inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
+  inputs.lua-snip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-dap = { url = "github:mfussenegger/nvim-dap"; flake = false; };
@@ -24,6 +25,7 @@
           self: super: with self.vimUtils; {
             completion-nvim = buildVimPluginFrom2Nix { name = "completion-nvim"; src = inputs.completion-nvim; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
+            lua-snip = buildVimPluginFrom2Nix { name = "lua-snip"; src = inputs.lua-snip; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
             nvim-dap = buildVimPluginFrom2Nix { name = "nvim-dap"; src = inputs.nvim-dap; };
