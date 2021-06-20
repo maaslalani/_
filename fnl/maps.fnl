@@ -7,23 +7,21 @@
 (local NORMAL :n)
 (local VISUAL :v)
 
+;; macros
 (macro lua [module name]
   `(let [name# ,name module# ,module]
      (.. ":lua require'" module# "'." name# "()<cr>")))
-
 (macro cmd [...]
   `(.. "<cmd>" (.. ,...) "<cr>"))
-
 (macro pcmd [prefix cmd]
   `(let [prefix# ,prefix cmd# ,cmd]
      (.. "<cmd>" prefix# (. " ") cmd# "<cr>")))
-
 (macro lsp [...]
   `(.. "<cmd>lua vim.lsp." (.. ,...) "()<cr>"))
-
 (macro plug [...]
   `(.. "<Plug>" (.. ,...)))
 
+;; leader mappings
 (wk.register
   {
    :d {:name :debug
@@ -73,6 +71,7 @@
    :y ["\"*y<cr>" :copy]}
   {:prefix LEADER :mode NORMAL})
 
+;; normal mappings
 (wk.register
   {
    :K [(lsp :buf.hover) :hover]
@@ -89,6 +88,7 @@
         :v [(cmd :TestVisit) :visit]}}
   {:mode NORMAL})
 
+;; buffer vimwiki mappings
 (set _G.wkvimwiki
      (fn []
        (wk.register
@@ -104,6 +104,7 @@
                    :n [(plug :VimwikiNextTask) :next]}}}
          {:mode NORMAL :buffer (vim.api.nvim_get_current_buf)})))
 
+;; global vimwiki mappings
 (wk.register
   {"," {:name :wiki
         "," [(plug :VimwikiIndex) :open]
@@ -112,6 +113,7 @@
         :r [(plug :VimwikiRenameFile) :rename]}}
   {:mode NORMAL})
 
+;; visual mappings
 (wk.register
   {:< [:<gv :dedent]
    :> [:>gv :indent]
@@ -120,6 +122,7 @@
    :<leader>p ["\"*p" :paste]}
   {:mode VISUAL})
 
+;; tab completion
 (wk.register
   {:<tab> {1 "pumvisible() ? \"\\<c-n>\" : \"\\<tab>\""
            2 "Next Completion"
