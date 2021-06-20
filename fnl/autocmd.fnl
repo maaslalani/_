@@ -17,5 +17,5 @@
 (autocmd :TermOpen "*" "startinsert")
 
 ;; vimwiki
-(autocmd :FileType "vimwiki" "lua whichkeyvimwiki()")
+(autocmd :FileType "vimwiki" "lua wkvimwiki()")
 (autocmd :BufEnter "*.wiki" "setlocal nocursorline nonumber signcolumn=yes")
