@@ -7,102 +7,98 @@
 (wk.register
   {
    :d {:name :debug
-       :c  [":lua require'dap'.continue()<cr>" "Continue"]
+       :c  [":lua require'dap'.continue()<cr>" :continue]
        :s {:name :step
-           :s [":lua require'dap'.step_over()<cr>" "Step Over"]
-           :i [":lua require'dap'.step_into()<cr>" "Step Into"]
-           :o [":lua require'dap'.step_out()<cr>" "Step Out"]}
+           :s [":lua require'dap'.step_over()<cr>" :over]
+           :i [":lua require'dap'.step_into()<cr>" :into]
+           :o [":lua require'dap'.step_out()<cr>" :out]}
        :b {:name :breakpoint
-           :t [":lua require'dap'.toggle_breakpoint()<cr>" "Toggle Breakpoint"]
-           :s [":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>" "Set Breakpoint"]
-           :l [":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>" "Set Logpoint"]}
-       :r [":lua require'dap'.repl.open()<cr>" "REPL"]
-       :. [":lua require'dap'.run_last()<cr>" "Run Last"]}
-   :f {:name :file
-       :e ["<cmd>Explore<cr>" "File Explorer"]
-       :f ["<cmd>Telescope find_files<cr>" "Find File"]
-       :n ["<cmd>enew<cr>" "New File"]
-       :r ["<cmd>Telescope live_grep<cr>" "Live Grep"]
-       :s {:name :source
-           :l ["<cmd>luafile %<cr>" "Lua"]}}
+           :t [":lua require'dap'.toggle_breakpoint()<cr>" :toggle]
+           :s [":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>" :set]
+           :l [":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>" :log]}
+       :r [":lua require'dap'.repl.open()<cr>" :repl]
+       :. [":lua require'dap'.run_last()<cr>" :repeat]}
+   :f {:name :find
+       :e ["<cmd>Explore<cr>" :explore]
+       :f ["<cmd>Telescope find_files<cr>" :file]
+       :n ["<cmd>enew<cr>" :new]
+       :r ["<cmd>Telescope live_grep<cr>" :grep]
    :l {:name :lsp
-       :f ["<cmd>lua vim.lsp.buf.formatting()<cr>" "Format Buffer"]
-       :a ["<cmd>lua vim.lsp.buf.code_action()<cr>" "Code Actions"]
-       :r ["<cmd>lua vim.lsp.buf.rename()<cr>" "Rename"]
+       :f ["<cmd>lua vim.lsp.buf.formatting()<cr>" :format]
+       :a ["<cmd>lua vim.lsp.buf.code_action()<cr>" :actions]
+       :r ["<cmd>lua vim.lsp.buf.rename()<cr>" :rename]
+       :l ["<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>" :line]
        :d {:name :diagnostics
-           :n ["<cmd>lua vim.lsp.diagnostic.goto_next()<cr>" "Next Diagnostic"]
-           :p ["<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>" "Previous Diagnostic"]
-           :h ["<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>" "Line Diagnostics"]}}
+           :n ["<cmd>lua vim.lsp.diagnostic.goto_next()<cr>" :next]
+           :p ["<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>" :previous]}}
    :t {:name :tabs
-       :t ["<cmd>tabnew<cr>" "New Tab"]
-       :n ["<cmd>tabnext<cr>" "Next Tab"]
-       :p ["<cmd>tabprevious<cr>" "Previous Tab"]}
+       :t ["<cmd>tabnew<cr>" :new]
+       :n ["<cmd>tabnext<cr>" :next]
+       :p ["<cmd>tabprevious<cr>" :previous]}
    :c {:name :quickfix
-       :n ["<cmd>cnext<cr>" "Next Item"]
-       :p ["<cmd>cprev<cr>" "Previous Item"]
-       :q ["<cmd>cclose<cr>" "Close List"]
-       :o ["<cmd>copen<cr>" "Open List"]}
+       :n ["<cmd>cnext<cr>" :next]
+       :p ["<cmd>cprev<cr>" :previous]
+       :q ["<cmd>cclose<cr>" :close]
+       :o ["<cmd>copen<cr>" :open]}
    :g {:name :git
-       :b ["<cmd>Gitsigns blame_line<cr>" "Blame Line"]
+       :b ["<cmd>Gitsigns blame_line<cr>" :blame]
        :h {:name :hunk
-           :r ["<cmd>Gitsigns reset_hunk<cr>" "Reset Hunk"]
-           :s ["<cmd>Gitsigns stage_hunk<cr>" "Stage Hunk"]
-           :n ["<cmd>Gitsigns next_hunk<cr>" "Next Hunk"]
-           :p ["<cmd>Gitsigns prev_hunk<cr>" "Previous Hunk"]}}
-   :s {:name :search
-       :r [":%s//g<left><left>" "Replace"]}
-   :q ["<cmd>q<cr>" "Quit"]
-   :w ["<cmd>w<cr>" "Save"]
-   :p ["\"*p<cr>" "Paste"]
-   :y ["\"*y<cr>" "Copy"]}
+           :r ["<cmd>Gitsigns reset_hunk<cr>" :reset]
+           :s ["<cmd>Gitsigns stage_hunk<cr>" :stage]
+           :n ["<cmd>Gitsigns next_hunk<cr>" :next]
+           :p ["<cmd>Gitsigns prev_hunk<cr>" :previous]}}
+   :r [":%s//g<left><left>" :replace]
+   :q ["<cmd>q<cr>" :quit]
+   :w ["<cmd>w<cr>" :save]
+   :p ["\"*p<cr>" :paste]
+   :y ["\"*y<cr>" :copy]}
   {:prefix LEADER :mode NORMAL})
 
 (wk.register
   {
-   :K ["<cmd>lua vim.lsp.buf.hover()<cr>" "Hover"]
-   :g {:name g
-       :d ["<cmd>lua vim.lsp.buf.definition()<cr>" "Goto Definition"]
-       :r ["<cmd>lua vim.lsp.buf.references()<cr>" "Goto References"]
-       :c "Commentary"}
-   :<bs> ["-" "Back"]
+   :K ["<cmd>lua vim.lsp.buf.hover()<cr>" :hover]
+   :g {:name goto
+       :d ["<cmd>lua vim.lsp.buf.definition()<cr>" :definition]
+       :r ["<cmd>lua vim.lsp.buf.references()<cr>" :reference]
+       :c :commentary}
+   :<bs> ["-" :back]
    ";" {:name :test
-        :f ["<cmd>TestFile<cr>" "Test File"]
-        :l ["<cmd>TestLast<cr>" "Test Last"]
-        :n ["<cmd>TestNearest<cr>" "Test Nearest"]
-        :s ["<cmd>TestSuite<cr>" "Test Suite"]
-        :v ["<cmd>TestVisit<cr>" "Test Visit"]}}
+        :f ["<cmd>TestFile<cr>" :file]
+        :l ["<cmd>TestLast<cr>" :last]
+        :n ["<cmd>TestNearest<cr>" :nearest]
+        :s ["<cmd>TestSuite<cr>" :suite]
+        :v ["<cmd>TestVisit<cr>" :visit]}}
   {:mode NORMAL})
 
 (set _G.wkvimwiki
      (fn []
        (wk.register
-         {:<cr> ["<Plug>VimwikiFollowLink" "Follow Link"]
-          :<bs> ["<Plug>VimwikiGoBackLink" "Back Link"]
-          :<c-o> ["<Plug>VimwikiGoBackLink" "Back Link"]
-          :<tab> ["<Plug>VimwikiNextLink" "Next Link"]
-          :<s-tab> ["<Plug>VimwikiPrevLink" "Prev Link"]
-          :n ["<Plug>VimwikiNextLink" "Next Link"]
-          :N ["<Plug>VimwikiPrevLink" "Prev Link"]
+         {:<cr> ["<Plug>VimwikiFollowLink" :follow]
+          :<bs> ["<Plug>VimwikiGoBackLink" :back]
+          :<c-o> ["<Plug>VimwikiGoBackLink" :back]
+          :<tab> ["<Plug>VimwikiNextLink" :next]
+          :<s-tab> ["<Plug>VimwikiPrevLink" :previous]
+          :n ["<Plug>VimwikiNextLink" :next]
+          :N ["<Plug>VimwikiPrevLink" :previous]
           "," {:t {:name :task
-                   :d ["<Plug>VimwikiToggleListItem" "Toggle Task"]
-                   :n ["<Plug>VimwikiNextTask" "Next Task"]}}}
+                   :d ["<Plug>VimwikiToggleListItem" :toggle]
+                   :n ["<Plug>VimwikiNextTask" :next]}}}
          {:mode NORMAL :buffer (vim.api.nvim_get_current_buf)})))
 
 (wk.register
   {"," {:name :wiki
-        "," ["<Plug>VimwikiIndex" "Open Wiki"]
-        :n ["<Plug>VimwikiGoto" "Goto Wiki Page"]
-        :x ["<Plug>VimwikiDeleteFile" "Delete Wiki Page"]
-        :r ["<Plug>VimwikiRenameFile" "Rename Wiki Page"]}}
+        "," ["<Plug>VimwikiIndex" :open]
+        :n ["<Plug>VimwikiGoto" :goto]
+        :x ["<Plug>VimwikiDeleteFile" :delete]
+        :r ["<Plug>VimwikiRenameFile" :rename]}}
   {:mode NORMAL})
 
 (wk.register
-  {:< ["<gv" "Dedent"]
-   :> [">gv" "Indent"]
-   :S [":s//g<left><left>" "Replace"]
-   :so [":sort <bar>w<bar>e<cr>" "Sort"]
-   :<leader>y ["\"*y" "Copy"]
-   :<leader>p ["\"*p" "Paste"]}
+  {:< ["<gv" :dedent]
+   :> [">gv" :indent]
+   :<leader>so [":sort <bar>w<bar>e<cr>" :sort]
+   :<leader>y ["\"*y" :copy]
+   :<leader>p ["\"*p" :paste]}
   {:mode VISUAL})
 
 (wk.register
