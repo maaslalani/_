@@ -43,6 +43,7 @@
     watch
     yabai
     yarn
+    zathura
   ] ++ (
     with pkgs; with pkgs.nodePackages; [
       bash-language-server
