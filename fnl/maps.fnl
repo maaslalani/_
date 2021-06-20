@@ -14,12 +14,15 @@
 (macro cmd [...]
   `(.. "<cmd>" (.. ,...) "<cr>"))
 
-(macro lcmd [...]
-  `(.. "<cmd>lua " (.. ,...) "()<cr>"))
-
 (macro pcmd [prefix cmd]
   `(let [prefix# ,prefix cmd# ,cmd]
      (.. "<cmd>" prefix# (. " ") cmd# "<cr>")))
+
+(macro lsp [...]
+  `(.. "<cmd>lua vim.lsp." (.. ,...) "()<cr>"))
+
+(macro plug [...]
+  `(.. "<Plug>" (.. ,...)))
 
 (wk.register
   {
@@ -40,13 +43,13 @@
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
    :l {:name :lsp
-       :f [(lcmd :vim.lsp.buf.formatting) :format]
-       :a [(lcmd :vim.lsp.buf.code_action) :actions]
-       :r [(lcmd :vim.lsp.buf.rename) :rename]
-       :l [(lcmd :vim.lsp.diagnostic.show_line_diagnostics) :line]
+       :f [(lsp :buf.formatting) :format]
+       :a [(lsp :buf.code_action) :actions]
+       :r [(lsp :buf.rename) :rename]
+       :l [(lsp :diagnostic.show_line_diagnostics) :line]
        :d {:name :diagnostics
-           :n [(lcmd :vim.lsp.diagnostic.goto_next) :next]
-           :p [(lcmd :vim.lsp.diagnostic.goto_prev) :previous]}}
+           :n [(lsp :diagnostic.goto_next) :next]
+           :p [(lsp :diagnostic.goto_prev) :previous]}}
    :t {:name :tabs
        :t [(cmd :tabnew) :new]
        :n [(cmd :tabnext) :next]
@@ -72,10 +75,10 @@
 
 (wk.register
   {
-   :K [(lcmd :vim.lsp.buf.hover) :hover]
+   :K [(lsp :buf.hover) :hover]
    :g {:name goto
-       :d [(lcmd :vim.lsp.buf.definition) :definition]
-       :r [(lcmd :vim.lsp.buf.reference) :reference]
+       :d [(lsp :buf.definition) :definition]
+       :r [(lsp :buf.reference) :reference]
        :c :commentary}
    :<bs> ["-" :back]
    ";" {:name :test
