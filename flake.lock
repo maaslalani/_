@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "conjure": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1623590506,
+        "narHash": "sha256-1b0Di2oXtpYN76JA3CMO5TdmU+fpOT6H7V2xe6Fy9Sk=",
+        "owner": "Olical",
+        "repo": "conjure",
+        "rev": "b55e4906a10db0f6917058aec6616075c4d06994",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Olical",
+        "repo": "conjure",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -274,6 +290,7 @@
       "inputs": {
         "aniseed": "aniseed",
         "completion-nvim": "completion-nvim",
+        "conjure": "conjure",
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
         "lua-snip": "lua-snip",

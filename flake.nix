@@ -8,6 +8,7 @@
   /* Neovim Plugins */
   inputs.aniseed = { url = "github:olical/aniseed"; flake = false; };
   inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
+  inputs.conjure = { url = "github:Olical/conjure"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.lua-snip = { url = "github:l3mon4d3/luasnip"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
@@ -26,6 +27,7 @@
           self: super: with self.vimUtils; {
             aniseed = buildVimPluginFrom2Nix { name = "aniseed"; src = inputs.aniseed; };
             completion-nvim = buildVimPluginFrom2Nix { name = "completion-nvim"; src = inputs.completion-nvim; };
+            conjure = buildVimPluginFrom2Nix { name = "conjure"; src = inputs.conjure; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             lua-snip = buildVimPluginFrom2Nix { name = "lua-snip"; src = inputs.lua-snip; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
