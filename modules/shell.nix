@@ -132,7 +132,7 @@ in
       pathJoin = builtins.concatStringsSep ":";
     in
       rec {
-        BROWSER = "Brave Browser";
+        BROWSER = "open";
         CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
         CLICOLOR = 1;
         COLORTERM = "truecolor";
