@@ -1,5 +1,4 @@
-(module maps
-  {require-macros [macros]})
+(module maps)
 
 (local wk (require :which-key))
 (local INSERT :i)

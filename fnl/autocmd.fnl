@@ -1,6 +1,8 @@
 (module autocmd
-  {require {nvim aniseed.nvim}
-   require-macros [macros]})
+  {require {nvim aniseed.nvim}})
+
+(macro autocmd [...]
+  `(nvim.ex.autocmd ,...))
 
 ;; buffers
 (autocmd :BufEnter "*.nix" "set ft=nix")
