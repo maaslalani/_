@@ -92,24 +92,24 @@
 (set _G.wkvimwiki
      (fn []
        (wk.register
-         {:<cr> ["<Plug>VimwikiFollowLink" :follow]
-          :<bs> ["<Plug>VimwikiGoBackLink" :back]
-          :<c-o> ["<Plug>VimwikiGoBackLink" :back]
-          :<tab> ["<Plug>VimwikiNextLink" :next]
-          :<s-tab> ["<Plug>VimwikiPrevLink" :previous]
-          :n ["<Plug>VimwikiNextLink" :next]
-          :N ["<Plug>VimwikiPrevLink" :previous]
+         {:<cr> [(plug :VimwikiFollowLink) :follow]
+          :<bs> [(plug :VimwikiGoBackLink) :back]
+          :<c-o> [(plug :VimwikiGoBackLink) :back]
+          :<tab> [(plug :VimwikiNextLink) :next]
+          :<s-tab> [(plug :VimwikiPrevLink) :previous]
+          :n [(plug :VimwikiNextLink) :next]
+          :N [(plug :VimwikiPrevLink) :previous]
           "," {:t {:name :task
-                   :d ["<Plug>VimwikiToggleListItem" :toggle]
-                   :n ["<Plug>VimwikiNextTask" :next]}}}
+                   :d [(plug :VimwikiToggleListItem) :toggle]
+                   :n [(plug :VimwikiNextTask) :next]}}}
          {:mode NORMAL :buffer (vim.api.nvim_get_current_buf)})))
 
 (wk.register
   {"," {:name :wiki
-        "," ["<Plug>VimwikiIndex" :open]
-        :n ["<Plug>VimwikiGoto" :goto]
-        :x ["<Plug>VimwikiDeleteFile" :delete]
-        :r ["<Plug>VimwikiRenameFile" :rename]}}
+        "," [(plug :VimwikiIndex) :open]
+        :n [(plug :VimwikiGoto) :goto]
+        :x [(plug :VimwikiDeleteFile) :delete]
+        :r [(plug :VimwikiRenameFile) :rename]}}
   {:mode NORMAL})
 
 (wk.register
