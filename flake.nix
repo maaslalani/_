@@ -6,10 +6,10 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   /* Neovim Plugins */
-  inputs.aniseed = { url = "github:Olical/aniseed"; flake = false; };
+  inputs.aniseed = { url = "github:olical/aniseed"; flake = false; };
   inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-  inputs.lua-snip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
+  inputs.lua-snip = { url = "github:l3mon4d3/luasnip"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-dap = { url = "github:mfussenegger/nvim-dap"; flake = false; };

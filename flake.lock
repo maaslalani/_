@@ -5,13 +5,13 @@
       "locked": {
         "lastModified": 1622457782,
         "narHash": "sha256-2CI7NuKBejUukfrInJP2Yn6SDVOU6t0VPHWue7mDoys=",
-        "owner": "Olical",
+        "owner": "olical",
         "repo": "aniseed",
         "rev": "4ca3d418eebc0da452b7defc18970c83f7de5070",
         "type": "github"
       },
       "original": {
-        "owner": "Olical",
+        "owner": "olical",
         "repo": "aniseed",
         "type": "github"
       }
@@ -104,14 +104,14 @@
       "locked": {
         "lastModified": 1624036110,
         "narHash": "sha256-LeM5FguQHglggAm7BNcxD8mRYBR+H8p7+/muF9VGFBc=",
-        "owner": "L3MON4D3",
-        "repo": "LuaSnip",
+        "owner": "l3mon4d3",
+        "repo": "luasnip",
         "rev": "6aed450e36b4f7d818097d048706ecd35cfa8ed3",
         "type": "github"
       },
       "original": {
-        "owner": "L3MON4D3",
-        "repo": "LuaSnip",
+        "owner": "l3mon4d3",
+        "repo": "luasnip",
         "type": "github"
       }
     },
