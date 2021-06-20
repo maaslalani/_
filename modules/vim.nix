@@ -3,12 +3,7 @@
   config.programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
-    extraConfig = ''
-      let g:aniseed#env = v:true
-      lua <<EOF
-      ${import ../lua/init.nix}
-      EOF
-    '';
+    extraConfig = ''let g:aniseed#env = v:true'';
     vimAlias = true;
     viAlias = true;
     plugins = (
