@@ -1,4 +1,4 @@
-(module opts
+(module options
   {autoload {nvim aniseed.nvim}})
 
 (set nvim.o.autoindent true)

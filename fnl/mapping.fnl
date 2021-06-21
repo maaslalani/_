@@ -1,4 +1,4 @@
-(module maps)
+(module mapping)
 
 (local wk (require :which-key))
 (local INSERT :i)

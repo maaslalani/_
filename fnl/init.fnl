@@ -2,7 +2,7 @@
 
 (require :autocmd)
 (require :lsp)
-(require :maps)
-(require :opts)
+(require :mapping)
+(require :options)
 (require :plugins)
-(require :vars)
+(require :variables)

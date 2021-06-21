@@ -1,4 +1,4 @@
-(module vars
+(module variables
   {autoload {nvim aniseed.nvim}})
 
 ;; <Space>
