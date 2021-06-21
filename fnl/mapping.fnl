@@ -1,10 +1,6 @@
 (module mapping)
 
 (local wk (require :which-key))
-(local INSERT :i)
-(local LEADER :<leader>)
-(local NORMAL :n)
-(local VISUAL :v)
 
 ;; macros
 (macro lua [module name]
@@ -68,7 +64,7 @@
    :w [(cmd :w) :save]
    :p ["\"*p<cr>" :paste]
    :y ["\"*y<cr>" :copy]}
-  {:prefix LEADER :mode NORMAL})
+  {:prefix :<leader> :mode :n})
 
 ;; normal mappings
 (wk.register
@@ -85,7 +81,7 @@
         :n [(cmd :TestNearest) :nearest]
         :s [(cmd :TestSuite) :suite]
         :v [(cmd :TestVisit) :visit]}}
-  {:mode NORMAL})
+  {:mode :n})
 
 ;; buffer vimwiki mappings
 (set _G.wkvimwiki
@@ -101,7 +97,7 @@
           "," {:t {:name :task
                    :d [(plug :VimwikiToggleListItem) :toggle]
                    :n [(plug :VimwikiNextTask) :next]}}}
-         {:mode NORMAL :buffer (vim.api.nvim_get_current_buf)})))
+         {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
 
 ;; global vimwiki mappings
 (wk.register
@@ -110,7 +106,7 @@
         :n [(plug :VimwikiGoto) :goto]
         :x [(plug :VimwikiDeleteFile) :delete]
         :r [(plug :VimwikiRenameFile) :rename]}}
-  {:mode NORMAL})
+  {:mode :n})
 
 ;; visual mappings
 (wk.register
@@ -119,17 +115,13 @@
    :<leader>so [":sort <bar>w<bar>e<cr>" :sort]
    :<leader>y ["\"*y" :copy]
    :<leader>p ["\"*p" :paste]}
-  {:mode VISUAL})
+  {:mode :v})
 
 ;; tab completion
 (wk.register
-  {:<tab> {1 "pumvisible() ? \"\\<c-n>\" : \"\\<tab>\""
-           2 "Next Completion"
-           :expr true}
-   :<s-tab> {1 "pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\""
-             2 "Previous Completion"
-             :expr true}}
-  {:mode INSERT})	
+  {:<tab> ["pumvisible() ? \"\\<c-n>\" : \"\\<tab>\"" "Next Completion"]
+   :<s-tab> ["pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"" "Previous Completion"]}
+  {:mode :i :expr true})
 
 (wk.setup
   {:ignore_missing false

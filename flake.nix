@@ -7,12 +7,12 @@
 
   /* Neovim Plugins */
   inputs.aniseed = { url = "github:olical/aniseed"; flake = false; };
-  inputs.completion-nvim = { url = "github:nvim-lua/completion-nvim"; flake = false; };
   inputs.conjure = { url = "github:Olical/conjure"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.lua-snip = { url = "github:l3mon4d3/luasnip"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+  inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
   inputs.nvim-dap = { url = "github:mfussenegger/nvim-dap"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
   inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
@@ -26,12 +26,12 @@
         (
           self: super: with self.vimUtils; {
             aniseed = buildVimPluginFrom2Nix { name = "aniseed"; src = inputs.aniseed; };
-            completion-nvim = buildVimPluginFrom2Nix { name = "completion-nvim"; src = inputs.completion-nvim; };
             conjure = buildVimPluginFrom2Nix { name = "conjure"; src = inputs.conjure; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             lua-snip = buildVimPluginFrom2Nix { name = "lua-snip"; src = inputs.lua-snip; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
+            nvim-compe = buildVimPluginFrom2Nix { name = "nvim-compe"; src = inputs.nvim-compe; };
             nvim-dap = buildVimPluginFrom2Nix { name = "nvim-dap"; src = inputs.nvim-dap; };
             nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
             plenary-nvim = buildVimPluginFrom2Nix { name = "plenary-nvim"; src = inputs.plenary-nvim; };

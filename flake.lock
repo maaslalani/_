@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "completion-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1623862100,
-        "narHash": "sha256-QLiQK9RN9cYh/3F3nBOSMikt3qouJSDhRUp62Qz42kE=",
-        "owner": "nvim-lua",
-        "repo": "completion-nvim",
-        "rev": "d62fff879b29fa1ce915887a75305af0fff57d32",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-lua",
-        "repo": "completion-nvim",
-        "type": "github"
-      }
-    },
     "conjure": {
       "flake": false,
       "locked": {
@@ -238,6 +222,22 @@
         "type": "github"
       }
     },
+    "nvim-compe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1624090371,
+        "narHash": "sha256-FbXzxjcjYsb8dJv9S+RpQi7xcjnJV9E/IZnfykMd2vs=",
+        "owner": "hrsh7th",
+        "repo": "nvim-compe",
+        "rev": "f176c41f1e67bffe2dbd28f371fa55c172cf1c56",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "nvim-compe",
+        "type": "github"
+      }
+    },
     "nvim-dap": {
       "flake": false,
       "locked": {
@@ -289,7 +289,6 @@
     "root": {
       "inputs": {
         "aniseed": "aniseed",
-        "completion-nvim": "completion-nvim",
         "conjure": "conjure",
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
@@ -298,6 +297,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nordbuddy-nvim": "nordbuddy-nvim",
+        "nvim-compe": "nvim-compe",
         "nvim-dap": "nvim-dap",
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",

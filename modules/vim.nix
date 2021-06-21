@@ -20,11 +20,11 @@
     ) ++ (
       with pkgs; [
         aniseed
-        completion-nvim
         conjure
         gitsigns-nvim
         lua-snip
         nordbuddy-nvim
+        nvim-compe
         nvim-dap
         nvim-treesitter
         plenary-nvim
