@@ -25,8 +25,8 @@
       };
 
       font = {
-        normal.family = "FiraMono Nerd Font";
-        bold.style = "Medium";
+        normal.family = "Hack";
+        bold.style = "Bold";
         italic.style = "Italic";
         normal.style = "Regular";
         size = 18.5;
