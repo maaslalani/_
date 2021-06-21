@@ -79,6 +79,7 @@
           ];
           imports = [
             ./modules/alacritty.nix
+            ./modules/fonts.nix
             ./modules/fzf.nix
             ./modules/gh.nix
             ./modules/git.nix
