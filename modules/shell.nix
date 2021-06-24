@@ -79,6 +79,9 @@ in
       ncg = "nix-collect-garbage";
       ns = " open https://search.nixos.org/packages\\?channel=unstable";
 
+      sc = "systemctl";
+      jc = "journalctl";
+
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
