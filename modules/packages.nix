@@ -24,6 +24,7 @@
     graph-easy
     graphviz
     htop
+    imgcat
     jq
     kubectl
     mosh

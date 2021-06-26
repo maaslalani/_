@@ -58,7 +58,6 @@
           imports = [
             ./modules/core.nix
             ./modules/fzf.nix
-            ./modules/gh.nix
             ./modules/shell.nix
             ./modules/tmux.nix
             ./modules/vim.nix
