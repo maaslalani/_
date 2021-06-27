@@ -9,7 +9,6 @@
   inputs.aniseed = { url = "github:olical/aniseed"; flake = false; };
   inputs.conjure = { url = "github:Olical/conjure"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-  inputs.lua-snip = { url = "github:l3mon4d3/luasnip"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
@@ -28,7 +27,6 @@
             aniseed = buildVimPluginFrom2Nix { name = "aniseed"; src = inputs.aniseed; };
             conjure = buildVimPluginFrom2Nix { name = "conjure"; src = inputs.conjure; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
-            lua-snip = buildVimPluginFrom2Nix { name = "lua-snip"; src = inputs.lua-snip; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
             nvim-compe = buildVimPluginFrom2Nix { name = "nvim-compe"; src = inputs.nvim-compe; };
