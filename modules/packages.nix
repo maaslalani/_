@@ -13,7 +13,6 @@
     delve
     docker
     entr
-    errcheck
     exa
     fd
     ffmpeg
@@ -41,10 +40,8 @@
     terraform
     tree
     vault
-    watch
     yabai
     yarn
-    zathura
   ] ++ (
     with pkgs; with pkgs.nodePackages; [
       bash-language-server
@@ -54,9 +51,9 @@
       solargraph
       terraform-ls
       texlab
+      texlive.combined.scheme-medium
       typescript
       typescript-language-server
-      texlive.combined.scheme-medium
     ]
   );
 }
