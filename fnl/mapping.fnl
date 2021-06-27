@@ -62,6 +62,8 @@
    :r [":%s//g<left><left>" :replace]
    :q [(cmd :q) :quit]
    :w [(cmd :w) :save]
+   :Q [(cmd :q!) :quit!]
+   :W [(cmd :w!) :save!]
    :p ["\"*p<cr>" :paste]
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})

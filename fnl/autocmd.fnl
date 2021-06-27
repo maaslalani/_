@@ -8,7 +8,7 @@
 (autocmd :BufEnter :*.nix "set ft=nix")
 (autocmd :BufEnter :*.lock "set ft=json")
 (autocmd :BufEnter :*.graphql "set ft=graphql")
-(autocmd :BufEnter :*.go "lua vim.lsp.buf.formatting()")
+(autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
 
 ;; cmd lines
 (autocmd :CmdLineEnter :: "set nosmartcase")
