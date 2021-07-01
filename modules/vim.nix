@@ -22,6 +22,7 @@
         aniseed
         conjure
         gitsigns-nvim
+        neorg
         nordbuddy-nvim
         nvim-compe
         nvim-dap

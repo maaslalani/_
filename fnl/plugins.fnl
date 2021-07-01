@@ -20,6 +20,19 @@
 ;; gitsigns
 ((. (require :gitsigns) :setup) {:keymaps {}})
 
+;; neorg
+((. (require :neorg) :setup)
+ {:load
+  {:core.defaults {}
+   :core.norg.concealer {}
+   :core.keybinds {}
+   :core.norg.dirman
+   {:config
+    {:workspaces
+     {:wiki "~/wiki"}
+     :autodetect true
+     :autochdir true}}}})	
+
 ;; nvim-compe
 ((. (require :compe) :setup)
  {:enabled true
@@ -34,4 +47,4 @@
   :max_kind_width 100
   :max_menu_width 100
   :documentation true
-  :source {:path true :buffer true :nvim_lsp true}})
+  :source {:path true :buffer true :nvim_lsp true }})

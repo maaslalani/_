@@ -9,7 +9,7 @@
   inputs.aniseed = { url = "github:olical/aniseed"; flake = false; };
   inputs.conjure = { url = "github:Olical/conjure"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-  inputs.neorg = { url = "github:vhyrro/neorg"; flake = false; };
+  inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
   inputs.nvim-dap = { url = "github:mfussenegger/nvim-dap"; flake = false; };
