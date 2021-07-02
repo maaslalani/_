@@ -95,7 +95,7 @@ in
 
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; vim $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
-      wiki = "cd ~/wiki && vim ~/wiki/index.wiki && cd -";
+      wiki = "cd ~/wiki && vim ~/wiki/index.norg && cd -";
     };
     defaultKeymap = "viins";
     initExtraBeforeCompInit = ''

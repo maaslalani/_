@@ -15,7 +15,6 @@
         nvim-colorizer-lua
         nvim-lspconfig
         popup-nvim
-        vimwiki
       ]
     ) ++ (
       with pkgs; [

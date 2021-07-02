@@ -85,31 +85,6 @@
         :v [(cmd :TestVisit) :visit]}}
   {:mode :n})
 
-;; buffer vimwiki mappings
-(set _G.wkvimwiki
-     (fn []
-       (wk.register
-         {:<cr> [(plug :VimwikiFollowLink) :follow]
-          :<bs> [(plug :VimwikiGoBackLink) :back]
-          :<c-o> [(plug :VimwikiGoBackLink) :back]
-          :<tab> [(plug :VimwikiNextLink) :next]
-          :<s-tab> [(plug :VimwikiPrevLink) :previous]
-          :n [(plug :VimwikiNextLink) :next]
-          :N [(plug :VimwikiPrevLink) :previous]
-          "," {:t {:name :task
-                   :d [(plug :VimwikiToggleListItem) :toggle]
-                   :n [(plug :VimwikiNextTask) :next]}}}
-         {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
-
-;; global vimwiki mappings
-(wk.register
-  {"," {:name :wiki
-        "," [(plug :VimwikiIndex) :open]
-        :n [(plug :VimwikiGoto) :goto]
-        :x [(plug :VimwikiDeleteFile) :delete]
-        :r [(plug :VimwikiRenameFile) :rename]}}
-  {:mode :n})
-
 ;; visual mappings
 (wk.register
   {:< [:<gv :dedent]

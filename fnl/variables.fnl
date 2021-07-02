@@ -15,17 +15,6 @@
 (set nvim.g.localcoptydircmd "cp -r")
 (set nvim.g.rmdir_cmd "rm -r")
 
-;; vimwiki
-(set nvim.g.vimwiki_list
-     [{:path "~/wiki"}])
-(set nvim.g.vimwiki_hl_headers 1)
-(set nvim.g.vimwiki_hl_cb_checked 1)
-(set nvim.g.vimwiki_global_ext 0)
-(set nvim.g.vimwiki_key_mappings
-     {:global 0
-      :html 0
-      :links 0})
-
 ;; completion
 (set nvim.g.completion_chain_complete_list
      {:default

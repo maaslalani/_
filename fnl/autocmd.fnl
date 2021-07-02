@@ -17,7 +17,3 @@
 ;; terminal
 (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
 (autocmd :TermOpen :* "startinsert")
-
-;; vimwiki
-(autocmd :FileType :vimwiki "lua wkvimwiki()")
-(autocmd :BufEnter :*.wiki "setlocal nocursorline nonumber signcolumn=yes")
