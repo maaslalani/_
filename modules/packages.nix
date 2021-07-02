@@ -54,6 +54,7 @@
       texlive.combined.scheme-medium
       typescript
       typescript-language-server
+      yaml-language-server
     ]
   );
 }

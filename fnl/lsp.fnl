@@ -11,6 +11,7 @@
 (lsp.terraformls.setup {})
 (lsp.tsserver.setup {})
 (lsp.texlab.setup {})
+(lsp.yamlls.setup {})
 
 ;; gopls
 (lsp.gopls.setup
