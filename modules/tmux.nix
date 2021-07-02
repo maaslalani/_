@@ -5,30 +5,31 @@ with builtins; let
   bindToConfig = config (n: v: ("bind ${n} ${v}"));
 
   settings = {
-    default-terminal = "'xterm-256color'";
-    mouse = "on";
-    terminal-overrides = "',xterm-256color:Tc'";
     automatic-rename = "off";
+    default-terminal = "'screen-256color'";
+    focus-events = "on";
+    mouse = "on";
+    terminal-overrides = "',screen-256color:Tc'";
   };
 
   pane = {
-    border-style = "fg=black,bg=default";
     active-border-style = "fg=black,bg=default";
+    border-style = "fg=black,bg=default";
   };
 
   status = {
-    style = "bg=default";
-    right-style = "bg=default,fg=white";
     justify = "left";
-    right = "'  %H:%M  '";
     left = "''";
+    right = "'  %H:%M  '";
+    right-style = "bg=default,fg=white";
+    style = "bg=default";
   };
 
   window = {
-    status-style = "fg=white,bg=default";
-    status-current-style = "fg=cyan,bg=default";
     status-current-format = "' #I:#W '";
+    status-current-style = "fg=cyan,bg=default";
     status-format = "' #I:#W '";
+    status-style = "fg=white,bg=default";
   };
 
   message = {
@@ -61,7 +62,7 @@ in
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
-    terminal = "xterm-256color";
+    terminal = "screen-256color";
     extraConfig = ''
       ${attrsToConfig "" settings}
       ${attrsToConfig "pane-" pane}

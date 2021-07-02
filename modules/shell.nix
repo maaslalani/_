@@ -149,7 +149,7 @@ in
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
-        TERM = "xterm-256color";
+        TERM = "screen-256color";
         VIM_SESSION_PATH = "/tmp/session.vim";
       };
     plugins = [

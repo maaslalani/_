@@ -9,7 +9,6 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         colorbuddy-nvim
-        commentary
         lualine-nvim
         nvim-autopairs
         nvim-colorizer-lua

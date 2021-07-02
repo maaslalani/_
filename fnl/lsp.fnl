@@ -5,7 +5,6 @@
 
 (lsp.bashls.setup {})
 (lsp.dockerls.setup {})
-(lsp.omnisharp.setup {})
 (lsp.rnix.setup {})
 (lsp.solargraph.setup {})
 (lsp.sorbet.setup {})

@@ -74,8 +74,7 @@
    :K [(lsp :buf.hover) :hover]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
-       :r [(lsp :buf.reference) :reference]
-       :c :commentary}
+       :r [(lsp :buf.reference) :reference]}
    :<bs> ["-" :back]
    ";" {:name :test
         :f [(cmd :TestFile) :file]
@@ -99,6 +98,18 @@
   {:<tab> ["pumvisible() ? \"\\<c-n>\" : \"\\<tab>\"" "Next Completion"]
    :<s-tab> ["pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"" "Previous Completion"]}
   {:mode :i :expr true})
+
+;; buffer neorg mappings
+(set _G.wkneorg
+     (fn []
+       (wk.register
+         {:<cr> [(cmd "e <cfile>") :follow]
+          :<bs> [:<c-o> :back]
+          :<tab> ["/[A-z]*.norg<cr>" :next]
+          :<s-tab> ["?[A-z]*.norg<cr>" :previous]
+          :n ["/[A-z]*.norg<cr>" :next]
+          :N ["?[A-z]*.norg<cr>" :previous]}
+         {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
 
 (wk.setup
   {:ignore_missing false
