@@ -1,2 +1,2 @@
 *.fnl linguist-language=clojure
-*.fnl -linguist-detectable
+*.fnl fennel
