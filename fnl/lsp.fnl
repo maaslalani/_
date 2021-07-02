@@ -15,6 +15,8 @@
 
 ;; gopls
 (lsp.gopls.setup
-  {:analyses
+  {:flags
+   {:debounce_text_changes 500}
+   :analyses
    {:unusedparams true
     :staticcheck true}})
