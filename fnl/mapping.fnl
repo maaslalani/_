@@ -99,6 +99,11 @@
    :<s-tab> ["pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"" "Previous Completion"]}
   {:mode :i :expr true})
 
+;; global neorg mappings
+(wk.register
+  {",," [(cmd ":e ~/wiki/index.norg") :neorg]}
+  {:mode :n})
+
 ;; buffer neorg mappings
 (set _G.wkneorg
      (fn []

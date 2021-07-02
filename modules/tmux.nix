@@ -6,10 +6,10 @@ with builtins; let
 
   settings = {
     automatic-rename = "off";
-    default-terminal = "'screen-256color'";
+    default-terminal = "'xterm-256color'";
     focus-events = "on";
     mouse = "on";
-    terminal-overrides = "',screen-256color:Tc'";
+    terminal-overrides = "',xterm-256color:Tc'";
   };
 
   pane = {
@@ -62,7 +62,7 @@ in
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
-    terminal = "screen-256color";
+    terminal = "xterm-256color";
     extraConfig = ''
       ${attrsToConfig "" settings}
       ${attrsToConfig "pane-" pane}
