@@ -17,6 +17,10 @@
  {:highlight {:enable true}
   :indent {:enable true}})	
 
+;; telescope
+(local telescope (require :telescope))
+((. telescope :load_extension) :arecibo)
+
 ;; gitsigns
 ((. (require :gitsigns) :setup) {:keymaps {}})
 

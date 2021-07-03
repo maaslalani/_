@@ -16,6 +16,8 @@
 (macro plug [...]
   `(.. "<Plug>" (.. ,...)))
 
+(local telescope (require :telescope))
+
 ;; leader mappings
 (wk.register
   {
@@ -34,7 +36,8 @@
        :e [(cmd :Explore) :explore]
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
-       :r [(pcmd :Telescope :live_grep) :grep]}
+       :r [(pcmd :Telescope :live_grep) :grep]
+       :w [((. (. (. telescope :extensions) :arecibo) :websearch)) :web]}
    :l {:name :lsp
        :f [(lsp :buf.formatting) :format]
        :a [(lsp :buf.code_action) :actions]
