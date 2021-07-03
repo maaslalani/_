@@ -27,6 +27,7 @@
         nvim-treesitter
         plenary-nvim
         telescope-nvim
+        telescope-arecibo-nvim
         vim-test
         which-key-nvim
       ]
