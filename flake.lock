@@ -285,26 +285,9 @@
         "nvim-dap": "nvim-dap",
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",
-        "telescope-arecibo-nvim": "telescope-arecibo-nvim",
         "telescope-nvim": "telescope-nvim",
         "vim-test": "vim-test",
         "which-key-nvim": "which-key-nvim"
-      }
-    },
-    "telescope-arecibo-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1616784102,
-        "narHash": "sha256-3tToJDdv2Gk+9vyJMEKYvkb9ZvVWQvjSknrquS3VZhE=",
-        "owner": "nvim-telescope",
-        "repo": "telescope-arecibo.nvim",
-        "rev": "b706322027e44894c30f1d0a9bd79b35eb3e451a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-telescope",
-        "repo": "telescope-arecibo.nvim",
-        "type": "github"
       }
     },
     "telescope-nvim": {

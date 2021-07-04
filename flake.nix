@@ -16,7 +16,6 @@
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
   inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
   inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-  inputs.telescope-arecibo-nvim = { url = "github:nvim-telescope/telescope-arecibo.nvim"; flake = false; };
   inputs.vim-test = { url = "github:vim-test/vim-test"; flake = false; };
   inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
@@ -35,7 +34,6 @@
             nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
             plenary-nvim = buildVimPluginFrom2Nix { name = "plenary-nvim"; src = inputs.plenary-nvim; };
             telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src = inputs.telescope-nvim; };
-            telescope-arecibo-nvim = buildVimPluginFrom2Nix { name = "telescope-arecibo"; src = inputs.telescope-arecibo-nvim; };
             vim-test = buildVimPluginFrom2Nix { name = "vim-test"; src = inputs.vim-test; };
             which-key-nvim = buildVimPluginFrom2Nix { name = "which-key-nvim"; src = inputs.which-key-nvim; };
           }
