@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "conjure": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1623590506,
-        "narHash": "sha256-1b0Di2oXtpYN76JA3CMO5TdmU+fpOT6H7V2xe6Fy9Sk=",
-        "owner": "Olical",
-        "repo": "conjure",
-        "rev": "b55e4906a10db0f6917058aec6616075c4d06994",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Olical",
-        "repo": "conjure",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -194,11 +178,11 @@
     "nordbuddy-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1623362374,
-        "narHash": "sha256-nQZC4GJBM+tyrcXk3Kaa1xEfCXqA+ZqToCUx7XEX5Ro=",
+        "lastModified": 1625354936,
+        "narHash": "sha256-5iHGKxwBi/iOAaHmuC/8VSdwowh+ovG9jRTmeKpS++g=",
         "owner": "maaslalani",
         "repo": "nordbuddy",
-        "rev": "7be23c48445fb2134e1cdfd704df629f86d3ab31",
+        "rev": "1d4493942f36e8e86bda00aeb40547152dc97823",
         "type": "github"
       },
       "original": {
@@ -220,22 +204,6 @@
       "original": {
         "owner": "hrsh7th",
         "repo": "nvim-compe",
-        "type": "github"
-      }
-    },
-    "nvim-dap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1624622085,
-        "narHash": "sha256-V+GCXtPlVqhi1xnESHGz8SgPv/K6mrsfBfv5erWaR3g=",
-        "owner": "mfussenegger",
-        "repo": "nvim-dap",
-        "rev": "e92ef2acc81b668c90b2dbf2e2a4412ea5975242",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mfussenegger",
-        "repo": "nvim-dap",
         "type": "github"
       }
     },
@@ -274,7 +242,6 @@
     "root": {
       "inputs": {
         "aniseed": "aniseed",
-        "conjure": "conjure",
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
         "neorg": "neorg",
@@ -282,11 +249,9 @@
         "nixpkgs": "nixpkgs_2",
         "nordbuddy-nvim": "nordbuddy-nvim",
         "nvim-compe": "nvim-compe",
-        "nvim-dap": "nvim-dap",
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",
         "telescope-nvim": "telescope-nvim",
-        "vim-test": "vim-test",
         "which-key-nvim": "which-key-nvim"
       }
     },
@@ -303,22 +268,6 @@
       "original": {
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "type": "github"
-      }
-    },
-    "vim-test": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1623948519,
-        "narHash": "sha256-4+ddOdbirk335BnDdBgXzVhkYME26DfgiQtpKhlzs+w=",
-        "owner": "vim-test",
-        "repo": "vim-test",
-        "rev": "237c463f40f7b7fe2e4e01518e62bfc00c85ff32",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vim-test",
-        "repo": "vim-test",
         "type": "github"
       }
     },

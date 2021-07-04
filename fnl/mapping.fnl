@@ -19,17 +19,6 @@
 ;; leader mappings
 (wk.register
   {
-   :d {:name :debug
-       :c  [(lua :dap :continue) :continue]
-       :s {:name :step
-           :s [(lua :dap :step_over) :over]
-           :i [(lua :dap :step_into) :into]
-           :o [(lua :dap :step_out) :out]}
-       :b {:name :breakpoint
-           :t [(lua :dap :toggle_breakpoint) :toggle]
-           :s [(lua :dap :set_breakpoint) :set]}
-       :r [(lua :dap :repl_open) :repl]
-       :. [(lua :dap :run_last) :repeat]}
    :f {:name :find
        :e [(cmd :Explore) :explore]
        :f [(pcmd :Telescope :find_files) :file]
@@ -75,13 +64,7 @@
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}
-   :<bs> ["-" :back]
-   ";" {:name :test
-        :f [(cmd :TestFile) :file]
-        :l [(cmd :TestLast) :last]
-        :n [(cmd :TestNearest) :nearest]
-        :s [(cmd :TestSuite) :suite]
-        :v [(cmd :TestVisit) :visit]}}
+   :<bs> ["-" :back]}
   {:mode :n})
 
 ;; visual mappings

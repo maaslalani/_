@@ -11,23 +11,19 @@
         colorbuddy-nvim
         lualine-nvim
         nvim-autopairs
-        nvim-colorizer-lua
         nvim-lspconfig
         popup-nvim
       ]
     ) ++ (
       with pkgs; [
         aniseed
-        conjure
         gitsigns-nvim
         neorg
         nordbuddy-nvim
         nvim-compe
-        nvim-dap
         nvim-treesitter
         plenary-nvim
         telescope-nvim
-        vim-test
         which-key-nvim
       ]
     );

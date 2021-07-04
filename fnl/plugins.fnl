@@ -6,9 +6,6 @@
 ;; autopairs
 ((. (require :nvim-autopairs) :setup))	
 
-;; colorizer
-((. (require :colorizer) :setup) ["*"])
-
 ;; lualine
 ((. (require :lualine) :setup) {:options {:theme :nord}})
 
