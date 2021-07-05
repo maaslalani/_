@@ -20,7 +20,7 @@
       :staticcheck true}}))
 
 ;; zzz (lazy load)
-(vim.defer_fn lsp 50)
+(vim.defer_fn lsp 10)
 
 ;; =============================================================================
 ;; MAPPINGS
@@ -212,10 +212,10 @@
     :highlight {:enable true}
     :indent {:enable true}}))
 
-(vim.defer_fn compe 50)
-(vim.defer_fn gitsigns 50)
-(vim.defer_fn neorg 50)
-(vim.defer_fn treesitter 50)
+(vim.defer_fn compe 10)
+(vim.defer_fn gitsigns 10)
+(vim.defer_fn neorg 10)
+(vim.defer_fn treesitter 10)
 
 ;; =============================================================================
 ;; VARIABLES
