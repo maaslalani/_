@@ -16,22 +16,26 @@ augroup END")
 ;; =============================================================================
 ;; LSP
 ;; =============================================================================
-(local lsp (require :lspconfig))
-(lsp.bashls.setup {})
-(lsp.dockerls.setup {})
-(lsp.rnix.setup {})
-(lsp.solargraph.setup {})
-(lsp.sorbet.setup {})
-(lsp.terraformls.setup {})
-(lsp.tsserver.setup {})
-(lsp.texlab.setup {})
-(lsp.yamlls.setup {})
-(lsp.gopls.setup
-  {:flags
-   {:debounce_text_changes 500}
-   :analyses
-   {:unusedparams true
-    :staticcheck true}})
+(fn lsp []
+  (local lsp (require :lspconfig))
+  (lsp.bashls.setup {})
+  (lsp.dockerls.setup {})
+  (lsp.rnix.setup {})
+  (lsp.solargraph.setup {})
+  (lsp.sorbet.setup {})
+  (lsp.terraformls.setup {})
+  (lsp.tsserver.setup {})
+  (lsp.texlab.setup {})
+  (lsp.yamlls.setup {})
+  (lsp.gopls.setup
+    {:flags
+     {:debounce_text_changes 500}
+     :analyses
+     {:unusedparams true
+      :staticcheck true}}))
+
+;; zzz (lazy load)
+(vim.defer_fn lsp 50)
 
 ;; =============================================================================
 ;; MAPPINGS

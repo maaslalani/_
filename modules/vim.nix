@@ -3,9 +3,11 @@
   config.programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
-    extraConfig = ''lua <<EOF
+    extraConfig = ''
+    lua <<EOF
       ${builtins.readFile ../lua/init.lua}
-    EOF'';
+    EOF
+    '';
     vimAlias = true;
     viAlias = true;
     plugins = (

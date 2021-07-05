@@ -1,17 +1,20 @@
 -- THIS FILE WAS AUTO-GENERATED
 -- See fnl/init.fnl for source
 vim.api.nvim_command("augroup AutoCmds\nautocmd BufEnter *.nix set ft=nix\nautocmd BufEnter *.lock set ft=json\nautocmd BufEnter *.graphql set ft=graphql\nautocmd BufWrite *.go lua vim.lsp.buf.formatting()\nautocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nautocmd CmdLineEnter : set nosmartcase\nautocmd CmdLineLeave : set smartcase\nautocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\nautocmd TermOpen * startinsert\naugroup END")
-local lsp = require("lspconfig")
-lsp.bashls.setup({})
-lsp.dockerls.setup({})
-lsp.rnix.setup({})
-lsp.solargraph.setup({})
-lsp.sorbet.setup({})
-lsp.terraformls.setup({})
-lsp.tsserver.setup({})
-lsp.texlab.setup({})
-lsp.yamlls.setup({})
-lsp.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}})
+local function lsp()
+  local lsp0 = require("lspconfig")
+  lsp0.bashls.setup({})
+  lsp0.dockerls.setup({})
+  lsp0.rnix.setup({})
+  lsp0.solargraph.setup({})
+  lsp0.sorbet.setup({})
+  lsp0.terraformls.setup({})
+  lsp0.tsserver.setup({})
+  lsp0.texlab.setup({})
+  lsp0.yamlls.setup({})
+  return lsp0.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}})
+end
+vim.defer_fn(lsp, 50)
 local wk = require("which-key")
 local _0_
 do
