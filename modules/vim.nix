@@ -3,7 +3,11 @@
   config.programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
-    extraConfig = ''let g:aniseed#env = v:true'';
+    extraConfig = ''
+    lua <<EOF
+    ${builtins.readFile ../lua/init.lua}
+    EOF
+    '';
     vimAlias = true;
     viAlias = true;
     plugins = (
@@ -16,7 +20,6 @@
       ]
     ) ++ (
       with pkgs; [
-        aniseed
         gitsigns-nvim
         neorg
         nordbuddy-nvim
@@ -28,5 +31,4 @@
       ]
     );
   };
-  config.xdg.configFile."nvim/fnl".source = ../fnl;
 }

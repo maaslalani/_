@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "aniseed": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1622457782,
-        "narHash": "sha256-2CI7NuKBejUukfrInJP2Yn6SDVOU6t0VPHWue7mDoys=",
-        "owner": "olical",
-        "repo": "aniseed",
-        "rev": "4ca3d418eebc0da452b7defc18970c83f7de5070",
-        "type": "github"
-      },
-      "original": {
-        "owner": "olical",
-        "repo": "aniseed",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -241,7 +225,6 @@
     },
     "root": {
       "inputs": {
-        "aniseed": "aniseed",
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
         "neorg": "neorg",

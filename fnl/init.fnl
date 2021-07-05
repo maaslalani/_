@@ -1,6 +1,3 @@
-(module neovim
-  {require {nvim aniseed.nvim}})
-
 (vim.api.nvim_command "augroup AutoCmds
 autocmd BufEnter *.nix set ft=nix
 autocmd BufEnter *.lock set ft=json
