@@ -111,6 +111,8 @@ o.visualbell = true
 o.wildmode = "longest:full,full"
 o.wrap = false
 o.writebackup = false
+o.foldmethod = "marker"
+o.foldmarker = "FOLD,ENDFOLD"
 local function gitsigns()
   local gitsigns0 = require("gitsigns")
   return (gitsigns0).setup({keymaps = {}})

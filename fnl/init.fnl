@@ -146,6 +146,8 @@
 (set o.wildmode "longest:full,full")
 (set o.wrap false)
 (set o.writebackup false)
+(set o.foldmethod :marker)
+(set o.foldmarker "FOLD,ENDFOLD")
 
 ;; =============================================================================
 ;; PLUGINS
