@@ -1,5 +1,7 @@
+-- THIS FILE WAS AUTO-GENERATED
+-- See fnl/init.fnl for source
 module(neovim, {[require] = {[nvim] = aniseed.nvim}})
-vim.api.nvim_command("augroup AutoCmds\nBufEnter *.nix set ft=nix\nBufEnter *.lock set ft=json\nBufEnter *.graphql set ft=graphql\nBufWrite *.go lua vim.lsp.buf.formatting()\nBufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nCmdLineEnter : set nosmartcase\nCmdLineLeave : set smartcase\nTermOpen * setlocal nonumber nocursorline signcolumn=no\nTermOpen * startinsert\naugroup END")
+vim.api.nvim_command("augroup AutoCmds\nautocmd BufEnter *.nix set ft=nix\nautocmd BufEnter *.lock set ft=json\nautocmd BufEnter *.graphql set ft=graphql\nautocmd BufWrite *.go lua vim.lsp.buf.formatting()\nautocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nautocmd CmdLineEnter : set nosmartcase\nautocmd CmdLineLeave : set smartcase\nautocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\nautocmd TermOpen * startinsert\naugroup END")
 local lsp = require("lspconfig")
 lsp.bashls.setup({})
 lsp.dockerls.setup({})

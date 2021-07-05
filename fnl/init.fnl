@@ -2,15 +2,15 @@
   {require {nvim aniseed.nvim}})
 
 (vim.api.nvim_command "augroup AutoCmds
-BufEnter *.nix set ft=nix
-BufEnter *.lock set ft=json
-BufEnter *.graphql set ft=graphql
-BufWrite *.go lua vim.lsp.buf.formatting()
-BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
-CmdLineEnter : set nosmartcase
-CmdLineLeave : set smartcase
-TermOpen * setlocal nonumber nocursorline signcolumn=no
-TermOpen * startinsert
+autocmd BufEnter *.nix set ft=nix
+autocmd BufEnter *.lock set ft=json
+autocmd BufEnter *.graphql set ft=graphql
+autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
+autocmd CmdLineEnter : set nosmartcase
+autocmd CmdLineLeave : set smartcase
+autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
+autocmd TermOpen * startinsert
 augroup END")
 
 (local lsp (require :lspconfig))
