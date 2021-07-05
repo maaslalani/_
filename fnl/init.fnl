@@ -196,7 +196,27 @@ augroup END")
 
 ((. colorbuddy :colorscheme) :nordbuddy)
 ((. lualine :setup) {:options {:theme :nord}})
-((. treesitter :setup) {:highlight {:enable true} :indent {:enable true}})
+((. treesitter :setup)
+  {:ensure_installed [
+    :bash
+    :clojure
+    :commonlisp
+    :dockerfile
+    :fennel
+    :go :gomod
+    :graphql
+    :hcl
+    :html
+    :javascript
+    :latex
+    :lua
+    :nix
+    :ruby
+    :rust
+    :yaml
+    :zig]
+  :highlight {:enable true}
+  :indent {:enable true}})
 ((. gitsigns :setup) {:keymaps {}})
 ((. neorg :setup)
  {:load
