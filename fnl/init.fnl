@@ -1,20 +1,17 @@
 ;; =============================================================================
 ;; AUTOCMDS
 ;; =============================================================================
-(fn autocmd []
-  (vim.cmd "augroup AutoCmds
-  autocmd BufEnter *.nix set ft=nix
-  autocmd BufEnter *.lock set ft=json
-  autocmd BufEnter *.graphql set ft=graphql
-  autocmd BufWrite *.go lua vim.lsp.buf.formatting()
-  autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
-  autocmd CmdLineEnter : set nosmartcase
-  autocmd CmdLineLeave : set smartcase
-  autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
-  autocmd TermOpen * startinsert
-  augroup END"))
-
-(vim.defer_fn autocmd 50)
+(vim.cmd "augroup autocommands
+autocmd BufEnter *.nix set ft=nix
+autocmd BufEnter *.lock set ft=json
+autocmd BufEnter *.graphql set ft=graphql
+autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
+autocmd CmdLineEnter : set nosmartcase
+autocmd CmdLineLeave : set smartcase
+autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
+autocmd TermOpen * startinsert
+augroup END")
 
 ;; =============================================================================
 ;; LSP
@@ -142,32 +139,21 @@
 ;; OPTIONS
 ;; =============================================================================
 (local o vim.o)
-(set o.autoindent true)
-(set o.autoread true)
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
 (set o.backup false)
-(set o.cmdheight 1)
-(set o.compatible false)
 (set o.completeopt "menuone,noinsert,noselect")
-(set o.concealcursor "")
 (set o.cursorline true)
 (set o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
-(set o.encoding "utf-8")
-(set o.errorbells false)
 (set o.expandtab true)
 (set o.hidden true)
-(set o.hlsearch true)
 (set o.ignorecase true)
-(set o.incsearch true)
-(set o.laststatus 2)
+(set o.laststatus 0)
 (set o.lazyredraw true)
 (set o.number true)
-(set o.numberwidth 1)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
-(set o.ruler true)
+(set o.ruler false)
 (set o.shiftwidth 2)
-(set o.showcmd true)
 (set o.showmode false)
 (set o.signcolumn "yes")
 (set o.smartcase true)
@@ -178,16 +164,10 @@
 (set o.synmaxcol 300)
 (set o.tabstop 2)
 (set o.termguicolors true)
-(set o.timeout true)
 (set o.timeoutlen 350)
-(set o.ttimeout true)
-(set o.ttimeoutlen 0)
-(set o.ttyfast true)
 (set o.undofile true)
 (set o.updatetime 300)
 (set o.visualbell true)
-(set o.wb false)
-(set o.wildmenu true)
 (set o.wildmode "longest:full,full")
 (set o.wrap false)
 (set o.writebackup false)
@@ -197,9 +177,6 @@
 ;; =============================================================================
 (local colorbuddy (require :colorbuddy))
 ((. colorbuddy :colorscheme) :nordbuddy)
-
-(local lualine (require :lualine))
-((. lualine :setup) {:options {:theme :nord}})
 
 (fn gitsigns []
   (local gitsigns (require :gitsigns))

@@ -1,9 +1,6 @@
 -- THIS FILE WAS AUTO-GENERATED
 -- See fnl/init.fnl for source
-local function autocmd()
-  return vim.cmd("augroup AutoCmds\n  autocmd BufEnter *.nix set ft=nix\n  autocmd BufEnter *.lock set ft=json\n  autocmd BufEnter *.graphql set ft=graphql\n  autocmd BufWrite *.go lua vim.lsp.buf.formatting()\n  autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\n  autocmd CmdLineEnter : set nosmartcase\n  autocmd CmdLineLeave : set smartcase\n  autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\n  autocmd TermOpen * startinsert\n  augroup END")
-end
-vim.defer_fn(autocmd, 50)
+vim.cmd("augroup autocommands\nautocmd BufEnter *.nix set ft=nix\nautocmd BufEnter *.lock set ft=json\nautocmd BufEnter *.graphql set ft=graphql\nautocmd BufWrite *.go lua vim.lsp.buf.formatting()\nautocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nautocmd CmdLineEnter : set nosmartcase\nautocmd CmdLineLeave : set smartcase\nautocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\nautocmd TermOpen * startinsert\naugroup END")
 local function lsp()
   local lsp0 = require("lspconfig")
   lsp0.bashls.setup({})
@@ -72,32 +69,21 @@ end
 _G.wkneorg = _7_
 wk.setup({ignore_missing = false, plugins = {spelling = {enabled = true, suggestions = 20}}})
 local o = vim.o
-o.autoindent = true
-o.autoread = true
 o.autowrite = true
 o.backspace = "indent,eol,start"
 o.backup = false
-o.cmdheight = 1
-o.compatible = false
 o.completeopt = "menuone,noinsert,noselect"
-o.concealcursor = ""
 o.cursorline = true
 o.diffopt = "filler,internal,algorithm:histogram,indent-heuristic"
-o.encoding = "utf-8"
-o.errorbells = false
 o.expandtab = true
 o.hidden = true
-o.hlsearch = true
 o.ignorecase = true
-o.incsearch = true
-o.laststatus = 2
+o.laststatus = 0
 o.lazyredraw = true
 o.number = true
-o.numberwidth = 1
 o.omnifunc = "v:lua.vim.lsp.omnifunc"
-o.ruler = true
+o.ruler = false
 o.shiftwidth = 2
-o.showcmd = true
 o.showmode = false
 o.signcolumn = "yes"
 o.smartcase = true
@@ -108,23 +94,15 @@ o.swapfile = false
 o.synmaxcol = 300
 o.tabstop = 2
 o.termguicolors = true
-o.timeout = true
 o.timeoutlen = 350
-o.ttimeout = true
-o.ttimeoutlen = 0
-o.ttyfast = true
 o.undofile = true
 o.updatetime = 300
 o.visualbell = true
-o.wb = false
-o.wildmenu = true
 o.wildmode = "longest:full,full"
 o.wrap = false
 o.writebackup = false
 local colorbuddy = require("colorbuddy")
 colorbuddy.colorscheme("nordbuddy")
-local lualine = require("lualine")
-lualine.setup({options = {theme = "nord"}})
 local function gitsigns()
   local gitsigns0 = require("gitsigns")
   return (gitsigns0).setup({keymaps = {}})

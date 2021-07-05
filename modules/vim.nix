@@ -13,7 +13,6 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         colorbuddy-nvim
-        lualine-nvim
         nvim-autopairs
         nvim-lspconfig
         popup-nvim
