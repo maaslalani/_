@@ -129,7 +129,7 @@ augroup END")
 
 (wk.setup
   {:ignore_missing false
-   :plugins {:spelling {:enabled true :suggestions 20}}})	
+   :plugins {:spelling {:enabled true :suggestions 20}}})
 
 ;; =============================================================================
 ;; OPTIONS
@@ -194,7 +194,7 @@ augroup END")
 (local neorg (require :neorg))
 (local compe (require :compe))
 
-((. colorbuddy :colorscheme) :nordbuddy)	
+((. colorbuddy :colorscheme) :nordbuddy)
 ((. lualine :setup) {:options {:theme :nord}})
 ((. treesitter :setup) {:highlight {:enable true} :indent {:enable true}})
 ((. gitsigns :setup) {:keymaps {}})
