@@ -114,13 +114,18 @@ vim.o.wildmenu = true
 vim.o.wildmode = "longest:full,full"
 vim.o.wrap = false
 vim.o.writebackup = false
-do end (require("colorbuddy")).colorscheme("nordbuddy")
-do end (require("nvim-autopairs")).setup()
-do end (require("lualine")).setup({options = {theme = "nord"}})
-do end (require("nvim-treesitter.configs")).setup({highlight = {enable = true}, indent = {enable = true}})
-do end (require("gitsigns")).setup({keymaps = {}})
-do end (require("neorg")).setup({load = {["core.defaults"] = {}, ["core.keybinds"] = {}, ["core.norg.concealer"] = {}, ["core.norg.dirman"] = {config = {autochdir = true, autodetect = true, workspaces = {wiki = "~/wiki"}}}}})
-do end (require("compe")).setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "enable", resolve_timeout = 800, source = {buffer = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
+local colorbuddy = require("colorbuddy")
+local lualine = require("lualine")
+local treesitter = require("nvim-treesitter.configs")
+local gitsigns = require("gitsigns")
+local neorg = require("neorg")
+local compe = require("compe")
+colorbuddy.colorscheme("nordbuddy")
+lualine.setup({options = {theme = "nord"}})
+treesitter.setup({highlight = {enable = true}, indent = {enable = true}})
+gitsigns.setup({keymaps = {}})
+neorg.setup({load = {["core.defaults"] = {}, ["core.keybinds"] = {}, ["core.norg.concealer"] = {}, ["core.norg.dirman"] = {config = {autochdir = true, autodetect = true, workspaces = {wiki = "~/wiki"}}}}})
+compe.setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
 vim.g.mapleader = " "
 vim.g.diagnostic_auto_popup_while_jump = 0
 vim.g.diagnostic_enable_underline = 1

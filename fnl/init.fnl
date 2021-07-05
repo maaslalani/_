@@ -1,3 +1,6 @@
+;; =============================================================================
+;; AUTOCMDS
+;; =============================================================================
 (vim.api.nvim_command "augroup AutoCmds
 autocmd BufEnter *.nix set ft=nix
 autocmd BufEnter *.lock set ft=json
@@ -10,6 +13,9 @@ autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
 autocmd TermOpen * startinsert
 augroup END")
 
+;; =============================================================================
+;; LSP
+;; =============================================================================
 (local lsp (require :lspconfig))
 (lsp.bashls.setup {})
 (lsp.dockerls.setup {})
@@ -27,6 +33,9 @@ augroup END")
    {:unusedparams true
     :staticcheck true}})
 
+;; =============================================================================
+;; MAPPINGS
+;; =============================================================================
 (local wk (require :which-key))
 (macro lua [module name]
   `(let [name# ,name module# ,module]
@@ -122,6 +131,9 @@ augroup END")
   {:ignore_missing false
    :plugins {:spelling {:enabled true :suggestions 20}}})	
 
+;; =============================================================================
+;; OPTIONS
+;; =============================================================================
 (set vim.o.autoindent true)
 (set vim.o.autoread true)
 (set vim.o.autowrite true)
@@ -172,14 +184,21 @@ augroup END")
 (set vim.o.wrap false)
 (set vim.o.writebackup false)
 
-((. (require :colorbuddy) :colorscheme) :nordbuddy)	
-((. (require :nvim-autopairs) :setup))	
-((. (require :lualine) :setup) {:options {:theme :nord}})
-((. (require :nvim-treesitter.configs) :setup)
- {:highlight {:enable true}
-  :indent {:enable true}})	
-((. (require :gitsigns) :setup) {:keymaps {}})
-((. (require :neorg) :setup)
+;; =============================================================================
+;; PLUGINS
+;; =============================================================================
+(local colorbuddy (require :colorbuddy))
+(local lualine (require :lualine))
+(local treesitter (require :nvim-treesitter.configs))
+(local gitsigns (require :gitsigns))
+(local neorg (require :neorg))
+(local compe (require :compe))
+
+((. colorbuddy :colorscheme) :nordbuddy)	
+((. lualine :setup) {:options {:theme :nord}})
+((. treesitter :setup) {:highlight {:enable true} :indent {:enable true}})
+((. gitsigns :setup) {:keymaps {}})
+((. neorg :setup)
  {:load
   {:core.defaults {}
    :core.norg.concealer {}
@@ -189,13 +208,13 @@ augroup END")
     {:workspaces
      {:wiki "~/wiki"}
      :autodetect true
-     :autochdir true}}}})	
+     :autochdir true}}}})
 
-((. (require :compe) :setup)
+((. compe :setup)
  {:enabled true
   :autocomplete true
   :debug false
-  :preselect :enable
+  :preselect :disable
   :throttle_time 80
   :source_timeout 200
   :resolve_timeout 800
@@ -204,8 +223,14 @@ augroup END")
   :max_kind_width 100
   :max_menu_width 100
   :documentation true
-  :source {:path true :buffer true :nvim_lsp true }})
+  :source
+    {:path true
+    :buffer true
+    :nvim_lsp true}})
 
+;; =============================================================================
+;; PLUGINS
+;; =============================================================================
 (set vim.g.mapleader " ")
 (set vim.g.diagnostic_auto_popup_while_jump 0)
 (set vim.g.diagnostic_enable_underline 1)
@@ -217,7 +242,8 @@ augroup END")
 (set vim.g.completion_chain_complete_list
      {:default
       {:comment {}
-       :default [{:complete_items [:lsp :snippet]}
-                 {:mode :<c-p>}
-                 {:mode :<c-n>}]
+       :default
+         [{:complete_items [:lsp :snippet]}
+         {:mode :<c-p>}
+         {:mode :<c-n>}]
        :string [{:complete_items [:path]}]}})
