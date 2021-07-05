@@ -4,7 +4,6 @@
     enable = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
-    colorscheme nordbuddy
     lua <<EOF
       ${builtins.readFile ../lua/init.lua}
     EOF
@@ -13,7 +12,6 @@
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
-        colorbuddy-nvim
         nvim-autopairs
         nvim-lspconfig
         popup-nvim
