@@ -55,8 +55,7 @@ augroup END")
   `(.. "<Plug>" (.. ,...)))
 
 (wk.register
-  {
-   :f {:name :find
+  {:f {:name :find
        :e [(cmd :Explore) :explore]
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
@@ -85,7 +84,6 @@ augroup END")
            :s [(pcmd :Gitsigns :stage_hunk) :stage]
            :n [(pcmd :Gitsigns :next_hunk) :next]
            :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
-   :r [":%s//g<left><left>" :replace]
    :q [(cmd :q) :quit]
    :w [(cmd :w) :save]
    :Q [(cmd :q!) :quit!]
@@ -95,12 +93,10 @@ augroup END")
   {:prefix :<leader> :mode :n})
 
 (wk.register
-  {
-   :K [(lsp :buf.hover) :hover]
+  {:K [(lsp :buf.hover) :hover]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
-       :r [(lsp :buf.reference) :reference]}
-   :<bs> ["-" :back]}
+       :r [(lsp :buf.reference) :reference]}}
   {:mode :n})
 
 (wk.register
@@ -115,10 +111,6 @@ augroup END")
   {:<tab> ["pumvisible() ? \"\\<c-n>\" : \"\\<tab>\"" "Next Completion"]
    :<s-tab> ["pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"" "Previous Completion"]}
   {:mode :i :expr true})
-
-(wk.register
-  {",," [(cmd ":e ~/wiki/index.norg") :neorg]}
-  {:mode :n})
 
 (set _G.wkneorg
      (fn []
@@ -256,11 +248,3 @@ augroup END")
 (set g.netrw_banner 0)
 (set g.rmdir_cmd "rm -r")
 (set g.syntax_cmd :skip)
-(set g.completion_chain_complete_list
-     {:default
-      {:comment {}
-       :default
-         [{:complete_items [:lsp :snippet]}
-         {:mode :<c-p>}
-         {:mode :<c-n>}]
-       :string [{:complete_items [:path]}]}})
