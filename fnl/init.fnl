@@ -1,34 +1,19 @@
 (module neovim
   {require {nvim aniseed.nvim}})
 
-;;
-;; AUTOCMD
-;;
-(macro autocmd [...]
-  `(nvim.ex.autocmd ,...))
+(vim.api.nvim_command "augroup AutoCmds
+BufEnter *.nix set ft=nix
+BufEnter *.lock set ft=json
+BufEnter *.graphql set ft=graphql
+BufWrite *.go lua vim.lsp.buf.formatting()
+BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
+CmdLineEnter : set nosmartcase
+CmdLineLeave : set smartcase
+TermOpen * setlocal nonumber nocursorline signcolumn=no
+TermOpen * startinsert
+augroup END")
 
-;; buffers
-(autocmd :BufEnter :*.nix "set ft=nix")
-(autocmd :BufEnter :*.lock "set ft=json")
-(autocmd :BufEnter :*.graphql "set ft=graphql")
-(autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
-
-;; neorg
-(autocmd :BufEnter :*.norg "hi clear Conceal | set nohlsearch | lua wkneorg()")
-
-;; cmd lines
-(autocmd :CmdLineEnter :: "set nosmartcase")
-(autocmd :CmdLineLeave :: "set smartcase")
-
-;; terminal
-(autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
-(autocmd :TermOpen :* "startinsert")
-
-;;
-;; LSP
-;;
 (local lsp (require :lspconfig))
-
 (lsp.bashls.setup {})
 (lsp.dockerls.setup {})
 (lsp.rnix.setup {})
@@ -38,8 +23,6 @@
 (lsp.tsserver.setup {})
 (lsp.texlab.setup {})
 (lsp.yamlls.setup {})
-
-;; gopls
 (lsp.gopls.setup
   {:flags
    {:debounce_text_changes 500}
@@ -47,12 +30,7 @@
    {:unusedparams true
     :staticcheck true}})
 
-;;
-;; MAPPINGS
-;;
 (local wk (require :which-key))
-
-;; macros
 (macro lua [module name]
   `(let [name# ,name module# ,module]
      (.. ":lua require'" module# "'." name# "()<cr>")))
@@ -66,7 +44,6 @@
 (macro plug [...]
   `(.. "<Plug>" (.. ,...)))
 
-;; leader mappings
 (wk.register
   {
    :f {:name :find
@@ -107,7 +84,6 @@
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
 
-;; normal mappings
 (wk.register
   {
    :K [(lsp :buf.hover) :hover]
@@ -117,7 +93,6 @@
    :<bs> ["-" :back]}
   {:mode :n})
 
-;; visual mappings
 (wk.register
   {:< [:<gv :dedent]
    :> [:>gv :indent]
@@ -126,18 +101,15 @@
    :<leader>p ["\"*p" :paste]}
   {:mode :v})
 
-;; tab completion
 (wk.register
   {:<tab> ["pumvisible() ? \"\\<c-n>\" : \"\\<tab>\"" "Next Completion"]
    :<s-tab> ["pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"" "Previous Completion"]}
   {:mode :i :expr true})
 
-;; global neorg mappings
 (wk.register
   {",," [(cmd ":e ~/wiki/index.norg") :neorg]}
   {:mode :n})
 
-;; buffer neorg mappings
 (set _G.wkneorg
      (fn []
        (wk.register
@@ -153,81 +125,63 @@
   {:ignore_missing false
    :plugins {:spelling {:enabled true :suggestions 20}}})	
 
-;;
-;; OPTIONS
-;;
-(set nvim.o.autoindent true)
-(set nvim.o.autoread true)
-(set nvim.o.autowrite true)
-(set nvim.o.backspace "indent,eol,start")
-(set nvim.o.backup false)
-(set nvim.o.cmdheight 1)
-(set nvim.o.compatible false)
-(set nvim.o.completeopt "menuone,noinsert,noselect")
-(set nvim.o.concealcursor "")
-(set nvim.o.cursorline true)
-(set nvim.o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
-(set nvim.o.encoding "utf-8")
-(set nvim.o.errorbells false)
-(set nvim.o.expandtab true)
-(set nvim.o.hidden true)
-(set nvim.o.hlsearch true)
-(set nvim.o.ignorecase true)
-(set nvim.o.incsearch true)
-(set nvim.o.laststatus 2)
-(set nvim.o.lazyredraw true)
-(set nvim.o.number true)
-(set nvim.o.numberwidth 1)
-(set nvim.o.omnifunc "v:lua.vim.lsp.omnifunc")
-(set nvim.o.ruler true)
-(set nvim.o.shiftwidth 2)
-;; (set nvim.o.shortmess opt.shortmess + "c")
-(set nvim.o.showcmd true)
-(set nvim.o.showmode false)
-(set nvim.o.signcolumn "yes")
-(set nvim.o.smartcase true)
-(set nvim.o.softtabstop 2)
-(set nvim.o.splitbelow true)
-(set nvim.o.splitright true)
-(set nvim.o.swapfile false)
-(set nvim.o.synmaxcol 300)
-(set nvim.o.tabstop 2)
-(set nvim.o.termguicolors true)
-(set nvim.o.timeout true)
-(set nvim.o.timeoutlen 350)
-(set nvim.o.ttimeout true)
-(set nvim.o.ttimeoutlen 0)
-(set nvim.o.ttyfast true)
-(set nvim.o.undofile true)
-(set nvim.o.updatetime 300)
-(set nvim.o.visualbell true)
-(set nvim.o.wb false)
-(set nvim.o.wildmenu true)
-(set nvim.o.wildmode "longest:full,full")
-(set nvim.o.wrap false)
-(set nvim.o.writebackup false)
+(set vim.o.autoindent true)
+(set vim.o.autoread true)
+(set vim.o.autowrite true)
+(set vim.o.backspace "indent,eol,start")
+(set vim.o.backup false)
+(set vim.o.cmdheight 1)
+(set vim.o.compatible false)
+(set vim.o.completeopt "menuone,noinsert,noselect")
+(set vim.o.concealcursor "")
+(set vim.o.cursorline true)
+(set vim.o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
+(set vim.o.encoding "utf-8")
+(set vim.o.errorbells false)
+(set vim.o.expandtab true)
+(set vim.o.hidden true)
+(set vim.o.hlsearch true)
+(set vim.o.ignorecase true)
+(set vim.o.incsearch true)
+(set vim.o.laststatus 2)
+(set vim.o.lazyredraw true)
+(set vim.o.number true)
+(set vim.o.numberwidth 1)
+(set vim.o.omnifunc "v:lua.vim.lsp.omnifunc")
+(set vim.o.ruler true)
+(set vim.o.shiftwidth 2)
+(set vim.o.showcmd true)
+(set vim.o.showmode false)
+(set vim.o.signcolumn "yes")
+(set vim.o.smartcase true)
+(set vim.o.softtabstop 2)
+(set vim.o.splitbelow true)
+(set vim.o.splitright true)
+(set vim.o.swapfile false)
+(set vim.o.synmaxcol 300)
+(set vim.o.tabstop 2)
+(set vim.o.termguicolors true)
+(set vim.o.timeout true)
+(set vim.o.timeoutlen 350)
+(set vim.o.ttimeout true)
+(set vim.o.ttimeoutlen 0)
+(set vim.o.ttyfast true)
+(set vim.o.undofile true)
+(set vim.o.updatetime 300)
+(set vim.o.visualbell true)
+(set vim.o.wb false)
+(set vim.o.wildmenu true)
+(set vim.o.wildmode "longest:full,full")
+(set vim.o.wrap false)
+(set vim.o.writebackup false)
 
-;;
-;; PLUGINS
-;;
-;; nordbuddy
 ((. (require :colorbuddy) :colorscheme) :nordbuddy)	
-
-;; autopairs
 ((. (require :nvim-autopairs) :setup))	
-
-;; lualine
 ((. (require :lualine) :setup) {:options {:theme :nord}})
-
-;; treesitter
 ((. (require :nvim-treesitter.configs) :setup)
  {:highlight {:enable true}
   :indent {:enable true}})	
-
-;; gitsigns
 ((. (require :gitsigns) :setup) {:keymaps {}})
-
-;; neorg
 ((. (require :neorg) :setup)
  {:load
   {:core.defaults {}
@@ -240,7 +194,6 @@
      :autodetect true
      :autochdir true}}}})	
 
-;; nvim-compe
 ((. (require :compe) :setup)
  {:enabled true
   :autocomplete true
@@ -256,25 +209,15 @@
   :documentation true
   :source {:path true :buffer true :nvim_lsp true }})
 
-;;
-;; VARIABLES
-;;
-;; <Space>
-(set nvim.g.mapleader " ")
-
-;; diagnostic options
-(set nvim.g.diagnostic_auto_popup_while_jump 0)
-(set nvim.g.diagnostic_enable_underline 1)
-(set nvim.g.diagnostic_enable_virtual_text 1)
-(set nvim.g.diagnostic_insert_delay 0)
-
-;; netrw options
-(set nvim.g.netrw_banner 0)
-(set nvim.g.localcoptydircmd "cp -r")
-(set nvim.g.rmdir_cmd "rm -r")
-
-;; completion
-(set nvim.g.completion_chain_complete_list
+(set vim.g.mapleader " ")
+(set vim.g.diagnostic_auto_popup_while_jump 0)
+(set vim.g.diagnostic_enable_underline 1)
+(set vim.g.diagnostic_enable_virtual_text 1)
+(set vim.g.diagnostic_insert_delay 0)
+(set vim.g.netrw_banner 0)
+(set vim.g.localcoptydircmd "cp -r")
+(set vim.g.rmdir_cmd "rm -r")
+(set vim.g.completion_chain_complete_list
      {:default
       {:comment {}
        :default [{:complete_items [:lsp :snippet]}
