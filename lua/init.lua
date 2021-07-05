@@ -1,6 +1,9 @@
 -- THIS FILE WAS AUTO-GENERATED
 -- See fnl/init.fnl for source
-vim.api.nvim_command("augroup AutoCmds\nautocmd BufEnter *.nix set ft=nix\nautocmd BufEnter *.lock set ft=json\nautocmd BufEnter *.graphql set ft=graphql\nautocmd BufWrite *.go lua vim.lsp.buf.formatting()\nautocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nautocmd CmdLineEnter : set nosmartcase\nautocmd CmdLineLeave : set smartcase\nautocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\nautocmd TermOpen * startinsert\naugroup END")
+local function autocmd()
+  return vim.cmd("augroup AutoCmds\n  autocmd BufEnter *.nix set ft=nix\n  autocmd BufEnter *.lock set ft=json\n  autocmd BufEnter *.graphql set ft=graphql\n  autocmd BufWrite *.go lua vim.lsp.buf.formatting()\n  autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\n  autocmd CmdLineEnter : set nosmartcase\n  autocmd CmdLineLeave : set smartcase\n  autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\n  autocmd TermOpen * startinsert\n  augroup END")
+end
+vim.defer_fn(autocmd, 50)
 local function lsp()
   local lsp0 = require("lspconfig")
   lsp0.bashls.setup({})
@@ -118,17 +121,29 @@ vim.o.wildmode = "longest:full,full"
 vim.o.wrap = false
 vim.o.writebackup = false
 local colorbuddy = require("colorbuddy")
-local lualine = require("lualine")
-local treesitter = require("nvim-treesitter.configs")
-local gitsigns = require("gitsigns")
-local neorg = require("neorg")
-local compe = require("compe")
 colorbuddy.colorscheme("nordbuddy")
+local lualine = require("lualine")
 lualine.setup({options = {theme = "nord"}})
-treesitter.setup({ensure_installed = {"bash", "clojure", "commonlisp", "dockerfile", "fennel", "go", "gomod", "graphql", "hcl", "html", "javascript", "latex", "lua", "nix", "ruby", "rust", "yaml", "zig"}, highlight = {enable = true}, indent = {enable = true}})
-gitsigns.setup({keymaps = {}})
-neorg.setup({load = {["core.defaults"] = {}, ["core.keybinds"] = {}, ["core.norg.concealer"] = {}, ["core.norg.dirman"] = {config = {autochdir = true, autodetect = true, workspaces = {wiki = "~/wiki"}}}}})
-compe.setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
+local function gitsigns()
+  local gitsigns0 = require("gitsigns")
+  return (gitsigns0).setup({keymaps = {}})
+end
+local function neorg()
+  local neorg0 = require("neorg")
+  return (neorg0).setup({load = {["core.defaults"] = {}, ["core.keybinds"] = {}, ["core.norg.concealer"] = {}, ["core.norg.dirman"] = {config = {autochdir = true, autodetect = true, workspaces = {wiki = "~/wiki"}}}}})
+end
+local function compe()
+  local compe0 = require("compe")
+  return (compe0).setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
+end
+local function treesitter()
+  local treesitter0 = require("nvim-treesitter.configs")
+  return (treesitter0).setup({ensure_installed = {"bash", "clojure", "commonlisp", "dockerfile", "fennel", "go", "gomod", "graphql", "hcl", "html", "javascript", "latex", "lua", "nix", "ruby", "rust", "yaml", "zig"}, highlight = {enable = true}, indent = {enable = true}})
+end
+vim.defer_fn(compe, 50)
+vim.defer_fn(gitsigns, 50)
+vim.defer_fn(neorg, 50)
+vim.defer_fn(treesitter, 50)
 vim.g.mapleader = " "
 vim.g.diagnostic_auto_popup_while_jump = 0
 vim.g.diagnostic_enable_underline = 1

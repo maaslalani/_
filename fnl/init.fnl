@@ -1,17 +1,20 @@
 ;; =============================================================================
 ;; AUTOCMDS
 ;; =============================================================================
-(vim.api.nvim_command "augroup AutoCmds
-autocmd BufEnter *.nix set ft=nix
-autocmd BufEnter *.lock set ft=json
-autocmd BufEnter *.graphql set ft=graphql
-autocmd BufWrite *.go lua vim.lsp.buf.formatting()
-autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
-autocmd CmdLineEnter : set nosmartcase
-autocmd CmdLineLeave : set smartcase
-autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
-autocmd TermOpen * startinsert
-augroup END")
+(fn autocmd []
+  (vim.cmd "augroup AutoCmds
+  autocmd BufEnter *.nix set ft=nix
+  autocmd BufEnter *.lock set ft=json
+  autocmd BufEnter *.graphql set ft=graphql
+  autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+  autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
+  autocmd CmdLineEnter : set nosmartcase
+  autocmd CmdLineLeave : set smartcase
+  autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
+  autocmd TermOpen * startinsert
+  augroup END"))
+
+(vim.defer_fn autocmd 50)
 
 ;; =============================================================================
 ;; LSP
@@ -192,68 +195,80 @@ augroup END")
 ;; PLUGINS
 ;; =============================================================================
 (local colorbuddy (require :colorbuddy))
-(local lualine (require :lualine))
-(local treesitter (require :nvim-treesitter.configs))
-(local gitsigns (require :gitsigns))
-(local neorg (require :neorg))
-(local compe (require :compe))
-
 ((. colorbuddy :colorscheme) :nordbuddy)
-((. lualine :setup) {:options {:theme :nord}})
-((. treesitter :setup)
-  {:ensure_installed [
-    :bash
-    :clojure
-    :commonlisp
-    :dockerfile
-    :fennel
-    :go :gomod
-    :graphql
-    :hcl
-    :html
-    :javascript
-    :latex
-    :lua
-    :nix
-    :ruby
-    :rust
-    :yaml
-    :zig]
-  :highlight {:enable true}
-  :indent {:enable true}})
-((. gitsigns :setup) {:keymaps {}})
-((. neorg :setup)
- {:load
-  {:core.defaults {}
-   :core.norg.concealer {}
-   :core.keybinds {}
-   :core.norg.dirman
-   {:config
-    {:workspaces
-     {:wiki "~/wiki"}
-     :autodetect true
-     :autochdir true}}}})
 
-((. compe :setup)
- {:enabled true
-  :autocomplete true
-  :debug false
-  :preselect :disable
-  :throttle_time 80
-  :source_timeout 200
-  :resolve_timeout 800
-  :incomplete_delay 400
-  :max_abbr_width 100
-  :max_kind_width 100
-  :max_menu_width 100
-  :documentation true
-  :source
-    {:path true
-    :buffer true
-    :nvim_lsp true}})
+(local lualine (require :lualine))
+((. lualine :setup) {:options {:theme :nord}})
+
+(fn gitsigns []
+  (local gitsigns (require :gitsigns))
+  ((. gitsigns :setup) {:keymaps {}}))
+
+(fn neorg []
+  (local neorg (require :neorg))
+  ((. neorg :setup)
+   {:load
+    {:core.defaults {}
+     :core.norg.concealer {}
+     :core.keybinds {}
+     :core.norg.dirman
+     {:config
+      {:workspaces
+       {:wiki "~/wiki"}
+       :autodetect true
+       :autochdir true}}}}))
+
+(fn compe []
+  (local compe (require :compe))
+  ((. compe :setup)
+   {:enabled true
+    :autocomplete true
+    :debug false
+    :preselect :disable
+    :throttle_time 80
+    :source_timeout 200
+    :resolve_timeout 800
+    :incomplete_delay 400
+    :max_abbr_width 100
+    :max_kind_width 100
+    :max_menu_width 100
+    :documentation true
+    :source
+      {:path true
+      :buffer true
+      :nvim_lsp true}}))
+
+(fn treesitter []
+  (local treesitter (require :nvim-treesitter.configs))
+  ((. treesitter :setup)
+    {:ensure_installed [
+      :bash
+      :clojure
+      :commonlisp
+      :dockerfile
+      :fennel
+      :go :gomod
+      :graphql
+      :hcl
+      :html
+      :javascript
+      :latex
+      :lua
+      :nix
+      :ruby
+      :rust
+      :yaml
+      :zig]
+    :highlight {:enable true}
+    :indent {:enable true}}))
+
+(vim.defer_fn compe 50)
+(vim.defer_fn gitsigns 50)
+(vim.defer_fn neorg 50)
+(vim.defer_fn treesitter 50)
 
 ;; =============================================================================
-;; PLUGINS
+;; VARIABLES
 ;; =============================================================================
 (set vim.g.mapleader " ")
 (set vim.g.diagnostic_auto_popup_while_jump 0)
