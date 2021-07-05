@@ -92,6 +92,7 @@ o.splitbelow = true
 o.splitright = true
 o.swapfile = false
 o.synmaxcol = 300
+o.syntax = "off"
 o.tabstop = 2
 o.termguicolors = true
 o.timeoutlen = 350
@@ -101,8 +102,6 @@ o.visualbell = true
 o.wildmode = "longest:full,full"
 o.wrap = false
 o.writebackup = false
-local colorbuddy = require("colorbuddy")
-colorbuddy.colorscheme("nordbuddy")
 local function gitsigns()
   local gitsigns0 = require("gitsigns")
   return (gitsigns0).setup({keymaps = {}})
@@ -124,13 +123,14 @@ vim.defer_fn(gitsigns, 50)
 vim.defer_fn(neorg, 50)
 vim.defer_fn(treesitter, 50)
 local g = vim.g
-g.mapleader = " "
 g.diagnostic_auto_popup_while_jump = 0
 g.diagnostic_enable_underline = 1
 g.diagnostic_enable_virtual_text = 1
 g.diagnostic_insert_delay = 0
-g.netrw_banner = 0
 g.localcoptydircmd = "cp -r"
+g.mapleader = " "
+g.netrw_banner = 0
 g.rmdir_cmd = "rm -r"
+g.syntax_cmd = "skip"
 g.completion_chain_complete_list = {default = {comment = {}, default = {{complete_items = {"lsp", "snippet"}}, {mode = "<c-p>"}, {mode = "<c-n>"}}, string = {{complete_items = {"path"}}}}}
 return nil

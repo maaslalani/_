@@ -4,6 +4,7 @@
     enable = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
+    colorscheme nordbuddy
     lua <<EOF
       ${builtins.readFile ../lua/init.lua}
     EOF

@@ -162,6 +162,7 @@ augroup END")
 (set o.splitright true)
 (set o.swapfile false)
 (set o.synmaxcol 300)
+(set o.syntax :off)
 (set o.tabstop 2)
 (set o.termguicolors true)
 (set o.timeoutlen 350)
@@ -175,9 +176,6 @@ augroup END")
 ;; =============================================================================
 ;; PLUGINS
 ;; =============================================================================
-(local colorbuddy (require :colorbuddy))
-((. colorbuddy :colorscheme) :nordbuddy)
-
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
   ((. gitsigns :setup) {:keymaps {}}))
@@ -249,14 +247,15 @@ augroup END")
 ;; VARIABLES
 ;; =============================================================================
 (local g vim.g)
-(set g.mapleader " ")
 (set g.diagnostic_auto_popup_while_jump 0)
 (set g.diagnostic_enable_underline 1)
 (set g.diagnostic_enable_virtual_text 1)
 (set g.diagnostic_insert_delay 0)
-(set g.netrw_banner 0)
 (set g.localcoptydircmd "cp -r")
+(set g.mapleader " ")
+(set g.netrw_banner 0)
 (set g.rmdir_cmd "rm -r")
+(set g.syntax_cmd :skip)
 (set g.completion_chain_complete_list
      {:default
       {:comment {}
