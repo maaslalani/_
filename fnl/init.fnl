@@ -94,21 +94,16 @@
    :<leader>p ["\"*p" :paste]}
   {:mode :v})
 
-(wk.register
-  {:<tab> ["pumvisible() ? \"\\<c-n>\" : \"\\<tab>\"" "Next Completion"]
-   :<s-tab> ["pumvisible() ? \"\\<c-p>\" : \"\\<s-tab>\"" "Previous Completion"]}
-  {:mode :i :expr true})
-
 (set _G.wkneorg
-     (fn []
-       (wk.register
-         {:<cr> [(cmd "e <cfile>") :follow]
-          :<bs> [:<c-o> :back]
-          :<tab> ["/[A-z]*.norg<cr>" :next]
-          :<s-tab> ["?[A-z]*.norg<cr>" :previous]
-          :n ["/[A-z]*.norg<cr>" :next]
-          :N ["?[A-z]*.norg<cr>" :previous]}
-         {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
+  (fn []
+    (wk.register
+      {:<cr> [(cmd "e <cfile>") :follow]
+       :<bs> [:<c-o> :back]
+       :<tab> ["/[A-z]*.norg<cr>" :next]
+       :<s-tab> ["?[A-z]*.norg<cr>" :previous]
+       :n ["/[A-z]*.norg<cr>" :next]
+       :N ["?[A-z]*.norg<cr>" :previous]}
+      {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
 
 (wk.setup
   {:ignore_missing false
@@ -226,10 +221,6 @@
 ;; VARIABLES
 ;; =============================================================================
 (local g vim.g)
-(set g.diagnostic_auto_popup_while_jump 0)
-(set g.diagnostic_enable_underline 1)
-(set g.diagnostic_enable_virtual_text 1)
-(set g.diagnostic_insert_delay 0)
 (set g.localcoptydircmd "cp -r")
 (set g.mapleader " ")
 (set g.netrw_banner 0)
