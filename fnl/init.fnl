@@ -45,6 +45,10 @@
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
+   :s {:name :source
+       :l [(pcmd :luafile :%) :lua]
+       :v [(pcmd :luafile :lua/init.lua) :init]}
+   :m [(cmd :make) :make]
    :l {:name :lsp
        :f [(lsp :buf.formatting) :format]
        :a [(lsp :buf.code_action) :actions]
@@ -71,8 +75,6 @@
            :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
    :q [(cmd :q) :quit]
    :w [(cmd :w) :save]
-   :Q [(cmd :q!) :quit!]
-   :W [(cmd :w!) :save!]
    :p ["\"*p<cr>" :paste]
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
