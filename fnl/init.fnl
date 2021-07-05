@@ -1,19 +1,4 @@
 ;; =============================================================================
-;; AUTOCMDS
-;; =============================================================================
-(vim.cmd "augroup autocommands
-autocmd BufEnter *.nix set ft=nix
-autocmd BufEnter *.lock set ft=json
-autocmd BufEnter *.graphql set ft=graphql
-autocmd BufWrite *.go lua vim.lsp.buf.formatting()
-autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
-autocmd CmdLineEnter : set nosmartcase
-autocmd CmdLineLeave : set smartcase
-autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
-autocmd TermOpen * startinsert
-augroup END")
-
-;; =============================================================================
 ;; LSP
 ;; =============================================================================
 (fn lsp []
@@ -248,3 +233,18 @@ augroup END")
 (set g.netrw_banner 0)
 (set g.rmdir_cmd "rm -r")
 (set g.syntax_cmd :skip)
+
+;; =============================================================================
+;; AUTOCMDS
+;; =============================================================================
+(vim.cmd "augroup autocommands
+autocmd BufEnter *.nix set ft=nix
+autocmd BufEnter *.lock set ft=json
+autocmd BufEnter *.graphql set ft=graphql
+autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
+autocmd CmdLineEnter : set nosmartcase
+autocmd CmdLineLeave : set smartcase
+autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
+autocmd TermOpen * startinsert
+augroup END")

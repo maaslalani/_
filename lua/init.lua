@@ -1,6 +1,5 @@
 -- THIS FILE WAS AUTO-GENERATED
 -- See fnl/init.fnl for source
-vim.cmd("augroup autocommands\nautocmd BufEnter *.nix set ft=nix\nautocmd BufEnter *.lock set ft=json\nautocmd BufEnter *.graphql set ft=graphql\nautocmd BufWrite *.go lua vim.lsp.buf.formatting()\nautocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nautocmd CmdLineEnter : set nosmartcase\nautocmd CmdLineLeave : set smartcase\nautocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\nautocmd TermOpen * startinsert\naugroup END")
 local function lsp()
   local lsp0 = require("lspconfig")
   lsp0.bashls.setup({})
@@ -131,4 +130,4 @@ g.mapleader = " "
 g.netrw_banner = 0
 g.rmdir_cmd = "rm -r"
 g.syntax_cmd = "skip"
-return nil
+return vim.cmd("augroup autocommands\nautocmd BufEnter *.nix set ft=nix\nautocmd BufEnter *.lock set ft=json\nautocmd BufEnter *.graphql set ft=graphql\nautocmd BufWrite *.go lua vim.lsp.buf.formatting()\nautocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()\nautocmd CmdLineEnter : set nosmartcase\nautocmd CmdLineLeave : set smartcase\nautocmd TermOpen * setlocal nonumber nocursorline signcolumn=no\nautocmd TermOpen * startinsert\naugroup END")
