@@ -84,6 +84,7 @@
 (wk.register
   {:K [(lsp :buf.hover) :hover]
    :Q [:<nop> :nope]
+   :gW [(cmd "w !sudo tee % > /dev/null") :suwrite]
    :<c-l> [:<nop> :nope]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
