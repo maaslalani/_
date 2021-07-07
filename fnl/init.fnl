@@ -84,7 +84,8 @@
   {:K [(lsp :buf.hover) :hover]
    :Q [:<nop> :nope]
    :gW [(cmd "w !sudo tee % > /dev/null") :suwrite]
-   :<c-l> [:<nop> :nope]
+   :<c-l> [:<c-w>l :right]
+   :<c-h> [:<c-w>h :left]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}}
@@ -228,10 +229,11 @@
 ;; VARIABLES
 ;; =============================================================================
 (local g vim.g)
-(set g.localcoptydircmd "cp -r")
 (set g.mapleader " ")
 (set g.netrw_banner 0)
-(set g.rmdir_cmd "rm -r")
+(set g.netrw_localcopycmdopt "-r")
+(set g.netrw_localmkdiropt "-p")
+(set g.netrw_localmovecmdopt "-r")
 
 ;; =============================================================================
 ;; COLORSCHEME
@@ -241,8 +243,8 @@
 ;; =============================================================================
 ;; AUTOCMDS
 ;; =============================================================================
-(fn autocmd [enter ft command]
-  (.. "autocmd " enter " " ft " " command "\n"))
+(macro autocmd [enter ft command]
+  `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
 
 (vim.cmd
  (autocmd :BufEnter :*.graphql "set ft=graphql")

@@ -39,7 +39,6 @@
     spotifyd
     terraform
     tree
-    vault
     yabai
     yarn
   ] ++ (
