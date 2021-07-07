@@ -39,6 +39,7 @@
 (macro plug [...]
   `(.. "<Plug>" (.. ,...)))
 
+; leader
 (wk.register
   {:f {:name :find
        :e [(cmd :Explore) :explore]
@@ -79,13 +80,16 @@
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
 
+; normal
 (wk.register
   {:K [(lsp :buf.hover) :hover]
+   :Q [:<nop> :nope]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}}
   {:mode :n})
 
+; visual
 (wk.register
   {:< [:<gv :dedent]
    :> [:>gv :indent]
@@ -94,6 +98,7 @@
    :<leader>p ["\"*p" :paste]}
   {:mode :v})
 
+; neorg
 (set _G.wkneorg
   (fn []
     (wk.register
@@ -122,11 +127,11 @@
 (set o.expandtab true)
 (set o.hidden true)
 (set o.ignorecase true)
-(set o.laststatus 0)
+(set o.laststatus 2)
 (set o.lazyredraw true)
 (set o.number true)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
-(set o.ruler false)
+(set o.ruler true)
 (set o.shiftwidth 2)
 (set o.showmode false)
 (set o.signcolumn "yes")
