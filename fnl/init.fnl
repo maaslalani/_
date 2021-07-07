@@ -27,13 +27,11 @@
 ;; =============================================================================
 (local wk (require :which-key))
 (macro lua [module name]
-  `(let [name# ,name module# ,module]
-     (.. ":lua require'" module# "'." name# "()<cr>")))
+  `(.. ":lua require'" ,module "'." ,name "()<cr>"))
 (macro cmd [...]
   `(.. "<cmd>" (.. ,...) "<cr>"))
 (macro pcmd [prefix cmd]
-  `(let [prefix# ,prefix cmd# ,cmd]
-     (.. "<cmd>" prefix# (. " ") cmd# "<cr>")))
+  `(.. "<cmd>" ,prefix (. " ") ,cmd "<cr>"))
 (macro lsp [...]
   `(.. "<cmd>lua vim.lsp." (.. ,...) "()<cr>"))
 (macro plug [...]
@@ -42,6 +40,7 @@
 ; leader
 (wk.register
   {:f {:name :find
+       :b [(pcmd :Telescope :buffers) :buffers]
        :e [(cmd :Explore) :explore]
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
@@ -113,9 +112,7 @@
        :N ["?[A-z]*.norg<cr>" :previous]}
       {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
 
-(wk.setup
-  {:ignore_missing false
-   :plugins {:spelling {:enabled true :suggestions 20}}})
+(wk.setup {:plugins {:spelling {:enabled true}}})
 
 ;; =============================================================================
 ;; OPTIONS
@@ -244,14 +241,17 @@
 ;; =============================================================================
 ;; AUTOCMDS
 ;; =============================================================================
-(vim.cmd "augroup autocommands
-autocmd BufEnter *.nix set ft=nix
-autocmd BufEnter *.lock set ft=json
-autocmd BufEnter *.graphql set ft=graphql
-autocmd BufWrite *.go lua vim.lsp.buf.formatting()
-autocmd BufEnter *.norg hi clear Conceal | set nohlsearch | lua wkneorg()
-autocmd CmdLineEnter : set nosmartcase
-autocmd CmdLineLeave : set smartcase
-autocmd TermOpen * setlocal nonumber nocursorline signcolumn=no
-autocmd TermOpen * startinsert
-augroup END")
+(fn autocmd [enter ft command]
+  (.. "autocmd " enter " " ft " " command "\n"))
+
+(vim.cmd
+ (autocmd :BufEnter :*.graphql "set ft=graphql")
+ (autocmd :BufEnter :*.lock "set ft=json")
+ (autocmd :BufEnter :*.nix "set ft=nix")
+ (autocmd :BufEnter :*.norg "hi clear Conceal | set nohlsearch | lua wkneorg()")
+ (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
+ (autocmd :CmdLineEnter :: "set nosmartcase")
+ (autocmd :CmdLineLeave :: "set smartcase")
+ (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
+ (autocmd :TermOpen :* "startinsert"))
+
