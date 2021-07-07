@@ -72,10 +72,10 @@ local function compe()
   return (compe0).setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
 end
 local function treesitter()
-  local parser_configs = require("nvim-treesitter.parsers")
+  local parser_configs = (require("nvim-treesitter.parsers")).get_parser_configs()
   parser_configs.norg = {install_info = {branch = "main", files = {"src/parser.c"}, url = "https://github.com/vhyrro/tree-sitter-norg"}}
   local treesitter0 = require("nvim-treesitter.configs")
-  return (treesitter0).setup({ensure_installed = {"bash", "clojure", "commonlisp", "dockerfile", "fennel", "go", "gomod", "graphql", "hcl", "html", "javascript", "latex", "lua", "nix", "ruby", "rust", "yaml", "zig"}, highlight = {enable = true}, indent = {enable = true}})
+  return (treesitter0).setup({ensure_installed = {"bash", "clojure", "commonlisp", "dockerfile", "fennel", "go", "gomod", "graphql", "hcl", "html", "javascript", "latex", "lua", "nix", "norg", "ruby", "rust", "yaml", "zig"}, highlight = {enable = true}, indent = {enable = true}})
 end
 vim.defer_fn(compe, 10)
 vim.defer_fn(gitsigns, 10)
