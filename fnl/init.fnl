@@ -246,7 +246,7 @@
 (macro autocmd [enter ft command]
   `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
 
-(vim.cmd
+(vim.cmd (..
  (autocmd :BufEnter :*.graphql "set ft=graphql")
  (autocmd :BufEnter :*.lock "set ft=json")
  (autocmd :BufEnter :*.nix "set ft=nix")
@@ -255,5 +255,4 @@
  (autocmd :CmdLineEnter :: "set nosmartcase")
  (autocmd :CmdLineLeave :: "set smartcase")
  (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
- (autocmd :TermOpen :* "startinsert"))
-
+ (autocmd :TermOpen :* "startinsert")))

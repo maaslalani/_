@@ -162,7 +162,7 @@
     "nordbuddy-nvim": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-BSuOHJO+LasR5Z8cwOa0vzqh5dtkbv3N5CfXFz1Gfjg=",
+        "narHash": "sha256-OD499HLRjQXcuRaqOHdieOwFubEmPgSIGG1QpTAxhLc=",
         "path": "/Users/maas/src/github.com/maaslalani/nordbuddy",
         "type": "path"
       },
