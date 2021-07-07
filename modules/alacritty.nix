@@ -10,8 +10,8 @@
         };
 
         padding = {
-          x = 6;
-          y = 6;
+          x = 10;
+          y = 10;
         };
 
         decorations = "full";
