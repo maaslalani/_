@@ -197,6 +197,11 @@
       :nvim_lsp true}}))
 
 (fn treesitter []
+  (local parser-configs (require :nvim-treesitter.parsers))
+  (set parser-configs.norg
+    {:install_info {:url "https://github.com/vhyrro/tree-sitter-norg"
+     :files [:src/parser.c]
+     :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup)
     {:ensure_installed [
