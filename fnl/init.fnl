@@ -86,6 +86,7 @@
    :gW [(cmd "w !sudo tee % > /dev/null") :suwrite]
    :<c-l> [:<c-w>l :right]
    :<c-h> [:<c-w>h :left]
+   :<esc> [(cmd :nohl) :nohl]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}}
