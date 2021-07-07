@@ -84,6 +84,7 @@
 (wk.register
   {:K [(lsp :buf.hover) :hover]
    :Q [:<nop> :nope]
+   :<c-l> [:<nop> :nope]
    :g {:name goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}}
@@ -93,6 +94,7 @@
 (wk.register
   {:< [:<gv :dedent]
    :> [:>gv :indent]
+   :<c-l> [:<nop> :nope]
    :<leader>so [":sort <bar>w<bar>e<cr>" :sort]
    :<leader>y ["\"*y" :copy]
    :<leader>p ["\"*p" :paste]}
