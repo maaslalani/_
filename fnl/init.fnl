@@ -71,6 +71,7 @@
        :h {:name :hunk
            :r [(pcmd :Gitsigns :reset_hunk) :reset]
            :s [(pcmd :Gitsigns :stage_hunk) :stage]
+           :u [(pcmd :Gitsigns :undo_stage_hunk) :undo]
            :n [(pcmd :Gitsigns :next_hunk) :next]
            :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
    :q [(cmd :q) :quit]

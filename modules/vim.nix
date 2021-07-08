@@ -12,7 +12,6 @@
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
-        neogit
         nvim-autopairs
         nvim-lspconfig
         popup-nvim
