@@ -115,6 +115,29 @@
        :N ["?[A-z]*.norg<cr>" :previous]}
       {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
 
+(fn rtc [s]
+  (vim.api.nvim_replace_termcodes s true true true))
+
+(fn tab []
+  (if (= 1 (vim.fn.pumvisible))
+    (rtc "<c-n>")
+    (rtc "<tab>")))
+
+(fn s-tab []
+  (if (= 1 (vim.fn.pumvisible))
+    (rtc "<c-p>")
+    (rtc "<s-tab>")))
+
+(fn cr []
+    ((. vim.fn :compe#confirm) "\n"))
+
+; insert
+(wk.register
+  {:<tab> {1 tab 2 :next :expr true}
+   :<s-tab> {1 s-tab 2 :previous :expr true}
+   :<cr> {1 cr 2 :cr :expr true}}
+  {:mode :i})
+
 (wk.setup {:plugins {:spelling {:enabled true}}})
 
 ;; =============================================================================
@@ -200,7 +223,8 @@
       :nvim_lsp true}}))
 
 (fn treesitter []
-  (local parser-configs ((. (require :nvim-treesitter.parsers) :get_parser_configs)))
+  (local parsers (. (require :nvim-treesitter.parsers)))
+  (local parser-configs ((. parsers :get_parser_configs)))
   (set parser-configs.norg
     {:install_info {:url "https://github.com/vhyrro/tree-sitter-norg"
      :files [:src/parser.c]
