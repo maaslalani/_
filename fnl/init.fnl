@@ -19,7 +19,6 @@
      {:unusedparams true
       :staticcheck true}}))
 
-;; zzz (lazy load)
 (vim.defer_fn lsp 10)
 
 ;; =============================================================================
@@ -105,15 +104,15 @@
 
 ; neorg
 (set _G.wkneorg
-  (fn []
-    (wk.register
-      {:<cr> [(cmd "e <cfile>") :follow]
-       :<bs> [:<c-o> :back]
-       :<tab> ["/[A-z]*.norg<cr>" :next]
-       :<s-tab> ["?[A-z]*.norg<cr>" :previous]
-       :n ["/[A-z]*.norg<cr>" :next]
-       :N ["?[A-z]*.norg<cr>" :previous]}
-      {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
+     (fn []
+       (wk.register
+         {:<cr> [(cmd "e <cfile>") :follow]
+          :<bs> [:<c-o> :back]
+          :<tab> ["/[A-z]*.norg<cr>" :next]
+          :<s-tab> ["?[A-z]*.norg<cr>" :previous]
+          :n ["/[A-z]*.norg<cr>" :next]
+          :N ["?[A-z]*.norg<cr>" :previous]}
+         {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
 
 (fn rtc [s]
   (vim.api.nvim_replace_termcodes s true true true))
@@ -129,7 +128,7 @@
     (rtc "<s-tab>")))
 
 (fn cr []
-    ((. vim.fn :compe#confirm) "\n"))
+  ((. vim.fn :compe#confirm) "\n"))
 
 ; insert
 (wk.register
@@ -218,38 +217,39 @@
     :max_menu_width 100
     :documentation true
     :source
-      {:path true
-      :buffer true
-      :nvim_lsp true}}))
+    {:path true
+     :buffer true
+     :nvim_lsp true}}))
 
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
   (local parser-configs ((. parsers :get_parser_configs)))
   (set parser-configs.norg
-    {:install_info {:url "https://github.com/vhyrro/tree-sitter-norg"
-     :files [:src/parser.c]
-     :branch :main}})
+       {:install_info
+        {:url "https://github.com/vhyrro/tree-sitter-norg"
+         :files [:src/parser.c]
+         :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup)
-    {:ensure_installed [
-      :bash
-      :clojure
-      :commonlisp
-      :dockerfile
-      :fennel
-      :go :gomod
-      :graphql
-      :hcl
-      :html
-      :javascript
-      :latex
-      :lua
-      :nix
-      :norg
-      :ruby
-      :rust
-      :yaml
-      :zig]
+   {:ensure_installed
+    [:bash
+     :clojure
+     :commonlisp
+     :dockerfile
+     :fennel
+     :go :gomod
+     :graphql
+     :hcl
+     :html
+     :javascript
+     :latex
+     :lua
+     :nix
+     :norg
+     :ruby
+     :rust
+     :yaml
+     :zig]
     :highlight {:enable true}
     :indent {:enable true}}))
 
@@ -279,13 +279,14 @@
 (macro autocmd [enter ft command]
   `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
 
-(vim.cmd (..
- (autocmd :BufEnter :*.graphql "set ft=graphql")
- (autocmd :BufEnter :*.lock "set ft=json")
- (autocmd :BufEnter :*.nix "set ft=nix")
- (autocmd :BufEnter :*.norg "hi clear Conceal | set nohlsearch | lua wkneorg()")
- (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
- (autocmd :CmdLineEnter :: "set nosmartcase")
- (autocmd :CmdLineLeave :: "set smartcase")
- (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
- (autocmd :TermOpen :* "startinsert")))
+(vim.cmd
+  (..
+    (autocmd :BufEnter :*.graphql "set ft=graphql")
+    (autocmd :BufEnter :*.lock "set ft=json")
+    (autocmd :BufEnter :*.nix "set ft=nix")
+    (autocmd :BufEnter :*.norg "hi clear Conceal | set nohlsearch | lua wkneorg()")
+    (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
+    (autocmd :CmdLineEnter :: "set nosmartcase")
+    (autocmd :CmdLineLeave :: "set smartcase")
+    (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
+    (autocmd :TermOpen :* "startinsert")))
