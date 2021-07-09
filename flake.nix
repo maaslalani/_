@@ -8,7 +8,7 @@
   /* Neovim Plugins */
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
-  inputs.nordbuddy-nvim = { url = "path:/Users/maas/src/github.com/maaslalani/nordbuddy"; flake = false; };
+  inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy/minimal"; flake = false; };
   inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
   inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
