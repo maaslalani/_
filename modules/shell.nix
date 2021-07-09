@@ -66,6 +66,8 @@ in
       hmg = "nix build --out-link ~/.config/nixpkgs/result --impure --experimental-features 'nix-command flakes' '/Users/maas/_#home'";
       hms = "rm -rf ~/.config/nvim/lua && nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
 
+      c = "clear";
+
       ls = "exa";
       lsa = "exa -Fla";
 
