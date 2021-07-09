@@ -232,24 +232,8 @@
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup)
    {:ensure_installed
-    [:bash
-     :clojure
-     :commonlisp
-     :dockerfile
-     :fennel
-     :go :gomod
-     :graphql
-     :hcl
-     :html
-     :javascript
-     :latex
-     :lua
-     :nix
-     :norg
-     :ruby
-     :rust
-     :yaml
-     :zig]
+    [:bash :clojure :commonlisp :dockerfile :fennel :go :gomod :graphql :hcl
+     :html :javascript :latex :lua :nix :norg :ruby :rust :yaml :zig]
     :highlight {:enable true}
     :indent {:enable true}}))
 
@@ -284,7 +268,7 @@
     (autocmd :BufEnter :*.graphql "set ft=graphql")
     (autocmd :BufEnter :*.lock "set ft=json")
     (autocmd :BufEnter :*.nix "set ft=nix")
-    (autocmd :BufEnter :*.norg "hi clear Conceal | set nohlsearch | lua wkneorg()")
+    (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
     (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
     (autocmd :CmdLineEnter :: "set nosmartcase")
     (autocmd :CmdLineLeave :: "set smartcase")
