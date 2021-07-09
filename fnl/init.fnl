@@ -44,6 +44,8 @@
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
+   :d [:<c-d> :down]
+   :u [:<c-u> :up]
    :s {:l [(pcmd :luafile :%) :lua]
        :s [(cmd :vsplit) :split]
        :i [(pcmd :luafile :lua/init.lua) :init]}
