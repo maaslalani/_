@@ -44,9 +44,9 @@
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
-   :s {:name :source
-       :l [(pcmd :luafile :%) :lua]
-       :v [(pcmd :luafile :lua/init.lua) :init]}
+   :s {:l [(pcmd :luafile :%) :lua]
+       :s [(cmd :vsplit) :split]
+       :i [(pcmd :luafile :lua/init.lua) :init]}
    :m [(cmd :make) :make]
    :l {:name :lsp
        :f [(lsp :buf.formatting) :format]
@@ -108,8 +108,7 @@
        (wk.register
          {:<cr> [(cmd "e <cfile>") :follow]
           :<bs> [:<c-o> :back]
-          :<tab> ["/[A-z]*.norg<cr>" :next]
-          :<s-tab> ["?[A-z]*.norg<cr>" :previous]
+          :<tab> [:za :fold]
           :n ["/[A-z]*.norg<cr>" :next]
           :N ["?[A-z]*.norg<cr>" :previous]}
          {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
@@ -268,7 +267,9 @@
     (autocmd :BufEnter :*.graphql "set ft=graphql")
     (autocmd :BufEnter :*.lock "set ft=json")
     (autocmd :BufEnter :*.nix "set ft=nix")
-    (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
+    (autocmd :BufEnter :*.norg (.. "hi clear Conceal | "
+                                   "set nohls foldmethod=indent | "
+                                   "lua wkneorg()"))
     (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
     (autocmd :CmdLineEnter :: "set nosmartcase")
     (autocmd :CmdLineLeave :: "set smartcase")
