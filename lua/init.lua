@@ -38,6 +38,7 @@ o.lazyredraw = true
 o.number = true
 o.omnifunc = "v:lua.vim.lsp.omnifunc"
 o.ruler = true
+o.scrolloff = 10
 o.shiftwidth = 2
 o.showmode = false
 o.signcolumn = "yes"

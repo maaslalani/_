@@ -135,6 +135,7 @@
 (set o.number true)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
 (set o.ruler true)
+(set o.scrolloff 10)
 (set o.shiftwidth 2)
 (set o.showmode false)
 (set o.signcolumn "yes")
