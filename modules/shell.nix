@@ -145,12 +145,13 @@ in
         GOBIN = "${GOPATH}/bin";
         GOPATH = "${config.xdg.configHome}/go";
         KEYTIMEOUT = 1;
-        KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
+        KUBECONFIG = pathJoin [ "${config.xdg.configHome}/kube/config" "${config.xdg.configHome}/kube/config.shopify.cloudplatform" ];
         MANPAGER = "nvim +Man!";
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
+        SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
       };
     plugins = [
