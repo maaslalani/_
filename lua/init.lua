@@ -108,5 +108,6 @@ g.netrw_banner = 0
 g.netrw_localcopycmdopt = "-r"
 g.netrw_localmkdiropt = "-p"
 g.netrw_localmovecmdopt = "-r"
+g.nord_minimal_mode = true
 vim.cmd("colorscheme nordbuddy")
 return vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. ("hi clear Conceal | " .. "set nohls foldmethod=indent | " .. "lua wkneorg()") .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "CmdLineEnter" .. " " .. ":" .. " " .. "set nosmartcase" .. "\n") .. ("autocmd " .. "CmdLineLeave" .. " " .. ":" .. " " .. "set smartcase" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))

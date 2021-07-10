@@ -252,6 +252,7 @@
 (set g.netrw_localcopycmdopt "-r")
 (set g.netrw_localmkdiropt "-p")
 (set g.netrw_localmovecmdopt "-r")
+(set g.nord_minimal_mode true)
 
 ;; =============================================================================
 ;; COLORSCHEME

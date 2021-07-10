@@ -12,7 +12,7 @@
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
-        fennel-vim
+        conjure
         hop-nvim
         nvim-autopairs
         nvim-lspconfig
