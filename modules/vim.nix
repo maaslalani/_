@@ -17,6 +17,7 @@
         nvim-autopairs
         nvim-lspconfig
         popup-nvim
+        vim-surround
       ]
     ) ++ (
       with pkgs; [
