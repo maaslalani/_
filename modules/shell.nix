@@ -142,6 +142,7 @@ in
         CLICOLOR = 1;
         COLORTERM = "truecolor";
         EDITOR = "nvim";
+        GNUPGHOME = "${config.xdg.dataHome}/gnupg";
         GOBIN = "${GOPATH}/bin";
         GOPATH = "${config.xdg.configHome}/go";
         KEYTIMEOUT = 1;
