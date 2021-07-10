@@ -89,6 +89,8 @@
    :<c-l> [:<c-w>l :right]
    :<c-h> [:<c-w>h :left]
    :<esc> [(cmd :nohl) :nohl]
+   :s [(cmd :HopChar2) :hop]
+   :S [(cmd :HopWord) :hopword]
    :g {:name :goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}}
@@ -178,8 +180,6 @@
 (set o.wildmode "longest:full,full")
 (set o.wrap false)
 (set o.writebackup false)
-(set o.foldmethod :marker)
-(set o.foldmarker "FOLD,ENDFOLD")
 
 ;; =============================================================================
 ;; PLUGINS

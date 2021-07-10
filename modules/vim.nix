@@ -13,6 +13,7 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         fennel-vim
+        hop-nvim
         nvim-autopairs
         nvim-lspconfig
         popup-nvim
