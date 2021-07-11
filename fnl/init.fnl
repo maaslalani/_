@@ -223,7 +223,7 @@
   (local parser-configs ((. parsers :get_parser_configs)))
   (set parser-configs.norg
        {:install_info
-        {:url "https://github.com/vhyrro/tree-sitter-norg"
+        {:url :https://github.com/vhyrro/tree-sitter-norg
          :files [:src/parser.c]
          :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
@@ -263,7 +263,5 @@
     (autocmd :FileType :fennel "set indentexpr=lisp")
     (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
     (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
-    (autocmd :CmdLineEnter :: "set nosmartcase")
-    (autocmd :CmdLineLeave :: "set smartcase")
     (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
     (autocmd :TermOpen :* "startinsert")))
