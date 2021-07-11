@@ -214,6 +214,7 @@
     :source
     {:path true
      :buffer true
+     :neorg true
      :nvim_lsp true}}))
 
 ; treesitter
@@ -260,9 +261,7 @@
     (autocmd :BufEnter :*.lock "set ft=json")
     (autocmd :BufEnter :*.nix "set ft=nix")
     (autocmd :FileType :fennel "set indentexpr=lisp")
-    (autocmd :BufEnter :*.norg (.. "hi clear Conceal | "
-                                   "set nohls foldmethod=indent | "
-                                   "lua wkneorg()"))
+    (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
     (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
     (autocmd :CmdLineEnter :: "set nosmartcase")
     (autocmd :CmdLineLeave :: "set smartcase")

@@ -89,7 +89,7 @@ local function neorg()
 end
 local function compe()
   local compe0 = require("compe")
-  return (compe0).setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
+  return (compe0).setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = true, neorg = true, nvim_lsp = true, path = true}, source_timeout = 200, throttle_time = 80})
 end
 local function treesitter()
   local parsers = require("nvim-treesitter.parsers")
@@ -110,4 +110,4 @@ g.netrw_localmkdiropt = "-p"
 g.netrw_localmovecmdopt = "-r"
 g.nord_minimal_mode = true
 vim.cmd("colorscheme nordbuddy")
-return vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "fennel" .. " " .. "set indentexpr=lisp" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. ("hi clear Conceal | " .. "set nohls foldmethod=indent | " .. "lua wkneorg()") .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "CmdLineEnter" .. " " .. ":" .. " " .. "set nosmartcase" .. "\n") .. ("autocmd " .. "CmdLineLeave" .. " " .. ":" .. " " .. "set smartcase" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
+return vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "fennel" .. " " .. "set indentexpr=lisp" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. "hi clear Conceal | set nohls | lua wkneorg()" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "CmdLineEnter" .. " " .. ":" .. " " .. "set nosmartcase" .. "\n") .. ("autocmd " .. "CmdLineLeave" .. " " .. ":" .. " " .. "set smartcase" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
