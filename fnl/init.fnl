@@ -1,6 +1,4 @@
-;; =============================================================================
 ;; LSP
-;; =============================================================================
 (fn lsp []
   (local lsp (require :lspconfig))
   (lsp.bashls.setup {})
@@ -21,9 +19,7 @@
 
 (vim.defer_fn lsp 10)
 
-;; =============================================================================
-;; MAPPINGS
-;; =============================================================================
+;; Mappings
 (local wk (require :which-key))
 (macro lua [module name]
   `(.. ":lua require'" ,module "'." ,name "()<cr>"))
@@ -142,9 +138,7 @@
 
 (wk.setup {:plugins {:spelling {:enabled true}}})
 
-;; =============================================================================
-;; OPTIONS
-;; =============================================================================
+;; Options
 (local o vim.o)
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
@@ -181,13 +175,12 @@
 (set o.wrap false)
 (set o.writebackup false)
 
-;; =============================================================================
-;; PLUGINS
-;; =============================================================================
+;; Plugins
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
   ((. gitsigns :setup) {:keymaps {}}))
 
+; neorg
 (fn neorg []
   (local neorg (require :neorg))
   ((. neorg :setup)
@@ -202,6 +195,7 @@
        :autodetect true
        :autochdir true}}}}))
 
+; compe
 (fn compe []
   (local compe (require :compe))
   ((. compe :setup)
@@ -222,6 +216,7 @@
      :buffer true
      :nvim_lsp true}}))
 
+; treesitter
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
   (local parser-configs ((. parsers :get_parser_configs)))
@@ -243,9 +238,7 @@
 (vim.defer_fn neorg 10)
 (vim.defer_fn treesitter 10)
 
-;; =============================================================================
-;; VARIABLES
-;; =============================================================================
+;; Variables
 (local g vim.g)
 (set g.mapleader " ")
 (set g.netrw_banner 0)
@@ -254,14 +247,10 @@
 (set g.netrw_localmovecmdopt "-r")
 (set g.nord_minimal_mode true)
 
-;; =============================================================================
-;; COLORSCHEME
-;; =============================================================================
+;; Colorscheme
 (vim.cmd "colorscheme nordbuddy")
 
-;; =============================================================================
-;; AUTOCMDS
-;; =============================================================================
+;; Autocmds
 (macro autocmd [enter ft command]
   `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
 
