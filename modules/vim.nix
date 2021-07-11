@@ -13,7 +13,6 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         hop-nvim
-        nvim-autopairs
         nvim-lspconfig
         popup-nvim
         vim-surround

@@ -20,11 +20,13 @@ My favourites include:
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
 * [entr](https://github.com/eradman/entr)
 
-## Plugins
-### Neovim
+## Neovim
 ![Neovim Setup](../assets/vim.png?raw=true)
-* [auto-pairs](https://github.com/jiangmiao/auto-pairs)
-* [colorbuddy](https://github.com/tjdevries/colorbuddy.nvim)
+
+## Plugins
+* [hop.nvim](https://github.com/phaazon/hop.nvim)
+* [neorg](https://github.com/vhyrro/neorg)
 * [nordbuddy](https://github.com/maaslalani/nordbuddy)
 * [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+* [which-key.nvim](https://github.com/folke/which-key.nvim)
