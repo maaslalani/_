@@ -79,14 +79,16 @@
 
 ; normal
 (wk.register
-  {:K [(lsp :buf.hover) :hover]
-   :Q [:<nop> :nope]
-   :gW [(cmd "w !sudo tee % > /dev/null") :suwrite]
+  {:<c-h> [:<c-w>h :left]
    :<c-l> [:<c-w>l :right]
-   :<c-h> [:<c-w>h :left]
    :<esc> [(cmd :nohl) :nohl]
-   :s [(cmd :HopChar2) :hop]
+   :H [(lsp :buf.hover) :hover]
+   :J [:10j :down]
+   :K [:10k :up]
+   :M [:J :merge]
+   :Q [:<nop> :nope]
    :S [(cmd :HopWord) :hopword]
+   :s [(cmd :HopChar2) :hop]
    :g {:name :goto
        :d [(lsp :buf.definition) :definition]
        :r [(lsp :buf.reference) :reference]}}
@@ -154,7 +156,8 @@
 (set o.number true)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
 (set o.ruler true)
-(set o.scrolloff 10)
+(set o.sidescrolloff 1000)
+(set o.scrolloff 1000)
 (set o.shiftwidth 2)
 (set o.showmode false)
 (set o.signcolumn "yes")
