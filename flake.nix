@@ -7,6 +7,7 @@
 
   /* Neovim Plugins */
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
+  inputs.neogit = { url = "github:timuntersberger/neogit"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
@@ -21,6 +22,7 @@
         (
           self: super: with self.vimUtils; {
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
+            neogit = buildVimPluginFrom2Nix { name = "neogit"; src = inputs.neogit; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
             nvim-compe = buildVimPluginFrom2Nix { name = "nvim-compe"; src = inputs.nvim-compe; };

@@ -67,6 +67,22 @@
         "type": "github"
       }
     },
+    "neogit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626078213,
+        "narHash": "sha256-MnrEVcaH8AgeJoNhHUrXVuobRbs7/b6IkU5nmKVqJLo=",
+        "owner": "timuntersberger",
+        "repo": "neogit",
+        "rev": "90b1901774c11b86f3d36f7d17803125bfbe82b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "timuntersberger",
+        "repo": "neogit",
+        "type": "github"
+      }
+    },
     "neorg": {
       "flake": false,
       "locked": {
@@ -162,11 +178,11 @@
     "nordbuddy-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1625968534,
-        "narHash": "sha256-mkxk/bnfjl9+iLFAPabuBw1sfQF8j8gDH2MNBTf9/B0=",
+        "lastModified": 1626120719,
+        "narHash": "sha256-6xS+E6M4M24Pv55QeRBgnE9NzwTVaU9vxlJBIdLi4HE=",
         "owner": "maaslalani",
         "repo": "nordbuddy",
-        "rev": "1e00712c73e02082afedbc5710bcfbdbf55e5b40",
+        "rev": "3a5002ee52c034d98e49e680392a94c0a53295e1",
         "type": "github"
       },
       "original": {
@@ -227,6 +243,7 @@
       "inputs": {
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
+        "neogit": "neogit",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",

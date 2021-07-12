@@ -118,16 +118,16 @@
 
 (fn tab []
   (if (= 1 (vim.fn.pumvisible))
-    (rtc "<c-n>")
-    (rtc "<tab>")))
+    (rtc :<c-n>)
+    (rtc :<tab>)))
 
 (fn s-tab []
   (if (= 1 (vim.fn.pumvisible))
-    (rtc "<c-p>")
-    (rtc "<s-tab>")))
+    (rtc :<c-p>)
+    (rtc :<s-tab>)))
 
 (fn cr []
-  ((. vim.fn :compe#confirm) "\n"))
+  ((. vim.fn :compe#confirm) :\n))
 
 ; insert
 (wk.register
@@ -267,6 +267,8 @@
     (autocmd :BufEnter :*.lock "set ft=json")
     (autocmd :BufEnter :*.nix "set ft=nix")
     (autocmd :FileType :fennel "set indentexpr=lisp")
+    (autocmd :FileType :markdown "setlocal spell")
+    (autocmd :FileType :gitcommit "setlocal spell")
     (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
     (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
     (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")

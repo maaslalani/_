@@ -15,11 +15,13 @@
         hop-nvim
         nvim-lspconfig
         popup-nvim
+        neogit
         vim-surround
       ]
     ) ++ (
       with pkgs; [
         gitsigns-nvim
+        # neogit
         neorg
         nordbuddy-nvim
         nvim-compe

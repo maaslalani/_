@@ -40,7 +40,7 @@ local function s_tab()
   end
 end
 local function cr()
-  return vim.fn["compe#confirm"]("\n")
+  return vim.fn["compe#confirm"]("\\n")
 end
 wk.register({["<cr>"] = {cr, "cr", expr = true}, ["<s-tab>"] = {s_tab, "previous", expr = true}, ["<tab>"] = {tab, "next", expr = true}}, {mode = "i"})
 wk.setup({plugins = {spelling = {enabled = true}}, window = {margin = {1, 0, -1, 0}, padding = {2, 2, 2, 2}}})
@@ -111,4 +111,4 @@ g.netrw_localmkdiropt = "-p"
 g.netrw_localmovecmdopt = "-r"
 g.nord_minimal_mode = true
 vim.cmd("colorscheme nordbuddy")
-return vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "fennel" .. " " .. "set indentexpr=lisp" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. "hi clear Conceal | set nohls | lua wkneorg()" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
+return vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "fennel" .. " " .. "set indentexpr=lisp" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "markdown" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "gitcommit" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. "hi clear Conceal | set nohls | lua wkneorg()" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
