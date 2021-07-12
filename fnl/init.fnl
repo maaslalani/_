@@ -62,6 +62,7 @@
        :q [(cmd :cclose) :close]
        :o [(cmd :copen) :open]}
    :g {:name :git
+       :g [(cmd :Neogit) :neogit]
        :b [(pcmd :Gitsigns :blame_line) :blame]
        :h {:name :hunk
            :r [(pcmd :Gitsigns :reset_hunk) :reset]
