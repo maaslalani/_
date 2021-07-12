@@ -67,22 +67,6 @@
         "type": "github"
       }
     },
-    "neogit": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626078213,
-        "narHash": "sha256-MnrEVcaH8AgeJoNhHUrXVuobRbs7/b6IkU5nmKVqJLo=",
-        "owner": "timuntersberger",
-        "repo": "neogit",
-        "rev": "90b1901774c11b86f3d36f7d17803125bfbe82b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "timuntersberger",
-        "repo": "neogit",
-        "type": "github"
-      }
-    },
     "neorg": {
       "flake": false,
       "locked": {
@@ -243,7 +227,6 @@
       "inputs": {
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
-        "neogit": "neogit",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",

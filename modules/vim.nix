@@ -21,7 +21,6 @@
     ) ++ (
       with pkgs; [
         gitsigns-nvim
-        # neogit
         neorg
         nordbuddy-nvim
         nvim-compe
