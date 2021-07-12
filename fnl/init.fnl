@@ -138,7 +138,11 @@
    :<cr> {1 cr 2 :cr :expr true}}
   {:mode :i})
 
-(wk.setup {:plugins {:spelling {:enabled true}}})
+(wk.setup
+  {:window 
+    {:margin [1 0 -1 0]
+     :padding [2 2 2 2]}
+   :plugins {:spelling {:enabled true}}})
 
 ;; Options
 (local o vim.o)
@@ -154,13 +158,13 @@
 (set o.laststatus 2)
 (set o.lazyredraw true)
 (set o.number true)
-(set o.omnifunc "v:lua.vim.lsp.omnifunc")
+(set o.omnifunc :v:lua.vim.lsp.omnifunc)
 (set o.ruler true)
-(set o.sidescrolloff 1000)
 (set o.scrolloff 1000)
 (set o.shiftwidth 2)
 (set o.showmode false)
-(set o.signcolumn "yes")
+(set o.sidescrolloff 1000)
+(set o.signcolumn :yes)
 (set o.smartcase true)
 (set o.softtabstop 2)
 (set o.splitbelow true)

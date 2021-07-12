@@ -43,7 +43,7 @@ local function cr()
   return vim.fn["compe#confirm"]("\n")
 end
 wk.register({["<cr>"] = {cr, "cr", expr = true}, ["<s-tab>"] = {s_tab, "previous", expr = true}, ["<tab>"] = {tab, "next", expr = true}}, {mode = "i"})
-wk.setup({plugins = {spelling = {enabled = true}}})
+wk.setup({plugins = {spelling = {enabled = true}}, window = {margin = {1, 0, -1, 0}, padding = {2, 2, 2, 2}}})
 local o = vim.o
 o.autowrite = true
 o.backspace = "indent,eol,start"
@@ -59,10 +59,10 @@ o.lazyredraw = true
 o.number = true
 o.omnifunc = "v:lua.vim.lsp.omnifunc"
 o.ruler = true
-o.sidescrolloff = 1000
 o.scrolloff = 1000
 o.shiftwidth = 2
 o.showmode = false
+o.sidescrolloff = 1000
 o.signcolumn = "yes"
 o.smartcase = true
 o.softtabstop = 2
