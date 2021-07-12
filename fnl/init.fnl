@@ -128,7 +128,7 @@
     (rtc :<s-tab>)))
 
 (fn cr []
-  ((. vim.fn :compe#confirm) :\n))
+  ((. vim.fn :compe#confirm) "\n"))
 
 ; insert
 (wk.register
@@ -224,6 +224,15 @@
      :vsnip {:kind " "}
      :nvim_lsp {:kind " "}}}))
 
+(fn neogit []
+  (local neogit (require :neogit))
+  ((. neogit :setup)
+    {:disable_signs true
+     :signs
+     {:section ["➜" "↓"]
+      :item ["➜" "↓"]
+      :hunk {"" ""}}}))
+
 ; treesitter
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
@@ -243,6 +252,7 @@
 
 (vim.defer_fn compe 10)
 (vim.defer_fn gitsigns 10)
+(vim.defer_fn neogit 10)
 (vim.defer_fn neorg 10)
 (vim.defer_fn treesitter 10)
 

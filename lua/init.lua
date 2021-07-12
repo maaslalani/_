@@ -40,7 +40,7 @@ local function s_tab()
   end
 end
 local function cr()
-  return vim.fn["compe#confirm"]("\\n")
+  return vim.fn["compe#confirm"]("\n")
 end
 wk.register({["<cr>"] = {cr, "cr", expr = true}, ["<s-tab>"] = {s_tab, "previous", expr = true}, ["<tab>"] = {tab, "next", expr = true}}, {mode = "i"})
 wk.setup({plugins = {spelling = {enabled = true}}, window = {margin = {1, 0, -1, 0}, padding = {2, 2, 2, 2}}})
@@ -92,6 +92,10 @@ local function compe()
   local compe0 = require("compe")
   return (compe0).setup({autocomplete = true, debug = false, documentation = true, enabled = true, incomplete_delay = 400, max_abbr_width = 100, max_kind_width = 100, max_menu_width = 100, preselect = "disable", resolve_timeout = 800, source = {buffer = {kind = " \239\144\142"}, neorg = {kind = " \239\163\170"}, nvim_lsp = {kind = " \238\156\150"}, path = {kind = " \238\151\191"}, vsnip = {kind = " \239\131\132"}}, source_timeout = 200, throttle_time = 80})
 end
+local function neogit()
+  local neogit0 = require("neogit")
+  return (neogit0).setup({disable_signs = true, signs = {hunk = {[""] = ""}, item = {"\226\158\156", "\226\134\147"}, section = {"\226\158\156", "\226\134\147"}}})
+end
 local function treesitter()
   local parsers = require("nvim-treesitter.parsers")
   local parser_configs = parsers.get_parser_configs()
@@ -101,6 +105,7 @@ local function treesitter()
 end
 vim.defer_fn(compe, 10)
 vim.defer_fn(gitsigns, 10)
+vim.defer_fn(neogit, 10)
 vim.defer_fn(neorg, 10)
 vim.defer_fn(treesitter, 10)
 local g = vim.g
