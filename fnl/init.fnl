@@ -40,8 +40,6 @@
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
-   :d [:<c-d> :down]
-   :u [:<c-u> :up]
    :s {:l [(pcmd :luafile :%) :lua]
        :s [(cmd :vsplit) :split]
        :i [(pcmd :luafile :lua/init.lua) :init]}
@@ -219,10 +217,11 @@
     :max_menu_width 100
     :documentation true
     :source
-    {:path true
-     :buffer true
-     :neorg true
-     :nvim_lsp true}}))
+    {:path {:kind " "}
+     :buffer {:kind " "}
+     :neorg {:kind " "}
+     :vsnip {:kind " "}
+     :nvim_lsp {:kind " "}}}))
 
 ; treesitter
 (fn treesitter []
