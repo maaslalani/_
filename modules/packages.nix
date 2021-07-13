@@ -8,6 +8,7 @@
   programs.z-lua.enable = true;
 
   home.packages = with pkgs; [
+    browsh
     cachix
     coreutils
     delve
