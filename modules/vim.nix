@@ -14,7 +14,6 @@
       with pkgs.unstable.vimPlugins; [
         fennel-vim
         hop-nvim
-        neogit
         nvim-lspconfig
         popup-nvim
         vim-surround

@@ -38,7 +38,6 @@
        :q [(cmd :cclose) :close]
        :o [(cmd :copen) :open]}
    :g {:name :git
-       :g [(cmd :Neogit) :neogit]
        :b [(pcmd :Gitsigns :blame_line) :blame]
        :h {:name :hunk
            :r [(pcmd :Gitsigns :reset_hunk) :reset]
@@ -206,14 +205,6 @@
              :vsnip {:kind " "}
              :nvim_lsp {:kind " "}}}))
 
-(fn neogit []
-  (local neogit (require :neogit))
-  ((. neogit :setup)
-   {:disable_signs true
-    :signs {:section ["➜" "↓"]
-            :item ["➜" "↓"]
-            :hunk {"" ""}}}))
-
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
   (local parser-configs ((. parsers :get_parser_configs)))
@@ -275,6 +266,5 @@
 (defer compe 10)
 (defer gitsigns 10)
 (defer lsp 10)
-(defer neogit 10)
 (defer neorg 10)
 (defer treesitter 10)
