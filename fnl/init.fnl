@@ -42,8 +42,7 @@
        :r [(pcmd :Telescope :live_grep) :grep]}
    :s {:l [(pcmd :luafile :%) :lua]
        :s [(cmd :vsplit) :split]
-       :i [(pcmd :luafile :lua/init.lua) :init]}
-   :m [(cmd :make) :make]
+       :f [(cmd "silent make | luafile lua/init.lua") :source]}
    :l {:name :lsp
        :f [(lsp :buf.formatting) :format]
        :a [(lsp :buf.code_action) :actions]

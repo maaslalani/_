@@ -29,6 +29,7 @@
     mosh
     ninja
     nodejs
+    openssl
     pandoc
     ripgrep
     rustup

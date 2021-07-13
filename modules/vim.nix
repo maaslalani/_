@@ -13,9 +13,9 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         hop-nvim
+        neogit
         nvim-lspconfig
         popup-nvim
-        neogit
         vim-surround
       ]
     ) ++ (
