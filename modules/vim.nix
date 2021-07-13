@@ -12,6 +12,7 @@
     viAlias = true;
     plugins = (
       with pkgs.unstable.vimPlugins; [
+        fennel-vim
         hop-nvim
         neogit
         nvim-lspconfig

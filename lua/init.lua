@@ -1,27 +1,13 @@
 -- THIS FILE WAS AUTO-GENERATED
 -- See fnl/init.fnl for source
-local function lsp()
-  local lsp0 = require("lspconfig")
-  lsp0.bashls.setup({})
-  lsp0.dockerls.setup({})
-  lsp0.rnix.setup({})
-  lsp0.solargraph.setup({})
-  lsp0.sorbet.setup({})
-  lsp0.terraformls.setup({})
-  lsp0.tsserver.setup({})
-  lsp0.texlab.setup({})
-  lsp0.yamlls.setup({})
-  return lsp0.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}})
-end
-vim.defer_fn(lsp, 10)
 local wk = require("which-key")
-wk.register({c = {n = {("<cmd>" .. "cnext" .. "<cr>"), "next"}, name = "quickfix", o = {("<cmd>" .. "copen" .. "<cr>"), "open"}, p = {("<cmd>" .. "cprev" .. "<cr>"), "previous"}, q = {("<cmd>" .. "cclose" .. "<cr>"), "close"}}, f = {b = {("<cmd>" .. "Telescope" .. " " .. "buffers" .. "<cr>"), "buffers"}, e = {("<cmd>" .. "Explore" .. "<cr>"), "explore"}, f = {("<cmd>" .. "Telescope" .. " " .. "find_files" .. "<cr>"), "file"}, n = {("<cmd>" .. "enew" .. "<cr>"), "new"}, name = "find", r = {("<cmd>" .. "Telescope" .. " " .. "live_grep" .. "<cr>"), "grep"}}, g = {b = {("<cmd>" .. "Gitsigns" .. " " .. "blame_line" .. "<cr>"), "blame"}, g = {("<cmd>" .. "Neogit" .. "<cr>"), "neogit"}, h = {n = {("<cmd>" .. "Gitsigns" .. " " .. "next_hunk" .. "<cr>"), "next"}, name = "hunk", p = {("<cmd>" .. "Gitsigns" .. " " .. "prev_hunk" .. "<cr>"), "previous"}, r = {("<cmd>" .. "Gitsigns" .. " " .. "reset_hunk" .. "<cr>"), "reset"}, s = {("<cmd>" .. "Gitsigns" .. " " .. "stage_hunk" .. "<cr>"), "stage"}, u = {("<cmd>" .. "Gitsigns" .. " " .. "undo_stage_hunk" .. "<cr>"), "undo"}}, name = "git"}, l = {a = {("<cmd>lua vim.lsp." .. "buf.code_action" .. "()<cr>"), "actions"}, d = {n = {("<cmd>lua vim.lsp." .. "diagnostic.goto_next" .. "()<cr>"), "next"}, name = "diagnostics", p = {("<cmd>lua vim.lsp." .. "diagnostic.goto_prev" .. "()<cr>"), "previous"}}, f = {("<cmd>lua vim.lsp." .. "buf.formatting" .. "()<cr>"), "format"}, l = {("<cmd>lua vim.lsp." .. "diagnostic.show_line_diagnostics" .. "()<cr>"), "line"}, name = "lsp", r = {("<cmd>lua vim.lsp." .. "buf.rename" .. "()<cr>"), "rename"}}, p = {"\"*p<cr>", "paste"}, q = {("<cmd>" .. "q" .. "<cr>"), "quit"}, s = {f = {("<cmd>" .. "silent make | luafile lua/init.lua" .. "<cr>"), "source"}, l = {("<cmd>" .. "luafile" .. " " .. "%" .. "<cr>"), "lua"}, s = {("<cmd>" .. "vsplit" .. "<cr>"), "split"}}, t = {n = {("<cmd>" .. "tabnext" .. "<cr>"), "next"}, name = "tabs", p = {("<cmd>" .. "tabprevious" .. "<cr>"), "previous"}, t = {("<cmd>" .. "tabnew" .. "<cr>"), "new"}}, w = {("<cmd>" .. "w" .. "<cr>"), "save"}, y = {"\"*y<cr>", "copy"}}, {mode = "n", prefix = "<leader>"})
+wk.register({c = {n = {("<cmd>" .. "cnext" .. "<cr>"), "next"}, name = "quickfix", o = {("<cmd>" .. "copen" .. "<cr>"), "open"}, p = {("<cmd>" .. "cprev" .. "<cr>"), "previous"}, q = {("<cmd>" .. "cclose" .. "<cr>"), "close"}}, f = {b = {("<cmd>" .. "Telescope" .. " " .. "buffers" .. "<cr>"), "buffers"}, e = {("<cmd>" .. "Explore" .. "<cr>"), "explore"}, f = {("<cmd>" .. "Telescope" .. " " .. "find_files" .. "<cr>"), "file"}, n = {("<cmd>" .. "enew" .. "<cr>"), "new"}, name = "find", r = {("<cmd>" .. "Telescope" .. " " .. "live_grep" .. "<cr>"), "grep"}}, g = {b = {("<cmd>" .. "Gitsigns" .. " " .. "blame_line" .. "<cr>"), "blame"}, g = {("<cmd>" .. "Neogit" .. "<cr>"), "neogit"}, h = {n = {("<cmd>" .. "Gitsigns" .. " " .. "next_hunk" .. "<cr>"), "next"}, name = "hunk", p = {("<cmd>" .. "Gitsigns" .. " " .. "prev_hunk" .. "<cr>"), "previous"}, r = {("<cmd>" .. "Gitsigns" .. " " .. "reset_hunk" .. "<cr>"), "reset"}, s = {("<cmd>" .. "Gitsigns" .. " " .. "stage_hunk" .. "<cr>"), "stage"}, u = {("<cmd>" .. "Gitsigns" .. " " .. "undo_stage_hunk" .. "<cr>"), "undo"}}, name = "git"}, l = {a = {("<cmd>lua vim.lsp." .. "buf.code_action" .. "()<cr>"), "actions"}, d = {n = {("<cmd>lua vim.lsp." .. "diagnostic.goto_next" .. "()<cr>"), "next"}, name = "diagnostics", p = {("<cmd>lua vim.lsp." .. "diagnostic.goto_prev" .. "()<cr>"), "previous"}}, f = {("<cmd>lua vim.lsp." .. "buf.formatting" .. "()<cr>"), "format"}, l = {("<cmd>lua vim.lsp." .. "diagnostic.show_line_diagnostics" .. "()<cr>"), "line"}, name = "lsp", r = {("<cmd>lua vim.lsp." .. "buf.rename" .. "()<cr>"), "rename"}}, p = {"\"*p<cr>", "paste"}, q = {("<cmd>" .. "q" .. "<cr>"), "quit"}, s = {f = {("<cmd>" .. "make | luafile lua/init.lua" .. "<cr>"), "source"}, l = {("<cmd>" .. "luafile" .. " " .. "%" .. "<cr>"), "lua"}, s = {("<cmd>" .. "vsplit" .. "<cr>"), "split"}}, t = {n = {("<cmd>" .. "tabnext" .. "<cr>"), "next"}, name = "tabs", p = {("<cmd>" .. "tabprevious" .. "<cr>"), "previous"}, t = {("<cmd>" .. "tabnew" .. "<cr>"), "new"}}, w = {("<cmd>" .. "w" .. "<cr>"), "save"}, y = {"\"*y<cr>", "copy"}}, {mode = "n", prefix = "<leader>"})
 wk.register({H = {("<cmd>lua vim.lsp." .. "buf.hover" .. "()<cr>"), "hover"}, J = {"10j", "down"}, K = {"10k", "up"}, M = {"J", "merge"}, Q = {"<nop>", "nope"}, S = {("<cmd>" .. "HopWord" .. "<cr>"), "hopword"}, ["<c-h>"] = {"<c-w>h", "left"}, ["<c-l>"] = {"<c-w>l", "right"}, ["<esc>"] = {("<cmd>" .. "nohl" .. "<cr>"), "nohl"}, g = {d = {("<cmd>lua vim.lsp." .. "buf.definition" .. "()<cr>"), "definition"}, name = "goto", r = {("<cmd>lua vim.lsp." .. "buf.reference" .. "()<cr>"), "reference"}}, s = {("<cmd>" .. "HopChar2" .. "<cr>"), "hop"}}, {mode = "n"})
 wk.register({["<"] = {"<gv", "dedent"}, ["<c-l>"] = {"<nop>", "nope"}, ["<leader>p"] = {"\"*p", "paste"}, ["<leader>so"] = {":sort <bar>w<bar>e<cr>", "sort"}, ["<leader>y"] = {"\"*y", "copy"}, [">"] = {">gv", "indent"}}, {mode = "v"})
-local function _0_()
+local function wkneorg()
   return wk.register({N = {"?[A-z]*.norg<cr>", "previous"}, ["<bs>"] = {"<c-o>", "back"}, ["<cr>"] = {("<cmd>" .. "e <cfile>" .. "<cr>"), "follow"}, ["<tab>"] = {"za", "fold"}, n = {"/[A-z]*.norg<cr>", "next"}}, {buffer = vim.api.nvim_get_current_buf(), mode = "n"})
 end
-_G.wkneorg = _0_
+_G.wkneorg = wkneorg
 local function rtc(s)
   return vim.api.nvim_replace_termcodes(s, true, true, true)
 end
@@ -44,6 +30,19 @@ local function cr()
 end
 wk.register({["<cr>"] = {cr, "cr", expr = true}, ["<s-tab>"] = {s_tab, "previous", expr = true}, ["<tab>"] = {tab, "next", expr = true}}, {mode = "i"})
 wk.setup({plugins = {spelling = {enabled = true}}, window = {margin = {1, 0, -1, 0}, padding = {2, 2, 2, 2}}})
+local function lsp()
+  local lsp0 = require("lspconfig")
+  lsp0.bashls.setup({})
+  lsp0.dockerls.setup({})
+  lsp0.rnix.setup({})
+  lsp0.solargraph.setup({})
+  lsp0.sorbet.setup({})
+  lsp0.terraformls.setup({})
+  lsp0.tsserver.setup({})
+  lsp0.texlab.setup({})
+  lsp0.yamlls.setup({})
+  return lsp0.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}})
+end
 local o = vim.o
 o.autowrite = true
 o.backspace = "indent,eol,start"
@@ -103,11 +102,6 @@ local function treesitter()
   local treesitter0 = require("nvim-treesitter.configs")
   return (treesitter0).setup({ensure_installed = {"bash", "clojure", "commonlisp", "dockerfile", "fennel", "go", "gomod", "graphql", "hcl", "html", "javascript", "latex", "lua", "nix", "norg", "ruby", "rust", "yaml", "zig"}, highlight = {enable = true}, indent = {enable = true}})
 end
-vim.defer_fn(compe, 10)
-vim.defer_fn(gitsigns, 10)
-vim.defer_fn(neogit, 10)
-vim.defer_fn(neorg, 10)
-vim.defer_fn(treesitter, 10)
 local g = vim.g
 g.mapleader = " "
 g.netrw_banner = 0
@@ -116,4 +110,11 @@ g.netrw_localmkdiropt = "-p"
 g.netrw_localmovecmdopt = "-r"
 g.nord_minimal_mode = true
 vim.cmd("colorscheme nordbuddy")
-return vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "fennel" .. " " .. "set indentexpr=lisp" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "markdown" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "gitcommit" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. "hi clear Conceal | set nohls | lua wkneorg()" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
+vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "markdown" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "gitcommit" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. "hi clear Conceal | set nohls | lua wkneorg()" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
+local defer = vim.defer_fn
+defer(compe, 10)
+defer(gitsigns, 10)
+defer(lsp, 10)
+defer(neogit, 10)
+defer(neorg, 10)
+return defer(treesitter, 10)

@@ -1,25 +1,3 @@
-;; LSP
-(fn lsp []
-  (local lsp (require :lspconfig))
-  (lsp.bashls.setup {})
-  (lsp.dockerls.setup {})
-  (lsp.rnix.setup {})
-  (lsp.solargraph.setup {})
-  (lsp.sorbet.setup {})
-  (lsp.terraformls.setup {})
-  (lsp.tsserver.setup {})
-  (lsp.texlab.setup {})
-  (lsp.yamlls.setup {})
-  (lsp.gopls.setup
-    {:flags
-     {:debounce_text_changes 500}
-     :analyses
-     {:unusedparams true
-      :staticcheck true}}))
-
-(vim.defer_fn lsp 10)
-
-;; Mappings
 (local wk (require :which-key))
 (macro lua [module name]
   `(.. ":lua require'" ,module "'." ,name "()<cr>"))
@@ -27,12 +5,11 @@
   `(.. "<cmd>" (.. ,...) "<cr>"))
 (macro pcmd [prefix cmd]
   `(.. "<cmd>" ,prefix (. " ") ,cmd "<cr>"))
-(macro lsp [...]
+(macro lspcmd [...]
   `(.. "<cmd>lua vim.lsp." (.. ,...) "()<cr>"))
 (macro plug [...]
   `(.. "<Plug>" (.. ,...)))
 
-; leader
 (wk.register
   {:f {:name :find
        :b [(pcmd :Telescope :buffers) :buffers]
@@ -42,15 +19,15 @@
        :r [(pcmd :Telescope :live_grep) :grep]}
    :s {:l [(pcmd :luafile :%) :lua]
        :s [(cmd :vsplit) :split]
-       :f [(cmd "silent make | luafile lua/init.lua") :source]}
+       :f [(cmd "make | luafile lua/init.lua") :source]}
    :l {:name :lsp
-       :f [(lsp :buf.formatting) :format]
-       :a [(lsp :buf.code_action) :actions]
-       :r [(lsp :buf.rename) :rename]
-       :l [(lsp :diagnostic.show_line_diagnostics) :line]
+       :f [(lspcmd :buf.formatting) :format]
+       :a [(lspcmd :buf.code_action) :actions]
+       :r [(lspcmd :buf.rename) :rename]
+       :l [(lspcmd :diagnostic.show_line_diagnostics) :line]
        :d {:name :diagnostics
-           :n [(lsp :diagnostic.goto_next) :next]
-           :p [(lsp :diagnostic.goto_prev) :previous]}}
+           :n [(lspcmd :diagnostic.goto_next) :next]
+           :p [(lspcmd :diagnostic.goto_prev) :previous]}}
    :t {:name :tabs
        :t [(cmd :tabnew) :new]
        :n [(cmd :tabnext) :next]
@@ -75,12 +52,11 @@
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
 
-; normal
 (wk.register
   {:<c-h> [:<c-w>h :left]
    :<c-l> [:<c-w>l :right]
    :<esc> [(cmd :nohl) :nohl]
-   :H [(lsp :buf.hover) :hover]
+   :H [(lspcmd :buf.hover) :hover]
    :J [:10j :down]
    :K [:10k :up]
    :M [:J :merge]
@@ -88,11 +64,10 @@
    :S [(cmd :HopWord) :hopword]
    :s [(cmd :HopChar2) :hop]
    :g {:name :goto
-       :d [(lsp :buf.definition) :definition]
-       :r [(lsp :buf.reference) :reference]}}
+       :d [(lspcmd :buf.definition) :definition]
+       :r [(lspcmd :buf.reference) :reference]}}
   {:mode :n})
 
-; visual
 (wk.register
   {:< [:<gv :dedent]
    :> [:>gv :indent]
@@ -102,16 +77,15 @@
    :<leader>p ["\"*p" :paste]}
   {:mode :v})
 
-; neorg
-(set _G.wkneorg
-     (fn []
-       (wk.register
-         {:<cr> [(cmd "e <cfile>") :follow]
-          :<bs> [:<c-o> :back]
-          :<tab> [:za :fold]
-          :n ["/[A-z]*.norg<cr>" :next]
-          :N ["?[A-z]*.norg<cr>" :previous]}
-         {:mode :n :buffer (vim.api.nvim_get_current_buf)})))
+(fn wkneorg []
+  (wk.register
+    {:<cr> [(cmd "e <cfile>") :follow]
+     :<bs> [:<c-o> :back]
+     :<tab> [:za :fold]
+     :n ["/[A-z]*.norg<cr>" :next]
+     :N ["?[A-z]*.norg<cr>" :previous]}
+    {:mode :n :buffer (vim.api.nvim_get_current_buf)}))
+(set _G.wkneorg wkneorg)
 
 (fn rtc [s]
   (vim.api.nvim_replace_termcodes s true true true))
@@ -129,20 +103,33 @@
 (fn cr []
   ((. vim.fn :compe#confirm) "\n"))
 
-; insert
-(wk.register
-  {:<tab> {1 tab 2 :next :expr true}
-   :<s-tab> {1 s-tab 2 :previous :expr true}
-   :<cr> {1 cr 2 :cr :expr true}}
-  {:mode :i})
+(wk.register {:<tab> {1 tab 2 :next :expr true}
+              :<s-tab> {1 s-tab 2 :previous :expr true}
+              :<cr> {1 cr 2 :cr :expr true}}
+             {:mode :i})
 
-(wk.setup
-  {:window 
-    {:margin [1 0 -1 0]
-     :padding [2 2 2 2]}
-   :plugins {:spelling {:enabled true}}})
+(wk.setup {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
+           :plugins {:spelling {:enabled true}}})
 
-;; Options
+(fn lsp []
+  (local lsp (require :lspconfig))
+  (lsp.bashls.setup {})
+  (lsp.dockerls.setup {})
+  (lsp.rnix.setup {})
+  (lsp.solargraph.setup {})
+  (lsp.sorbet.setup {})
+  (lsp.terraformls.setup {})
+  (lsp.tsserver.setup {})
+  (lsp.texlab.setup {})
+  (lsp.yamlls.setup {})
+  (lsp.gopls.setup
+    {:flags
+     {:debounce_text_changes 500}
+     :analyses
+     {:unusedparams true
+      :staticcheck true}}))
+
+
 (local o vim.o)
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
@@ -180,12 +167,10 @@
 (set o.wrap false)
 (set o.writebackup false)
 
-;; Plugins
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
   ((. gitsigns :setup) {:keymaps {}}))
 
-; neorg
 (fn neorg []
   (local neorg (require :neorg))
   ((. neorg :setup)
@@ -200,7 +185,6 @@
        :autodetect true
        :autochdir true}}}}))
 
-; compe
 (fn compe []
   (local compe (require :compe))
   ((. compe :setup)
@@ -216,23 +200,20 @@
     :max_kind_width 100
     :max_menu_width 100
     :documentation true
-    :source
-    {:path {:kind " "}
-     :buffer {:kind " "}
-     :neorg {:kind " "}
-     :vsnip {:kind " "}
-     :nvim_lsp {:kind " "}}}))
+    :source {:path {:kind " "}
+             :buffer {:kind " "}
+             :neorg {:kind " "}
+             :vsnip {:kind " "}
+             :nvim_lsp {:kind " "}}}))
 
 (fn neogit []
   (local neogit (require :neogit))
   ((. neogit :setup)
-    {:disable_signs true
-     :signs
-     {:section ["➜" "↓"]
-      :item ["➜" "↓"]
-      :hunk {"" ""}}}))
+   {:disable_signs true
+    :signs {:section ["➜" "↓"]
+            :item ["➜" "↓"]
+            :hunk {"" ""}}}))
 
-; treesitter
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
   (local parser-configs ((. parsers :get_parser_configs)))
@@ -244,18 +225,28 @@
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup)
    {:ensure_installed
-    [:bash :clojure :commonlisp :dockerfile :fennel :go :gomod :graphql :hcl
-     :html :javascript :latex :lua :nix :norg :ruby :rust :yaml :zig]
+    [:bash
+     :clojure
+     :commonlisp
+     :dockerfile
+     :fennel
+     :go
+     :gomod
+     :graphql
+     :hcl
+     :html
+     :javascript
+     :latex
+     :lua
+     :nix
+     :norg
+     :ruby
+     :rust
+     :yaml
+     :zig]
     :highlight {:enable true}
     :indent {:enable true}}))
 
-(vim.defer_fn compe 10)
-(vim.defer_fn gitsigns 10)
-(vim.defer_fn neogit 10)
-(vim.defer_fn neorg 10)
-(vim.defer_fn treesitter 10)
-
-;; Variables
 (local g vim.g)
 (set g.mapleader " ")
 (set g.netrw_banner 0)
@@ -264,22 +255,26 @@
 (set g.netrw_localmovecmdopt "-r")
 (set g.nord_minimal_mode true)
 
-;; Colorscheme
 (vim.cmd "colorscheme nordbuddy")
 
-;; Autocmds
 (macro autocmd [enter ft command]
   `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
 
 (vim.cmd
-  (..
-    (autocmd :BufEnter :*.graphql "set ft=graphql")
-    (autocmd :BufEnter :*.lock "set ft=json")
-    (autocmd :BufEnter :*.nix "set ft=nix")
-    (autocmd :FileType :fennel "set indentexpr=lisp")
-    (autocmd :FileType :markdown "setlocal spell")
-    (autocmd :FileType :gitcommit "setlocal spell")
-    (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
-    (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
-    (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
-    (autocmd :TermOpen :* "startinsert")))
+  (.. (autocmd :BufEnter :*.graphql "set ft=graphql")
+      (autocmd :BufEnter :*.lock "set ft=json")
+      (autocmd :BufEnter :*.nix "set ft=nix")
+      (autocmd :FileType :markdown "setlocal spell")
+      (autocmd :FileType :gitcommit "setlocal spell")
+      (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
+      (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
+      (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
+      (autocmd :TermOpen :* "startinsert")))
+
+(local defer vim.defer_fn)
+(defer compe 10)
+(defer gitsigns 10)
+(defer lsp 10)
+(defer neogit 10)
+(defer neorg 10)
+(defer treesitter 10)
