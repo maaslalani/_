@@ -17,8 +17,10 @@
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
-   :s {:l [(pcmd :luafile :%) :lua]
-       :s [(cmd :vsplit) :split]
+   :s {:name :misc
+       :l [(pcmd :luafile :%) :lua]
+       :v [(cmd :vsplit) :split]
+       :t [(cmd "10split | terminal") :terminal]
        :f [(cmd "make | luafile lua/init.lua") :source]}
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
@@ -259,7 +261,7 @@
       (autocmd :FileType :gitcommit "setlocal spell")
       (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
       (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
-      (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no")
+      (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
       (autocmd :TermOpen :* "startinsert")))
 
 (local defer vim.defer_fn)
