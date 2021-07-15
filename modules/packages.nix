@@ -16,6 +16,7 @@
     entr
     exa
     fd
+    fennel
     ffmpeg
     git
     gnupg

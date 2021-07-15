@@ -14,6 +14,7 @@
       with pkgs.unstable.vimPlugins; [
         fennel-vim
         hop-nvim
+        nginx-vim
         nvim-lspconfig
         popup-nvim
         vim-surround
