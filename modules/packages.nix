@@ -39,7 +39,6 @@
     skhd
     sops
     spotify-tui
-    spotifyd
     terraform
     tree
     yabai
