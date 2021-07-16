@@ -13,7 +13,7 @@
 (wk.register
   {:f {:name :find
        :b [(pcmd :Telescope :buffers) :buffers]
-       :e [(cmd :Explore) :explore]
+       :e [(cmd :Dirvish) :explore]
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
@@ -242,11 +242,9 @@
 
 (local g vim.g)
 (set g.mapleader " ")
-(set g.netrw_banner 0)
-(set g.netrw_localcopycmdopt "-r")
-(set g.netrw_localmkdiropt "-p")
-(set g.netrw_localmovecmdopt "-r")
 (set g.nord_minimal_mode true)
+(set g.loaded_netrw 1)
+(set g.netrw_loaded_netrwPlugin 1)
 
 (vim.cmd "colorscheme nordbuddy")
 

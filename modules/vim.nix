@@ -17,6 +17,7 @@
         nginx-vim
         nvim-lspconfig
         popup-nvim
+        vim-dirvish
         vim-surround
       ]
     ) ++ (
