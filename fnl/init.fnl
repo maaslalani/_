@@ -257,6 +257,7 @@
       (autocmd :BufEnter :*.nix "set ft=nix")
       (autocmd :FileType :markdown "setlocal spell")
       (autocmd :FileType :gitcommit "setlocal spell")
+      (autocmd :FileType :dirvish "setlocal nonu")
       (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
       (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
       (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
