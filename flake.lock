@@ -162,11 +162,11 @@
     "nordbuddy-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1626120719,
-        "narHash": "sha256-6xS+E6M4M24Pv55QeRBgnE9NzwTVaU9vxlJBIdLi4HE=",
+        "lastModified": 1626465847,
+        "narHash": "sha256-7z8DRj4mJwHLIYSOHE/P8Ze8fVQma/g3bQlCxDhPicc=",
         "owner": "maaslalani",
         "repo": "nordbuddy",
-        "rev": "3a5002ee52c034d98e49e680392a94c0a53295e1",
+        "rev": "8f9cc9b707c4024bebc2404d8cb97becb0444ea4",
         "type": "github"
       },
       "original": {

@@ -29,18 +29,24 @@ local function cr()
 end
 wk.register({["<cr>"] = {cr, "cr", expr = true}, ["<s-tab>"] = {s_tab, "previous", expr = true}, ["<tab>"] = {tab, "next", expr = true}}, {mode = "i"})
 wk.setup({plugins = {spelling = {enabled = true}}, window = {margin = {1, 0, -1, 0}, padding = {2, 2, 2, 2}}})
+local border = {{"\226\148\140", "FloatBorder"}, {"\226\148\128", "FloatBorder"}, {"\226\148\144", "FloatBorder"}, {"\226\148\130", "FloatBorder"}, {"\226\148\152", "FloatBorder"}, {"\226\148\128", "FloatBorder"}, {"\226\148\148", "FloatBorder"}, {"\226\148\130", "FloatBorder"}}
+local function on_attach(client, bufnr)
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+  return nil
+end
 local function lsp()
   local lsp0 = require("lspconfig")
-  lsp0.bashls.setup({})
-  lsp0.dockerls.setup({})
-  lsp0.rnix.setup({})
-  lsp0.solargraph.setup({})
-  lsp0.sorbet.setup({})
-  lsp0.terraformls.setup({})
-  lsp0.tsserver.setup({})
-  lsp0.texlab.setup({})
-  lsp0.yamlls.setup({})
-  return lsp0.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}})
+  lsp0.bashls.setup({on_attach = on_attach})
+  lsp0.dockerls.setup({on_attach = on_attach})
+  lsp0.rnix.setup({on_attach = on_attach})
+  lsp0.solargraph.setup({on_attach = on_attach})
+  lsp0.sorbet.setup({on_attach = on_attach})
+  lsp0.terraformls.setup({on_attach = on_attach})
+  lsp0.tsserver.setup({on_attach = on_attach})
+  lsp0.texlab.setup({on_attach = on_attach})
+  lsp0.yamlls.setup({on_attach = on_attach})
+  return lsp0.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}, on_attach = on_attach})
 end
 local o = vim.o
 o.autowrite = true

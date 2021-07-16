@@ -112,23 +112,40 @@
 (wk.setup {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
            :plugins {:spelling {:enabled true}}})
 
+(local border
+  [[:┌ :FloatBorder]
+   [:─ :FloatBorder]
+   [:┐ :FloatBorder]
+   [:│ :FloatBorder]
+   [:┘ :FloatBorder]
+   [:─ :FloatBorder]
+   [:└ :FloatBorder]
+   [:│ :FloatBorder]])	
+
+(fn on_attach [client bufnr]
+  (tset vim.lsp.handlers :textDocument/hover
+        (vim.lsp.with vim.lsp.handlers.hover {: border}))
+  (tset vim.lsp.handlers :textDocument/signatureHelp
+        (vim.lsp.with vim.lsp.handlers.hover {: border})))	
+
 (fn lsp []
   (local lsp (require :lspconfig))
-  (lsp.bashls.setup {})
-  (lsp.dockerls.setup {})
-  (lsp.rnix.setup {})
-  (lsp.solargraph.setup {})
-  (lsp.sorbet.setup {})
-  (lsp.terraformls.setup {})
-  (lsp.tsserver.setup {})
-  (lsp.texlab.setup {})
-  (lsp.yamlls.setup {})
+  (lsp.bashls.setup {:on_attach on_attach})
+  (lsp.dockerls.setup {:on_attach on_attach})
+  (lsp.rnix.setup {:on_attach on_attach})
+  (lsp.solargraph.setup {:on_attach on_attach})
+  (lsp.sorbet.setup {:on_attach on_attach})
+  (lsp.terraformls.setup {:on_attach on_attach})
+  (lsp.tsserver.setup {:on_attach on_attach})
+  (lsp.texlab.setup {:on_attach on_attach})
+  (lsp.yamlls.setup {:on_attach on_attach})
   (lsp.gopls.setup
     {:flags
      {:debounce_text_changes 500}
      :analyses
      {:unusedparams true
-      :staticcheck true}}))
+      :staticcheck true}
+     :on_attach on_attach}))
 
 
 (local o vim.o)
