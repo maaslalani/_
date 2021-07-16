@@ -71,11 +71,13 @@
 
 (wk.register
   {:< [:<gv :dedent]
-   :> [:>gv :indent]
    :<c-l> [:<nop> :nope]
    :<leader>so [":sort <bar>w<bar>e<cr>" :sort]
    :<leader>y ["\"*y" :copy]
-   :<leader>p ["\"*p" :paste]}
+   :> [:>gv :indent]
+   :<leader>p ["\"*p" :paste]
+   :J [:10j :down]
+   :K [:10k :up]}
   {:mode :v})
 
 (fn wkneorg []
@@ -224,6 +226,43 @@
              :vsnip {:kind " "}
              :nvim_lsp {:kind " "}}}))
 
+(fn telescope []
+  (local telescope (require :telescope))
+  (local sorters (require :telescope.sorters))
+  (local previewers (require :telescope.previewers))
+  ((. telescope :setup)
+   {:defaults
+    {:border {}
+     :borderchars [:─ :│ :─ :│  :╭ :╮ :╯ :╰]
+     :buffer_previewer_maker (. previewers :buffer_previewer_maker)
+     :color_devicons true
+     :entry_prefix "  "
+     :file_ignore_patterns {}
+     :file_previewer (. (. previewers :vim_buffer_cat) :new)
+     :file_sorter (. sorters :get_fuzzy_file)
+     :generic_sorter (. sorters :get_generic_fuzzy_sorter)
+     :grep_previewer (. (. previewers :vim_buffer_vimgrep) :new)
+     :initial_mode :insert
+     :layout_config {:horizontal {:mirror false} :vertical {:mirror false}}
+     :layout_strategy :horizontal
+     :path_display {}
+     :prompt_prefix "❯ "
+     :qflist_previewer (. (. previewers :vim_buffer_qflist) :new)
+     :selection_caret "→ "
+     :selection_strategy :reset
+     :set_env {:COLORTERM :truecolor}
+     :sorting_strategy :descending
+     :use_less true
+     :vimgrep_arguments
+     [:rg
+      :--color=never
+      :--no-heading
+      :--with-filename
+      :--line-number
+      :--column
+      :--smart-case]
+     :winblend 0 }}))
+
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
   (local parser-configs ((. parsers :get_parser_configs)))
@@ -286,3 +325,4 @@
 (defer lsp 10)
 (defer neorg 10)
 (defer treesitter 10)
+(defer telescope 10)

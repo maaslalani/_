@@ -11,8 +11,8 @@
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
-  inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
-  inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
+  inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim/async_jobs_v2"; flake = false; };
+  inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim/async_v2"; flake = false; };
   inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
   outputs = { self, ... }@inputs: {
