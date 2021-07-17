@@ -22,6 +22,7 @@
       ]
     ) ++ (
       with pkgs; [
+        awkward-nvim
         gitsigns-nvim
         neorg
         nordbuddy-nvim

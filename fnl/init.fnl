@@ -21,6 +21,7 @@
        :l [(pcmd :luafile :%) :lua]
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
+       :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]
        :f [(cmd "make | luafile lua/init.lua") :source]}
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
@@ -187,6 +188,10 @@
 (set o.wrap false)
 (set o.writebackup false)
 
+(fn awkward []
+  (local awkward (require :awkward))
+  ((. awkward :setup) {}))
+
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
   ((. gitsigns :setup) {:keymaps {}}))
@@ -320,6 +325,7 @@
       (autocmd :TermOpen :* "startinsert")))
 
 (local defer vim.defer_fn)
+(defer awkward 10)
 (defer compe 10)
 (defer gitsigns 10)
 (defer lsp 10)

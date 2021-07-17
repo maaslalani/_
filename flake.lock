@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "awkward-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626494821,
+        "narHash": "sha256-NgBlaeJiKkfbmR94JS79SZ9jrmvYAeA6LGmHw3h5hSk=",
+        "owner": "maaslalani",
+        "repo": "awkward.nvim",
+        "rev": "f6da9cac6f169cf1ebbe2e89cd8866058150ba2f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maaslalani",
+        "repo": "awkward.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -226,6 +242,7 @@
     },
     "root": {
       "inputs": {
+        "awkward-nvim": "awkward-nvim",
         "gitsigns-nvim": "gitsigns-nvim",
         "home-manager": "home-manager",
         "neorg": "neorg",

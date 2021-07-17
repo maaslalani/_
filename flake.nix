@@ -6,6 +6,7 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   /* Neovim Plugins */
+  inputs.awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
@@ -20,6 +21,7 @@
       overlays = [
         (
           self: super: with self.vimUtils; {
+            awkward-nvim = buildVimPluginFrom2Nix { name = "awkward"; src = inputs.awkward-nvim; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
