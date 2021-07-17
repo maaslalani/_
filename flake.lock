@@ -3,11 +3,11 @@
     "awkward-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1626494821,
-        "narHash": "sha256-NgBlaeJiKkfbmR94JS79SZ9jrmvYAeA6LGmHw3h5hSk=",
+        "lastModified": 1626496100,
+        "narHash": "sha256-Zq27NUqrHeYbCTvLaKR7JPjqpIeg0sg8SqP/Z1PvnkU=",
         "owner": "maaslalani",
         "repo": "awkward.nvim",
-        "rev": "f6da9cac6f169cf1ebbe2e89cd8866058150ba2f",
+        "rev": "e5c210acff6582c6bbd301f568e19903c9d46fe8",
         "type": "github"
       },
       "original": {
