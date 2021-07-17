@@ -18,6 +18,7 @@
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
    :s {:name :misc
+       :a [(cmd :Awkward) :awkward]
        :l [(pcmd :luafile :%) :lua]
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
