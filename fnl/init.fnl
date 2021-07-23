@@ -151,7 +151,6 @@
       :staticcheck true}
      :on_attach on_attach}))
 
-
 (local o vim.o)
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
@@ -317,6 +316,8 @@
   (.. (autocmd :BufEnter :*.graphql "set ft=graphql")
       (autocmd :BufEnter :*.lock "set ft=json")
       (autocmd :BufEnter :*.nix "set ft=nix")
+      (autocmd :BufEnter :*.awkward "Awkward")
+      (autocmd :BufWrite :*.awkward "Awkward")
       (autocmd :FileType :markdown "setlocal spell")
       (autocmd :FileType :gitcommit "setlocal spell")
       (autocmd :FileType :dirvish "setlocal nonu")

@@ -146,7 +146,7 @@ in
         GOBIN = "${GOPATH}/bin";
         GOPATH = "${config.xdg.configHome}/go";
         KEYTIMEOUT = 1;
-        KUBECONFIG = pathJoin [ "${config.xdg.configHome}/kube/config" "${config.xdg.configHome}/kube/config.shopify.cloudplatform" ];
+        KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
         MANPAGER = "nvim +Man!";
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];

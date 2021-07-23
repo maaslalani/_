@@ -49,6 +49,7 @@
       dockerfile-language-server-nodejs
       gopls
       rnix-lsp
+      serve
       solargraph
       terraform-ls
       texlab
