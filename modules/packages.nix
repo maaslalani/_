@@ -36,12 +36,10 @@
     ripgrep
     rustup
     sd
-    skhd
     sops
     spotify-tui
     terraform
     tree
-    yabai
     yarn
   ] ++ (
     with pkgs; with pkgs.nodePackages; [

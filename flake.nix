@@ -77,11 +77,9 @@
             ./modules/packages.nix
             ./modules/pass.nix
             ./modules/shell.nix
-            ./modules/skhd.nix
             ./modules/spotify.nix
             ./modules/tmux.nix
             ./modules/vim.nix
-            ./modules/yabai.nix
           ];
         };
       };
