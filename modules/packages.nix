@@ -35,6 +35,7 @@
     pandoc
     ripgrep
     rustup
+    hammerspoon
     sd
     sops
     spotify-tui

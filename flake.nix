@@ -16,6 +16,9 @@
   inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim/async_v2"; flake = false; };
   inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
+  /* MacOS apps */
+  inputs.hammerspoon = { url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip"; flake = false; };
+
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
       overlays = [
@@ -30,6 +33,16 @@
             plenary-nvim = buildVimPluginFrom2Nix { name = "plenary-nvim"; src = inputs.plenary-nvim; };
             telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src = inputs.telescope-nvim; };
             which-key-nvim = buildVimPluginFrom2Nix { name = "which-key-nvim"; src = inputs.which-key-nvim; };
+
+            hammerspoon = self.pkgs.stdenv.mkDerivation {
+              pname = "hammerspoon";
+              version = "0.9.90";
+              src = inputs.hammerspoon;
+              installPhase = ''
+                mkdir -p $out/Applications/Hammerspoon.app
+                cp -r $src/Contents $out/Applications/Hammerspoon.app/
+              '';
+            };
           }
         )
         inputs.neovim-nightly-overlay.overlay
@@ -74,6 +87,7 @@
             ./modules/fzf.nix
             ./modules/gh.nix
             ./modules/git.nix
+            ./modules/hammerspoon.nix
             ./modules/packages.nix
             ./modules/pass.nix
             ./modules/shell.nix
