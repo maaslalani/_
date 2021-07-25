@@ -11,6 +11,7 @@ hs.alert.defaultStyle.textSize = 18
 
 hs.alert.show('Hammerspoon Loaded', 1)
 
+hs.grid.setGrid('6x4')
 hs.grid.ui.cellColor = {0,0,0,0.25}
 hs.grid.ui.cellStrokeColor = {0.2,0.2,0.2}
 hs.grid.ui.cellStrokeWidth = 5
@@ -68,34 +69,40 @@ local menu = {
       hs.grid.show()
     end
   },
+  f = {
+    name = 'Focus',
+    action = function()
+      hs.hints.windowHints()
+    end,
+  },
   w = {
     name = 'Window',
     h = {
       name = 'Left',
       repeatable = true,
       action = function()
-        hs.alert('H')
+        hs.window:moveOneScreenWest()
       end
     },
     j = {
       name = 'Down',
       repeatable = true,
       action = function()
-        hs.alert('J')
+        hs.window:moveOneScreenSouth()
       end
     },
     k = {
       name = 'Up',
       repeatable = true,
       action = function()
-        hs.alert('K')
+        hs.window:moveOneScreenNorth()
       end
     },
     l = {
       name = 'Right',
       repeatable = true,
       action = function()
-        hs.alert('L')
+        hs.window:moveOneScreenEast()
       end
     },
   }

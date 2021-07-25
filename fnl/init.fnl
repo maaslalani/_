@@ -50,7 +50,7 @@
            :n [(pcmd :Gitsigns :next_hunk) :next]
            :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
    :q [(cmd :q) :quit]
-   :w [(cmd :w) :save]
+   :w [(cmd :up) :save]
    :p ["\"*p<cr>" :paste]
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
