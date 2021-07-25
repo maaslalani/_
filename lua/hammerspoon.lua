@@ -11,6 +11,7 @@ hs.alert.defaultStyle.textSize = 18
 
 hs.alert.show('Hammerspoon Loaded', 1)
 
+hs.window.animationDuration = 0
 hs.grid.setGrid('6x4')
 hs.grid.ui.cellColor = {0,0,0,0.25}
 hs.grid.ui.cellStrokeColor = {0.2,0.2,0.2}
