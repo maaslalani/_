@@ -76,6 +76,12 @@ local menu = {
       hs.hints.windowHints()
     end,
   },
+  s = {
+    name = 'Search',
+    action = function()
+      spoon.HSearch.toggleShow()
+    end,
+  },
   w = {
     name = 'Window',
     h = {
@@ -146,3 +152,4 @@ end
 setup(start, menu)
 
 hs.loadSpoon('SpoonInstall')
+spoon.SpoonInstall:andUse('HSearch')
