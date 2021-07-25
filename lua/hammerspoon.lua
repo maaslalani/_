@@ -1,5 +1,3 @@
-hs.hotkey.bind({'cmd', 'ctrl'}, 'R', hs.reload)
-
 hs.alert.defaultStyle.fillColor = { white = 0, alpha = 0.80 }
 hs.alert.defaultStyle.padding = 22
 hs.alert.defaultStyle.radius = 2
@@ -75,6 +73,10 @@ local menu = {
     action = function()
       hs.hints.windowHints()
     end,
+  },
+  r = {
+    name = 'Reload',
+    action = hs.reload,
   },
   s = {
     name = 'Search',
