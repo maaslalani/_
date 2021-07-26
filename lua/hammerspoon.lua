@@ -9,6 +9,9 @@ hs.alert.defaultStyle.textSize = 18
 
 hs.alert.show('Hammerspoon Loaded', 1)
 
+hs.loadSpoon('SpoonInstall')
+spoon.SpoonInstall:andUse('HSearch')
+
 hs.window.animationDuration = 0
 hs.grid.setGrid('6x4')
 hs.grid.ui.cellColor = {0,0,0,0.25}
@@ -23,98 +26,35 @@ hs.grid.ui.selectedColor = {0.6,0.6,0.6,0.2}
 hs.grid.ui.textColor = {1,1,1}
 hs.grid.ui.textSize = 150
 
+function launchOrFocusCallback(application)
+  return function()
+    hs.application.launchOrFocus(application)
+  end
+end
+
 local menu = {
+  f = { name = 'Focus', action = hs.hints.windowHints },
+  g = { name = 'Grid', action = hs.grid.show },
+  r = { name = 'Reload', action = hs.reload },
+  s = { name = 'Search', action = spoon.HSearch.toggleShow },
   a = {
     name = 'Applications',
-    a = {
-      name = 'Alacritty',
-      action = function()
-        hs.application.launchOrFocus('Alacritty')
-        hs.alert('Open Alacritty')
-      end
-    },
-    b = {
-      name = 'Brave',
-      action = function()
-        hs.application.launchOrFocus('Brave Browser')
-        hs.alert('Open Brave Browser')
-      end
-    },
-    c = {
-      name = 'Calendar',
-      action = function()
-        hs.application.launchOrFocus('Calendar')
-        hs.alert('Open Calendar')
-      end
-    },
-    p = {
-      name = '1Password',
-      action = function()
-        hs.application.launchOrFocus('1Password 7')
-        hs.alert('Open 1Password')
-      end
-    },
-    s = {
-      name = 'Slack',
-      action = function()
-        hs.application.launchOrFocus('Slack')
-        hs.alert('Open Slack')
-      end
-    },
-  },
-  g = {
-    name = 'Grid',
-    action = function()
-      hs.grid.show()
-    end
-  },
-  f = {
-    name = 'Focus',
-    action = function()
-      hs.hints.windowHints()
-    end,
-  },
-  r = {
-    name = 'Reload',
-    action = hs.reload,
-  },
-  s = {
-    name = 'Search',
-    action = function()
-      spoon.HSearch.toggleShow()
-    end,
+    a = { name = 'Alacritty', action = launchOrFocusCallback('Alacritty') },
+    b = { name = 'Brave', action = launchOrFocusCallback('Brave Browser') },
+    c = { name = 'Calendar', action = launchOrFocusCallback('Calendar') },
+    p = { name = '1Password', action = launchOrFocusCallback('1Password 7') },
+    r = { name = 'Reminders', action = launchOrFocusCallback('Reminders') },
+    s = { name = 'Slack', action = launchOrFocusCallback('Slack') },
+    t = { name = 'Tuple', action = launchOrFocusCallback('Tuple') },
+    n = { name = 'Notes', action = launchOrFocusCallback('Notes') },
   },
   w = {
     name = 'Window',
-    h = {
-      name = 'Left',
-      repeatable = true,
-      action = function()
-        hs.window:moveOneScreenWest()
-      end
-    },
-    j = {
-      name = 'Down',
-      repeatable = true,
-      action = function()
-        hs.window:moveOneScreenSouth()
-      end
-    },
-    k = {
-      name = 'Up',
-      repeatable = true,
-      action = function()
-        hs.window:moveOneScreenNorth()
-      end
-    },
-    l = {
-      name = 'Right',
-      repeatable = true,
-      action = function()
-        hs.window:moveOneScreenEast()
-      end
-    },
-  }
+    h = { name = 'Left', repeatable = true, action = hs.window.moveOneScreenWest },
+    j = { name = 'Down', repeatable = true, action = hs.window.moveOneScreenSouth },
+    k = { name = 'Up', repeatable = true, action = hs.window.moveOneScreenNorth },
+    l = { name = 'Right', repeatable = true, action = hs.window.moveOneScreenEast },
+  },
 }
 
 start = hs.hotkey.modal.new({'cmd'}, 'space')
@@ -133,9 +73,7 @@ function setup(modal, menu)
       else
         local submenu = hs.hotkey.modal.new()
         setup(submenu, v)
-        action = function()
-          submenu:enter()
-        end
+        action = submenu.enter
       end
       modal:bind({}, k, function()
         if v.repeatable ~= true then
@@ -152,6 +90,3 @@ function setup(modal, menu)
 end
 
 setup(start, menu)
-
-hs.loadSpoon('SpoonInstall')
-spoon.SpoonInstall:andUse('HSearch')
