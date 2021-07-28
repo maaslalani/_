@@ -1,4 +1,54 @@
 -- THIS FILE WAS AUTO-GENERATED (source fnl/init.fnl)
+local g = vim.g
+g.mapleader = " "
+g.nord_minimal_mode = true
+g.loaded_netrw = 1
+g.netrw_loaded_netrwPlugin = 1
+g.loaded_2html_plugin = false
+g.loaded_gzip = false
+g.loaded_man = false
+g.loaded_matchit = false
+g.loaded_netrwPlugin = false
+g.loaded_remote_plugins = false
+g.loaded_tarPlugin = false
+g.loaded_zipPlugin = false
+local o = vim.o
+o.autowrite = true
+o.backspace = "indent,eol,start"
+o.backup = false
+o.completeopt = "menuone,noinsert,noselect"
+o.cursorline = true
+o.diffopt = "filler,internal,algorithm:histogram,indent-heuristic"
+o.expandtab = true
+o.hidden = true
+o.ignorecase = true
+o.laststatus = 2
+o.lazyredraw = true
+o.number = true
+o.omnifunc = "v:lua.vim.lsp.omnifunc"
+o.ruler = true
+o.scrolloff = 1000
+o.shadafile = "NONE"
+o.shiftwidth = 2
+o.showmode = false
+o.sidescrolloff = 1000
+o.signcolumn = "yes"
+o.smartcase = true
+o.softtabstop = 2
+o.splitbelow = true
+o.splitright = true
+o.swapfile = false
+o.synmaxcol = 300
+o.syntax = "off"
+o.tabstop = 2
+o.termguicolors = true
+o.timeoutlen = 350
+o.undofile = true
+o.updatetime = 300
+o.visualbell = true
+o.wildmode = "longest:full,full"
+o.wrap = false
+o.writebackup = false
 local wk = require("which-key")
 wk.register({c = {n = {("<cmd>" .. "cnext" .. "<cr>"), "next"}, name = "quickfix", o = {("<cmd>" .. "copen" .. "<cr>"), "open"}, p = {("<cmd>" .. "cprev" .. "<cr>"), "previous"}, q = {("<cmd>" .. "cclose" .. "<cr>"), "close"}}, f = {b = {("<cmd>" .. "Telescope" .. " " .. "buffers" .. "<cr>"), "buffers"}, e = {("<cmd>" .. "Dirvish" .. "<cr>"), "explore"}, f = {("<cmd>" .. "Telescope" .. " " .. "find_files" .. "<cr>"), "file"}, n = {("<cmd>" .. "enew" .. "<cr>"), "new"}, name = "find", r = {("<cmd>" .. "Telescope" .. " " .. "live_grep" .. "<cr>"), "grep"}}, g = {b = {("<cmd>" .. "Gitsigns" .. " " .. "blame_line" .. "<cr>"), "blame"}, h = {n = {("<cmd>" .. "Gitsigns" .. " " .. "next_hunk" .. "<cr>"), "next"}, name = "hunk", p = {("<cmd>" .. "Gitsigns" .. " " .. "prev_hunk" .. "<cr>"), "previous"}, r = {("<cmd>" .. "Gitsigns" .. " " .. "reset_hunk" .. "<cr>"), "reset"}, s = {("<cmd>" .. "Gitsigns" .. " " .. "stage_hunk" .. "<cr>"), "stage"}, u = {("<cmd>" .. "Gitsigns" .. " " .. "undo_stage_hunk" .. "<cr>"), "undo"}}, name = "git"}, l = {a = {("<cmd>lua vim.lsp." .. "buf.code_action" .. "()<cr>"), "actions"}, d = {n = {("<cmd>lua vim.lsp." .. "diagnostic.goto_next" .. "()<cr>"), "next"}, name = "diagnostics", p = {("<cmd>lua vim.lsp." .. "diagnostic.goto_prev" .. "()<cr>"), "previous"}}, f = {("<cmd>lua vim.lsp." .. "buf.formatting" .. "()<cr>"), "format"}, l = {("<cmd>lua vim.lsp." .. "diagnostic.show_line_diagnostics" .. "()<cr>"), "line"}, name = "lsp", r = {("<cmd>lua vim.lsp." .. "buf.rename" .. "()<cr>"), "rename"}}, p = {"\"*p<cr>", "paste"}, q = {("<cmd>" .. "q" .. "<cr>"), "quit"}, s = {a = {("<cmd>" .. "Awkward" .. "<cr>"), "awkward"}, f = {("<cmd>" .. "make | luafile lua/init.lua" .. "<cr>"), "source"}, l = {("<cmd>" .. "luafile" .. " " .. "%" .. "<cr>"), "lua"}, name = "misc", r = {("<cmd>" .. "lua require'plenary.reload'.reload_module('awkward')" .. "<cr>"), "reload"}, t = {("<cmd>" .. "10split | terminal" .. "<cr>"), "terminal"}, v = {("<cmd>" .. "vsplit" .. "<cr>"), "split"}}, t = {n = {("<cmd>" .. "tabnext" .. "<cr>"), "next"}, name = "tabs", p = {("<cmd>" .. "tabprevious" .. "<cr>"), "previous"}, t = {("<cmd>" .. "tabnew" .. "<cr>"), "new"}}, w = {("<cmd>" .. "up" .. "<cr>"), "save"}, y = {"\"*y<cr>", "copy"}}, {mode = "n", prefix = "<leader>"})
 wk.register({H = {("<cmd>lua vim.lsp." .. "buf.hover" .. "()<cr>"), "hover"}, J = {"10j", "down"}, K = {"10k", "up"}, M = {"J", "merge"}, Q = {"<nop>", "nope"}, S = {("<cmd>" .. "HopWord" .. "<cr>"), "hopword"}, ["<c-h>"] = {"<c-w>h", "left"}, ["<c-l>"] = {"<c-w>l", "right"}, ["<esc>"] = {("<cmd>" .. "nohl" .. "<cr>"), "nohl"}, g = {d = {("<cmd>lua vim.lsp." .. "buf.definition" .. "()<cr>"), "definition"}, name = "goto", r = {("<cmd>lua vim.lsp." .. "buf.reference" .. "()<cr>"), "reference"}}, s = {("<cmd>" .. "HopChar2" .. "<cr>"), "hop"}}, {mode = "n"})
@@ -48,42 +98,6 @@ local function lsp()
   lsp0.yamlls.setup({on_attach = on_attach})
   return lsp0.gopls.setup({analyses = {staticcheck = true, unusedparams = true}, flags = {debounce_text_changes = 500}, on_attach = on_attach})
 end
-local o = vim.o
-o.autowrite = true
-o.backspace = "indent,eol,start"
-o.backup = false
-o.completeopt = "menuone,noinsert,noselect"
-o.cursorline = true
-o.diffopt = "filler,internal,algorithm:histogram,indent-heuristic"
-o.expandtab = true
-o.hidden = true
-o.ignorecase = true
-o.laststatus = 2
-o.lazyredraw = true
-o.number = true
-o.omnifunc = "v:lua.vim.lsp.omnifunc"
-o.ruler = true
-o.scrolloff = 1000
-o.shiftwidth = 2
-o.showmode = false
-o.sidescrolloff = 1000
-o.signcolumn = "yes"
-o.smartcase = true
-o.softtabstop = 2
-o.splitbelow = true
-o.splitright = true
-o.swapfile = false
-o.synmaxcol = 300
-o.syntax = "off"
-o.tabstop = 2
-o.termguicolors = true
-o.timeoutlen = 350
-o.undofile = true
-o.updatetime = 300
-o.visualbell = true
-o.wildmode = "longest:full,full"
-o.wrap = false
-o.writebackup = false
 local function awkward()
   local awkward0 = require("awkward")
   return (awkward0).setup({})
@@ -113,11 +127,6 @@ local function treesitter()
   local treesitter0 = require("nvim-treesitter.configs")
   return (treesitter0).setup({ensure_installed = {"bash", "clojure", "commonlisp", "dockerfile", "fennel", "go", "gomod", "graphql", "hcl", "html", "javascript", "latex", "lua", "nix", "norg", "ruby", "rust", "yaml", "zig"}, highlight = {enable = true}, indent = {enable = true}})
 end
-local g = vim.g
-g.mapleader = " "
-g.nord_minimal_mode = true
-g.loaded_netrw = 1
-g.netrw_loaded_netrwPlugin = 1
 vim.cmd("colorscheme nordbuddy")
 vim.cmd((("autocmd " .. "BufEnter" .. " " .. "*.graphql" .. " " .. "set ft=graphql" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.lock" .. " " .. "set ft=json" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.nix" .. " " .. "set ft=nix" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.awkward" .. " " .. "Awkward" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.awkward" .. " " .. "Awkward" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "markdown" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "gitcommit" .. " " .. "setlocal spell" .. "\n") .. ("autocmd " .. "FileType" .. " " .. "dirvish" .. " " .. "setlocal nonu" .. "\n") .. ("autocmd " .. "BufEnter" .. " " .. "*.norg" .. " " .. "hi clear Conceal | set nohls | lua wkneorg()" .. "\n") .. ("autocmd " .. "BufWrite" .. " " .. "*.go" .. " " .. "lua vim.lsp.buf.formatting()" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "setlocal nonumber nocursorline signcolumn=no laststatus=0" .. "\n") .. ("autocmd " .. "TermOpen" .. " " .. "*" .. " " .. "startinsert" .. "\n")))
 local defer = vim.defer_fn
