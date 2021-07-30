@@ -20,7 +20,7 @@
   inputs.hammerspoon = { url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip"; flake = false; };
 
   /* Fennel */
-  inputs.fnl-src = { url = "path:/Users/maas/_/fnl"; flake = false; };
+  inputs.fnl = { url = "path:/Users/maas/_/fnl"; flake = false; };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
@@ -51,7 +51,7 @@
             fnl = self.pkgs.stdenv.mkDerivation {
               pname = "fnl";
               version = "0.0.1";
-              src = inputs.fnl-src;
+              src = inputs.fnl;
               buildInputs = [ self.pkgs.fennel ];
               installPhase = ''
                 mkdir -p $out

@@ -72,7 +72,7 @@
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
        :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]
-       :f [(cmd "make | luafile lua/init.lua") :source]}
+       :f [":!fennel --compile % > /tmp/lua/init.lua<cr>:luafile /tmp/lua/init.lua" :source]}
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
        :a [(lspcmd :buf.code_action) :actions]

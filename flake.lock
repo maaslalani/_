@@ -47,10 +47,10 @@
         "type": "github"
       }
     },
-    "fnl-src": {
+    "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-DOYyh8GStuJNRnRFj9HEvj0e5SZHfByKBiTrVhx4jI8=",
+        "narHash": "sha256-QqrOjyEoayIrlGs5Dho+eP6ng+hBLyiNa/daGY7vdcc=",
         "path": "/Users/maas/_/fnl",
         "type": "path"
       },
@@ -267,7 +267,7 @@
     "root": {
       "inputs": {
         "awkward-nvim": "awkward-nvim",
-        "fnl-src": "fnl-src",
+        "fnl": "fnl",
         "gitsigns-nvim": "gitsigns-nvim",
         "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
