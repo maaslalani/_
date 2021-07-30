@@ -37,6 +37,7 @@ in
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
       gd = "git diff";
+      gd- = "git diff HEAD~";
       gdm = "${gd} master || ${gd} main";
       gl = "git pull";
       glo = "git log";
