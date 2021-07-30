@@ -5,7 +5,7 @@
     package = pkgs.neovim-nightly;
     extraConfig = ''
       lua <<EOF
-      ${builtins.readFile "${pkgs.nvimrc}/init.lua"}
+      ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
     '';
     vimAlias = true;

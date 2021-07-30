@@ -47,6 +47,18 @@
         "type": "github"
       }
     },
+    "fnl-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DOYyh8GStuJNRnRFj9HEvj0e5SZHfByKBiTrVhx4jI8=",
+        "path": "/Users/maas/_/fnl",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/maas/_/fnl",
+        "type": "path"
+      }
+    },
     "gitsigns-nvim": {
       "flake": false,
       "locked": {
@@ -93,18 +105,6 @@
         "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
-      }
-    },
-    "init-fnl": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-C8aLrMg+QmSoFr9iQyBQJRXdl5vipFpXwkwZYzo/UiE=",
-        "path": "/Users/maas/_/fnl",
-        "type": "path"
-      },
-      "original": {
-        "path": "/Users/maas/_/fnl",
-        "type": "path"
       }
     },
     "neorg": {
@@ -267,10 +267,10 @@
     "root": {
       "inputs": {
         "awkward-nvim": "awkward-nvim",
+        "fnl-src": "fnl-src",
         "gitsigns-nvim": "gitsigns-nvim",
         "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
-        "init-fnl": "init-fnl",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
