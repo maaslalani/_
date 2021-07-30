@@ -1,6 +1,4 @@
 (local g vim.g)
-(set g.mapleader " ")
-(set g.nord_minimal_mode true)
 (set g.loaded_2html_plugin false)
 (set g.loaded_gzip false)
 (set g.loaded_man false)
@@ -8,6 +6,8 @@
 (set g.loaded_remote_plugins false)
 (set g.loaded_tarPlugin false)
 (set g.loaded_zipPlugin false)
+(set g.mapleader " ")
+(set g.nord_minimal_mode true)
 
 (local o vim.o)
 (set o.autowrite true)
@@ -100,6 +100,7 @@
            :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
    :q [(cmd :q) :quit]
    :w [(cmd :up) :save]
+   :W [(cmd "w ! sudo tee % >/dev/null") :save!]
    :p ["\"*p<cr>" :paste]
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
