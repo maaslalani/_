@@ -95,6 +95,18 @@
         "type": "github"
       }
     },
+    "init-fnl": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-C8aLrMg+QmSoFr9iQyBQJRXdl5vipFpXwkwZYzo/UiE=",
+        "path": "/Users/maas/_/fnl",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/maas/_/fnl",
+        "type": "path"
+      }
+    },
     "neorg": {
       "flake": false,
       "locked": {
@@ -258,6 +270,7 @@
         "gitsigns-nvim": "gitsigns-nvim",
         "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
+        "init-fnl": "init-fnl",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",

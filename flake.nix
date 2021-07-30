@@ -19,6 +19,9 @@
   /* MacOS apps */
   inputs.hammerspoon = { url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip"; flake = false; };
 
+  /* init.fnl */
+  inputs.init-fnl = { url = "path:/Users/maas/_/fnl"; flake = false; };
+
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
       overlays = [
@@ -41,6 +44,17 @@
               installPhase = ''
                 mkdir -p $out/Applications/Hammerspoon.app
                 cp -r $src/Contents $out/Applications/Hammerspoon.app/
+              '';
+            };
+
+            nvimrc = self.pkgs.stdenv.mkDerivation {
+              pname = "init-lua";
+              version = "0.0.1";
+              src = inputs.init-fnl;
+              buildInputs = [ self.pkgs.fennel ];
+              installPhase = ''
+                mkdir -p $out/lua/init.lua
+                fennel --compile $src/init.fnl > $out/init.lua
               '';
             };
           }
