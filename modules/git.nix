@@ -20,17 +20,8 @@ in
       enable = true;
       options = {
         syntax-theme = "Nord";
-        plus-style = "syntax #132E1F";
-        minus-style = "syntax #36191C";
-        minus-emph-style = "syntax #882728";
-        plus-emph-style = "syntax #226d33";
-        zero-style = "syntax #2E3440";
         line-numbers = true;
-        line-numbers-minus-style = "#CB443F #1D1D2B";
         line-numbers-zero-style = "#4C566A";
-        line-numbers-plus-style = "#3EB64F #1D1D2B";
-        line-numbers-left-format = "{nm:^5}";
-        line-numbers-right-format = "{np:^5}";
       };
     };
     userEmail = email;
