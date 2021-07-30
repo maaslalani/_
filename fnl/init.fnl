@@ -1,13 +1,10 @@
 (local g vim.g)
 (set g.mapleader " ")
 (set g.nord_minimal_mode true)
-(set g.loaded_netrw 1)
-(set g.netrw_loaded_netrwPlugin 1)
 (set g.loaded_2html_plugin false)
 (set g.loaded_gzip false)
 (set g.loaded_man false)
 (set g.loaded_matchit false)
-(set g.loaded_netrwPlugin false)
 (set g.loaded_remote_plugins false)
 (set g.loaded_tarPlugin false)
 (set g.loaded_zipPlugin false)
@@ -65,7 +62,7 @@
 (wk.register
   {:f {:name :find
        :b [(pcmd :Telescope :buffers) :buffers]
-       :e [(cmd :Dirvish) :explore]
+       :e [(cmd :Explore) :explore]
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
@@ -114,7 +111,7 @@
    :H [(lspcmd :buf.hover) :hover]
    :J [:10j :down]
    :K [:10k :up]
-   :M [:J :merge]
+   :M ["mzJ'z" :merge]
    :Q [:<nop> :nope]
    :S [(cmd :HopWord) :hopword]
    :s [(cmd :HopChar2) :hop]
@@ -160,10 +157,15 @@
 (fn cr []
   ((. vim.fn :compe#confirm) "\n"))
 
-(wk.register {:<tab> {1 tab 2 :next :expr true}
-              :<s-tab> {1 s-tab 2 :previous :expr true}
-              :<cr> {1 cr 2 :cr :expr true}}
-             {:mode :i})
+(wk.register
+  {:<tab> {1 tab 2 :next :expr true}
+   :<s-tab> {1 s-tab 2 :previous :expr true}
+   :<cr> {1 cr 2 :cr :expr true}
+   "," [",<c-g>u" ","]
+   :! [:!<c-g>u :!]
+   :. [:.<c-g>u :.]
+   :? [:?<c-g>u :?]}
+  {:mode :i})
 
 (wk.setup {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
            :plugins {:spelling {:enabled true}}})
@@ -273,14 +275,13 @@
      :set_env {:COLORTERM :truecolor}
      :sorting_strategy :descending
      :use_less true
-     :vimgrep_arguments
-     [:rg
-      :--color=never
-      :--no-heading
-      :--with-filename
-      :--line-number
-      :--column
-      :--smart-case]
+     :vimgrep_arguments [:rg
+                         :--color=never
+                         :--no-heading
+                         :--with-filename
+                         :--line-number
+                         :--column
+                         :--smart-case]
      :winblend 0 }}))
 
 (fn treesitter []
@@ -329,7 +330,6 @@
       (autocmd :BufWrite :*.awkward "Awkward")
       (autocmd :FileType :markdown "setlocal spell")
       (autocmd :FileType :gitcommit "setlocal spell")
-      (autocmd :FileType :dirvish "setlocal nonu")
       (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
       (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
       (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
