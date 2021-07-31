@@ -6,6 +6,7 @@
 (set g.loaded_remote_plugins false)
 (set g.loaded_tarPlugin false)
 (set g.loaded_zipPlugin false)
+(set g.netrw_banner 0)
 (set g.mapleader " ")
 (set g.nord_minimal_mode true)
 

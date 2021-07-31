@@ -50,7 +50,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-QqrOjyEoayIrlGs5Dho+eP6ng+hBLyiNa/daGY7vdcc=",
+        "narHash": "sha256-VlIrGa9YmMv150BQ8Xd0XulKjpl/9ModbrhqBiS3ofI=",
         "path": "/Users/maas/_/fnl",
         "type": "path"
       },
@@ -234,11 +234,11 @@
     "nvim-treesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1627585794,
-        "narHash": "sha256-AvUEce/1UC7GguU7onrkvCXm5RCnQoJjkMUhDjWbaq4=",
+        "lastModified": 1627673732,
+        "narHash": "sha256-n+OmInIRXWL5So4V7eMTBWl2AIe699nMZcYGClF5yXs=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "dedd74ebdbb8a921d95e3c670be9684d9f655c34",
+        "rev": "950932f0c217979a31dc4b0dd00174453427600e",
         "type": "github"
       },
       "original": {
