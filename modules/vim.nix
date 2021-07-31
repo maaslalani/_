@@ -17,6 +17,10 @@
         nginx-vim
         nvim-lspconfig
         popup-nvim
+        vim-commentary
+        vim-eunuch
+        vim-fugitive
+        vim-rhubarb
         vim-surround
       ]
     ) ++ (
