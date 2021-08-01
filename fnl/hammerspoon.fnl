@@ -71,6 +71,7 @@
            :action (fn [] (hs.window:moveOneScreenEast))}}})
 
 (local start (hs.hotkey.modal.new [:ctrl] :space))
+(local modalWidth 20)
 
 (fn setup [modal menu]
   (fn modal.exited [self] (hs.alert.closeAll))
@@ -78,7 +79,9 @@
   (local display {})
   (each [k v (pairs menu)]
     (when (= (type v) :table)
-      (tset display (+ (length display) 1) (.. k "   " v.name))
+      (tset display
+            (+ (length display) 1)
+            (.. k (string.rep " " (- modalWidth (length v.name))) v.name))
       (var action {})
       (if (not= v.action nil)
         (set action v.action)
@@ -93,4 +96,4 @@
 
 (setup start menu)
 (hs.loadSpoon :SpoonInstall)
-(spoon.SpoonInstall:andUse :HSearch)	
+(spoon.SpoonInstall:andUse :HSearch)
