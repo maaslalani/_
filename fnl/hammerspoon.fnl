@@ -73,27 +73,19 @@
 (local start (hs.hotkey.modal.new [:ctrl] :space))
 
 (fn setup [modal menu]
-  (fn modal.exited [self]
-    (hs.alert.closeAll))
-  (modal:bind {} :escape
-              (fn []
-                (modal:exit)))
+  (fn modal.exited [self] (hs.alert.closeAll))
+  (modal:bind {} :escape (fn [] (modal:exit)))
   (local display {})
   (each [k v (pairs menu)]
     (when (= (type v) :table)
       (tset display (+ (length display) 1) (.. k "   " v.name))
       (var action {})
-      (if (not= v.action nil) (set action v.action)
+      (if (not= v.action nil)
+        (set action v.action)
         (let [submenu (hs.hotkey.modal.new)]
           (setup submenu v)
-          (set action
-               (fn []
-                 (submenu:enter)))))
-      (modal:bind {} k
-                  (fn []
-                    (when (not= v.repeatable true)
-                      (modal:exit))
-                    (action)))))
+          (set action (fn [] (submenu:enter)))))
+      (modal:bind {} k (fn [] (when (not= v.repeatable true) (modal:exit)) (action)))))
 
   (fn modal.entered [self]
     (hs.alert.closeAll)

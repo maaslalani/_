@@ -113,7 +113,7 @@
    :H [(lspcmd :buf.hover) :hover]
    :J [:10j :down]
    :K [:10k :up]
-   :M ["mzJ'z" :merge]
+   :M ["mzJ`z" :merge]
    :Q [:<nop> :nope]
    :S [(cmd :HopWord) :hopword]
    :s [(cmd :HopChar2) :hop]
