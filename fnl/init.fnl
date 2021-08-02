@@ -179,14 +179,8 @@
            :plugins {:spelling {:enabled true}}})
 
 (local border
-  [[:┌ :FloatBorder]
-   [:─ :FloatBorder]
-   [:┐ :FloatBorder]
-   [:│ :FloatBorder]
-   [:┘ :FloatBorder]
-   [:─ :FloatBorder]
-   [:└ :FloatBorder]
-   [:│ :FloatBorder]])	
+  [[:┌ :FloatBorder] [:─ :FloatBorder] [:┐ :FloatBorder] [:│ :FloatBorder]
+   [:┘ :FloatBorder] [:─ :FloatBorder] [:└ :FloatBorder] [:│ :FloatBorder]])
 
 (fn on_attach [client bufnr]
   (tset vim.lsp.handlers :textDocument/hover
@@ -283,14 +277,10 @@
      :set_env {:COLORTERM :truecolor}
      :sorting_strategy :descending
      :use_less true
-     :vimgrep_arguments [:rg
-                         :--color=never
-                         :--no-heading
-                         :--with-filename
-                         :--line-number
-                         :--column
-                         :--smart-case]
-     :winblend 0 }}))
+     :vimgrep_arguments
+     [:rg :--color=never :--no-heading :--with-filename :--line-number
+      :--column :--smart-case]
+     :winblend 0}}))
 
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
@@ -303,25 +293,8 @@
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup)
    {:ensure_installed
-    [:bash
-     :clojure
-     :commonlisp
-     :dockerfile
-     :fennel
-     :go
-     :gomod
-     :graphql
-     :hcl
-     :html
-     :javascript
-     :latex
-     :lua
-     :nix
-     :norg
-     :ruby
-     :rust
-     :yaml
-     :zig]
+    [:bash :clojure :commonlisp :dockerfile :fennel :go :gomod :graphql :hcl
+     :html :javascript :latex :lua :nix :norg :ruby :rust :yaml :zig]
     :highlight {:enable true}
     :indent {:enable true}}))
 
