@@ -86,6 +86,12 @@
        :t [(cmd :tabnew) :new]
        :n [(cmd :tabnext) :next]
        :p [(cmd :tabprevious) :previous]}
+   :T {:name :test
+       :f [(cmd :TestFile) :file]
+       :l [(cmd :TestLast) :last]
+       :n [(cmd :TestNearest) :nearest]
+       :s [(cmd :TestSuite) :suite]
+       :v [(cmd :TestVisit) :visit]}
    :c {:name :quickfix
        :n [(cmd :cnext) :next]
        :p [(cmd :cprev) :previous]

@@ -22,6 +22,7 @@
         vim-fugitive
         vim-rhubarb
         vim-surround
+        vim-test
       ]
     ) ++ (
       with pkgs; [
