@@ -3,9 +3,10 @@
   programs.gh = {
     enable = true;
     aliases = {
-      pr = "pr create";
+      clone = "repo clone";
       co = "pr checkout";
       open = "repo view --web";
+      pr = "pr create";
     };
     editor = "vim";
   };
