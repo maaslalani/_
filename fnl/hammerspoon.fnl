@@ -1,3 +1,8 @@
+;; ============================================================================
+;; Hammerspoon Configuration
+;; ============================================================================
+
+;; Popup Style
 (set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.8})
 (set hs.alert.defaultStyle.padding 22)
 (set hs.alert.defaultStyle.radius 2)
@@ -8,11 +13,10 @@
 (set hs.alert.defaultStyle.textSize 18)
 
 (hs.alert.show "Hammerspoon Loaded" 1)
-
 (set hs.window.animationDuration 0)
 
+;; Grid styles
 (hs.grid.setGrid :6x4)
-
 (set hs.grid.ui.cellColor [0 0 0 0.25])
 (set hs.grid.ui.cellStrokeColor [0.2 0.2 0.2])
 (set hs.grid.ui.cellStrokeWidth 5)
@@ -25,14 +29,13 @@
 (set hs.grid.ui.textColor [1 1 1])
 (set hs.grid.ui.textSize 150)
 
-(fn launch [application]
-  (fn []
-    (hs.application.launchOrFocus application)))
+;; Application and URL launchers
+(fn launch [application] (fn [] (hs.application.launchOrFocus application)))
+(fn openurl [url] (fn [] (hs.urlevent.openURL url)))
 
-(fn openurl [url]
-  (fn []
-    (hs.urlevent.openURL url)))
-
+;; Menu, inspired by which-key
+;; Open the menu with the leader key (ctrl+space)
+;; Key sequence (defined by nested table keys) will perform the action
 (local menu
   {:a {:name :Applications
        :a {:name :Alacritty :action (launch :Alacritty)}
@@ -48,31 +51,32 @@
            :g {:name :Home :action (openurl :https://github.com/)}
            :n {:name :Notifications :action (openurl :https://github.com/notifications)}
            :p {:name :Pulls :action (openurl :https://github.com/pulls)}}
+       :s {:name :StackOverflow :action (openurl :https://stackoverflow.com)}}
        :t {:name :Twitter :action (openurl :https://twitter.com)}
        :y {:name :YouTube :action (openurl :https://youtube.com)}
-       :y {:name :YouTube :action (openurl :https://youtube.com)}
-       }
    :g {:name :Grid :action (fn [] (hs.grid.show))}
    :f {:name :Focus :action (fn [] (hs.hints.windowHints))}
    :r {:name :Reload :action hs.reload}
-   :s {:name :Search :action (fn [] (spoon.HSearch.toggleShow))}
-   :w {:name :Window
-       :h {:name :Left
-           :repeatable true
-           :action (fn [] (hs.window:moveOneScreenWest))}
-       :j {:name :Down
-           :repeatable true
-           :action (fn [] (hs.window:moveOneScreenSouth))}
-       :k {:name :Up
-           :repeatable true
-           :action (fn [] (hs.window:moveOneScreenNorth))}
-       :l {:name :Right
-           :repeatable true
-           :action (fn [] (hs.window:moveOneScreenEast))}}})
+   :s {:name :Search :action (fn [] (spoon.HSearch.toggleShow))}})
 
+;; Leader key (ctrl+space)
 (local start (hs.hotkey.modal.new [:ctrl] :space))
 (local modalWidth 20)
 
+;; Menu:
+;; ┌──────────────────────┐
+;; │ a       Applications │
+;; │ r             Reload │
+;; │ s             Search │
+;; │ l              Links │
+;; │ w             Window │
+;; │ f              Focus │
+;; │ g               Grid │
+;; └──────────────────────┘
+;;
+;; Pressing the key (left) will either open up another menu
+;; or perform an action, key sequences are determined by nested keys
+;; in the `menu` table
 (fn setup [modal menu]
   (fn modal.exited [self] (hs.alert.closeAll))
   (modal:bind {} :escape (fn [] (modal:exit)))
@@ -95,5 +99,7 @@
     (hs.alert (table.concat display "\n") true)))
 
 (setup start menu)
+
+;; Spoons
 (hs.loadSpoon :SpoonInstall)
 (spoon.SpoonInstall:andUse :HSearch)

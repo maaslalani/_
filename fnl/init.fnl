@@ -1,3 +1,8 @@
+;; ============================================================================
+;; Neovim Configuration
+;; ============================================================================
+
+;; Variables
 (local g vim.g)
 (set g.loaded_2html_plugin false)
 (set g.loaded_gzip false)
@@ -10,6 +15,7 @@
 (set g.mapleader " ")
 (set g.nord_minimal_mode true)
 
+;; Options
 (local o vim.o)
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
@@ -48,7 +54,7 @@
 (set o.wrap false)
 (set o.writebackup false)
 
-(local wk (require :which-key))
+;; Macros
 (macro lua [module name]
   `(.. ":lua require'" ,module "'." ,name "()<cr>"))
 (macro cmd [...]
@@ -59,7 +65,13 @@
   `(.. "<cmd>lua vim.lsp." (.. ,...) "()<cr>"))
 (macro plug [...]
   `(.. "<Plug>" (.. ,...)))
+(macro autocmd [enter ft command]
+  `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
 
+;; Whichkey
+(local wk (require :which-key))
+
+; leader
 (wk.register
   {:f {:name :find
        :b [(pcmd :Telescope :buffers) :buffers]
@@ -112,6 +124,7 @@
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
 
+; normal
 (wk.register
   {:<c-h> [:<c-w>h :left]
    :<c-l> [:<c-w>l :right]
@@ -128,6 +141,7 @@
        :r [(lspcmd :buf.reference) :reference]}}
   {:mode :n})
 
+; visual
 (wk.register
   {:< [:<gv :dedent]
    :<c-l> [:<nop> :nope]
@@ -139,6 +153,7 @@
    :K [:10k :up]}
   {:mode :v})
 
+; neorg
 (fn wkneorg []
   (wk.register
     {:<cr> [(cmd "e <cfile>") :follow]
@@ -149,6 +164,7 @@
     {:mode :n :buffer (vim.api.nvim_get_current_buf)}))
 (set _G.wkneorg wkneorg)
 
+; replace terminal codes
 (fn rtc [s]
   (vim.api.nvim_replace_termcodes s true true true))
 
@@ -165,6 +181,7 @@
 (fn cr []
   ((. vim.fn :compe#confirm) "\n"))
 
+; insert
 (wk.register
   {:<tab> {1 tab 2 :next :expr true}
    :<s-tab> {1 s-tab 2 :previous :expr true}
@@ -178,6 +195,7 @@
 (wk.setup {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
            :plugins {:spelling {:enabled true}}})
 
+;; Language Server Protocol
 (local border
   [[:┌ :FloatBorder] [:─ :FloatBorder] [:┐ :FloatBorder] [:│ :FloatBorder]
    [:┘ :FloatBorder] [:─ :FloatBorder] [:└ :FloatBorder] [:│ :FloatBorder]])
@@ -207,14 +225,17 @@
       :staticcheck true}
      :on_attach on_attach}))
 
+;; awkward
 (fn awkward []
   (local awkward (require :awkward))
   ((. awkward :setup) {}))
 
+;; gitsigns
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
   ((. gitsigns :setup) {:keymaps {}}))
 
+;; neorg
 (fn neorg []
   (local neorg (require :neorg))
   ((. neorg :setup)
@@ -229,6 +250,7 @@
        :autodetect true
        :autochdir true}}}}))
 
+;; compe
 (fn compe []
   (local compe (require :compe))
   ((. compe :setup)
@@ -250,6 +272,7 @@
              :vsnip {:kind " "}
              :nvim_lsp {:kind " "}}}))
 
+;; telescope
 (fn telescope []
   (local telescope (require :telescope))
   (local sorters (require :telescope.sorters))
@@ -282,6 +305,7 @@
       :--column :--smart-case]
      :winblend 0}}))
 
+;; treesitter
 (fn treesitter []
   (local parsers (. (require :nvim-treesitter.parsers)))
   (local parser-configs ((. parsers :get_parser_configs)))
@@ -298,11 +322,10 @@
     :highlight {:enable true}
     :indent {:enable true}}))
 
+;; colorscheme
 (vim.cmd "colorscheme nordbuddy")
 
-(macro autocmd [enter ft command]
-  `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
-
+;; autocmds
 (vim.cmd
   (.. (autocmd :BufEnter :*.graphql "set ft=graphql")
       (autocmd :BufEnter :*.lock "set ft=json")
@@ -316,6 +339,7 @@
       (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
       (autocmd :TermOpen :* "startinsert")))
 
+;; lazy loading
 (local defer vim.defer_fn)
 (defer awkward 10)
 (defer compe 10)
