@@ -1,11 +1,11 @@
 {
   description = "home";
+
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-  /* Neovim Plugins */
   inputs.awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
@@ -16,11 +16,12 @@
   inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
   inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
-  /* MacOS apps */
-  inputs.hammerspoon = { url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip"; flake = false; };
-
-  /* Fennel */
   inputs.fnl = { url = "path:/Users/maas/_/fnl"; flake = false; };
+
+  inputs.hammerspoon = {
+    url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
+    flake = false;
+  };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
@@ -63,7 +64,6 @@
         )
         inputs.neovim-nightly-overlay.overlay
       ];
-
       spin = inputs.home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
         homeDirectory = "/home/spin";
