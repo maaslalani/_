@@ -73,6 +73,17 @@
       background_opacity = 1.0;
       draw_bold_text_with_bright_colors = false;
       live_config_reload = true;
+
+      shell = {
+        program = "${pkgs.tmux}/bin/tmux";
+        args = [
+          "new-session"
+          "-A"
+          "-D"
+          "-s"
+          "default"
+        ];
+      };
     };
   };
 }

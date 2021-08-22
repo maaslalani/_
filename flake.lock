@@ -75,6 +75,18 @@
         "type": "github"
       }
     },
+    "hammerspoon": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-y3nbBL1c34y1ztuAAn4hH+GLZE08sXG8+7GYdoBXaa8=",
+        "type": "tarball",
+        "url": "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -256,6 +268,7 @@
         "awkward-nvim": "awkward-nvim",
         "fnl": "fnl",
         "gitsigns-nvim": "gitsigns-nvim",
+        "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
         "neorg": "neorg",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
