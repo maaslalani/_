@@ -50,7 +50,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-0PgQDj23j3Q3RIJ7Qw51L+o+5ZuD5N8sozI5rJqkp/8=",
+        "narHash": "sha256-speWtKg81FyVHHxb3WCk695cZNJ7WLOBulQHugSIKBA=",
         "path": "/Users/maas/_/fnl",
         "type": "path"
       },

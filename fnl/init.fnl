@@ -47,6 +47,7 @@
 (set o.tabstop 2)
 (set o.termguicolors true)
 (set o.timeoutlen 350)
+(set o.undodir "~/.cache/nvim/undo")
 (set o.undofile true)
 (set o.updatetime 300)
 (set o.visualbell true)
