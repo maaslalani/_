@@ -47,7 +47,6 @@
 (set o.tabstop 2)
 (set o.termguicolors true)
 (set o.timeoutlen 350)
-(set o.undodir "~/.cache/nvim/undo")
 (set o.undofile true)
 (set o.updatetime 300)
 (set o.visualbell true)
@@ -80,13 +79,13 @@
        :f [(pcmd :Telescope :find_files) :file]
        :n [(cmd :enew) :new]
        :r [(pcmd :Telescope :live_grep) :grep]}
+   :o [(cmd "!open <cWORD>") :open]
    :s {:name :misc
        :a [(cmd :Awkward) :awkward]
        :l [(pcmd :luafile :%) :lua]
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
-       :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]
-       :f [":!fennel --compile % > /tmp/lua/init.lua<cr>:luafile /tmp/lua/init.lua" :source]}
+       :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]}
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
        :a [(lspcmd :buf.code_action) :actions]
