@@ -250,27 +250,21 @@
        :autodetect true
        :autochdir true}}}}))
 
-;; compe
-(fn compe []
-  (local compe (require :compe))
-  ((. compe :setup)
-   {:enabled true
-    :autocomplete true
-    :debug false
-    :preselect :disable
-    :throttle_time 80
-    :source_timeout 200
-    :resolve_timeout 800
-    :incomplete_delay 400
-    :max_abbr_width 100
-    :max_kind_width 100
-    :max_menu_width 100
-    :documentation true
-    :source {:path {:kind " "}
-             :buffer {:kind " "}
-             :neorg {:kind " "}
-             :vsnip {:kind " "}
-             :nvim_lsp {:kind " "}}}))
+;; cmp
+(fn completion []
+  (local cmp (require :cmp))
+  (cmp.setup
+    {:snippet
+     {:expand (fn [args] ((. vim.fn "vsnip#anonymous") args.body))}
+     :mapping
+     {:<C-p> (fn [] (cmp.mapping.select_prev_item))
+      :<C-n> (fn [] (cmp.mapping.select_next_item))
+      :<C-d> (fn [] (cmp.mapping.scroll_docs -4))
+      :<C-f> (fn [] (cmp.mapping.scroll_docs 4))
+      :<C-Space> (fn [] (cmp.mapping.complete))
+      :<C-e> (fn [] (cmp.mapping.close))
+      :<CR> (fn [] (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true}))}
+     :sources [{:name :buffer}]}))
 
 ;; telescope
 (fn telescope []
@@ -342,7 +336,7 @@
 ;; lazy loading
 (local defer vim.defer_fn)
 (defer awkward 10)
-(defer compe 10)
+(defer completion 1000)
 (defer gitsigns 10)
 (defer lsp 10)
 (defer neorg 10)

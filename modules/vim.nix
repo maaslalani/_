@@ -23,14 +23,17 @@
         vim-rhubarb
         vim-surround
         vim-test
+        vim-vsnip
+        vim-vsnip-integ
       ]
     ) ++ (
       with pkgs; [
         awkward-nvim
+        cmp-buffer
         gitsigns-nvim
         neorg
         nordbuddy-nvim
-        nvim-compe
+        nvim-cmp
         nvim-treesitter
         plenary-nvim
         telescope-nvim

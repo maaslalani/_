@@ -7,10 +7,11 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   inputs.awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
+  inputs.cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
-  inputs.nvim-compe = { url = "github:hrsh7th/nvim-compe"; flake = false; };
+  inputs.nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
   inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
   inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
@@ -29,10 +30,11 @@
         (
           self: super: with self.vimUtils; {
             awkward-nvim = buildVimPluginFrom2Nix { name = "awkward"; src = inputs.awkward-nvim; };
+            cmp-buffer = buildVimPluginFrom2Nix { name = "cmp-buffer"; src = inputs.cmp-buffer; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
-            nvim-compe = buildVimPluginFrom2Nix { name = "nvim-compe"; src = inputs.nvim-compe; };
+            nvim-cmp = buildVimPluginFrom2Nix { name = "nvim-cmp"; src = inputs.nvim-cmp; };
             nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
             plenary-nvim = buildVimPluginFrom2Nix { name = "plenary-nvim"; src = inputs.plenary-nvim; };
             telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src = inputs.telescope-nvim; };
