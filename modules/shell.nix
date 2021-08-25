@@ -6,6 +6,8 @@ let
   magenta = color "magenta";
   red = color "red";
   green = color "green";
+
+  flake = cmd: "nix-shell -p nixUnstable --command \"nix --experimental-features 'nix-command flakes' ${cmd}\"";
 in
 {
   programs.zsh = {
@@ -64,9 +66,13 @@ in
       gsw = "git switch";
       gswm = "${gsw} master || ${gsw} main";
 
-      hmg = "nix build --out-link ~/.config/nixpkgs/result --impure --experimental-features 'nix-command flakes' '/Users/maas/_#home'";
-      nfuf = "nix-shell -p nixUnstable --command \"nix --experimental-features 'nix-command flakes' flake lock --update-input fnl\"";
-      hms = "${nfuf} && rm -rf ~/.config/nvim/lua && nix-shell -p nixUnstable --command \"${hmg}\" && ~/.config/nixpkgs/result/activate";
+      # home-manager switch
+      hms = builtins.concatStringsSep " && " [
+        "rm -rf ~/.config/nvim/lua"
+        "${flake "flake lock --update-input fnl"}"
+        "${flake "build --out-link ${config.xdg.configHome}/nixpkgs/result --impure '$HOME/_#home'"}"
+        "${config.xdg.configHome}/nixpkgs/result/activate"
+      ];
 
       c = "clear";
 

@@ -72,11 +72,7 @@
         username = "spin";
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = overlays ++ [
-            (
-              self: super: {
-                unstable = inputs.nixpkgs.legacyPackages.x86_64-linux;
-              }
-            )
+            (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-linux; })
           ];
           imports = [
             ./modules/core.nix
@@ -93,11 +89,7 @@
         username = "maas";
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = overlays ++ [
-            (
-              self: super: {
-                unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin;
-              }
-            )
+            (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; })
           ];
           imports = [
             ./modules/alacritty.nix
