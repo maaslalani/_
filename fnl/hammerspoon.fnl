@@ -51,9 +51,9 @@
            :g {:name :Home :action (openurl :https://github.com/)}
            :n {:name :Notifications :action (openurl :https://github.com/notifications)}
            :p {:name :Pulls :action (openurl :https://github.com/pulls)}}
-       :s {:name :StackOverflow :action (openurl :https://stackoverflow.com)}}
+       :s {:name :StackOverflow :action (openurl :https://stackoverflow.com)}
        :t {:name :Twitter :action (openurl :https://twitter.com)}
-       :y {:name :YouTube :action (openurl :https://youtube.com)}
+       :y {:name :YouTube :action (openurl :https://youtube.com)}}
    :g {:name :Grid :action (fn [] (hs.grid.show))}
    :f {:name :Focus :action (fn [] (hs.hints.windowHints))}
    :r {:name :Reload :action hs.reload}
