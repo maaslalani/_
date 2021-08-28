@@ -164,29 +164,9 @@
     {:mode :n :buffer (vim.api.nvim_get_current_buf)}))
 (set _G.wkneorg wkneorg)
 
-; replace terminal codes
-(fn rtc [s]
-  (vim.api.nvim_replace_termcodes s true true true))
-
-(fn tab []
-  (if (= 1 (vim.fn.pumvisible))
-    (rtc :<c-n>)
-    (rtc :<tab>)))
-
-(fn s-tab []
-  (if (= 1 (vim.fn.pumvisible))
-    (rtc :<c-p>)
-    (rtc :<s-tab>)))
-
-(fn cr []
-  ((. vim.fn :compe#confirm) "\n"))
-
 ; insert
 (wk.register
-  {:<tab> {1 tab 2 :next :expr true}
-   :<s-tab> {1 s-tab 2 :previous :expr true}
-   :<cr> {1 cr 2 :cr :expr true}
-   "," [",<c-g>u" ","]
+  {"," [",<c-g>u" ","]
    :! [:!<c-g>u :!]
    :. [:.<c-g>u :.]
    :? [:?<c-g>u :?]}
@@ -263,7 +243,7 @@
       :<C-f> (fn [] (cmp.mapping.scroll_docs 4))
       :<C-Space> (fn [] (cmp.mapping.complete))
       :<C-e> (fn [] (cmp.mapping.close))
-      :<CR> (fn [] (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true}))}
+      :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})}
      :sources [{:name :buffer}]}))
 
 ;; telescope
@@ -336,7 +316,7 @@
 ;; lazy loading
 (local defer vim.defer_fn)
 (defer awkward 10)
-(defer completion 1000)
+(defer completion 10)
 (defer gitsigns 10)
 (defer lsp 10)
 (defer neorg 10)
