@@ -180,6 +180,10 @@
   [[:┌ :FloatBorder] [:─ :FloatBorder] [:┐ :FloatBorder] [:│ :FloatBorder]
    [:┘ :FloatBorder] [:─ :FloatBorder] [:└ :FloatBorder] [:│ :FloatBorder]])
 
+(var capabilities (vim.lsp.protocol.make_client_capabilities))
+(set capabilities
+     ((. (require :cmp_nvim_lsp) :update_capabilities) capabilities))	
+
 (fn on_attach [client bufnr]
   (tset vim.lsp.handlers :textDocument/hover
         (vim.lsp.with vim.lsp.handlers.hover {: border}))
@@ -188,22 +192,23 @@
 
 (fn lsp []
   (local lsp (require :lspconfig))
-  (lsp.bashls.setup {:on_attach on_attach})
-  (lsp.dockerls.setup {:on_attach on_attach})
-  (lsp.rnix.setup {:on_attach on_attach})
-  (lsp.solargraph.setup {:on_attach on_attach})
-  (lsp.sorbet.setup {:on_attach on_attach})
-  (lsp.terraformls.setup {:on_attach on_attach})
-  (lsp.tsserver.setup {:on_attach on_attach})
-  (lsp.texlab.setup {:on_attach on_attach})
-  (lsp.yamlls.setup {:on_attach on_attach})
+  (lsp.bashls.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.dockerls.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.rnix.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.solargraph.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.sorbet.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.terraformls.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.tsserver.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.texlab.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.yamlls.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.gopls.setup
     {:flags
      {:debounce_text_changes 500}
      :analyses
      {:unusedparams true
       :staticcheck true}
-     :on_attach on_attach}))
+     :on_attach on_attach
+     :capabilities capabilities}))
 
 ;; awkward
 (fn awkward []
@@ -231,6 +236,9 @@
        :autochdir true}}}}))
 
 ;; cmp
+(fn rtc [s]
+  (vim.api.nvim_replace_termcodes s true true true))
+
 (fn completion []
   (local cmp (require :cmp))
   (cmp.setup
@@ -243,8 +251,12 @@
       :<C-f> (fn [] (cmp.mapping.scroll_docs 4))
       :<C-Space> (fn [] (cmp.mapping.complete))
       :<C-e> (fn [] (cmp.mapping.close))
+      :<Tab> (fn [] ((if (= 1 (vim.fn.pumvisible)) (cmp.mapping.select_next_item) (rtc :<Tab>))))
+      :<S-Tab> (fn [] ((if (= 1 (vim.fn.pumvisible)) (cmp.mapping.select_prev_item) (rtc :<S-Tab>))))
       :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})}
-     :sources [{:name :buffer}]}))
+     :sources
+     [{:name :buffer}
+      {:name :nvim_lsp}]}))
 
 ;; telescope
 (fn telescope []

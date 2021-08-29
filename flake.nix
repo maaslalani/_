@@ -8,6 +8,7 @@
 
   inputs.awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
   inputs.cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
+  inputs.cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
@@ -31,6 +32,7 @@
           self: super: with self.vimUtils; {
             awkward-nvim = buildVimPluginFrom2Nix { name = "awkward"; src = inputs.awkward-nvim; };
             cmp-buffer = buildVimPluginFrom2Nix { name = "cmp-buffer"; src = inputs.cmp-buffer; };
+            cmp-nvim-lsp = buildVimPluginFrom2Nix { name = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };

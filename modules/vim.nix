@@ -30,6 +30,7 @@
       with pkgs; [
         awkward-nvim
         cmp-buffer
+        cmp-nvim-lsp
         gitsigns-nvim
         neorg
         nordbuddy-nvim
