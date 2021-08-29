@@ -82,7 +82,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-pLusklscZr0namwr1HEK4rM37PGuGcjmC81ar3jx018=",
+        "narHash": "sha256-FC2Yq8vacwNS6NAOVvwEBoa8IdPFynJ0PnGr+JaWmIM=",
         "path": "/Users/maas/_/fnl",
         "type": "path"
       },
@@ -142,11 +142,11 @@
     "neorg": {
       "flake": false,
       "locked": {
-        "lastModified": 1630228476,
-        "narHash": "sha256-pRj5zEz8DZGSfbLLAroO2NEbSQ3bmyj3Ewr2N3fM3gI=",
+        "lastModified": 1630243533,
+        "narHash": "sha256-8PWtQJruzsr3MVD8wfyQSyPwcxStJL6qJSi3mQ6WGg0=",
         "owner": "vhyrro",
         "repo": "neorg",
-        "rev": "8af8ece9a0c690672a15718fb4b5ccdd9bbde8e2",
+        "rev": "04bcc9846f4028781347885714bf99f243604a37",
         "type": "github"
       },
       "original": {
@@ -234,11 +234,11 @@
     "nordbuddy-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1629475402,
-        "narHash": "sha256-SMM3IUVMw1Zg09H+OAHmeAF42OxyHMBnRa8CdaorVWc=",
+        "lastModified": 1630244393,
+        "narHash": "sha256-6AbnimzEr0MmtBPZowrC/Otx4Gsaehazr0TWv0yR2J4=",
         "owner": "maaslalani",
         "repo": "nordbuddy",
-        "rev": "555ff04bc7ba698afa4b83a737fbfdd8dc160cfe",
+        "rev": "ca85a7f14117f9f9ed036fd2de257add16b2aa7b",
         "type": "github"
       },
       "original": {
@@ -250,11 +250,11 @@
     "nvim-cmp": {
       "flake": false,
       "locked": {
-        "lastModified": 1630240910,
-        "narHash": "sha256-pqdBdBEhcKLSP8/VqPAf73rB8Wp8D8t2uJIISeH2yLM=",
+        "lastModified": 1630243434,
+        "narHash": "sha256-YcvelLNV5nB8M2+oPSpLSI2KQZjXprOrw3IcwlX4cO4=",
         "owner": "hrsh7th",
         "repo": "nvim-cmp",
-        "rev": "b9ef85d483fd52b5a0b8e161c19bbcc1d9c6f40a",
+        "rev": "25a4d9c0be5c6f7d66412f6b81feb6196806035f",
         "type": "github"
       },
       "original": {

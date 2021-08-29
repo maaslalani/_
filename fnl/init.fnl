@@ -244,6 +244,8 @@
   (cmp.setup
     {:snippet
      {:expand (fn [args] ((. vim.fn "vsnip#anonymous") args.body))}
+     :documentation
+     {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
      {:<C-p> (fn [] (cmp.mapping.select_prev_item))
       :<C-n> (fn [] (cmp.mapping.select_next_item))
