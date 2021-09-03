@@ -83,11 +83,11 @@
       "flake": false,
       "locked": {
         "narHash": "sha256-FC2Yq8vacwNS6NAOVvwEBoa8IdPFynJ0PnGr+JaWmIM=",
-        "path": "/Users/maas/_/fnl",
+        "path": "fnl",
         "type": "path"
       },
       "original": {
-        "path": "/Users/maas/_/fnl",
+        "path": "fnl",
         "type": "path"
       }
     },

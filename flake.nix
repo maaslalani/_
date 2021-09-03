@@ -18,7 +18,7 @@
   inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
   inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
-  inputs.fnl = { url = "path:/Users/maas/_/fnl"; flake = false; };
+  inputs.fnl = { url = "path:fnl"; flake = false; };
 
   inputs.hammerspoon = {
     url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
