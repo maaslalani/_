@@ -68,10 +68,12 @@ in
 
       # home-manager switch
       hms = builtins.concatStringsSep " && " [
-        "rm -rf ~/.config/nvim/lua"
+        "cd $HOME/_"
+        "rm -rf $HOME/.config/nvim/lua"
         "${flake "flake lock --update-input fnl"}"
         "${flake "build --out-link ${config.xdg.configHome}/nixpkgs/result --impure '$HOME/_#home'"}"
         "${config.xdg.configHome}/nixpkgs/result/activate"
+        "cd -"
       ];
 
       c = "clear";
