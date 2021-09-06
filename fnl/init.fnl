@@ -247,15 +247,12 @@
      :documentation
      {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
-     {:<C-p> (fn [] (cmp.mapping.select_prev_item))
-      :<C-n> (fn [] (cmp.mapping.select_next_item))
-      :<C-d> (fn [] (cmp.mapping.scroll_docs -4))
-      :<C-f> (fn [] (cmp.mapping.scroll_docs 4))
-      :<C-Space> (fn [] (cmp.mapping.complete))
-      :<C-e> (fn [] (cmp.mapping.close))
-      :<Tab> (fn [] ((if (= 1 (vim.fn.pumvisible)) (cmp.mapping.select_next_item) (rtc :<Tab>))))
-      :<S-Tab> (fn [] ((if (= 1 (vim.fn.pumvisible)) (cmp.mapping.select_prev_item) (rtc :<S-Tab>))))
-      :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})}
+     {:<c-e> (cmp.mapping.close)
+      :<c-n> (cmp.mapping.select_next_item)
+      :<c-p> (cmp.mapping.select_prev_item)
+      :<c-space> (cmp.mapping.complete)
+      :<s-tab> (cmp.mapping.select_prev_item)
+      :<tab> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}
       {:name :nvim_lsp}]}))
