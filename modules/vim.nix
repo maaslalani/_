@@ -14,17 +14,15 @@
       with pkgs.unstable.vimPlugins; [
         fennel-vim
         hop-nvim
-        nginx-vim
         nvim-lspconfig
         popup-nvim
         vim-commentary
         vim-eunuch
         vim-fugitive
+        vim-rails
         vim-rhubarb
         vim-surround
         vim-test
-        vim-vsnip
-        vim-vsnip-integ
       ]
     ) ++ (
       with pkgs; [
