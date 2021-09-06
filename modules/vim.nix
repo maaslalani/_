@@ -23,6 +23,8 @@
         vim-rhubarb
         vim-surround
         vim-test
+        vim-vsnip
+        vim-vsnip-integ
       ]
     ) ++ (
       with pkgs; [

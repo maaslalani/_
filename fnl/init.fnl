@@ -252,6 +252,7 @@
       :<c-p> (cmp.mapping.select_prev_item)
       :<c-space> (cmp.mapping.complete)
       :<s-tab> (cmp.mapping.select_prev_item)
+      :<cr> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
       :<tab> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}
