@@ -153,17 +153,6 @@
    :K [:10k :up]}
   {:mode :v})
 
-; neorg
-(fn wkneorg []
-  (wk.register
-    {:<cr> [(cmd "e <cfile>") :follow]
-     :<bs> [:<c-o> :back]
-     :<tab> [:za :fold]
-     :n ["/[A-z]*.norg<cr>" :next]
-     :N ["?[A-z]*.norg<cr>" :previous]}
-    {:mode :n :buffer (vim.api.nvim_get_current_buf)}))
-(set _G.wkneorg wkneorg)
-
 ; insert
 (wk.register
   {"," [",<c-g>u" ","]
@@ -297,7 +286,7 @@
   (set parser-configs.norg
        {:install_info
         {:url :https://github.com/vhyrro/tree-sitter-norg
-         :files [:src/parser.c]
+         :files [:src/parser.c :src/scanner.cc]
          :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup)
@@ -319,7 +308,6 @@
       (autocmd :BufWrite :*.awkward "Awkward")
       (autocmd :FileType :markdown "setlocal spell")
       (autocmd :FileType :gitcommit "setlocal spell")
-      (autocmd :BufEnter :*.norg "hi clear Conceal | set nohls | lua wkneorg()")
       (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
       (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
       (autocmd :TermOpen :* "startinsert")))

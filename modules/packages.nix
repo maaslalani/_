@@ -12,7 +12,6 @@
     cachix
     coreutils
     delve
-    docker
     entr
     exa
     fd
@@ -24,18 +23,15 @@
     google-cloud-sdk
     graph-easy
     graphviz
+    hammerspoon
     htop
-    imgcat
     jq
     kubectl
-    mosh
-    ninja
     nodejs
     openssl
     pandoc
     ripgrep
     rustup
-    hammerspoon
     sd
     sops
     spotify-tui
