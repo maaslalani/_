@@ -247,12 +247,11 @@
      :documentation
      {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
-     {:<c-e> (cmp.mapping.close)
-      :<c-n> (cmp.mapping.select_next_item)
+     {:<c-n> (cmp.mapping.select_next_item)
       :<c-p> (cmp.mapping.select_prev_item)
       :<c-space> (cmp.mapping.complete)
       :<s-tab> (cmp.mapping.select_prev_item)
-      :<cr> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
+      :<c-e> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
       :<tab> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}

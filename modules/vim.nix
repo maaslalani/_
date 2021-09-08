@@ -22,6 +22,7 @@
         vim-fugitive
         vim-rails
         vim-rhubarb
+        vim-ruby
         vim-surround
         vim-test
         vim-vsnip
