@@ -120,6 +120,7 @@
    :q [(cmd :q) :quit]
    :w [(cmd :up) :save]
    :W [(cmd "w ! sudo tee % >/dev/null") :save!]
+   := ["migg=G`i" :indent]
    :p ["\"*p<cr>" :paste]
    :y ["\"*y<cr>" :copy]}
   {:prefix :<leader> :mode :n})
