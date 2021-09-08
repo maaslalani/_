@@ -17,12 +17,10 @@
         nvim-lspconfig
         popup-nvim
         vim-commentary
-        vim-endwise
         vim-eunuch
         vim-fugitive
         vim-rails
         vim-rhubarb
-        vim-ruby
         vim-surround
         vim-test
         vim-vsnip

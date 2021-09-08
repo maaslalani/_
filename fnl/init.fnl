@@ -94,11 +94,10 @@
        :d {:name :diagnostics
            :n [(lspcmd :diagnostic.goto_next) :next]
            :p [(lspcmd :diagnostic.goto_prev) :previous]}}
-   :t {:name :tabs
+   :t {:name :+prefix
        :t [(cmd :tabnew) :new]
        :n [(cmd :tabnext) :next]
-       :p [(cmd :tabprevious) :previous]}
-   :T {:name :test
+       :p [(cmd :tabprevious) :previous]
        :f [(cmd :TestFile) :file]
        :l [(cmd :TestLast) :last]
        :n [(cmd :TestNearest) :nearest]
