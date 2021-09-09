@@ -86,6 +86,7 @@
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
        :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]}
+   :n [(cmd "tabnew ~/wiki/index.norg") :wiki]
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
        :a [(lspcmd :buf.code_action) :actions]
@@ -216,7 +217,7 @@
    {:load
     {:core.defaults {}
      :core.norg.concealer {}
-     :core.keybinds {}
+     :core.keybinds { :config { :default_keybinds true } }
      :core.norg.dirman
      {:config
       {:workspaces
@@ -285,7 +286,7 @@
   (local parser-configs ((. parsers :get_parser_configs)))
   (set parser-configs.norg
        {:install_info
-        {:url :https://github.com/vhyrro/tree-sitter-norg
+        {:url :https://github.com/nvim-neorg/tree-sitter-norg
          :files [:src/parser.c :src/scanner.cc]
          :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))

@@ -10,7 +10,7 @@
   inputs.cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
   inputs.cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-  inputs.neorg = { url = "github:vhyrro/neorg/unstable"; flake = false; };
+  inputs.neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
