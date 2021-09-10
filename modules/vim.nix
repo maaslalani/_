@@ -17,6 +17,7 @@
         nvim-lspconfig
         popup-nvim
         vim-commentary
+        vim-endwise
         vim-eunuch
         vim-fugitive
         vim-rails
