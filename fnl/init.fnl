@@ -172,13 +172,13 @@
 
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
 (set capabilities
-     ((. (require :cmp_nvim_lsp) :update_capabilities) capabilities))	
+     ((. (require :cmp_nvim_lsp) :update_capabilities) capabilities))
 
 (fn on_attach [client bufnr]
   (tset vim.lsp.handlers :textDocument/hover
         (vim.lsp.with vim.lsp.handlers.hover {: border}))
   (tset vim.lsp.handlers :textDocument/signatureHelp
-        (vim.lsp.with vim.lsp.handlers.hover {: border})))	
+        (vim.lsp.with vim.lsp.handlers.hover {: border})))
 
 (fn lsp []
   (local lsp (require :lspconfig))
