@@ -245,7 +245,10 @@
       :<tab> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}
-      {:name :nvim_lsp}]}))
+      {:name :nvim_lsp}]})
+
+  (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
+  ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true}))
 
 ;; telescope
 (fn telescope []
@@ -297,6 +300,13 @@
     :highlight {:enable true}
     :indent {:enable true}}))
 
+; autopairs
+(fn autopairs []
+  (local autopairs (. (require :nvim-autopairs)))
+  ((. autopairs :setup))
+  (autopairs.add_rules (require :nvim-autopairs.rules.endwise-lua))
+  (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
+
 ;; colorscheme
 (vim.cmd "colorscheme nordbuddy")
 
@@ -322,3 +332,4 @@
 (defer neorg 10)
 (defer treesitter 10)
 (defer telescope 10)
+(defer autopairs 10)
