@@ -101,7 +101,6 @@
        :p [(cmd :tabprevious) :previous]
        :f [(cmd :TestFile) :file]
        :l [(cmd :TestLast) :last]
-       :n [(cmd :TestNearest) :nearest]
        :s [(cmd :TestSuite) :suite]
        :v [(cmd :TestVisit) :visit]}
    :c {:name :quickfix
