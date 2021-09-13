@@ -216,6 +216,7 @@
    {:load
     {:core.defaults {}
      :core.norg.concealer {}
+     :core.norg.completion { :config { :engine :nvim-cmp } }
      :core.keybinds { :config { :default_keybinds true } }
      :core.norg.dirman
      {:config
@@ -244,6 +245,7 @@
       :<tab> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}
+      {:name :neorg}
       {:name :nvim_lsp}]})
 
   (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
