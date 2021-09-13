@@ -220,6 +220,7 @@
      :core.norg.concealer {}
      :core.norg.completion { :config { :engine :nvim-cmp } }
      :core.keybinds { :config { :default_keybinds false } }
+     :core.integrations.telescope {}
      :core.norg.dirman
      {:config
       {:workspaces

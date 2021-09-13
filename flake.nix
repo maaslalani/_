@@ -11,6 +11,7 @@
   inputs.cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
+  inputs.neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
   inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
   inputs.nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
   inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
@@ -35,6 +36,7 @@
             cmp-nvim-lsp = buildVimPluginFrom2Nix { name = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
+            neorg-telescope = buildVimPluginFrom2Nix { name = "neorg-telescope"; src = inputs.neorg-telescope; };
             nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
             nvim-cmp = buildVimPluginFrom2Nix { name = "nvim-cmp"; src = inputs.nvim-cmp; };
             nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };

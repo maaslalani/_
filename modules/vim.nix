@@ -34,6 +34,7 @@
         cmp-nvim-lsp
         gitsigns-nvim
         neorg
+        neorg-telescope
         nordbuddy-nvim
         nvim-cmp
         nvim-treesitter

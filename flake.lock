@@ -82,7 +82,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-a5QdgqjTt8kYxfK9nwWbTzlAEZRbfzWRM+MnRNWBVBY=",
+        "narHash": "sha256-dfhL+NF1es4GkyaJlqBmouyb81bd/3LK7IK2Bi6oI4o=",
         "path": "fnl",
         "type": "path"
       },
@@ -153,6 +153,22 @@
         "owner": "nvim-neorg",
         "ref": "unstable",
         "repo": "neorg",
+        "type": "github"
+      }
+    },
+    "neorg-telescope": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1627758809,
+        "narHash": "sha256-QifqoWUbEvFST9BTK+4YyN971zE+XXqhEQ380eouk+c=",
+        "owner": "nvim-neorg",
+        "repo": "neorg-telescope",
+        "rev": "346ac78ec8c1c661afb495e617f0219251a98b78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-neorg",
+        "repo": "neorg-telescope",
         "type": "github"
       }
     },
@@ -305,6 +321,7 @@
         "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
         "neorg": "neorg",
+        "neorg-telescope": "neorg-telescope",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nordbuddy-nvim": "nordbuddy-nvim",
