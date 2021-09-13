@@ -236,8 +236,20 @@
       {:n [[:td :core.norg.qol.todo_items.todo.task_done]
            [:tu :core.norg.qol.todo_items.todo.task_undone]
            [:tp :core.norg.qol.todo_items.todo.task_pending]
-           [:tt :core.norg.qol.todo_items.todo.task_cycle]]}
-      {:silent true :noremap true})))	
+           [:tt :core.norg.qol.todo_items.todo.task_cycle]
+           [:<cr> :core.norg.esupports.goto_link]
+           [:<c-s> :core.integrations.telescope.find_linkable]]
+       :i [[:<c-l> :core.integrations.telescope.insert_link]]}
+      {:silent true :noremap true})
+    (keybinds.map_event_to_mode
+      :traverse-heading
+      {:n [[:j :core.integrations.treesitter.next.heading]
+           [:k :core.integrations.treesitter.previous.heading]]}
+      {:silent true :noremap true})
+    (keybinds.map_to_mode :norg {:n [[:<esc> ":Neorg set-mode traverse-heading<cr>"]]}
+                          {:silent true :noremap true})
+    (keybinds.map_to_mode :traverse-heading {:n [[:<esc> ":Neorg set-mode norg<cr>"]]}
+                          {:silent true :noremap true})))
 
 ;; cmp
 (fn rtc [s]
