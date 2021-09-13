@@ -127,6 +127,8 @@
 ; normal
 (wk.register
   {:<c-h> [:<c-w>h :left]
+   :<c-j> [:<c-w>j :down]
+   :<c-k> [:<c-w>k :up]
    :<c-l> [:<c-w>l :right]
    :<esc> [(cmd :nohl) :nohl]
    :H [(lspcmd :buf.hover) :hover]
