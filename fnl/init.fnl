@@ -15,7 +15,6 @@
 (set g.netrw_banner 0)
 (set g.nord_minimal_mode true)
 
-
 ;; Options
 (local o vim.o)
 (set o.autowrite true)
@@ -273,9 +272,10 @@
       :<tab> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}
-      {:name :neorg}
       {:name :luasnip}
-      {:name :nvim_lsp}]})
+      {:name :neorg}
+      {:name :nvim_lsp}
+      {:name :path}]})
 
   (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
   ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true}))

@@ -10,6 +10,7 @@
   inputs.cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
   inputs.cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
   inputs.cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
+  inputs.cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
   inputs.luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
   inputs.neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
@@ -37,6 +38,7 @@
             cmp-buffer = buildVimPluginFrom2Nix { name = "cmp-buffer"; src = inputs.cmp-buffer; };
             cmp-luasnip = buildVimPluginFrom2Nix { name = "cmp-luasnip"; src = inputs.cmp-luasnip; };
             cmp-nvim-lsp = buildVimPluginFrom2Nix { name = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; };
+            cmp-path = buildVimPluginFrom2Nix { name = "cmp-path"; src = inputs.cmp-path; };
             gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
             luasnip = buildVimPluginFrom2Nix { name = "luasnip"; src = inputs.luasnip; };
             neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };

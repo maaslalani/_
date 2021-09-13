@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "cmp-path": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631378163,
+        "narHash": "sha256-axU7g7Dg+/uCVFxuz42FaUtUyU/Xzlm/XOsEvlUfZA4=",
+        "owner": "hrsh7th",
+        "repo": "cmp-path",
+        "rev": "0016221b6143fd6bf308667c249e9dbdee835ae2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "cmp-path",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -98,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-B/FWsDwmApJRDtLxgkAyUFNXYP1eqYsUtcr3udtYckY=",
+        "narHash": "sha256-jtMLXaqwMvovbaGrVqEsc25FdP8SGx0Qav6aMXr+roU=",
         "path": "fnl",
         "type": "path"
       },
@@ -349,6 +365,7 @@
         "cmp-buffer": "cmp-buffer",
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
+        "cmp-path": "cmp-path",
         "fnl": "fnl",
         "gitsigns-nvim": "gitsigns-nvim",
         "hammerspoon": "hammerspoon",

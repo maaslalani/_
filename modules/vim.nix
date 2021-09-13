@@ -32,6 +32,7 @@
         cmp-buffer
         cmp-luasnip
         cmp-nvim-lsp
+        cmp-path
         gitsigns-nvim
         luasnip
         neorg
