@@ -219,13 +219,25 @@
     {:core.defaults {}
      :core.norg.concealer {}
      :core.norg.completion { :config { :engine :nvim-cmp } }
-     :core.keybinds { :config { :default_keybinds true } }
+     :core.keybinds { :config { :default_keybinds false } }
      :core.norg.dirman
      {:config
       {:workspaces
        {:wiki "~/wiki"}
        :autodetect true
        :autochdir true}}}}))
+
+(local neorg-callbacks (require :neorg.callbacks))
+(neorg-callbacks.on_event
+  :core.keybinds.events.enable_keybinds
+  (fn [_ keybinds]
+    (keybinds.map_event_to_mode
+      :norg
+      {:n [[:td :core.norg.qol.todo_items.todo.task_done]
+           [:tu :core.norg.qol.todo_items.todo.task_undone]
+           [:tp :core.norg.qol.todo_items.todo.task_pending]
+           [:tt :core.norg.qol.todo_items.todo.task_cycle]]}
+      {:silent true :noremap true})))	
 
 ;; cmp
 (fn rtc [s]
