@@ -11,9 +11,10 @@
 (set g.loaded_remote_plugins false)
 (set g.loaded_tarPlugin false)
 (set g.loaded_zipPlugin false)
-(set g.netrw_banner 0)
 (set g.mapleader " ")
+(set g.netrw_banner 0)
 (set g.nord_minimal_mode true)
+
 
 ;; Options
 (local o vim.o)
@@ -147,7 +148,7 @@
 (wk.register
   {:< [:<gv :dedent]
    :<c-l> [:<nop> :nope]
-   :<leader>so [":sort <bar>w<bar>e<cr>" :sort]
+   :s [":sort <bar>w<bar>e<cr>" :sort]
    :<leader>y ["\"*y" :copy]
    :> [:>gv :indent]
    :<leader>p ["\"*p" :paste]
@@ -260,7 +261,7 @@
   (local cmp (require :cmp))
   (cmp.setup
     {:snippet
-     {:expand (fn [args] ((. vim.fn "vsnip#anonymous") args.body))}
+     {:expand (fn [args] ((. (require :luasnip) :lsp_expand) args.body))}
      :documentation
      {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
@@ -273,6 +274,7 @@
      :sources
      [{:name :buffer}
       {:name :neorg}
+      {:name :luasnip}
       {:name :nvim_lsp}]})
 
   (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))

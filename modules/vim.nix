@@ -13,6 +13,7 @@
     plugins = (
       with pkgs.unstable.vimPlugins; [
         fennel-vim
+        friendly-snippets
         hop-nvim
         nvim-autopairs
         nvim-lspconfig
@@ -24,15 +25,15 @@
         vim-rhubarb
         vim-surround
         vim-test
-        vim-vsnip
-        vim-vsnip-integ
       ]
     ) ++ (
       with pkgs; [
         awkward-nvim
         cmp-buffer
+        cmp-luasnip
         cmp-nvim-lsp
         gitsigns-nvim
+        luasnip
         neorg
         neorg-telescope
         nordbuddy-nvim

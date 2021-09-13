@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "cmp-luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631546808,
+        "narHash": "sha256-2NvRDDiV1a9l7HPYFeDfPdcvnTEWaaEXW7vIhzTsfzo=",
+        "owner": "saadparwaiz1",
+        "repo": "cmp_luasnip",
+        "rev": "e22fe57aec4f9e7029b8e547657fbee1b16cbaf7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "saadparwaiz1",
+        "repo": "cmp_luasnip",
+        "type": "github"
+      }
+    },
     "cmp-nvim-lsp": {
       "flake": false,
       "locked": {
@@ -82,7 +98,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-dfhL+NF1es4GkyaJlqBmouyb81bd/3LK7IK2Bi6oI4o=",
+        "narHash": "sha256-B/FWsDwmApJRDtLxgkAyUFNXYP1eqYsUtcr3udtYckY=",
         "path": "fnl",
         "type": "path"
       },
@@ -136,6 +152,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631550827,
+        "narHash": "sha256-GJUo4TLkO9///VMsPvRcLMH2mADOyNkGq97GcTIDrhc=",
+        "owner": "l3mon4d3",
+        "repo": "luasnip",
+        "rev": "238d93658a879cfa64a00f71a876fdbab2d84648",
+        "type": "github"
+      },
+      "original": {
+        "owner": "l3mon4d3",
+        "repo": "luasnip",
         "type": "github"
       }
     },
@@ -315,11 +347,13 @@
       "inputs": {
         "awkward-nvim": "awkward-nvim",
         "cmp-buffer": "cmp-buffer",
+        "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "fnl": "fnl",
         "gitsigns-nvim": "gitsigns-nvim",
         "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
+        "luasnip": "luasnip",
         "neorg": "neorg",
         "neorg-telescope": "neorg-telescope",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
