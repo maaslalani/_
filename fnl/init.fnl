@@ -347,13 +347,14 @@
       (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
       (autocmd :TermOpen :* "startinsert")))
 
+(neorg)
+
 ;; lazy loading
 (local defer vim.defer_fn)
 (defer awkward 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer lsp 10)
-(defer neorg 10)
 (defer treesitter 10)
 (defer telescope 10)
 (defer autopairs 10)
