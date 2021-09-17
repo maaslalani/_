@@ -34,21 +34,21 @@
       overlays = [
         (
           self: super: with self.vimUtils; {
-            awkward-nvim = buildVimPluginFrom2Nix { name = "awkward"; src = inputs.awkward-nvim; };
-            cmp-buffer = buildVimPluginFrom2Nix { name = "cmp-buffer"; src = inputs.cmp-buffer; };
-            cmp-luasnip = buildVimPluginFrom2Nix { name = "cmp-luasnip"; src = inputs.cmp-luasnip; };
-            cmp-nvim-lsp = buildVimPluginFrom2Nix { name = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; };
-            cmp-path = buildVimPluginFrom2Nix { name = "cmp-path"; src = inputs.cmp-path; };
-            gitsigns-nvim = buildVimPluginFrom2Nix { name = "gitsigns"; src = inputs.gitsigns-nvim; };
-            luasnip = buildVimPluginFrom2Nix { name = "luasnip"; src = inputs.luasnip; };
-            neorg = buildVimPluginFrom2Nix { name = "neorg"; src = inputs.neorg; };
-            neorg-telescope = buildVimPluginFrom2Nix { name = "neorg-telescope"; src = inputs.neorg-telescope; };
-            nordbuddy-nvim = buildVimPluginFrom2Nix { name = "nordbuddy"; src = inputs.nordbuddy-nvim; };
-            nvim-cmp = buildVimPluginFrom2Nix { name = "nvim-cmp"; src = inputs.nvim-cmp; };
-            nvim-treesitter = buildVimPluginFrom2Nix { name = "nvim-treesitter"; src = inputs.nvim-treesitter; };
-            plenary-nvim = buildVimPluginFrom2Nix { name = "plenary-nvim"; src = inputs.plenary-nvim; };
-            telescope-nvim = buildVimPluginFrom2Nix { name = "telescope"; src = inputs.telescope-nvim; };
-            which-key-nvim = buildVimPluginFrom2Nix { name = "which-key-nvim"; src = inputs.which-key-nvim; };
+            awkward-nvim = buildVimPluginFrom2Nix { pname = "awkward"; src = inputs.awkward-nvim; version = "unstable"; };
+            cmp-buffer = buildVimPluginFrom2Nix { pname = "cmp-buffer"; src = inputs.cmp-buffer; version = "unstable"; };
+            cmp-luasnip = buildVimPluginFrom2Nix { pname = "cmp-luasnip"; src = inputs.cmp-luasnip; version = "unstable"; };
+            cmp-nvim-lsp = buildVimPluginFrom2Nix { pname = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; version = "unstable"; };
+            cmp-path = buildVimPluginFrom2Nix { pname = "cmp-path"; src = inputs.cmp-path; version = "unstable"; };
+            gitsigns-nvim = buildVimPluginFrom2Nix { pname = "gitsigns"; src = inputs.gitsigns-nvim; version = "unstable"; };
+            luasnip = buildVimPluginFrom2Nix { pname = "luasnip"; src = inputs.luasnip; version = "unstable"; };
+            neorg = buildVimPluginFrom2Nix { pname = "neorg"; src = inputs.neorg; version = "unstable"; };
+            neorg-telescope = buildVimPluginFrom2Nix { pname = "neorg-telescope"; src = inputs.neorg-telescope; version = "unstable"; };
+            nordbuddy-nvim = buildVimPluginFrom2Nix { pname = "nordbuddy"; src = inputs.nordbuddy-nvim; version = "unstable"; };
+            nvim-cmp = buildVimPluginFrom2Nix { pname = "nvim-cmp"; src = inputs.nvim-cmp; version = "unstable"; };
+            nvim-treesitter = buildVimPluginFrom2Nix { pname = "nvim-treesitter"; src = inputs.nvim-treesitter; version = "unstable"; };
+            plenary-nvim = buildVimPluginFrom2Nix { pname = "plenary-nvim"; src = inputs.plenary-nvim; version = "unstable"; };
+            telescope-nvim = buildVimPluginFrom2Nix { pname = "telescope"; src = inputs.telescope-nvim; version = "unstable"; };
+            which-key-nvim = buildVimPluginFrom2Nix { pname = "which-key-nvim"; src = inputs.which-key-nvim; version = "unstable"; };
 
             hammerspoon = self.pkgs.stdenv.mkDerivation {
               pname = "hammerspoon";
