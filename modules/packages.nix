@@ -11,6 +11,7 @@
     browsh
     cachix
     coreutils
+    crystal
     delve
     entr
     exa
@@ -44,6 +45,7 @@
       dockerfile-language-server-nodejs
       gopls
       rnix-lsp
+      scry
       serve
       solargraph
       terraform-ls
