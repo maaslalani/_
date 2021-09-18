@@ -8,10 +8,8 @@
   programs.z-lua.enable = true;
 
   home.packages = with pkgs; [
-    browsh
     cachix
     coreutils
-    crystal
     delve
     entr
     exa
@@ -45,12 +43,9 @@
       dockerfile-language-server-nodejs
       gopls
       rnix-lsp
-      scry
       serve
       solargraph
       terraform-ls
-      texlab
-      texlive.combined.scheme-medium
       typescript
       typescript-language-server
       yaml-language-server
