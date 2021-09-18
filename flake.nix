@@ -1,46 +1,48 @@
 {
   description = "home";
 
-  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  inputs = {
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-  inputs.awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
-  inputs.cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
-  inputs.cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
-  inputs.cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
-  inputs.cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
-  inputs.crystal-nvim = { url = "github:spencerwi/crystal.nvim"; flake = false; };
-  inputs.fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
-  inputs.friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
-  inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-  inputs.hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
-  inputs.luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
-  inputs.neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
-  inputs.neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
-  inputs.nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
-  inputs.nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
-  inputs.nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
-  inputs.nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
-  inputs.nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
-  inputs.plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
-  inputs.popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
-  inputs.telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-  inputs.vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
-  inputs.vim-eunuch = { url = "github:tpope/vim-eunuch"; flake = false; };
-  inputs.vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
-  inputs.vim-rails = { url = "github:tpope/vim-rails"; flake = false; };
-  inputs.vim-rhubarb = { url = "github:tpope/vim-rhubarb"; flake = false; };
-  inputs.vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
-  inputs.vim-test = { url = "github:vim-test/vim-test"; flake = false; };
-  inputs.which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
+    awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
+    cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
+    cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
+    cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
+    cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
+    crystal-nvim = { url = "github:spencerwi/crystal.nvim"; flake = false; };
+    fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
+    friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
+    gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
+    hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
+    luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
+    neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
+    neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
+    nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+    nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
+    nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
+    nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+    nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+    plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
+    popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
+    telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
+    vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
+    vim-eunuch = { url = "github:tpope/vim-eunuch"; flake = false; };
+    vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
+    vim-rails = { url = "github:tpope/vim-rails"; flake = false; };
+    vim-rhubarb = { url = "github:tpope/vim-rhubarb"; flake = false; };
+    vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
+    vim-test = { url = "github:vim-test/vim-test"; flake = false; };
+    which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
-  inputs.fnl = { url = "path:fnl"; flake = false; };
+    fnl = { url = "path:fnl"; flake = false; };
 
-  inputs.hammerspoon = {
-    url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
-    flake = false;
+    hammerspoon = {
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
+      flake = false;
+    };
   };
 
   outputs = { self, ... }@inputs: {
