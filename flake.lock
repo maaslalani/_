@@ -80,6 +80,22 @@
         "type": "github"
       }
     },
+    "crystal-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1628252246,
+        "narHash": "sha256-aM15Wvhs/w/KHSeCF2gjtfTIWr5INTNUtPW8fHbPXTw=",
+        "owner": "spencerwi",
+        "repo": "crystal.nvim",
+        "rev": "97fb2cf4d5994d884340661d97475b6ab0ace722",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spencerwi",
+        "repo": "crystal.nvim",
+        "type": "github"
+      }
+    },
     "fennel-vim": {
       "flake": false,
       "locked": {
@@ -130,7 +146,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-aD2NDjYW+KhOlYROYR5u5LxAtB7A11O6iomalnNiHdk=",
+        "narHash": "sha256-f98cBcMCF0HhCn5sETE0yizZX5T+Cb0HdgcKHDCP3rw=",
         "path": "fnl",
         "type": "path"
       },
@@ -463,6 +479,7 @@
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp-path": "cmp-path",
+        "crystal-nvim": "crystal-nvim",
         "fennel-vim": "fennel-vim",
         "fnl": "fnl",
         "friendly-snippets": "friendly-snippets",

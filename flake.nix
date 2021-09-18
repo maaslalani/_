@@ -11,6 +11,7 @@
   inputs.cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
   inputs.cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
   inputs.cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
+  inputs.crystal-nvim = { url = "github:spencerwi/crystal.nvim"; flake = false; };
   inputs.fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
   inputs.friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
   inputs.gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
@@ -52,6 +53,7 @@
             cmp-luasnip = buildVimPluginFrom2Nix { pname = "cmp-luasnip"; src = inputs.cmp-luasnip; version = "unstable"; };
             cmp-nvim-lsp = buildVimPluginFrom2Nix { pname = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; version = "unstable"; };
             cmp-path = buildVimPluginFrom2Nix { pname = "cmp-path"; src = inputs.cmp-path; version = "unstable"; };
+            crystal-nvim = buildVimPluginFrom2Nix { pname = "crystal-nvim"; src = inputs.crystal-nvim; version = "unstable"; };
             fennel-vim = buildVimPluginFrom2Nix { pname = "fennel-vim"; src = inputs.fennel-vim; version = "unstable"; };
             friendly-snippets = buildVimPluginFrom2Nix { pname = "friendly-snippets"; src = inputs.friendly-snippets; version = "unstable"; };
             gitsigns-nvim = buildVimPluginFrom2Nix { pname = "gitsigns-nvim"; src = inputs.gitsigns-nvim; version = "unstable"; };

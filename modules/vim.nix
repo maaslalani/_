@@ -16,6 +16,7 @@
       cmp-luasnip
       cmp-nvim-lsp
       cmp-path
+      crystal-nvim
       fennel-vim
       friendly-snippets
       gitsigns-nvim
