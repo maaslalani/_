@@ -7,99 +7,104 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    fnl.url = "path:fnl";
-    fnl.flake = false;
-    hammerspoon.url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
+    fnl = { url = "path:fnl"; flake = false; };
+    hammerspoon = {
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
+      flake = false;
+    };
 
-    awkward-nvim.url = "github:maaslalani/awkward.nvim";
-    cmp-buffer.url = "github:hrsh7th/cmp-buffer";
-    cmp-luasnip.url = "github:saadparwaiz1/cmp_luasnip";
-    cmp-nvim-lsp.url = "github:hrsh7th/cmp-nvim-lsp";
-    cmp-path.url = "github:hrsh7th/cmp-path";
-    crystal-nvim.url = "github:spencerwi/crystal.nvim";
-    fennel-vim.url = "github:bakpakin/fennel.vim";
-    friendly-snippets.url = "github:rafamadriz/friendly-snippets";
-    gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
-    hop-nvim.url = "github:phaazon/hop.nvim";
-    luasnip.url = "github:l3mon4d3/luasnip";
-    neorg.url = "github:nvim-neorg/neorg/unstable";
-    neorg-telescope.url = "github:nvim-neorg/neorg-telescope";
-    nordbuddy-nvim.url = "github:maaslalani/nordbuddy";
-    nvim-autopairs.url = "github:windwp/nvim-autopairs";
-    nvim-cmp.url = "github:hrsh7th/nvim-cmp";
-    nvim-lspconfig.url = "github:neovim/nvim-lspconfig";
-    nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter";
-    plenary-nvim.url = "github:nvim-lua/plenary.nvim";
-    popup-nvim.url = "github:nvim-lua/popup.nvim";
-    telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
-    vim-commentary.url = "github:tpope/vim-commentary";
-    vim-eunuch.url = "github:tpope/vim-eunuch";
-    vim-fugitive.url = "github:tpope/vim-fugitive";
-    vim-rails.url = "github:tpope/vim-rails";
-    vim-rhubarb.url = "github:tpope/vim-rhubarb";
-    vim-surround.url = "github:tpope/vim-surround";
-    vim-test.url = "github:vim-test/vim-test";
-    which-key-nvim.url = "github:folke/which-key.nvim";
+    awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
+    cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
+    cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
+    cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
+    cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
+    fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
+    friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
+    gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
+    hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
+    luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
+    neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
+    neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
+    nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
+    nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
+    nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
+    nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+    nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+    plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
+    popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
+    telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
+    vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
+    vim-crystal = { url = "github:vim-crystal/vim-crystal"; flake = false; };
+    vim-eunuch = { url = "github:tpope/vim-eunuch"; flake = false; };
+    vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
+    vim-rails = { url = "github:tpope/vim-rails"; flake = false; };
+    vim-rhubarb = { url = "github:tpope/vim-rhubarb"; flake = false; };
+    vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
+    vim-test = { url = "github:vim-test/vim-test"; flake = false; };
+    which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
   };
 
   outputs = { self, ... }@inputs: {
     homeConfigurations = rec {
       overlays = [
         (
-          self: super: with self.vimUtils; {
-            awkward-nvim = buildVimPluginFrom2Nix { pname = "awkward-nvim"; src = inputs.awkward-nvim; version = "unstable"; };
-            cmp-buffer = buildVimPluginFrom2Nix { pname = "cmp-buffer"; src = inputs.cmp-buffer; version = "unstable"; };
-            cmp-luasnip = buildVimPluginFrom2Nix { pname = "cmp-luasnip"; src = inputs.cmp-luasnip; version = "unstable"; };
-            cmp-nvim-lsp = buildVimPluginFrom2Nix { pname = "cmp-nvim-lsp"; src = inputs.cmp-nvim-lsp; version = "unstable"; };
-            cmp-path = buildVimPluginFrom2Nix { pname = "cmp-path"; src = inputs.cmp-path; version = "unstable"; };
-            crystal-nvim = buildVimPluginFrom2Nix { pname = "crystal-nvim"; src = inputs.crystal-nvim; version = "unstable"; };
-            fennel-vim = buildVimPluginFrom2Nix { pname = "fennel-vim"; src = inputs.fennel-vim; version = "unstable"; };
-            friendly-snippets = buildVimPluginFrom2Nix { pname = "friendly-snippets"; src = inputs.friendly-snippets; version = "unstable"; };
-            gitsigns-nvim = buildVimPluginFrom2Nix { pname = "gitsigns-nvim"; src = inputs.gitsigns-nvim; version = "unstable"; };
-            hop-nvim = buildVimPluginFrom2Nix { pname = "hop-nvim"; src = inputs.hop-nvim; version = "unstable"; };
-            luasnip = buildVimPluginFrom2Nix { pname = "luasnip"; src = inputs.luasnip; version = "unstable"; };
-            neorg = buildVimPluginFrom2Nix { pname = "neorg"; src = inputs.neorg; version = "unstable"; };
-            neorg-telescope = buildVimPluginFrom2Nix { pname = "neorg-telescope"; src = inputs.neorg-telescope; version = "unstable"; };
-            nordbuddy-nvim = buildVimPluginFrom2Nix { pname = "nordbuddy-nvim"; src = inputs.nordbuddy-nvim; version = "unstable"; };
-            nvim-autopairs = buildVimPluginFrom2Nix { pname = "nvim-autopairs"; src = inputs.nvim-autopairs; version = "unstable"; };
-            nvim-cmp = buildVimPluginFrom2Nix { pname = "nvim-cmp"; src = inputs.nvim-cmp; version = "unstable"; };
-            nvim-lspconfig = buildVimPluginFrom2Nix { pname = "nvim-lspconfig"; src = inputs.nvim-lspconfig; version = "unstable"; };
-            nvim-treesitter = buildVimPluginFrom2Nix { pname = "nvim-treesitter"; src = inputs.nvim-treesitter; version = "unstable"; };
-            plenary-nvim = buildVimPluginFrom2Nix { pname = "plenary-nvim"; src = inputs.plenary-nvim; version = "unstable"; };
-            popup-nvim = buildVimPluginFrom2Nix { pname = "popup-nvim"; src = inputs.popup-nvim; version = "unstable"; };
-            telescope-nvim = buildVimPluginFrom2Nix { pname = "telescope-nvim"; src = inputs.telescope-nvim; version = "unstable"; };
-            vim-commentary = buildVimPluginFrom2Nix { pname = "vim-commentary"; src = inputs.vim-commentary; version = "unstable"; };
-            vim-eunuch = buildVimPluginFrom2Nix { pname = "vim-eunuch"; src = inputs.vim-eunuch; version = "unstable"; };
-            vim-fugitive = buildVimPluginFrom2Nix { pname = "vim-fugitive"; src = inputs.vim-fugitive; version = "unstable"; };
-            vim-rails = buildVimPluginFrom2Nix { pname = "vim-rails"; src = inputs.vim-rails; version = "unstable"; };
-            vim-rhubarb = buildVimPluginFrom2Nix { pname = "vim-rhubarb"; src = inputs.vim-rhubarb; version = "unstable"; };
-            vim-surround = buildVimPluginFrom2Nix { pname = "vim-surround"; src = inputs.vim-surround; version = "unstable"; };
-            vim-test = buildVimPluginFrom2Nix { pname = "vim-test"; src = inputs.vim-test; version = "unstable"; };
-            which-key-nvim = buildVimPluginFrom2Nix { pname = "which-key-nvim"; src = inputs.which-key-nvim; version = "unstable"; };
+          self: super: with self.vimUtils; let
+            plug = name: buildVimPluginFrom2Nix { pname = name; src = inputs.${name}; version = "unstable"; };
+          in
+            {
+              awkward-nvim = plug "awkward-nvim";
+              cmp-buffer = plug "cmp-buffer";
+              cmp-luasnip = plug "cmp-luasnip";
+              cmp-nvim-lsp = plug "cmp-nvim-lsp";
+              cmp-path = plug "cmp-path";
+              vim-crystal = plug "vim-crystal";
+              fennel-vim = plug "fennel-vim";
+              friendly-snippets = plug "friendly-snippets";
+              gitsigns-nvim = plug "gitsigns-nvim";
+              hop-nvim = plug "hop-nvim";
+              luasnip = plug "luasnip";
+              neorg = plug "neorg";
+              neorg-telescope = plug "neorg-telescope";
+              nordbuddy-nvim = plug "nordbuddy-nvim";
+              nvim-autopairs = plug "nvim-autopairs";
+              nvim-cmp = plug "nvim-cmp";
+              nvim-lspconfig = plug "nvim-lspconfig";
+              nvim-treesitter = plug "nvim-treesitter";
+              plenary-nvim = plug "plenary-nvim";
+              popup-nvim = plug "popup-nvim";
+              telescope-nvim = plug "telescope-nvim";
+              vim-commentary = plug "vim-commentary";
+              vim-eunuch = plug "vim-eunuch";
+              vim-fugitive = plug "vim-fugitive";
+              vim-rails = plug "vim-rails";
+              vim-rhubarb = plug "vim-rhubarb";
+              vim-surround = plug "vim-surround";
+              vim-test = plug "vim-test";
+              which-key-nvim = plug "which-key-nvim";
 
-            hammerspoon = self.pkgs.stdenv.mkDerivation {
-              pname = "hammerspoon";
-              version = "0.9.90";
-              src = inputs.hammerspoon;
-              buildInputs = [ self.pkgs.fennel ];
-              installPhase = ''
-                mkdir -p $out/Applications/Hammerspoon.app
-                cp -r $src/Contents $out/Applications/Hammerspoon.app/
-              '';
-            };
+              hammerspoon = self.pkgs.stdenv.mkDerivation {
+                pname = "hammerspoon";
+                version = "0.9.90";
+                src = inputs.hammerspoon;
+                buildInputs = [ self.pkgs.fennel ];
+                installPhase = ''
+                  mkdir -p $out/Applications/Hammerspoon.app
+                  cp -r $src/Contents $out/Applications/Hammerspoon.app/
+                '';
+              };
 
-            fnl = self.pkgs.stdenv.mkDerivation {
-              pname = "fnl";
-              version = "0.0.1";
-              src = inputs.fnl;
-              buildInputs = [ self.pkgs.fennel ];
-              installPhase = ''
-                mkdir -p $out
-                fennel --compile $src/init.fnl > $out/init.lua
-                fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
-              '';
-            };
-          }
+              fnl = self.pkgs.stdenv.mkDerivation {
+                pname = "fnl";
+                version = "0.0.1";
+                src = inputs.fnl;
+                buildInputs = [ self.pkgs.fennel ];
+                installPhase = ''
+                  mkdir -p $out
+                  fennel --compile $src/init.fnl > $out/init.lua
+                  fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
+                '';
+              };
+            }
         )
         inputs.neovim-nightly-overlay.overlay
       ];

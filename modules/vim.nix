@@ -16,7 +16,6 @@
       cmp-luasnip
       cmp-nvim-lsp
       cmp-path
-      crystal-nvim
       fennel-vim
       friendly-snippets
       gitsigns-nvim
@@ -33,6 +32,7 @@
       popup-nvim
       telescope-nvim
       vim-commentary
+      vim-crystal
       vim-eunuch
       vim-fugitive
       vim-rails
