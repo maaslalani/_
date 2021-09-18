@@ -27,7 +27,7 @@ in
     userEmail = email;
     userName = name;
     aliases = {
-      cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d";
+      cleanup = "!git branch --merged | grep  -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d";
       hist = "log --graph --pretty='''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset''' --all";
       lo = "log --oneline -n 10";
       open = "!git config --get remote.origin.url | xargs open";

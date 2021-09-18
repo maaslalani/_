@@ -40,7 +40,7 @@ in
       gcpa = "${gcp} --abort";
       gd = "git diff";
       gd- = "git diff HEAD~";
-      gdm = "${gd} master || ${gd} main";
+      gdm = "${gd} main || ${gd} master";
       gl = "git pull";
       glo = "git log";
       gm = "git merge";
@@ -54,7 +54,7 @@ in
       grba = "${grb} --abort";
       grbc = "${grb} --continue";
       grbi = "${grb} --interactive";
-      grbm = "${grb} master || ${grb} main";
+      grbm = "${grb} main || ${grb} master";
       grev = "git rev-parse HEAD";
       grh = "${gr} --hard";
       grpo = "git remote prune origin";
@@ -64,7 +64,7 @@ in
       gst = "git stash";
       gstp = "${gst} pop";
       gsw = "git switch";
-      gswm = "${gsw} master || ${gsw} main";
+      gswm = "${gsw} main || ${gsw} master";
 
       # home-manager switch
       hms = builtins.concatStringsSep " && " [
@@ -159,7 +159,7 @@ in
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
-        _ZL_DATA="${config.xdg.dataHome}/z/zlua";
+        _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       };
     plugins = [
       {
