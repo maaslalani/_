@@ -95,7 +95,7 @@
 
               fnl = self.pkgs.stdenv.mkDerivation {
                 pname = "fnl";
-                version = "0.0.1";
+                version = "unstable";
                 src = inputs.fnl;
                 buildInputs = [ self.pkgs.fennel ];
                 installPhase = ''
