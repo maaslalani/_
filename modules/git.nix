@@ -13,6 +13,7 @@ in
       credential.helper = "osxkeychain";
       diff.algorithm = "histogram";
       github.user = user;
+      init.defaultBranch = "main";
       protocol.version = "2";
       pull.rebase = true;
     };

@@ -259,12 +259,12 @@
      :documentation
      {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
-     {:<c-n> (cmp.mapping.select_next_item)
-      :<c-p> (cmp.mapping.select_prev_item)
-      :<c-space> (cmp.mapping.complete)
-      :<s-tab> (cmp.mapping.select_prev_item)
-      :<c-e> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
-      :<tab> (cmp.mapping.select_next_item)}
+     {:<C-N> (cmp.mapping.select_next_item)
+      :<C-P> (cmp.mapping.select_prev_item)
+      :<C-SPACE> (cmp.mapping.complete)
+      :<S-TAB> (cmp.mapping.select_prev_item)
+      :<C-E> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
+      :<TAB> (cmp.mapping.select_next_item)}
      :sources
      [{:name :buffer}
       {:name :luasnip}
