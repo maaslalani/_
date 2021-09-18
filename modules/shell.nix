@@ -12,7 +12,7 @@ in
 {
   programs.zsh = {
     autocd = true;
-    dotDir = "${config.xdg.configHome}/zsh";
+    dotDir = ".config/zsh";
     enable = true;
     history = {
       path = "$ZDOTDIR/.zsh_history";
