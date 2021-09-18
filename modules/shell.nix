@@ -12,7 +12,7 @@ in
 {
   programs.zsh = {
     autocd = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enable = true;
     history = {
       path = "$ZDOTDIR/.zsh_history";
@@ -69,7 +69,7 @@ in
       # home-manager switch
       hms = builtins.concatStringsSep " && " [
         "cd $HOME/_"
-        "rm -rf $HOME/.config/nvim/lua"
+        "rm -rf ${config.xdg.configHome}/nvim/lua"
         "${flake "flake lock --update-input fnl"}"
         "${flake "build --out-link ${config.xdg.configHome}/nixpkgs/result --impure '$HOME/_#home'"}"
         "${config.xdg.configHome}/nixpkgs/result/activate"
@@ -83,7 +83,7 @@ in
 
       md = "mkdir";
 
-      sz = "source ~/.config/zsh/.zshrc";
+      sz = "source ${config.xdg.configHome}/zsh/.zshrc";
 
       spd = "spotifyd --no-daemon >/dev/null &";
       spnd = "spotifyd --no-daemon";
