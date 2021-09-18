@@ -7,42 +7,39 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
-    cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
-    cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
-    cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
-    cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
-    crystal-nvim = { url = "github:spencerwi/crystal.nvim"; flake = false; };
-    fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
-    friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
-    gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-    hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
-    luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
-    neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
-    neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
-    nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
-    nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
-    nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
-    nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
-    nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
-    plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
-    popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
-    telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-    vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
-    vim-eunuch = { url = "github:tpope/vim-eunuch"; flake = false; };
-    vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
-    vim-rails = { url = "github:tpope/vim-rails"; flake = false; };
-    vim-rhubarb = { url = "github:tpope/vim-rhubarb"; flake = false; };
-    vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
-    vim-test = { url = "github:vim-test/vim-test"; flake = false; };
-    which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
+    fnl.url = "path:fnl";
+    fnl.flake = false;
+    hammerspoon.url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
 
-    fnl = { url = "path:fnl"; flake = false; };
-
-    hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.90/Hammerspoon-0.9.90.zip";
-      flake = false;
-    };
+    awkward-nvim.url = "github:maaslalani/awkward.nvim";
+    cmp-buffer.url = "github:hrsh7th/cmp-buffer";
+    cmp-luasnip.url = "github:saadparwaiz1/cmp_luasnip";
+    cmp-nvim-lsp.url = "github:hrsh7th/cmp-nvim-lsp";
+    cmp-path.url = "github:hrsh7th/cmp-path";
+    crystal-nvim.url = "github:spencerwi/crystal.nvim";
+    fennel-vim.url = "github:bakpakin/fennel.vim";
+    friendly-snippets.url = "github:rafamadriz/friendly-snippets";
+    gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
+    hop-nvim.url = "github:phaazon/hop.nvim";
+    luasnip.url = "github:l3mon4d3/luasnip";
+    neorg.url = "github:nvim-neorg/neorg/unstable";
+    neorg-telescope.url = "github:nvim-neorg/neorg-telescope";
+    nordbuddy-nvim.url = "github:maaslalani/nordbuddy";
+    nvim-autopairs.url = "github:windwp/nvim-autopairs";
+    nvim-cmp.url = "github:hrsh7th/nvim-cmp";
+    nvim-lspconfig.url = "github:neovim/nvim-lspconfig";
+    nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter";
+    plenary-nvim.url = "github:nvim-lua/plenary.nvim";
+    popup-nvim.url = "github:nvim-lua/popup.nvim";
+    telescope-nvim.url = "github:nvim-telescope/telescope.nvim";
+    vim-commentary.url = "github:tpope/vim-commentary";
+    vim-eunuch.url = "github:tpope/vim-eunuch";
+    vim-fugitive.url = "github:tpope/vim-fugitive";
+    vim-rails.url = "github:tpope/vim-rails";
+    vim-rhubarb.url = "github:tpope/vim-rhubarb";
+    vim-surround.url = "github:tpope/vim-surround";
+    vim-test.url = "github:vim-test/vim-test";
+    which-key-nvim.url = "github:folke/which-key.nvim";
   };
 
   outputs = { self, ... }@inputs: {
