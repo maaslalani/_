@@ -273,7 +273,9 @@
       {:name :path}]})
 
   (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
-  ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true}))
+  ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true})
+  ((. (require :luasnip/loaders/from_vscode) :load)
+   {:include [:fennel :go :javascript :lua :nix :rails :react :ruby :rust]}))
 
 ;; telescope
 (fn telescope []
