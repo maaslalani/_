@@ -29,6 +29,7 @@
     nodejs
     openssl
     pandoc
+    rename
     ripgrep
     rustup
     sd
