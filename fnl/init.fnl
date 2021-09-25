@@ -188,8 +188,8 @@
   (lsp.rnix.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.crystalline.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.efm.setup
-    {:cmd [:efm-langserver]}
-    :init_options {:documentFormatting true :codeAction false}
+    {:cmd [:efm-langserver]
+    :init_options {:documentFormatting true :codeAction true}
     :filetypes [:ruby]
     :settings
     {:rootMarkers [:.git/]
@@ -199,7 +199,9 @@
         :lintCommand "rubocop --format emacs --force-exclusion --stdin ${INPUT}"
         :lintStdin true
         :lintFormats ["%f:%l:%c: %m"]
-        :lintIgnoreExitCode true}]}})	
+        :lintIgnoreExitCode true
+        :formatCommand "rubocop -A -f quiet --stderr -s ${INPUT}"
+        :formatStdin true}]}}})	
   (lsp.sorbet.setup
     {:cmd [:srb :tc :--lsp :--enable-all-experimental-lsp-features :--disable-watchman]
      :root_dir (lsp.util.root_pattern :sorbet/)
