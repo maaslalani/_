@@ -140,7 +140,7 @@
    :s [(cmd :HopChar2) :hop]
    :g {:name :goto
        :d [(lspcmd :buf.definition) :definition]
-       :r [(lspcmd :buf.reference) :reference]}}
+       :r [(lspcmd :buf.references) :references]}}
   {:mode :n})
 
 ; visual
@@ -187,8 +187,27 @@
   (lsp.dockerls.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.rnix.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.crystalline.setup {:on_attach on_attach :capabilities capabilities})
-  (lsp.solargraph.setup {:on_attach on_attach :capabilities capabilities})
-  (lsp.sorbet.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.efm.setup
+    {:cmd [:efm-langserver]}
+    :init_options {:documentFormatting true :codeAction false}
+    :filetypes [:ruby]
+    :settings
+    {:rootMarkers [:.git/]
+     :languages
+     {:ruby
+      [{:rootMarkers [:Gemfile]
+        :lintCommand "rubocop --format emacs --force-exclusion --stdin ${INPUT}"
+        :lintStdin true
+        :lintFormats ["%f:%l:%c: %m"]
+        :lintIgnoreExitCode true}]}})	
+  (lsp.sorbet.setup
+    {:cmd [:srb :tc :--lsp :--enable-all-experimental-lsp-features :--disable-watchman]
+     :root_dir (lsp.util.root_pattern :sorbet/)
+     :on_attach on_attach
+     :capabilities capabilities
+     :init_options
+     {:documentFormatting false
+      :codeAction true}})
   (lsp.terraformls.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.texlab.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.tsserver.setup {:on_attach on_attach :capabilities capabilities})

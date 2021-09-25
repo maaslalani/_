@@ -45,10 +45,10 @@
       gopls
       rnix-lsp
       serve
-      solargraph
       terraform-ls
       typescript
       typescript-language-server
+      efm-langserver
       yaml-language-server
     ]
   );
