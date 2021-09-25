@@ -12,27 +12,19 @@
     viAlias = true;
     plugins = with pkgs; [
       awkward-nvim
-      cmp-buffer
-      cmp-luasnip
-      cmp-nvim-lsp
-      cmp-path
       fennel-vim
-      friendly-snippets
       gitsigns-nvim
       hop-nvim
-      luasnip
       neorg
       neorg-telescope
       nordbuddy-nvim
       nvim-autopairs
-      nvim-cmp
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim
       popup-nvim
       telescope-nvim
       vim-commentary
-      vim-crystal
       vim-eunuch
       vim-fugitive
       vim-rails
@@ -40,6 +32,14 @@
       vim-surround
       vim-test
       which-key-nvim
+    ] ++ [
+      cmp-buffer
+      cmp-luasnip
+      cmp-nvim-lsp
+      cmp-path
+      friendly-snippets
+      luasnip
+      nvim-cmp
     ];
   };
 }

@@ -34,7 +34,6 @@
     popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
     telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
     vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
-    vim-crystal = { url = "github:vim-crystal/vim-crystal"; flake = false; };
     vim-eunuch = { url = "github:tpope/vim-eunuch"; flake = false; };
     vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
     vim-rails = { url = "github:tpope/vim-rails"; flake = false; };
@@ -57,7 +56,6 @@
               cmp-luasnip = plug "cmp-luasnip";
               cmp-nvim-lsp = plug "cmp-nvim-lsp";
               cmp-path = plug "cmp-path";
-              vim-crystal = plug "vim-crystal";
               fennel-vim = plug "fennel-vim";
               friendly-snippets = plug "friendly-snippets";
               gitsigns-nvim = plug "gitsigns-nvim";
