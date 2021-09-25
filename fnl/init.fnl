@@ -195,7 +195,7 @@
     {:rootMarkers [:.git/]
      :languages
      {:ruby
-      [{:rootMarkers [:Gemfile]
+      [{:rootMarkers [:Gemfile :Rakefile :.rubocop.yml]
         :lintCommand "rubocop --format emacs --force-exclusion --stdin ${INPUT}"
         :lintStdin true
         :lintFormats ["%f:%l:%c: %m"]
