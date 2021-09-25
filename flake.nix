@@ -27,7 +27,7 @@
     neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
     nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
-    nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
+    nvim-cmp = { url = "github:hrsh7th/nvim-cmp/custom-menu"; flake = false; };
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
