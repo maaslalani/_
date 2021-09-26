@@ -23,8 +23,8 @@
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
     luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
-    neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
     neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
+    neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
     nordbuddy-nvim = { url = "github:maaslalani/nordbuddy"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp/custom-menu"; flake = false; };
