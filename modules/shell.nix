@@ -34,6 +34,7 @@ in
       gbc = "${gb} --show-current";
       gc = "git commit";
       gca = "${gc} --amend";
+      gcane = "${gc} --amend --no-edit";
       gcam = "${gc} -am";
       gcm = "${gc} -m";
       gco = "git checkout";
