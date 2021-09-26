@@ -42,13 +42,14 @@
     with pkgs; with pkgs.nodePackages; [
       bash-language-server
       dockerfile-language-server-nodejs
+      efm-langserver
       gopls
       rnix-lsp
       serve
+      solargraph
       terraform-ls
       typescript
       typescript-language-server
-      efm-langserver
       yaml-language-server
     ]
   );

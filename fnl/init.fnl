@@ -186,7 +186,13 @@
   (lsp.bashls.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.dockerls.setup {:on_attach on_attach :capabilities capabilities})
   (lsp.rnix.setup {:on_attach on_attach :capabilities capabilities})
-  (lsp.crystalline.setup {:on_attach on_attach :capabilities capabilities})
+  (lsp.solargraph.setup
+    {:on_attach on_attach
+     :capabilities capabilities
+     :flags {:debounce_text_changes 150}
+     :settings
+     {:solargraph
+      {:diagnostics true}}})
   (lsp.efm.setup
     {:cmd [:efm-langserver]
      :init_options {:documentFormatting true :codeAction true}
