@@ -68,6 +68,16 @@ in
       gsw = "git switch";
       gswm = "${gsw} main || ${gsw} master";
 
+      r = "bin/rails";
+      rdbm = "${r} db:migrate";
+      rdbr = "${r} db:rollback";
+      rdbs = "${r} db:seed";
+
+      b = "bundle";
+      be = "${b} exec";
+      bi = "${b} install";
+      bu = "${b} update";
+
       nupf = join [
         "cd $HOME/_"
         "rm flake.lock"
