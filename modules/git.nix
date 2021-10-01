@@ -10,6 +10,7 @@ in
     extraConfig = {
       color.ui = true;
       commit.gpgsign = true;
+      gpg.program = "gpg";
       credential.helper = "osxkeychain";
       diff.algorithm = "histogram";
       github.user = user;
