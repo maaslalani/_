@@ -14,6 +14,8 @@
 (set g.mapleader " ")
 (set g.netrw_banner 0)
 (set g.nord_minimal_mode true)
+(set g.markdown_fenced_languages [:bash :css :erb=ruby :go :javascript
+                                  :js=javascript :ruby :vim])
 
 ;; Options
 (local o vim.o)
