@@ -301,7 +301,7 @@
      :buffer_previewer_maker (. previewers :buffer_previewer_maker)
      :color_devicons true
      :entry_prefix "  "
-     :file_ignore_patterns {}
+     :file_ignore_patterns [:sorbet]
      :file_previewer (. (. previewers :vim_buffer_cat) :new)
      :file_sorter (. sorters :get_fuzzy_file)
      :generic_sorter (. sorters :get_generic_fuzzy_sorter)
