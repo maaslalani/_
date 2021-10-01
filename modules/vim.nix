@@ -23,6 +23,7 @@
       nvim-treesitter
       plenary-nvim
       popup-nvim
+      shadowenv-vim
       telescope-nvim
       vim-commentary
       vim-eunuch

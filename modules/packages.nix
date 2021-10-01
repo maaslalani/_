@@ -33,6 +33,7 @@
     ripgrep
     rustup
     sd
+    shadowenv
     sops
     spotify-tui
     terraform
