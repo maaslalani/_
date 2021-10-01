@@ -85,6 +85,7 @@
    :s {:name :misc
        :a [(cmd :Awkward) :awkward]
        :l [(pcmd :luafile :%) :lua]
+       :s [":let @*expand('%')<cr>" :filepath]
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
        :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]}
@@ -92,11 +93,7 @@
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
        :a [(lspcmd :buf.code_action) :actions]
-       :r [(lspcmd :buf.rename) :rename]
-       :l [(lspcmd :diagnostic.show_line_diagnostics) :line]
-       :d {:name :diagnostics
-           :n [(lspcmd :diagnostic.goto_next) :next]
-           :p [(lspcmd :diagnostic.goto_prev) :previous]}}
+       :r [(lspcmd :buf.rename) :rename]}
    :t {:name :+prefix
        :t [(cmd :tabnew) :new]
        :n [(cmd :tabnext) :next]
