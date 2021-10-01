@@ -34,7 +34,6 @@
 (set o.omnifunc :v:lua.vim.lsp.omnifunc)
 (set o.ruler true)
 (set o.scrolloff 1000)
-(set o.shadafile :NONE)
 (set o.shiftwidth 2)
 (set o.showmode false)
 (set o.sidescrolloff 1000)
