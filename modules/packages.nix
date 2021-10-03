@@ -31,6 +31,7 @@
     pandoc
     rename
     ripgrep
+    ruby_3_0
     rustup
     sd
     shadowenv
