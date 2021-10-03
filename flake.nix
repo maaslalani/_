@@ -51,60 +51,60 @@
           self: super: with self.vimUtils; let
             plug = name: buildVimPluginFrom2Nix { pname = name; src = inputs.${name}; version = "unstable"; };
           in
-            {
-              awkward-nvim = plug "awkward-nvim";
-              cmp-buffer = plug "cmp-buffer";
-              cmp-luasnip = plug "cmp-luasnip";
-              cmp-nvim-lsp = plug "cmp-nvim-lsp";
-              cmp-path = plug "cmp-path";
-              fennel-vim = plug "fennel-vim";
-              friendly-snippets = plug "friendly-snippets";
-              gitsigns-nvim = plug "gitsigns-nvim";
-              hop-nvim = plug "hop-nvim";
-              luasnip = plug "luasnip";
-              neorg = plug "neorg";
-              neorg-telescope = plug "neorg-telescope";
-              nordbuddy-nvim = plug "nordbuddy-nvim";
-              nvim-autopairs = plug "nvim-autopairs";
-              nvim-cmp = plug "nvim-cmp";
-              nvim-lspconfig = plug "nvim-lspconfig";
-              nvim-treesitter = plug "nvim-treesitter";
-              plenary-nvim = plug "plenary-nvim";
-              popup-nvim = plug "popup-nvim";
-              shadowenv-vim = plug "shadowenv-vim";
-              telescope-nvim = plug "telescope-nvim";
-              vim-commentary = plug "vim-commentary";
-              vim-eunuch = plug "vim-eunuch";
-              vim-fugitive = plug "vim-fugitive";
-              vim-rails = plug "vim-rails";
-              vim-rhubarb = plug "vim-rhubarb";
-              vim-surround = plug "vim-surround";
-              vim-test = plug "vim-test";
-              which-key-nvim = plug "which-key-nvim";
+          {
+            awkward-nvim = plug "awkward-nvim";
+            cmp-buffer = plug "cmp-buffer";
+            cmp-luasnip = plug "cmp-luasnip";
+            cmp-nvim-lsp = plug "cmp-nvim-lsp";
+            cmp-path = plug "cmp-path";
+            fennel-vim = plug "fennel-vim";
+            friendly-snippets = plug "friendly-snippets";
+            gitsigns-nvim = plug "gitsigns-nvim";
+            hop-nvim = plug "hop-nvim";
+            luasnip = plug "luasnip";
+            neorg = plug "neorg";
+            neorg-telescope = plug "neorg-telescope";
+            nordbuddy-nvim = plug "nordbuddy-nvim";
+            nvim-autopairs = plug "nvim-autopairs";
+            nvim-cmp = plug "nvim-cmp";
+            nvim-lspconfig = plug "nvim-lspconfig";
+            nvim-treesitter = plug "nvim-treesitter";
+            plenary-nvim = plug "plenary-nvim";
+            popup-nvim = plug "popup-nvim";
+            shadowenv-vim = plug "shadowenv-vim";
+            telescope-nvim = plug "telescope-nvim";
+            vim-commentary = plug "vim-commentary";
+            vim-eunuch = plug "vim-eunuch";
+            vim-fugitive = plug "vim-fugitive";
+            vim-rails = plug "vim-rails";
+            vim-rhubarb = plug "vim-rhubarb";
+            vim-surround = plug "vim-surround";
+            vim-test = plug "vim-test";
+            which-key-nvim = plug "which-key-nvim";
 
-              hammerspoon = self.pkgs.stdenv.mkDerivation {
-                pname = "hammerspoon";
-                version = "0.9.90";
-                src = inputs.hammerspoon;
-                buildInputs = [ self.pkgs.fennel ];
-                installPhase = ''
-                  mkdir -p $out/Applications/Hammerspoon.app
-                  cp -r $src/Contents $out/Applications/Hammerspoon.app/
-                '';
-              };
+            hammerspoon = self.pkgs.stdenv.mkDerivation {
+              pname = "hammerspoon";
+              version = "0.9.90";
+              src = inputs.hammerspoon;
+              buildInputs = [ self.pkgs.fennel ];
+              installPhase = ''
+                mkdir -p $out/Applications/Hammerspoon.app
+                cp -r $src/Contents $out/Applications/Hammerspoon.app/
+              '';
+            };
 
-              fnl = self.pkgs.stdenv.mkDerivation {
-                pname = "fnl";
-                version = "unstable";
-                src = inputs.fnl;
-                buildInputs = [ self.pkgs.fennel ];
-                installPhase = ''
-                  mkdir -p $out
-                  fennel --compile $src/init.fnl > $out/init.lua
-                  fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
-                '';
-              };
-            }
+            fnl = self.pkgs.stdenv.mkDerivation {
+              pname = "fnl";
+              version = "unstable";
+              src = inputs.fnl;
+              buildInputs = [ self.pkgs.fennel ];
+              installPhase = ''
+                mkdir -p $out
+                fennel --compile $src/init.fnl > $out/init.lua
+                fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
+              '';
+            };
+          }
         )
         inputs.neovim-nightly-overlay.overlay
       ];
