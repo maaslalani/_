@@ -27,6 +27,7 @@
     jq
     kubectl
     nodejs
+    noti
     openssl
     pandoc
     rename
