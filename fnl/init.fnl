@@ -22,7 +22,7 @@
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
 (set o.backup false)
-(set o.completeopt "menuone,noinsert,noselect")
+(set o.completeopt "menuone,noselect")
 (set o.cursorline true)
 (set o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
 (set o.expandtab true)
@@ -92,6 +92,7 @@
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
        :a [(lspcmd :buf.code_action) :actions]
+       :l ["<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = 'single'})<cr>" :diagnostics]
        :r [(lspcmd :buf.rename) :rename]}
    :t {:name :+prefix
        :t [(cmd :tabnew) :new]
@@ -165,19 +166,15 @@
            :plugins {:spelling {:enabled true}}})
 
 ;; Language Server Protocol
-(local border
-  [[:┌ :FloatBorder] [:─ :FloatBorder] [:┐ :FloatBorder] [:│ :FloatBorder]
-   [:┘ :FloatBorder] [:─ :FloatBorder] [:└ :FloatBorder] [:│ :FloatBorder]])
-
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
 (set capabilities
      ((. (require :cmp_nvim_lsp) :update_capabilities) capabilities))
 
 (fn on_attach [client bufnr]
   (tset vim.lsp.handlers :textDocument/hover
-        (vim.lsp.with vim.lsp.handlers.hover {: border}))
+        (vim.lsp.with vim.lsp.handlers.hover {:border :single}))
   (tset vim.lsp.handlers :textDocument/signatureHelp
-        (vim.lsp.with vim.lsp.handlers.hover {: border})))
+        (vim.lsp.with vim.lsp.handlers.hover {:border :single})))
 
 (fn lsp []
   (local lsp (require :lspconfig))
@@ -264,24 +261,34 @@
 
 (fn completion []
   (local cmp (require :cmp))
+  (local luasnip (require :luasnip))
+
   (cmp.setup
     {:snippet
-     {:expand (fn [args] ((. (require :luasnip) :lsp_expand) args.body))}
+     {:expand (fn [args] ((. luasnip :lsp_expand) args.body))}
      :documentation
      {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
      {:<C-N> (cmp.mapping.select_next_item)
       :<C-P> (cmp.mapping.select_prev_item)
       :<C-SPACE> (cmp.mapping.complete)
-      :<S-TAB> (cmp.mapping.select_prev_item)
       :<C-E> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
-      :<TAB> (cmp.mapping.select_next_item)}
-     :sources
-     [{:name :buffer}
-      {:name :luasnip}
-      {:name :neorg}
-      {:name :nvim_lsp}
-      {:name :path}]})
+      :<S-TAB> (fn s-tab [fallback]
+                 (if (cmp.visible) (cmp.select_prev_item)
+                   (luasnip.jumpable (- 1))
+                   (vim.fn.feedkeys (rtc :<Plug>luasnip-jump-prev) "")
+                   (fallback)))
+      :<TAB> (fn tab [fallback]
+               (if (cmp.visible) (cmp.select_next_item)
+                 (luasnip.expand_or_jumpable)
+                 (vim.fn.feedkeys (rtc :<Plug>luasnip-expand-or-jump) "")
+                 (fallback)))}
+    :sources
+    [{:name :buffer}
+     {:name :luasnip}
+     {:name :neorg}
+     {:name :nvim_lsp}
+     {:name :path}]})
 
   (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
   ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true})
