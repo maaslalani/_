@@ -109,6 +109,7 @@
        :o [(cmd :copen) :open]}
    :g {:name :git
        :b [(pcmd :Gitsigns :blame_line) :blame]
+       :g [(cmd :Git) :fugitive]
        :h {:name :hunk
            :r [(pcmd :Gitsigns :reset_hunk) :reset]
            :s [(pcmd :Gitsigns :stage_hunk) :stage]
