@@ -272,8 +272,7 @@
      :mapping
      {:<C-N> (cmp.mapping.select_next_item)
       :<C-P> (cmp.mapping.select_prev_item)
-      :<C-SPACE> (cmp.mapping.complete)
-      :<C-E> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert :select true})
+      :<C-E> (cmp.mapping.complete)
       :<S-TAB> (fn s-tab [fallback]
                  (if (cmp.visible) (cmp.select_prev_item)
                    (luasnip.jumpable (- 1))
@@ -285,11 +284,11 @@
                  (vim.fn.feedkeys (rtc :<Plug>luasnip-expand-or-jump) "")
                  (fallback)))}
     :sources
-    [{:name :buffer}
+    [{:name :nvim_lsp}
+     {:name :path}
      {:name :luasnip}
-     {:name :neorg}
-     {:name :nvim_lsp}
-     {:name :path}]})
+     {:name :buffer :keyword_length 5}
+     {:name :neorg}]})
 
   (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
   ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true})
