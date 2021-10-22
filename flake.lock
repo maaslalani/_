@@ -482,7 +482,6 @@
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",
         "popup-nvim": "popup-nvim",
-        "shadowenv-vim": "shadowenv-vim",
         "telescope-nvim": "telescope-nvim",
         "vim-commentary": "vim-commentary",
         "vim-eunuch": "vim-eunuch",
@@ -492,22 +491,6 @@
         "vim-surround": "vim-surround",
         "vim-test": "vim-test",
         "which-key-nvim": "which-key-nvim"
-      }
-    },
-    "shadowenv-vim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1591898651,
-        "narHash": "sha256-M0Ii6s7Q4+wNajwz3bsWehG0HniOd/bUApSlNnubzNE=",
-        "owner": "shopify",
-        "repo": "shadowenv.vim",
-        "rev": "6422c3a651c3788881d01556cb2a90bdff7bf002",
-        "type": "github"
-      },
-      "original": {
-        "owner": "shopify",
-        "repo": "shadowenv.vim",
-        "type": "github"
       }
     },
     "telescope-nvim": {

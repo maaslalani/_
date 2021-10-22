@@ -35,7 +35,6 @@
     ruby_3_0
     rustup
     sd
-    shadowenv
     sops
     spotify-tui
     terraform
