@@ -34,8 +34,8 @@ in
     userName = name;
     aliases = {
       cleanup = "!git branch --merged | grep  -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d";
-      hist = "log --graph --pretty='''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset''' --all";
-      lo = "log --oneline -n 10";
+      hist = "log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
+      lo = "log --oneline -n 20";
       open = "!git config --get remote.origin.url | xargs open";
       undo = "reset HEAD~1 --mixed";
     };

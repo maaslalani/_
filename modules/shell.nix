@@ -43,8 +43,10 @@ in
       gd = "git diff";
       gd- = "git diff HEAD~";
       gdm = "${gd} main || ${gd} master";
+      ghist = "git hist";
       gl = "git pull";
-      glo = "git log";
+      glo = "git lo";
+      glog = "git log";
       gm = "git merge";
       gma = "${gm} --abort";
       gp = "git push";
@@ -161,9 +163,10 @@ in
         fi
       }
     '';
-    sessionVariables = let
-      pathJoin = builtins.concatStringsSep ":";
-    in
+    sessionVariables =
+      let
+        pathJoin = builtins.concatStringsSep ":";
+      in
       rec {
         BROWSER = "open";
         CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
