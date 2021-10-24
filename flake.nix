@@ -88,6 +88,7 @@
               installPhase = ''
                 mkdir -p $out/Applications/Hammerspoon.app
                 cp -r $src/Contents $out/Applications/Hammerspoon.app/
+                ln -sf $out/Applications/Hammerspoon.app/ /Applications/
               '';
             };
 
