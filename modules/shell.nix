@@ -99,6 +99,7 @@ in
         sz
         "cd -"
       ];
+      hsm = hms;
 
       c = "clear";
 
