@@ -10,11 +10,15 @@ in
     extraConfig = {
       color.ui = true;
       commit.gpgsign = true;
-      gpg.program = "gpg";
+      core.commitGraph = true;
       credential.helper = "osxkeychain";
-      diff.algorithm = "histogram";
+      diff.algorithm = "patience";
+      gc.writeCommitGraph = true;
       github.user = user;
+      gpg.program = "gpg";
+      hub.protocol = "https";
       init.defaultBranch = "main";
+      merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = true;
     };
