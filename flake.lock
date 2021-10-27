@@ -130,7 +130,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Psmtwxoy3DatRobQs0Zc9dy3bJIGm0wWtEWtVP9KJzE=",
+        "narHash": "sha256-FTmNklvptjvNMIPGHOWAHabc9pj6B+Ny7kjbQgjXxAk=",
         "path": "fnl",
         "type": "path"
       },

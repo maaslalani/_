@@ -98,6 +98,7 @@
        :t [(cmd :tabnew) :new]
        :n [(cmd :tabnext) :next]
        :p [(cmd :tabprevious) :previous]
+       :o [(cmd "tab split") :tabsplit]
        :f [(cmd :TestFile) :file]
        :l [(cmd :TestLast) :last]
        :s [(cmd :TestSuite) :suite]
