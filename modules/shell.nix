@@ -70,6 +70,8 @@ in
       gsw = "git switch";
       gswm = "${gsw} main || ${gsw} master";
 
+      ghprvw = "gh pr view --web";
+
       r = "bin/rails";
       rdbm = "${r} db:migrate";
       rdbr = "${r} db:rollback";
