@@ -70,7 +70,13 @@ in
       gsw = "git switch";
       gswm = "${gsw} main || ${gsw} master";
 
-      ghprvw = "gh pr view --web";
+      ghb = "gh browse";
+      ghc = "gh pr checkout";
+      ghi = "gh issue list";
+      ghiv = "gh issue view";
+      ghp = "gh pr list";
+      ghpv = "gh pr view";
+      ghv = "gh pr view --web";
 
       r = "bin/rails";
       rdbm = "${r} db:migrate";
