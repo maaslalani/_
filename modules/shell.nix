@@ -61,6 +61,7 @@ in
       grbm = "${grb} main || ${grb} master";
       grev = "git rev-parse HEAD";
       grh = "${gr} --hard";
+      groot = "cd \$(git rev-parse --show-toplevel)";
       grpo = "git remote prune origin";
       grs = "git restore";
       gs = "${gss} --short";
