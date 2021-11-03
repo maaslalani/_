@@ -271,7 +271,8 @@
      :documentation
      {:border [:┌ :─ :┐ :│ :┘ :─ :└ :│]}
      :mapping
-     {:<C-N> (cmp.mapping.select_next_item)
+     {:<CR> (cmp.mapping.confirm {:select true})	
+      :<C-N> (cmp.mapping.select_next_item)
       :<C-P> (cmp.mapping.select_prev_item)
       :<C-E> (cmp.mapping.complete)
       :<S-TAB> (fn s-tab [fallback]
@@ -291,8 +292,8 @@
      {:name :buffer :keyword_length 5}
      {:name :neorg}]})
 
-  (local autopairs-cmp (. (require :nvim-autopairs.completion.cmp)))
-  ((. autopairs-cmp :setup) {:map_cr true :map_complete true :auto_select true})
+  (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
+  (cmp.event:on :confirm_done (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))	
   ((. (require :luasnip/loaders/from_vscode) :load)
    {:include [:fennel :go :javascript :lua :nix :rails :react :ruby :rust]}))
 
