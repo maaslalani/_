@@ -4,6 +4,5 @@
     exa
     fd
     jq
-    ripgrep
   ];
 }

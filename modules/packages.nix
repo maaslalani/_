@@ -18,7 +18,6 @@
     ffmpeg
     git
     gnupg
-    go
     google-cloud-sdk
     graph-easy
     graphviz
@@ -31,8 +30,6 @@
     openssl
     pandoc
     rename
-    ripgrep
-    ruby_3_0
     rustup
     sd
     sops
@@ -48,7 +45,6 @@
       gopls
       rnix-lsp
       serve
-      solargraph
       terraform-ls
       typescript
       typescript-language-server
