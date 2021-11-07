@@ -34,6 +34,7 @@
     sd
     sops
     spotify-tui
+    spotifyd
     terraform
     tree
     yarn
