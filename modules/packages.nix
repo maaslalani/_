@@ -25,7 +25,6 @@
     htop
     jq
     kubectl
-    nodejs
     noti
     openssl
     pandoc

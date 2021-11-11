@@ -15,7 +15,7 @@ in
       diff.algorithm = "patience";
       gc.writeCommitGraph = true;
       github.user = user;
-      gpg.program = "gpg";
+      gpg.program = "gpg2";
       hub.protocol = "https";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";

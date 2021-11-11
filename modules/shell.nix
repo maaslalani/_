@@ -190,7 +190,8 @@ in
         KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-        PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN "$PATH" ];
+        BREW_SBIN = "/usr/local/sbin";
+        PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN BREW_SBIN "$PATH" ];
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
