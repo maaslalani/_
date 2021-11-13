@@ -84,7 +84,6 @@
    :s {:name :misc
        :a [(cmd :Awkward) :awkward]
        :l [(pcmd :luafile :%) :lua]
-       :s [":let @*expand('%')<cr>" :filepath]
        :v [(cmd :vsplit) :split]
        :t [(cmd "10split | terminal") :terminal]
        :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]}
