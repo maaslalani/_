@@ -35,7 +35,6 @@
     spotify-tui
     spotifyd
     terraform
-    tree
     yarn
   ] ++ (
     with pkgs; with pkgs.nodePackages; [
