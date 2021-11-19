@@ -46,6 +46,7 @@ in
       ghist = "git hist";
       gl = "git pull";
       glo = "git lo";
+      gclean = "git cleanup";
       glog = "git log";
       gm = "git merge";
       gma = "${gm} --abort";
