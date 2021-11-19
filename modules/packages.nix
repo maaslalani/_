@@ -9,7 +9,6 @@
 
   home.packages = with pkgs; [
     cachix
-    charm
     coreutils
     delve
     entr
@@ -18,7 +17,6 @@
     fennel
     ffmpeg
     git
-    glow
     gnupg
     google-cloud-sdk
     graph-easy
