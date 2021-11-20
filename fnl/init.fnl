@@ -217,6 +217,11 @@
   (local awkward (require :awkward))
   ((. awkward :setup) {}))
 
+;; hop
+(fn hop []
+  (local hop (require :hop))
+  ((. hop :setup) {:keys :arstqwfpzxcvneio}))
+
 ;; gitsigns
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
@@ -374,10 +379,11 @@
 
 ;; lazy loading
 (local defer vim.defer_fn)
+(defer autopairs 10)
 (defer awkward 10)
 (defer completion 10)
 (defer gitsigns 10)
+(defer hop 10)
 (defer lsp 10)
-(defer treesitter 10)
 (defer telescope 10)
-(defer autopairs 10)
+(defer treesitter 10)
