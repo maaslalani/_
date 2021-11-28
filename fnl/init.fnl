@@ -360,7 +360,8 @@
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
 
 ;; colorscheme
-(vim.cmd "colorscheme nordbuddy")
+(set g.tokyonight_style "night")
+(vim.cmd "colorscheme tokyonight")
 
 ;; autocmds
 (vim.cmd

@@ -17,13 +17,13 @@
       hop-nvim
       neorg
       neorg-telescope
-      nordbuddy-nvim
       nvim-autopairs
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim
       popup-nvim
       telescope-nvim
+      tokyonight-nvim
       vim-commentary
       vim-eunuch
       vim-fugitive
