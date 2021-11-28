@@ -347,11 +347,11 @@
     "nordic-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1638140192,
-        "narHash": "sha256-v2bbqLHQa+8kx/deaEQ0znzeTA/1ukjs2asPsoxSnw4=",
+        "lastModified": 1638140602,
+        "narHash": "sha256-hZzPq99fVk3Gay8PvAOQTt1opV6JUyVXBOAGQsuE8xk=",
         "owner": "andersevenrud",
         "repo": "nordic.nvim",
-        "rev": "92e0883959e4a831b8a578b0ab4f9f7777a13037",
+        "rev": "cbaf793e47483a3cf82902517d984ecaf25c47aa",
         "type": "github"
       },
       "original": {
