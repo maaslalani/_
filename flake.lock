@@ -130,7 +130,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-QXzMZZn32/Y1IzTaVEI1JU+KCbusAq+rbh096Fc9khk=",
+        "narHash": "sha256-mGfMNXZvaqb/w71zV2LyHprXhKkaPbZLvuTSeAA/TwI=",
         "path": "fnl",
         "type": "path"
       },
@@ -344,6 +344,22 @@
         "type": "github"
       }
     },
+    "nordbuddy-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1637614780,
+        "narHash": "sha256-56FLQITTEm8SpuZyjmRwi2AsrfqvD/JmaxCSlyTVgwk=",
+        "owner": "maaslalani",
+        "repo": "nordbuddy",
+        "rev": "a6dae36f83b3ef68624d7ccad445d50d1965271e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maaslalani",
+        "repo": "nordbuddy",
+        "type": "github"
+      }
+    },
     "nvim-autopairs": {
       "flake": false,
       "locked": {
@@ -459,6 +475,7 @@
         "neorg-telescope": "neorg-telescope",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
+        "nordbuddy-nvim": "nordbuddy-nvim",
         "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
         "nvim-lspconfig": "nvim-lspconfig",
@@ -466,7 +483,6 @@
         "plenary-nvim": "plenary-nvim",
         "popup-nvim": "popup-nvim",
         "telescope-nvim": "telescope-nvim",
-        "tokyonight-nvim": "tokyonight-nvim",
         "vim-commentary": "vim-commentary",
         "vim-eunuch": "vim-eunuch",
         "vim-fugitive": "vim-fugitive",
@@ -490,22 +506,6 @@
       "original": {
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "type": "github"
-      }
-    },
-    "tokyonight-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1634887496,
-        "narHash": "sha256-ARvX6a/btRP9uTWGEW0yWL0lqE6G9OF89krjrMMre5Y=",
-        "owner": "folke",
-        "repo": "tokyonight.nvim",
-        "rev": "2981e4bd0919305675d8d665f9a20281bb33ed06",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "tokyonight.nvim",
         "type": "github"
       }
     },
