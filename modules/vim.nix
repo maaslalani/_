@@ -17,7 +17,7 @@
       hop-nvim
       neorg
       neorg-telescope
-      nordbuddy-nvim
+      nordic-nvim
       nvim-autopairs
       nvim-lspconfig
       nvim-treesitter
