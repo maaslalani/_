@@ -33,26 +33,32 @@
       };
 
       colors = {
-        bright.black = "0x4C566A";
-        bright.blue = "0x81A1C1";
-        bright.cyan = "0x8FBCBB";
-        bright.green = "0xA3BE8C";
-        bright.magenta = "0xB48EAD";
-        bright.red = "0xBF616A";
-        bright.white = "0xECEFF4";
-        bright.yellow = "0xEBCB8B";
+        normal.black = "0x000000";
+        bright.black = "0x4D4D4D";
 
-        normal.black = "0x3B4252";
-        normal.blue = "0x81A1C1";
-        normal.cyan = "0x88C0D0";
-        normal.green = "0xA3BE8C";
-        normal.magenta = "0xB48EAD";
-        normal.red = "0xBF616A";
-        normal.white = "0xE5E9F0";
-        normal.yellow = "0xEBCB8B";
+        normal.blue = "0x3854FC";
+        bright.blue = "0x566BF9";
 
-        primary.background = "0x2E3440";
-        primary.foreground = "0xD8DEE9";
+        normal.cyan = "0x2CBAC9";
+        bright.cyan = "0x00E6E7";
+
+        normal.green = "0x00A800";
+        bright.green = "0x00DB00";
+
+        normal.magenta = "0xD533CE";
+        bright.magenta = "0xE83AE9";
+
+        normal.red = "0xC73B1D";
+        bright.red = "0xE82100";
+
+        normal.white = "0xBFBFBF";
+        bright.white = "0xE6E6E6";
+
+        normal.yellow = "0xACAF15";
+        bright.yellow = "0xE5E900";
+
+        primary.background = "0x171717";
+        primary.foreground = "0xDDDDDD";
       };
 
       bell = {
