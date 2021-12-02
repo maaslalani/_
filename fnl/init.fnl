@@ -302,6 +302,10 @@
   ((. (require :luasnip/loaders/from_vscode) :load)
    {:include [:fennel :go :javascript :lua :nix :rails :react :ruby :rust]}))
 
+;; colorizer
+(fn colorizer []
+  (. (require :colorizer) :setup))
+
 ;; telescope
 (fn telescope []
   (local telescope (require :telescope))
@@ -381,6 +385,7 @@
 (local defer vim.defer_fn)
 (defer autopairs 10)
 (defer awkward 10)
+(defer colorizer 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer hop 10)

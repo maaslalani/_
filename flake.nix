@@ -28,6 +28,7 @@
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
+    nvim-colorizer = { url = "github:norcalli/nvim-colorizer.lua"; flake = false; };
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
@@ -66,6 +67,7 @@
             nordic-nvim = plug "nordic-nvim";
             nvim-autopairs = plug "nvim-autopairs";
             nvim-cmp = plug "nvim-cmp";
+            nvim-colorizer = plug "nvim-colorizer";
             nvim-lspconfig = plug "nvim-lspconfig";
             nvim-treesitter = plug "nvim-treesitter";
             plenary-nvim = plug "plenary-nvim";
@@ -139,6 +141,7 @@
             ./modules/gh.nix
             ./modules/git.nix
             ./modules/hammerspoon.nix
+            ./modules/kitty.nix
             ./modules/packages.nix
             ./modules/shell.nix
             ./modules/spotify.nix
