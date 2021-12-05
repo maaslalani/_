@@ -313,10 +313,7 @@
   (local previewers (require :telescope.previewers))
   ((. telescope :setup)
    {:defaults
-    {:border {}
-     :borderchars [:─ :│ :─ :│  :╭ :╮ :╯ :╰]
-     :buffer_previewer_maker (. previewers :buffer_previewer_maker)
-     :color_devicons true
+    {:buffer_previewer_maker (. previewers :buffer_previewer_maker)
      :entry_prefix "  "
      :file_ignore_patterns [:sorbet]
      :file_previewer (. (. previewers :vim_buffer_cat) :new)
@@ -334,9 +331,7 @@
      :set_env {:COLORTERM :truecolor}
      :sorting_strategy :descending
      :use_less true
-     :vimgrep_arguments
-     [:rg :--color=never :--no-heading :--with-filename :--line-number
-      :--column :--smart-case]
+     :vimgrep_arguments [:rg :--vimgrep]
      :winblend 0}}))
 
 ;; treesitter
