@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "catppuccin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1638663716,
-        "narHash": "sha256-LZVOAUMNIyfgB2LJ07q/VHb33yYGt93qdI/a0pS2Byw=",
-        "owner": "catppuccin",
-        "repo": "nvim",
-        "rev": "a057633714b2fa69b8a9710002b26203d57941a7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "nvim",
-        "type": "github"
-      }
-    },
     "cmp-buffer": {
       "flake": false,
       "locked": {
@@ -146,7 +130,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-YWL7j47aBo91rZU0qbxfPVez6j172sdMQUoj0L3k4rw=",
+        "narHash": "sha256-/+k+F7uUK9OqNWzVfxJEl4P95xX6DWrWVS1PKDGINT8=",
         "path": "fnl",
         "type": "path"
       },
@@ -360,6 +344,22 @@
         "type": "github"
       }
     },
+    "nordic-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638591106,
+        "narHash": "sha256-ILldqjSjhDO8me+ZaPkLuo1eoyF19RiQ6Eb09jBSaZA=",
+        "owner": "andersevenrud",
+        "repo": "nordic.nvim",
+        "rev": "6c19b29aa3e09687ee6d0f6d6eef2644ef39f690",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andersevenrud",
+        "repo": "nordic.nvim",
+        "type": "github"
+      }
+    },
     "nvim-autopairs": {
       "flake": false,
       "locked": {
@@ -475,7 +475,6 @@
     "root": {
       "inputs": {
         "awkward-nvim": "awkward-nvim",
-        "catppuccin": "catppuccin",
         "cmp-buffer": "cmp-buffer",
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
@@ -492,6 +491,7 @@
         "neorg-telescope": "neorg-telescope",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
+        "nordic-nvim": "nordic-nvim",
         "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
         "nvim-colorizer": "nvim-colorizer",

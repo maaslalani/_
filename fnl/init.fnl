@@ -359,7 +359,7 @@
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
 
 ;; colorscheme
-(vim.cmd "colorscheme catppuccin")
+(vim.cmd "colorscheme nordic")
 
 ;; autocmds
 (vim.cmd

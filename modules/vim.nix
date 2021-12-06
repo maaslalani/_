@@ -12,12 +12,12 @@
     viAlias = true;
     plugins = with pkgs; [
       awkward-nvim
-      catppuccin
       fennel-vim
       gitsigns-nvim
       hop-nvim
       neorg
       neorg-telescope
+      nordic-nvim
       nvim-autopairs
       nvim-colorizer
       nvim-lspconfig

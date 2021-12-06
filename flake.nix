@@ -14,7 +14,6 @@
     };
 
     awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
-    catppuccin = { url = "github:catppuccin/nvim"; flake = false; };
     cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
@@ -26,6 +25,7 @@
     luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
     neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
     neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
+    nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
     nvim-colorizer = { url = "github:norcalli/nvim-colorizer.lua"; flake = false; };
@@ -53,7 +53,6 @@
           in
           {
             awkward-nvim = plug "awkward-nvim";
-            catppuccin = plug "catppuccin";
             cmp-buffer = plug "cmp-buffer";
             cmp-luasnip = plug "cmp-luasnip";
             cmp-nvim-lsp = plug "cmp-nvim-lsp";
@@ -64,6 +63,7 @@
             hop-nvim = plug "hop-nvim";
             luasnip = plug "luasnip";
             neorg = plug "neorg";
+            nordic-nvim = plug "nordic-nvim";
             neorg-telescope = plug "neorg-telescope";
             nvim-autopairs = plug "nvim-autopairs";
             nvim-cmp = plug "nvim-cmp";
