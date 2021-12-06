@@ -1,18 +1,20 @@
 { config, pkgs, libs, ... }:
 let
-  user = "maaslalani";
+  email = "maas@lalani.dev";
   name = "Maas Lalani";
-  email = "${user}0@gmail.com";
+  user = "maaslalani";
 in
 {
   programs.git = {
     enable = true;
     extraConfig = {
+      branch.sort = "-committerdate";
       color.ui = true;
       commit.gpgsign = true;
       core.commitGraph = true;
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
+      fetch.prune = true;
       gc.writeCommitGraph = true;
       github.user = user;
       gpg.program = "gpg2";

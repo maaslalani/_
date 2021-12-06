@@ -14,8 +14,8 @@
 (set g.mapleader " ")
 (set g.netrw_banner 0)
 (set g.nord_minimal_mode true)
-(set g.markdown_fenced_languages [:bash :css :erb=ruby :go :javascript
-                                  :js=javascript :ruby :vim])
+(set g.markdown_fenced_languages
+     [:bash :css :erb=ruby :go :javascript :js=javascript :ruby :vim])
 
 ;; Options
 (local o vim.o)
@@ -290,12 +290,11 @@
                  (luasnip.expand_or_jumpable)
                  (vim.fn.feedkeys (rtc :<Plug>luasnip-expand-or-jump) "")
                  (fallback)))}
-    :sources
-    [{:name :nvim_lsp}
-     {:name :path}
-     {:name :luasnip}
-     {:name :buffer :keyword_length 5}
-     {:name :neorg}]})
+     :sources [{:name :nvim_lsp}
+               {:name :path}
+               {:name :luasnip}
+               {:name :buffer :keyword_length 5}
+               {:name :neorg}]})
 
   (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
   (cmp.event:on :confirm_done (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))	
@@ -371,7 +370,7 @@
       (autocmd :FileType :markdown "setlocal spell")
       (autocmd :FileType :gitcommit "setlocal spell")
       (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
-      (autocmd :TermOpen :* "setlocal nonumber nocursorline signcolumn=no laststatus=0")
+      (autocmd :TermOpen :* "setlocal nonu nocul scl=no ls=0")
       (autocmd :TermOpen :* "startinsert")))
 
 (neorg)

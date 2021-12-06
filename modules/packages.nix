@@ -28,6 +28,8 @@
     noti
     openssl
     pandoc
+    pinentry
+    pinentry_mac
     rename
     rustup
     sd
