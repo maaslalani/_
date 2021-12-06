@@ -17,12 +17,17 @@ in
       fetch.prune = true;
       gc.writeCommitGraph = true;
       github.user = user;
-      gpg.program = "gpg2";
+      gpg.program = "${pkgs.gnupg}/bin/gpg2";
       hub.protocol = "https";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = true;
+    };
+    signing = {
+      gpgPath = "${pkgs.gnupg}/bin/gpg2";
+      key = "B46091A89FBCE2E080816EB8BB664307626967AC";
+      signByDefault = true;
     };
     delta = {
       enable = true;
