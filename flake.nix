@@ -18,6 +18,7 @@
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
     cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
+    copilot = { url = "github:github/copilot.vim"; flake = false; };
     fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
     friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
@@ -57,6 +58,7 @@
             cmp-luasnip = plug "cmp-luasnip";
             cmp-nvim-lsp = plug "cmp-nvim-lsp";
             cmp-path = plug "cmp-path";
+            copilot = plug "copilot";
             fennel-vim = plug "fennel-vim";
             friendly-snippets = plug "friendly-snippets";
             gitsigns-nvim = plug "gitsigns-nvim";

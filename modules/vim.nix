@@ -12,6 +12,7 @@
     viAlias = true;
     plugins = with pkgs; [
       awkward-nvim
+      copilot
       fennel-vim
       gitsigns-nvim
       hop-nvim

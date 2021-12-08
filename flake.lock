@@ -80,6 +80,22 @@
         "type": "github"
       }
     },
+    "copilot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638862742,
+        "narHash": "sha256-gnFiuXpKF55cWxCXNXe3zqQaVmGoUV5aRBGIlyUUfIM=",
+        "owner": "github",
+        "repo": "copilot.vim",
+        "rev": "c01314840b94da0b9767b52f8a4bbc579214e509",
+        "type": "github"
+      },
+      "original": {
+        "owner": "github",
+        "repo": "copilot.vim",
+        "type": "github"
+      }
+    },
     "fennel-vim": {
       "flake": false,
       "locked": {
@@ -130,7 +146,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-zqX4P/kh9zpBs7Wr5bb3wBTnf0tOFDkCPlOnsynGL+4=",
+        "narHash": "sha256-1nHPHN9g3eVXynOGyNqXIh9AlPeWf94O6I5mALGPGwk=",
         "path": "fnl",
         "type": "path"
       },
@@ -479,6 +495,7 @@
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp-path": "cmp-path",
+        "copilot": "copilot",
         "fennel-vim": "fennel-vim",
         "fnl": "fnl",
         "friendly-snippets": "friendly-snippets",
