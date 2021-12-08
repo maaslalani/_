@@ -196,6 +196,7 @@ in
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
+        SSL_CERT_FILE = "$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt";
         _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       };
     plugins = [

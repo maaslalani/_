@@ -26,7 +26,7 @@ in
     };
     signing = {
       gpgPath = "${pkgs.gnupg}/bin/gpg2";
-      key = "B46091A89FBCE2E080816EB8BB664307626967AC";
+      key = "AECD51CD3C3A50BB9AA21C685A6ED5CBF1A0A000";
       signByDefault = true;
     };
     delta = {

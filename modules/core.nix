@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
-{
-  home.packages = with pkgs; [
-    exa
-    fd
-    jq
-  ];
-}
+{ pkgs, ... }:
+with pkgs; (import ./lsp.nix { pkgs = pkgs; }) ++ [
+  entr
+  exa
+  fd
+  jq
+  sd
+]

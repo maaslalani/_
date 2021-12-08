@@ -7,13 +7,10 @@
   programs.taskwarrior.enable = true;
   programs.z-lua.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs; (import ./core.nix { pkgs = pkgs; }) ++ [
     cachix
     coreutils
     delve
-    entr
-    exa
-    fd
     fennel
     ffmpeg
     git
@@ -23,7 +20,6 @@
     graphviz
     hammerspoon
     htop
-    jq
     kubectl
     noti
     openssl
@@ -32,24 +28,10 @@
     pinentry_mac
     rename
     rustup
-    sd
     sops
     spotify-tui
     spotifyd
     terraform
     yarn
-  ] ++ (
-    with pkgs; with pkgs.nodePackages; [
-      bash-language-server
-      dockerfile-language-server-nodejs
-      efm-langserver
-      gopls
-      rnix-lsp
-      serve
-      terraform-ls
-      typescript
-      typescript-language-server
-      yaml-language-server
-    ]
-  );
+  ];
 }
