@@ -41,6 +41,7 @@ in
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
       gd = "git diff";
+      gdh = "git diff HEAD";
       gd- = "git diff HEAD~";
       gdm = "${gd} main || ${gd} master";
       ghist = "git hist";
