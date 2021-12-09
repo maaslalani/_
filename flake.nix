@@ -120,8 +120,8 @@
             (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-linux; })
           ];
           imports = [
-            ./modules/core.nix
             ./modules/fzf.nix
+            ./modules/packages.nix
             ./modules/shell.nix
             ./modules/tmux.nix
             ./modules/vim.nix
