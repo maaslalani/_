@@ -18,6 +18,7 @@
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
     cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
+    comment-nvim = { url = "github:numtostr/comment.nvim"; flake = false; };
     copilot = { url = "github:github/copilot.vim"; flake = false; };
     fennel-vim = { url = "github:bakpakin/fennel.vim"; flake = false; };
     friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
@@ -35,7 +36,6 @@
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
     popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
     telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
-    vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
     vim-eunuch = { url = "github:tpope/vim-eunuch"; flake = false; };
     vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
     vim-rails = { url = "github:tpope/vim-rails"; flake = false; };
@@ -75,7 +75,7 @@
             plenary-nvim = plug "plenary-nvim";
             popup-nvim = plug "popup-nvim";
             telescope-nvim = plug "telescope-nvim";
-            vim-commentary = plug "vim-commentary";
+            comment-nvim = plug "comment-nvim";
             vim-eunuch = plug "vim-eunuch";
             vim-fugitive = plug "vim-fugitive";
             vim-rails = plug "vim-rails";

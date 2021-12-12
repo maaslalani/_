@@ -80,6 +80,22 @@
         "type": "github"
       }
     },
+    "comment-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1639238785,
+        "narHash": "sha256-9uegYg+oAGD9iDdDpABmHESzToW0tDiUvNcS93ZTDOw=",
+        "owner": "numtostr",
+        "repo": "comment.nvim",
+        "rev": "eb0a84a2ea42858a2bb3cdf5fabe54e7c700555d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtostr",
+        "repo": "comment.nvim",
+        "type": "github"
+      }
+    },
     "copilot": {
       "flake": false,
       "locked": {
@@ -146,7 +162,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-M4/FABy9XcTdsywTGQAaDj9sFoxQ42Lglanz/jj7ClE=",
+        "narHash": "sha256-wtzWK9/LSSP936goU5fiotvVe+NxTqOdJxJMJ94ECBM=",
         "path": "fnl",
         "type": "path"
       },
@@ -494,6 +510,7 @@
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp-path": "cmp-path",
+        "comment-nvim": "comment-nvim",
         "copilot": "copilot",
         "fennel-vim": "fennel-vim",
         "fnl": "fnl",
@@ -516,7 +533,6 @@
         "plenary-nvim": "plenary-nvim",
         "popup-nvim": "popup-nvim",
         "telescope-nvim": "telescope-nvim",
-        "vim-commentary": "vim-commentary",
         "vim-eunuch": "vim-eunuch",
         "vim-fugitive": "vim-fugitive",
         "vim-rails": "vim-rails",
@@ -539,22 +555,6 @@
       "original": {
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "type": "github"
-      }
-    },
-    "vim-commentary": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1631587843,
-        "narHash": "sha256-10r0XfDpOAKNQMz5/n8Ab+fDigcJy8jqYH8NuAU0BTQ=",
-        "owner": "tpope",
-        "repo": "vim-commentary",
-        "rev": "627308e30639be3e2d5402808ce18690557e8292",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tpope",
-        "repo": "vim-commentary",
         "type": "github"
       }
     },

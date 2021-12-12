@@ -302,6 +302,10 @@
 (fn colorizer []
   (. (require :colorizer) :setup))
 
+;; comment-nvim
+(fn comment-nvim []
+  ((. (. (require :Comment)) :setup)))
+
 ;; telescope
 (fn telescope []
   (local telescope (require :telescope))
@@ -377,6 +381,7 @@
 (defer autopairs 10)
 (defer awkward 10)
 (defer colorizer 10)
+(defer comment-nvim 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer hop 10)

@@ -12,6 +12,7 @@
     viAlias = true;
     plugins = with pkgs; [
       awkward-nvim
+      comment-nvim
       copilot
       fennel-vim
       gitsigns-nvim
@@ -26,7 +27,6 @@
       plenary-nvim
       popup-nvim
       telescope-nvim
-      vim-commentary
       vim-eunuch
       vim-fugitive
       vim-rails
