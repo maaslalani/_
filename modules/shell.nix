@@ -27,6 +27,8 @@ in
 
       dstroy = "fd -H .DS_Store | xargs sudo rm";
 
+      spoon = "open -a ~/.nix-profile/Applications/Hammerspoon.app";
+
       g = "git";
       ga = "git add";
       gap = "${ga} --patch";
@@ -129,6 +131,8 @@ in
 
       sc = "systemctl";
       jc = "journalctl";
+
+      scim = "sc-im";
 
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";

@@ -35,6 +35,7 @@ let
     pinentry_mac
     rename
     rustup
+    sc-im
     sops
     spotify-tui
     spotifyd
