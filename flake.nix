@@ -9,7 +9,7 @@
 
     fnl = { url = "path:fnl"; flake = false; };
     hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.91/Hammerspoon-0.9.91.zip";
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.92/Hammerspoon-0.9.92.zip";
       flake = false;
     };
 
@@ -86,7 +86,7 @@
 
             hammerspoon = self.pkgs.stdenv.mkDerivation {
               pname = "hammerspoon";
-              version = "0.9.91";
+              version = "0.9.92";
               src = inputs.hammerspoon;
               buildInputs = [ self.pkgs.fennel ];
               installPhase = ''
