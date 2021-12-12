@@ -145,6 +145,7 @@
             ./modules/hammerspoon.nix
             ./modules/kitty.nix
             ./modules/packages.nix
+            ./modules/scim.nix
             ./modules/shell.nix
             ./modules/spotify.nix
             ./modules/tmux.nix
