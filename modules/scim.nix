@@ -15,5 +15,8 @@ in
     color "type=CELL_ID bold=0 fg=CYAN bg=DEFAULT_COLOR"
     color "type=CELL_FORMAT bold=0 fg=WHITE bg=DEFAULT_COLOR"
     color "type=CELL_CONTENT bold=0 fg=CYAN bg=DEFAULT_COLOR"
+
+    nmap "a" "="
+    nmap "A" "\"
   '';
 }
