@@ -7,12 +7,6 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    fnl = { url = "path:fnl"; flake = false; };
-    hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.92/Hammerspoon-0.9.92.zip";
-      flake = false;
-    };
-
     awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
     cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
@@ -43,6 +37,11 @@
     vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
     vim-test = { url = "github:vim-test/vim-test"; flake = false; };
     which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
+    fnl = { url = "path:fnl"; flake = false; };
+    hammerspoon = {
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.92/Hammerspoon-0.9.92.zip";
+      flake = false;
+    };
   };
 
   outputs = { self, ... }@inputs: {
