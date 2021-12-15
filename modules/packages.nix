@@ -20,7 +20,6 @@ let
     fennel
     ffmpeg
     git
-    gnupg
     google-cloud-sdk
     graph-easy
     graphviz
