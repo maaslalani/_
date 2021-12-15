@@ -19,7 +19,7 @@
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
     luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
-    neorg = { url = "github:nvim-neorg/neorg/unstable"; flake = false; };
+    neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
     neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
