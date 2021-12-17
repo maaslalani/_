@@ -33,6 +33,8 @@ let
     pinentry
     pinentry_mac
     rename
+    rubyPackages_3_0.rails
+    ruby_3_0
     rustup
     sc-im
     sops

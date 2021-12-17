@@ -86,13 +86,12 @@
        :a [(cmd :Awkward) :awkward]
        :l [(pcmd :luafile :%) :lua]
        :v [(cmd :vsplit) :split]
-       :t [(cmd "10split | terminal") :terminal]
-       :r [(cmd "lua require'plenary.reload'.reload_module('awkward')") :reload]}
+       :t [(cmd "10split | terminal") :terminal]}
    :n [(cmd "tabnew ~/wiki/index.norg") :wiki]
    :l {:name :lsp
        :f [(lspcmd :buf.formatting) :format]
        :a [(lspcmd :buf.code_action) :actions]
-       :l ["<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = 'single'})<cr>" :diagnostics]
+       :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>" :diagnostics]
        :r [(lspcmd :buf.rename) :rename]}
    :t {:name :+prefix
        :t [(cmd :tabnew) :new]

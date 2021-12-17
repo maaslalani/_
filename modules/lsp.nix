@@ -1,5 +1,5 @@
 { pkgs, ... }:
-with pkgs; with pkgs.nodePackages; [
+with pkgs; with pkgs.nodePackages; with pkgs.rubyPackages_3_0; [
   bash-language-server
   dockerfile-language-server-nodejs
   efm-langserver
@@ -10,4 +10,5 @@ with pkgs; with pkgs.nodePackages; [
   typescript
   typescript-language-server
   yaml-language-server
+  solargraph
 ]
