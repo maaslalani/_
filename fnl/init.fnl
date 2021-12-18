@@ -277,10 +277,10 @@
      :mapping
      {:<CR> (cmp.mapping.confirm {:select true})	
       :<S-P (fn s-tab [fallback]
-                 (if (cmp.visible) (cmp.select_prev_item)
-                   (luasnip.jumpable (- 1))
-                   (vim.fn.feedkeys (rtc :<Plug>luasnip-jump-prev) "")
-                   (fallback)))
+              (if (cmp.visible) (cmp.select_prev_item)
+                (luasnip.jumpable (- 1))
+                (vim.fn.feedkeys (rtc :<Plug>luasnip-jump-prev) "")
+                (fallback)))
       :<C-N> (fn tab [fallback]
                (if (cmp.visible) (cmp.select_next_item)
                  (luasnip.expand_or_jumpable)
@@ -350,7 +350,16 @@
     :highlight {:enable true}
     :indent {:enable true}}))
 
-; autopairs
+;; null
+(fn null-ls []
+  (local null-ls (require :null-ls))
+  (local sources
+    [null-ls.builtins.formatting.prettier
+     null-ls.builtins.diagnostics.write_good
+     null-ls.builtins.code_actions.gitsigns])
+  (null-ls.setup {: sources}))
+
+;; autopairs
 (fn autopairs []
   (local autopairs (. (require :nvim-autopairs)))
   ((. autopairs :setup))
@@ -385,5 +394,6 @@
 (defer gitsigns 10)
 (defer hop 10)
 (defer lsp 10)
+(defer null-ls 10)
 (defer telescope 10)
 (defer treesitter 10)

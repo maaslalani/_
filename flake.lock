@@ -162,7 +162,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-vLqqShbo7wokSh8QsqQgHb+X2Tf7e4uKw/+JgzEuhw4=",
+        "narHash": "sha256-oULsiEEDKIdJGHZUYAf+9Hl+M8mgHWHf6z6XFPn83cs=",
         "path": "fnl",
         "type": "path"
       },
@@ -390,6 +390,22 @@
         "type": "github"
       }
     },
+    "null-ls": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1639781003,
+        "narHash": "sha256-vM99eMEfm5ofRX+qAGA0H0DQPF/lAXnKEhx9O2ytDf0=",
+        "owner": "jose-elias-alvarez",
+        "repo": "null-ls.nvim",
+        "rev": "49943596671aa3ff88529eeee7a5dd812cfc069c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jose-elias-alvarez",
+        "repo": "null-ls.nvim",
+        "type": "github"
+      }
+    },
     "nvim-autopairs": {
       "flake": false,
       "locked": {
@@ -524,6 +540,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nordic-nvim": "nordic-nvim",
+        "null-ls": "null-ls",
         "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
         "nvim-colorizer": "nvim-colorizer",

@@ -20,6 +20,7 @@
       neorg
       neorg-telescope
       nordic-nvim
+      null-ls
       nvim-autopairs
       nvim-colorizer
       nvim-lspconfig

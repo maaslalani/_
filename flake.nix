@@ -22,6 +22,7 @@
     neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
     neorg-telescope = { url = "github:nvim-neorg/neorg-telescope"; flake = false; };
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
+    null-ls = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
     nvim-colorizer = { url = "github:norcalli/nvim-colorizer.lua"; flake = false; };
@@ -65,6 +66,7 @@
             luasnip = plug "luasnip";
             neorg = plug "neorg";
             nordic-nvim = plug "nordic-nvim";
+            null-ls = plug "null-ls";
             neorg-telescope = plug "neorg-telescope";
             nvim-autopairs = plug "nvim-autopairs";
             nvim-cmp = plug "nvim-cmp";
