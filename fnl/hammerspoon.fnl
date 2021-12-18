@@ -30,34 +30,46 @@
 (set hs.grid.ui.textSize 150)
 
 ;; Application and URL launchers
-(fn launch [application] (fn [] (hs.application.launchOrFocus application)))
-(fn openurl [url] (fn [] (hs.urlevent.openURL url)))
+(fn launch [application]
+  (fn []
+    (hs.application.launchOrFocus application)))
+(fn openurl [url]
+  (fn []
+    (hs.urlevent.openURL url)))
 
 ;; Menu, inspired by which-key
 ;; Open the menu with the leader key (ctrl+space)
 ;; Key sequence (defined by nested table keys) will perform the action
-(local menu
-  {:a {:name :Applications
-       :a {:name :Alacritty :action (launch :Alacritty)}
-       :b {:name :Brave :action (launch "Brave Browser")}
-       :c {:name :Calendar :action (launch :Calendar)}
-       :p {:name :1Password :action (launch "1Password 7")}
-       :r {:name :Reminders :action (launch :Reminders)}
-       :s {:name :Slack :action (launch :Slack)}
-       :t {:name :Tuple :action (launch :Tuple)}
-       :n {:name :Notes :action (launch :Notes)}}
-   :l {:name :Links
-       :g {:name :GitHub
-           :g {:name :Home :action (openurl :https://github.com/)}
-           :n {:name :Notifications :action (openurl :https://github.com/notifications)}
-           :p {:name :Pulls :action (openurl :https://github.com/pulls)}}
-       :s {:name :StackOverflow :action (openurl :https://stackoverflow.com)}
-       :t {:name :Twitter :action (openurl :https://twitter.com)}
-       :y {:name :YouTube :action (openurl :https://youtube.com)}}
-   :g {:name :Grid :action (fn [] (hs.grid.show))}
-   :f {:name :Focus :action (fn [] (hs.hints.windowHints))}
-   :r {:name :Reload :action hs.reload}
-   :s {:name :Search :action (fn [] (spoon.HSearch.toggleShow))}})
+(local menu {:a {:name :Applications
+                 :a {:name :Alacritty :action (launch :Alacritty)}
+                 :b {:name :Brave :action (launch "Brave Browser")}
+                 :c {:name :Calendar :action (launch :Calendar)}
+                 :p {:name :1Password :action (launch "1Password 7")}
+                 :r {:name :Reminders :action (launch :Reminders)}
+                 :s {:name :Slack :action (launch :Slack)}
+                 :t {:name :Tuple :action (launch :Tuple)}
+                 :n {:name :Notes :action (launch :Notes)}}
+             :l {:name :Links
+                 :g {:name :GitHub
+                     :g {:name :Home :action (openurl "https://github.com/")}
+                     :n {:name :Notifications
+                         :action (openurl "https://github.com/notifications")}
+                     :p {:name :Pulls
+                         :action (openurl "https://github.com/pulls")}}
+                 :s {:name :StackOverflow
+                     :action (openurl "https://stackoverflow.com")}
+                 :t {:name :Twitter :action (openurl "https://twitter.com")}
+                 :y {:name :YouTube :action (openurl "https://youtube.com")}}
+             :g {:name :Grid
+                 :action (fn []
+                           (hs.grid.show))}
+             :f {:name :Focus
+                 :action (fn []
+                           (hs.hints.windowHints))}
+             :r {:name :Reload :action hs.reload}
+             :s {:name :Search
+                 :action (fn []
+                           (spoon.HSearch.toggleShow))}})
 
 ;; Leader key (ctrl+space)
 (local start (hs.hotkey.modal.new [:ctrl] :space))
@@ -78,21 +90,27 @@
 ;; or perform an action, key sequences are determined by nested keys
 ;; in the `menu` table
 (fn setup [modal menu]
-  (fn modal.exited [self] (hs.alert.closeAll))
-  (modal:bind {} :escape (fn [] (modal:exit)))
+  (fn modal.exited [self]
+    (hs.alert.closeAll))
+
+  (modal:bind {} :escape (fn []
+                           (modal:exit)))
   (local display {})
   (each [k v (pairs menu)]
     (when (= (type v) :table)
-      (tset display
-            (+ (length display) 1)
+      (tset display (+ (length display) 1)
             (.. k (string.rep " " (- modalWidth (length v.name))) v.name))
       (var action {})
       (if (not= v.action nil)
-        (set action v.action)
-        (let [submenu (hs.hotkey.modal.new)]
-          (setup submenu v)
-          (set action (fn [] (submenu:enter)))))
-      (modal:bind {} k (fn [] (when (not= v.repeatable true) (modal:exit)) (action)))))
+          (set action v.action)
+          (let [submenu (hs.hotkey.modal.new)]
+            (setup submenu v)
+            (set action (fn []
+                          (submenu:enter)))))
+      (modal:bind {} k (fn []
+                         (when (not= v.repeatable true)
+                           (modal:exit))
+                         (action)))))
 
   (fn modal.entered [self]
     (hs.alert.closeAll)
@@ -103,3 +121,4 @@
 ;; Spoons
 (hs.loadSpoon :SpoonInstall)
 (spoon.SpoonInstall:andUse :HSearch)
+

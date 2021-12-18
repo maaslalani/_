@@ -40,7 +40,7 @@
     which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
     fnl = { url = "path:fnl"; flake = false; };
     hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.92/Hammerspoon-0.9.92.zip";
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.93/Hammerspoon-0.9.93.zip";
       flake = false;
     };
   };

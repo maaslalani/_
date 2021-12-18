@@ -19,6 +19,7 @@ let
     delve
     fennel
     ffmpeg
+    fnlfmt
     git
     google-cloud-sdk
     graph-easy
@@ -32,6 +33,7 @@ let
     pandoc
     pinentry
     pinentry_mac
+    proselint
     rename
     rubyPackages_3_0.rails
     ruby_3_0

@@ -162,7 +162,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-oULsiEEDKIdJGHZUYAf+9Hl+M8mgHWHf6z6XFPn83cs=",
+        "narHash": "sha256-mg17+fnWlPzqHEB0tAFeFNL+QXVeK3rDc4oo/gt7rGA=",
         "path": "fnl",
         "type": "path"
       },
@@ -206,13 +206,13 @@
     "hammerspoon": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-ZXHEdB/Xb/teks/0wRW+aF29clBVnpsxEDsU+n4I3Kk=",
+        "narHash": "sha256-OMxINMxBoLV/jf8PV0PUjULuI9OGHRd6x9v7m1uwzmc=",
         "type": "tarball",
-        "url": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/24956772/170b05ec-ec65-4af1-b61e-9a6b8703502e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211217%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211217T233949Z&X-Amz-Expires=300&X-Amz-Signature=2a8858ff48dd76c3f452e3c1eb0a284e8e9ddb8bf9020ceb4610acdf18b59908&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=24956772&response-content-disposition=attachment%3B%20filename%3DHammerspoon-0.9.92.zip&response-content-type=application%2Foctet-stream"
+        "url": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/24956772/047b7b37-87af-481b-b5f6-0098407c85fb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211218T174207Z&X-Amz-Expires=300&X-Amz-Signature=5fbf98a2162d9856fcaeff16c5b0ca564b1a53541911b9195dedf93721846b57&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=24956772&response-content-disposition=attachment%3B%20filename%3DHammerspoon-0.9.93.zip&response-content-type=application%2Foctet-stream"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.92/Hammerspoon-0.9.92.zip"
+        "url": "https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.93/Hammerspoon-0.9.93.zip"
       }
     },
     "home-manager": {
