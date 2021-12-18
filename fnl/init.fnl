@@ -83,93 +83,94 @@
 
 ;; Whichkey
 (local wk (require :which-key))
+(local wks wk.setup)
+(local wkr wk.register)
 
 ; leader
-(wk.register {:f {:name :find
-                  :b [(pcmd :Telescope :buffers) :buffers]
-                  :e [(cmd :Explore) :explore]
-                  :f [(pcmd :Telescope :find_files) :file]
-                  :n [(cmd :enew) :new]
-                  :r [(pcmd :Telescope :live_grep) :grep]}
-              :o [(cmd "!open <cWORD>") :open]
-              :s {:name :misc
-                  :a [(cmd :Awkward) :awkward]
-                  :l [(pcmd :luafile "%") :lua]
-                  :v [(cmd :vsplit) :split]
-                  :t [(cmd "10split | terminal") :terminal]}
-              :n [(cmd "tabnew ~/wiki/index.norg") :wiki]
-              :l {:name :lsp
-                  :f [(lspcmd :buf.formatting) :format]
-                  :a [(lspcmd :buf.code_action) :actions]
-                  :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>"
-                      :diagnostics]
-                  :r [(lspcmd :buf.rename) :rename]}
-              :t {:name :+prefix
-                  :t [(cmd :tabnew) :new]
-                  :n [(cmd :tabnext) :next]
-                  :p [(cmd :tabprevious) :previous]
-                  :o [(cmd "tab split") :tabsplit]
-                  :f [(cmd :TestFile) :file]
-                  :l [(cmd :TestLast) :last]
-                  :s [(cmd :TestSuite) :suite]
-                  :v [(cmd :TestVisit) :visit]}
-              :c {:name :quickfix
-                  :n [(cmd :cnext) :next]
-                  :p [(cmd :cprev) :previous]
-                  :q [(cmd :cclose) :close]
-                  :o [(cmd :copen) :open]}
-              :g {:name :git
-                  :b [(pcmd :Gitsigns :blame_line) :blame]
-                  :g [(cmd :Git) :fugitive]
-                  :h {:name :hunk
-                      :r [(pcmd :Gitsigns :reset_hunk) :reset]
-                      :s [(pcmd :Gitsigns :stage_hunk) :stage]
-                      :u [(pcmd :Gitsigns :undo_stage_hunk) :undo]
-                      :n [(pcmd :Gitsigns :next_hunk) :next]
-                      :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
-              :q [(cmd :q) :quit]
-              :w [(cmd :up) :save]
-              :W [(cmd "w ! sudo tee % >/dev/null") :save!]
-              := ["migg=G`i" :indent]
-              :p ["\"*p<cr>" :paste]
-              :y ["\"*y<cr>" :copy]} {:prefix :<leader> :mode :n})
+(wkr {:f {:name :find
+          :b [(pcmd :Telescope :buffers) :buffers]
+          :e [(cmd :Explore) :explore]
+          :f [(pcmd :Telescope :find_files) :file]
+          :n [(cmd :enew) :new]
+          :r [(pcmd :Telescope :live_grep) :grep]}
+      :o [(cmd "!open <cWORD>") :open]
+      :s {:name :misc
+          :a [(cmd :Awkward) :awkward]
+          :l [(pcmd :luafile "%") :lua]
+          :v [(cmd :vsplit) :split]
+          :t [(cmd "10split | terminal") :terminal]}
+      :n [(cmd "tabnew ~/wiki/index.norg") :wiki]
+      :l {:name :lsp
+          :f [(lspcmd :buf.formatting) :format]
+          :a [(lspcmd :buf.code_action) :actions]
+          :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>"
+              :diagnostics]
+          :r [(lspcmd :buf.rename) :rename]}
+      :t {:name :+prefix
+          :t [(cmd :tabnew) :new]
+          :n [(cmd :tabnext) :next]
+          :p [(cmd :tabprevious) :previous]
+          :o [(cmd "tab split") :tabsplit]
+          :f [(cmd :TestFile) :file]
+          :l [(cmd :TestLast) :last]
+          :s [(cmd :TestSuite) :suite]
+          :v [(cmd :TestVisit) :visit]}
+      :c {:name :quickfix
+          :n [(cmd :cnext) :next]
+          :p [(cmd :cprev) :previous]
+          :q [(cmd :cclose) :close]
+          :o [(cmd :copen) :open]}
+      :g {:name :git
+          :b [(pcmd :Gitsigns :blame_line) :blame]
+          :g [(cmd :Git) :fugitive]
+          :h {:name :hunk
+              :r [(pcmd :Gitsigns :reset_hunk) :reset]
+              :s [(pcmd :Gitsigns :stage_hunk) :stage]
+              :u [(pcmd :Gitsigns :undo_stage_hunk) :undo]
+              :n [(pcmd :Gitsigns :next_hunk) :next]
+              :p [(pcmd :Gitsigns :prev_hunk) :previous]}}
+      :q [(cmd :q) :quit]
+      :w [(cmd :up) :save]
+      :W [(cmd "w ! sudo tee % >/dev/null") :save!]
+      := ["migg=G`i" :indent]
+      :p ["\"*p<cr>" :paste]
+      :y ["\"*y<cr>" :copy]} {:prefix :<leader> :mode :n})
 
 ; normal
-(wk.register {:<c-h> [:<c-w>h :left]
-              :<c-j> [:<c-w>j :down]
-              :<c-k> [:<c-w>k :up]
-              :<c-l> [:<c-w>l :right]
-              :<esc> [(cmd :nohl) :nohl]
-              :H [(lspcmd :buf.hover) :hover]
-              :J [:10j :down]
-              :K [:10k :up]
-              :M ["mzJ`z" :merge]
-              :Q [:<nop> :nope]
-              :S [(cmd :HopWord) :hopword]
-              :s [(cmd :HopChar2) :hop]
-              :g {:name :goto
-                  :d [(lspcmd :buf.definition) :definition]
-                  :r [(lspcmd :buf.references) :references]}}
-             {:mode :n})
+(wkr {:<c-h> [:<c-w>h :left]
+      :<c-j> [:<c-w>j :down]
+      :<c-k> [:<c-w>k :up]
+      :<c-l> [:<c-w>l :right]
+      :<esc> [(cmd :nohl) :nohl]
+      :H [(lspcmd :buf.hover) :hover]
+      :J [:10j :down]
+      :K [:10k :up]
+      :M ["mzJ`z" :merge]
+      :Q [:<nop> :nope]
+      :S [(cmd :HopWord) :hopword]
+      :s [(cmd :HopChar2) :hop]
+      :g {:name :goto
+          :d [(lspcmd :buf.definition) :definition]
+          :r [(lspcmd :buf.references) :references]}} {:mode :n})
 
 ; visual
-(wk.register {:< [:<gv :dedent]
-              :<c-l> [:<nop> :nope]
-              :s [":sort <bar>w<bar>e<cr>" :sort]
-              :<leader>y ["\"*y" :copy]
-              :> [:>gv :indent]
-              :<leader>p ["\"*p" :paste]
-              :J [:10j :down]
-              :K [:10k :up]} {:mode :v})
+(wkr {:< [:<gv :dedent]
+      :<c-l> [:<nop> :nope]
+      :s [":sort <bar>w<bar>e<cr>" :sort]
+      :<leader>y ["\"*y" :copy]
+      :> [:>gv :indent]
+      :<leader>p ["\"*p" :paste]
+      :J [:10j :down]
+      :K [:10k :up]} {:mode :v})
 
 ; insert
-(wk.register {"," [",<c-g>u" ","]
-              :! [:!<c-g>u "!"]
-              :. [:.<c-g>u "."]
-              :? [:?<c-g>u "?"]} {:mode :i})
+(wkr {"," [",<c-g>u" ","]
+      :! [:!<c-g>u "!"]
+      :. [:.<c-g>u "."]
+      :? [:?<c-g>u "?"]} {:mode :i})
 
-(wk.setup {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
-           :plugins {:spelling {:enabled true}}})
+(wks {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
+      :plugins {:spelling {:enabled true}}})
 
 ;; Language Server Protocol
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
@@ -237,32 +238,23 @@
                                                         :autodetect true
                                                         :autochdir true}}}}))
 
-(local neorg-callbacks (require :neorg.callbacks))
-(neorg-callbacks.on_event :core.keybinds.events.enable_keybinds
-                          (fn [_ keybinds]
-                            (keybinds.map_event_to_mode :norg
-                                                        {:n [[:td
-                                                              :core.norg.qol.todo_items.todo.task_done]
-                                                             [:tu
-                                                              :core.norg.qol.todo_items.todo.task_undone]
-                                                             [:tp
-                                                              :core.norg.qol.todo_items.todo.task_pending]
-                                                             [:tt
-                                                              :core.norg.qol.todo_items.todo.task_cycle]
-                                                             [:<cr>
-                                                              :core.norg.esupports.goto_link]
-                                                             [:<c-n>
-                                                              :core.norg.dirman.new.note]
-                                                             [:n
-                                                              :core.integrations.treesitter.next.heading]
-                                                             [:N
-                                                              :core.integrations.treesitter.previous.heading]
-                                                             [:<c-s>
-                                                              :core.integrations.telescope.find_linkable]]
-                                                         :i [[:<c-l>
-                                                              :core.integrations.telescope.insert_link]]}
-                                                        {:silent true
-                                                         :noremap true})))
+(local neorg-cb (require :neorg.callbacks))
+(local neorg-kb
+       {:n [[:td :core.norg.qol.todo_items.todo.task_done]
+            [:tu :core.norg.qol.todo_items.todo.task_undone]
+            [:tp :core.norg.qol.todo_items.todo.task_pending]
+            [:tt :core.norg.qol.todo_items.todo.task_cycle]
+            [:<cr> :core.norg.esupports.goto_link]
+            [:<c-n> :core.norg.dirman.new.note]
+            [:n :core.integrations.treesitter.next.heading]
+            [:N :core.integrations.treesitter.previous.heading]
+            [:<c-s> :core.integrations.telescope.find_linkable]]
+        :i [[:<c-l> :core.integrations.telescope.insert_link]]})
+
+(neorg-cb.on_event :core.keybinds.events.enable_keybinds
+                   (fn [_ keybinds]
+                     (keybinds.map_event_to_mode :norg neorg-kb
+                                                 {:silent true :noremap true})))
 
 ;; cmp
 (fn rtc [s]
@@ -271,16 +263,10 @@
 (fn completion []
   (local cmp (require :cmp))
   (local luasnip (require :luasnip))
+  (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
   (cmp.setup {:snippet {:expand (fn [args]
                                   ((. luasnip :lsp_expand) args.body))}
-              :documentation {:border ["┌"
-                                       "─"
-                                       "┐"
-                                       "│"
-                                       "┘"
-                                       "─"
-                                       "└"
-                                       "│"]}
+              :documentation {: border}
               :mapping {:<CR> (cmp.mapping.confirm {:select true})
                         :<S-P (fn s-tab [fallback]
                                 (if (cmp.visible) (cmp.select_prev_item)
@@ -302,15 +288,8 @@
   (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
   (cmp.event:on :confirm_done
                 (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))
-  ((. (require :luasnip/loaders/from_vscode) :load) {:include [:fennel
-                                                               :go
-                                                               :javascript
-                                                               :lua
-                                                               :nix
-                                                               :rails
-                                                               :react
-                                                               :ruby
-                                                               :rust]}))
+  (local languages [:fennel :go :javascript :lua :rails :react :ruby :rust])
+  ((. (require :luasnip/loaders/from_vscode) :load) {:include languages}))
 
 ;; colorizer
 (fn colorizer []
@@ -364,25 +343,26 @@
                        :files [:src/parser.c :src/scanner.cc]
                        :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
-  ((. treesitter :setup) {:ensure_installed [:bash
-                                             :clojure
-                                             :commonlisp
-                                             :dockerfile
-                                             :fennel
-                                             :go
-                                             :gomod
-                                             :graphql
-                                             :hcl
-                                             :html
-                                             :javascript
-                                             :latex
-                                             :lua
-                                             :nix
-                                             :norg
-                                             :ruby
-                                             :rust
-                                             :yaml
-                                             :zig]
+  (local languages [:bash
+                    :clojure
+                    :commonlisp
+                    :dockerfile
+                    :fennel
+                    :go
+                    :gomod
+                    :graphql
+                    :hcl
+                    :html
+                    :javascript
+                    :latex
+                    :lua
+                    :nix
+                    :norg
+                    :ruby
+                    :rust
+                    :yaml
+                    :zig])
+  ((. treesitter :setup) {:ensure_installed languages
                           :highlight {:enable true}
                           :indent {:enable true}}))
 
