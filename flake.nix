@@ -87,7 +87,7 @@
 
             hammerspoon = self.pkgs.stdenv.mkDerivation {
               pname = "hammerspoon";
-              version = "0.9.92";
+              version = "0.9.93";
               src = inputs.hammerspoon;
               buildInputs = [ self.pkgs.fennel ];
               installPhase = ''
