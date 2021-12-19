@@ -14,21 +14,13 @@
 (set g.mapleader " ")
 (set g.netrw_banner 0)
 (set g.nord_minimal_mode true)
-(set g.markdown_fenced_languages [:bash
-                                  :css
-                                  :erb=ruby
-                                  :go
-                                  :javascript
-                                  :js=javascript
-                                  :ruby
-                                  :vim])
 
 ;; Options
 (local o vim.o)
 (set o.autowrite true)
 (set o.backspace "indent,eol,start")
 (set o.backup false)
-(set o.completeopt "menuone,noselect")
+(set o.completeopt "menu,menuone,noselect")
 (set o.conceallevel 2)
 (set o.cursorline true)
 (set o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
@@ -187,12 +179,7 @@
                          :flags {:debounce_text_changes 150}
                          :settings {:solargraph {:diagnostics true
                                                  :formatting true}}})
-  (lsp.sorbet.setup {:cmd [:srb
-                           :tc
-                           :--lsp
-                           :--enable-all-experimental-lsp-features
-                           :--disable-watchman]
-                     :root_dir (lsp.util.root_pattern :sorbet/)
+  (lsp.sorbet.setup {:root_dir (lsp.util.root_pattern :sorbet/)
                      : on_attach
                      : capabilities
                      :init_options {:documentFormatting false :codeAction true}})
@@ -216,30 +203,13 @@
   ((. gitsigns :setup) {:keymaps {}}))
 
 ;; cmp
-(fn rtc [s]
-  (vim.api.nvim_replace_termcodes s true true true))
-
 (fn completion []
   (local cmp (require :cmp))
   (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
   (cmp.setup {:documentation {: border}
-              :mapping {:<CR> (cmp.mapping.confirm {:select true})
-                        :<S-P (fn s-tab [fallback]
-                                (if (cmp.visible) (cmp.select_prev_item)
-                                    (fallback)))
-                        :<C-N> (fn tab [fallback]
-                                 (if (cmp.visible) (cmp.select_next_item)
-                                     (fallback)))}
               :sources [{:name :nvim_lsp}
                         {:name :path}
-                        {:name :buffer :keyword_length 4}]})
-  (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
-  (cmp.event:on :confirm_done
-                (cmp-autopairs.on_confirm_done {:map_char {:tex ""}})))
-
-;; colorizer
-(fn colorizer []
-  (. (require :colorizer) :setup))
+                        {:name :buffer :keyword_length 4}]}))
 
 ;; telescope
 (fn telescope []
@@ -254,28 +224,10 @@
 
 ;; treesitter
 (fn treesitter []
-  (local parser-configs ((. (require :nvim-treesitter.parsers)
-                            :get_parser_configs)))
+  (local parsers (require :nvim-treesitter.parsers))
+  (local parser-configs ((. parsers :get_parser_configs)))
   (local treesitter (require :nvim-treesitter.configs))
-  (local languages [:bash
-                    :clojure
-                    :commonlisp
-                    :dockerfile
-                    :fennel
-                    :go
-                    :gomod
-                    :graphql
-                    :hcl
-                    :html
-                    :javascript
-                    :latex
-                    :lua
-                    :nix
-                    :ruby
-                    :rust
-                    :yaml
-                    :zig])
-  ((. treesitter :setup) {:ensure_installed languages
+  ((. treesitter :setup) {:ensure_installed :maintained
                           :highlight {:enable true}
                           :indent {:enable true}}))
 
@@ -289,13 +241,6 @@
                   null_ls.builtins.formatting.fnlfmt
                   null_ls.builtins.formatting.rubocop])
   (null-ls.setup {: sources}))
-
-;; autopairs
-(fn autopairs []
-  (local autopairs (. (require :nvim-autopairs)))
-  ((. autopairs :setup))
-  (autopairs.add_rules (require :nvim-autopairs.rules.endwise-lua))
-  (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
 
 ;; colorscheme
 (vim.cmd "colorscheme nordic")
@@ -312,8 +257,6 @@
 
 ;; lazy loading
 (local defer vim.defer_fn)
-(defer autopairs 10)
-(defer colorizer 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer hop 10)

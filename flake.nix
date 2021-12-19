@@ -15,9 +15,7 @@
     hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     null-ls = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
-    nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
-    nvim-colorizer = { url = "github:norcalli/nvim-colorizer.lua"; flake = false; };
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
@@ -50,9 +48,7 @@
             hop-nvim = plug "hop-nvim";
             nordic-nvim = plug "nordic-nvim";
             null-ls = plug "null-ls";
-            nvim-autopairs = plug "nvim-autopairs";
             nvim-cmp = plug "nvim-cmp";
-            nvim-colorizer = plug "nvim-colorizer";
             nvim-lspconfig = plug "nvim-lspconfig";
             nvim-treesitter = plug "nvim-treesitter";
             plenary-nvim = plug "plenary-nvim";

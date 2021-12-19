@@ -14,8 +14,6 @@ let
 
   darwin = with pkgs; [
     cachix
-    gcc11
-    gcc11Stdenv
     coreutils
     delve
     fennel
@@ -28,14 +26,10 @@ let
     hammerspoon
     htop
     kubectl
-    nodejs-16_x
     noti
     openssl
-    pandoc
-    pinentry
     pinentry_mac
     proselint
-    rename
     rubyPackages_3_0.rails
     ruby_3_0
     rustup
@@ -44,7 +38,6 @@ let
     spotify-tui
     spotifyd
     terraform
-    yarn
   ];
 
   linux = [ ];

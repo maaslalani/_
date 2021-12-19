@@ -98,7 +98,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-j7DpuX4TYyprON/hzH0D6wR1GkvqDFD7Ui/0yZG331g=",
+        "narHash": "sha256-HwFl9ZBleKyx2wTPlW2+Nv4IuANEFtN5f/eN3l+/Das=",
         "path": "fnl",
         "type": "path"
       },
@@ -278,22 +278,6 @@
         "type": "github"
       }
     },
-    "nvim-autopairs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1639867007,
-        "narHash": "sha256-zsECvnL5xTKztTU0RD0WkAbEb5/P9/LdJZLErfjDHo0=",
-        "owner": "windwp",
-        "repo": "nvim-autopairs",
-        "rev": "94a4fa4b9ffec88ecd742fb077a66bf8cb9c4bf1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "windwp",
-        "repo": "nvim-autopairs",
-        "type": "github"
-      }
-    },
     "nvim-cmp": {
       "flake": false,
       "locked": {
@@ -307,22 +291,6 @@
       "original": {
         "owner": "hrsh7th",
         "repo": "nvim-cmp",
-        "type": "github"
-      }
-    },
-    "nvim-colorizer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1591879145,
-        "narHash": "sha256-6YrnItxExL2C8pNIdLd+hXCjsB2MbZANwWkah6dreD8=",
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
-        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
         "type": "github"
       }
     },
@@ -405,9 +373,7 @@
         "nixpkgs": "nixpkgs_2",
         "nordic-nvim": "nordic-nvim",
         "null-ls": "null-ls",
-        "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
-        "nvim-colorizer": "nvim-colorizer",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",

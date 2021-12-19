@@ -16,8 +16,6 @@
       hop-nvim
       nordic-nvim
       null-ls
-      nvim-autopairs
-      nvim-colorizer
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim
