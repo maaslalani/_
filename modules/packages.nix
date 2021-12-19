@@ -26,6 +26,7 @@ let
     hammerspoon
     htop
     kubectl
+    nodejs-16_x
     noti
     openssl
     pinentry_mac
