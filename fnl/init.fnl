@@ -336,11 +336,19 @@
 
 ;; treesitter
 (fn treesitter []
-  (local parsers (. (require :nvim-treesitter.parsers)))
-  (local parser-configs ((. parsers :get_parser_configs)))
+  (local parser-configs ((. (require :nvim-treesitter.parsers)
+                            :get_parser_configs)))
   (set parser-configs.norg
        {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg"
                        :files [:src/parser.c :src/scanner.cc]
+                       :branch :main}})
+  (set parser-configs.norg_meta
+       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
+                       :files [:src/parser.c]
+                       :branch :main}})
+  (set parser-configs.norg_table
+       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-table"
+                       :files [:src/parser.c]
                        :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   (local languages [:bash
@@ -358,6 +366,8 @@
                     :lua
                     :nix
                     :norg
+                    :norg_meta
+                    :norg_table
                     :ruby
                     :rust
                     :yaml

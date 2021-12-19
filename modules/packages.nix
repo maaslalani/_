@@ -14,7 +14,8 @@ let
 
   darwin = with pkgs; [
     cachix
-    clang
+    gcc11
+    gcc11Stdenv
     coreutils
     delve
     fennel
