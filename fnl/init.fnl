@@ -95,26 +95,20 @@
           :r [(pcmd :Telescope :live_grep) :grep]}
       :o [(cmd "!open <cWORD>") :open]
       :s {:name :misc
-          :a [(cmd :Awkward) :awkward]
           :l [(pcmd :luafile "%") :lua]
           :v [(cmd :vsplit) :split]
           :t [(cmd "10split | terminal") :terminal]}
-      :n [(cmd "tabnew ~/wiki/index.norg") :wiki]
       :l {:name :lsp
           :f [(lspcmd :buf.formatting) :format]
           :a [(lspcmd :buf.code_action) :actions]
           :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>"
               :diagnostics]
           :r [(lspcmd :buf.rename) :rename]}
-      :t {:name :+prefix
+      :t {:name :tab
           :t [(cmd :tabnew) :new]
           :n [(cmd :tabnext) :next]
           :p [(cmd :tabprevious) :previous]
-          :o [(cmd "tab split") :tabsplit]
-          :f [(cmd :TestFile) :file]
-          :l [(cmd :TestLast) :last]
-          :s [(cmd :TestSuite) :suite]
-          :v [(cmd :TestVisit) :visit]}
+          :o [(cmd "tab split") :tabsplit]}
       :c {:name :quickfix
           :n [(cmd :cnext) :next]
           :p [(cmd :cprev) :previous]
@@ -211,11 +205,6 @@
                     : on_attach
                     : capabilities}))
 
-;; awkward
-(fn awkward []
-  (local awkward (require :awkward))
-  ((. awkward :setup) {}))
-
 ;; hop
 (fn hop []
   (local hop (require :hop))
@@ -226,111 +215,40 @@
   (local gitsigns (require :gitsigns))
   ((. gitsigns :setup) {:keymaps {}}))
 
-;; neorg
-(fn neorg []
-  (local neorg (require :neorg))
-  ((. neorg :setup) {:load {:core.defaults {}
-                            :core.norg.concealer {}
-                            :core.norg.completion {:config {:engine :nvim-cmp}}
-                            :core.keybinds {:config {:default_keybinds false}}
-                            :core.integrations.telescope {}
-                            :core.norg.dirman {:config {:workspaces {:wiki "~/wiki"}
-                                                        :autodetect true
-                                                        :autochdir true}}}}))
-
-(local neorg-cb (require :neorg.callbacks))
-(local neorg-kb
-       {:n [[:td :core.norg.qol.todo_items.todo.task_done]
-            [:tu :core.norg.qol.todo_items.todo.task_undone]
-            [:tp :core.norg.qol.todo_items.todo.task_pending]
-            [:tt :core.norg.qol.todo_items.todo.task_cycle]
-            [:<cr> :core.norg.esupports.goto_link]
-            [:<c-n> :core.norg.dirman.new.note]
-            [:n :core.integrations.treesitter.next.heading]
-            [:N :core.integrations.treesitter.previous.heading]
-            [:<c-s> :core.integrations.telescope.find_linkable]]
-        :i [[:<c-l> :core.integrations.telescope.insert_link]]})
-
-(neorg-cb.on_event :core.keybinds.events.enable_keybinds
-                   (fn [_ keybinds]
-                     (keybinds.map_event_to_mode :norg neorg-kb
-                                                 {:silent true :noremap true})))
-
 ;; cmp
 (fn rtc [s]
   (vim.api.nvim_replace_termcodes s true true true))
 
 (fn completion []
   (local cmp (require :cmp))
-  (local luasnip (require :luasnip))
   (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
-  (cmp.setup {:snippet {:expand (fn [args]
-                                  ((. luasnip :lsp_expand) args.body))}
-              :documentation {: border}
+  (cmp.setup {:documentation {: border}
               :mapping {:<CR> (cmp.mapping.confirm {:select true})
                         :<S-P (fn s-tab [fallback]
                                 (if (cmp.visible) (cmp.select_prev_item)
-                                    (luasnip.jumpable (- 1))
-                                    (vim.fn.feedkeys (rtc :<Plug>luasnip-jump-prev)
-                                                     "")
                                     (fallback)))
                         :<C-N> (fn tab [fallback]
                                  (if (cmp.visible) (cmp.select_next_item)
-                                     (luasnip.expand_or_jumpable)
-                                     (vim.fn.feedkeys (rtc :<Plug>luasnip-expand-or-jump)
-                                                      "")
                                      (fallback)))}
               :sources [{:name :nvim_lsp}
                         {:name :path}
-                        {:name :luasnip}
-                        {:name :buffer :keyword_length 4}
-                        {:name :neorg}]})
+                        {:name :buffer :keyword_length 4}]})
   (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
   (cmp.event:on :confirm_done
-                (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))
-  (local languages [:fennel :go :javascript :lua :rails :react :ruby :rust])
-  ((. (require :luasnip/loaders/from_vscode) :load) {:include languages}))
+                (cmp-autopairs.on_confirm_done {:map_char {:tex ""}})))
 
 ;; colorizer
 (fn colorizer []
   (. (require :colorizer) :setup))
-
-;; comment-nvim
-(fn comment-nvim []
-  ((. (. (require :Comment)) :setup)))
 
 ;; telescope
 (fn telescope []
   (local telescope (require :telescope))
   (local sorters (require :telescope.sorters))
   (local previewers (require :telescope.previewers))
-  ((. telescope :setup) {:defaults {:buffer_previewer_maker (. previewers
-                                                               :buffer_previewer_maker)
-                                    :entry_prefix "  "
-                                    :file_ignore_patterns [:sorbet]
-                                    :file_previewer (. (. previewers
-                                                          :vim_buffer_cat)
-                                                       :new)
-                                    :file_sorter (. sorters :get_fuzzy_file)
-                                    :generic_sorter (. sorters
-                                                       :get_generic_fuzzy_sorter)
-                                    :grep_previewer (. (. previewers
-                                                          :vim_buffer_vimgrep)
-                                                       :new)
-                                    :initial_mode :insert
-                                    :layout_config {:horizontal {:mirror false}
-                                                    :vertical {:mirror false}}
-                                    :layout_strategy :horizontal
-                                    :path_display {}
-                                    :prompt_prefix "❯ "
-                                    :qflist_previewer (. (. previewers
-                                                            :vim_buffer_qflist)
-                                                         :new)
+  ((. telescope :setup) {:defaults {:prompt_prefix "❯ "
                                     :selection_caret "→ "
-                                    :selection_strategy :reset
                                     :set_env {:COLORTERM :truecolor}
-                                    :sorting_strategy :descending
-                                    :use_less true
                                     :vimgrep_arguments [:rg :--vimgrep]
                                     :winblend 0}}))
 
@@ -338,18 +256,6 @@
 (fn treesitter []
   (local parser-configs ((. (require :nvim-treesitter.parsers)
                             :get_parser_configs)))
-  (set parser-configs.norg
-       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg"
-                       :files [:src/parser.c :src/scanner.cc]
-                       :branch :main}})
-  (set parser-configs.norg_meta
-       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
-                       :files [:src/parser.c]
-                       :branch :main}})
-  (set parser-configs.norg_table
-       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-table"
-                       :files [:src/parser.c]
-                       :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   (local languages [:bash
                     :clojure
@@ -365,9 +271,6 @@
                     :latex
                     :lua
                     :nix
-                    :norg
-                    :norg_meta
-                    :norg_table
                     :ruby
                     :rust
                     :yaml
@@ -401,22 +304,16 @@
 (vim.cmd (.. (autocmd :BufEnter :*.graphql "set ft=graphql")
              (autocmd :BufEnter :*.lock "set ft=json")
              (autocmd :BufEnter :*.nix "set ft=nix")
-             (autocmd :BufEnter :*.awkward :Awkward)
-             (autocmd :BufWrite :*.awkward :Awkward)
              (autocmd :FileType :markdown "setlocal spell")
              (autocmd :FileType :gitcommit "setlocal spell")
              (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
              (autocmd :TermOpen "*" "setlocal nonu nocul scl=no ls=0")
              (autocmd :TermOpen "*" :startinsert)))
 
-(neorg)
-
 ;; lazy loading
 (local defer vim.defer_fn)
 (defer autopairs 10)
-(defer awkward 10)
 (defer colorizer 10)
-(defer comment-nvim 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer hop 10)
