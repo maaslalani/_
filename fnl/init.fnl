@@ -278,7 +278,7 @@
                                                          (. icons vim-item.kind)))
                                      (set vim-item.menu
                                           (. {:nvim_lsp "[LSP]"
-                                              :luasnip "[Snipet]"
+                                              :luasnip "[Snippet]"
                                               :buffer "[Buffer]"
                                               :path "[Path]"}
                                              entry.source.name))
