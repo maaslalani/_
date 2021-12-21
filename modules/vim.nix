@@ -11,12 +11,20 @@
     '';
     vimAlias = true;
     viAlias = true;
-    plugins = with pkgs; [
-      copilot
+    plugins = with pkgs; with pkgs.vimPlugins; [
+      cmp-buffer
+      cmp-cmdline
+      cmp-nvim-lsp
+      cmp-path
+      cmp_luasnip
+      copilot-vim
+      friendly-snippets
       gitsigns-nvim
       hop-nvim
+      luasnip
       nordic-nvim
-      null-ls
+      null-ls-nvim
+      nvim-cmp
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim
@@ -25,15 +33,6 @@
       vim-rhubarb
       vim-surround
       which-key-nvim
-    ] ++ [
-      cmp-buffer
-      cmp-cmdline
-      cmp-luasnip
-      cmp-nvim-lsp
-      cmp-path
-      friendly-snippets
-      luasnip
-      nvim-cmp
     ];
   };
 }
