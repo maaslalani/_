@@ -156,7 +156,10 @@
       :. [:.<c-g>u "."]
       :? [:?<c-g>u "?"]} {:mode :i})
 
-(wks {:window {:margin [1 0 -1 0] :padding [2 2 2 2]}
+(wks {:window {:border ["─" "─" "─" " " " " " " " " " "]
+               :position :bottom
+               :margin [0 0 0 0]
+               :padding [0 0 1 0]}
       :plugins {:spelling {:enabled true}}})
 
 ;; Language Server Protocol
@@ -268,6 +271,18 @@
                         :<S-Tab> (cmp.mapping (fn [fallback]
                                                 (s-tab fallback))
                                               [:i :s])}
+              :formatting {:fields [:abbr :kind :menu]
+                           :format (fn [entry vim-item]
+                                     (set vim-item.kind
+                                          (string.format " %s"
+                                                         (. icons vim-item.kind)))
+                                     (set vim-item.menu
+                                          (. {:nvim_lsp "[LSP]"
+                                              :luasnip "[Snipet]"
+                                              :buffer "[Buffer]"
+                                              :path "[Path]"}
+                                             entry.source.name))
+                                     vim-item)}
               :sources [{:name :nvim_lsp}
                         {:name :luasnip}
                         {:name :buffer :keyword_length 4}
@@ -275,7 +290,7 @@
               :confirm_opts {:behavior cmp.ConfirmBehavior.Replace
                              :select false}
               :documentation {: border}
-              :experimental {:ghost_text false :native_menu false}}))
+              :experimental {:ghost_text false :native_menu true}}))
 
 ;; telescope
 (fn telescope []
