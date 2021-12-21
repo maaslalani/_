@@ -4,6 +4,7 @@
     enable = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
+      imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
       lua <<EOF
       ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
@@ -26,8 +27,12 @@
       which-key-nvim
     ] ++ [
       cmp-buffer
+      cmp-cmdline
+      cmp-luasnip
       cmp-nvim-lsp
       cmp-path
+      friendly-snippets
+      luasnip
       nvim-cmp
     ];
   };

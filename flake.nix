@@ -8,11 +8,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
+    cmp-cmdline = { url = "github:hrsh7th/cmp-cmdline"; flake = false; };
+    cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
     cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
     copilot = { url = "github:github/copilot.vim"; flake = false; };
+    friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
+    luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     null-ls = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
@@ -41,11 +45,15 @@
           in
           {
             cmp-buffer = plug "cmp-buffer";
+            cmp-cmdline = plug "cmp-cmdline";
+            cmp-luasnip = plug "cmp-luasnip";
             cmp-nvim-lsp = plug "cmp-nvim-lsp";
             cmp-path = plug "cmp-path";
             copilot = plug "copilot";
+            friendly-snippets = plug "friendly-snippets";
             gitsigns-nvim = plug "gitsigns-nvim";
             hop-nvim = plug "hop-nvim";
+            luasnip = plug "luasnip";
             nordic-nvim = plug "nordic-nvim";
             null-ls = plug "null-ls";
             nvim-cmp = plug "nvim-cmp";

@@ -14,6 +14,7 @@
 (set g.mapleader " ")
 (set g.netrw_banner 0)
 (set g.nord_minimal_mode true)
+(set g.copilot_no_tab_map true)
 
 ;; Options
 (local o vim.o)
@@ -203,13 +204,78 @@
   ((. gitsigns :setup) {:keymaps {}}))
 
 ;; cmp
+(local icons {:Text ""
+              :Method :m
+              :Function ""
+              :Constructor ""
+              :Field ""
+              :Variable ""
+              :Class ""
+              :Interface ""
+              :Module ""
+              :Property ""
+              :Unit ""
+              :Value ""
+              :Enum ""
+              :Keyword ""
+              :Snippet ""
+              :Color ""
+              :File ""
+              :Reference ""
+              :Folder ""
+              :EnumMember ""
+              :Constant ""
+              :Struct ""
+              :Event ""
+              :Operator ""
+              :TypeParameter ""})
+
+(local loader (require :luasnip/loaders/from_vscode))
+(loader.lazy_load)
+
+(fn check-backspace []
+  (let [col (- (vim.fn.col ".") 1)]
+    (or (= col 0) (: (: (vim.fn.getline ".") :sub col col) :match "%s"))))
+
+(local cmp (require :cmp))
+(local luasnip (require :luasnip))
+
+(fn tab [fallback]
+  (if (cmp.visible) (cmp.select_next_item)
+      (luasnip.expandable) (luasnip.expand)
+      (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
+      (check-backspace) (fallback)
+      (fallback)))
+
+(fn s-tab [fallback]
+  (if (cmp.visible) (cmp.select_prev_item)
+      (luasnip.jumpable (- 1)) (luasnip.jump (- 1))
+      (fallback)))
+
 (fn completion []
   (local cmp (require :cmp))
   (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
-  (cmp.setup {:documentation {: border}
+  (cmp.setup {:snippet {:expand (fn [args]
+                                  (luasnip.lsp_expand args.body))}
+              :mapping {:<C-b> (cmp.mapping (cmp.mapping.scroll_docs (- 1))
+                                            [:i :c])
+                        :<C-f> (cmp.mapping (cmp.mapping.scroll_docs 1) [:i :c])
+                        :<C-e> (cmp.mapping (cmp.mapping.complete) [:i :c])
+                        :<CR> (cmp.mapping.confirm {:select true})
+                        :<Tab> (cmp.mapping (fn [fallback]
+                                              (tab fallback))
+                                            [:i :s])
+                        :<S-Tab> (cmp.mapping (fn [fallback]
+                                                (s-tab fallback))
+                                              [:i :s])}
               :sources [{:name :nvim_lsp}
-                        {:name :path}
-                        {:name :buffer :keyword_length 4}]}))
+                        {:name :luasnip}
+                        {:name :buffer :keyword_length 4}
+                        {:name :path}]
+              :confirm_opts {:behavior cmp.ConfirmBehavior.Replace
+                             :select false}
+              :documentation {: border}
+              :experimental {:ghost_text false :native_menu false}}))
 
 ;; telescope
 (fn telescope []
