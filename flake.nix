@@ -28,7 +28,6 @@
               pname = "hammerspoon";
               version = "0.9.93";
               src = inputs.hammerspoon;
-              buildInputs = [ self.pkgs.fennel ];
               installPhase = ''
                 mkdir -p $out/Applications/Hammerspoon.app
                 cp -r $src/Contents $out/Applications/Hammerspoon.app/
