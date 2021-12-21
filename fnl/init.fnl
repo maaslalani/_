@@ -233,14 +233,14 @@
 
 ;; null
 (fn null []
-  (local null-ls (require :null-ls))
-  (local sources [null-ls.builtins.code_actions.gitsigns
-                  null-ls.builtins.diagnostics.write_good
+  (local null_ls (require :null-ls))
+  (local sources [null_ls.builtins.code_actions.gitsigns
+                  null_ls.builtins.diagnostics.write_good
                   null_ls.builtins.code_actions.proselint
                   null_ls.builtins.diagnostics.rubocop
                   null_ls.builtins.formatting.fnlfmt
                   null_ls.builtins.formatting.rubocop])
-  (null-ls.setup {: sources}))
+  (null_ls.setup {: sources}))
 
 ;; colorscheme
 (vim.cmd "colorscheme nordic")
