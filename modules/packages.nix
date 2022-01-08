@@ -13,6 +13,7 @@ let
   ] ++ (import ./lsp.nix { pkgs = pkgs; });
 
   darwin = with pkgs; [
+    blender
     cachix
     coreutils
     delve
