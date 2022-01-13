@@ -257,6 +257,9 @@
 
 (fn completion []
   (local cmp (require :cmp))
+  (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
+  (cmp.event:on :confirm_done
+                (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))
   (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
   (cmp.setup {:snippet {:expand (fn [args]
                                   (luasnip.lsp_expand args.body))}
@@ -292,6 +295,10 @@
               :documentation {: border}
               :experimental {:ghost_text false :native_menu true}}))
 
+;; colorizer
+(fn colorizer []
+  (. (require :colorizer) :setup))
+
 ;; telescope
 (fn telescope []
   (local telescope (require :telescope))
@@ -311,6 +318,13 @@
   ((. treesitter :setup) {:ensure_installed :maintained
                           :highlight {:enable true}
                           :indent {:enable true}}))
+
+; autopairs
+(fn autopairs []
+  (local autopairs (. (require :nvim-autopairs)))
+  ((. autopairs :setup))
+  (autopairs.add_rules (require :nvim-autopairs.rules.endwise-lua))
+  (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
 
 ;; null
 (fn null []
@@ -338,6 +352,8 @@
 
 ;; lazy loading
 (local defer vim.defer_fn)
+(defer autopairs 10)
+(defer colorizer 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer hop 10)
