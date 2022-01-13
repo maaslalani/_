@@ -8,15 +8,14 @@
       lua <<EOF
       ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
-    '';
+      '';
     vimAlias = true;
     viAlias = true;
-    plugins = with pkgs; with pkgs.vimPlugins; [
+    plugins = with pkgs; [
       cmp-buffer
-      cmp-cmdline
+      cmp-luasnip
       cmp-nvim-lsp
       cmp-path
-      cmp_luasnip
       copilot-vim
       friendly-snippets
       gitsigns-nvim
@@ -24,14 +23,19 @@
       luasnip
       nordic-nvim
       null-ls-nvim
+      nvim-autopairs
       nvim-cmp
+      nvim-colorizer
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim
       popup-nvim
       telescope-nvim
+      vim-commentary
+      vim-fugitive
       vim-rhubarb
       vim-surround
+      vim-test
       which-key-nvim
     ];
   };
