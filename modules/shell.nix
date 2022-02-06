@@ -83,7 +83,8 @@ in
       ghpv = "gh pr view";
       ghv = "gh pr view --web";
 
-      grm = "go run main.go";
+      grg = "go run ./...";
+      gtg = "go test ./...";
 
       r = "bin/rails";
       rdbm = "${r} db:migrate";
