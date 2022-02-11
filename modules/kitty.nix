@@ -74,11 +74,10 @@
       color7 = "#bfbfbf";
       color15 = "#e6e6e6";
 
-      font_family = "SF Mono Medium";
-      italic_font = "SF Mono Medium Italic";
-      bold_font = "SF Mono Heavy";
-      bold_italic_font = "SF Mono Heavy Italic";
-      adjust_line_height = "120%";
+      font_family = "Hack Nerd Font Mono";
+      italic_font = "Hack Nerd Font Mono Italic";
+      bold_font = "Hack Nerd Font Mono Bold";
+      bold_italic_font = "Hack Nerd Font Mono Bold Italic";
     };
   };
 }

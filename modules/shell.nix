@@ -38,21 +38,22 @@ in
       gca = "${gc} --amend";
       gcam = "${gc} -am";
       gcane = "${gc} --amend --no-edit";
+      gclean = "git branch --merged | grep  -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d";
       gcm = "${gc} -m";
       gco = "git checkout";
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
       gd = "git diff";
-      gdh = "git diff HEAD";
       gd- = "git diff HEAD~";
+      gdh = "git diff HEAD";
       gdm = "${gd} main || ${gd} master";
-      ghist = "git hist";
+      ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
       gl = "git pull";
-      glo = "git lo";
-      gclean = "git cleanup";
+      glo = "git log --oneline -n 20";
       glog = "git log";
       gm = "git merge";
       gma = "${gm} --abort";
+      gopen = "git config --get remote.origin.url | xargs open";
       gp = "git push";
       gpf = "${gp} --force-with-lease";
       gpos = "${gp} origin +@:staging";
@@ -74,6 +75,7 @@ in
       gstp = "${gst} pop";
       gsw = "git switch";
       gswm = "${gsw} main || ${gsw} master";
+      gundo = "git reset HEAD~1 --mixed";
 
       ghb = "gh browse";
       ghc = "gh pr checkout";
