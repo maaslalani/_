@@ -22,7 +22,7 @@ in
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
-      pull.rebase = true;
+      pull.rebase = false;
     };
     signing = {
       gpgPath = "${pkgs.gnupg}/bin/gpg2";
