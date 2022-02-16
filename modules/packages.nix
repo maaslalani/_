@@ -9,7 +9,6 @@ let
     jq
     ripgrep
     sd
-    sops
   ] ++ (import ./lsp.nix { pkgs = pkgs; });
 
   darwin = with pkgs; [
@@ -20,25 +19,14 @@ let
     ffmpeg
     fnlfmt
     git
-    google-cloud-sdk
-    graph-easy
-    graphviz
     hammerspoon
     htop
-    kubectl
     nodejs-16_x
-    noti
     openssl
     pinentry_mac
     proselint
-    rubyPackages_3_0.rails
-    ruby_3_0
     rustup
     sc-im
-    sops
-    spotify-tui
-    spotifyd
-    terraform
   ];
 
   linux = [ ];

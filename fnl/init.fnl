@@ -293,7 +293,8 @@
               :confirm_opts {:behavior cmp.ConfirmBehavior.Replace
                              :select false}
               :documentation {: border}
-              :experimental {:ghost_text false :native_menu true}}))
+              :views {:entries :native}
+              :experimental {:ghost_text false}}))
 
 ;; colorizer
 (fn colorizer []
