@@ -183,6 +183,9 @@ in
           unset GIT_STATUS
         fi
       }
+
+      export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
+      %(?.%F{green}❯%f.%F{red}❯%f) "
     '';
     sessionVariables =
       let
