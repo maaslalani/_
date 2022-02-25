@@ -130,7 +130,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-yWM6Qyemk2kfuVxygzE+8aTSXJUmRhjoGoNBlWRnvBM=",
+        "narHash": "sha256-U8zmmdAcbegdi3wzOf5phpn3aVfnKR9gI0rVZBi8I20=",
         "path": "fnl",
         "type": "path"
       },
@@ -406,6 +406,22 @@
         "type": "github"
       }
     },
+    "nvim-neorg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645563125,
+        "narHash": "sha256-QkXgMRQA70B6yTefiVnbkQv4wbQVhoyMwz9wh0KGtHQ=",
+        "owner": "nvim-neorg",
+        "repo": "neorg",
+        "rev": "25dcc8d87cea1fc18280f4f1149c7dfc5b4a10bf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-neorg",
+        "repo": "neorg",
+        "type": "github"
+      }
+    },
     "nvim-treesitter": {
       "flake": false,
       "locked": {
@@ -477,6 +493,7 @@
         "nvim-cmp": "nvim-cmp",
         "nvim-colorizer": "nvim-colorizer",
         "nvim-lspconfig": "nvim-lspconfig",
+        "nvim-neorg": "nvim-neorg",
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",
         "popup-nvim": "popup-nvim",

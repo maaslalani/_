@@ -315,6 +315,14 @@
 (fn treesitter []
   (local parsers (require :nvim-treesitter.parsers))
   (local parser-configs ((. parsers :get_parser_configs)))
+  (set parser-configs.norg_meta
+       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
+                       :files [:src/parser.c]
+                       :branch :main}})
+  (set parser-configs.norg_table
+       {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-table"
+                       :files [:src/parser.c]
+                       :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup) {:ensure_installed :maintained
                           :highlight {:enable true}
@@ -326,6 +334,10 @@
   ((. autopairs :setup))
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-lua))
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
+
+; neorg
+(local neorg (require :neorg))
+((. neorg :setup) {:load {:core.defaults {}}})
 
 ;; null
 (fn null []

@@ -27,6 +27,7 @@
       nvim-cmp
       nvim-colorizer
       nvim-lspconfig
+      nvim-neorg
       nvim-treesitter
       plenary-nvim
       popup-nvim
