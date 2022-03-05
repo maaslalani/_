@@ -174,13 +174,13 @@
     "hammerspoon": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-OMxINMxBoLV/jf8PV0PUjULuI9OGHRd6x9v7m1uwzmc=",
+        "narHash": "sha256-l2oTMujRpZre/NOO7uHJfxd8wFdRHLEVtfSQ0gj5C5U=",
         "type": "tarball",
-        "url": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/24956772/047b7b37-87af-481b-b5f6-0098407c85fb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220225%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220225T042515Z&X-Amz-Expires=300&X-Amz-Signature=7f0f8cef1aec5a48ace9cfa855d3d57ff6493484d22d654d7704ce7f5f06f3a0&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=24956772&response-content-disposition=attachment%3B%20filename%3DHammerspoon-0.9.93.zip&response-content-type=application%2Foctet-stream"
+        "url": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/24956772/a30088a0-3122-4ba6-a8e0-19cf89b3af49?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220305%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220305T180359Z&X-Amz-Expires=300&X-Amz-Signature=ea1ec0122b4c9921fb633f621737a7226552adaad728ffdf26aad73eade9b2db&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=24956772&response-content-disposition=attachment%3B%20filename%3DHammerspoon-0.9.94.zip&response-content-type=application%2Foctet-stream"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.93.zip"
+        "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.94.zip"
       }
     },
     "home-manager": {

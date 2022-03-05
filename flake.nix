@@ -37,7 +37,7 @@
 
     fnl = { url = "path:fnl"; flake = false; };
     hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.93.zip";
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.94.zip";
       flake = false;
     };
   };
