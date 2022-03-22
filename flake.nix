@@ -15,7 +15,7 @@
     copilot-vim = { url = "github:github/copilot.vim"; flake = false; };
     friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-    hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
+    hop-nvim = { url = "github:phaazon/hop.nvim/v1.3.0"; flake = false; };
     luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     null-ls-nvim = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
@@ -37,7 +37,7 @@
 
     fnl = { url = "path:fnl"; flake = false; };
     hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.94.zip";
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.95.zip";
       flake = false;
     };
   };
@@ -79,7 +79,7 @@
 
             hammerspoon = self.pkgs.stdenv.mkDerivation {
               pname = "hammerspoon";
-              version = "0.9.94";
+              version = "0.9.95";
               src = inputs.hammerspoon;
               installPhase = ''
                 mkdir -p $out/Applications/Hammerspoon.app
@@ -135,7 +135,6 @@
             ./modules/gh.nix
             ./modules/git.nix
             ./modules/hammerspoon.nix
-            ./modules/kitty.nix
             ./modules/packages.nix
             ./modules/scim.nix
             ./modules/shell.nix
