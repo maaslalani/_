@@ -15,7 +15,7 @@
     copilot-vim = { url = "github:github/copilot.vim"; flake = false; };
     friendly-snippets = { url = "github:rafamadriz/friendly-snippets"; flake = false; };
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-    hop-nvim = { url = "github:phaazon/hop.nvim/v1.3.0"; flake = false; };
+    hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
     luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
     nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     null-ls-nvim = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };

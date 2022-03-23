@@ -206,16 +206,15 @@
     "hop-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1644228258,
-        "narHash": "sha256-a8WzM88sEKow6GpQiepb9c7FnE46wtaltM4pDQ6U2yM=",
+        "lastModified": 1647940546,
+        "narHash": "sha256-fvTMFJNuFq/lngs8qOkmnvG/SPnhqHiujinl56rGfPw=",
         "owner": "phaazon",
         "repo": "hop.nvim",
-        "rev": "75f73d3959a0df7ef3642fd5138acdb1ce50fdc8",
+        "rev": "78c19cd242ecfefd58670cc9e5ac722b9803db5f",
         "type": "github"
       },
       "original": {
         "owner": "phaazon",
-        "ref": "v1.3.0",
         "repo": "hop.nvim",
         "type": "github"
       }
