@@ -9,7 +9,7 @@
 (set hs.alert.defaultStyle.strokeColor {:white 1 :alpha 0.25})
 (set hs.alert.defaultStyle.strokeWidth 5)
 (set hs.alert.defaultStyle.textColor {:white 1 :alpha 0.8})
-(set hs.alert.defaultStyle.textFont :Menlo)
+(set hs.alert.defaultStyle.textFont :Hack)
 (set hs.alert.defaultStyle.textSize 18)
 
 (hs.alert.show "Hammerspoon Loaded" 1)
@@ -18,16 +18,17 @@
 ;; Grid styles
 (hs.grid.setGrid :6x4)
 (set hs.grid.ui.cellColor [0 0 0 0.25])
-(set hs.grid.ui.cellStrokeColor [0.2 0.2 0.2])
-(set hs.grid.ui.cellStrokeWidth 5)
-(set hs.grid.ui.cyclingHighlightColor [0.2 0.2 0.2 0.5])
-(set hs.grid.ui.cyclingHighlightStrokeColor [0.2 0.2 0.2 1])
-(set hs.grid.ui.highlightColor [0.2 0.2 0.2 0.5])
-(set hs.grid.ui.highlightStrokeColor [0.8 0.8 0.8 1])
-(set hs.grid.ui.highlightStrokeWidth 10)
+(set hs.grid.ui.cellStrokeColor [0.5 0.5 0.5 0.5])
+(set hs.grid.ui.cellStrokeWidth 2)
+(set hs.grid.ui.cyclingHighlightColor [0.5 0.5 0.5 0.2])
+(set hs.grid.ui.cyclingHighlightStrokeColor [0.5 0.5 0.5 0.5])
+(set hs.grid.ui.highlightColor [0.5 0.5 0.5 0.2])
+(set hs.grid.ui.highlightStrokeColor [0.5 0.5 0.5 0.5])
+(set hs.grid.ui.highlightStrokeWidth 2)
 (set hs.grid.ui.selectedColor [0.6 0.6 0.6 0.2])
 (set hs.grid.ui.textColor [1 1 1])
-(set hs.grid.ui.textSize 150)
+(set hs.grid.ui.textFont :Hack)
+(set hs.grid.ui.textSize 100)
 
 ;; Application and URL launchers
 (fn launch [application]
