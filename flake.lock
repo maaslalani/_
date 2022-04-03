@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "awkward-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626496100,
-        "narHash": "sha256-Zq27NUqrHeYbCTvLaKR7JPjqpIeg0sg8SqP/Z1PvnkU=",
-        "owner": "maaslalani",
-        "repo": "awkward.nvim",
-        "rev": "e5c210acff6582c6bbd301f568e19903c9d46fe8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "maaslalani",
-        "repo": "awkward.nvim",
-        "type": "github"
-      }
-    },
     "cmp-buffer": {
       "flake": false,
       "locked": {
@@ -130,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-oykYjpB+iIuBDmBMcPw7xJ3P8bJrKcls0PdKyIP+ujo=",
+        "narHash": "sha256-9zGLPZp21Q5aml0eCYMg3oGEwDGMCIXncJXZ53J8jvo=",
         "path": "fnl",
         "type": "path"
       },
@@ -472,7 +456,6 @@
     },
     "root": {
       "inputs": {
-        "awkward-nvim": "awkward-nvim",
         "cmp-buffer": "cmp-buffer",
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
@@ -501,6 +484,7 @@
         "vim-commentary": "vim-commentary",
         "vim-fugitive": "vim-fugitive",
         "vim-rhubarb": "vim-rhubarb",
+        "vim-sleuth": "vim-sleuth",
         "vim-surround": "vim-surround",
         "vim-test": "vim-test",
         "which-key-nvim": "which-key-nvim"
@@ -567,6 +551,22 @@
       "original": {
         "owner": "tpope",
         "repo": "vim-rhubarb",
+        "type": "github"
+      }
+    },
+    "vim-sleuth": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648940510,
+        "narHash": "sha256-xF4iU6xkuBk5SGl1sfpJtuRjgYANFIp1VxjiU4zYivc=",
+        "owner": "tpope",
+        "repo": "vim-sleuth",
+        "rev": "aade27e2b1a47ae2261d95a4dd622ca2c3d34227",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-sleuth",
         "type": "github"
       }
     },

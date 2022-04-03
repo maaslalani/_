@@ -35,6 +35,7 @@
       vim-commentary
       vim-fugitive
       vim-rhubarb
+      vim-sleuth
       vim-surround
       vim-test
       which-key-nvim

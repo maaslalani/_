@@ -7,7 +7,6 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
-    awkward-nvim = { url = "github:maaslalani/awkward.nvim"; flake = false; };
     cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
@@ -31,6 +30,7 @@
     vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
     vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
     vim-rhubarb = { url = "github:tpope/vim-rhubarb"; flake = false; };
+    vim-sleuth = { url = "github:tpope/vim-sleuth"; flake = false; };
     vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
     vim-test = { url = "github:vim-test/vim-test"; flake = false; };
     which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
@@ -73,6 +73,7 @@
             vim-commentary = plug "vim-commentary";
             vim-fugitive = plug "vim-fugitive";
             vim-rhubarb = plug "vim-rhubarb";
+            vim-sleuth = plug "vim-sleuth";
             vim-surround = plug "vim-surround";
             vim-test = plug "vim-test";
             which-key-nvim = plug "which-key-nvim";
