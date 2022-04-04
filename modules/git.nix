@@ -14,6 +14,7 @@ in
       core.commitGraph = true;
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
+      diff.external = "difft";
       fetch.prune = true;
       gc.writeCommitGraph = true;
       github.user = user;
