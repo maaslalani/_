@@ -25,7 +25,7 @@
       };
 
       font = {
-        normal.family = "Hack Nerd Font Mono";
+        normal.family = "FiraCode Nerd Font Mono";
         bold.style = "Bold";
         italic.style = "Italic";
         normal.style = "Regular";

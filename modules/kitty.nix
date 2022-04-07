@@ -30,6 +30,8 @@
 
       allow_remote_control = true;
 
+      cursor_blink_interval = 0;
+
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";
       macos_quit_when_last_window_closed = true;
@@ -42,42 +44,29 @@
       foreground = "#dddddd";
       background = "#171717";
 
-      # black
       color0 = "#000000";
-      color8 = "#4d4d4d";
-
-      # red
       color1 = "#c73b1d";
+      color10 = "#00db00";
+      color11 = "#e5e900";
+      color12 = "#566BF9";
+      color13 = "#e83ae9";
+      color14 = "#00e6e7";
+      color15 = "#e6e6e6";
+      color2 = "#00a800";
+      color3 = "#acaf15";
+      color4 = "#3854FC";
+      color5 = "#d533ce";
+      color6 = "#2cbac9";
+      color7 = "#bfbfbf";
+      color8 = "#4d4d4d";
       color9 = "#e82100";
 
-      # green
-      color2 = "#00a800";
-      color10 = "#00db00";
+      font_family = "FiraCode Nerd Font Mono";
+      bold_font = "auto";
+      bold_italic_font = "auto";
+      italic_font = "auto";
 
-      # yellow
-      color3 = "#acaf15";
-      color11 = "#e5e900";
-
-      # blue
-      color4 = "#3854FC";
-      color12 = "#566BF9";
-
-      # magenta
-      color5 = "#d533ce";
-      color13 = "#e83ae9";
-
-      # cyan
-      color6 = "#2cbac9";
-      color14 = "#00e6e7";
-
-      # white
-      color7 = "#bfbfbf";
-      color15 = "#e6e6e6";
-
-      font_family = "Hack Nerd Font Mono";
-      italic_font = "Hack Nerd Font Mono Italic";
-      bold_font = "Hack Nerd Font Mono Bold";
-      bold_italic_font = "Hack Nerd Font Mono Bold Italic";
+      font_size = 15;
     };
   };
 }
