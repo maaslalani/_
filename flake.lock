@@ -494,7 +494,7 @@
     "saturn": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-BOaMWUFab5SpycjUomKSpd0/KoKfd2Oy7CcouyCa7rk=",
+        "narHash": "sha256-4M14oGqu6M+YMO80+vpZKqCLlMCxvha34YVJN418PhA=",
         "path": "colors",
         "type": "path"
       },

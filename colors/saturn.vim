@@ -64,7 +64,7 @@ hi Identifier guifg=#C5C8C6 guibg=NONE
 hi IncSearch guifg=#81A2BE guibg=NONE
 hi Include guifg=#81A2BE guibg=NONE
 hi Keyword guifg=#81A2BE guibg=NONE
-hi Label guifg=#DE935F guibg=NONE
+hi Label guifg=#81A2BE guibg=NONE
 hi LineNr guifg=#5E6360 guibg=#1D1F21
 hi Macro guifg=#DE935F guibg=NONE
 hi MatchParen guifg=#8ABEB7 guibg=NONE
@@ -146,6 +146,10 @@ hi HopNextKey2 guifg=#81A2BE guibg=NONE
 " Treesitter {{{
 hi TSBoolean guifg=#DE935F guibg=NONE
 hi TSField guifg=#81A2BE guibg=NONE
-hi TSPunctSpecial guifg=#B294BB guibg=NONE
+hi TSPunctSpecial guifg=#81A2BE guibg=NONE
+hi TSPunctDelimiter guifg=#C5C8C6 guibg=NONE
+hi TSTitle guifg=#81A2BE guibg=NONE gui=bold
 hi TSStringSpecial guifg=#8C9440 guibg=NONE
+hi TSUri guifg=#B294BB gui=underline
+hi TSLiteral guifg=#5F819D guibg=NONE
 " }}}
