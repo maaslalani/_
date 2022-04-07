@@ -34,6 +34,7 @@
 (fn launch [application]
   (fn []
     (hs.application.launchOrFocus application)))
+
 (fn openurl [url]
   (fn []
     (hs.urlevent.openURL url)))
@@ -122,4 +123,3 @@
 ;; Spoons
 (hs.loadSpoon :SpoonInstall)
 (spoon.SpoonInstall:andUse :HSearch)
-
