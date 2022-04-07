@@ -58,6 +58,7 @@ hi Error guifg=#CC6666 guibg=NONE
 hi Error guifg=#CC6666 guibg=NONE
 hi ErrorMsg guifg=#CC6666 guibg=NONE
 hi Exception guifg=#A54242 guibg=NONE
+hi FoldColumn guifg=#5E6360 guibg=#1D1F21
 hi Folded guifg=#5E6360 guibg=#1D1F21
 hi Function guifg=#8ABEB7 guibg=NONE
 hi Identifier guifg=#C5C8C6 guibg=NONE
@@ -73,10 +74,12 @@ hi NonText guifg=#373B41 guibg=#1D1F21
 hi Normal guifg=#C5C8C6 guibg=#1D1F21
 hi NormalFloat guifg=#C5C8C6 guibg=#1D1F21
 hi Number guifg=#CC6666 guibg=NONE
-hi NvimInternalError guibg=#A54242
+hi NvimInternalError guifg=#707880 guibg=#A54242
 hi Operator guifg=#5E8D87 guibg=NONE
-hi PMenuSel guifg=#5F819D guibg=#373B41
 hi Pmenu guifg=#C5C8C6 guibg=#282A2E
+hi PmenuSbar guifg=#5F819D guibg=#282A2E
+hi PmenuSel guifg=#5F819D guibg=#373B41
+hi PmenuThumb guifg=#5F819D guibg=#373B41
 hi PreCondit guifg=#DE935F guibg=NONE
 hi PreProc guifg=#A54242 guibg=NONE
 hi Question guifg=#5E8D87 guibg=NONE

@@ -49,8 +49,13 @@
     homeConfigurations = rec {
       overlays = [
         (
-          self: super: with self.vimUtils; let
-            plug = name: buildVimPluginFrom2Nix { pname = name; src = inputs.${name}; version = "unstable"; };
+          self: super: with self.vimUtils;
+          let
+            plug = name: buildVimPluginFrom2Nix {
+              pname = name;
+              src = inputs.${name};
+              version = "unstable";
+            };
           in
           {
             cmp-buffer = plug "cmp-buffer";
@@ -110,7 +115,6 @@
               pname = "saturn";
               version = "unstable";
               src = inputs.saturn;
-              buildInputs = [ ];
               installPhase = ''
                 mkdir -p $out
                 cp $src/saturn.vim $out/saturn.vim
