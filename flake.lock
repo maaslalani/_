@@ -114,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-kmQ1I02VVqOpFDC1czvLLnAlmKjldYQ38HKAAaglW6M=",
+        "narHash": "sha256-qe/KG0y9P2I7TEIAHhuuvvbhZoidkMnRRNCh8LK5FQs=",
         "path": "fnl",
         "type": "path"
       },

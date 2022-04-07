@@ -25,6 +25,24 @@ set t_Co=256
 " color5     #85678F  color13    #B294BB
 " color6     #5E8D87  color14    #8ABEB7
 " color7     #707880  color15    #C5C8C6
+
+abbr c0  #282A2E
+abbr c1  #A54242
+abbr c10 #B5BD68
+abbr c11 #F0C674
+abbr c12 #81A2BE
+abbr c13 #B294BB
+abbr c14 #8ABEB7
+abbr c15 #C5C8C6
+abbr c2  #8C9440
+abbr c3  #DE935F
+abbr c4  #5F819D
+abbr c5  #85678F
+abbr c6  #5E8D87
+abbr c7  #707880
+abbr c8  #373B41
+abbr c9  #CC6666
+
 " }}}
 
 " Vim {{{
@@ -84,10 +102,12 @@ hi DiffDelete guifg=#A54242 guibg=NONE
 hi DiffText guifg=#A54242 guibg=NONE
 hi Directory guifg=#81A2BE guibg=NONE
 hi Error guifg=#CC6666 guibg=NONE
-hi ErrorMsg guifg=color9 guibg=NONE
+hi ErrorMsg guifg=#CC6666 guibg=NONE
+hi Error guifg=#CC6666 guibg=NONE
 hi Exception guifg=#A54242 guibg=NONE
 hi Folded guifg=#5E6360 guibg=#1D1F21
 hi Function guifg=#8ABEB7 guibg=NONE
+hi Question guifg=#5E8D87 guibg=NONE
 
 " }}}
 
@@ -112,4 +132,18 @@ hi cssIncludeKeyword guifg=#8C9440 guibg=NONE
 hi javaScriptBoolean guifg=#85678F guibg=NONE
 hi markdownLinkText guifg=#85678F guibg=NONE
 
+" }}}
+
+" Telescope {{{
+hi TelescopeBorder guifg=#373B41 guibg=NONE
+" }}}
+
+" Completion {{{
+hi CmpItemKind guifg=#81A2BE guibg=NONE
+" }}}
+
+" Hop {{{
+hi HopNextKey guifg=#5F819D guibg=NONE
+hi HopNextKey1 guifg=#81A2BE guibg=NONE
+hi HopNextKey2 guifg=#81A2BE guibg=NONE
 " }}}
