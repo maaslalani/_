@@ -43,6 +43,7 @@
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
                  :a {:name :Alacritty :action (launch :Alacritty)}
+                 :k {:name :Kitty :action (launch :Kitty)}
                  :b {:name :Brave :action (launch "Brave Browser")}
                  :c {:name :Calendar :action (launch :Calendar)}
                  :p {:name :1Password :action (launch "1Password 7")}

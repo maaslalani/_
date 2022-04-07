@@ -6,7 +6,7 @@
       enable_audio_bell = false;
       copy_on_select = true;
 
-      remember_window_size = false;
+      remember_window_size = true;
       initial_window_width = 680;
       initial_window_height = 720;
       window_border_width = 1;
@@ -31,6 +31,8 @@
       allow_remote_control = true;
 
       cursor_blink_interval = 0;
+
+      # tmux new-session - A - D - s default
 
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";

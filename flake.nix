@@ -140,7 +140,6 @@
             (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; })
           ];
           imports = [
-            ./modules/alacritty.nix
             ./modules/fonts.nix
             ./modules/fzf.nix
             ./modules/gh.nix
