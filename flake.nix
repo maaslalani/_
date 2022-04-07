@@ -16,7 +16,6 @@
     gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
     hop-nvim = { url = "github:phaazon/hop.nvim"; flake = false; };
     luasnip = { url = "github:l3mon4d3/luasnip"; flake = false; };
-    nordic-nvim = { url = "github:andersevenrud/nordic.nvim"; flake = false; };
     null-ls-nvim = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
@@ -36,6 +35,7 @@
     which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
     fnl = { url = "path:fnl"; flake = false; };
+    saturn = { url = "path:fnl"; flake = false; };
     hammerspoon = {
       url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip";
       flake = false;
@@ -59,7 +59,6 @@
             gitsigns-nvim = plug "gitsigns-nvim";
             hop-nvim = plug "hop-nvim";
             luasnip = plug "luasnip";
-            nordic-nvim = plug "nordic-nvim";
             null-ls-nvim = plug "null-ls-nvim";
             nvim-autopairs = plug "nvim-autopairs";
             nvim-cmp = plug "nvim-cmp";
@@ -98,6 +97,17 @@
                 mkdir -p $out
                 fennel --compile $src/init.fnl > $out/init.lua
                 fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
+              '';
+            };
+
+            saturn = self.pkgs.stdenv.mkDerivation {
+              pname = "saturn";
+              version = "unstable";
+              src = inputs.saturn;
+              buildInputs = [ ];
+              installPhase = ''
+                mkdir -p $out
+                cp $src/saturn.vim $out/saturn.vim
               '';
             };
           }

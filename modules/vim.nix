@@ -5,10 +5,11 @@
     package = pkgs.neovim-nightly;
     extraConfig = ''
       imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+      ${builtins.readFile "${pkgs.saturn}/saturn.vim"}
       lua <<EOF
       ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
-      '';
+    '';
     vimAlias = true;
     viAlias = true;
     plugins = with pkgs; [
@@ -21,7 +22,6 @@
       gitsigns-nvim
       hop-nvim
       luasnip
-      nordic-nvim
       null-ls-nvim
       nvim-autopairs
       nvim-cmp

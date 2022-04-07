@@ -348,9 +348,6 @@
                   null_ls.builtins.formatting.rubocop])
   (null_ls.setup {: sources}))
 
-;; colorscheme
-(vim.cmd "colorscheme nordic")
-
 ;; autocmds
 (vim.cmd (.. (autocmd :BufEnter :*.graphql "set ft=graphql")
              (autocmd :BufEnter :*.lock "set ft=json")

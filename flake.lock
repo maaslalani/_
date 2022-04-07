@@ -114,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-fBAHEi4OmcB+fmE6oXhKnDuYJi5LN2ORkVCL8a3kmcc=",
+        "narHash": "sha256-kmQ1I02VVqOpFDC1czvLLnAlmKjldYQ38HKAAaglW6M=",
         "path": "fnl",
         "type": "path"
       },
@@ -294,22 +294,6 @@
         "type": "github"
       }
     },
-    "nordic-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1647185533,
-        "narHash": "sha256-2gWeZtZVKKdSPEPwiXhKMYLQXHRKs/4c1vw+gBwiGgA=",
-        "owner": "andersevenrud",
-        "repo": "nordic.nvim",
-        "rev": "612f7db0b904d11eeddd41474e71e4bf67acc453",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andersevenrud",
-        "repo": "nordic.nvim",
-        "type": "github"
-      }
-    },
     "null-ls-nvim": {
       "flake": false,
       "locked": {
@@ -470,7 +454,6 @@
         "luasnip": "luasnip",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
-        "nordic-nvim": "nordic-nvim",
         "null-ls-nvim": "null-ls-nvim",
         "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
@@ -480,6 +463,7 @@
         "nvim-treesitter": "nvim-treesitter",
         "plenary-nvim": "plenary-nvim",
         "popup-nvim": "popup-nvim",
+        "saturn": "saturn",
         "telescope-nvim": "telescope-nvim",
         "vim-commentary": "vim-commentary",
         "vim-fugitive": "vim-fugitive",
@@ -488,6 +472,18 @@
         "vim-surround": "vim-surround",
         "vim-test": "vim-test",
         "which-key-nvim": "which-key-nvim"
+      }
+    },
+    "saturn": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-m9FCp8cXAca4M8CLzylNhOciyXt61nc/BxTIffraD7A=",
+        "path": "fnl",
+        "type": "path"
+      },
+      "original": {
+        "path": "fnl",
+        "type": "path"
       }
     },
     "telescope-nvim": {
