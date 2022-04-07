@@ -114,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-RTWWyhfRjZFi2wXG+ipWqRkriE3rjOUks7aiaarLGso=",
+        "narHash": "sha256-T4bgVZyY9Vfyj3DyStHY/jXBlFNXGqbRUEJBxKhMJQY=",
         "path": "fnl",
         "type": "path"
       },
@@ -390,6 +390,38 @@
         "type": "github"
       }
     },
+    "nvim-neotree": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649331663,
+        "narHash": "sha256-WfQ7VH0mQ9z7Ij6A0tlk6nlRFJS06Kc4v5GJwDNTgqg=",
+        "owner": "nvim-neo-tree",
+        "repo": "neo-tree.nvim",
+        "rev": "ed095bae6b10f388463283b4795a7c5e17b4f46e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-neo-tree",
+        "repo": "neo-tree.nvim",
+        "type": "github"
+      }
+    },
+    "nvim-nui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646758184,
+        "narHash": "sha256-BAyA2/UkRGYEvhPqxgRn42aGFoiCQhXOYUj+JKeLIiM=",
+        "owner": "muniftanjim",
+        "repo": "nui.nvim",
+        "rev": "513ff9bbdde7da53e209232d4328e734ea2bd96a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "muniftanjim",
+        "repo": "nui.nvim",
+        "type": "github"
+      }
+    },
     "nvim-treesitter": {
       "flake": false,
       "locked": {
@@ -476,6 +508,8 @@
         "nvim-colorizer": "nvim-colorizer",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-neorg": "nvim-neorg",
+        "nvim-neotree": "nvim-neotree",
+        "nvim-nui": "nvim-nui",
         "nvim-treesitter": "nvim-treesitter",
         "nvim-treesitter-playground": "nvim-treesitter-playground",
         "plenary-nvim": "plenary-nvim",

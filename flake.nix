@@ -22,6 +22,8 @@
     nvim-colorizer = { url = "github:norcalli/nvim-colorizer.lua"; flake = false; };
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
+    nvim-neotree = { url = "github:nvim-neo-tree/neo-tree.nvim"; flake = false; };
+    nvim-nui = { url = "github:muniftanjim/nui.nvim"; flake = false; };
     nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
     nvim-treesitter-playground = { url = "github:nvim-treesitter/playground"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
@@ -66,6 +68,8 @@
             nvim-colorizer = plug "nvim-colorizer";
             nvim-lspconfig = plug "nvim-lspconfig";
             nvim-neorg = plug "nvim-neorg";
+            nvim-neotree = plug "nvim-neotree";
+            nvim-nui = plug "nvim-nui";
             nvim-treesitter = plug "nvim-treesitter";
             nvim-treesitter-playground = plug "nvim-treesitter-playground";
             plenary-nvim = plug "plenary-nvim";
