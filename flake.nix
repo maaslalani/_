@@ -35,7 +35,7 @@
     which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
     fnl = { url = "path:fnl"; flake = false; };
-    saturn = { url = "path:fnl"; flake = false; };
+    saturn = { url = "path:colors"; flake = false; };
     hammerspoon = {
       url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip";
       flake = false;

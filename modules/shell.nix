@@ -112,6 +112,7 @@ in
         "cd $HOME/_"
         "rm -rf ${config.xdg.configHome}/nvim/lua"
         "${flake "flake lock --update-input fnl"}"
+        "${flake "flake lock --update-input saturn"}"
         "${flake "build --out-link ${config.xdg.configHome}/nixpkgs/result --impure '$HOME/_#home'"}"
         "${config.xdg.configHome}/nixpkgs/result/activate"
         sz

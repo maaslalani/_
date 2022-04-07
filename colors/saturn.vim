@@ -136,6 +136,7 @@ hi markdownLinkText guifg=#85678F guibg=NONE
 
 " Telescope {{{
 hi TelescopeBorder guifg=#373B41 guibg=NONE
+hi TelescopeMatching guifg=#81A2BE guibg=NONE
 " }}}
 
 " Completion {{{

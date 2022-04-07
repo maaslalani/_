@@ -114,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-qe/KG0y9P2I7TEIAHhuuvvbhZoidkMnRRNCh8LK5FQs=",
+        "narHash": "sha256-WI5Hnaai5vx7CwzPjt2N2sT8xt2eTkUnxJboPT179nI=",
         "path": "fnl",
         "type": "path"
       },
@@ -477,12 +477,12 @@
     "saturn": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-m9FCp8cXAca4M8CLzylNhOciyXt61nc/BxTIffraD7A=",
-        "path": "fnl",
+        "narHash": "sha256-dEPiFM3tykMVMpISpCBjczfbizUqTfj4BPs3CmLJA+M=",
+        "path": "colors",
         "type": "path"
       },
       "original": {
-        "path": "fnl",
+        "path": "colors",
         "type": "path"
       }
     },
