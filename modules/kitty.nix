@@ -44,14 +44,8 @@
       foreground = "#dddddd";
       background = "#171717";
 
-      color0 = "#000000";
+      color0 = "#171717";
       color1 = "#c73b1d";
-      color10 = "#00db00";
-      color11 = "#e5e900";
-      color12 = "#566BF9";
-      color13 = "#e83ae9";
-      color14 = "#00e6e7";
-      color15 = "#e6e6e6";
       color2 = "#00a800";
       color3 = "#acaf15";
       color4 = "#3854FC";
@@ -60,6 +54,12 @@
       color7 = "#bfbfbf";
       color8 = "#4d4d4d";
       color9 = "#e82100";
+      color10 = "#00db00";
+      color11 = "#e5e900";
+      color12 = "#566BF9";
+      color13 = "#e83ae9";
+      color14 = "#00e6e7";
+      color15 = "#e6e6e6";
 
       font_family = "FiraCode Nerd Font Mono";
       bold_font = "auto";
