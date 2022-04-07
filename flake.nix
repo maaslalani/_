@@ -23,6 +23,7 @@
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
     nvim-treesitter = { url = "github:nvim-treesitter/nvim-treesitter"; flake = false; };
+    nvim-treesitter-playground = { url = "github:nvim-treesitter/playground"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
     popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
     telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
@@ -66,6 +67,7 @@
             nvim-lspconfig = plug "nvim-lspconfig";
             nvim-neorg = plug "nvim-neorg";
             nvim-treesitter = plug "nvim-treesitter";
+            nvim-treesitter-playground = plug "nvim-treesitter-playground";
             plenary-nvim = plug "plenary-nvim";
             popup-nvim = plug "popup-nvim";
             telescope-nvim = plug "telescope-nvim";

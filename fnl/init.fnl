@@ -88,6 +88,7 @@
           :l [(pcmd :luafile "%") :lua]
           :v [(cmd :vsplit) :split]
           :o [(pcmd :source "%") :source]
+          :s [(cmd :TSHighlightCapturesUnderCursor) :Syntax]
           :t [(cmd "10split | terminal") :terminal]}
       :l {:name :lsp
           :f [(lspcmd :buf.formatting) :format]

@@ -142,3 +142,10 @@ hi HopNextKey guifg=#5F819D guibg=NONE
 hi HopNextKey1 guifg=#81A2BE guibg=NONE
 hi HopNextKey2 guifg=#81A2BE guibg=NONE
 " }}}
+
+" Treesitter {{{
+hi TSBoolean guifg=#DE935F guibg=NONE
+hi TSField guifg=#81A2BE guibg=NONE
+hi TSPunctSpecial guifg=#B294BB guibg=NONE
+hi TSStringSpecial guifg=#8C9440 guibg=NONE
+" }}}

@@ -29,6 +29,7 @@
       nvim-lspconfig
       nvim-neorg
       nvim-treesitter
+      nvim-treesitter-playground
       plenary-nvim
       popup-nvim
       telescope-nvim
