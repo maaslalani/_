@@ -16,32 +16,25 @@ set t_Co=256
 " }}}
 
 " Colors {{{
-" foreground #C5C8C6  background #1D1F21
-" color0     #282A2E  color8     #373B41
-" color1     #A54242  color9     #CC6666
-" color2     #8C9440  color10    #B5BD68
-" color3     #DE935F  color11    #F0C674
-" color4     #5F819D  color12    #81A2BE
-" color5     #85678F  color13    #B294BB
-" color6     #5E8D87  color14    #8ABEB7
-" color7     #707880  color15    #C5C8C6
 
-abbr c0  #282A2E
-abbr c1  #A54242
-abbr c10 #B5BD68
-abbr c11 #F0C674
-abbr c12 #81A2BE
-abbr c13 #B294BB
-abbr c14 #8ABEB7
-abbr c15 #C5C8C6
-abbr c2  #8C9440
-abbr c3  #DE935F
-abbr c4  #5F819D
-abbr c5  #85678F
-abbr c6  #5E8D87
-abbr c7  #707880
-abbr c8  #373B41
-abbr c9  #CC6666
+" abbr fg  #C5C8C6
+" abbr bg  #1D1F21
+" abbr c0  #282A2E
+" abbr c8  #373B41
+" abbr c1  #A54242
+" abbr c9  #CC6666
+" abbr c2  #8C9440
+" abbr c10 #B5BD68
+" abbr c3  #DE935F
+" abbr c11 #F0C674
+" abbr c4  #5F819D
+" abbr c12 #81A2BE
+" abbr c5  #85678F
+" abbr c13 #B294BB
+" abbr c6  #5E8D87
+" abbr c14 #8ABEB7
+" abbr c7  #707880
+" abbr c15 #C5C8C6
 
 " }}}
 
