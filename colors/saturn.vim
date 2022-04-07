@@ -40,6 +40,26 @@ set t_Co=256
 
 " Vim {{{
 
+hi Comment guifg=#707880 gui=italic
+hi Conditional guifg=#81A2BE guibg=NONE
+hi Constant guifg=#C5C8C6 guibg=NONE
+hi CursorLine guibg=#282A2E
+hi CursorLineNR guifg=NONE guibg=#282A2E gui=NONE
+hi Debug guifg=#DE935F guibg=NONE
+hi Define guifg=#81A2BE guibg=NONE
+hi Delimiter guifg=#C5C8C6 guibg=NONE
+hi DiagnosticError guifg=#A54242 guibg=NONE
+hi DiffAdd guifg=#B5BD68 guibg=NONE
+hi DiffChange guifg=#F0C674 guibg=NONE
+hi DiffDelete guifg=#A54242 guibg=NONE
+hi DiffText guifg=#A54242 guibg=NONE
+hi Directory guifg=#81A2BE guibg=NONE
+hi Error guifg=#CC6666 guibg=NONE
+hi Error guifg=#CC6666 guibg=NONE
+hi ErrorMsg guifg=#CC6666 guibg=NONE
+hi Exception guifg=#A54242 guibg=NONE
+hi Folded guifg=#5E6360 guibg=#1D1F21
+hi Function guifg=#8ABEB7 guibg=NONE
 hi Identifier guifg=#C5C8C6 guibg=NONE
 hi IncSearch guifg=#81A2BE guibg=NONE
 hi Include guifg=#81A2BE guibg=NONE
@@ -53,11 +73,13 @@ hi NonText guifg=#373B41 guibg=#1D1F21
 hi Normal guifg=#C5C8C6 guibg=#1D1F21
 hi NormalFloat guifg=#C5C8C6 guibg=#1D1F21
 hi Number guifg=#CC6666 guibg=NONE
+hi NvimInternalError guibg=#A54242
 hi Operator guifg=#5E8D87 guibg=NONE
 hi PMenuSel guifg=#5F819D guibg=#373B41
 hi Pmenu guifg=#C5C8C6 guibg=#282A2E
 hi PreCondit guifg=#DE935F guibg=NONE
 hi PreProc guifg=#A54242 guibg=NONE
+hi Question guifg=#5E8D87 guibg=NONE
 hi Repeat guifg=#81A2BE guibg=NONE
 hi Search guibg=#373B41 guifg=NONE
 hi SignColumn guibg=#1D1F21
@@ -80,27 +102,6 @@ hi Type guifg=#8ABEB7 guibg=NONE gui=NONE
 hi VertSplit gui=NONE guifg=#282A2E guibg=NONE
 hi Visual gui=NONE guibg=#282A2E
 hi WarningMsg guifg=#DE935F guibg=NONE
-hi Comment guifg=#707880 gui=italic
-hi Conditional guifg=#81A2BE guibg=NONE
-hi Constant guifg=#C5C8C6 guibg=NONE
-hi CursorLine guibg=#282A2E
-hi CursorLineNR guifg=#373B41 guibg=NONE
-hi Debug guifg=#DE935F guibg=NONE
-hi Define guifg=#81A2BE guibg=NONE
-hi Delimiter guifg=#C5C8C6 guibg=NONE
-hi DiagnosticError guifg=#A54242 guibg=NONE
-hi DiffAdd guifg=#B5BD68 guibg=NONE
-hi DiffChange guifg=#F0C674 guibg=NONE
-hi DiffDelete guifg=#A54242 guibg=NONE
-hi DiffText guifg=#A54242 guibg=NONE
-hi Directory guifg=#81A2BE guibg=NONE
-hi Error guifg=#CC6666 guibg=NONE
-hi ErrorMsg guifg=#CC6666 guibg=NONE
-hi Error guifg=#CC6666 guibg=NONE
-hi Exception guifg=#A54242 guibg=NONE
-hi Folded guifg=#5E6360 guibg=#1D1F21
-hi Function guifg=#8ABEB7 guibg=NONE
-hi Question guifg=#5E8D87 guibg=NONE
 
 " }}}
 
