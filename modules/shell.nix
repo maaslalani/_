@@ -7,7 +7,6 @@ let
   red = color "red";
   green = color "green";
 
-  flake = cmd: "nix-shell -p nixUnstable --command \"nix --experimental-features 'nix-command flakes' ${cmd}\"";
   join = builtins.concatStringsSep " && ";
 in
 {
@@ -111,9 +110,8 @@ in
       hms = join [
         "cd $HOME/_"
         "rm -rf ${config.xdg.configHome}/nvim/lua"
-        "${flake "flake lock --update-input fnl"}"
-        "${flake "flake lock --update-input saturn"}"
-        "${flake "build --out-link ${config.xdg.configHome}/nixpkgs/result --impure '$HOME/_#home'"}"
+        "nix flake lock --update-input fnl --update-input saturn"
+        "nix build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#home"
         "${config.xdg.configHome}/nixpkgs/result/activate"
         sz
         "cd -"
