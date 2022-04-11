@@ -43,13 +43,12 @@
 ;; Open the menu with the leader key (ctrl+space)
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
-                 :t {:name :Tuple :action (launch :Tuple)}
+                 :t {:name :Kitty :action (launch :Terminal)}
                  :b {:name :Brave :action (launch "Brave Browser")}
                  :c {:name :Calendar :action (launch :Calendar)}
                  :p {:name :1Password :action (launch "1Password 7")}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :s {:name :Slack :action (launch :Slack)}
-                 :t {:name :Tuple :action (launch :Tuple)}
                  :n {:name :Notes :action (launch :Notes)}}
              :l {:name :Links
                  :g {:name :GitHub
