@@ -84,6 +84,7 @@ in
       ghpv = "gh pr view";
       ghv = "gh pr view --web";
 
+      goi = "go install";
       grg = "go run ./...";
       gtg = "go test ./...";
 

@@ -293,7 +293,6 @@
                         {:name :path}]
               :confirm_opts {:behavior cmp.ConfirmBehavior.Replace
                              :select false}
-              :documentation {: border}
               :views {:entries :native}
               :experimental {:ghost_text false}}))
 
@@ -329,7 +328,7 @@
                        :files [:src/parser.c]
                        :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
-  ((. treesitter :setup) {:ensure_installed :maintained
+  ((. treesitter :setup) {:ensure_installed :all
                           :highlight {:enable true}
                           :indent {:enable false}}))
 
