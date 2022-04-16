@@ -28,6 +28,7 @@ let
     proselint
     rustup
     sc-im
+    gopls
   ];
 
   linux = [ ];

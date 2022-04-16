@@ -327,6 +327,10 @@
        {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-table"
                        :files [:src/parser.c]
                        :branch :main}})
+  (set parser-configs.go
+       {:install_info {:url "https://github.com/tree-sitter/tree-sitter-go"
+                       :files [:src/parser.c]
+                       :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup) {:ensure_installed :all
                           :highlight {:enable true}
