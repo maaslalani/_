@@ -269,12 +269,10 @@
                         :<C-f> (cmp.mapping (cmp.mapping.scroll_docs 1) [:i :c])
                         :<C-e> (cmp.mapping (cmp.mapping.complete) [:i :c])
                         :<CR> (cmp.mapping.confirm {:select true})
-                        :<Tab> (cmp.mapping (fn [fallback]
-                                              (tab fallback))
-                                            [:i :s])
-                        :<S-Tab> (cmp.mapping (fn [fallback]
-                                                (s-tab fallback))
-                                              [:i :s])}
+                        :<C-n> (cmp.mapping (fn [fallback] (tab fallback)) [:i :s])
+                        :<C-p> (cmp.mapping (fn [fallback] (s-tab fallback)) [:i :s])
+                        :<Tab> (cmp.mapping (fn [fallback] (tab fallback)) [:i :s])
+                        :<S-Tab> (cmp.mapping (fn [fallback] (s-tab fallback)) [:i :s])}
               :formatting {:fields [:abbr :kind :menu]
                            :format (fn [entry vim-item]
                                      (set vim-item.kind
