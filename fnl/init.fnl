@@ -372,7 +372,7 @@
              (autocmd :BufEnter :*.lock "set ft=json")
              (autocmd :BufEnter :*.nix "set ft=nix")
              (autocmd :FileType :markdown "setlocal spell")
-             (autocmd :FileType :norg "setlocal spell nocursorline conceallevel=2")
+             (autocmd :FileType :norg "setlocal spell nocursorline conceallevel=2 | hi MatchParen guifg=NONE")
              (autocmd :FileType :gitcommit "setlocal spell")
              (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
              (autocmd :TermOpen "*" "setlocal nonu nocul scl=no ls=0")
