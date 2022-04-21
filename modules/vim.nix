@@ -25,7 +25,6 @@
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
-      nvim-colorizer
       nvim-lspconfig
       nvim-neorg
       nvim-neotree
@@ -37,6 +36,7 @@
       telescope-nvim
       vim-commentary
       vim-fugitive
+      vim-hexokinase
       vim-rhubarb
       vim-sleuth
       vim-surround

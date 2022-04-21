@@ -90,7 +90,7 @@
           :v [(cmd :vsplit) :split]
           :o [(pcmd :source "%") :source]
           :s [(cmd :TSHighlightCapturesUnderCursor) :syntax]
-          :c [(cmd :ColorizerToggle) :colorizer]
+          :c [(cmd :HexokinaseToggle) :hexokinase]
           :t [(cmd "10split | terminal") :terminal]}
       :l {:name :lsp
           :f [(lspcmd :buf.formatting) :format]
@@ -298,10 +298,6 @@
               :views {:entries :native}
               :experimental {:ghost_text false}}))
 
-;; colorizer
-(fn colorizer []
-  (. (require :colorizer) :setup))
-
 ;; telescope
 (fn telescope []
   (local telescope (require :telescope))
@@ -384,7 +380,6 @@
 ;; lazy loading
 (local defer vim.defer_fn)
 (defer autopairs 10)
-(defer colorizer 10)
 (defer completion 10)
 (defer gitsigns 10)
 (defer hop 10)

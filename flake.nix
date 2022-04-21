@@ -19,7 +19,6 @@
     null-ls-nvim = { url = "github:jose-elias-alvarez/null-ls.nvim"; flake = false; };
     nvim-autopairs = { url = "github:windwp/nvim-autopairs"; flake = false; };
     nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
-    nvim-colorizer = { url = "github:norcalli/nvim-colorizer.lua"; flake = false; };
     nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
     nvim-neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
     nvim-neotree = { url = "github:nvim-neo-tree/neo-tree.nvim"; flake = false; };
@@ -31,6 +30,7 @@
     telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
     vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
     vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
+    vim-hexokinase = { url = "github:rrethy/vim-hexokinase"; flake = false; };
     vim-rhubarb = { url = "github:tpope/vim-rhubarb"; flake = false; };
     vim-sleuth = { url = "github:tpope/vim-sleuth"; flake = false; };
     vim-surround = { url = "github:tpope/vim-surround"; flake = false; };
@@ -70,7 +70,6 @@
             null-ls-nvim = plug "null-ls-nvim";
             nvim-autopairs = plug "nvim-autopairs";
             nvim-cmp = plug "nvim-cmp";
-            nvim-colorizer = plug "nvim-colorizer";
             nvim-lspconfig = plug "nvim-lspconfig";
             nvim-neorg = plug "nvim-neorg";
             nvim-neotree = plug "nvim-neotree";
@@ -82,6 +81,7 @@
             telescope-nvim = plug "telescope-nvim";
             vim-commentary = plug "vim-commentary";
             vim-fugitive = plug "vim-fugitive";
+            vim-hexokinase = plug "vim-hexokinase";
             vim-rhubarb = plug "vim-rhubarb";
             vim-sleuth = plug "vim-sleuth";
             vim-surround = plug "vim-surround";

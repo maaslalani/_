@@ -114,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-m2BmgsXdnG0ElCw6FCmywmxU8QZQpv1KN9RYVVjyF1c=",
+        "narHash": "sha256-ENifxXs1JnX3RLPwbYZvTJFmANSEpZrY1ADV+Sfks/E=",
         "path": "fnl",
         "type": "path"
       },
@@ -342,22 +342,6 @@
         "type": "github"
       }
     },
-    "nvim-colorizer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1591879145,
-        "narHash": "sha256-6YrnItxExL2C8pNIdLd+hXCjsB2MbZANwWkah6dreD8=",
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
-        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
-        "type": "github"
-      }
-    },
     "nvim-lspconfig": {
       "flake": false,
       "locked": {
@@ -505,7 +489,6 @@
         "null-ls-nvim": "null-ls-nvim",
         "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
-        "nvim-colorizer": "nvim-colorizer",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-neorg": "nvim-neorg",
         "nvim-neotree": "nvim-neotree",
@@ -518,6 +501,7 @@
         "telescope-nvim": "telescope-nvim",
         "vim-commentary": "vim-commentary",
         "vim-fugitive": "vim-fugitive",
+        "vim-hexokinase": "vim-hexokinase",
         "vim-rhubarb": "vim-rhubarb",
         "vim-sleuth": "vim-sleuth",
         "vim-surround": "vim-surround",
@@ -582,6 +566,22 @@
       "original": {
         "owner": "tpope",
         "repo": "vim-fugitive",
+        "type": "github"
+      }
+    },
+    "vim-hexokinase": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619312119,
+        "narHash": "sha256-lp5ywNLkcH6l/9kTxzAsJRdZUSD6qp1ufCJmnQIwX/s=",
+        "owner": "rrethy",
+        "repo": "vim-hexokinase",
+        "rev": "62324b43ea858e268fb70665f7d012ae67690f43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rrethy",
+        "repo": "vim-hexokinase",
         "type": "github"
       }
     },
