@@ -108,6 +108,9 @@
           :p [(cmd :cprev) :previous]
           :q [(cmd :cclose) :close]
           :o [(cmd :copen) :open]}
+      :n {:name :neorg
+          :N [(cmd "edit ~/wiki/index.norg") :neorg]
+          :n [(cmd "tabedit ~/wiki/index.norg") :tabneorg]}
       :g {:name :git
           :b [(pcmd :Gitsigns :blame_line) :blame]
           :g [(cmd :Git) :fugitive]
@@ -342,8 +345,9 @@
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
 
 ; neorg
-(local neorg (require :neorg))
-((. neorg :setup) {:load {:core.defaults {}}})
+(fn neorg []
+ (local neorg (require :neorg))
+ ((. neorg :setup) {:load {:core.defaults {}}}))
 
 ;; null
 (fn null []
@@ -361,10 +365,14 @@
              (autocmd :BufEnter :*.lock "set ft=json")
              (autocmd :BufEnter :*.nix "set ft=nix")
              (autocmd :FileType :markdown "setlocal spell")
+             (autocmd :FileType :norg "setlocal spell nocursorline conceallevel=2")
              (autocmd :FileType :gitcommit "setlocal spell")
              (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
              (autocmd :TermOpen "*" "setlocal nonu nocul scl=no ls=0")
              (autocmd :TermOpen "*" :startinsert)))
+
+(neorg)
+(treesitter)
 
 ;; lazy loading
 (local defer vim.defer_fn)
@@ -377,4 +385,3 @@
 (defer neotree 10)
 (defer null 10)
 (defer telescope 10)
-(defer treesitter 10)

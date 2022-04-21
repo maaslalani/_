@@ -164,4 +164,5 @@ hi NeorgHeading2Prefix guifg=#B294BB guibg=NONE
 hi NeorgHeading2Title guifg=#B294BB guibg=NONE
 hi NeorgHeading3Prefix guifg=#DE937F guibg=NONE
 hi NeorgHeading3Title guifg=#DE937F guibg=NONE
+hi Conceal guifg=NONE guibg=NONE
 " }}}
