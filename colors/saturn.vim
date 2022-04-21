@@ -156,3 +156,12 @@ hi TSStringSpecial guifg=#8C9440 guibg=NONE
 hi TSUri guifg=#B294BB gui=underline
 hi TSLiteral guifg=#5F819D guibg=NONE
 " }}}
+
+" Neorg {{{
+hi NeorgHeading1Prefix guifg=#5F819D guibg=NONE
+hi NeorgHeading1Title guifg=#5F819D guibg=NONE
+hi NeorgHeading2Prefix guifg=#B294BB guibg=NONE
+hi NeorgHeading2Title guifg=#B294BB guibg=NONE
+hi NeorgHeading3Prefix guifg=#DE937F guibg=NONE
+hi NeorgHeading3Title guifg=#DE937F guibg=NONE
+" }}}
