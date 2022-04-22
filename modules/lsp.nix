@@ -1,8 +1,8 @@
 { pkgs, ... }:
 with pkgs; with pkgs.nodePackages; with pkgs.rubyPackages_3_0; [
-  dockerfile-language-server-nodejs
   efm-langserver
-  expo-cli
+  fnlfmt
+  proselint
   rnix-lsp
   serve
   solargraph

@@ -18,17 +18,15 @@ let
     delve
     fennel
     ffmpeg
-    fnlfmt
     git
+    gopls
     hammerspoon
     htop
     nodejs-16_x
     openssl
     pinentry_mac
-    proselint
     rustup
     sc-im
-    gopls
   ];
 
   linux = [ ];
