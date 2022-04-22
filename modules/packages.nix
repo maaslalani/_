@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 let
   core = with pkgs; [
-    difftastic
     entr
     exa
     fd
