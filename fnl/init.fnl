@@ -56,17 +56,14 @@
 (macro lua [module name]
   `(.. ":lua require'" ,module "'." ,name "()<cr>"))
 
-(macro cmd [...]
-  `(.. :<cmd> (.. ,...) :<cr>))
-
 (macro pcmd [prefix cmd]
   `(.. :<cmd> ,prefix (. " ") ,cmd :<cr>))
 
-(macro lspcmd [...]
-  `(.. "<cmd>lua vim.lsp." (.. ,...) "()<cr>"))
+(macro cmd [command]
+  `(.. :<cmd> ,command :<cr>))
 
-(macro plug [...]
-  `(.. :<Plug> (.. ,...)))
+(macro lspcmd [command]
+  `(.. "<cmd>lua vim.lsp." ,command "()<cr>"))
 
 (macro autocmd [enter ft command]
   `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
@@ -272,10 +269,18 @@
                         :<C-f> (cmp.mapping (cmp.mapping.scroll_docs 1) [:i :c])
                         :<C-e> (cmp.mapping (cmp.mapping.complete) [:i :c])
                         :<CR> (cmp.mapping.confirm {:select true})
-                        :<C-n> (cmp.mapping (fn [fallback] (tab fallback)) [:i :s])
-                        :<C-p> (cmp.mapping (fn [fallback] (s-tab fallback)) [:i :s])
-                        :<Tab> (cmp.mapping (fn [fallback] (tab fallback)) [:i :s])
-                        :<S-Tab> (cmp.mapping (fn [fallback] (s-tab fallback)) [:i :s])}
+                        :<C-n> (cmp.mapping (fn [fallback]
+                                              (tab fallback))
+                                            [:i :s])
+                        :<C-p> (cmp.mapping (fn [fallback]
+                                              (s-tab fallback))
+                                            [:i :s])
+                        :<Tab> (cmp.mapping (fn [fallback]
+                                              (tab fallback))
+                                            [:i :s])
+                        :<S-Tab> (cmp.mapping (fn [fallback]
+                                                (s-tab fallback))
+                                              [:i :s])}
               :formatting {:fields [:abbr :kind :menu]
                            :format (fn [entry vim-item]
                                      (set vim-item.kind
@@ -344,13 +349,9 @@
 ; neorg
 (fn neorg []
   (local neorg (require :neorg))
-  ((. neorg :setup) {
-    :load {
-    :core.defaults {}
-    :core.norg.completion {
-      :config {:engine :nvim-cmp}}
-    :core.norg.concealer {
-      :config {:icon_preset :varied}}}}))
+  ((. neorg :setup) {:load {:core.defaults {}
+                            :core.norg.completion {:config {:engine :nvim-cmp}}
+                            :core.norg.concealer {:config {:icon_preset :varied}}}}))
 
 ;; null
 (fn null []
@@ -368,7 +369,8 @@
              (autocmd :BufEnter :*.lock "set ft=json")
              (autocmd :BufEnter :*.nix "set ft=nix")
              (autocmd :FileType :markdown "setlocal spell")
-             (autocmd :FileType :norg "setlocal spell nocursorline conceallevel=2 | hi MatchParen guifg=NONE")
+             (autocmd :FileType :norg
+                      "setlocal spell nocursorline conceallevel=2 | hi MatchParen guifg=NONE")
              (autocmd :FileType :gitcommit "setlocal spell")
              (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
              (autocmd :TermOpen "*" "setlocal nonu nocul scl=no ls=0")
