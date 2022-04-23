@@ -139,7 +139,8 @@ in
 
       scim = "sc-im";
 
-      ta = "tmux attach -t";
+      ta = "tmux attach";
+      tat = "tmux attach -t";
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
