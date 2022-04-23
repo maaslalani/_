@@ -171,10 +171,6 @@ in
       bindkey '^?' backward-delete-char
       bindkey '^[[Z' reverse-menu-complete
 
-      if [ -f /opt/dev/dev.sh ]; then
-        source /opt/dev/dev.sh
-      fi
-
       precmd() {
         if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
           GIT_BRANCH="($(git branch --show-current))"
