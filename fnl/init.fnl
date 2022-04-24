@@ -142,6 +142,7 @@
 ; visual
 (wkr {:< [:<gv :dedent]
       :<c-l> [:<nop> :nope]
+      :a [(lspcmd :buf.range_code_action) :actions]
       :s [":sort <bar>w<bar>e<cr>" :sort]
       :<leader>y ["\"*y" :copy]
       :> [:>gv :indent]
@@ -193,7 +194,16 @@
   (lsp.gopls.setup {:flags {:debounce_text_changes 500}
                     :analyses {:unusedparams true :staticcheck true}
                     : on_attach
-                    : capabilities}))
+                    : capabilities})
+  (local null_ls (require :null-ls))
+  (local sources [null_ls.builtins.code_actions.refactoring
+                  null_ls.builtins.code_actions.proselint
+                  null_ls.builtins.diagnostics.rubocop
+                  null_ls.builtins.diagnostics.write_good
+                  null_ls.builtins.formatting.fnlfmt
+                  null_ls.builtins.formatting.rubocop
+                  null_ls.builtins.hover.dictionary])
+  (null_ls.setup {: sources : on_attach}))
 
 ;; hop
 (fn hop []
@@ -351,17 +361,6 @@
                             :core.norg.completion {:config {:engine :nvim-cmp}}
                             :core.norg.concealer {:config {:icon_preset :varied}}}}))
 
-;; null
-(fn null []
-  (local null_ls (require :null-ls))
-  (local sources [null_ls.builtins.code_actions.proselint
-                  null_ls.builtins.diagnostics.rubocop
-                  null_ls.builtins.diagnostics.write_good
-                  null_ls.builtins.formatting.fnlfmt
-                  null_ls.builtins.hover.dictionary
-                  null_ls.builtins.formatting.rubocop])
-  (null_ls.setup {: sources}))
-
 ;; autocmds
 (local autocmd vim.api.nvim_create_autocmd)
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
@@ -386,7 +385,6 @@
 (defer hop 10)
 (defer lsp 10)
 (defer neotree 10)
-(defer null 10)
 (defer telescope 10)
 
 ;; eager loading

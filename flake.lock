@@ -114,7 +114,7 @@
     "fnl": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-DWE06KlotX4AZLgMhRjrLhAamW+LAw1EfZisuXJadvo=",
+        "narHash": "sha256-xzHSd2S7kFMBrxx4bB71hVkZt8+IjxvdnnKjWg7WRAw=",
         "path": "fnl",
         "type": "path"
       },
@@ -470,6 +470,22 @@
         "type": "github"
       }
     },
+    "refactoring-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649711492,
+        "narHash": "sha256-PI2v9YXoD5A7oqFuZUFkh94eCh9yYzGYh5ICAq0muOo=",
+        "owner": "theprimeagen",
+        "repo": "refactoring.nvim",
+        "rev": "94eaa199ad892f26d2c8594dbbc5656314cf5bdb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "theprimeagen",
+        "repo": "refactoring.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cmp-buffer": "cmp-buffer",
@@ -497,6 +513,7 @@
         "nvim-treesitter-playground": "nvim-treesitter-playground",
         "plenary-nvim": "plenary-nvim",
         "popup-nvim": "popup-nvim",
+        "refactoring-nvim": "refactoring-nvim",
         "saturn": "saturn",
         "telescope-nvim": "telescope-nvim",
         "vim-commentary": "vim-commentary",
