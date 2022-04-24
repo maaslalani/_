@@ -65,9 +65,6 @@
 (macro lspcmd [command]
   `(.. "<cmd>lua vim.lsp." ,command "()<cr>"))
 
-(macro autocmd [enter ft command]
-  `(.. "autocmd " ,enter " " ,ft " " ,command "\n"))
-
 ;; Whichkey
 (local wk (require :which-key))
 (local wks wk.setup)
@@ -125,7 +122,8 @@
       :y ["\"*y<cr>" :copy]} {:prefix :<leader> :mode :n})
 
 ; normal
-(wkr {:<c-h> [:<c-w>h :left]
+(wkr {:<bs> [:<c-o> :back]
+      :<c-h> [:<c-w>h :left]
       :<c-j> [:<c-w>j :down]
       :<c-k> [:<c-w>k :up]
       :<c-l> [:<c-w>l :right]
@@ -365,19 +363,20 @@
   (null_ls.setup {: sources}))
 
 ;; autocmds
-(vim.cmd (.. (autocmd :BufEnter :*.graphql "set ft=graphql")
-             (autocmd :BufEnter :*.lock "set ft=json")
-             (autocmd :BufEnter :*.nix "set ft=nix")
-             (autocmd :FileType :markdown "setlocal spell")
-             (autocmd :FileType :norg
-                      "setlocal spell nocursorline conceallevel=2 | hi MatchParen guifg=NONE")
-             (autocmd :FileType :gitcommit "setlocal spell")
-             (autocmd :BufWrite :*.go "lua vim.lsp.buf.formatting()")
-             (autocmd :TermOpen "*" "setlocal nonu nocul scl=no ls=0")
-             (autocmd :TermOpen "*" :startinsert)))
+(local autocmd vim.api.nvim_create_autocmd)
+(autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
+(autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
+(autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
+(autocmd [:BufWrite] {:pattern :*.go :command "lua vim.lsp.buf.formatting()"})
+(autocmd [:FileType] {:pattern [:markdown :norg :gitcommit]
+                      :command "setl spell"})
 
-(neorg)
-(treesitter)
+(autocmd [:FileType]
+         {:pattern :norg
+          :command "setl nocul cole=2 | hi MatchParen guifg=NONE"})
+
+(autocmd [:TermOpen]
+         {:pattern "*" :command "setl nonu nocul scl=no ls=0 | star"})
 
 ;; lazy loading
 (local defer vim.defer_fn)
@@ -389,3 +388,7 @@
 (defer neotree 10)
 (defer null 10)
 (defer telescope 10)
+
+;; eager loading
+(treesitter)
+(neorg)
