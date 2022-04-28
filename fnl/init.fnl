@@ -27,7 +27,7 @@
 (set o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
 (set o.hidden true)
 (set o.ignorecase true)
-(set o.laststatus 2)
+(set o.laststatus 3)
 (set o.lazyredraw true)
 (set o.number true)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
