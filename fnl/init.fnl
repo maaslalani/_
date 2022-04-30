@@ -196,14 +196,13 @@
                     : on_attach
                     : capabilities})
   (local null_ls (require :null-ls))
-  (local sources [null_ls.builtins.code_actions.refactoring
-                  null_ls.builtins.code_actions.proselint
+  (local sources [null_ls.builtins.code_actions.proselint
                   null_ls.builtins.diagnostics.rubocop
                   null_ls.builtins.diagnostics.write_good
                   null_ls.builtins.formatting.fnlfmt
                   null_ls.builtins.formatting.rubocop
                   null_ls.builtins.hover.dictionary])
-  (null_ls.setup {: sources : on_attach}))
+  (null_ls.setup {: sources : on_attach : capabilities}))
 
 ;; hop
 (fn hop []

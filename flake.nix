@@ -27,7 +27,6 @@
     nvim-treesitter-playground = { url = "github:nvim-treesitter/playground"; flake = false; };
     plenary-nvim = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
     popup-nvim = { url = "github:nvim-lua/popup.nvim"; flake = false; };
-    refactoring-nvim = { url = "github:theprimeagen/refactoring.nvim"; flake = false; };
     telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
     vim-commentary = { url = "github:tpope/vim-commentary"; flake = false; };
     vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
@@ -79,7 +78,6 @@
             nvim-treesitter-playground = plug "nvim-treesitter-playground";
             plenary-nvim = plug "plenary-nvim";
             popup-nvim = plug "popup-nvim";
-            refactoring-nvim = plug "refactoring-nvim";
             telescope-nvim = plug "telescope-nvim";
             vim-commentary = plug "vim-commentary";
             vim-fugitive = plug "vim-fugitive";

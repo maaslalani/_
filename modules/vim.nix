@@ -33,7 +33,6 @@
       nvim-treesitter-playground
       plenary-nvim
       popup-nvim
-      refactoring-nvim
       telescope-nvim
       vim-commentary
       vim-fugitive
