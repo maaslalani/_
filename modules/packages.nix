@@ -29,9 +29,17 @@ let
   ];
 
   linux = [ ];
+
+  charmbracelet = with pkgs; [
+    charm
+    glow
+    melt
+    skate
+    soft-serve
+  ];
 in
 {
-  home.packages = core ++
+  home.packages = core ++ charmbracelet ++
     (if pkgs.stdenv.isDarwin then darwin else linux);
 
   programs.bat.config.theme = "Nord";
