@@ -75,7 +75,6 @@
           :b [(pcmd :Telescope :buffers) :buffers]
           :e [(cmd :Explore) :explore]
           :f [(pcmd :Telescope :find_files) :file]
-          :t [(pcmd :Neotree :toggle) :tree]
           :n [(cmd :enew) :new]
           :r [(pcmd :Telescope :live_grep) :grep]}
       :o [(cmd "!open <cWORD>") :open]
@@ -321,10 +320,6 @@
                                     :vimgrep_arguments [:rg :--vimgrep]
                                     :winblend 0}}))
 
-;; neotree
-(fn neotree []
-  ((. (require :neo-tree) :setup) {:window {:position :left :width 30}}))
-
 ;; treesitter
 (fn treesitter []
   (local parsers (require :nvim-treesitter.parsers))
@@ -383,7 +378,6 @@
 (defer gitsigns 10)
 (defer hop 10)
 (defer lsp 10)
-(defer neotree 10)
 (defer telescope 10)
 
 ;; eager loading

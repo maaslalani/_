@@ -1,6 +1,5 @@
 { pkgs, ... }:
 with pkgs; with pkgs.nodePackages; with pkgs.rubyPackages_3_0; [
-  efm-langserver
   fnlfmt
   proselint
   rnix-lsp
