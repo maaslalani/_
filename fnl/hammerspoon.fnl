@@ -9,7 +9,7 @@
 (set hs.alert.defaultStyle.strokeColor {:white 1 :alpha 0.25})
 (set hs.alert.defaultStyle.strokeWidth 5)
 (set hs.alert.defaultStyle.textColor {:white 1 :alpha 0.8})
-(set hs.alert.defaultStyle.textFont :Hack)
+(set hs.alert.defaultStyle.textFont "Hack Nerd Font Mono")
 (set hs.alert.defaultStyle.textSize 18)
 
 (hs.alert.show "Hammerspoon Loaded" 1)
@@ -27,7 +27,7 @@
 (set hs.grid.ui.highlightStrokeWidth 2)
 (set hs.grid.ui.selectedColor [0.6 0.6 0.6 0.2])
 (set hs.grid.ui.textColor [1 1 1])
-(set hs.grid.ui.textFont :Hack)
+(set hs.grid.ui.textFont "Hack Nerd Font Mono")
 (set hs.grid.ui.textSize 100)
 
 ;; Application and URL launchers
@@ -46,7 +46,7 @@
                  :t {:name :Terminal :action (launch :Kitty)}
                  :b {:name :Brave :action (launch "Brave Browser")}
                  :c {:name :Calendar :action (launch :Calendar)}
-                 :p {:name :1Password :action (launch "1Password 7")}
+                 :p {:name :Passwords :action (launch "Bitwarden")}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :s {:name :Slack :action (launch :Slack)}
                  :n {:name :Notes :action (launch :Notes)}}

@@ -91,7 +91,6 @@
               installPhase = ''
                 mkdir -p $out/Applications/Hammerspoon.app
                 cp -r $src/Contents $out/Applications/Hammerspoon.app/
-                ln -sf $out/Applications/Hammerspoon.app/ /Applications/
               '';
             };
 
@@ -138,12 +137,12 @@
         };
       };
       home = inputs.home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-darwin";
+        system = "aarch64-darwin";
         homeDirectory = "/Users/maas";
         username = "maas";
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = overlays ++ [
-            (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-darwin; })
+            (self: super: { unstable = inputs.nixpkgs.legacyPackages.aarch64-darwin; })
           ];
           imports = [
             ./modules/fonts.nix

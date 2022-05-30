@@ -18,6 +18,7 @@ let
     fennel
     ffmpeg
     git
+    go_1_18
     gopls
     hammerspoon
     htop
