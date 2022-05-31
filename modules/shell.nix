@@ -171,6 +171,10 @@ in
       bindkey '^?' backward-delete-char
       bindkey '^[[Z' reverse-menu-complete
 
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+
       precmd() {
         if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
           GIT_BRANCH="($(git branch --show-current))"
