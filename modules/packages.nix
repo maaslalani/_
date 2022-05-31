@@ -27,6 +27,7 @@ let
     pinentry_mac
     rustup
     sc-im
+    yarn
   ];
 
   linux = [ ];
