@@ -34,7 +34,6 @@
 (set o.ruler true)
 (set o.scrolloff 1000)
 (set o.showmode false)
-(set o.sidescrolloff 1000)
 (set o.signcolumn :yes)
 (set o.smartcase true)
 (set o.splitbelow true)
