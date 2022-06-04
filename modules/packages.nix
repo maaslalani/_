@@ -15,6 +15,7 @@ let
     cachix
     coreutils
     delve
+    elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-json
     fennel
