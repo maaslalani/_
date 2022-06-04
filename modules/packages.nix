@@ -15,6 +15,8 @@ let
     cachix
     coreutils
     delve
+    elmPackages.elm-format
+    elmPackages.elm-json
     fennel
     ffmpeg
     git
