@@ -18,6 +18,7 @@ let
     elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-json
+    elmPackages.elm-test
     fennel
     ffmpeg
     git

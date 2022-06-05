@@ -1,5 +1,6 @@
 { pkgs, ... }:
-with pkgs; with pkgs.nodePackages; with pkgs.rubyPackages_3_0; [
+with pkgs; with pkgs.nodePackages; [
+  elmPackages.elm-language-server
   fnlfmt
   proselint
   rnix-lsp
