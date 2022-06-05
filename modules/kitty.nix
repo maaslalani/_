@@ -64,12 +64,15 @@
       color14 = "#8abeb7";
       color15 = "#c5c8c6";
 
-      font_family = "FiraCode Nerd Font Mono";
-      bold_font = "auto";
-      bold_italic_font = "auto";
-      italic_font = "auto";
-
-      font_size = 15;
+    };
+    font = {
+      name = "FiraCode Nerd Font Mono";
+      size = 15;
+    };
+    keybindings = {
+      "cmd+w" = "no_op";
+      "cmd+t" = "no_op";
+      "cmd+enter" = "no_op";
     };
   };
 }
