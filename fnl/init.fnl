@@ -85,7 +85,7 @@
           :c [(cmd :HexokinaseToggle) :hexokinase]
           :t [(cmd "10split | terminal") :terminal]}
       :l {:name :lsp
-          :f [(lspcmd :buf.formatting) :format]
+          :f [(lspcmd :buf.format) :format]
           :a [(lspcmd :buf.code_action) :actions]
           :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>"
               :diagnostics]
@@ -360,7 +360,9 @@
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
 (autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
-(autocmd [:BufWrite] {:pattern :*.go :command "lua vim.lsp.buf.formatting()"})
+(autocmd [:BufWrite]
+         {:pattern :*.go :command "lua vim.lsp.buf.format { async = true }"})
+
 (autocmd [:FileType] {:pattern [:markdown :norg :gitcommit]
                       :command "setl spell"})
 
