@@ -23,6 +23,7 @@ let
     ffmpeg
     git
     go_1_18
+    golangci-lint
     gopls
     hammerspoon
     htop
