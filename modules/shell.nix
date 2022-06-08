@@ -144,6 +144,7 @@ in
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
+      tn = "tmux new-session";
       tns = "tmux new-session -s `basename $(pwd)`";
       tnvs = "tmux new -A -s default \"vim -S $VIM_SESSION_PATH; $SHELL\"";
 
