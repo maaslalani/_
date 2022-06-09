@@ -157,6 +157,9 @@ in
       wiki = "cd ~/wiki && vim index.norg";
 
       x = "exit";
+
+      demo = "export DEMO_PROMPT=1 && ${sz} && clear";
+      undemo = "unset DEMO_PROMPT && ${sz} && clear";
     };
     defaultKeymap = "viins";
     initExtraBeforeCompInit = ''
@@ -188,8 +191,14 @@ in
         fi
       }
 
+
+
+      if [[ -n $DEMO_PROMPT ]]; then
+        export PROMPT=$'\e[38;2;90;86;224m>\e[0m '
+      else
       export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}❯%f.%F{red}❯%f) "
+      fi
     '';
     sessionVariables =
       let
@@ -217,6 +226,7 @@ in
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
+        NIXPKGS_ALLOW_BROKEN = 1;
         _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       };
     plugins = [
