@@ -107,14 +107,12 @@ in
       macos_traditional_fullscreen = true;
       macos_show_window_title_in = "none";
     } // colors;
-    environment = {
-      "DEMO_PROMPT" = if demo then "1" else "0";
-    };
     keybindings = {
       "cmd+w" = "no_op";
       "cmd+t" = "no_op";
       "cmd+enter" = "no_op";
     };
     font = if demo then font.demo else font.home;
+    environment = if demo then { "DEMO_PROMPT" = "1"; } else { };
   };
 }
