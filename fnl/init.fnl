@@ -176,6 +176,7 @@
   (lsp.bashls.setup {: on_attach : capabilities})
   (lsp.dockerls.setup {: on_attach : capabilities})
   (lsp.elmls.setup {: on_attach : capabilities})
+  (lsp.hls.setup {: on_attach : capabilities})
   (lsp.rnix.setup {: on_attach : capabilities})
   (lsp.solargraph.setup {: on_attach
                          : capabilities

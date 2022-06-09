@@ -77,7 +77,7 @@ in
       gundo = "git reset HEAD~1 --mixed";
 
       ghb = "gh browse";
-      ghc = "gh pr checkout";
+      ghco = "gh pr checkout";
       ghi = "gh issue list";
       ghiv = "gh issue view";
       ghp = "gh pr list";
