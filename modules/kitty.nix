@@ -55,7 +55,7 @@ let
 
   font = {
     demo = {
-      name = "SF Mono";
+      name = "SF Mono Medium";
       size = 15;
     };
     home = {
