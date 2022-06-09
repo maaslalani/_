@@ -104,7 +104,6 @@ in
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";
       macos_quit_when_last_window_closed = true;
-      macos_traditional_fullscreen = true;
       macos_show_window_title_in = "none";
     } // colors;
     keybindings = {
