@@ -28,6 +28,8 @@
       inactive_tab_background = "#1d1f21";
       inactive_tab_font_style = "normal";
 
+      adjust_line_height = "120%";
+
       allow_remote_control = true;
 
       cursor_blink_interval = 0;
@@ -66,7 +68,7 @@
 
     };
     font = {
-      name = "FiraCode Nerd Font Mono";
+      name = "SF Mono";
       size = 15;
     };
     keybindings = {
