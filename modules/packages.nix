@@ -25,6 +25,7 @@ let
     git
     go_1_18
     golangci-lint
+    gopass
     gopls
     hammerspoon
     htop

@@ -42,6 +42,7 @@
 (set o.synmaxcol 300)
 (set o.syntax :off)
 (set o.tabstop 4)
+(set o.softtabstop 4)
 (set o.termguicolors true)
 (set o.timeoutlen 350)
 (set o.undofile true)
