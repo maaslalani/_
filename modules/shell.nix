@@ -8,6 +8,7 @@ let
   green = color "green";
 
   join = builtins.concatStringsSep " && ";
+  cmdJoin = builtins.concatStringsSep "; ";
 in
 {
   programs.zsh = {
@@ -22,7 +23,10 @@ in
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
 
-      _ = "cd ~/_ && vim .";
+      _ = cmdJoin [
+        "tmux new-session -ds dotfiles -c $HOME/_ 2>/dev/null"
+        "tmux switch-client -t dotfiles 2>/dev/null || tmux attach-session -t dotfiles"
+      ];
 
       dstroy = "fd -H .DS_Store | xargs sudo rm";
 
@@ -137,9 +141,11 @@ in
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
-      tn = "tmux new-session";
-      tns = "tmux new-session -s `basename $(pwd)`";
-      tnvs = "tmux new -A -s default \"vim -S $VIM_SESSION_PATH; $SHELL\"";
+      tn = cmdJoin [
+        "SESSION=`ls $HOME/src | fzf`"
+        "tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null"
+        "tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION"
+      ];
 
       vi = "nvim";
       v = "${vi} .";
@@ -147,7 +153,7 @@ in
 
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; vim $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
-      wiki = "cd ~/wiki && vim index.norg";
+      wiki = "cd $HOME/wiki && vim index.norg";
 
       x = "exit";
 
