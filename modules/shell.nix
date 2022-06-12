@@ -98,14 +98,7 @@ in
       bi = "${b} install";
       bu = "${b} update";
 
-      nupf = join [
-        "cd $HOME/_"
-        "rm flake.lock"
-        hms
-        "${gcam} 'update flakes'"
-        gp
-        "cd -"
-      ];
+      nupf = join [ "cd $HOME/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -" ];
 
       # home-manager switch
       hms = join [
@@ -196,7 +189,7 @@ in
       if [[ -n $DEMO_PROMPT ]]; then
         export PROMPT=$'\e[38;2;90;86;224m>\e[0m '
       else
-      export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
+        export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}❯%f.%F{red}❯%f) "
       fi
     '';
@@ -205,6 +198,10 @@ in
         pathJoin = builtins.concatStringsSep ":";
       in
       rec {
+        ANDROID_SDK_PLATFORM_TOOLS = "$HOME/Library/Android/sdk/platform-tools";
+        ANDROID_SDK_ROOT = "$HOME/Library/Android/sdk";
+        ANDROID_SDK_TOOLS = "$HOME/Library/Android/sdk/tools";
+        BREW_SBIN = "/usr/local/sbin";
         BROWSER = "open";
         CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
         CLICOLOR = 1;
@@ -213,20 +210,16 @@ in
         GNUPGHOME = "${config.xdg.dataHome}/gnupg";
         GOBIN = "${GOPATH}/bin";
         GOPATH = "${config.xdg.configHome}/go";
+        JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
         KEYTIMEOUT = 1;
         KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
+        NIXPKGS_ALLOW_BROKEN = 1;
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-        BREW_SBIN = "/usr/local/sbin";
-        ANDROID_SDK_TOOLS = "$HOME/Library/Android/sdk/tools";
-        ANDROID_SDK_ROOT = "$HOME/Library/Android/sdk";
-        JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
-        ANDROID_SDK_PLATFORM_TOOLS = "$HOME/Library/Android/sdk/platform-tools";
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN BREW_SBIN ANDROID_SDK_TOOLS ANDROID_SDK_PLATFORM_TOOLS "$PATH" ];
         PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
-        NIXPKGS_ALLOW_BROKEN = 1;
         _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       };
     plugins = [
