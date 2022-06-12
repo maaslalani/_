@@ -71,6 +71,7 @@ in
       enable_audio_bell = false;
       copy_on_select = true;
 
+      macos_traditional_fullscreen = true;
       remember_window_size = true;
       initial_window_width = 680;
       initial_window_height = 720;
