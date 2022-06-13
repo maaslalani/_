@@ -54,6 +54,7 @@ hi DiffChange guifg=#F0C674 guibg=NONE
 hi DiffDelete guifg=#A54242 guibg=NONE
 hi DiffText guifg=#A54242 guibg=NONE
 hi Directory guifg=#81A2BE guibg=NONE
+hi SpellBad guifg=#CC6666 guibg=NONE
 hi Error guifg=#CC6666 guibg=NONE
 hi Error guifg=#CC6666 guibg=NONE
 hi ErrorMsg guifg=#CC6666 guibg=NONE

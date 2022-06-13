@@ -36,13 +36,14 @@
 (set o.showmode false)
 (set o.signcolumn :yes)
 (set o.smartcase true)
+(set o.softtabstop 4)
+(set o.spell true)
 (set o.splitbelow true)
 (set o.splitright true)
 (set o.swapfile false)
 (set o.synmaxcol 300)
 (set o.syntax :off)
 (set o.tabstop 4)
-(set o.softtabstop 4)
 (set o.termguicolors true)
 (set o.timeoutlen 350)
 (set o.undofile true)
@@ -343,7 +344,8 @@
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup) {:ensure_installed :all
                           :highlight {:enable true}
-                          :indent {:enable false}}))
+                          :indent {:enable false}})
+  ((. (require :spellsitter) :setup) {}))
 
 ; autopairs
 (fn autopairs []
@@ -366,9 +368,6 @@
 (autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
 (autocmd [:BufWrite]
          {:pattern :*.go :command "lua vim.lsp.buf.format { async = true }"})
-
-(autocmd [:FileType] {:pattern [:markdown :norg :gitcommit]
-                      :command "setl spell"})
 
 (autocmd [:FileType]
          {:pattern :norg

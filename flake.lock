@@ -131,7 +131,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-/DnydvIHG9tqzyCtipNdZSEkAmvGwFUNg8Vv42piP+w=",
+        "narHash": "sha256-NrxeNxsqowUxP/SphcrMkDlX6TDAg4FJ98cVJuOJGtw=",
         "path": "fnl",
         "type": "path"
       },
@@ -428,6 +428,22 @@
         "type": "github"
       }
     },
+    "nvim-spellsitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654207478,
+        "narHash": "sha256-0RvHUhfi/cn8rpGYf08oEhesLxTuMWHjZMlmpfzd17M=",
+        "owner": "lewis6991",
+        "repo": "spellsitter.nvim",
+        "rev": "430a25393abbf482bddf03c224cd5b8eeb27b5e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lewis6991",
+        "repo": "spellsitter.nvim",
+        "type": "github"
+      }
+    },
     "nvim-treesitter": {
       "flake": false,
       "locked": {
@@ -513,6 +529,7 @@
         "nvim-cmp": "nvim-cmp",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-neorg": "nvim-neorg",
+        "nvim-spellsitter": "nvim-spellsitter",
         "nvim-treesitter": "nvim-treesitter",
         "nvim-treesitter-playground": "nvim-treesitter-playground",
         "plenary-nvim": "plenary-nvim",
@@ -533,7 +550,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-KBE4EmUKV48Z1+FSvacQb1Rk2n3Oz3/ff8g8lBbWpqk=",
+        "narHash": "sha256-1fKGqKUA1kP8ky8tLaOzkCk638qy1qjYKFOIk6Bqk0o=",
         "path": "colors",
         "type": "path"
       },

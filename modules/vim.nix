@@ -27,6 +27,7 @@
       nvim-cmp
       nvim-lspconfig
       nvim-neorg
+      nvim-spellsitter
       nvim-treesitter
       nvim-treesitter-playground
       plenary-nvim
