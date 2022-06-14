@@ -5,7 +5,7 @@ let
   settings = {
     global = {
       username = "maaslalaniii";
-      password_cmd = "pass spotify";
+      password_cmd = "gopass show root/spotify";
       backend = "portaudio";
     };
   };

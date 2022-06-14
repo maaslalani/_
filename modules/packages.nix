@@ -34,6 +34,8 @@ let
     pinentry_mac
     rustup
     sc-im
+    spotifyd
+    spotify-tui
     yarn
   ];
 
