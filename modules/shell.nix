@@ -147,6 +147,9 @@ in
         "tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION"
       ];
 
+      nh = "pbcopy <<< 你好";
+      los = "pbcopy <<< 热爱开源";
+
       vi = "nvim";
       v = "${vi} .";
       vim = "${vi}";
