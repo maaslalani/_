@@ -4,13 +4,13 @@
 
 ;; Popup Style
 (set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.8})
-(set hs.alert.defaultStyle.padding 22)
-(set hs.alert.defaultStyle.radius 2)
-(set hs.alert.defaultStyle.strokeColor {:white 1 :alpha 0.25})
+(set hs.alert.defaultStyle.padding 40)
+(set hs.alert.defaultStyle.radius 15)
+(set hs.alert.defaultStyle.strokeColor {:white 0 :alpha 0.25})
 (set hs.alert.defaultStyle.strokeWidth 5)
 (set hs.alert.defaultStyle.textColor {:white 1 :alpha 0.8})
-(set hs.alert.defaultStyle.textFont "Hack Nerd Font Mono")
-(set hs.alert.defaultStyle.textSize 18)
+(set hs.alert.defaultStyle.textFont "SF Mono Medium")
+(set hs.alert.defaultStyle.textSize 20)
 
 (hs.alert.show "Hammerspoon Loaded" 1)
 (set hs.window.animationDuration 0)
@@ -27,7 +27,7 @@
 (set hs.grid.ui.highlightStrokeWidth 2)
 (set hs.grid.ui.selectedColor [0.6 0.6 0.6 0.2])
 (set hs.grid.ui.textColor [1 1 1])
-(set hs.grid.ui.textFont "Hack Nerd Font Mono")
+(set hs.grid.ui.textFont "SF Mono Medium")
 (set hs.grid.ui.textSize 100)
 
 ;; Application and URL launchers
@@ -44,9 +44,9 @@
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
                  :t {:name :Terminal :action (launch :Kitty)}
-                 :b {:name :Brave :action (launch "Brave Browser")}
+                 :b {:name :Browser :action (launch :Arc)}
                  :c {:name :Calendar :action (launch :Calendar)}
-                 :p {:name :Passwords :action (launch "Bitwarden")}
+                 :p {:name :Passwords :action (launch :Bitwarden)}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :s {:name :Slack :action (launch :Slack)}
                  :n {:name :Notes :action (launch :Notes)}}
