@@ -193,14 +193,8 @@ in
         fi
       }
 
-
-
-      if [[ -n $DEMO_PROMPT ]]; then
-        export PROMPT=$'\e[38;2;90;86;224m>\e[0m '
-      else
         export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}❯%f.%F{red}❯%f) "
-      fi
     '';
     sessionVariables =
       let
@@ -225,12 +219,16 @@ in
         NIXPKGS_ALLOW_BROKEN = 1;
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
+        PASSWORD_STORE_CLIP_TIME = "60";
+        PASSWORD_STORE_DIR = "${config.xdg.dataHome}/pass";
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN BREW_SBIN ANDROID_SDK_TOOLS ANDROID_SDK_PLATFORM_TOOLS "$PATH" ];
-        PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
         _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       };
+    localVariables = {
+      PROMPT = "${cyan "\\$USER"}${blue "@\\$HOST"} ${blue "%3~"} ${magenta "\\$GIT_BRANCH"} ${red "\\$GIT_STATUS"} \n%(?.${green "❯"}.${red "❯"}) ";
+    };
     plugins = [
       {
         name = "zsh-syntax-highlighting";

@@ -31,11 +31,12 @@ let
     htop
     nodejs-16_x
     openssl
+    pass
     pinentry_mac
     rustup
     sc-im
-    spotifyd
     spotify-tui
+    spotifyd
     yarn
   ];
 

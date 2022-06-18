@@ -113,6 +113,5 @@ in
       "cmd+enter" = "no_op";
     };
     font = if demo then font.demo else font.home;
-    environment = if demo then { "DEMO_PROMPT" = "1"; } else { };
   };
 }
