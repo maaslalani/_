@@ -5,12 +5,12 @@ let
   settings = {
     global = {
       username = "maaslalaniii";
-      password_cmd = "gopass show root/spotify";
+      password_cmd = "pass spotify";
       backend = "portaudio";
     };
   };
 
-  toml = pkgs.formats.toml {};
+  toml = pkgs.formats.toml { };
   config = toml.generate file settings;
 in
 {
