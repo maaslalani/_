@@ -2,7 +2,12 @@
 ;; Hammerspoon
 ;; ============================================================================
 
-;; Popup Style
+;; Spoons
+(hs.loadSpoon :SpoonInstall)
+(local PassChooser (hs.loadSpoon :PassChooser))
+(PassChooser:init {:clearAfter 10 :storePath "~/.local/share/pass/"})
+
+;; Pop up Style
 (set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.8})
 (set hs.alert.defaultStyle.padding 40)
 (set hs.alert.defaultStyle.radius 15)
@@ -43,13 +48,18 @@
 ;; Open the menu with the leader key (ctrl+space)
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
-                 :t {:name :Terminal :action (launch :Kitty)}
                  :b {:name :Browser :action (launch :Arc)}
                  :c {:name :Calendar :action (launch :Calendar)}
-                 :p {:name :Passwords :action (launch :Bitwarden)}
+                 :n {:name :Notes :action (launch :Notes)}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :s {:name :Slack :action (launch :Slack)}
-                 :n {:name :Notes :action (launch :Notes)}}
+                 :t {:name :Terminal :action (launch :Kitty)}}
+             :f {:name :Focus
+                 :action (fn []
+                           (hs.hints.windowHints))}
+             :g {:name :Grid
+                 :action (fn []
+                           (hs.grid.show))}
              :l {:name :Links
                  :g {:name :GitHub
                      :g {:name :Home :action (openurl "https://github.com/")}
@@ -61,12 +71,9 @@
                      :action (openurl "https://stackoverflow.com")}
                  :t {:name :Twitter :action (openurl "https://twitter.com")}
                  :y {:name :YouTube :action (openurl "https://youtube.com")}}
-             :g {:name :Grid
+             :p {:name :Passwords
                  :action (fn []
-                           (hs.grid.show))}
-             :f {:name :Focus
-                 :action (fn []
-                           (hs.hints.windowHints))}
+                           (PassChooser:start))}
              :r {:name :Reload :action hs.reload}
              :s {:name :Search
                  :action (fn []
@@ -118,7 +125,3 @@
     (hs.alert (table.concat display "\n") true)))
 
 (setup start menu)
-
-;; Spoons
-(hs.loadSpoon :SpoonInstall)
-(spoon.SpoonInstall:andUse :HSearch)
