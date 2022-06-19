@@ -4,17 +4,33 @@
 
 ;; Spoons
 (hs.loadSpoon :SpoonInstall)
+
+;; Password Manager
+(local context [{:antialias true
+                 :strokeColor {:white 0.8 :alpha 0.6}
+                 :fillColor {:alpha 0}}])
+
+(local image (hs.image.imageFromASCII "
+· · · · · · · · · ·
+· · · · 1 · · · · ·
+· · · · · · · · · ·
+· · 1 · · · 1 · · ·
+· · · · · · · · · ·
+· · · · 1 · · · · ·
+· · · · · · · · · ·" context))
+
 (local PassChooser (hs.loadSpoon :PassChooser))
-(PassChooser:init {:clearAfter 10 :storePath "~/.local/share/pass/"})
+(PassChooser:init {:clearAfter 10 :storePath "~/.local/share/pass/" : image})
 
 ;; Pop up Style
 (set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.8})
 (set hs.alert.defaultStyle.padding 40)
 (set hs.alert.defaultStyle.radius 15)
-(set hs.alert.defaultStyle.strokeColor {:white 0 :alpha 0.25})
+(set hs.alert.defaultStyle.strokeColor {:white 0.5 :alpha 0.25})
 (set hs.alert.defaultStyle.strokeWidth 5)
 (set hs.alert.defaultStyle.textColor {:white 1 :alpha 0.8})
 (set hs.alert.defaultStyle.textFont "SF Mono Medium")
+(set hs.alert.defaultStyle.textSize 20)
 (set hs.alert.defaultStyle.textSize 20)
 
 (hs.alert.show "Hammerspoon Loaded" 1)
@@ -74,10 +90,7 @@
              :p {:name :Passwords
                  :action (fn []
                            (PassChooser:start))}
-             :r {:name :Reload :action hs.reload}
-             :s {:name :Search
-                 :action (fn []
-                           (spoon.HSearch.toggleShow))}})
+             :r {:name :Reload :action hs.reload}})
 
 ;; Leader key (ctrl+space)
 (local start (hs.hotkey.modal.new [:ctrl] :space))
@@ -86,8 +99,8 @@
 ;; Menu:
 ;; ┌──────────────────────┐
 ;; │ a       Applications │
+;; │ p          Passwords │
 ;; │ r             Reload │
-;; │ s             Search │
 ;; │ l              Links │
 ;; │ w             Window │
 ;; │ f              Focus │
