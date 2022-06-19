@@ -25,13 +25,12 @@
 ;; Pop up Style
 (set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.8})
 (set hs.alert.defaultStyle.padding 40)
-(set hs.alert.defaultStyle.radius 15)
-(set hs.alert.defaultStyle.strokeColor {:white 0.5 :alpha 0.25})
+(set hs.alert.defaultStyle.radius 10)
+(set hs.alert.defaultStyle.strokeColor {:white 0.2})
 (set hs.alert.defaultStyle.strokeWidth 5)
-(set hs.alert.defaultStyle.textColor {:white 1 :alpha 0.8})
-(set hs.alert.defaultStyle.textFont "SF Mono Medium")
-(set hs.alert.defaultStyle.textSize 20)
-(set hs.alert.defaultStyle.textSize 20)
+(set hs.alert.defaultStyle.textStyle
+     {:font {:name "SF Mono Medium" :size 20 :color {:white 0.8 :alpha 0.8}}
+      :paragraphStyle {:lineHeightMultiple 1.25}})
 
 (hs.alert.show "Hammerspoon Loaded" 1)
 (set hs.window.animationDuration 0)
