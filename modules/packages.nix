@@ -36,6 +36,7 @@ let
     sc-im
     spotify-tui
     spotifyd
+    twurl
     yarn
   ];
 

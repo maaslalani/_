@@ -91,6 +91,7 @@ in
       goi = "go install";
       grg = "go run ./...";
       gtg = "go test ./...";
+      gmt = "go mod tidy";
 
       r = "bin/rails";
       rdbm = "${r} db:migrate";
