@@ -160,9 +160,7 @@ in
       wiki = "cd $HOME/wiki && vim index.norg";
 
       x = "exit";
-
-      demo = "export DEMO_PROMPT=1 && ${sz} && clear";
-      undemo = "unset DEMO_PROMPT && ${sz} && clear";
+      demo = "PROMPT='${color "#5a56e0" ">"} ' && clear";
     };
     defaultKeymap = "viins";
     initExtraBeforeCompInit = ''
