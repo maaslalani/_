@@ -121,10 +121,11 @@
         )
         inputs.neovim-nightly-overlay.overlay
       ];
-      spin = inputs.home-manager.lib.homeManagerConfiguration {
+      linux = inputs.home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
-        homeDirectory = "/home/spin";
-        username = "spin";
+        homeDirectory = "/home/maas";
+        username = "maas";
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = overlays ++ [
             (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-linux; })
@@ -142,6 +143,7 @@
         system = "aarch64-darwin";
         homeDirectory = "/Users/maas";
         username = "maas";
+        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
         configuration = { pkgs, ... }: {
           nixpkgs.overlays = overlays ++ [
             (self: super: { unstable = inputs.nixpkgs.legacyPackages.aarch64-darwin; })
@@ -165,6 +167,6 @@
       };
     };
     home = self.homeConfigurations.home.activationPackage;
-    spin = self.homeConfigurations.spin.activationPackage;
+    linux = self.homeConfigurations.linux.activationPackage;
   };
 }

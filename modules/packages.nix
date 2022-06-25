@@ -15,13 +15,8 @@ let
     cachix
     coreutils
     delve
-    elmPackages.elm
-    elmPackages.elm-format
-    elmPackages.elm-json
-    elmPackages.elm-test
     fennel
     ffmpeg
-    ghc
     git
     go_1_18
     golangci-lint
