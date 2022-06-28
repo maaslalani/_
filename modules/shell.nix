@@ -26,6 +26,7 @@ in
       _ = cmdJoin [
         "tmux new-session -ds dotfiles -c $HOME/_ 2>/dev/null"
         "tmux switch-client -t dotfiles 2>/dev/null || tmux attach-session -t dotfiles"
+        "tmux send-keys vim SPACE . ENTER"
       ];
 
       dstroy = "fd -H .DS_Store | xargs sudo rm";
