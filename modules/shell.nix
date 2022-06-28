@@ -16,7 +16,10 @@ in
     dotDir = ".config/zsh";
     enable = true;
     history = {
-      path = "$ZDOTDIR/.zsh_history";
+      ignoreDups = true;
+      ignoreSpace = true;
+      path = "$ZDOTDIR/.history";
+      share = true;
     };
     shellAliases = rec {
       "..." = "cd ../..";
