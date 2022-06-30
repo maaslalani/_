@@ -29,8 +29,9 @@ in
       _ = cmdJoin [
         "tmux new-session -ds dotfiles -c $HOME/_ 2>/dev/null"
         "tmux switch-client -t dotfiles 2>/dev/null || tmux attach-session -t dotfiles"
-        "tmux send-keys vim SPACE . ENTER"
+        "tmux send-keys cd SPACE $HOME/_ SPACE && SPACE vim SPACE . ENTER"
       ];
+      src = "cd $HOME/src";
 
       dstroy = "fd -H .DS_Store | xargs sudo rm";
 
@@ -219,6 +220,7 @@ in
         JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
         KEYTIMEOUT = 1;
         KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
+        NIXPKGS_ALLOW_BROKEN = 1;
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
         PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN BREW_SBIN ANDROID_SDK_TOOLS ANDROID_SDK_PLATFORM_TOOLS "$PATH" ];

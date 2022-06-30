@@ -7,6 +7,7 @@ let
     git
     gnupg
     jq
+    pastel
     ripgrep
     sd
   ] ++ (import ./lsp.nix { pkgs = pkgs; });
