@@ -122,48 +122,35 @@
         inputs.neovim-nightly-overlay.overlay
       ];
       linux = inputs.home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        homeDirectory = "/home/maas";
-        username = "maas";
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        configuration = { pkgs, ... }: {
-          nixpkgs.overlays = overlays ++ [
-            (self: super: { unstable = inputs.nixpkgs.legacyPackages.x86_64-linux; })
-          ];
-          imports = [
-            ./modules/fzf.nix
-            ./modules/packages.nix
-            ./modules/shell.nix
-            ./modules/tmux.nix
-            ./modules/vim.nix
-          ];
-        };
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // { inherit overlays; };
+        modules = [
+          ./modules/linux.nix
+          ./modules/fzf.nix
+          ./modules/packages.nix
+          ./modules/shell.nix
+          ./modules/tmux.nix
+          ./modules/vim.nix
+        ];
       };
       home = inputs.home-manager.lib.homeManagerConfiguration {
-        system = "aarch64-darwin";
-        homeDirectory = "/Users/maas";
-        username = "maas";
-        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-        configuration = { pkgs, ... }: {
-          nixpkgs.overlays = overlays ++ [
-            (self: super: { unstable = inputs.nixpkgs.legacyPackages.aarch64-darwin; })
-          ];
-          imports = [
-            ./modules/fonts.nix
-            ./modules/fzf.nix
-            ./modules/gh.nix
-            ./modules/git.nix
-            ./modules/hammerspoon.nix
-            ./modules/kitty.nix
-            ./modules/packages.nix
-            ./modules/pass.nix
-            ./modules/scim.nix
-            ./modules/shell.nix
-            ./modules/spotify.nix
-            ./modules/tmux.nix
-            ./modules/vim.nix
-          ];
-        };
+        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // { inherit overlays; };
+        modules = [
+          ./modules/home.nix
+          ./modules/fonts.nix
+          ./modules/fzf.nix
+          ./modules/gh.nix
+          ./modules/git.nix
+          ./modules/hammerspoon.nix
+          ./modules/kitty.nix
+          ./modules/packages.nix
+          ./modules/pass.nix
+          ./modules/scim.nix
+          ./modules/shell.nix
+          ./modules/spotify.nix
+          ./modules/tmux.nix
+          ./modules/vim.nix
+        ];
+
       };
     };
     home = self.homeConfigurations.home.activationPackage;
