@@ -357,7 +357,7 @@
   (local neorg (require :neorg))
   ((. neorg :setup) {:load {:core.defaults {}
                             :core.norg.completion {:config {:engine :nvim-cmp}}
-                            :core.norg.concealer {:config {:icon_preset :varied}}}}))
+                            :core.norg.concealer {:config {:icon_preset :varied :folds false}}}}))
 
 ;; autocmds
 (local autocmd vim.api.nvim_create_autocmd)
