@@ -23,7 +23,6 @@ let
     golangci-lint
     gopass
     gopls
-    hammerspoon
     htop
     nodejs-16_x
     openssl

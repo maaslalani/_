@@ -122,8 +122,7 @@
       :y ["\"*y<cr>" :copy]} {:prefix :<leader> :mode :n})
 
 ; normal
-(wkr {:<bs> [:<c-o> :back]
-      :<c-h> [:<c-w>h :left]
+(wkr {:<c-h> [:<c-w>h :left]
       :<c-j> [:<c-w>j :down]
       :<c-k> [:<c-w>k :up]
       :<c-l> [:<c-w>l :right]
@@ -357,7 +356,8 @@
   (local neorg (require :neorg))
   ((. neorg :setup) {:load {:core.defaults {}
                             :core.norg.completion {:config {:engine :nvim-cmp}}
-                            :core.norg.concealer {:config {:icon_preset :varied :folds false}}}}))
+                            :core.norg.concealer {:config {:icon_preset :varied
+                                                           :folds false}}}}))
 
 ;; autocmds
 (local autocmd vim.api.nvim_create_autocmd)
