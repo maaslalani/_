@@ -120,11 +120,11 @@
       home = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // { inherit overlays; };
         modules = [
-          ./modules/home.nix
           ./modules/fonts.nix
           ./modules/fzf.nix
           ./modules/gh.nix
           ./modules/git.nix
+          ./modules/home.nix
           ./modules/kitty.nix
           ./modules/packages.nix
           ./modules/pass.nix
