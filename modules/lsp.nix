@@ -1,5 +1,6 @@
 { pkgs, ... }:
 with pkgs; with pkgs.nodePackages; [
+  bash-language-server
   fnlfmt
   proselint
   revive
