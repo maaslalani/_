@@ -9,6 +9,9 @@ let
 
   join = builtins.concatStringsSep " && ";
   cmdJoin = builtins.concatStringsSep "; ";
+  spaceJoin = builtins.concatStringsSep " ";
+  commaJoin = builtins.concatStringsSep ",";
+  value = k: v: "\"${k}\":\"${v}\"";
 in
 {
   programs.zsh = {
@@ -164,7 +167,40 @@ in
       wiki = "cd $HOME/wiki && vim index.norg";
 
       x = "exit";
-      demo = "PROMPT='${color "#5a56e0" ">"} ' && clear";
+      demo =
+        cmdJoin [
+          "open http://localhost:7681"
+          (spaceJoin
+            [
+              "ttyd"
+              "-t fontFamily=\"SF Mono\""
+              "-t fontSize=22"
+              "-t lineHeight=1.2"
+              ("-t 'theme={" + commaJoin
+                [
+                  (value "background" "#171717")
+                  (value "foreground" "#dddddd")
+                  (value "black" "#000000")
+                  (value "brightBlack" "#4d4d4d")
+                  (value "red" "#c73b1d")
+                  (value "brightRed" "#e82100")
+                  (value "green" "#00a800")
+                  (value "brightGreen" "#00db00")
+                  (value "yellow" "#acaf15")
+                  (value "brightYellow" "#e5e900")
+                  (value "blue" "#3854FC")
+                  (value "brightBlue" "#566BF9")
+                  (value "magenta" "#d533ce")
+                  (value "brightMagenta" "#e83ae9")
+                  (value "cyan" "#2cbac9")
+                  (value "brightCyan" "#00e6e7")
+                  (value "white" "#bfbfbf")
+                  (value "brightWhite" "#e6e6e6")
+                ] + "}' zsh")
+            ])
+        ];
+
+      prompt = "PROMPT='${color "#5a56e0" ">"} ' && clear";
     };
     defaultKeymap = "viins";
     initExtraBeforeCompInit = ''
@@ -201,7 +237,8 @@ in
     '';
     sessionVariables =
       let
-        pathJoin = builtins.concatStringsSep ":";
+        pathJoin = builtins.concatStringsSep
+          ":";
       in
       rec {
         ANDROID_SDK_PLATFORM_TOOLS = "$HOME/Library/Android/sdk/platform-tools";
