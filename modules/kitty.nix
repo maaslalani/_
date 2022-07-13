@@ -1,6 +1,6 @@
 { config, pkgs, libs, ... }:
 let
-  demo = true;
+  demo = false;
 
   colors =
     if demo then {
