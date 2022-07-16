@@ -21,7 +21,6 @@ let
     git
     go_1_18
     golangci-lint
-    gopass
     gopls
     htop
     nodejs-16_x
