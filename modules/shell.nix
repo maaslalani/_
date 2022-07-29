@@ -150,7 +150,7 @@ in
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
       tn = cmdJoin [
-        "SESSION=`ls $HOME/src | fzf`"
+        "SESSION=`ls $HOME/src | gum filter`"
         "tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null"
         "tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION"
       ];

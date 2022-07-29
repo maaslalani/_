@@ -110,7 +110,6 @@
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // { inherit overlays; };
         modules = [
           ./modules/linux.nix
-          ./modules/fzf.nix
           ./modules/packages.nix
           ./modules/shell.nix
           ./modules/tmux.nix
@@ -121,7 +120,6 @@
         pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // { inherit overlays; };
         modules = [
           ./modules/fonts.nix
-          ./modules/fzf.nix
           ./modules/gh.nix
           ./modules/git.nix
           ./modules/home.nix
