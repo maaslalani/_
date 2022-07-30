@@ -48,7 +48,7 @@ in
       gcam = "${gc} -am";
       gcane = "${gc} --amend --no-edit";
       gclean = "git branch --merged | grep  -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d";
-      gcm = "${gc} -m";
+      gcm = ''${gc} -m "$(gum input)" -m "$(gum write)"'';
       gco = "git checkout";
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
