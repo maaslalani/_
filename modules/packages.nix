@@ -18,6 +18,7 @@ let
     delve
     fennel
     ffmpeg
+    fzf
     git
     go_1_18
     golangci-lint
