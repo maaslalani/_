@@ -258,7 +258,7 @@ in
         NIXPKGS_ALLOW_BROKEN = 1;
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-        PATH = pathJoin [ CARGO_BIN GOBIN NIX_BIN BREW_SBIN ANDROID_SDK_TOOLS ANDROID_SDK_PLATFORM_TOOLS "$PATH" ];
+        PATH = pathJoin [ CARGO_BIN NIX_BIN BREW_SBIN ANDROID_SDK_TOOLS ANDROID_SDK_PLATFORM_TOOLS GOBIN "$PATH" ];
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
         _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
