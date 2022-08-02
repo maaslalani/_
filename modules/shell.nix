@@ -87,7 +87,7 @@ in
       gundo = "git reset HEAD~1 --mixed";
 
       ghb = "gh browse";
-      ghco = "gh pr list | gum choose | cut -f1 | xargs gh pr checkout";
+      ghco = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
       ghi = "gh issue list";
       ghiv = "gh issue view";
       ghp = "gh pr list";
