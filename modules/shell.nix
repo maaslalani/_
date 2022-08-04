@@ -240,9 +240,6 @@ in
           ":";
       in
       rec {
-        ANDROID_SDK_PLATFORM_TOOLS = "$HOME/Library/Android/sdk/platform-tools";
-        ANDROID_SDK_ROOT = "$HOME/Library/Android/sdk";
-        ANDROID_SDK_TOOLS = "$HOME/Library/Android/sdk/tools";
         BREW_SBIN = "/usr/local/sbin";
         BROWSER = "open";
         CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
@@ -252,16 +249,29 @@ in
         GNUPGHOME = "${config.xdg.dataHome}/gnupg";
         GOBIN = "${GOPATH}/bin";
         GOPATH = "${config.xdg.configHome}/go";
+        HOMEBREW_BIN = "/opt/homebrew/bin";
+        HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
+        HOMEBREW_PREFIX = "/opt/homebrew";
+        HOMEBREW_REPOSITORY = "/opt/homebrew";
+        HOMEBREW_SBIN = "/opt/homebrew/sbin";
         JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
         KEYTIMEOUT = 1;
         KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
         NIXPKGS_ALLOW_BROKEN = 1;
         NIX_BIN = "$HOME/.nix-profile/bin";
         NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-        PATH = pathJoin [ CARGO_BIN NIX_BIN BREW_SBIN ANDROID_SDK_TOOLS ANDROID_SDK_PLATFORM_TOOLS GOBIN "$PATH" ];
         SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
         VIM_SESSION_PATH = "/tmp/session.vim";
         _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
+        PATH = pathJoin [
+          CARGO_BIN
+          NIX_BIN
+          BREW_SBIN
+          GOBIN
+          HOMEBREW_BIN
+          HOMEBREW_SBIN
+          "$PATH"
+        ];
       };
     plugins = [
       {
