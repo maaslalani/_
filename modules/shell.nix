@@ -98,7 +98,7 @@ in
       grg = "go run ./...";
       gtg = "go test ./...";
       gmt = "go mod tidy";
-      gme = "go mod edit -replace";
+      gme = "go mod edit -replace $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)=../$(ls ../ | gum choose)";
 
       r = "bin/rails";
       rdbm = "${r} db:migrate";
