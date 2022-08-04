@@ -23,6 +23,7 @@ in
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = false;
+      push.autoSetupRemote = true;
     };
     signing = {
       gpgPath = "${pkgs.gnupg}/bin/gpg2";
