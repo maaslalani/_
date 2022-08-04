@@ -115,7 +115,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-oXuxzfm8m15ZixGsX8XApR31vEy9fwKW6Vm/+sg9Ytk=",
+        "narHash": "sha256-XunmVxEiPLBOPR2QMCVSAMBQ6McWd5TvJd5+hNa0JvE=",
         "path": "fnl",
         "type": "path"
       },

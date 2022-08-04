@@ -176,6 +176,7 @@
   (local lsp (require :lspconfig))
   (lsp.bashls.setup {: on_attach : capabilities})
   (lsp.dockerls.setup {: on_attach : capabilities})
+  (lsp.golangci_lint_ls.setup {: on_attach : capabilities})
   (lsp.rnix.setup {: on_attach : capabilities})
   (lsp.solargraph.setup {: on_attach
                          : capabilities
@@ -196,7 +197,6 @@
                     : capabilities})
   (local null_ls (require :null-ls))
   (local sources [null_ls.builtins.code_actions.proselint
-                  null_ls.builtins.diagnostics.golangci_lint
                   null_ls.builtins.diagnostics.revive
                   null_ls.builtins.diagnostics.rubocop
                   null_ls.builtins.diagnostics.write_good
