@@ -3,7 +3,6 @@ with pkgs; with pkgs.nodePackages; [
   bash-language-server
   fnlfmt
   proselint
-  revive
   rnix-lsp
   serve
   solargraph
