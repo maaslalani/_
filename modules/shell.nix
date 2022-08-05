@@ -208,6 +208,17 @@ in
 
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+      function historysearch() {
+        BUFFER="$(gum filter < $HISTFILE)"
+        zle -w end-of-line
+      }
+      zle -N historysearch
+      bindkey "^r" historysearch
+
+      function tmuxsessions() { tn }
+      zle -N tmuxsessions
+      bindkey "^t" tmuxsessions
     '';
     initExtra = ''
       setopt prompt_subst
