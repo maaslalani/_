@@ -31,7 +31,7 @@ let
       selection_foreground = "none";
       selection_background = "#707880";
 
-      background = "#1d1f21";
+      background = "#171717";
       foreground = "#c5c8c6";
 
       color0 = "#282a2e";

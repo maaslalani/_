@@ -149,11 +149,6 @@ in
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
-      tn = cmdJoin [
-        "SESSION=`ls $HOME/src | gum filter`"
-        "tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null"
-        "tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION"
-      ];
 
       dwlos = "printf 热爱开源 | pbcopy";
       dwnh = "printf 你好 | pbcopy";
@@ -216,7 +211,11 @@ in
       zle -N historysearch
       bindkey "^r" historysearch
 
-      function tmuxsessions() { tn }
+      function tmuxsessions() {
+        SESSION=`ls $HOME/src | gum filter`
+        tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null
+        tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION
+      }
       zle -N tmuxsessions
       bindkey "^t" tmuxsessions
     '';

@@ -18,7 +18,7 @@ set t_Co=256
 " Colors {{{
 
 " abbr fg  #C5C8C6
-" abbr bg  #1D1F21
+" abbr bg  #171717
 " abbr c0  #282A2E
 " abbr c8  #373B41
 " abbr c1  #A54242
@@ -59,21 +59,21 @@ hi Error guifg=#CC6666 guibg=NONE
 hi Error guifg=#CC6666 guibg=NONE
 hi ErrorMsg guifg=#CC6666 guibg=NONE
 hi Exception guifg=#A54242 guibg=NONE
-hi FoldColumn guifg=#5E6360 guibg=#1D1F21
-hi Folded guifg=#5E6360 guibg=#1D1F21
+hi FoldColumn guifg=#5E6360 guibg=#171717
+hi Folded guifg=#5E6360 guibg=#171717
 hi Function guifg=#8ABEB7 guibg=NONE
 hi Identifier guifg=#C5C8C6 guibg=NONE
 hi IncSearch guifg=#81A2BE guibg=NONE
 hi Include guifg=#81A2BE guibg=NONE
 hi Keyword guifg=#81A2BE guibg=NONE
 hi Label guifg=#81A2BE guibg=NONE
-hi LineNr guifg=#5E6360 guibg=#1D1F21
+hi LineNr guifg=#5E6360 guibg=#171717
 hi Macro guifg=#DE935F guibg=NONE
 hi MatchParen guifg=#8ABEB7 guibg=NONE
 hi MoreMsg guifg=#DE935F guibg=NONE
-hi NonText guifg=#373B41 guibg=#1D1F21
-hi Normal guifg=#C5C8C6 guibg=#1D1F21
-hi NormalFloat guifg=#C5C8C6 guibg=#1D1F21
+hi NonText guifg=#373B41 guibg=#171717
+hi Normal guifg=#C5C8C6 guibg=#171717
+hi NormalFloat guifg=#C5C8C6 guibg=#171717
 hi Number guifg=#CC6666 guibg=NONE
 hi NvimInternalError guifg=#707880 guibg=#A54242
 hi Operator guifg=#5E8D87 guibg=NONE
@@ -86,17 +86,17 @@ hi PreProc guifg=#A54242 guibg=NONE
 hi Question guifg=#5E8D87 guibg=NONE
 hi Repeat guifg=#81A2BE guibg=NONE
 hi Search guibg=#373B41 guifg=NONE
-hi SignColumn guibg=#1D1F21
+hi SignColumn guibg=#171717
 hi Special guifg=#DE935F guibg=NONE
 hi SpecialChar guifg=#F0C674 guibg=NONE
 hi SpecialComment guifg=#373B41 gui=italic guibg=NONE
 hi Statement guifg=#5E8D87 guibg=NONE
-hi StatusLine gui=bold guibg=#1D1F21 guifg=#C5C8C6
-hi StatusLineNC gui=NONE guibg=#1D1F21 guifg=#C5C8C6
+hi StatusLine gui=bold guibg=#171717 guifg=#C5C8C6
+hi StatusLineNC gui=NONE guibg=#171717 guifg=#C5C8C6
 hi Storage guifg=#85678F guibg=NONE
 hi String guifg=#B5BD68 guibg=NONE
-hi TabLine guifg=#5E6360 guibg=#1D1F21 gui=NONE
-hi TabLineFill gui=NONE guibg=#1D1F21
+hi TabLine guifg=#5E6360 guibg=#171717 gui=NONE
+hi TabLineFill gui=NONE guibg=#171717
 hi TabLineSel guifg=#8ABEB7 gui=NONE
 hi Tag guifg=#DE935F guibg=NONE
 hi Title guifg=#5F819D guibg=NONE

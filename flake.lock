@@ -486,7 +486,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-1fKGqKUA1kP8ky8tLaOzkCk638qy1qjYKFOIk6Bqk0o=",
+        "narHash": "sha256-UnmeMo1rSF2lC5OxZn9rFOJvUtESBEnAyRY3NVfR1gA=",
         "path": "colors",
         "type": "path"
       },
