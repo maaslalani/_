@@ -215,6 +215,7 @@ in
         SESSION=`ls $HOME/src | gum filter`
         tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null
         tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION
+        tmux rename-window -t $SESSION:1 $SESSION
       }
       zle -N tmuxsessions
       bindkey "^t" tmuxsessions
