@@ -7,6 +7,7 @@ in
 {
   programs.git = {
     enable = true;
+    ignores = [ ".DS_Store" ];
     extraConfig = {
       branch.sort = "-committerdate";
       color.ui = true;
