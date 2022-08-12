@@ -200,6 +200,7 @@
                   null_ls.builtins.diagnostics.rubocop
                   null_ls.builtins.diagnostics.write_good
                   null_ls.builtins.formatting.fnlfmt
+                  null_ls.builtins.formatting.goimports
                   null_ls.builtins.formatting.rubocop
                   null_ls.builtins.hover.dictionary])
   (null_ls.setup {: sources : on_attach : capabilities}))
@@ -363,8 +364,8 @@
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
 (autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
-(autocmd [:BufWrite]
-         {:pattern :*.go :command "lua vim.lsp.buf.format { async = true }"})
+(autocmd [:BufWritePre]
+         {:pattern :*.go :command "lua vim.lsp.buf.format { async = false }"})
 
 (autocmd [:FileType]
          {:pattern :norg
