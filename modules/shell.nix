@@ -34,10 +34,16 @@ in
         "tmux switch-client -t dotfiles 2>/dev/null || tmux attach-session -t dotfiles"
         "tmux rename-window -t dotfiles:1 Dotfiles"
       ];
+      t = cmdJoin [
+        "SESSION=`ls $HOME/src | gum filter`"
+        "tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null"
+        "tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION"
+        "tmux rename-window -t $SESSION:1 $SESSION"
+      ];
 
       src = "cd $HOME/src";
 
-      dstroy = "fd -H .DS_Store | xargs sudo rm";
+      dstroy = "fd -IH .DS_Store | xargs sudo rm";
 
       g = "git";
       ga = "git add";
@@ -211,15 +217,6 @@ in
       }
       zle -N historysearch
       bindkey "^r" historysearch
-
-      function tmuxsessions() {
-        SESSION=`ls $HOME/src | gum filter`
-        tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null
-        tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION
-        tmux rename-window -t $SESSION:1 $SESSION
-      }
-      zle -N tmuxsessions
-      bindkey "^t" tmuxsessions
     '';
     initExtra = ''
       setopt prompt_subst
