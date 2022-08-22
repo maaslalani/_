@@ -71,8 +71,10 @@
             nvim-treesitter = plug "nvim-treesitter";
             nvim-treesitter-playground = plug "nvim-treesitter-playground";
             plenary-nvim = plug "plenary-nvim";
+
             popup-nvim = plug "popup-nvim";
             telescope-nvim = plug "telescope-nvim";
+
             vim-commentary = plug "vim-commentary";
             vim-fugitive = plug "vim-fugitive";
             vim-hexokinase = plug "vim-hexokinase";
