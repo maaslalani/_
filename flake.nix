@@ -128,7 +128,6 @@
           ./modules/kitty.nix
           ./modules/packages.nix
           ./modules/pass.nix
-          ./modules/raycast.nix
           ./modules/scim.nix
           ./modules/shell.nix
           ./modules/spotify.nix
