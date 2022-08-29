@@ -156,6 +156,22 @@
         "type": "github"
       }
     },
+    "gum": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660857120,
+        "narHash": "sha256-S+sbfo7F6+bJeHywxM3jkZN+7MNQh9YRyLPHTC4wZnk=",
+        "owner": "charmbracelet",
+        "repo": "gum",
+        "rev": "08346909a9f79df441cfe65d1141d9f0ded76c40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "charmbracelet",
+        "repo": "gum",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -455,6 +471,7 @@
         "fnl": "fnl",
         "friendly-snippets": "friendly-snippets",
         "gitsigns-nvim": "gitsigns-nvim",
+        "gum": "gum",
         "home-manager": "home-manager",
         "hop-nvim": "hop-nvim",
         "luasnip": "luasnip",

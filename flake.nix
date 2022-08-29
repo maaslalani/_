@@ -7,6 +7,8 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
+    gum = { url = "github:charmbracelet/gum"; flake = false; };
+
     cmp-buffer = { url = "github:hrsh7th/cmp-buffer"; flake = false; };
     cmp-luasnip = { url = "github:saadparwaiz1/cmp_luasnip"; flake = false; };
     cmp-nvim-lsp = { url = "github:hrsh7th/cmp-nvim-lsp"; flake = false; };
@@ -83,6 +85,13 @@
             vim-surround = plug "vim-surround";
             vim-test = plug "vim-test";
             which-key-nvim = plug "which-key-nvim";
+
+            gum = self.pkgs.buildGoModule {
+              pname = "gum";
+              src = inputs.gum;
+              vendorSha256 = "sha256-vvNoO5eABGVwvAzK33uPelmo3BKxfqiYgEXZI7kgeSo=";
+              version = "unstable";
+            };
 
             fnl = self.pkgs.stdenv.mkDerivation {
               pname = "fnl";

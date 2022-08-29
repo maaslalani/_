@@ -44,6 +44,7 @@ let
     melt
     skate
     soft-serve
+    gum
   ];
 in
 {
