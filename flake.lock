@@ -115,7 +115,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-X5eLn4sgmfkhlsBc0XZYao1cCgZ7+ZEZN0hbcC9zoxY=",
+        "narHash": "sha256-tXd+M+lq6fsYUC9T9GiTmIkU9MjHZkgGR78U+MnExPo=",
         "path": "fnl",
         "type": "path"
       },
@@ -170,6 +170,18 @@
         "owner": "charmbracelet",
         "repo": "gum",
         "type": "github"
+      }
+    },
+    "hammerspoon": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-13cGdXjWeig0hUTdiCmiQdq3wcnbPOjnRRAA7hMn690=",
+        "type": "tarball",
+        "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip"
       }
     },
     "home-manager": {
@@ -472,6 +484,7 @@
         "friendly-snippets": "friendly-snippets",
         "gitsigns-nvim": "gitsigns-nvim",
         "gum": "gum",
+        "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
         "hop-nvim": "hop-nvim",
         "luasnip": "luasnip",

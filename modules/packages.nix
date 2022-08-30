@@ -24,6 +24,7 @@ let
     golangci-lint
     golangci-lint-langserver
     gopls
+    hammerspoon
     htop
     nodejs-16_x
     openssl

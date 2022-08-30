@@ -38,6 +38,10 @@
     vim-test = { url = "github:vim-test/vim-test"; flake = false; };
     which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
+    hammerspoon = {
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip";
+      flake = false;
+    };
     fnl = { url = "path:fnl"; flake = false; };
     saturn = { url = "path:colors"; flake = false; };
   };
@@ -93,6 +97,16 @@
               version = "unstable";
             };
 
+            hammerspoon = self.pkgs.stdenv.mkDerivation {
+              pname = "hammerspoon";
+              version = "0.9.97";
+              src = inputs.hammerspoon;
+              installPhase = ''
+                mkdir -p $out/Applications/Hammerspoon.app
+                cp -r $src/Contents $out/Applications/Hammerspoon.app/
+              '';
+            };
+
             fnl = self.pkgs.stdenv.mkDerivation {
               pname = "fnl";
               version = "unstable";
@@ -101,6 +115,7 @@
               installPhase = ''
                 mkdir -p $out
                 fennel --compile $src/init.fnl > $out/init.lua
+                fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
               '';
             };
 
@@ -133,6 +148,7 @@
           ./modules/fonts.nix
           ./modules/gh.nix
           ./modules/git.nix
+          ./modules/hammerspoon.nix
           ./modules/home.nix
           ./modules/kitty.nix
           ./modules/packages.nix

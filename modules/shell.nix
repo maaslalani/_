@@ -45,6 +45,8 @@ in
 
       dstroy = "fd -IH .DS_Store | xargs sudo rm";
 
+      spoon = "open -a ${pkgs.hammerspoon}/Applications/Hammerspoon.app";
+
       g = "git";
       ga = "git add";
       gap = "${ga} --patch";
