@@ -54,9 +54,6 @@
 (set o.writebackup false)
 
 ;; Macros
-(macro lua [module name]
-  `(.. ":lua require'" ,module "'." ,name "()<cr>"))
-
 (macro pcmd [prefix cmd]
   `(.. :<cmd> ,prefix (. " ") ,cmd :<cr>))
 
@@ -199,6 +196,7 @@
   (local sources [null_ls.builtins.code_actions.proselint
                   null_ls.builtins.diagnostics.rubocop
                   null_ls.builtins.diagnostics.write_good
+                  null_ls.builtins.formatting.alejandra
                   null_ls.builtins.formatting.fnlfmt
                   null_ls.builtins.formatting.goimports
                   null_ls.builtins.formatting.rubocop
