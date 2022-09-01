@@ -1,8 +1,11 @@
-{ config, pkgs, libs, ... }:
-let
-  scimPath = "${config.xdg.configHome}/sc-im";
-in
 {
+  config,
+  pkgs,
+  libs,
+  ...
+}: let
+  scimPath = "${config.xdg.configHome}/sc-im";
+in {
   home.file."${scimPath}/scimrc".text = ''
     color "type=HEADINGS bold=0 fg=BLUE bg=DEFAULT_COLOR"
     color "type=HEADINGS_ODD bold=0 fg=BLUE bg=DEFAULT_COLOR"

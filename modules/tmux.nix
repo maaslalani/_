@@ -1,8 +1,13 @@
-{ config, pkgs, libs, ... }:
+{
+  config,
+  pkgs,
+  libs,
+  ...
+}:
 with builtins; let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
-  attrsToConfig = p: config (n: v: ("set -g ${p}${n} ${v}"));
-  bindToConfig = config (n: v: ("bind ${n} ${v}"));
+  attrsToConfig = p: config (n: v: "set -g ${p}${n} ${v}");
+  bindToConfig = config (n: v: "bind ${n} ${v}");
 
   settings = {
     automatic-rename = "off";
@@ -49,9 +54,7 @@ with builtins; let
     "N" = "new";
     "C-a" = "send-prefix";
   };
-
-in
-{
+in {
   programs.tmux = {
     baseIndex = 1;
     customPaneNavigationAndResize = true;

@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   color = color: text: "%F{${color}}${text}%f";
   cyan = color "cyan";
   blue = color "blue";
@@ -12,8 +16,7 @@ let
   spaceJoin = builtins.concatStringsSep " ";
   commaJoin = builtins.concatStringsSep ",";
   value = k: v: "\"${k}\":\"${v}\"";
-in
-{
+in {
   programs.zsh = {
     autocd = true;
     dotDir = ".config/zsh";
@@ -119,7 +122,7 @@ in
       bi = "${b} install";
       bu = "${b} update";
 
-      nupf = join [ "cd $HOME/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -" ];
+      nupf = join ["cd $HOME/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
 
       # home-manager switch
       hms = join [
@@ -172,36 +175,38 @@ in
 
       x = "exit";
       demo =
-        (spaceJoin
-          [
-            "ttyd"
-            "-B"
-            "-t fontFamily=\"SF Mono\""
-            "-t fontSize=22"
-            "-t lineHeight=1.2"
-            "-t customGlyphs=true"
-            ("-t 'theme={" + commaJoin
-              [
-                (value "background" "#171717")
-                (value "foreground" "#dddddd")
-                (value "black" "#000000")
-                (value "brightBlack" "#4d4d4d")
-                (value "red" "#c73b1d")
-                (value "brightRed" "#e82100")
-                (value "green" "#00a800")
-                (value "brightGreen" "#00db00")
-                (value "yellow" "#acaf15")
-                (value "brightYellow" "#e5e900")
-                (value "blue" "#3854FC")
-                (value "brightBlue" "#566BF9")
-                (value "magenta" "#d533ce")
-                (value "brightMagenta" "#e83ae9")
-                (value "cyan" "#2cbac9")
-                (value "brightCyan" "#00e6e7")
-                (value "white" "#bfbfbf")
-                (value "brightWhite" "#e6e6e6")
-              ] + "}' zsh")
-          ]);
+        spaceJoin
+        [
+          "ttyd"
+          "-B"
+          "-t fontFamily=\"SF Mono\""
+          "-t fontSize=22"
+          "-t lineHeight=1.2"
+          "-t customGlyphs=true"
+          ("-t 'theme={"
+            + commaJoin
+            [
+              (value "background" "#171717")
+              (value "foreground" "#dddddd")
+              (value "black" "#000000")
+              (value "brightBlack" "#4d4d4d")
+              (value "red" "#c73b1d")
+              (value "brightRed" "#e82100")
+              (value "green" "#00a800")
+              (value "brightGreen" "#00db00")
+              (value "yellow" "#acaf15")
+              (value "brightYellow" "#e5e900")
+              (value "blue" "#3854FC")
+              (value "brightBlue" "#566BF9")
+              (value "magenta" "#d533ce")
+              (value "brightMagenta" "#e83ae9")
+              (value "cyan" "#2cbac9")
+              (value "brightCyan" "#00e6e7")
+              (value "white" "#bfbfbf")
+              (value "brightWhite" "#e6e6e6")
+            ]
+            + "}' zsh")
+        ];
 
       prompt = "PROMPT='${color "#5a56e0" ">"} ' && clear";
     };
@@ -245,45 +250,44 @@ in
         export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}❯%f.%F{red}❯%f) "
     '';
-    sessionVariables =
-      let
-        pathJoin = builtins.concatStringsSep
-          ":";
-      in
-      rec {
-        BREW_SBIN = "/usr/local/sbin";
-        BROWSER = "open";
-        CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
-        CLICOLOR = 1;
-        COLORTERM = "truecolor";
-        EDITOR = "nvim";
-        GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-        GOBIN = "${GOPATH}/bin";
-        GOPATH = "${config.xdg.configHome}/go";
-        HOMEBREW_BIN = "/opt/homebrew/bin";
-        HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
-        HOMEBREW_PREFIX = "/opt/homebrew";
-        HOMEBREW_REPOSITORY = "/opt/homebrew";
-        HOMEBREW_SBIN = "/opt/homebrew/sbin";
-        JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
-        KEYTIMEOUT = 1;
-        KUBECONFIG = pathJoin [ "$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform" ];
-        NIXPKGS_ALLOW_BROKEN = 1;
-        NIX_BIN = "$HOME/.nix-profile/bin";
-        NIX_PATH = pathJoin [ "$NIX_PATH" "$HOME/.nix-defexpr/channels" ];
-        SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
-        VIM_SESSION_PATH = "/tmp/session.vim";
-        _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
-        PATH = pathJoin [
-          CARGO_BIN
-          NIX_BIN
-          BREW_SBIN
-          GOBIN
-          HOMEBREW_BIN
-          HOMEBREW_SBIN
-          "$PATH"
-        ];
-      };
+    sessionVariables = let
+      pathJoin =
+        builtins.concatStringsSep
+        ":";
+    in rec {
+      BREW_SBIN = "/usr/local/sbin";
+      BROWSER = "open";
+      CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
+      CLICOLOR = 1;
+      COLORTERM = "truecolor";
+      EDITOR = "nvim";
+      GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+      GOBIN = "${GOPATH}/bin";
+      GOPATH = "${config.xdg.configHome}/go";
+      HOMEBREW_BIN = "/opt/homebrew/bin";
+      HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
+      HOMEBREW_PREFIX = "/opt/homebrew";
+      HOMEBREW_REPOSITORY = "/opt/homebrew";
+      HOMEBREW_SBIN = "/opt/homebrew/sbin";
+      JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
+      KEYTIMEOUT = 1;
+      KUBECONFIG = pathJoin ["$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform"];
+      NIXPKGS_ALLOW_BROKEN = 1;
+      NIX_BIN = "$HOME/.nix-profile/bin";
+      NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+      SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
+      VIM_SESSION_PATH = "/tmp/session.vim";
+      _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
+      PATH = pathJoin [
+        CARGO_BIN
+        NIX_BIN
+        BREW_SBIN
+        GOBIN
+        HOMEBREW_BIN
+        HOMEBREW_SBIN
+        "$PATH"
+      ];
+    };
     plugins = [
       {
         name = "zsh-syntax-highlighting";

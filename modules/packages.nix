@@ -1,16 +1,22 @@
-{ config, pkgs, lib, ... }:
-let
-  core = with pkgs; [
-    entr
-    exa
-    fd
-    git
-    gnupg
-    jq
-    pastel
-    ripgrep
-    sd
-  ] ++ (import ./lsp.nix { pkgs = pkgs; });
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  core = with pkgs;
+    [
+      entr
+      exa
+      fd
+      git
+      gnupg
+      jq
+      pastel
+      ripgrep
+      sd
+    ]
+    ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
     alejandra
@@ -38,7 +44,7 @@ let
     yarn
   ];
 
-  linux = [ ];
+  linux = [];
 
   charmbracelet = with pkgs; [
     charm
@@ -48,10 +54,15 @@ let
     soft-serve
     gum
   ];
-in
-{
-  home.packages = core ++ charmbracelet ++
-    (if pkgs.stdenv.isDarwin then darwin else linux);
+in {
+  home.packages =
+    core
+    ++ charmbracelet
+    ++ (
+      if pkgs.stdenv.isDarwin
+      then darwin
+      else linux
+    );
 
   programs.bat.config.theme = "Nord";
   programs.bat.enable = true;

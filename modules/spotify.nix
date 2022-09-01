@@ -1,5 +1,9 @@
-{ config, pkgs, libs, ... }:
-let
+{
+  config,
+  pkgs,
+  libs,
+  ...
+}: let
   path = ".config/spotifyd";
   file = "spotifyd.conf";
   settings = {
@@ -10,9 +14,8 @@ let
     };
   };
 
-  toml = pkgs.formats.toml { };
+  toml = pkgs.formats.toml {};
   config = toml.generate file settings;
-in
-{
+in {
   home.file."${path}/${file}".source = config;
 }
