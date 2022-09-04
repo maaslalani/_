@@ -24,11 +24,11 @@
 (PassChooser:init {:clearAfter 10 :storePath "~/.local/share/pass/" : image})
 
 ;; Pop up Style
-(set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.8})
+(set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.95})
 (set hs.alert.defaultStyle.padding 40)
 (set hs.alert.defaultStyle.radius 10)
-(set hs.alert.defaultStyle.strokeColor {:white 0.2})
-(set hs.alert.defaultStyle.strokeWidth 5)
+(set hs.alert.defaultStyle.strokeColor {:white 0})
+(set hs.alert.defaultStyle.strokeWidth 0)
 (set hs.alert.defaultStyle.textStyle
      {:font {:name "SF Mono Medium" :size 20 :color {:white 0.8 :alpha 0.8}}
       :paragraphStyle {:lineHeightMultiple 1.25}})
