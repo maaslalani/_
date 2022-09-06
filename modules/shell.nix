@@ -255,6 +255,8 @@ in {
         builtins.concatStringsSep
         ":";
     in rec {
+      AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
+      AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
       BREW_SBIN = "/usr/local/sbin";
       BROWSER = "open";
       CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";

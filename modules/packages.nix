@@ -19,6 +19,7 @@
     ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
+    awscli2
     alejandra
     cachix
     coreutils
