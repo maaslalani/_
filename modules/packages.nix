@@ -54,7 +54,6 @@
     melt
     skate
     soft-serve
-    gum
   ];
 in {
   home.packages =

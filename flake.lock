@@ -156,22 +156,6 @@
         "type": "github"
       }
     },
-    "gum": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1662169141,
-        "narHash": "sha256-pEULArQDwKZzpD0GVH21L1v9xVZiBz91kL/jPJjJav4=",
-        "owner": "charmbracelet",
-        "repo": "gum",
-        "rev": "808f8799963bcb8e9231487862a6157c3bc7d5d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "charmbracelet",
-        "repo": "gum",
-        "type": "github"
-      }
-    },
     "hammerspoon": {
       "flake": false,
       "locked": {
@@ -483,7 +467,6 @@
         "fnl": "fnl",
         "friendly-snippets": "friendly-snippets",
         "gitsigns-nvim": "gitsigns-nvim",
-        "gum": "gum",
         "hammerspoon": "hammerspoon",
         "home-manager": "home-manager",
         "hop-nvim": "hop-nvim",

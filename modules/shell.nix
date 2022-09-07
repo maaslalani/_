@@ -282,9 +282,9 @@ in {
       _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       PATH = pathJoin [
         CARGO_BIN
+        GOBIN
         NIX_BIN
         BREW_SBIN
-        GOBIN
         HOMEBREW_BIN
         HOMEBREW_SBIN
         "$PATH"
