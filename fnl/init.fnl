@@ -337,8 +337,7 @@
                        :files [:src/parser.c]
                        :branch :main}})
   (local treesitter (require :nvim-treesitter.configs))
-  ((. treesitter :setup) {:ensure_installed :all
-                          :highlight {:enable true}
+  ((. treesitter :setup) {:highlight {:enable true}
                           :parser_install_dir "~/.local/share/nvim/site/parser"
                           :indent {:enable false}})
   (vim.opt.runtimepath:append "~/.local/share/nvim/site/parser")
