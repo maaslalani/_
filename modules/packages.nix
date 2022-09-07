@@ -19,8 +19,8 @@
     ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
-    awscli2
     alejandra
+    awscli2
     cachix
     coreutils
     delve
@@ -31,6 +31,7 @@
     go_1_19
     golangci-lint
     golangci-lint-langserver
+    gopass
     gopls
     hammerspoon
     htop
