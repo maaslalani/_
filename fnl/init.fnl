@@ -339,7 +339,9 @@
   (local treesitter (require :nvim-treesitter.configs))
   ((. treesitter :setup) {:ensure_installed :all
                           :highlight {:enable true}
+                          :parser_install_dir "~/.local/share/nvim/site/parser"
                           :indent {:enable false}})
+  (vim.opt.runtimepath:append "~/.local/share/nvim/site/parser")
   ((. (require :spellsitter) :setup) {}))
 
 ; autopairs
