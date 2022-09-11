@@ -32,7 +32,6 @@
 (set o.number true)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
 (set o.ruler true)
-(set o.scrolloff 1000)
 (set o.showmode false)
 (set o.signcolumn :yes)
 (set o.smartcase true)
