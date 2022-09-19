@@ -323,6 +323,9 @@
 (fn treesitter []
   (local parsers (require :nvim-treesitter.parsers))
   (local parser-configs ((. parsers :get_parser_configs)))
+  (set parser-configs.cassette
+       {:install_info {:url :/Users/maas/src/tree-sitter-cassette :files [:src/parser.c]}
+        :filetype :cassette})
   (set parser-configs.norg_meta
        {:install_info {:url "https://github.com/nvim-neorg/tree-sitter-norg-meta"
                        :files [:src/parser.c]
@@ -339,8 +342,7 @@
   ((. treesitter :setup) {:highlight {:enable true}
                           :parser_install_dir "~/.local/share/nvim/site/parser"
                           :indent {:enable false}})
-  (vim.opt.runtimepath:append "~/.local/share/nvim/site/parser")
-  ((. (require :spellsitter) :setup) {}))
+  (vim.opt.runtimepath:append "~/.local/share/nvim/site/parser"))
 
 ; autopairs
 (fn autopairs []
@@ -361,7 +363,9 @@
 (local autocmd vim.api.nvim_create_autocmd)
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
+(autocmd [:BufEnter] {:pattern :*.tape :command "set ft=cassette"})
 (autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
+(autocmd [:BufEnter] {:pattern :*.norg :command "Copilot disable"})
 (autocmd [:BufWritePre]
          {:pattern :*.go :command "lua vim.lsp.buf.format { async = false }"})
 

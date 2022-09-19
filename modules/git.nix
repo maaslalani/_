@@ -27,6 +27,7 @@ in {
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = false;
+      pull.twohead = "ort";
       push.autoSetupRemote = true;
     };
     signing = {

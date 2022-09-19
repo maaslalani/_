@@ -42,6 +42,7 @@
     sc-im
     spotify-tui
     spotifyd
+    tree-sitter
     twurl
     yarn
   ];

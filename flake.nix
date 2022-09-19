@@ -63,10 +63,6 @@
       url = "github:nvim-neorg/neorg";
       flake = false;
     };
-    nvim-spellsitter = {
-      url = "github:lewis6991/spellsitter.nvim";
-      flake = false;
-    };
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
@@ -161,7 +157,6 @@
               nvim-cmp = plug "nvim-cmp";
               nvim-lspconfig = plug "nvim-lspconfig";
               nvim-neorg = plug "nvim-neorg";
-              nvim-spellsitter = plug "nvim-spellsitter";
               nvim-treesitter = plug "nvim-treesitter";
               nvim-treesitter-playground = plug "nvim-treesitter-playground";
               plenary-nvim = plug "plenary-nvim";
