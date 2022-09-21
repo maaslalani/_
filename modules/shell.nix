@@ -117,6 +117,8 @@ in {
       rdbr = "${r} db:rollback";
       rdbs = "${r} db:seed";
 
+      setmotd = "${sk8} set motd --team cats";
+
       b = "bundle";
       be = "${b} exec";
       bi = "${b} install";
@@ -172,6 +174,8 @@ in {
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; vim $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
       wiki = "cd $HOME/wiki && vim index.norg && cd -";
+
+      sk8 = "ssh skate.ssh.toys";
 
       x = "exit";
       demo =
@@ -249,6 +253,9 @@ in {
 
         export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}❯%f.%F{red}❯%f) "
+    '';
+    loginExtra = ''
+      ssh skate.ssh.toys get motd --team cats
     '';
     sessionVariables = let
       pathJoin =

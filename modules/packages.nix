@@ -23,6 +23,7 @@
     awscli2
     cachix
     coreutils
+    cowsay
     delve
     fennel
     ffmpeg
@@ -38,6 +39,7 @@
     nodejs-16_x
     openssl
     pinentry_mac
+    redis
     rustup
     sc-im
     spotify-tui
