@@ -36,9 +36,9 @@
     gopls
     hammerspoon
     htop
+    nodePackages.expo-cli
     nodejs-16_x
     openssl
-    pinentry_mac
     redis
     rustup
     sc-im
