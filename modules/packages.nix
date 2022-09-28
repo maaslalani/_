@@ -40,6 +40,7 @@
     nodejs-16_x
     openssl
     redis
+    ruby_3_1
     rustup
     sc-im
     spotify-tui
