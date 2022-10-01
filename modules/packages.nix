@@ -29,16 +29,19 @@
     ffmpeg
     fzf
     git
+    go-swagger
     go_1_19
     golangci-lint
     golangci-lint-langserver
     gopass
     gopls
     hammerspoon
+    helix
     htop
     nodePackages.expo-cli
     nodejs-16_x
     openssl
+    postgresql
     redis
     ruby_3_1
     rustup
