@@ -18,10 +18,6 @@
       url = "path:fnl";
       flake = false;
     };
-    saturn = {
-      url = "path:colors";
-      flake = false;
-    };
   };
 
   outputs = {self, ...} @ inputs: {
@@ -47,16 +43,6 @@
               installPhase = ''
                 mkdir -p $out
                 fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
-              '';
-            };
-
-            saturn = self.pkgs.stdenv.mkDerivation {
-              pname = "saturn";
-              version = "unstable";
-              src = inputs.saturn;
-              installPhase = ''
-                mkdir -p $out
-                cp $src/saturn.vim $out/saturn.vim
               '';
             };
           }

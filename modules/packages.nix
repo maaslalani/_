@@ -31,8 +31,6 @@
     git
     go-swagger
     go_1_19
-    golangci-lint
-    golangci-lint-langserver
     gopass
     gopls
     hammerspoon
