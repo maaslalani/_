@@ -1,9 +1,9 @@
-{ config
-, pkgs
-, libs
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  libs,
+  ...
+}: let
   demo = false;
 
   colors =
@@ -69,8 +69,7 @@ let
       size = 15;
     };
   };
-in
-{
+in {
   programs.kitty = {
     enable = true;
     settings =

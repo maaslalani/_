@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, libs
-, ...
+{
+  config,
+  pkgs,
+  libs,
+  ...
 }: {
   programs.gh = {
     enable = true;

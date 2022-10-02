@@ -1,9 +1,9 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   core = with pkgs;
     [
       entr
@@ -16,9 +16,10 @@ let
       ripgrep
       sd
     ]
-    ++ (import ./lsp.nix { pkgs = pkgs; });
+    ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
+    alejandra
     awscli2
     cachix
     coreutils
@@ -51,7 +52,7 @@ let
     yarn
   ];
 
-  linux = [ ];
+  linux = [];
 
   charmbracelet = with pkgs; [
     charm
@@ -60,8 +61,7 @@ let
     skate
     soft-serve
   ];
-in
-{
+in {
   home.packages =
     core
     ++ charmbracelet

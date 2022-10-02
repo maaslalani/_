@@ -20,47 +20,46 @@
     };
   };
 
-  outputs = { self, ... } @ inputs: {
+  outputs = {self, ...} @ inputs: {
     homeConfigurations = rec {
       overlays = [
         (
-          self: super:
-            {
-              hammerspoon = self.pkgs.stdenv.mkDerivation {
-                pname = "hammerspoon";
-                version = "0.9.97";
-                src = inputs.hammerspoon;
-                installPhase = ''
-                  mkdir -p $out/Applications/Hammerspoon.app
-                  cp -r $src/Contents $out/Applications/Hammerspoon.app/
-                '';
-              };
+          self: super: {
+            hammerspoon = self.pkgs.stdenv.mkDerivation {
+              pname = "hammerspoon";
+              version = "0.9.97";
+              src = inputs.hammerspoon;
+              installPhase = ''
+                mkdir -p $out/Applications/Hammerspoon.app
+                cp -r $src/Contents $out/Applications/Hammerspoon.app/
+              '';
+            };
 
-              fnl = self.pkgs.stdenv.mkDerivation {
-                pname = "fnl";
-                version = "unstable";
-                src = inputs.fnl;
-                buildInputs = [ self.pkgs.fennel ];
-                installPhase = ''
-                  mkdir -p $out
-                  fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
-                '';
-              };
+            fnl = self.pkgs.stdenv.mkDerivation {
+              pname = "fnl";
+              version = "unstable";
+              src = inputs.fnl;
+              buildInputs = [self.pkgs.fennel];
+              installPhase = ''
+                mkdir -p $out
+                fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
+              '';
+            };
 
-              saturn = self.pkgs.stdenv.mkDerivation {
-                pname = "saturn";
-                version = "unstable";
-                src = inputs.saturn;
-                installPhase = ''
-                  mkdir -p $out
-                  cp $src/saturn.vim $out/saturn.vim
-                '';
-              };
-            }
+            saturn = self.pkgs.stdenv.mkDerivation {
+              pname = "saturn";
+              version = "unstable";
+              src = inputs.saturn;
+              installPhase = ''
+                mkdir -p $out
+                cp $src/saturn.vim $out/saturn.vim
+              '';
+            };
+          }
         )
       ];
       linux = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // { inherit overlays; };
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // {inherit overlays;};
         modules = [
           ./modules/linux.nix
           ./modules/packages.nix
@@ -70,7 +69,7 @@
         ];
       };
       home = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // { inherit overlays; };
+        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // {inherit overlays;};
         modules = [
           ./modules/fonts.nix
           ./modules/gh.nix
