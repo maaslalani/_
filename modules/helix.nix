@@ -6,7 +6,10 @@
   config.programs.helix = {
     enable = true;
     settings = {
-      editor.cursor-shape.insert = "bar";
+      editor = {
+        cursor-shape.insert = "bar";
+        file-picker.max-depth = 5;
+      };
       theme = "base16";
       keys.normal = {
         space = {
@@ -19,6 +22,7 @@
       base16 =
         let
           transparent = "none";
+          darkblack = "#1e1e1e";
           black = "#282A2E";
           brightblack = "#373B41";
           red = "#A54242";
@@ -37,10 +41,10 @@
           white = "#C5C8C6";
         in
         {
-          "ui.menu" = { bg = black;};
+          "ui.menu" = { bg = black; };
           "ui.menu.selected" = { bg = brightblack; };
-          "ui.menu.scroll" = { bg = transparent; };
-          "ui.window" = gray;
+          "ui.menu.scroll" = { fg = black; bg = black; };
+          "ui.window" = black;
           "ui.linenr" = { fg = brightblack; };
           "ui.linenr.selected" = { fg = gray; };
           "ui.popup" = { fg = white; bg = black; };

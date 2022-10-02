@@ -4,7 +4,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-kIHj1G92yhvZjp04xaDxrbOIpvue/3xsQsv/9zzbLbY=",
+        "narHash": "sha256-ePRURjqShMok3LxHarvw/MRsLm4Z1GB57HIb2JdxNpA=",
         "path": "fnl",
         "type": "path"
       },
