@@ -16,6 +16,7 @@ in {
       color.ui = true;
       commit.gpgsign = true;
       core.commitGraph = true;
+      core.editor = "hx";
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
       fetch.prune = true;
