@@ -124,8 +124,16 @@
       }
       {
         name = "go";
+        indent = {
+          tab-width = 4;
+          unit = "  ";
+        };
         auto-format = true;
         formatter = {command = "goimports";};
+      }
+      {
+        name = "json";
+        file-types = ["lock" "json"];
       }
     ];
   };
