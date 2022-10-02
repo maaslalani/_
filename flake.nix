@@ -6,6 +6,10 @@
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
+    helix = {
+      url = "github:helix-editor/helix";
+      flake = true;
+    };
     hammerspoon = {
       url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip";
       flake = false;

@@ -6,6 +6,7 @@
 }: {
   config.programs.helix = {
     enable = true;
+    package = pkgs.helix;
     settings = {
       editor = {
         cursor-shape.insert = "bar";
