@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
+{ config
+, pkgs
+, libs
+, ...
 }: {
   programs.password-store = {
     enable = true;

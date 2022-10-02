@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
+{ config
+, pkgs
+, libs
+, ...
 }:
 with builtins; let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
@@ -54,7 +53,8 @@ with builtins; let
     "N" = "new";
     "C-a" = "send-prefix";
   };
-in {
+in
+{
   programs.tmux = {
     baseIndex = 1;
     customPaneNavigationAndResize = true;

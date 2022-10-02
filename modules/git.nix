@@ -1,16 +1,17 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}: let
+{ config
+, pkgs
+, libs
+, ...
+}:
+let
   email = "maas@lalani.dev";
   name = "Maas Lalani";
   user = "maaslalani";
-in {
+in
+{
   programs.git = {
     enable = true;
-    ignores = [".DS_Store"];
+    ignores = [ ".DS_Store" ];
     extraConfig = {
       branch.sort = "-committerdate";
       color.ui = true;
