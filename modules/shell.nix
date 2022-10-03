@@ -57,10 +57,10 @@ in {
       gbc = "${gb} --show-current";
       gc = "git commit";
       gca = "${gc} --amend";
+      gcm = "${gc} -m";
       gcam = "${gc} -am";
       gcane = "${gc} --amend --no-edit";
       gclean = "${gb} | cut -c 3- | gum choose --no-limit | xargs ${gb} -D";
-      gcm = ''${gc} -m "$(gum input)" -m "$(gum write)"'';
       gco = "git checkout";
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
@@ -95,16 +95,14 @@ in {
       gst = "git stash";
       gstp = "${gst} pop";
       gundo = "git reset HEAD~1 --mixed";
+      gsw = "git switch";
+      gswc = "git switch --create";
+      gswm = "${gsw} main || ${gsw} master";
       gw = "git worktree";
       gwa = "${gw} add";
       gwl = "${gw} list";
       gwp = "${gw} prune";
       gwd = "${gw} remove";
-      gclone = join [
-        "REPO=$(gum input --placeholder org/repo)"
-        "gh clone $REPO ~/src/$(basename $REPO)/.git"
-        "git -C ~/src/$(basename $REPO)/.git worktree add main"
-      ];
       ghb = "gh browse";
       ghco = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
       ghi = "gh issue list";
@@ -180,7 +178,7 @@ in {
 
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; hx $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
-      wiki = "cd $HOME/wiki && hx index.norg && cd -";
+      wiki = "cd $HOME/wiki && hx index.md && cd -";
 
       sk8 = "ssh skate.ssh.toys";
 

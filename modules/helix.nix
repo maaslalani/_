@@ -132,7 +132,7 @@
         "string" = bright.green;
         "variable.other.member" = bright.blue;
         "constant.character.escape" = bright.yellow;
-        "function" = normal.white;
+        "function" = normal.yellow;
         "function.builtin" = normal.magenta;
         "function.method" = normal.blue;
         "constructor" = bright.blue;
