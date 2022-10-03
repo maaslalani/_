@@ -94,10 +94,17 @@ in {
       gss = "git status";
       gst = "git stash";
       gstp = "${gst} pop";
-      gsw = "git switch";
-      gswm = "${gsw} main || ${gsw} master";
       gundo = "git reset HEAD~1 --mixed";
-
+      gw = "git worktree";
+      gwa = "${gw} add";
+      gwl = "${gw} list";
+      gwp = "${gw} prune";
+      gwd = "${gw} remove";
+      gclone = join [
+        "REPO=$(gum input --placeholder org/repo)"
+        "gh clone $REPO ~/src/$(basename $REPO)/.git"
+        "git -C ~/src/$(basename $REPO)/.git worktree add main"
+      ];
       ghb = "gh browse";
       ghco = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
       ghi = "gh issue list";
@@ -242,7 +249,7 @@ in {
       fi
 
       precmd() {
-        if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
+        if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
           GIT_BRANCH="($(git branch --show-current))"
           GIT_STATUS=$(git status --porcelain | cut -c2 | tr -d ' \n')
         else
@@ -252,7 +259,7 @@ in {
       }
 
         export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
-      %(?.%F{green}❯%f.%F{red}❯%f) "
+      %(?.%F{green}>%f.%F{red}>%f) "
     '';
     loginExtra = ''
       ssh skate.ssh.toys get motd --team cats

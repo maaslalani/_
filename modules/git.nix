@@ -21,6 +21,7 @@ in {
       diff.algorithm = "patience";
       fetch.prune = true;
       gc.writeCommitGraph = true;
+      gc.worktreePruneExpire = "now";
       github.user = user;
       gpg.program = "${pkgs.gnupg}/bin/gpg2";
       hub.protocol = "https";

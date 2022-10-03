@@ -22,97 +22,6 @@
         };
       };
     };
-    themes = {
-      base16 = let
-        transparent = "none";
-        darkblack = "#1e1e1e";
-        black = "#282A2E";
-        brightblack = "#373B41";
-        red = "#A54242";
-        brightred = "#CC6666";
-        green = "#8C9440";
-        brightgreen = "#B5BD68";
-        orange = "#DE935F";
-        yellow = "#F0C674";
-        blue = "#5F819D";
-        brightblue = "#81A2BE";
-        magenta = "#85678F";
-        brightmagenta = "#B294BB";
-        cyan = "#5E8D87";
-        brightcyan = "#8ABEB7";
-        gray = "#707880";
-        white = "#C5C8C6";
-      in {
-        "ui.menu" = {bg = black;};
-        "ui.menu.selected" = {bg = brightblack;};
-        "ui.menu.scroll" = {
-          fg = black;
-          bg = black;
-        };
-        "ui.window" = black;
-        "ui.linenr" = {fg = brightblack;};
-        "ui.linenr.selected" = {fg = gray;};
-        "ui.popup" = {
-          fg = white;
-          bg = black;
-        };
-        "ui.popup.info" = {
-          fg = white;
-          bg = transparent;
-        };
-        "ui.selection" = {
-          fg = black;
-          bg = blue;
-        };
-        "ui.selection.primary" = {modifiers = ["reversed"];};
-        "comment" = {fg = gray;};
-        "ui.statusline" = {
-          fg = gray;
-          bg = transparent;
-        };
-        "ui.statusline.inactive" = {
-          fg = brightblack;
-          bg = transparent;
-        };
-        "ui.help" = {
-          fg = gray;
-          bg = transparent;
-        };
-        "ui.cursor" = {modifiers = ["reversed"];};
-        "variable" = white;
-        "variable.builtin" = orange;
-        "constant.numeric" = orange;
-        "constant" = orange;
-        "attributes" = blue;
-        "type" = brightcyan;
-        "ui.cursor.match" = {
-          fg = yellow;
-          modifiers = ["underlined"];
-        };
-        "string" = brightgreen;
-        "variable.other.member" = brightblue;
-        "constant.character.escape" = yellow;
-        "function" = white;
-        "function.builtin" = magenta;
-        "function.method" = blue;
-        "constructor" = brightblue;
-        "special" = orange;
-        "keyword" = brightblue;
-        "keyword.control.repeat" = magenta;
-        "label" = magenta;
-        "namespace" = blue;
-        "diff.plus" = green;
-        "diff.delta" = yellow;
-        "diff.minus" = red;
-        "diagnostic" = {modifiers = ["underlined"];};
-        "ui.gutter" = {bg = transparent;};
-        "info" = blue;
-        "hint" = gray;
-        "debug" = gray;
-        "warning" = yellow;
-        "error" = red;
-      };
-    };
     languages = [
       {
         name = "rust";
@@ -145,6 +54,104 @@
         name = "css";
         language-server = {command = "css-languageserver";};
       }
+      {
+        name = "javascript";
+        auto-format = true;
+      }
     ];
+    themes = {
+      base16 = let
+        transparent = "none";
+        normal = {
+          black = "#282A2E";
+          red = "#A54242";
+          green = "#8C9440";
+          yellow = "#DE935F";
+          blue = "#5F819D";
+          magenta = "#85678F";
+          cyan = "#5E8D87";
+          white = "#707880";
+        };
+        bright = {
+          black = "#373B41";
+          red = "#CC6666";
+          green = "#B5BD68";
+          yellow = "#F0C674";
+          blue = "#81A2BE";
+          magenta = "#B294BB";
+          cyan = "#8ABEB7";
+          white = "#C5C8C6";
+        };
+      in {
+        "ui.menu" = {bg = normal.black;};
+        "ui.menu.selected" = {bg = bright.black;};
+        "ui.menu.scroll" = {
+          fg = normal.black;
+          bg = normal.black;
+        };
+        "ui.window" = normal.black;
+        "ui.linenr" = {fg = bright.black;};
+        "ui.linenr.selected" = {fg = normal.white;};
+        "ui.popup" = {
+          fg = bright.white;
+          bg = normal.black;
+        };
+        "ui.popup.info" = {
+          fg = bright.white;
+          bg = transparent;
+        };
+        "ui.selection" = {
+          fg = normal.black;
+          bg = normal.blue;
+        };
+        "ui.selection.primary" = {modifiers = ["reversed"];};
+        "comment" = {fg = normal.white;};
+        "ui.statusline" = {
+          fg = normal.white;
+          bg = transparent;
+        };
+        "ui.statusline.inactive" = {
+          fg = bright.black;
+          bg = transparent;
+        };
+        "ui.help" = {
+          fg = normal.white;
+          bg = transparent;
+        };
+        "ui.cursor" = {modifiers = ["reversed"];};
+        "variable" = bright.white;
+        "variable.builtin" = normal.yellow;
+        "constant.numeric" = normal.yellow;
+        "constant" = normal.yellow;
+        "attributes" = normal.blue;
+        "type" = bright.cyan;
+        "ui.cursor.match" = {
+          fg = bright.yellow;
+          modifiers = ["underlined"];
+        };
+        "string" = bright.green;
+        "variable.other.member" = bright.blue;
+        "constant.character.escape" = bright.yellow;
+        "function" = normal.white;
+        "function.builtin" = normal.magenta;
+        "function.method" = normal.blue;
+        "constructor" = bright.blue;
+        "special" = normal.yellow;
+        "keyword" = bright.blue;
+        "keyword.control.repeat" = normal.magenta;
+        "label" = normal.magenta;
+        "namespace" = normal.blue;
+        "diff.plus" = normal.green;
+        "diff.delta" = bright.yellow;
+        "diff.minus" = normal.red;
+        "diagnostic" = {modifiers = ["underlined"];};
+        "ui.gutter" = {bg = transparent;};
+        "info" = normal.blue;
+        "hint" = normal.white;
+        "debug" = normal.white;
+        "warning" = bright.yellow;
+        "error" = normal.red;
+      };
+    };
   };
 }
