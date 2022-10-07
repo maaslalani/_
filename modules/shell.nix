@@ -146,6 +146,7 @@ in {
 
       ls = "exa";
       lsa = "exa -Fla";
+      sl = "${ls}";
 
       md = "mkdir";
 
@@ -172,9 +173,9 @@ in {
       dwnh = "printf 你好 | pbcopy";
 
       hx = "hx";
-      vi = "hx";
       v = "hx .";
-      vim = "hx .";
+      vi = "hx";
+      vim = "hx";
 
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; hx $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
