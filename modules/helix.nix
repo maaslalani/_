@@ -42,6 +42,20 @@
         formatter = {command = "goimports";};
       }
       {
+        name = "fennel";
+        file-types = ["fnl"];
+        formatter = {command = "fnlfmt";};
+        scope = "source.scheme";
+        injection-regex = "scheme";
+        comment-token = ";";
+        indent = {
+          tab-width = 2;
+          unit = "  ";
+        };
+        grammar = "scheme";
+        roots = [];
+      }
+      {
         name = "json";
         file-types = ["lock" "json"];
         language-server = {command = "vscode-json-languageserver";};

@@ -41,10 +41,10 @@ with builtins; let
 
   message = {
     command-style = "fg=white,bg=default";
-    style = "fg=cyan,bg=default";
+    style = "fg=#fcfcfc,bg=default";
   };
 
-  mode.style = "fg=#fdfee1,bg=#292929";
+  mode.style = "fg=#fcfcfc,bg=#292929";
 
   currentPath = "-c \"#{pane_current_path}\"";
 
