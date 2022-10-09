@@ -78,7 +78,7 @@ in {
     };
     font = {
       name = "SF Mono Medium";
-      size = 16;
+      size = 15;
     };
   };
 }

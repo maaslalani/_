@@ -32,17 +32,24 @@ in {
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
 
-      _ = cmdJoin [
-        "tmux new-session -ds dotfiles -c $HOME/_ 2>/dev/null"
-        "tmux switch-client -t dotfiles 2>/dev/null || tmux attach-session -t dotfiles"
-        "tmux rename-window -t dotfiles:1 Dotfiles"
+      ts = "tmux switch -t";
+      ta = "tmux attach -t";
+      tn = "tmux new";
+
+      t = join [
+        "SESSION=`ls ~/src | gum filter --height 10`"
+        "${tn} -ds $SESSION -c ~/src/$SESSION"
+        "${ts} $SESSION 2>/dev/null || ${ta} $SESSION"
       ];
-      t = cmdJoin [
-        "SESSION=`ls $HOME/src | gum filter --height 10`"
-        "tmux new-session -ds $SESSION -c $HOME/src/$SESSION 2>/dev/null"
-        "tmux switch-client -t $SESSION 2>/dev/null || tmux attach -t $SESSION"
-        "tmux rename-window -t $SESSION:1 $SESSION"
+
+      _ = join [
+        "${tn} -ds Dotfiles -c ~/_"
+        "${ts} Dotfiles 2>/dev/null || ${ta} Dotfiles"
       ];
+
+      tkss = "tmux kill-session -t";
+      tksv = "tmux kill-server";
+      tls = "tmux list-sessions";
 
       src = "cd $HOME/src";
 
@@ -164,12 +171,6 @@ in {
 
       scim = "sc-im";
 
-      ta = "tmux attach";
-      tat = "tmux attach -t";
-      tkss = "tmux kill-session -t";
-      tksv = "tmux kill-server";
-      tls = "tmux list-sessions";
-
       dwlos = "printf 热爱开源 | pbcopy";
       dwnh = "printf 你好 | pbcopy";
 
@@ -218,8 +219,6 @@ in {
             ]
             + "}' zsh")
         ];
-
-      prompt = "PROMPT='${color "#5a56e0" ">"} ' && clear";
     };
     defaultKeymap = "viins";
     initExtraBeforeCompInit = ''
@@ -258,7 +257,7 @@ in {
         fi
       }
 
-        export PROMPT="%F{cyan}\$USER%f%F{blue}@\$HOST%f %F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
+        export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
     '';
     loginExtra = ''

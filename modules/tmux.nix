@@ -25,18 +25,18 @@ with builtins; let
   status = {
     justify = "left";
     left = "' #S '";
-    left-style = "bg=#6873fa,fg=#fcfcfc,bold";
+    left-style = "bg=default,fg=#cccccc,bold";
     right = "'#[fg=#595959] #(whoami).#(hostname) #[fg=#494949] %d %b %Y  %I:%M%p '";
     right-style = "bg=default,fg=#444444";
-    style = "bg=#2a2a2a";
+    style = "bg=default";
   };
 
   window = {
     status-current-format = "' #I #W * '";
-    status-current-style = "fg=#fcfcfc,bg=#EE92C2";
+    status-current-style = "fg=#aaaaaa,bg=default";
     status-format = "' #I #W - '";
-    status-style = "fg=#595959,bg=#2A2A2A";
-    status-separator = "' '";
+    status-style = "fg=#595959,bg=default";
+    status-separator = "''";
   };
 
   message = {
@@ -51,7 +51,7 @@ with builtins; let
   binds = {
     "|" = "split-window -h ${currentPath}";
     "-" = "split-window ${currentPath}";
-    "c" = "new-window ${currentPath}";
+    "c" = "new-window ${currentPath} -n ''";
     "=" = "set-window-option synchronize-panes";
     "N" = "new";
     "C-a" = "send-prefix";
