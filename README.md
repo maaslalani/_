@@ -1,10 +1,7 @@
 ### Home
-Dotfiles managed with [`nix`](nix) and [`home-manager`](home-manager).
 
-#### Editor
+Dotfiles managed with [`nix`](https://nixos.org) and [`home-manager`](https://github.com/nix-community/home-manager).
 
-Using the [`helix`](helix) editor.
+### Editor
 
-[nix]: https://nixos.org
-[home-manager]: https://github.com/nix-community/home-manager
-[helix]: https://helix-editor.com
+Using the [`helix`](https://helix-editor.com) editor.

@@ -147,6 +147,7 @@ in {
       ls = "exa";
       lsa = "exa -Fla";
       sl = "${ls}";
+      tree = "${ls} -T";
 
       md = "mkdir";
 
