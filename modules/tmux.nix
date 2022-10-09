@@ -24,17 +24,19 @@ with builtins; let
 
   status = {
     justify = "left";
-    left = "''";
-    right = "'  %H:%M  '";
-    right-style = "bg=default,fg=white";
-    style = "bg=default";
+    left = "' #S '";
+    left-style = "bg=#6873fa,fg=#fcfcfc,bold";
+    right = "'#[fg=#595959] #(whoami).#(hostname) #[fg=#494949] %d %b %Y  %I:%M%p '";
+    right-style = "bg=default,fg=#444444";
+    style = "bg=#2a2a2a";
   };
 
   window = {
-    status-current-format = "' #I:#W '";
-    status-current-style = "fg=cyan,bg=default";
-    status-format = "' #I:#W '";
-    status-style = "fg=white,bg=default";
+    status-current-format = "' #I #W * '";
+    status-current-style = "fg=#fcfcfc,bg=#EE92C2";
+    status-format = "' #I #W - '";
+    status-style = "fg=#595959,bg=#2A2A2A";
+    status-separator = "' '";
   };
 
   message = {
@@ -42,7 +44,7 @@ with builtins; let
     style = "fg=cyan,bg=default";
   };
 
-  mode.style = "fg=cyan,bg=colour0";
+  mode.style = "fg=#fdfee1,bg=#292929";
 
   currentPath = "-c \"#{pane_current_path}\"";
 
@@ -62,7 +64,7 @@ in {
     enable = true;
     escapeTime = 0;
     keyMode = "vi";
-    newSession = false;
+    newSession = true;
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
