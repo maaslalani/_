@@ -12,7 +12,6 @@
   green = color "green";
 
   join = builtins.concatStringsSep " && ";
-  cmdJoin = builtins.concatStringsSep "; ";
   spaceJoin = builtins.concatStringsSep " ";
   commaJoin = builtins.concatStringsSep ",";
   value = k: v: "\"${k}\":\"${v}\"";
@@ -36,21 +35,12 @@ in {
       ta = "tmux attach -t";
       tn = "tmux new";
 
-      t = join [
-        "SESSION=`ls ~/src | gum filter --height 10`"
-        "${tn} -ds $SESSION -c ~/src/$SESSION"
-        "${ts} $SESSION 2>/dev/null || ${ta} $SESSION"
-      ];
-
-      _ = join [
-        "${tn} -ds Dotfiles -c ~/_"
-        "${ts} Dotfiles 2>/dev/null || ${ta} Dotfiles"
-      ];
-
+      t = "SESSION=`ls $SRC | gum filter --height 10` && ${tn} -ds $SESSION -c $SRC/$SESSION; ${ts} $SESSION";
       tkss = "tmux kill-session -t";
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
 
+      _ = "${tn} -ds Dotfiles -c ~/_; ${ts} Dotfiles";
       src = "cd $HOME/src";
 
       dstroy = "fd -IH .DS_Store | xargs sudo rm";
@@ -295,6 +285,7 @@ in {
       NIX_BIN = "$HOME/.nix-profile/bin";
       NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
       SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
+      SRC = "$HOME/src";
       _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
       PATH = pathJoin [
         CARGO_BIN

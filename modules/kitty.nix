@@ -7,9 +7,12 @@
 in {
   programs.kitty = {
     enable = true;
+    darwinLaunchOptions = ["tmux new -DAs Default"];
     settings = {
       enable_audio_bell = false;
       copy_on_select = true;
+
+      mouse_hide_wait = "3.0";
 
       macos_traditional_fullscreen = true;
       remember_window_size = true;
@@ -38,14 +41,16 @@ in {
       allow_remote_control = true;
       cursor_blink_interval = 0;
 
-      # tmux new-session - A - D - s default
-
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";
       macos_quit_when_last_window_closed = true;
       macos_show_window_title_in = "none";
 
-      # colors
+      font_family = "SF Mono Medium";
+      italic_font = "SF Mono Medium Italic";
+      bold_font = "SF Mono Heavy";
+      bold_italic_font = "SF Mono Heavy Italic";
+      font_size = "15.0";
 
       selection_foreground = "none";
       selection_background = "#707880";
@@ -75,10 +80,6 @@ in {
       "cmd+w" = "no_op";
       "cmd+t" = "no_op";
       "cmd+enter" = "no_op";
-    };
-    font = {
-      name = "SF Mono Medium";
-      size = 15;
     };
   };
 }

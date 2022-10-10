@@ -55,6 +55,7 @@
   charmbracelet = with pkgs; [
     charm
     glow
+    gum
     melt
     skate
     soft-serve
