@@ -218,12 +218,19 @@ in {
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-      function historysearch() {
-        BUFFER="$(gum filter < $HISTFILE)"
+      function hs() {
+        BUFFER="$(fc -ln 0 | gum filter)"
         zle -w end-of-line
       }
-      zle -N historysearch
-      bindkey "^r" historysearch
+      zle -N hs
+      bindkey "^r" hs
+
+      function fs() {
+        BUFFER+="$(gum filter)"
+        zle -w end-of-line
+      }
+      zle -N fs
+      bindkey "^t" fs
     '';
     initExtra = ''
       setopt prompt_subst
