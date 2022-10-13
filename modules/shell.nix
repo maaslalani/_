@@ -171,7 +171,7 @@ in {
 
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; hx $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
-      wiki = "cd $HOME/wiki && hx index.md && cd -";
+      wiki = "cd $HOME/wiki && hx . && cd -";
 
       sk8 = "ssh skate.ssh.toys";
 
@@ -219,7 +219,7 @@ in {
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
       function hs() {
-        BUFFER="$(fc -ln 0 | gum filter)"
+        BUFFER="$(fc -ln 0 | gum filter --value "$BUFFER")"
         zle -w end-of-line
       }
       zle -N hs
@@ -245,6 +245,7 @@ in {
       fi
 
       rm() {
+        mkdir -p $HOME/.Trash/$1 2>/dev/null
         mv $1 $HOME/.Trash/$1
       }
 
