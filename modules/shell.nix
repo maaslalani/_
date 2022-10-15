@@ -40,7 +40,7 @@ in {
       tksv = "tmux kill-server";
       tls = "tmux list-sessions";
 
-      _ = "${tn} -ds Dotfiles -c ~/_; ${ts} Dotfiles";
+      _ = "${tn} -ds dotfiles -c ~/_; ${ts} dotfiles";
       src = "cd $HOME/src";
 
       dstroy = "fd -IH .DS_Store | xargs sudo rm";

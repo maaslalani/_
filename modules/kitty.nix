@@ -7,7 +7,7 @@
 in {
   programs.kitty = {
     enable = true;
-    darwinLaunchOptions = ["tmux new -DAs Default"];
+    darwinLaunchOptions = ["tmux new -DAs default"];
     settings = {
       enable_audio_bell = false;
       copy_on_select = true;
