@@ -38,6 +38,8 @@
     nodePackages.expo-cli
     nodejs-16_x
     openssl
+    pandoc
+    pinentry_mac
     postgresql
     redis
     ruby_3_1

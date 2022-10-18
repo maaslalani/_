@@ -234,6 +234,7 @@ in {
     '';
     initExtra = ''
       setopt prompt_subst
+      setopt histignorealldups
 
       bindkey '^P' up-history
       bindkey '^N' down-history
