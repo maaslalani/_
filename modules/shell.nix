@@ -247,7 +247,7 @@ in {
 
       rm() {
         mkdir -p $HOME/.Trash/$1 2>/dev/null
-        mv $1 $HOME/.Trash/$1
+        mv -f $1 $HOME/.Trash/$1
       }
 
       precmd() {

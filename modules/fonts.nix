@@ -21,6 +21,9 @@
         fonts = [
           "Hack"
           "FiraCode"
+          "DejaVuSansMono"
+          "SourceCodePro"
+          "RobotoMono"
         ];
       }
     )

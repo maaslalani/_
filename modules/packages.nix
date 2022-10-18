@@ -29,6 +29,7 @@
     ffmpeg
     fzf
     git
+    git-lfs
     go-swagger
     go_1_19
     gopass
