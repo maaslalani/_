@@ -26,7 +26,7 @@
     cowsay
     delve
     fennel
-    ffmpeg
+    ffmpeg_5
     fzf
     git
     git-lfs

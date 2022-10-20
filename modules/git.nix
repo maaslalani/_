@@ -9,6 +9,7 @@
   user = "maaslalani";
 in {
   programs.git = {
+    lfs.enable = true;
     enable = true;
     ignores = [".DS_Store"];
     extraConfig = {

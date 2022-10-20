@@ -69,6 +69,7 @@
                  :n {:name :Notes :action (launch :Notes)}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :s {:name :Slack :action (launch :Slack)}
+                 :d {:name :Discord :action (launch :Discord)}
                  :t {:name :Terminal :action (launch :Kitty)}}
              :f {:name :Focus
                  :action (fn []
