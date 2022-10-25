@@ -21,6 +21,7 @@
   darwin = with pkgs; [
     alejandra
     awscli2
+    bundix
     cachix
     coreutils
     cowsay
@@ -39,6 +40,7 @@
     nodePackages.expo-cli
     nodejs-16_x
     openssl
+    optipng
     pandoc
     pinentry_mac
     postgresql

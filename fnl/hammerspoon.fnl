@@ -68,6 +68,7 @@
                  :c {:name :Calendar :action (launch :Calendar)}
                  :n {:name :Notes :action (launch :Notes)}
                  :r {:name :Reminders :action (launch :Reminders)}
+                 :f {:name :Finder :action (launch :Finder)}
                  :s {:name :Slack :action (launch :Slack)}
                  :d {:name :Discord :action (launch :Discord)}
                  :t {:name :Terminal :action (launch :Kitty)}}
