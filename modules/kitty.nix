@@ -58,23 +58,20 @@ in {
       background = "#171717";
       foreground = "#c5c8c6";
 
-      color0 = "#282a2e";
-      color1 = "#a54242";
-      color2 = "#8c9440";
-      color3 = "#de935f";
-      color4 = "#5f819d";
-      color5 = "#85678f";
-      color6 = "#5e8d87";
-      color7 = "#707880";
-
-      color8 = "#373b41";
-      color9 = "#cc6666";
-      color10 = "#b5bd68";
-      color11 = "#f0c674";
-      color12 = "#81a2be";
-      color13 = "#b294bb";
-      color14 = "#8abeb7";
-      color15 = "#c5c8c6";
+      color0 = "#282a2e"; # black
+      color8 = "#4d4d4d"; # bright black
+      color1 = "#D74E6F"; # red
+      color9 = "#FE5F86"; # bright red
+      color2 = "#31BB71"; # green
+      color10 = "#00D787"; # bright green
+      color3 = "#D3E561"; # yellow
+      color11 = "#EBFF71"; # bright yellow
+      color4 = "#8056FF"; # blue
+      color12 = "#8F69FF"; # bright blue
+      color5 = "#ED61D7"; # magenta
+      color13 = "#FF7AEA"; # bright magenta
+      color6 = "#04D7D7"; # cyan
+      color14 = "#00FEFE"; # bright cyan
     };
     keybindings = {
       "cmd+w" = "no_op";
