@@ -79,6 +79,7 @@ in {
       base16 = let
         transparent = "none";
         normal = colors.normal;
+        bright = colors.bright;
       in {
         "ui.menu" = {bg = normal.black;};
         "ui.menu.selected" = {bg = normal.black;};
@@ -102,7 +103,7 @@ in {
           bg = normal.blue;
         };
         "ui.selection.primary" = {modifiers = ["reversed"];};
-        "comment" = {fg = normal.white;};
+        "comment" = {fg = bright.black;};
         "ui.statusline" = {
           fg = normal.white;
           bg = transparent;
@@ -123,7 +124,7 @@ in {
         "attributes" = normal.blue;
         "type" = normal.cyan;
         "ui.cursor.match" = {
-          fg = normal.yellow;
+          fg = normal.cyan;
           modifiers = ["underlined"];
         };
         "string" = normal.green;

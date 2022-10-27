@@ -38,7 +38,7 @@ in {
       inactive_tab_background = "#1d1f21";
       inactive_tab_font_style = "normal";
 
-      adjust_line_height = "120%";
+      # adjust_line_height = "120%";
       allow_remote_control = true;
       cursor_blink_interval = 0;
 
@@ -47,11 +47,8 @@ in {
       macos_quit_when_last_window_closed = true;
       macos_show_window_title_in = "none";
 
-      font_family = "SF Mono Medium";
-      italic_font = "SF Mono Medium Italic";
-      bold_font = "SF Mono Heavy";
-      bold_italic_font = "SF Mono Heavy Italic";
-      font_size = "15.0";
+      font_family = "JetBrains Mono";
+      font_size = "16.0";
 
       selection_foreground = "none";
       selection_background = "#707880";
@@ -59,8 +56,8 @@ in {
       background = colors.background;
       foreground = colors.foreground;
 
-      color0 = colors.normal.black; # black
-      color8 = colors.normal.black;
+      color0 = colors.normal.black;
+      color8 = colors.bright.black;
       color1 = colors.normal.red;
       color9 = colors.bright.red;
       color2 = colors.normal.green;
@@ -73,6 +70,8 @@ in {
       color13 = colors.bright.magenta;
       color6 = colors.normal.cyan;
       color14 = colors.bright.cyan;
+      color7 = colors.normal.white;
+      color15 = colors.bright.white;
     };
     keybindings = {
       "cmd+w" = "no_op";
