@@ -4,6 +4,7 @@
   libs,
   ...
 }: let
+  colors = import ./colors.nix;
 in {
   programs.kitty = {
     enable = true;
@@ -55,23 +56,23 @@ in {
       selection_foreground = "none";
       selection_background = "#707880";
 
-      background = "#171717";
-      foreground = "#c5c8c6";
+      background = colors.background;
+      foreground = colors.foreground;
 
-      color0 = "#282a2e"; # black
-      color8 = "#4d4d4d"; # bright black
-      color1 = "#D74E6F"; # red
-      color9 = "#FE5F86"; # bright red
-      color2 = "#31BB71"; # green
-      color10 = "#00D787"; # bright green
-      color3 = "#D3E561"; # yellow
-      color11 = "#EBFF71"; # bright yellow
-      color4 = "#8056FF"; # blue
-      color12 = "#8F69FF"; # bright blue
-      color5 = "#ED61D7"; # magenta
-      color13 = "#FF7AEA"; # bright magenta
-      color6 = "#04D7D7"; # cyan
-      color14 = "#00FEFE"; # bright cyan
+      color0 = colors.normal.black; # black
+      color8 = colors.normal.black;
+      color1 = colors.normal.red;
+      color9 = colors.bright.red;
+      color2 = colors.normal.green;
+      color10 = colors.bright.green;
+      color3 = colors.normal.yellow;
+      color11 = colors.bright.yellow;
+      color4 = colors.normal.blue;
+      color12 = colors.bright.blue;
+      color5 = colors.normal.magenta;
+      color13 = colors.bright.magenta;
+      color6 = colors.normal.cyan;
+      color14 = colors.bright.cyan;
     };
     keybindings = {
       "cmd+w" = "no_op";

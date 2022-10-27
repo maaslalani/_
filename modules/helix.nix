@@ -3,7 +3,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  colors = import ./colors.nix;
+in {
   config.programs.helix = {
     enable = true;
     package = pkgs.helix;
@@ -76,42 +78,23 @@
     themes = {
       base16 = let
         transparent = "none";
-        normal = {
-          black = "#282A2E";
-          red = "#A54242";
-          green = "#8C9440";
-          yellow = "#DE935F";
-          blue = "#5F819D";
-          magenta = "#85678F";
-          cyan = "#5E8D87";
-          white = "#707880";
-        };
-        bright = {
-          black = "#373B41";
-          red = "#CC6666";
-          green = "#B5BD68";
-          yellow = "#F0C674";
-          blue = "#81A2BE";
-          magenta = "#B294BB";
-          cyan = "#8ABEB7";
-          white = "#C5C8C6";
-        };
+        normal = colors.normal;
       in {
         "ui.menu" = {bg = normal.black;};
-        "ui.menu.selected" = {bg = bright.black;};
+        "ui.menu.selected" = {bg = normal.black;};
         "ui.menu.scroll" = {
           fg = normal.black;
           bg = normal.black;
         };
         "ui.window" = normal.black;
-        "ui.linenr" = {fg = bright.black;};
+        "ui.linenr" = {fg = normal.black;};
         "ui.linenr.selected" = {fg = normal.white;};
         "ui.popup" = {
-          fg = bright.white;
+          fg = normal.white;
           bg = normal.black;
         };
         "ui.popup.info" = {
-          fg = bright.white;
+          fg = normal.white;
           bg = transparent;
         };
         "ui.selection" = {
@@ -125,7 +108,7 @@
           bg = transparent;
         };
         "ui.statusline.inactive" = {
-          fg = bright.black;
+          fg = normal.black;
           bg = transparent;
         };
         "ui.help" = {
@@ -133,37 +116,37 @@
           bg = transparent;
         };
         "ui.cursor" = {modifiers = ["reversed"];};
-        "variable" = bright.white;
+        "variable" = normal.white;
         "variable.builtin" = normal.yellow;
         "constant.numeric" = normal.yellow;
         "constant" = normal.yellow;
         "attributes" = normal.blue;
-        "type" = bright.cyan;
+        "type" = normal.cyan;
         "ui.cursor.match" = {
-          fg = bright.yellow;
+          fg = normal.yellow;
           modifiers = ["underlined"];
         };
-        "string" = bright.green;
-        "variable.other.member" = bright.blue;
-        "constant.character.escape" = bright.yellow;
+        "string" = normal.green;
+        "variable.other.member" = normal.blue;
+        "constant.character.escape" = normal.yellow;
         "function" = normal.yellow;
         "function.builtin" = normal.magenta;
         "function.method" = normal.blue;
-        "constructor" = bright.blue;
+        "constructor" = normal.blue;
         "special" = normal.yellow;
-        "keyword" = bright.blue;
+        "keyword" = normal.blue;
         "keyword.control.repeat" = normal.magenta;
         "label" = normal.magenta;
         "namespace" = normal.blue;
         "diff.plus" = normal.green;
-        "diff.delta" = bright.yellow;
+        "diff.delta" = normal.yellow;
         "diff.minus" = normal.red;
         "diagnostic" = {modifiers = ["underlined"];};
         "ui.gutter" = {bg = transparent;};
         "info" = normal.blue;
         "hint" = normal.white;
         "debug" = normal.white;
-        "warning" = bright.yellow;
+        "warning" = normal.yellow;
         "error" = normal.red;
       };
     };
