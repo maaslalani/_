@@ -289,7 +289,7 @@ in {
       HOMEBREW_SBIN = "/opt/homebrew/sbin";
       JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
       KEYTIMEOUT = 1;
-      KUBECONFIG = pathJoin ["$HOME/.kube/config" "$HOME/.kube/config.shopify.cloudplatform"];
+      KUBECONFIG = pathJoin ["$HOME/.kube/config"];
       NIXPKGS_ALLOW_BROKEN = 1;
       NIX_BIN = "$HOME/.nix-profile/bin";
       NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];

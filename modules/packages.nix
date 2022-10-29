@@ -37,6 +37,7 @@
     gopls
     hammerspoon
     htop
+    nixpkgs-fmt
     nodePackages.expo-cli
     nodejs-16_x
     openssl
