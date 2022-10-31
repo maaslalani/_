@@ -12,7 +12,7 @@ in {
     settings = {
       editor = {
         cursor-shape.insert = "bar";
-        file-picker.max-depth = 5;
+        file-picker.max-depth = 3;
       };
       theme = "base16";
       keys.normal = {
@@ -82,7 +82,7 @@ in {
         bright = colors.bright;
       in {
         "ui.menu" = {bg = normal.black;};
-        "ui.menu.selected" = {bg = normal.black;};
+        "ui.menu.selected" = {bg = bright.black;};
         "ui.menu.scroll" = {
           fg = normal.black;
           bg = normal.black;
@@ -131,11 +131,11 @@ in {
         "variable.other.member" = normal.blue;
         "constant.character.escape" = normal.yellow;
         "function" = normal.yellow;
-        "function.builtin" = normal.magenta;
+        "function.builtin" = normal.blue;
         "function.method" = normal.blue;
         "constructor" = normal.blue;
         "special" = normal.yellow;
-        "keyword" = normal.blue;
+        "keyword" = bright.magenta;
         "keyword.control.repeat" = normal.magenta;
         "label" = normal.magenta;
         "namespace" = normal.blue;

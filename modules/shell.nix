@@ -119,8 +119,6 @@ in {
       rdbr = "${r} db:rollback";
       rdbs = "${r} db:seed";
 
-      setmotd = "${sk8} set motd --team cats";
-
       b = "bundle";
       be = "${b} exec";
       bi = "${b} install";
@@ -263,9 +261,6 @@ in {
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
     '';
-    loginExtra = ''
-      ssh skate.ssh.toys get motd --team cats
-    '';
     sessionVariables = let
       pathJoin =
         builtins.concatStringsSep
@@ -292,6 +287,7 @@ in {
       KUBECONFIG = pathJoin ["$HOME/.kube/config"];
       NIXPKGS_ALLOW_BROKEN = 1;
       NIX_BIN = "$HOME/.nix-profile/bin";
+      BASH_SILENCE_DEPRECATION_WARNING = 1;
       NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
       SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
       SRC = "$HOME/src";
