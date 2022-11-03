@@ -23,6 +23,7 @@
     awscli2
     bundix
     cachix
+    chafa
     coreutils
     cowsay
     delve
@@ -37,6 +38,7 @@
     gopls
     hammerspoon
     htop
+    lsix
     nixpkgs-fmt
     nodePackages.expo-cli
     nodejs-16_x
@@ -52,6 +54,7 @@
     spotify-tui
     spotifyd
     tree-sitter
+    ttyd
     twurl
     yarn
   ];
