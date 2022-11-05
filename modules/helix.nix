@@ -18,6 +18,7 @@ in {
       keys.normal = {
         g.q = ":reflow";
         X = "extend_line_above";
+        ret = ["move_line_down" "goto_line_start"];
         space = {
           w = ":write";
           q = ":quit";
