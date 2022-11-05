@@ -7,7 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:helix-editor/helix/master";
       flake = true;
     };
     hammerspoon = {

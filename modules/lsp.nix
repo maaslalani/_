@@ -21,5 +21,4 @@ with pkgs.nodePackages; [
   sumneko-lua-language-server
   vscode-json-languageserver
   yaml-language-server
-  zls
 ]
