@@ -38,6 +38,7 @@
     gopls
     hammerspoon
     htop
+    lolcat
     lsix
     nixpkgs-fmt
     nodePackages.expo-cli
