@@ -6,10 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
-    helix = {
-      url = "github:helix-editor/helix/master";
-      flake = true;
-    };
+    helix.url = "github:helix-editor/helix/master";
     hammerspoon = {
       url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip";
       flake = false;
@@ -34,6 +31,8 @@
                 cp -r $src/Contents $out/Applications/Hammerspoon.app/
               '';
             };
+
+            helix = inputs.helix.packages.${self.system}.default;
 
             fnl = self.pkgs.stdenv.mkDerivation {
               pname = "fnl";

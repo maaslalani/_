@@ -11,8 +11,12 @@ in {
     package = pkgs.helix;
     settings = {
       editor = {
+        cursorline = true;
         cursor-shape.insert = "bar";
         file-picker.max-depth = 3;
+        true-color = true;
+        gutters = ["diagnostics" "line-numbers" "spacer"];
+        lsp.display-messages = true;
       };
       theme = "base16";
       keys.normal = {
