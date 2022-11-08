@@ -15,9 +15,7 @@ in {
         cursor-shape.insert = "bar";
         file-picker.max-depth = 3;
         true-color = true;
-        gutters = ["diagnostics" "line-numbers" "spacer"];
         lsp.display-messages = true;
-        rulers = [80];
       };
       theme = "charm";
       keys.normal = {
