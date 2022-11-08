@@ -17,8 +17,9 @@ in {
         true-color = true;
         gutters = ["diagnostics" "line-numbers" "spacer"];
         lsp.display-messages = true;
+        rulers = [80];
       };
-      theme = "base16";
+      theme = "charm";
       keys.normal = {
         g.q = ":reflow";
         X = "extend_line_above";
@@ -81,7 +82,7 @@ in {
       }
     ];
     themes = {
-      base16 = let
+      charm = let
         transparent = "none";
         normal = colors.normal;
         bright = colors.bright;
@@ -122,6 +123,7 @@ in {
           bg = transparent;
         };
         "ui.cursor" = {modifiers = ["reversed"];};
+        "ui.virtual.ruler" = {bg = "#1a1a1a";};
         "variable" = normal.white;
         "variable.builtin" = normal.yellow;
         "constant.numeric" = normal.yellow;
