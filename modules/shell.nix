@@ -243,11 +243,6 @@ in {
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      rm() {
-        mkdir -p $HOME/.Trash/$1 2>/dev/null
-        mv -f $1 $HOME/.Trash/$1-$RANDOM
-      }
-
       precmd() {
         if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
           GIT_BRANCH="($(git branch --show-current))"

@@ -51,6 +51,7 @@
     redis
     ruby_3_1
     rustup
+    rm-improved
     sc-im
     spotify-tui
     spotifyd
