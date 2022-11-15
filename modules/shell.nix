@@ -261,6 +261,9 @@ in {
         builtins.concatStringsSep
         ":";
     in rec {
+      XDG_DATA_HOME = config.xdg.dataHome;
+      XDG_CONFIG_HOME = config.xdg.configHome;
+      XDG_CACHE_HOME = config.xdg.cacheHome;
       AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
       AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
       BREW_SBIN = "/usr/local/sbin";

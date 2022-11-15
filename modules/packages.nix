@@ -38,6 +38,7 @@
     gopls
     hammerspoon
     htop
+    python310Packages.grip
     lolcat
     lsix
     nixpkgs-fmt
@@ -65,7 +66,6 @@
 
   charmbracelet = with pkgs; [
     charm
-    glow
     melt
     skate
     soft-serve
