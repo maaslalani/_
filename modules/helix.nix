@@ -61,23 +61,6 @@ in {
         grammar = "scheme";
         roots = [];
       }
-      {
-        name = "json";
-        file-types = ["lock" "json"];
-        language-server = {command = "vscode-json-languageserver";};
-      }
-      {
-        name = "html";
-        language-server = {command = "html-languageserver";};
-      }
-      {
-        name = "css";
-        language-server = {command = "css-languageserver";};
-      }
-      {
-        name = "javascript";
-        auto-format = true;
-      }
     ];
     themes = {
       charm = let
