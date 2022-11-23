@@ -38,7 +38,7 @@
     gopls
     hammerspoon
     htop
-    python310Packages.grip
+    imagemagick
     lolcat
     lsix
     nixpkgs-fmt
@@ -49,10 +49,11 @@
     pandoc
     pinentry_mac
     postgresql
+    python310Packages.grip
     redis
+    rm-improved
     ruby_3_1
     rustup
-    rm-improved
     sc-im
     spotify-tui
     spotifyd
@@ -60,6 +61,7 @@
     ttyd
     twurl
     yarn
+    yq
   ];
 
   linux = [];
