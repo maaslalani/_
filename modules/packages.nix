@@ -34,6 +34,7 @@
     git-lfs
     go-swagger
     go_1_19
+    wezterm
     gopass
     gopls
     hammerspoon

@@ -71,7 +71,7 @@
                  :f {:name :Finder :action (launch :Finder)}
                  :s {:name :Slack :action (launch :Slack)}
                  :d {:name :Discord :action (launch :Discord)}
-                 :t {:name :Terminal :action (launch :Kitty)}}
+                 :t {:name :Terminal :action (launch :Wezterm)}}
              :f {:name :Focus
                  :action (fn []
                            (hs.hints.windowHints))}
