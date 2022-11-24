@@ -253,6 +253,8 @@ in {
         fi
       }
 
+      export GPG_TTY=$(tty)
+
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
     '';

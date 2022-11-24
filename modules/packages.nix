@@ -47,7 +47,6 @@
     openssl
     optipng
     pandoc
-    pinentry_mac
     postgresql
     python310Packages.grip
     redis
