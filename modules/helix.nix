@@ -103,8 +103,12 @@ in {
           fg = normal.white;
           bg = transparent;
         };
-        "ui.cursor" = {modifiers = ["reversed"];};
-        "ui.virtual.ruler" = {bg = "#1a1a1a";};
+        "ui.cursor" = {
+          modifiers = ["reversed"];
+        };
+        "ui.virtual.ruler" = {
+          bg = "#1a1a1a";
+        };
         "variable" = normal.white;
         "variable.builtin" = normal.yellow;
         "constant.numeric" = normal.yellow;
@@ -130,13 +134,53 @@ in {
         "diff.plus" = normal.green;
         "diff.delta" = normal.yellow;
         "diff.minus" = normal.red;
-        "diagnostic" = {modifiers = ["underlined"];};
-        "ui.gutter" = {bg = transparent;};
+        "diagnostic" = {
+          modifiers = ["underlined"];
+        };
+        "ui.gutter" = {
+          bg = transparent;
+        };
         "info" = normal.blue;
         "hint" = normal.white;
         "debug" = normal.white;
         "warning" = normal.yellow;
         "error" = normal.red;
+
+        "markup.heading.marker" = "#00b2ff";
+        "markup.heading.1" = {
+          bg = "#605eff";
+          fg = "#ffff72";
+        };
+        "markup.heading.2" = "#00b2ff";
+        "markup.heading.3" = "#00b2ff";
+        "markup.heading.6" = "#00b2ff";
+        "markup.bold" = {
+          modifiers = ["bold"];
+        };
+        "markup.italic" = {
+          modifiers = ["italic"];
+        };
+        "markup.underline.link" = {
+          fg = "#008a88";
+          modifiers = ["underlined"];
+        };
+        "markup.raw.inline" = {
+          bg = "#303030";
+          fg = "#ff4f58";
+        };
+        "markup.raw.block" = {
+          fg = bright.black;
+        };
+        "markup.link.url" = {
+          fg = "#008a88";
+          modifiers = ["underlined"];
+        };
+        "markup.link.label" = {
+          fg = "#00b255";
+        };
+        "markup.link.text" = {
+          fg = "#00b255";
+        };
       };
     };
   };

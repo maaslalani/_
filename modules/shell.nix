@@ -169,7 +169,7 @@ in {
 
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; hx $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
-      wiki = "cd $HOME/wiki && hx index.md && cd -";
+      wiki = "cd $HOME/wiki && hx . && cd -";
 
       sk8 = "ssh skate.ssh.toys";
 
