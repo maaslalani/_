@@ -18,10 +18,20 @@ in {
         lsp.display-messages = true;
       };
       theme = "charm";
+      keys.insert = {
+        esc = ["collapse_selection" "normal_mode"];
+      };
+      keys.select = {
+        esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
+      };
       keys.normal = {
+        esc = ["collapse_selection" "normal_mode"];
         g.q = ":reflow";
         X = "extend_line_above";
         ret = ["move_line_down" "goto_line_start"];
+        G = "goto_file_end";
+        i = ["insert_mode" "collapse_selection"];
+        a = ["append_mode" "collapse_selection"];
         space = {
           w = ":write";
           q = ":quit";
@@ -147,12 +157,11 @@ in {
         "error" = normal.red;
 
         "markup.heading.marker" = "#00b2ff";
-        "markup.heading.1" = {
-          bg = "#605eff";
-          fg = "#ffff72";
-        };
+        "markup.heading.1" = "#00b2ff";
         "markup.heading.2" = "#00b2ff";
         "markup.heading.3" = "#00b2ff";
+        "markup.heading.4" = "#00b2ff";
+        "markup.heading.5" = "#00b2ff";
         "markup.heading.6" = "#00b2ff";
         "markup.bold" = {
           modifiers = ["bold"];
@@ -168,6 +177,8 @@ in {
           bg = "#303030";
           fg = "#ff4f58";
         };
+        "markup.list.unnumbered" = bright.black;
+        "markup.list.numbered" = bright.black;
         "markup.raw.block" = {
           fg = bright.black;
         };
