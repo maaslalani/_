@@ -59,6 +59,7 @@ in {
         show_new_tab_button_in_tab_bar = false,
         hide_tab_bar_if_only_one_tab = true,
         default_prog = { "zsh", "-c", "tmux new -DAs default" },
+        window_close_confirmation = "NeverPrompt",
       }
     '';
   };

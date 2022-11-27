@@ -24,6 +24,7 @@
     bundix
     cachix
     chafa
+    circumflex
     coreutils
     cowsay
     delve
@@ -34,7 +35,6 @@
     git-lfs
     go-swagger
     go_1_19
-    wezterm
     gopass
     gopls
     hammerspoon
@@ -60,6 +60,7 @@
     tree-sitter
     ttyd
     twurl
+    wezterm
     yarn
     yq
   ];
