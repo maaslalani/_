@@ -47,6 +47,7 @@ in {
         name = "nix";
         auto-format = true;
         formatter = {command = "alejandra";};
+        language-server = {command = "rnix-lsp";};
       }
       {
         name = "go";
@@ -56,6 +57,18 @@ in {
         };
         auto-format = true;
         formatter = {command = "goimports";};
+      }
+      {
+        name = "html";
+        language-server = {command = "html-languageserver";};
+      }
+      {
+        name = "css";
+        language-server = {command = "css-languageserver";};
+      }
+      {
+        name = "scss";
+        language-server = {command = "css-languageserver";};
       }
       {
         name = "fennel";

@@ -3,22 +3,22 @@ with pkgs;
 with pkgs.elmPackages;
 with pkgs.nodePackages; [
   bash-language-server
+  elm-language-server
   fnlfmt
   golangci-lint
   golangci-lint-langserver
-  elm-language-server
   proselint
   rnix-lsp
+  rust-analyzer
   serve
   solargraph
-  rust-analyzer
+  sumneko-lua-language-server
   terraform-ls
   typescript
   typescript-language-server
-  vscode-html-languageserver-bin
   vscode-css-languageserver-bin
-  write-good
-  sumneko-lua-language-server
+  vscode-html-languageserver-bin
   vscode-json-languageserver
+  write-good
   yaml-language-server
 ]
