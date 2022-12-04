@@ -24,7 +24,7 @@ with builtins; let
 
   status = {
     justify = "left";
-    left = "' #S '";
+    left = " '#S' ";
     left-style = "bg=default,fg=#cccccc,bold";
     right = "'#[fg=#595959] #(whoami).#(hostname) #[fg=#494949] %d %b %Y  %I:%M%p '";
     right-style = "bg=default,fg=#444444";
@@ -49,12 +49,14 @@ with builtins; let
   currentPath = "-c \"#{pane_current_path}\"";
 
   binds = {
-    "|" = "split-window -h ${currentPath}";
     "-" = "split-window ${currentPath}";
-    "c" = "new-window ${currentPath} -n ''";
     "=" = "set-window-option synchronize-panes";
-    "N" = "new";
     "C-a" = "send-prefix";
+    "N" = "new";
+    "R" = "source-file ~/.config/tmux/tmux.conf";
+    "S" = "set -g status";
+    "c" = "new-window ${currentPath} -n ''";
+    "|" = "split-window -h ${currentPath}";
   };
 in {
   programs.tmux = {

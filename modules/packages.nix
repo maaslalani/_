@@ -55,6 +55,7 @@
     ruby_3_1
     rustup
     sc-im
+    simple-http-server
     spotify-tui
     spotifyd
     tree-sitter
@@ -69,9 +70,11 @@
 
   charmbracelet = with pkgs; [
     charm
+    gum
     melt
     skate
     soft-serve
+    vhs
   ];
 in {
   home.packages =
