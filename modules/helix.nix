@@ -45,7 +45,7 @@ in {
         name = "nix";
         auto-format = true;
         formatter = {command = "alejandra";};
-        language-server = {command = "rnix-lsp";};
+        language-server = {command = "nil";};
       }
       {
         name = "go";

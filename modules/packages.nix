@@ -42,6 +42,7 @@
     imagemagick
     lolcat
     lsix
+    nil
     nixpkgs-fmt
     nodePackages.expo-cli
     nodejs-16_x
@@ -74,7 +75,7 @@
     melt
     skate
     soft-serve
-    # vhs
+    vhs
   ];
 in {
   home.packages =
