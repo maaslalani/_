@@ -32,10 +32,8 @@ in {
         G = "goto_file_end";
         i = ["insert_mode" "collapse_selection"];
         a = ["append_mode" "collapse_selection"];
-        space = {
-          w = ":write";
-          q = ":quit";
-        };
+        space.w = ":write";
+        space.q = ":quit";
       };
     };
     languages = [
