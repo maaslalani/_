@@ -74,7 +74,7 @@
     melt
     skate
     soft-serve
-    vhs
+    # vhs
   ];
 in {
   home.packages =
