@@ -54,20 +54,54 @@ in {
           tab-width = 4;
           unit = "  ";
         };
+        formatter = {
+          command = "goimports";
+        };
         auto-format = true;
-        formatter = {command = "goimports";};
       }
       {
         name = "html";
-        language-server = {command = "html-languageserver";};
+        indent = {
+          tab-width = 2;
+          unit = " ";
+        };
+        language-server = {
+          command = "html-languageserver";
+          args = ["--stdio"];
+        };
+        formatter = {
+          command = "prettier";
+          args = ["--parser" "html" "--tab-width" "2"];
+        };
+        auto-format = false;
       }
       {
         name = "css";
-        language-server = {command = "css-languageserver";};
+        indent = {
+          tab-width = 4;
+          unit = " ";
+        };
+        language-server = {
+          command = "css-languageserver";
+          args = ["--stdio"];
+        };
+        formatter = {
+          command = "prettier";
+          args = ["--parser" "css" "--tab-width" "4"];
+        };
+        auto-format = false;
       }
       {
-        name = "scss";
-        language-server = {command = "css-languageserver";};
+        name = "typescript";
+        indent = {
+          tab-width = 4;
+          unit = " ";
+        };
+        formatter = {
+          command = "prettier";
+          args = ["--parser" "typescript" "--tab-width" "4"];
+        };
+        auto-format = true;
       }
       {
         name = "fennel";
@@ -167,7 +201,7 @@ in {
         "debug" = normal.white;
         "warning" = normal.yellow;
         "error" = normal.red;
-
+        "ui.virtual.whitespace" = {fg = bright.black;};
         "markup.heading.marker" = "#00b2ff";
         "markup.heading.1" = "#00b2ff";
         "markup.heading.2" = "#00b2ff";

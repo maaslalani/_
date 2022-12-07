@@ -4,13 +4,6 @@
   lib,
   ...
 }: let
-  color = color: text: "%F{${color}}${text}%f";
-  cyan = color "cyan";
-  blue = color "blue";
-  magenta = color "magenta";
-  red = color "red";
-  green = color "green";
-
   join = builtins.concatStringsSep " && ";
   spaceJoin = builtins.concatStringsSep " ";
   commaJoin = builtins.concatStringsSep ",";
