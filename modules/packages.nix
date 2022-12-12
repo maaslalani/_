@@ -40,6 +40,7 @@
     hammerspoon
     htop
     imagemagick
+    libwebp
     lolcat
     lsix
     nil
@@ -71,7 +72,7 @@
 
   charmbracelet = with pkgs; [
     charm
-    gum
+    # gum
     melt
     skate
     soft-serve

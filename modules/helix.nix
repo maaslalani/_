@@ -11,7 +11,7 @@ in {
     package = pkgs.helix;
     settings = {
       editor = {
-        gutters = ["diagnostics" "spacer" "diff" "spacer" "line-numbers" "spacer"];
+        gutters = ["diff" "line-numbers" "spacer" "diagnostics"];
         cursorline = true;
         cursor-shape.insert = "bar";
         file-picker.max-depth = 3;
