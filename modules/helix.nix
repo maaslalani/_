@@ -60,50 +60,6 @@ in {
         auto-format = true;
       }
       {
-        name = "html";
-        indent = {
-          tab-width = 2;
-          unit = " ";
-        };
-        language-server = {
-          command = "html-languageserver";
-          args = ["--stdio"];
-        };
-        formatter = {
-          command = "prettier";
-          args = ["--parser" "html" "--tab-width" "2"];
-        };
-        auto-format = false;
-      }
-      {
-        name = "css";
-        indent = {
-          tab-width = 4;
-          unit = " ";
-        };
-        language-server = {
-          command = "css-languageserver";
-          args = ["--stdio"];
-        };
-        formatter = {
-          command = "prettier";
-          args = ["--parser" "css" "--tab-width" "4"];
-        };
-        auto-format = false;
-      }
-      {
-        name = "typescript";
-        indent = {
-          tab-width = 4;
-          unit = " ";
-        };
-        formatter = {
-          command = "prettier";
-          args = ["--parser" "typescript" "--tab-width" "4"];
-        };
-        auto-format = true;
-      }
-      {
         name = "fennel";
         file-types = ["fnl"];
         formatter = {command = "fnlfmt";};

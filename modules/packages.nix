@@ -41,6 +41,7 @@
     htop
     imagemagick
     libwebp
+    llvm
     lolcat
     lsix
     nil
