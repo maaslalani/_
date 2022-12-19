@@ -73,6 +73,10 @@ in {
         grammar = "scheme";
         roots = [];
       }
+      {
+        name = "html";
+        auto-format = false;
+      }
     ];
     themes = {
       charm = let

@@ -47,6 +47,7 @@
     nil
     nixpkgs-fmt
     nodePackages.expo-cli
+    nodePackages.eas-cli
     nodejs-16_x
     openssl
     optipng
@@ -55,7 +56,6 @@
     python310Packages.grip
     redis
     rm-improved
-    ruby_3_1
     rustup
     sc-im
     simple-http-server
@@ -64,7 +64,6 @@
     tree-sitter
     ttyd
     twurl
-    wezterm
     yarn
     yq
   ];
