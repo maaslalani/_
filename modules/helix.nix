@@ -19,22 +19,19 @@ in {
         lsp.display-messages = true;
       };
       theme = "charm";
-      keys.insert = {
-        esc = ["collapse_selection" "normal_mode"];
-      };
-      keys.select = {
-        esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
-      };
+      keys.insert.esc = ["collapse_selection" "normal_mode"];
+      keys.normal.esc = ["collapse_selection" "normal_mode"];
+      keys.select.esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
       keys.normal = {
-        esc = ["collapse_selection" "normal_mode"];
-        g.q = ":reflow";
         X = "extend_line_above";
-        ret = ["move_line_down" "goto_line_start"];
-        G = "goto_file_end";
-        i = ["insert_mode" "collapse_selection"];
         a = ["append_mode" "collapse_selection"];
-        space.w = ":write";
-        space.q = ":quit";
+        g.q = ":reflow";
+        i = ["insert_mode" "collapse_selection"];
+        ret = ["move_line_down" "goto_line_start"];
+        space = {
+          w = ":write";
+          q = ":quit";
+        };
       };
     };
     languages = [
@@ -54,24 +51,8 @@ in {
           tab-width = 4;
           unit = "  ";
         };
-        formatter = {
-          command = "goimports";
-        };
+        formatter = {command = "goimports";};
         auto-format = true;
-      }
-      {
-        name = "fennel";
-        file-types = ["fnl"];
-        formatter = {command = "fnlfmt";};
-        scope = "source.scheme";
-        injection-regex = "scheme";
-        comment-token = ";";
-        indent = {
-          tab-width = 2;
-          unit = "  ";
-        };
-        grammar = "scheme";
-        roots = [];
       }
       {
         name = "html";
