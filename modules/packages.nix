@@ -19,6 +19,7 @@
     ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
+    age
     alejandra
     awscli2
     bundix
@@ -40,14 +41,15 @@
     hammerspoon
     htop
     imagemagick
+    kitty
     libwebp
     llvm
     lolcat
     lsix
     nil
     nixpkgs-fmt
-    nodePackages.expo-cli
     nodePackages.eas-cli
+    nodePackages.expo-cli
     nodejs-16_x
     openssl
     optipng
