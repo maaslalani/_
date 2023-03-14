@@ -26,6 +26,7 @@
     cachix
     chafa
     circumflex
+    circumflex
     coreutils
     cowsay
     delve

@@ -8,7 +8,7 @@
 
     helix.url = "github:helix-editor/helix/master";
     hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.97.zip";
+      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.99.zip";
       flake = false;
     };
     fnl = {
@@ -24,7 +24,7 @@
           self: super: {
             hammerspoon = self.pkgs.stdenv.mkDerivation {
               pname = "hammerspoon";
-              version = "0.9.97";
+              version = "0.9.99";
               src = inputs.hammerspoon;
               installPhase = ''
                 mkdir -p $out/Applications/Hammerspoon.app
