@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}: let
+let
   colors = import ./colors.nix;
   normal = colors.normal;
   bright = colors.bright;

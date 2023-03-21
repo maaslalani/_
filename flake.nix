@@ -50,16 +50,18 @@
       linux = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // {inherit overlays;};
         modules = [
+          ./modules/direnv.nix
+          ./modules/helix.nix
           ./modules/linux.nix
           ./modules/packages.nix
           ./modules/shell.nix
           ./modules/tmux.nix
-          ./modules/helix.nix
         ];
       };
       home = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // {inherit overlays;};
         modules = [
+          ./modules/direnv.nix
           ./modules/fonts.nix
           ./modules/gh.nix
           ./modules/git.nix

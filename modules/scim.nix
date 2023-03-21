@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}: let
+{config, ...}: let
   scimPath = "${config.xdg.configHome}/sc-im";
 in {
   home.file."${scimPath}/scimrc".text = ''

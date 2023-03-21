@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}: let
+{pkgs, ...}: let
   path = ".config/spotifyd";
   file = "spotifyd.conf";
   settings = {

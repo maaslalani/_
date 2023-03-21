@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   core = with pkgs;
     [
       entr
@@ -25,7 +20,6 @@
     bundix
     cachix
     chafa
-    circumflex
     circumflex
     coreutils
     cowsay
@@ -49,14 +43,10 @@
     lsix
     nil
     nixpkgs-fmt
-    nodePackages.eas-cli
-    nodePackages.expo-cli
-    nodejs-16_x
     openssl
     optipng
     pandoc
     postgresql
-    python310Packages.grip
     redis
     rm-improved
     rustup

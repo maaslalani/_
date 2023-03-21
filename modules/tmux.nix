@@ -1,9 +1,3 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}:
 with builtins; let
   config = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   attrsToConfig = p: config (n: v: "set -g ${p}${n} ${v}");
