@@ -7,6 +7,7 @@ with pkgs.nodePackages_latest; [
   fnlfmt
   golangci-lint
   golangci-lint-langserver
+  ltex-ls
   proselint
   rnix-lsp
   rust-analyzer
