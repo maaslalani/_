@@ -164,7 +164,6 @@ in {
       wiki = "cd $HOME/wiki && hx . && cd -";
 
       sk8 = "ssh skate.ssh.toys";
-      vm = "ssh -i ~/.local/share/charm2/localhost/id_ed25519 -p 23234 localhost --";
 
       x = "exit";
       demo =
