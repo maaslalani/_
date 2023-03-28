@@ -1,16 +1,11 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}: let
+{pkgs, ...}: let
   email = "maas@lalani.dev";
   name = "Maas Lalani";
   user = "maaslalani";
 in {
   programs.git = {
-    lfs.enable = true;
     enable = true;
+    lfs.enable = true;
     ignores = [".DS_Store"];
     extraConfig = {
       branch.sort = "-committerdate";
@@ -21,8 +16,8 @@ in {
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
       fetch.prune = true;
-      gc.writeCommitGraph = true;
       gc.worktreePruneExpire = "now";
+      gc.writeCommitGraph = true;
       github.user = user;
       gpg.program = "${pkgs.gnupg}/bin/gpg2";
       hub.protocol = "https";
@@ -32,6 +27,7 @@ in {
       pull.rebase = false;
       pull.twohead = "ort";
       push.autoSetupRemote = true;
+      rerere.enabled = true;
     };
     signing = {
       gpgPath = "${pkgs.gnupg}/bin/gpg2";
