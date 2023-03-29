@@ -43,11 +43,13 @@
     lsix
     nil
     nixpkgs-fmt
+    nushell
     openssl
     optipng
     pandoc
     postgresql
     redis
+    revive
     rm-improved
     rustup
     sc-im

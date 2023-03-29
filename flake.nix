@@ -5,7 +5,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/master";
-
     helix.url = "github:helix-editor/helix/master";
     hammerspoon = {
       url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.99.zip";
@@ -68,13 +67,13 @@
           ./modules/hammerspoon.nix
           ./modules/helix.nix
           ./modules/home.nix
+          ./modules/kitty.nix
           ./modules/packages.nix
           ./modules/pass.nix
           ./modules/scim.nix
           ./modules/shell.nix
           ./modules/spotify.nix
           ./modules/tmux.nix
-          ./modules/wezterm.nix
         ];
       };
     };
