@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   colors = import ./colors.nix;
 in {
   config.programs.helix = {
@@ -115,6 +110,9 @@ in {
           fg = normal.cyan;
           modifiers = ["underlined"];
         };
+        "ui.cursorline.primary" = {bg = bright.background;};
+        "ui.cursorline.secondary" = {bg = bright.background;};
+        "ui.highlight" = {bg = normal.black;};
         "string" = normal.green;
         "variable.other.member" = normal.blue;
         "constant.character.escape" = normal.yellow;

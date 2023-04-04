@@ -3,6 +3,7 @@
   foreground = "#C5C8C6";
 
   bright = {
+    background = "#202020";
     black = "#4B4B4B";
     red = "#FE5F86";
     green = "#00D787";
