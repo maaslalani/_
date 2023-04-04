@@ -11,6 +11,7 @@ in {
         cursor-shape.insert = "bar";
         true-color = true;
         lsp.display-messages = true;
+        lsp.display-inlay-hints = true;
       };
       theme = "charm";
       keys.insert.esc = ["collapse_selection" "normal_mode"];
