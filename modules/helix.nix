@@ -11,7 +11,7 @@ in {
         cursor-shape.insert = "bar";
         true-color = true;
         lsp.display-messages = true;
-        lsp.display-inlay-hints = true;
+        lsp.display-inlay-hints = false;
       };
       theme = "charm";
       keys.insert.esc = ["collapse_selection" "normal_mode"];
@@ -101,6 +101,9 @@ in {
         "ui.virtual.ruler" = {
           bg = "#1a1a1a";
         };
+        "ui.virtual.inlay-hint" = bright.black;
+        "ui.virtual.inlay-hint.parameter" = bright.black;
+        "ui.virtual.inlay-hint.type" = bright.black;
         "variable" = normal.white;
         "variable.builtin" = normal.yellow;
         "constant.numeric" = normal.yellow;
