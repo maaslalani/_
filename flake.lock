@@ -186,11 +186,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1680810490,
-        "narHash": "sha256-hWOdsfX9v9OhniTWtY4dxQIoI6RAnAjk40r7lwaMOIA=",
+        "lastModified": 1682391137,
+        "narHash": "sha256-u4CCCUjhND6ofEpRdUBOox7V2WWb2DOwxKQtQ2niU8I=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "b663b89529b40d00d4db580901cccacdd35c63cf",
+        "rev": "0097e191bb9f9f144043c2afcf04bc8632021281",
         "type": "github"
       },
       "original": {
@@ -204,15 +204,14 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "utils": "utils"
+        ]
       },
       "locked": {
-        "lastModified": 1680597706,
-        "narHash": "sha256-ZqJ3T+BxzjPH9TnmeUwS4Uu9ZQPeBXAFC9sUWlharT4=",
+        "lastModified": 1682419509,
+        "narHash": "sha256-+/HI3RbJcEKQ5+55dECzh8geginsbabsA0R3ORKi2Us=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ec06f419af79207b33d797064dfb3fc9dbe1df4a",
+        "rev": "6142193635ecdafb9a231bd7d1880b9b7b210d19",
         "type": "github"
       },
       "original": {
@@ -316,11 +315,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1680812473,
-        "narHash": "sha256-3rckp3kWClUdmv0D6+S85HEzj0CjZ2RYP+NxAeoKJ24=",
+        "lastModified": 1682430941,
+        "narHash": "sha256-ijX2bA/7ql/y9xqFAVvyNwgAGzzQAu1q01EdTpZukH4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "98140dd07bc2fba2ccf570d6f6a424d20f7c619d",
+        "rev": "05a8a32f6093d278975e27c0075530fc377a09e8",
         "type": "github"
       },
       "original": {
@@ -398,21 +397,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }
