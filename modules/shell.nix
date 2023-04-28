@@ -154,11 +154,6 @@ in {
       dwlos = "printf 热爱开源 | pbcopy";
       dwnh = "printf 你好 | pbcopy";
 
-      hx = "hx";
-      v = "hx .";
-      vi = "hx";
-      vim = "hx";
-
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; hx $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
       wiki = "cd $HOME/wiki && hx . && cd -";

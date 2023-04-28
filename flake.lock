@@ -157,7 +157,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-RHnbwcpw/MJFRsH+3YMzU2KPhleqxP7TY/OLRvBTuVo=",
+        "narHash": "sha256-3CqsMPrWmK/AwxRq9ifuMIicNa40Bh06EjT7OIA9gUo=",
         "path": "fnl",
         "type": "path"
       },
@@ -375,7 +375,8 @@
         "hammerspoon": "hammerspoon",
         "helix": "helix",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "saturn": "saturn"
       }
     },
     "rust-overlay": {
@@ -398,6 +399,19 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
+      }
+    },
+    "saturn": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-u1nmHmKAfPnHfuSROJSaFiU25+itkW24zi57oDgdLIY=",
+        "path": "colors",
+        "type": "path"
+      },
+      "original": {
+        "path": "colors",
+        "type": "path"
       }
     }
   },
