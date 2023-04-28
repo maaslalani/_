@@ -67,12 +67,10 @@
 (local wkr wk.register)
 
 ; leader
-(wkr {:f {:name :find
-          :b [(pcmd :Telescope :buffers) :buffers]
-          :e [(cmd :Explore) :explore]
-          :f [(pcmd :Telescope :find_files) :file]
-          :n [(cmd :enew) :new]
-          :r [(pcmd :Telescope :live_grep) :grep]}
+(wkr {:f [(pcmd :Telescope :find_files) :file]
+      :e [(cmd :Explore) :explore]
+      :n [(cmd :enew) :new]
+      :r [(pcmd :Telescope :live_grep) :grep]
       :o [(cmd "!open <cWORD>") :open]
       :s {:name :misc
           :l [(pcmd :luafile "%") :lua]
@@ -119,6 +117,10 @@
       :<c-k> [:<c-w>k :up]
       :<c-l> [:<c-w>l :right]
       :<esc> [(cmd :nohl) :nohl]
+      :U [(cmd :redo) :redo]
+      :x [:V :select]
+      :X [:V :select]
+      :H [(lspcmd :buf.hover) :hover]
       :H [(lspcmd :buf.hover) :hover]
       :J [:10j :down]
       :K [:10k :up]
@@ -133,9 +135,12 @@
 ; visual
 (wkr {:< [:<gv :dedent]
       :<c-l> [:<nop> :nope]
-      :a [(lspcmd :buf.range_code_action) :actions]
-      :s [":sort <bar>w<bar>e<cr>" :sort]
       :<leader>y ["\"*y" :copy]
+      :a [(lspcmd :buf.range_code_action) :actions]
+      :S [":%s/" :substitute]
+      :s [":sort <bar>w<bar>e<cr>" :sort]
+      :X [:k :select]
+      :x [:j :select]
       :> [:>gv :indent]
       :<leader>p ["\"*p" :paste]
       :J [:10j :down]
