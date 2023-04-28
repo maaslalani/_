@@ -13,7 +13,6 @@
 (set g.loaded_zipPlugin false)
 (set g.mapleader " ")
 (set g.netrw_banner 0)
-(set g.nord_minimal_mode true)
 (set g.copilot_no_tab_map true)
 
 ;; Options
@@ -68,8 +67,12 @@
 (local wkr wk.register)
 
 ; leader
-(wkr {:f [(pcmd :Telescope :find_files) :file]
-      :/ [(pcmd :Telescope :live_grep)]
+(wkr {:f {:name :find
+          :b [(pcmd :Telescope :buffers) :buffers]
+          :e [(cmd :Explore) :explore]
+          :f [(pcmd :Telescope :find_files) :file]
+          :n [(cmd :enew) :new]
+          :r [(pcmd :Telescope :live_grep) :grep]}
       :o [(cmd "!open <cWORD>") :open]
       :s {:name :misc
           :l [(pcmd :luafile "%") :lua]
