@@ -6,7 +6,7 @@
       lua <<EOF
       ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
-      ${builtins.readFile "${pkgs.saturn}/glamour.vim"}
+      ${builtins.readFile "${pkgs.saturn}/saturn.vim"}
     '';
     vimAlias = true;
     viAlias = true;

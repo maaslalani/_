@@ -54,7 +54,7 @@
               src = inputs.saturn;
               installPhase = ''
                 mkdir -p $out
-                cp $src/glamour.vim $out/glamour.vim
+                cp $src/saturn.vim $out/saturn.vim
               '';
             };
           }

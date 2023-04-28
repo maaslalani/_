@@ -7,7 +7,7 @@
 hi clear
 syntax reset
 
-let g:colors_name="glamour"
+let g:colors_name="saturn"
 
 set background=dark
 set foldmethod=marker
