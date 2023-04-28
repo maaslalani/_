@@ -62,14 +62,14 @@
 (macro lspcmd [command]
   `(.. "<cmd>lua vim.lsp." ,command "()<cr>"))
 
-;; Whichkey
+;; Which key
 (local wk (require :which-key))
 (local wks wk.setup)
 (local wkr wk.register)
 
 ; leader
 (wkr {:f [(pcmd :Telescope :find_files) :file]
-      :/ [(pcmd :Telescope :live_grep) :grep]
+      :/ [(pcmd :Telescope :live_grep)]
       :o [(cmd "!open <cWORD>") :open]
       :s {:name :misc
           :l [(pcmd :luafile "%") :lua]
@@ -81,7 +81,7 @@
       :l {:name :lsp
           :f [(lspcmd :buf.format) :format]
           :a [(lspcmd :buf.code_action) :actions]
-          :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<cr>"
+          :l ["<cmd>lua vim.diagnostic.open_float({border = 'single'})<CR>"
               :diagnostics]
           :r [(lspcmd :buf.rename) :rename]}
       :t {:name :tab
@@ -107,8 +107,8 @@
       :w [(cmd :up) :save]
       :W [(cmd "w ! sudo tee % >/dev/null") :save!]
       := ["migg=G`i" :indent]
-      :p ["\"*p<cr>" :paste]
-      :y ["\"*y<cr>" :copy]} {:prefix :<leader> :mode :n})
+      :p ["\"*p<CR>" :paste]
+      :y ["\"*y<CR>" :copy]} {:prefix :<leader> :mode :n})
 
 ; normal
 (wkr {:<c-h> [:<c-w>h :left]
@@ -304,13 +304,13 @@
   (local telescope (require :telescope))
   (local sorters (require :telescope.sorters))
   (local previewers (require :telescope.previewers))
-  ((. telescope :setup) {:defaults {:prompt_prefix "❯ "
+  ((. telescope :setup) {:defaults {:prompt_prefix " "
                                     :selection_caret "→ "
                                     :set_env {:COLORTERM :truecolor}
                                     :vimgrep_arguments [:rg :--vimgrep]
                                     :winblend 0}}))
 
-;; treesitter
+;; tree-sitter
 (fn treesitter []
   (local parsers (require :nvim-treesitter.parsers))
   (local parser-configs ((. parsers :get_parser_configs)))
@@ -327,18 +327,19 @@
                           :indent {:enable false}})
   (vim.opt.runtimepath:append "~/.local/share/nvim/site/parser"))
 
-; autopairs
+; auto-pairs
 (fn autopairs []
   (local autopairs (. (require :nvim-autopairs)))
   ((. autopairs :setup))
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-lua))
   (autopairs.add_rules (require :nvim-autopairs.rules.endwise-ruby)))
 
-;; autocmds
+;; auto-cmds
 (local autocmd vim.api.nvim_create_autocmd)
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
 (autocmd [:BufEnter] {:pattern :*.tape :command "set ft=cassette"})
+(autocmd [:BufEnter] {:pattern :*.fnl :command "set ft=lisp"})
 (autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
 (autocmd [:BufEnter] {:pattern :*.norg :command "Copilot disable"})
 (autocmd [:BufWritePre]
