@@ -15,6 +15,7 @@
   };
 
   normal = {
+    background = "#202020";
     black = "#282a2e";
     red = "#CC6666";
     green = "#B5BD68";

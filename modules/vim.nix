@@ -1,4 +1,7 @@
-{ pkgs, ... }: {
+{pkgs, ...}: let
+  colors = import ./colors.nix;
+  saturn = builtins.readFile "${pkgs.saturn}/saturn.vim";
+in {
   config.programs.neovim = {
     enable = true;
     extraConfig = ''
@@ -6,7 +9,49 @@
       lua <<EOF
       ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
-      ${builtins.readFile "${pkgs.saturn}/saturn.vim"}
+
+      ${builtins.replaceStrings [
+          "foreground"
+          "normal.background"
+          "normal.black"
+          "normal.blue"
+          "normal.cyan"
+          "normal.green"
+          "normal.magenta"
+          "normal.red"
+          "normal.white"
+          "normal.yellow"
+          "bright.background"
+          "bright.black"
+          "bright.blue"
+          "bright.cyan"
+          "bright.green"
+          "bright.magenta"
+          "bright.red"
+          "bright.white"
+          "bright.yellow"
+        ] [
+          colors.foreground
+          colors.normal.background
+          colors.normal.black
+          colors.normal.blue
+          colors.normal.cyan
+          colors.normal.green
+          colors.normal.magenta
+          colors.normal.red
+          colors.normal.white
+          colors.normal.yellow
+          colors.bright.background
+          colors.bright.black
+          colors.bright.blue
+          colors.bright.cyan
+          colors.bright.green
+          colors.bright.magenta
+          colors.bright.red
+          colors.bright.white
+          colors.bright.yellow
+        ]
+        saturn}
     '';
     vimAlias = true;
     viAlias = true;
