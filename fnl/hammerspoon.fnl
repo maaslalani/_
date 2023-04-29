@@ -24,14 +24,14 @@
 (PassChooser:init {:clearAfter 10 :storePath "~/.local/share/pass/" : image})
 
 ;; Pop up Style
-(set hs.alert.defaultStyle.fillColor {:white 0 :alpha 0.95})
-(set hs.alert.defaultStyle.padding 40)
-(set hs.alert.defaultStyle.radius 10)
-(set hs.alert.defaultStyle.strokeColor {:white 0})
+(set hs.alert.defaultStyle.fillColor {:hex :#151618})
+(set hs.alert.defaultStyle.padding 30)
+(set hs.alert.defaultStyle.radius 8)
+(set hs.alert.defaultStyle.strokeColor {:hex :#4F5053})
 (set hs.alert.defaultStyle.strokeWidth 0)
 (set hs.alert.defaultStyle.textStyle
-     {:font {:name "SF Mono Medium" :size 20 :color {:white 0.8 :alpha 0.8}}
-      :paragraphStyle {:lineHeightMultiple 1.25}})
+     {:font {:name "SF Mono Regular" :size 16 :color {:hex :#F2F2F2}}
+      :paragraphStyle {:lineHeightMultiple 1.4}})
 
 (hs.alert.show "Hammerspoon Loaded" 1)
 (set hs.window.animationDuration 0)

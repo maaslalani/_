@@ -71,6 +71,7 @@
 (wkr {:f [(pcmd :Telescope :find_files) :file]
       :e [(cmd :Explore) :explore]
       :n [(cmd :enew) :new]
+      :/ [(pcmd :Telescope :live_grep) :grep]
       :r [(pcmd :Telescope :live_grep) :grep]
       :o [(cmd "!open <cWORD>") :open]
       :s {:name :misc
