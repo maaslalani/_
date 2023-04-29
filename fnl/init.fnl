@@ -31,6 +31,7 @@
 (set o.number true)
 (set o.omnifunc "v:lua.vim.lsp.omnifunc")
 (set o.ruler true)
+(set o.scrolloff 3)
 (set o.showmode false)
 (set o.signcolumn :yes)
 (set o.smartcase true)
@@ -77,6 +78,7 @@
           :v [(cmd :vsplit) :split]
           :o [(pcmd :source "%") :source]
           :s [(cmd :TSHighlightCapturesUnderCursor) :syntax]
+          :r ["\"hy:%s/<C-r>h//gc<left><left><left>" :syntax]
           :c [(cmd :HexokinaseToggle) :hexokinase]
           :t [(cmd "10split | terminal") :terminal]}
       :l {:name :lsp
@@ -121,10 +123,7 @@
       :x [:V :select]
       :X [:V :select]
       :H [(lspcmd :buf.hover) :hover]
-      :H [(lspcmd :buf.hover) :hover]
-      :J [:10j :down]
-      :K [:10k :up]
-      :M ["mzJ`z" :merge]
+      :J ["mzJ`z" :merge]
       :Q [:<nop> :nope]
       :S [(cmd :HopWord) :hopword]
       :s [(cmd :HopChar2) :hop]
@@ -142,9 +141,7 @@
       :X [:k :select]
       :x [:j :select]
       :> [:>gv :indent]
-      :<leader>p ["\"*p" :paste]
-      :J [:10j :down]
-      :K [:10k :up]} {:mode :v})
+      :<leader>p ["\"*p" :paste]} {:mode :v})
 
 ; insert
 (wkr {"," [",<c-g>u" ","]
@@ -159,8 +156,7 @@
       :plugins {:spelling {:enabled true}}})
 
 ;; Language Server Protocol
-(set capabilities
-     ((. (require :cmp_nvim_lsp) :default_capabilities)))
+(set capabilities ((. (require :cmp_nvim_lsp) :default_capabilities)))
 
 (fn on_attach [client bufnr]
   (tset vim.lsp.handlers :textDocument/hover
@@ -267,24 +263,19 @@
   (cmp.event:on :confirm_done
                 (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))
   (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
-  (cmp.setup {:snippet {:expand (fn [args]
-                                  (luasnip.lsp_expand args.body))}
+  (cmp.setup {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
               :mapping {:<C-b> (cmp.mapping (cmp.mapping.scroll_docs (- 1))
                                             [:i :c])
                         :<C-f> (cmp.mapping (cmp.mapping.scroll_docs 1) [:i :c])
                         :<C-e> (cmp.mapping (cmp.mapping.complete) [:i :c])
                         :<CR> (cmp.mapping.confirm {:select true})
-                        :<C-n> (cmp.mapping (fn [fallback]
-                                              (tab fallback))
+                        :<C-n> (cmp.mapping (fn [fallback] (tab fallback))
                                             [:i :s])
-                        :<C-p> (cmp.mapping (fn [fallback]
-                                              (s-tab fallback))
+                        :<C-p> (cmp.mapping (fn [fallback] (s-tab fallback))
                                             [:i :s])
-                        :<Tab> (cmp.mapping (fn [fallback]
-                                              (tab fallback))
+                        :<Tab> (cmp.mapping (fn [fallback] (tab fallback))
                                             [:i :s])
-                        :<S-Tab> (cmp.mapping (fn [fallback]
-                                                (s-tab fallback))
+                        :<S-Tab> (cmp.mapping (fn [fallback] (s-tab fallback))
                                               [:i :s])}
               :formatting {:fields [:abbr :kind :menu]
                            :format (fn [entry vim-item]
@@ -322,9 +313,6 @@
 (fn treesitter []
   (local parsers (require :nvim-treesitter.parsers))
   (local parser-configs ((. parsers :get_parser_configs)))
-  (set parser-configs.cassette
-       {:install_info {:url :/Users/maas/src/tree-sitter-cassette :files [:src/parser.c]}
-        :filetype :cassette})
   (set parser-configs.go
        {:install_info {:url "https://github.com/tree-sitter/tree-sitter-go"
                        :files [:src/parser.c]
@@ -347,15 +335,9 @@
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
 (autocmd [:BufEnter] {:pattern :*.tape :command "set ft=cassette"})
-(autocmd [:BufEnter] {:pattern :*.fnl :command "set ft=lisp"})
 (autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
-(autocmd [:BufEnter] {:pattern :*.norg :command "Copilot disable"})
 (autocmd [:BufWritePre]
          {:pattern :*.go :command "lua vim.lsp.buf.format { async = false }"})
-
-(autocmd [:FileType]
-         {:pattern :norg
-          :command "setl nocul cole=2 | hi MatchParen guifg=NONE"})
 
 (autocmd [:TermOpen]
          {:pattern "*" :command "setl nonu nocul scl=no ls=0 | star"})

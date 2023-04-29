@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   config.programs.neovim = {
     enable = true;
     extraConfig = ''
