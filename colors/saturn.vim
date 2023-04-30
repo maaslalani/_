@@ -14,18 +14,17 @@ set t_Co=256
 hi Comment guifg=bright.black gui=italic
 hi Conditional guifg=normal.blue guibg=NONE
 hi Constant guifg=normal.white guibg=NONE
-hi CursorLine guibg=bright.background
-hi CursorLineNR guifg=NONE guibg=bright.background gui=NONE
+hi CursorLine guibg=normal.black
+hi CursorLineNR guifg=NONE gui=NONE guibg=normal.black
 hi Debug guifg=normal.yellow guibg=NONE
 hi Define guifg=normal.blue guibg=NONE
 hi Delimiter guifg=normal.white guibg=NONE
 hi DiagnosticError guifg=normal.red guibg=NONE
 hi DiffAdd guifg=normal.green guibg=NONE
-hi DiffChange guifg=normal.yellow guibg=NONE
+hi DiffChange guifg=bright.yellow guibg=NONE
 hi DiffDelete guifg=normal.red guibg=NONE
 hi DiffText guifg=normal.red guibg=NONE
 hi Directory guifg=normal.blue guibg=NONE
-hi SpellBad guifg=normal.red guibg=NONE
 hi Error guifg=normal.red guibg=NONE
 hi ErrorMsg guifg=normal.red guibg=NONE
 hi Exception guifg=normal.red guibg=NONE
@@ -33,7 +32,7 @@ hi FoldColumn guifg=normal.black guibg=background
 hi Folded guifg=normal.black guibg=background
 hi Function guifg=normal.blue guibg=NONE
 hi Identifier guifg=normal.white guibg=NONE
-hi IncSearch guifg=bright.black guibg=NONE
+hi IncSearch guibg=normal.blue guibg=NONE
 hi Include guifg=normal.blue guibg=NONE
 hi Keyword guifg=normal.yellow guibg=NONE
 hi Label guifg=normal.white guibg=NONE
@@ -60,8 +59,9 @@ hi SignColumn guibg=background
 hi Special guifg=bright.yellow guibg=NONE
 hi SpecialChar guifg=normal.yellow guibg=NONE
 hi SpecialComment guifg=bright.black gui=italic guibg=NONE
+hi SpellBad guifg=normal.red guibg=NONE
 hi Statement guifg=normal.blue guibg=NONE
-hi StatusLine gui=bold guibg=background guifg=normal.white
+hi StatusLine gui=bold guibg=background guifg=bright.black
 hi StatusLineNC gui=NONE guibg=background guifg=normal.white
 hi Storage guifg=normal.magenta guibg=NONE
 hi String guifg=normal.green guibg=NONE
@@ -70,10 +70,10 @@ hi TabLineFill gui=NONE guibg=background
 hi TabLineSel guifg=normal.cyan gui=NONE
 hi Tag guifg=normal.yellow guibg=NONE
 hi Title guifg=normal.magenta guibg=NONE
-hi Todo guifg=normal.yellow guibg=NONE
+hi Todo guifg=normal.magenta guibg=NONE
 hi Type guifg=normal.cyan guibg=NONE gui=NONE
-hi VertSplit gui=NONE guifg=bright.black guibg=NONE
-hi Visual gui=NONE guibg=bright.black
+hi VertSplit gui=NONE guifg=normal.black guibg=NONE
+hi Visual gui=NONE guibg=normal.black
 hi WarningMsg guifg=bright.yellow guibg=NONE
 " }}}
 
@@ -97,7 +97,7 @@ hi markdownLinkText guifg=normal.magenta guibg=NONE
 " }}}
 
 " Telescope {{{
-hi TelescopeBorder guifg=bright.black guibg=NONE
+hi TelescopeBorder guifg=normal.black guibg=NONE
 hi TelescopeMatching guifg=normal.cyan guibg=NONE
 " }}}
 
