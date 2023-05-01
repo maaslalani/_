@@ -13,7 +13,7 @@ set t_Co=256
 " Vim {{{
 hi Comment guifg=bright.black gui=italic
 hi Conditional guifg=normal.blue guibg=NONE
-hi Constant guifg=normal.white guibg=NONE
+hi Constant guifg=normal.yellow guibg=NONE
 hi CursorLine guibg=normal.black
 hi CursorLineNR guifg=NONE gui=NONE guibg=normal.black
 hi Debug guifg=normal.yellow guibg=NONE
@@ -34,7 +34,7 @@ hi Function guifg=normal.blue guibg=NONE
 hi Identifier guifg=normal.white guibg=NONE
 hi IncSearch guibg=normal.blue guibg=NONE
 hi Include guifg=normal.blue guibg=NONE
-hi Keyword guifg=normal.yellow guibg=NONE
+hi Keyword guifg=normal.blue guibg=NONE
 hi Label guifg=normal.white guibg=NONE
 hi LineNr guifg=bright.black guibg=background
 hi Macro guifg=bright.yellow guibg=NONE

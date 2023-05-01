@@ -19,17 +19,17 @@ with builtins; let
   status = {
     justify = "left";
     left = " '#S' ";
-    left-style = "bg=default,fg=#cccccc,bold";
-    right = "'#[fg=#595959] #(whoami).#(hostname) #[fg=#494949] %d %b %Y  %I:%M%p '";
-    right-style = "bg=default,fg=#444444";
+    left-style = "bg=default,fg=#7879a6,bold";
+    right = "'#[fg=#515170] #(whoami).#(hostname) #[fg=#44445e] %d %b %Y  %I:%M%p '";
+    right-style = "bg=default,fg=#44445e";
     style = "bg=default";
   };
 
   window = {
     status-current-format = "' #I #W * '";
-    status-current-style = "fg=#aaaaaa,bg=default";
+    status-current-style = "fg=#7879a6,bg=default";
     status-format = "' #I #W - '";
-    status-style = "fg=#595959,bg=default";
+    status-style = "fg=#58587a,bg=default";
     status-separator = "''";
   };
 
