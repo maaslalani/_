@@ -87,6 +87,8 @@
                          :action (openurl "https://github.com/pulls")}}
                  :s {:name :StackOverflow
                      :action (openurl "https://stackoverflow.com")}
+                 :o {:name :ChatGPT
+                     :action (openurl "https://chat.openai.com")}
                  :t {:name :Twitter :action (openurl "https://twitter.com")}
                  :y {:name :YouTube :action (openurl "https://youtube.com")}}
              :p {:name :Passwords
