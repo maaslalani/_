@@ -12,8 +12,8 @@ with builtins; let
   };
 
   pane = {
-    active-border-style = "fg=black,bg=default";
-    border-style = "fg=black,bg=default";
+    active-border-style = "fg=#1a1b26,bg=default";
+    border-style = "fg=#1a1b26,bg=default";
   };
 
   status = {

@@ -14,6 +14,7 @@
       hi Pmenu guibg=#1a1b26
       hi StatusLine guibg=NONE
       hi SignColumn guibg=NONE
+      hi WinSeparator guifg=#1a1b26
     '';
     vimAlias = true;
     viAlias = true;
