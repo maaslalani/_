@@ -3,6 +3,7 @@ let
 in {
   programs.kitty = {
     enable = true;
+    theme = "Tokyo Night";
     settings = {
       enable_audio_bell = false;
       copy_on_select = true;
@@ -42,6 +43,8 @@ in {
       macos_option_as_alt = "left";
       macos_quit_when_last_window_closed = true;
       macos_show_window_title_in = "none";
+
+      background = colors.background;
     };
     keybindings = {
       "cmd+w" = "no_op";
@@ -52,6 +55,5 @@ in {
       name = "JetBrains Mono";
       size = 15;
     };
-    theme = "Tokyo Night";
   };
 }

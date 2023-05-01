@@ -1,5 +1,5 @@
 {
-  background = "#171717";
+  background = "#16161e";
   foreground = "#C5C8C6";
 
   bright = {
