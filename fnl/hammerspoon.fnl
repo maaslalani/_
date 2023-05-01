@@ -56,6 +56,11 @@
   (fn []
     (hs.application.launchOrFocus application)))
 
+(fn moveWindowToDisplay []
+  (fn []
+    (local app (hs.window.focusedWindow))
+    (app:moveToScreen (: (app:screen) :next))))
+
 (fn openurl [url]
   (fn []
     (hs.urlevent.openURL url)))
@@ -78,6 +83,7 @@
              :g {:name :Grid
                  :action (fn []
                            (hs.grid.show))}
+             :n {:name :Move :action (moveWindowToDisplay)}
              :l {:name :Links
                  :g {:name :GitHub
                      :g {:name :Home :action (openurl "https://github.com/")}
