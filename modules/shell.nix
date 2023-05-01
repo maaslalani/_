@@ -122,7 +122,6 @@ in {
       hms = join [
         "cd $HOME/_"
         "nix flake lock --update-input fnl"
-        "nix flake lock --update-input saturn"
         "nix build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#home"
         "${config.xdg.configHome}/nixpkgs/result/activate"
         sz

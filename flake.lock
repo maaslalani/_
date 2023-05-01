@@ -375,8 +375,7 @@
         "hammerspoon": "hammerspoon",
         "helix": "helix",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
-        "saturn": "saturn"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "rust-overlay": {
@@ -399,19 +398,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
-      }
-    },
-    "saturn": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-ZMvSvlrk4HB4/jMQYDGrZGthZeUbB6vWnszWh+QquWg=",
-        "path": "colors",
-        "type": "path"
-      },
-      "original": {
-        "path": "colors",
-        "type": "path"
       }
     }
   },

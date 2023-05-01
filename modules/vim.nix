@@ -6,7 +6,10 @@
       lua <<EOF
       ${builtins.readFile "${pkgs.fnl}/init.lua"}
       EOF
+
       colorscheme tokyonight-night
+
+      hi StatusLine guibg=NONE
     '';
     vimAlias = true;
     viAlias = true;

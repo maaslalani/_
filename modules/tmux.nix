@@ -38,7 +38,7 @@ with builtins; let
     style = "fg=#fcfcfc,bg=default";
   };
 
-  mode.style = "fg=#fcfcfc,bg=#292929";
+  mode.style = "fg=#fcfcfc,bg=#273457";
 
   currentPath = "-c \"#{pane_current_path}\"";
 
