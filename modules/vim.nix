@@ -9,7 +9,11 @@
 
       colorscheme tokyonight-night
 
+      hi Normal guibg=#16161e
+      hi NormalNC guibg=#16161e
+      hi Pmenu guibg=#1a1b26
       hi StatusLine guibg=NONE
+      hi SignColumn guibg=NONE
     '';
     vimAlias = true;
     viAlias = true;
