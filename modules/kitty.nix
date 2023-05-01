@@ -43,8 +43,6 @@ in {
       macos_option_as_alt = "left";
       macos_quit_when_last_window_closed = true;
       macos_show_window_title_in = "none";
-
-      background = colors.background;
     };
     keybindings = {
       "cmd+w" = "no_op";
