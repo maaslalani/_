@@ -15,6 +15,7 @@
       hi StatusLine guibg=NONE
       hi SignColumn guibg=NONE
       hi WinSeparator guifg=#1a1b26
+      hi CopilotSuggestion guifg=#636ea0
     '';
     vimAlias = true;
     viAlias = true;

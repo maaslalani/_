@@ -4,7 +4,7 @@
 
   bright = {
     background = "#404555";
-    black = "#383a3e";
+    black = "#383A3E";
     red = "#A54242";
     green = "#8C9440";
     yellow = "#DE935F";
