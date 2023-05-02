@@ -8,7 +8,7 @@
         open = "repo view --web";
         pr = "pr create";
       };
-      editor = "hx";
+      editor = "nvim";
     };
   };
 }

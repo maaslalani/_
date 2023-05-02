@@ -154,9 +154,9 @@ in {
       dwlos = "printf 热爱开源 | pbcopy";
       dwnh = "printf 你好 | pbcopy";
 
-      scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; hx $FILE +startinsert && pbcopy < $FILE; rm $FILE";
+      scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
-      wiki = "cd $HOME/wiki && hx . && cd -";
+      wiki = "cd $HOME/wiki && $EDITOR . && cd -";
 
       sk8 = "ssh skate.ssh.toys";
 
@@ -260,7 +260,7 @@ in {
       CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
       CLICOLOR = 1;
       COLORTERM = "truecolor";
-      EDITOR = "hx";
+      EDITOR = "nvim";
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
       GOBIN = "${GOPATH}/bin";
       GOPATH = "${config.xdg.configHome}/go";
