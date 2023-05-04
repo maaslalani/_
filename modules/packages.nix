@@ -17,6 +17,7 @@
     age
     alejandra
     awscli2
+    bore-cli
     bundix
     cachix
     chafa
