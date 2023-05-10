@@ -21,7 +21,7 @@
 (set o.backspace "indent,eol,start")
 (set o.backup false)
 (set o.completeopt "menu,menuone,noselect")
-(set o.conceallevel 2)
+(set o.conceallevel 0)
 (set o.cursorline true)
 (set o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
 (set o.hidden true)
