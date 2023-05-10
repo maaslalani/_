@@ -44,12 +44,14 @@
 (set o.syntax :off)
 (set o.tabstop 4)
 (set o.termguicolors true)
+(set o.textwidth 80)
 (set o.timeoutlen 350)
 (set o.undofile true)
 (set o.updatetime 300)
 (set o.visualbell true)
 (set o.wildmode "longest:full,full")
 (set o.wrap false)
+(set o.wrapmargin 0)
 (set o.writebackup false)
 
 ;; Macros
