@@ -44,6 +44,7 @@ in {
       gap = "${ga} --patch";
       gb = "git branch";
       gbc = "${gb} --show-current";
+      gcai = ''MESSAGE=$(${gd} | mods "write a commit message for this diff") && gum write --value="$MESSAGE" && ${gcam} "$MESSAGE"'';
       gc = "git commit";
       gca = "${gc} --amend";
       gcm = "${gc} -m";
