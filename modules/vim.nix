@@ -1,21 +1,10 @@
 {pkgs, ...}: {
   config.programs.neovim = {
     enable = true;
+    extraLuaConfig = builtins.readFile "${pkgs.fnl}/init.lua";
     extraConfig = ''
       imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-      lua <<EOF
-      ${builtins.readFile "${pkgs.fnl}/init.lua"}
-      EOF
-
-      colorscheme tokyonight-night
-
-      hi Normal guibg=#16161e
-      hi NormalNC guibg=#16161e
-      hi Pmenu guibg=#1a1b26
-      hi StatusLine guibg=NONE
-      hi SignColumn guibg=NONE
-      hi WinSeparator guifg=#1a1b26
-      hi CopilotSuggestion guifg=#636ea0
+      ${(import ./colorscheme.nix) pkgs.lib}
     '';
     vimAlias = true;
     viAlias = true;
