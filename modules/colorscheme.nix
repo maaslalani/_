@@ -35,8 +35,11 @@ lib: let
 in
   concatStrings (mapAttrsToList rule {
     ColorColumn.bg = "#202020";
-    CursorLine.bg = "#090909";
-    CursorLineNr = {};
+    CursorLine.bg = "#202020";
+    CursorLineNr = {
+      fg = "#767676";
+      bg = "#202020";
+    };
     Folded = {
       fg = "#767676";
       bg = "#2a2a2a";
@@ -81,6 +84,9 @@ in
     Tag = {};
     Type = {};
     Typedef = {};
+
+    StatusLine.bg = "#202020";
+    StatusLineNC.bg = "#171717";
 
     Error = {};
     Hint = {};

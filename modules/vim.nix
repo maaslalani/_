@@ -4,6 +4,7 @@
     extraLuaConfig = builtins.readFile "${pkgs.fnl}/init.lua";
     extraConfig = ''
       imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+      colorscheme tokyonight-night
       ${(import ./colorscheme.nix) pkgs.lib}
     '';
     vimAlias = true;
@@ -21,6 +22,7 @@
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
+      nvim-colorizer-lua
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim
@@ -29,7 +31,6 @@
       tokyonight-nvim
       vim-commentary
       vim-fugitive
-      vim-hexokinase
       vim-rhubarb
       vim-sleuth
       vim-surround

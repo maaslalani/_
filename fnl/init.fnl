@@ -82,7 +82,7 @@
           :o [(pcmd :source "%") :source]
           :s [(cmd :TSHighlightCapturesUnderCursor) :syntax]
           :r ["\"hy:%s/<C-r>h//gc<left><left><left>" :syntax]
-          :c [(cmd :HexokinaseToggle) :hexokinase]
+          :c [(cmd :ColorizerToggle) :colorizer]
           :t [(cmd "10split | terminal") :terminal]}
       :l {:name :lsp
           :f [(lspcmd :buf.format) :format]
