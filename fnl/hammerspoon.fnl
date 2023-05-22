@@ -69,7 +69,7 @@
 ;; Open the menu with the leader key (ctrl+space)
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
-                 :b {:name :Browser :action (launch :Safari)}
+                 :b {:name :Browser :action (launch :Arc)}
                  :c {:name :Calendar :action (launch :Calendar)}
                  :n {:name :Notes :action (launch :Notes)}
                  :r {:name :Reminders :action (launch :Reminders)}
