@@ -24,13 +24,13 @@
 (PassChooser:init {:clearAfter 10 :storePath "~/.local/share/pass/" : image})
 
 ;; Pop up Style
-(set hs.alert.defaultStyle.fillColor {:hex "#151618"})
+(set hs.alert.defaultStyle.fillColor {:hex "#191919"})
 (set hs.alert.defaultStyle.padding 30)
 (set hs.alert.defaultStyle.radius 8)
-(set hs.alert.defaultStyle.strokeColor {:hex "#4F5053"})
-(set hs.alert.defaultStyle.strokeWidth 0)
+(set hs.alert.defaultStyle.strokeColor {:hex "#474747"})
+(set hs.alert.defaultStyle.strokeWidth 1.25)
 (set hs.alert.defaultStyle.textStyle
-     {:font {:name "SF Mono Regular" :size 16 :color {:hex "#F2F2F2"}}
+     {:font {:name "SF Mono Regular" :size 16 :color {:hex "#757575"}}
       :paragraphStyle {:lineHeightMultiple 1.4}})
 
 (hs.alert.show "Hammerspoon Loaded" 1)
@@ -70,11 +70,10 @@
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
                  :b {:name :Browser :action (launch :Arc)}
-                 :c {:name :Calendar :action (launch :Calendar)}
+                 :c {:name :Color :action (launch "Color Picker")}
                  :n {:name :Notes :action (launch :Notes)}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :f {:name :Finder :action (launch :Finder)}
-                 :s {:name :Slack :action (launch :Slack)}
                  :d {:name :Discord :action (launch :Discord)}
                  :t {:name :Terminal :action (launch :Kitty)}}
              :f {:name :Focus
