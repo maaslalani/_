@@ -11,7 +11,6 @@ with pkgs.nodePackages_latest; [
   ltex-ls
   proselint
   rnix-lsp
-  rust-analyzer
   serve
   solargraph
   sumneko-lua-language-server

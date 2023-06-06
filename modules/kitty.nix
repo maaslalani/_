@@ -44,7 +44,7 @@ in {
       macos_quit_when_last_window_closed = true;
       macos_show_window_title_in = "none";
 
-      background = colors.background;
+      background = colors.primary.background;
     };
     keybindings = {
       "cmd+w" = "no_op";
