@@ -2,10 +2,10 @@
   description = "home";
 
   inputs = {
+    helix.url = "github:helix-editor/helix/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/master";
-    helix.url = "github:helix-editor/helix/master";
     hammerspoon = {
       url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip";
       flake = false;
@@ -67,7 +67,6 @@
           ./modules/git.nix
           ./modules/hammerspoon.nix
           ./modules/helix.nix
-          ./modules/vim.nix
           ./modules/home.nix
           ./modules/kitty.nix
           ./modules/packages.nix
@@ -76,6 +75,7 @@
           ./modules/shell.nix
           ./modules/spotify.nix
           ./modules/tmux.nix
+          ./modules/vim.nix
         ];
       };
     };

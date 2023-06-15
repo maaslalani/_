@@ -31,7 +31,7 @@
     git
     git-lfs
     go-swagger
-    go_1_19
+    go
     gopass
     gopls
     hammerspoon
@@ -49,6 +49,7 @@
     optipng
     pandoc
     postgresql
+    python311Packages.grip
     redis
     revive
     rm-improved
