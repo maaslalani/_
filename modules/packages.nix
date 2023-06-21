@@ -59,7 +59,6 @@
     spotify-tui
     spotifyd
     tree-sitter
-    ttyd
     twurl
     yarn
     yq
