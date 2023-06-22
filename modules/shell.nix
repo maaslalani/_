@@ -8,6 +8,17 @@
   commaJoin = builtins.concatStringsSep ",";
   value = k: v: "\"${k}\":\"${v}\"";
 in {
+  programs.bash = {
+    enable = true;
+    historySize = 1000;
+    bashrcExtra = ''
+      export PS1="\[\e[38;2;90;86;224m\]> \[\e[0m\]";
+      export PROMPT="\[\e[38;2;90;86;224m\]> \[\e[0m\]";
+    '';
+    shellOptions = [];
+    enableCompletion = false;
+  };
+
   programs.zsh = {
     autocd = true;
     dotDir = ".config/zsh";
