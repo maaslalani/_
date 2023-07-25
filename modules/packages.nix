@@ -67,12 +67,13 @@
   linux = [];
 
   charmbracelet = with pkgs; [
-    charm
     # gum
+    # vhs
+    charm
     melt
+    pop
     skate
     soft-serve
-    # vhs
   ];
 in {
   home.packages =

@@ -15,7 +15,7 @@ in {
       window_border_width = 1;
       window_margin_width = 0;
       single_window_margin_width = 0;
-      window_padding_width = 12;
+      window_padding_width = 20;
 
       active_border_color = "#282a2e";
       inactive_border_color = "#c5c8c6";
