@@ -25,13 +25,15 @@
     coreutils
     cowsay
     delve
+    deno
+    docker
     fennel
     ffmpeg_5
     fzf
     git
     git-lfs
-    go-swagger
     go
+    go-swagger
     gopass
     gopls
     hammerspoon
@@ -44,6 +46,7 @@
     lsix
     nil
     nixpkgs-fmt
+    nodejs
     nushell
     openssl
     optipng

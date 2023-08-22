@@ -281,6 +281,7 @@ in {
       HOMEBREW_PREFIX = "/opt/homebrew";
       HOMEBREW_REPOSITORY = "/opt/homebrew";
       HOMEBREW_SBIN = "/opt/homebrew/sbin";
+      DENO_BIN = "$HOME/.deno/bin";
       JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
       KEYTIMEOUT = 1;
       KUBECONFIG = pathJoin ["$HOME/.kube/config"];
@@ -298,6 +299,7 @@ in {
         BREW_SBIN
         HOMEBREW_BIN
         HOMEBREW_SBIN
+        DENO_BIN
         "$PATH"
       ];
     };

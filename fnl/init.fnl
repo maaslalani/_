@@ -171,6 +171,7 @@
   (local lsp (require :lspconfig))
   (lsp.bashls.setup {: on_attach : capabilities})
   (lsp.dockerls.setup {: on_attach : capabilities})
+  (lsp.fennel_ls.setup {: on_attach : capabilities})
   (lsp.golangci_lint_ls.setup {: on_attach : capabilities})
   (lsp.rnix.setup {: on_attach : capabilities})
   (lsp.solargraph.setup {: on_attach
@@ -197,6 +198,7 @@
                   null_ls.builtins.formatting.alejandra
                   null_ls.builtins.formatting.fnlfmt
                   null_ls.builtins.formatting.goimports
+                  null_ls.builtins.formatting.prettier
                   null_ls.builtins.formatting.rubocop
                   null_ls.builtins.hover.dictionary])
   (null_ls.setup {: sources : on_attach : capabilities}))
@@ -209,7 +211,7 @@
 ;; gitsigns
 (fn gitsigns []
   (local gitsigns (require :gitsigns))
-  ((. gitsigns :setup) {:keymaps {}}))
+  ((. gitsigns :setup) {}))
 
 ;; cmp
 (local icons {:Text ""
