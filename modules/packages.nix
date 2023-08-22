@@ -44,6 +44,7 @@
     llvm
     lolcat
     lsix
+    monitorcontrol
     nil
     nixpkgs-fmt
     nodejs
