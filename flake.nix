@@ -52,10 +52,16 @@
         modules = [
           ./modules/direnv.nix
           ./modules/helix.nix
-          ./modules/linux.nix
           ./modules/packages.nix
           ./modules/shell.nix
           ./modules/tmux.nix
+          {
+            home = {
+              homeDirectory = "/home/maas";
+              stateVersion = "22.11";
+              username = "maas";
+            };
+          }
         ];
       };
       home = inputs.home-manager.lib.homeManagerConfiguration {
@@ -67,7 +73,6 @@
           ./modules/git.nix
           ./modules/hammerspoon.nix
           ./modules/helix.nix
-          ./modules/home.nix
           ./modules/kitty.nix
           ./modules/packages.nix
           ./modules/pass.nix
@@ -76,6 +81,13 @@
           ./modules/spotify.nix
           ./modules/tmux.nix
           ./modules/vim.nix
+          {
+            home = {
+              homeDirectory = "/Users/maas";
+              stateVersion = "22.11";
+              username = "maas";
+            };
+          }
         ];
       };
     };
