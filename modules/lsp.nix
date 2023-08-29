@@ -5,10 +5,12 @@ with pkgs.nodePackages_latest; [
   bash-language-server
   cspell
   elm-language-server
+  eslint
   fnlfmt
   golangci-lint
   golangci-lint-langserver
   ltex-ls
+  prettier
   proselint
   rnix-lsp
   serve

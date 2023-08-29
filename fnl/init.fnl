@@ -196,6 +196,7 @@
                   null_ls.builtins.diagnostics.rubocop
                   null_ls.builtins.diagnostics.write_good
                   null_ls.builtins.formatting.alejandra
+                  null_ls.builtins.formatting.eslint
                   null_ls.builtins.formatting.fnlfmt
                   null_ls.builtins.formatting.goimports
                   null_ls.builtins.formatting.prettier
