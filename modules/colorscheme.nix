@@ -46,7 +46,22 @@ in
     };
     LineNr.fg = "#505050";
     NonText.fg = "#414141";
-    PMenu.bg = "#333333";
+
+    PMenu.bg = "#222222";
+    PMenuExtra.bg = "#333333";
+    PMenuExtraSel.bg = "#333333";
+    PMenuSel.bg = "#333333";
+    PMenuSbar.bg = "#222222";
+    PMenuThumb.bg = "#292929";
+
+    FloatBorder.bg = "#333333";
+    FloatShadow.bg = "#333333";
+    
+
+    CmpDocumentation = {
+      bg = "#333333";
+    };
+
     SignColumn.bg = none;
     VertSplit = {
       fg = "#262626";
@@ -55,6 +70,7 @@ in
 
     Normal.bg = "#171717";
     NormalNC.bg = "#171717";
+    NormalFloat.bg = "#222222";
 
     Boolean = {};
     Comment = {};

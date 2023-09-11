@@ -1,6 +1,7 @@
 let
   colors = import ./colors.nix;
-in {
+in
+{
   programs.kitty = {
     enable = true;
     theme = "Tokyo Night";
@@ -52,7 +53,7 @@ in {
       "cmd+enter" = "no_op";
     };
     font = {
-      name = "JetBrains Mono";
+      name = "JetBrainsMono Nerd Font";
       size = 15;
     };
   };

@@ -171,7 +171,6 @@
   (local lsp (require :lspconfig))
   (lsp.bashls.setup {: on_attach : capabilities})
   (lsp.dockerls.setup {: on_attach : capabilities})
-  (lsp.fennel_ls.setup {: on_attach : capabilities})
   (lsp.golangci_lint_ls.setup {: on_attach : capabilities})
   (lsp.rnix.setup {: on_attach : capabilities})
   (lsp.solargraph.setup {: on_attach
@@ -191,6 +190,7 @@
                     :analyses {:unusedparams true :staticcheck true}
                     : on_attach
                     : capabilities})
+  (lsp.zls.setup {: on_attach : capabilities})
   (local null_ls (require :null-ls))
   (local sources [null_ls.builtins.code_actions.proselint
                   null_ls.builtins.diagnostics.rubocop
@@ -215,31 +215,31 @@
   ((. gitsigns :setup) {}))
 
 ;; cmp
-(local icons {:Text ""
-              :Method :m
-              :Function ""
-              :Constructor ""
-              :Field ""
-              :Variable ""
-              :Class ""
-              :Interface ""
-              :Module ""
-              :Property ""
-              :Unit ""
-              :Value ""
+(local icons {:Class "󰠱"
+              :Color "󰏘"
+              :Constant "󰏿"
+              :Constructor ""
               :Enum ""
-              :Keyword ""
-              :Snippet ""
-              :Color ""
-              :File ""
-              :Reference ""
-              :Folder ""
               :EnumMember ""
-              :Constant ""
-              :Struct ""
               :Event ""
-              :Operator ""
-              :TypeParameter ""})
+              :Field "󰜢"
+              :File "󰈙"
+              :Folder "󰉋"
+              :Function "󰊕"
+              :Interface ""
+              :Keyword "󰌋"
+              :Method "󰆧"
+              :Module ""
+              :Operator "󰆕"
+              :Property "󰜢"
+              :Reference "󰈇"
+              :Snippet ""
+              :Struct "󰙅"
+              :Text "󰉿"
+              :TypeParameter ""
+              :Unit "󰑭"
+              :Value "󰎠"
+              :Variable "󰀫"})
 
 (local loader (require :luasnip/loaders/from_vscode))
 (loader.lazy_load)

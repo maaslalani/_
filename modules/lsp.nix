@@ -26,4 +26,5 @@ with pkgs.nodePackages_latest; [
   vscode-langservers-extracted
   write-good
   yaml-language-server
+  zls
 ]

@@ -143,8 +143,8 @@ in {
 
       c = "clear";
 
-      ls = "exa";
-      lsa = "exa -Fla";
+      ls = "lsd";
+      lsa = "lsd -Fla";
       sl = "${ls}";
       tree = "${ls} -T";
 
