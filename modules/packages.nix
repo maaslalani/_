@@ -66,6 +66,7 @@
     twurl
     yarn
     yq
+    zig
   ];
 
   linux = [];
