@@ -32,8 +32,8 @@
     fzf
     git
     git-lfs
-    go
     go-swagger
+    go_1_21
     gopass
     gopls
     hammerspoon

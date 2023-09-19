@@ -54,10 +54,6 @@ in
     PMenuSbar.bg = "#222222";
     PMenuThumb.bg = "#292929";
 
-    FloatBorder.bg = "#333333";
-    FloatShadow.bg = "#333333";
-    
-
     CmpDocumentation = {
       bg = "#333333";
     };
