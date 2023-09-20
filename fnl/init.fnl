@@ -340,10 +340,8 @@
 (local autocmd vim.api.nvim_create_autocmd)
 (autocmd [:BufEnter] {:pattern :*.graphql :command "set ft=graphql"})
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
-(autocmd [:BufEnter] {:pattern :*.nix :command "set ft=nix"})
 (autocmd [:BufWritePre]
          {:pattern :*.go :command "lua vim.lsp.buf.format { async = false }"})
-
 (autocmd [:TermOpen]
          {:pattern "*" :command "setl nonu nocul scl=no ls=0 | star"})
 
