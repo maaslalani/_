@@ -70,6 +70,7 @@
           ./modules/direnv.nix
           ./modules/fonts.nix
           ./modules/gh.nix
+          ./modules/ghostty.nix
           ./modules/git.nix
           ./modules/hammerspoon.nix
           ./modules/helix.nix
