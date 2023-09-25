@@ -15,7 +15,9 @@ keybind = ctrl+super+f=toggle_fullscreen
 
 macos-non-native-fullscreen = true
 
-font-family = "JetBrainsMono Nerd Font"
+font-size = 15
+font-family = JetBrains Mono
+mouse-hide-while-typing = true
 
 window-padding-x = 8
 window-padding-y = 8

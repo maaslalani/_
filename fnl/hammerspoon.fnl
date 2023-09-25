@@ -75,7 +75,7 @@
                  :r {:name :Reminders :action (launch :Reminders)}
                  :f {:name :Finder :action (launch :Finder)}
                  :d {:name :Discord :action (launch :Discord)}
-                 :t {:name :Terminal :action (launch :Kitty)}}
+                 :t {:name :Terminal :action (launch :Ghostty)}}
              :f {:name :Focus
                  :action (fn []
                            (hs.hints.windowHints))}
