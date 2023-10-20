@@ -24,7 +24,7 @@ in {
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
-      pull.rebase = false;
+      pull.rebase = true;
       pull.twohead = "ort";
       push.autoSetupRemote = true;
       rerere.enabled = true;
