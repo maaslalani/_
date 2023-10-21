@@ -82,6 +82,7 @@
           ./modules/spotify.nix
           ./modules/tmux.nix
           ./modules/vim.nix
+          ./modules/zellij.nix
           {
             home = {
               homeDirectory = "/Users/maas";
