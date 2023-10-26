@@ -17,6 +17,13 @@
   };
 
   outputs = {self, ...} @ inputs: {
+    systemInfo = {
+      home = rec {
+        username = "maas";
+        homeDirectory = "/Users/${username}";
+        stateVersion = "22.11";
+      };
+    };
     homeConfigurations = rec {
       overlays = [
         (
@@ -55,13 +62,7 @@
           ./modules/packages.nix
           ./modules/shell.nix
           ./modules/tmux.nix
-          {
-            home = {
-              homeDirectory = "/home/maas";
-              stateVersion = "22.11";
-              username = "maas";
-            };
-          }
+          self.systemInfo
         ];
       };
       home = inputs.home-manager.lib.homeManagerConfiguration {
@@ -83,13 +84,7 @@
           ./modules/tmux.nix
           ./modules/vim.nix
           ./modules/zellij.nix
-          {
-            home = {
-              homeDirectory = "/Users/maas";
-              stateVersion = "22.11";
-              username = "maas";
-            };
-          }
+          self.systemInfo
         ];
       };
     };
