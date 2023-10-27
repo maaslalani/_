@@ -1,6 +1,6 @@
 {
   primary = {
-    background = "#171717";
+    background = "#0D1116";
     foreground = "#C5C8C6";
   };
 

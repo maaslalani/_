@@ -7,8 +7,8 @@
   ghosttyPath = "${config.xdg.configHome}/ghostty";
 in {
   home.file."${ghosttyPath}/config".text = ''
-background = 171717
-foreground = C5C8C6
+background = ${colors.primary.background}
+foreground = ${colors.primary.foreground}
 
 keybind = ctrl+z=close_surface
 keybind = ctrl+super+f=toggle_fullscreen
