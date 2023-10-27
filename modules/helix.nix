@@ -10,16 +10,19 @@
         color-modes = true;
         true-color = true;
         lsp.display-messages = true;
-        lsp.display-inlay-hints = true;
+        lsp.display-inlay-hints = false;
+        file-picker = {
+          max-depth = 4;
+        };
         statusline = {
           mode = {
             normal = "NORMAL";
-            insert = "INSERT";
             select = "SELECT";
+            insert = "INSERT";
           };
           left = ["mode" "file-name"];
           center = [];
-          right = ["diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" "version-control"];
+          right = ["diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" "version-control" "spacer"];
         };
       };
       theme = "github_dark";
