@@ -7,8 +7,6 @@
       colorscheme tokyonight-night
       ${(import ./colorscheme.nix) pkgs.lib}
     '';
-    vimAlias = true;
-    viAlias = true;
     plugins = with pkgs.vimPlugins; [
       cmp-buffer
       cmp-nvim-lsp

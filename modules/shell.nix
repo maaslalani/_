@@ -34,6 +34,11 @@ in {
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
 
+      v = "$EDITOR";
+      vi = "$EDITOR";
+      vim = "$EDITOR";
+      nvim = "$EDITOR";
+
       ts = "tmux switch -t";
       ta = "tmux attach -t";
       tn = "tmux new";
@@ -272,7 +277,7 @@ in {
       CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
       CLICOLOR = 1;
       COLORTERM = "truecolor";
-      EDITOR = "nvim";
+      EDITOR = "hx";
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
       GOBIN = "${GOPATH}/bin";
       GOPATH = "${config.xdg.configHome}/go";
