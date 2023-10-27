@@ -12,6 +12,7 @@ with pkgs.nodePackages_latest; [
   ltex-ls
   prettier
   proselint
+  nil
   rnix-lsp
   serve
   solargraph
