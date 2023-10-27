@@ -13,12 +13,13 @@
       };
       theme = "github_dark";
       keys.insert.esc = ["collapse_selection" "normal_mode"];
-      keys.normal.esc = ["collapse_selection" "normal_mode"];
       keys.select.esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
       keys.normal = {
         X = "extend_line_above";
-        a = ["append_mode" "collapse_selection"];
+        G = "goto_file_end";
         g.q = ":reflow";
+        esc = ["collapse_selection" "normal_mode"];
+        a = ["append_mode" "collapse_selection"];
         i = ["insert_mode" "collapse_selection"];
         ret = ["move_line_down" "goto_line_start"];
         space = {
