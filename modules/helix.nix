@@ -29,6 +29,7 @@
       keys.insert.esc = ["collapse_selection" "normal_mode"];
       keys.select.esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
       keys.normal = {
+        C-n = "goto_file_start";
         X = "extend_line_above";
         G = "goto_file_end";
         g.q = ":reflow";

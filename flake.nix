@@ -1,29 +1,19 @@
 {
   description = "home";
-
-  inputs = {
-    helix.url = "github:helix-editor/helix/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:nixos/nixpkgs/master";
-    hammerspoon = {
-      url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip";
-      flake = false;
-    };
-    fnl = {
-      url = "path:fnl";
-      flake = false;
-    };
-  };
+  inputs.helix.url = "github:helix-editor/helix/master";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/master";
+  inputs.hammerspoon.url = "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip";
+  inputs.hammerspoon.flake = false;
+  inputs.fnl.url = "path:fnl";
+  inputs.fnl.flake = false;
 
   outputs = {self, ...} @ inputs: {
-    systemInfo = {
-      home = rec {
-        username = "maas";
-        homeDirectory = "/Users/${username}";
-        stateVersion = "22.11";
-      };
-    };
+    systemInfo.home.username = "maas";
+    systemInfo.home.homeDirectory = "/Users/maas";
+    systemInfo.home.stateVersion = "22.11";
+
     homeConfigurations = rec {
       overlays = [
         (
