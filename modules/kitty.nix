@@ -1,7 +1,6 @@
 let
   colors = import ./colors.nix;
-in
-{
+in {
   programs.kitty = {
     enable = true;
     theme = "Tokyo Night";

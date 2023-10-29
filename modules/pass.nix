@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  libs,
-  ...
-}: {
+{config, ...}: {
   programs.password-store = {
     enable = true;
     settings = {
