@@ -37,7 +37,7 @@ in {
 
       cursor_blink_interval = 0;
 
-      # tmux new-session - A - D - s default
+      shell = "bash -it";
 
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";

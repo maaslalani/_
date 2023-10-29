@@ -1,5 +1,6 @@
 {
   description = "home";
+
   inputs.helix.url = "github:helix-editor/helix/master";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager";
@@ -44,6 +45,7 @@
           }
         )
       ];
+
       linux = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // {inherit overlays;};
         modules = [
@@ -55,6 +57,7 @@
           self.systemInfo
         ];
       };
+
       home = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // {inherit overlays;};
         modules = [
@@ -78,6 +81,7 @@
         ];
       };
     };
+
     home = self.homeConfigurations.home.activationPackage;
     linux = self.homeConfigurations.linux.activationPackage;
   };
