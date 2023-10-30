@@ -4,9 +4,50 @@
   ...
 }: let
   join = builtins.concatStringsSep " && ";
-  spaceJoin = builtins.concatStringsSep " ";
-  commaJoin = builtins.concatStringsSep ",";
-  value = k: v: "\"${k}\":\"${v}\"";
+  pathJoin = builtins.concatStringsSep ":";
+
+  environment = rec {
+    XDG_DATA_HOME = config.xdg.dataHome;
+    XDG_CONFIG_HOME = config.xdg.configHome;
+    XDG_CACHE_HOME = config.xdg.cacheHome;
+    AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
+    AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
+    BREW_SBIN = "/usr/local/sbin";
+    BROWSER = "open";
+    CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
+    CLICOLOR = 1;
+    COLORTERM = "truecolor";
+    EDITOR = "hx";
+    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    GOBIN = "${GOPATH}/bin";
+    GOPATH = "${config.xdg.configHome}/go";
+    HOMEBREW_BIN = "/opt/homebrew/bin";
+    HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
+    HOMEBREW_PREFIX = "/opt/homebrew";
+    HOMEBREW_REPOSITORY = "/opt/homebrew";
+    HOMEBREW_SBIN = "/opt/homebrew/sbin";
+    DENO_BIN = "$HOME/.deno/bin";
+    JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
+    KEYTIMEOUT = 1;
+    KUBECONFIG = pathJoin ["$HOME/.kube/config"];
+    NIXPKGS_ALLOW_BROKEN = 1;
+    NIX_BIN = "$HOME/.nix-profile/bin";
+    BASH_SILENCE_DEPRECATION_WARNING = 1;
+    NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+    SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
+    SRC = "$HOME/src";
+    _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
+    PATH = pathJoin [
+      CARGO_BIN
+      GOBIN
+      NIX_BIN
+      BREW_SBIN
+      HOMEBREW_BIN
+      HOMEBREW_SBIN
+      DENO_BIN
+      "$PATH"
+    ];
+  };
 
   aliases = rec {
     "..." = "cd ../..";
@@ -168,7 +209,8 @@ in {
     '';
     shellAliases = aliases;
     shellOptions = [];
-    enableCompletion = false;
+    enableCompletion = true;
+    sessionVariables = environment;
   };
 
   programs.zsh = {
@@ -232,52 +274,7 @@ in {
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
     '';
-    sessionVariables = let
-      pathJoin =
-        builtins.concatStringsSep
-        ":";
-    in rec {
-      XDG_DATA_HOME = config.xdg.dataHome;
-      XDG_CONFIG_HOME = config.xdg.configHome;
-      XDG_CACHE_HOME = config.xdg.cacheHome;
-      AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
-      AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
-      BREW_SBIN = "/usr/local/sbin";
-      BROWSER = "open";
-      CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
-      CLICOLOR = 1;
-      COLORTERM = "truecolor";
-      EDITOR = "hx";
-      GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-      GOBIN = "${GOPATH}/bin";
-      GOPATH = "${config.xdg.configHome}/go";
-      HOMEBREW_BIN = "/opt/homebrew/bin";
-      HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
-      HOMEBREW_PREFIX = "/opt/homebrew";
-      HOMEBREW_REPOSITORY = "/opt/homebrew";
-      HOMEBREW_SBIN = "/opt/homebrew/sbin";
-      DENO_BIN = "$HOME/.deno/bin";
-      JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
-      KEYTIMEOUT = 1;
-      KUBECONFIG = pathJoin ["$HOME/.kube/config"];
-      NIXPKGS_ALLOW_BROKEN = 1;
-      NIX_BIN = "$HOME/.nix-profile/bin";
-      BASH_SILENCE_DEPRECATION_WARNING = 1;
-      NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
-      SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
-      SRC = "$HOME/src";
-      _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
-      PATH = pathJoin [
-        CARGO_BIN
-        GOBIN
-        NIX_BIN
-        BREW_SBIN
-        HOMEBREW_BIN
-        HOMEBREW_SBIN
-        DENO_BIN
-        "$PATH"
-      ];
-    };
+    sessionVariables = environment;
     plugins = [
       {
         name = "zsh-syntax-highlighting";

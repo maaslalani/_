@@ -37,7 +37,7 @@ in {
 
       cursor_blink_interval = 0;
 
-      shell = "bash -it";
+      shell = "bash";
 
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";
