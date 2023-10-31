@@ -35,7 +35,7 @@
           C-n = "goto_file_start";
           X = "extend_line_above";
           G = "goto_file_end";
-          g.q = "reflow";
+          g.q = ":reflow";
           a = ["append_mode" "collapse_selection"];
           i = ["insert_mode" "collapse_selection"];
           ret = ["move_line_down" "goto_line_start"];
