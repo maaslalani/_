@@ -14,7 +14,9 @@
     AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
     BREW_SBIN = "/usr/local/sbin";
     BROWSER = "open";
-    CARGO_BIN = "${config.xdg.configHome}/.cargo/bin";
+    RUSTUP_HOME = "${config.xdg.configHome}/.rustup";
+    CARGO_HOME = "${config.xdg.configHome}/.cargo";
+    CARGO_BIN = "${CARGO_HOME}/bin";
     CLICOLOR = 1;
     COLORTERM = "truecolor";
     EDITOR = "hx";

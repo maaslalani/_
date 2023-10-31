@@ -3,56 +3,55 @@
 ;; ============================================================================
 
 ;; Variables
-(local g vim.g)
-(set g.loaded_2html_plugin false)
-(set g.loaded_gzip false)
-(set g.loaded_man false)
-(set g.loaded_matchit false)
-(set g.loaded_remote_plugins false)
-(set g.loaded_tarPlugin false)
-(set g.loaded_zipPlugin false)
-(set g.mapleader " ")
-(set g.netrw_banner 0)
-(set g.copilot_no_tab_map true)
+(local vim _G.vim)
+(set vim.g.loaded_2html_plugin false)
+(set vim.g.loaded_gzip false)
+(set vim.g.loaded_man false)
+(set vim.g.loaded_matchit false)
+(set vim.g.loaded_remote_plugins false)
+(set vim.g.loaded_tarPlugin false)
+(set vim.g.loaded_zipPlugin false)
+(set vim.g.mapleader " ")
+(set vim.g.netrw_banner 0)
+(set vim.g.copilot_no_tab_map true)
 
 ;; Options
-(local o vim.o)
-(set o.autowrite true)
-(set o.backspace "indent,eol,start")
-(set o.backup false)
-(set o.completeopt "menu,menuone,noselect")
-(set o.conceallevel 0)
-(set o.cursorline true)
-(set o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
-(set o.hidden true)
-(set o.ignorecase true)
-(set o.laststatus 3)
-(set o.lazyredraw true)
-(set o.number true)
-(set o.omnifunc "v:lua.vim.lsp.omnifunc")
-(set o.ruler true)
-(set o.scrolloff 3)
-(set o.showmode false)
-(set o.signcolumn :yes)
-(set o.smartcase true)
-(set o.softtabstop 4)
-(set o.spell true)
-(set o.splitbelow true)
-(set o.splitright true)
-(set o.swapfile false)
-(set o.synmaxcol 300)
-(set o.syntax :off)
-(set o.tabstop 4)
-(set o.termguicolors true)
-(set o.textwidth 80)
-(set o.timeoutlen 350)
-(set o.undofile true)
-(set o.updatetime 300)
-(set o.visualbell true)
-(set o.wildmode "longest:full,full")
-(set o.wrap false)
-(set o.wrapmargin 0)
-(set o.writebackup false)
+(set vim.o.autowrite true)
+(set vim.o.backspace "indent,eol,start")
+(set vim.o.backup false)
+(set vim.o.completeopt "menu,menuone,noselect")
+(set vim.o.conceallevel 0)
+(set vim.o.cursorline true)
+(set vim.o.diffopt "filler,internal,algorithm:histogram,indent-heuristic")
+(set vim.o.hidden true)
+(set vim.o.ignorecase true)
+(set vim.o.laststatus 3)
+(set vim.o.lazyredraw true)
+(set vim.o.number true)
+(set vim.o.omnifunc "v:lua.vim.lsp.omnifunc")
+(set vim.o.ruler true)
+(set vim.o.scrolloff 3)
+(set vim.o.showmode false)
+(set vim.o.signcolumn :yes)
+(set vim.o.smartcase true)
+(set vim.o.softtabstop 4)
+(set vim.o.spell true)
+(set vim.o.splitbelow true)
+(set vim.o.splitright true)
+(set vim.o.swapfile false)
+(set vim.o.synmaxcol 300)
+(set vim.o.syntax :off)
+(set vim.o.tabstop 4)
+(set vim.o.termguicolors true)
+(set vim.o.textwidth 80)
+(set vim.o.timeoutlen 350)
+(set vim.o.undofile true)
+(set vim.o.updatetime 300)
+(set vim.o.visualbell true)
+(set vim.o.wildmode "longest:full,full")
+(set vim.o.wrap false)
+(set vim.o.wrapmargin 0)
+(set vim.o.writebackup false)
 
 ;; Macros
 (macro pcmd [prefix cmd]
@@ -159,9 +158,9 @@
       :plugins {:spelling {:enabled true}}})
 
 ;; Language Server Protocol
-(set capabilities ((. (require :cmp_nvim_lsp) :default_capabilities)))
+(local capabilities ((. (require :cmp_nvim_lsp) :default_capabilities)))
 
-(fn on_attach [client bufnr]
+(fn on_attach []
   (tset vim.lsp.handlers :textDocument/hover
         (vim.lsp.with vim.lsp.handlers.hover {:border :single}))
   (tset vim.lsp.handlers :textDocument/signatureHelp
@@ -268,7 +267,6 @@
   (local cmp-autopairs (. (require :nvim-autopairs.completion.cmp)))
   (cmp.event:on :confirm_done
                 (cmp-autopairs.on_confirm_done {:map_char {:tex ""}}))
-  (local border ["┌" "─" "┐" "│" "┘" "─" "└" "│"])
   (cmp.setup {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
               :mapping {:<C-b> (cmp.mapping (cmp.mapping.scroll_docs (- 1))
                                             [:i :c])
@@ -307,8 +305,6 @@
 ;; telescope
 (fn telescope []
   (local telescope (require :telescope))
-  (local sorters (require :telescope.sorters))
-  (local previewers (require :telescope.previewers))
   ((. telescope :setup) {:defaults {:prompt_prefix " "
                                     :selection_caret "→ "
                                     :set_env {:COLORTERM :truecolor}
@@ -342,6 +338,7 @@
 (autocmd [:BufEnter] {:pattern :*.lock :command "set ft=json"})
 (autocmd [:BufWritePre]
          {:pattern :*.go :command "lua vim.lsp.buf.format { async = false }"})
+
 (autocmd [:TermOpen]
          {:pattern "*" :command "setl nonu nocul scl=no ls=0 | star"})
 
@@ -356,3 +353,4 @@
 
 ;; eager loading
 (treesitter)
+

@@ -47,6 +47,24 @@
         };
       };
     };
+
+    languages.language-server = {
+      fennel-language-server = {
+        command = "fennel-language-server";
+        args = ["lsp" "stdio"];
+      };
+    };
+
+    languages.grammar = [
+      {
+        name = "fennel";
+        source = {
+          git = "https://github.com/TravonteD/tree-sitter-fennel";
+          rev = "517195970428aacca60891b050aa53eabf4ba78d";
+        };
+      }
+    ];
+
     languages.language = [
       {
         name = "nix";
@@ -56,10 +74,6 @@
       {
         name = "go";
         formatter = {command = "goimports";};
-        language-servers = [
-          "gopls"
-          "golangci-lint-lsp"
-        ];
       }
       {
         name = "lua";
@@ -99,6 +113,25 @@
           command = "prettier";
           args = ["--parser" "typescript" "--tab-width" "4"];
         };
+      }
+      {
+        name = "fennel";
+        scope = "source.fnl";
+        auto-format = true;
+        injection-regex = "(fennel|fnl)";
+        roots = [".git"];
+        comment-token = ";;";
+        indent = {
+          tab-width = 2;
+          unit = "  ";
+        };
+        file-types = ["fnl"];
+        formatter = {
+          command = "fnlfmt";
+          args = ["-"];
+        };
+        language-servers = ["fennel-language-server"];
+        grammar = "fennel";
       }
       {
         name = "svg";

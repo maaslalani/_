@@ -10,9 +10,9 @@ with pkgs.nodePackages_latest; [
   golangci-lint
   golangci-lint-langserver
   ltex-ls
+  nil
   prettier
   proselint
-  nil
   rnix-lsp
   serve
   solargraph

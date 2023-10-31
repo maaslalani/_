@@ -1,6 +1,7 @@
 ;; ============================================================================
 ;; Hammerspoon
 ;; ============================================================================
+(local hs _G.hs)
 
 ;; Spoons
 (hs.loadSpoon :SpoonInstall)
@@ -120,7 +121,7 @@
 ;; or perform an action, key sequences are determined by nested keys
 ;; in the `menu` table
 (fn setup [modal menu]
-  (fn modal.exited [self]
+  (fn modal.exited []
     (hs.alert.closeAll))
 
   (modal:bind {} :escape (fn []
@@ -142,8 +143,9 @@
                            (modal:exit))
                          (action)))))
 
-  (fn modal.entered [self]
+  (fn modal.entered []
     (hs.alert.closeAll)
     (hs.alert (table.concat display "\n") true)))
 
 (setup start menu)
+
