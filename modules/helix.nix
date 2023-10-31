@@ -26,20 +26,24 @@
         };
       };
       theme = "github_dark";
-      keys.insert.esc = ["collapse_selection" "normal_mode"];
-      keys.select.esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
-      keys.normal = {
-        C-n = "goto_file_start";
-        X = "extend_line_above";
-        G = "goto_file_end";
-        g.q = ":reflow";
-        esc = ["collapse_selection" "normal_mode"];
-        a = ["append_mode" "collapse_selection"];
-        i = ["insert_mode" "collapse_selection"];
-        ret = ["move_line_down" "goto_line_start"];
-        space = {
-          w = ":write";
-          q = ":quit";
+      keys = {
+        insert.esc = ["collapse_selection" "normal_mode"];
+        select.esc = ["collapse_selection" "normal_mode"];
+        normal.esc = ["collapse_selection" "normal_mode"];
+
+        normal = {
+          C-n = "goto_file_start";
+          X = "extend_line_above";
+          G = "goto_file_end";
+          g.q = "reflow";
+          a = ["append_mode" "collapse_selection"];
+          i = ["insert_mode" "collapse_selection"];
+          ret = ["move_line_down" "goto_line_start"];
+          space = {
+            w = ":update";
+            q = ":quit";
+            G = ":sh gh browse";
+          };
         };
       };
     };
@@ -52,6 +56,10 @@
       {
         name = "go";
         formatter = {command = "goimports";};
+        language-servers = [
+          "gopls"
+          "golangci-lint-lsp"
+        ];
       }
       {
         name = "lua";

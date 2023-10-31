@@ -18,6 +18,7 @@
     alejandra
     awscli2
     bore-cli
+    btop
     bundix
     cachix
     chafa
