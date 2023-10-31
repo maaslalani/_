@@ -60,7 +60,14 @@
       };
 
       home = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin // {inherit overlays;};
+        pkgs =
+          inputs.nixpkgs.legacyPackages.aarch64-darwin
+          // {
+            inherit overlays;
+            config = {
+              permittedInsecurePackages = ["libxls-1.6.2"];
+            };
+          };
         modules = [
           ./modules/direnv.nix
           ./modules/fonts.nix

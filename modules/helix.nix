@@ -121,10 +121,6 @@
           };
         }
         {
-          name = "scheme";
-          file-types = ["fnl"];
-        }
-        {
           name = "fennel";
           auto-format = true;
           comment-token = ";;";
