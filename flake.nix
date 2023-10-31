@@ -40,6 +40,7 @@
                 mkdir -p $out
                 fennel --compile $src/hammerspoon.fnl > $out/hammerspoon.lua
                 fennel --compile $src/init.fnl > $out/init.lua
+                cp $src/highlights.scm $out/highlights.scm
               '';
             };
           }
