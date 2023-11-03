@@ -2,15 +2,22 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  highlightPath = "${config.xdg.configHome}/helix/runtime/queries/fennel/highlights.scm";
+in {
   config = {
-    home.file."${config.xdg.configHome}/helix/runtime/queries/fennel/highlights.scm".source = "${pkgs.fnl}/highlights.scm";
+    home.file.${highlightPath}.source = "${pkgs.fnl}/highlights.scm";
     programs.helix = {
       enable = true;
       package = pkgs.helix;
       settings = {
         editor = {
-          gutters = ["diff" "line-numbers" "spacer" "diagnostics"];
+          gutters = [
+            "diff"
+            "line-numbers"
+            "spacer"
+            "diagnostics"
+          ];
           cursorline = true;
           cursor-shape.insert = "bar";
           color-modes = true;
@@ -28,7 +35,16 @@
             };
             left = ["mode" "file-name"];
             center = [];
-            right = ["diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" "version-control" "spacer"];
+            right = [
+              "diagnostics"
+              "selections"
+              "position"
+              "file-encoding"
+              "file-line-ending"
+              "file-type"
+              "version-control"
+              "spacer"
+            ];
           };
         };
         theme = "github_dark";
