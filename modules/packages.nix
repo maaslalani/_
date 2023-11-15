@@ -27,7 +27,6 @@
     cowsay
     delve
     deno
-    docker
     fennel
     ffmpeg_5
     fzf

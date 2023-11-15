@@ -30,7 +30,6 @@ lib: let
       );
 
   bold = "bold";
-  underline = "underline";
   none = "none";
 in
   concatStrings (mapAttrsToList rule {

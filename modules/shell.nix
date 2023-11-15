@@ -33,6 +33,7 @@
     KEYTIMEOUT = 1;
     KUBECONFIG = pathJoin ["$HOME/.kube/config"];
     NIXPKGS_ALLOW_BROKEN = 1;
+    NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = 1;
     NIX_BIN = "$HOME/.nix-profile/bin";
     BASH_SILENCE_DEPRECATION_WARNING = 1;
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
