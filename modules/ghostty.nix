@@ -15,12 +15,12 @@ in {
 
     macos-non-native-fullscreen = true
 
-    font-size = 15
+    font-size = 16
     font-family = JetBrains Mono
     mouse-hide-while-typing = true
 
-    window-padding-x = 8
-    window-padding-y = 8
+    window-padding-x = 20
+    window-padding-y = 20
 
     palette = 0=${colors.normal.black}
     palette = 1=${colors.normal.red}
