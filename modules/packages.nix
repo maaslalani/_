@@ -2,11 +2,11 @@
   core = with pkgs;
     [
       entr
+      eza
       fd
       git
       gnupg
       jq
-      lsd
       pastel
       ripgrep
       sd

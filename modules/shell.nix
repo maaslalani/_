@@ -171,8 +171,8 @@
 
     c = "clear";
 
-    ls = "lsd";
-    lsa = "lsd -Fla";
+    ls = "eza";
+    lsa = "eza -Fla";
     sl = "${ls}";
     tree = "${ls} -T";
 
