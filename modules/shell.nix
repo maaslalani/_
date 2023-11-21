@@ -66,12 +66,12 @@
     ta = "tmux attach -t";
     tn = "tmux new";
 
-    t = "SESSION=`ls $SRC | gum filter --height 10` && ${tn} -ds $SESSION -c $SRC/$SESSION; ${ts} $SESSION";
+    t = "SESSION=`ls $SRC | gum filter --height 10` && ${tn} -ds $SESSION -c $SRC/$SESSION; ${ts} $SESSION || ${ta} $SESSION";
     tkss = "tmux kill-session -t";
     tksv = "tmux kill-server";
     tls = "tmux list-sessions";
 
-    _ = "${tn} -ds dotfiles -c ~/_; ${ts} dotfiles";
+    _ = "${tn} -ds dotfiles -c ~/_; ${ts} dotfiles || ${ta} dotfiles";
     src = "cd $HOME/src";
 
     dstroy = "fd -IH .DS_Store | xargs sudo rm";
