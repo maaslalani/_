@@ -53,6 +53,10 @@ in {
           insert.esc = normal.esc;
           select.esc = normal.esc;
 
+          insert = {
+            C-e = "completion";
+          };
+
           normal = {
             C-n = "goto_file_start";
             X = "extend_line_above";
@@ -108,7 +112,7 @@ in {
             tab-width = 2;
             unit = " ";
           };
-          auto-format = false;
+          auto-format = true;
           formatter = {
             command = "prettier";
             args = ["--parser" "html" "--tab-width" "2"];

@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   colors = import ./colors.nix;
   ghosttyPath = "${config.xdg.configHome}/ghostty";
 in {
@@ -19,8 +15,8 @@ in {
     font-family = JetBrains Mono
     mouse-hide-while-typing = true
 
-    window-padding-x = 20
-    window-padding-y = 20
+    window-padding-x = 16
+    window-padding-y = 16
 
     palette = 0=${colors.normal.black}
     palette = 1=${colors.normal.red}
