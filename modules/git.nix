@@ -12,7 +12,7 @@ in {
       color.ui = true;
       commit.gpgsign = true;
       core.commitGraph = true;
-      credential.helper = "osxkeychain";
+      credential.helper = if pkgs.stdenv.isDarwin then "osxkeychain" else "cache";
       diff.algorithm = "patience";
       fetch.prune = true;
       gc.worktreePruneExpire = "now";
