@@ -30,23 +30,18 @@
     fennel
     ffmpeg_5
     fzf
-    git
     git-lfs
     go-swagger
     go_1_21
     gopass
-    gopls
     hammerspoon
     htop
     imagemagick
-    kitty
     libwebp
     llvm
     lolcat
     lsix
     monitorcontrol
-    nil
-    nixpkgs-fmt
     nodejs
     nushell
     openssl
@@ -55,21 +50,26 @@
     postgresql
     python311Packages.grip
     redis
-    revive
     rm-improved
     rustup
     sc-im
     simple-http-server
     spotify-tui
     spotifyd
-    tree-sitter
     twurl
     yarn
     yq
     zig
   ];
 
-  linux = [];
+  linux = with pkgs; [
+    gcc
+    dunst
+    waybar
+
+    go_1_21
+    brave
+  ];
 
   charmbracelet = with pkgs; [
     # gum

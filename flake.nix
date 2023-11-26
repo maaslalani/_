@@ -12,7 +12,7 @@
 
   outputs = {self, ...} @ inputs: {
     systemInfo.home.username = "maas";
-    systemInfo.home.homeDirectory = "/Users/maas";
+    systemInfo.home.homeDirectory = "/home/maas";
     systemInfo.home.stateVersion = "22.11";
 
     homeConfigurations = rec {
@@ -51,12 +51,18 @@
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // {inherit overlays;};
         modules = [
           ./modules/direnv.nix
+          ./modules/fonts.nix
+          ./modules/gh.nix
+          ./modules/git.nix
           ./modules/helix.nix
+          ./modules/hyprland.nix
           ./modules/packages.nix
           ./modules/shell.nix
           ./modules/tmux.nix
+          ./modules/kitty.nix
+          ./modules/pass.nix
           self.systemInfo
-        ];
+];
       };
 
       home = inputs.home-manager.lib.homeManagerConfiguration {

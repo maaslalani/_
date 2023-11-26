@@ -80,6 +80,7 @@
     "hammerspoon": {
       "flake": false,
       "locked": {
+        "lastModified": 1678814683,
         "narHash": "sha256-Q14NBizKz7LysEFUTjUHCUnVd6+qEYPSgWwrOGeT9Q0=",
         "type": "tarball",
         "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip"
@@ -97,11 +98,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1699931750,
-        "narHash": "sha256-QciV+JHMl5de0Ohkldf8bC9J5GpQH1c+NPAwPkty3sg=",
+        "lastModified": 1700676250,
+        "narHash": "sha256-08aSqFjN/TR82M6dkRPYMwemRHzvZ5qShTam8ltpfQE=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "40959bb449ec9dfbff9249332853a02b50f483fe",
+        "rev": "090ed97e0045bfad1e5bff8b96c61707b996b85a",
         "type": "github"
       },
       "original": {
@@ -118,11 +119,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699783872,
-        "narHash": "sha256-4zTwLT2LL45Nmo6iwKB3ls3hWodVP9DiSWxki/oewWE=",
+        "lastModified": 1700847865,
+        "narHash": "sha256-uWaOIemGl9LF813MW0AEgCBpKwFo2t1Wv3BZc6e5Frw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "280721186ab75a76537713ec310306f0eba3e407",
+        "rev": "8cedd63eede4c22deb192f1721dd67e7460e1ebe",
         "type": "github"
       },
       "original": {
@@ -149,11 +150,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1700071890,
-        "narHash": "sha256-LhkkCoKOnV6eYxbr9v410JmhjaLml1g8lbZ++WU/L5k=",
+        "lastModified": 1700883623,
+        "narHash": "sha256-L0VAwMUuJctNW94qLsF9nMDQ2CjM1evo9sLJm0p6N/g=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2bd35aaae67490580bdf6c0cb3eef790bfdb8d57",
+        "rev": "dc584735fc80a6fb657cc260136d85a9d6f61121",
         "type": "github"
       },
       "original": {

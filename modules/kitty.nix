@@ -15,7 +15,7 @@ in {
       window_border_width = 1;
       window_margin_width = 0;
       single_window_margin_width = 0;
-      window_padding_width = 20;
+      window_padding_width = 8;
 
       active_border_color = "#282a2e";
       inactive_border_color = "#c5c8c6";
@@ -37,7 +37,7 @@ in {
 
       cursor_blink_interval = 0;
 
-      shell = "bash";
+      shell = "zsh";
 
       macos_titlebar_color = "background";
       macos_option_as_alt = "left";
@@ -53,7 +53,7 @@ in {
     };
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 15;
+      size = 12;
     };
   };
 }
