@@ -66,6 +66,7 @@
     gcc
     dunst
     waybar
+    pinentry
 
     go_1_21
     brave
