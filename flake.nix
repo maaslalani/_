@@ -62,7 +62,7 @@
           ./modules/kitty.nix
           ./modules/pass.nix
           self.systemInfo
-];
+        ];
       };
 
       home = inputs.home-manager.lib.homeManagerConfiguration {
