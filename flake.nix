@@ -11,9 +11,11 @@
   inputs.fnl.flake = false;
 
   outputs = {self, ...} @ inputs: {
-    systemInfo.home.username = "maas";
-    systemInfo.home.homeDirectory = "/home/maas";
-    systemInfo.home.stateVersion = "22.11";
+    systemInfo.home = {
+      username = "maas";
+      homeDirectory = "/home/maas";
+      stateVersion = "22.11";
+    };
 
     homeConfigurations = rec {
       overlays = [

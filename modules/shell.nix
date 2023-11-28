@@ -33,13 +33,17 @@
     KEYTIMEOUT = 1;
     KUBECONFIG = pathJoin ["$HOME/.kube/config"];
     NIXPKGS_ALLOW_BROKEN = 1;
+    NIXPKGS_ALLOW_UNFREE = 1;
     NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = 1;
     NIX_BIN = "$HOME/.nix-profile/bin";
     BASH_SILENCE_DEPRECATION_WARNING = 1;
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
     SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
     SRC = "$HOME/src";
+    SHELL = "zsh";
     _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
     PATH = pathJoin [
       CARGO_BIN
       GOBIN
@@ -158,6 +162,8 @@
 
     nupf = join ["cd $HOME/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
 
+    nrs = "sudo nixos-rebuild switch";
+
     # home-manager switch
     hms = join [
       "cd $HOME/_"
@@ -243,7 +249,7 @@ in {
       bindkey "^r" hs
 
       function fs() {
-        BUFFER+="$(gum filter)"
+        BUFFER+="$(fd | gum filter)"
         zle -w end-of-line
       }
       zle -N fs

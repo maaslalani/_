@@ -63,14 +63,20 @@
   ];
 
   linux = with pkgs; [
-    gcc
-    dunst
-    waybar
-    pinentry
-
-    go_1_21
     brave
-  ];
+    brightnessctl
+    discord
+    dunst
+    gcc
+    go_1_21
+    mpv
+    pinentry
+    rofi-wayland
+    waybar
+    wl-clipboard
+    xclip
+    zathura
+];
 
   charmbracelet = with pkgs; [
     # gum
