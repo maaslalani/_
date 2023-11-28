@@ -149,3 +149,28 @@
 
 (setup start menu)
 
+(var send-escape false)
+(var last-mods {})
+(local control-key-timer
+       (hs.timer.delayed.new 0.1 (fn [] (set send-escape false))))
+
+(: (hs.eventtap.new [hs.eventtap.event.types.flagsChanged]
+                    (fn [evt]
+                      (let [new-mods (evt:getFlags)]
+                        (when (= (. last-mods :ctrl) (. new-mods :ctrl))
+                          (lua "return false"))
+                        (if (not (. last-mods :ctrl))
+                            (do
+                              (set last-mods new-mods)
+                              (set send-escape true)
+                              (control-key-timer:start))
+                            (do
+                              (when send-escape
+                                (hs.eventtap.keyStroke {} :escape))
+                              (set last-mods new-mods)
+                              (control-key-timer:stop)))
+                        false))) :start)
+
+(: (hs.eventtap.new [hs.eventtap.event.types.keyDown]
+                    (fn [evt] (set send-escape false) false)) :start)
+

@@ -68,7 +68,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-qUBAWhg5DeAVpoW8yXqjcWm2JUNJjW/GhY2gsgIaetM=",
+        "narHash": "sha256-pIc0v1vMZZfCUVuZM1FW0OBsaMIY0CRt33ttoPjE+G4=",
         "path": "fnl",
         "type": "path"
       },
@@ -80,7 +80,6 @@
     "hammerspoon": {
       "flake": false,
       "locked": {
-        "lastModified": 1678814683,
         "narHash": "sha256-Q14NBizKz7LysEFUTjUHCUnVd6+qEYPSgWwrOGeT9Q0=",
         "type": "tarball",
         "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip"
@@ -98,11 +97,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1700676250,
-        "narHash": "sha256-08aSqFjN/TR82M6dkRPYMwemRHzvZ5qShTam8ltpfQE=",
+        "lastModified": 1701184283,
+        "narHash": "sha256-0w6TAvwlnSOhtK8NJD9Edh9fnZIg/8JvaJilEANDCxc=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "090ed97e0045bfad1e5bff8b96c61707b996b85a",
+        "rev": "b023faacf898e2f393fa8f7f91e685547080442c",
         "type": "github"
       },
       "original": {
@@ -119,11 +118,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1700847865,
-        "narHash": "sha256-uWaOIemGl9LF813MW0AEgCBpKwFo2t1Wv3BZc6e5Frw=",
+        "lastModified": 1701071203,
+        "narHash": "sha256-lQywA7QU/vzTdZ1apI0PfgCWNyQobXUYghVrR5zuIeM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8cedd63eede4c22deb192f1721dd67e7460e1ebe",
+        "rev": "db1878f013b52ba5e4034db7c1b63e8d04173a86",
         "type": "github"
       },
       "original": {
@@ -150,11 +149,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1700883623,
-        "narHash": "sha256-L0VAwMUuJctNW94qLsF9nMDQ2CjM1evo9sLJm0p6N/g=",
+        "lastModified": 1701185352,
+        "narHash": "sha256-zNRKWKoFs+SPX2DnE8InXoTbq7HYwgi9veiAr2hukPw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "dc584735fc80a6fb657cc260136d85a9d6f61121",
+        "rev": "3f28473e6e22123700468090c69cb2ac5d088c23",
         "type": "github"
       },
       "original": {

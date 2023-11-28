@@ -11,12 +11,6 @@
   inputs.fnl.flake = false;
 
   outputs = {self, ...} @ inputs: {
-    systemInfo.home = {
-      username = "maas";
-      homeDirectory = "/home/maas";
-      stateVersion = "22.11";
-    };
-
     homeConfigurations = rec {
       overlays = [
         (
@@ -63,7 +57,11 @@
           ./modules/tmux.nix
           ./modules/kitty.nix
           ./modules/pass.nix
-          self.systemInfo
+          {
+            home.username = "maas";
+            home.stateVersion = "22.11";
+            home.homeDirectory = "/home/maas";
+          }
         ];
       };
 
@@ -93,7 +91,11 @@
           ./modules/tmux.nix
           ./modules/vim.nix
           ./modules/zellij.nix
-          self.systemInfo
+          {
+            home.username = "maas";
+            home.stateVersion = "22.11";
+            home.homeDirectory = "/Users/maas";
+          }
         ];
       };
     };
