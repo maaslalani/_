@@ -10,8 +10,7 @@
   inputs.fnl.url = "path:fnl";
   inputs.fnl.flake = false;
 
-  outputs = {self, ...} @ inputs: {
-    homeConfigurations = rec {
+  outputs = {self, home-manager, ...}@inputs: let
       overlays = [
         (
           self: super: {
@@ -42,7 +41,45 @@
           }
         )
       ];
+  in {
+    nixosConfigurations = {
+      nixos = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          { nixpkgs.overlays = overlays; }
+          ./modules/hardware.nix
+          ./modules/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.maas = {
+              home.username = "maas";
+              home.homeDirectory = "/home/maas";
+              home.stateVersion = "23.11";
 
+              programs.home-manager.enable = true;
+
+              imports = [
+                ./modules/git.nix
+                ./modules/helix.nix
+                ./modules/hyprland.nix
+                ./modules/direnv.nix
+                ./modules/fonts.nix
+                ./modules/gh.nix
+                ./modules/packages.nix
+                ./modules/shell.nix
+                ./modules/tmux.nix
+                ./modules/kitty.nix
+                ./modules/pass.nix
+              ];
+            };
+          }
+        ];
+      };
+    };
+
+    homeConfigurations = {
       linux = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux // {inherit overlays;};
         modules = [
@@ -59,7 +96,7 @@
           ./modules/pass.nix
           {
             home.username = "maas";
-            home.stateVersion = "22.11";
+            home.stateVersion = "23.11";
             home.homeDirectory = "/home/maas";
           }
         ];
@@ -93,7 +130,7 @@
           ./modules/zellij.nix
           {
             home.username = "maas";
-            home.stateVersion = "22.11";
+            home.stateVersion = "23.11";
             home.homeDirectory = "/Users/maas";
           }
         ];

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{ pkgs, config, ... }: let
   highlightPath = "${config.xdg.configHome}/helix/runtime/queries/fennel/highlights.scm";
 in {
   config = {

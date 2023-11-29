@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -10,6 +8,7 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
+      networks = { };
     };
   };
 
@@ -35,10 +34,8 @@
   };
 
   services.getty.autologinUser = "maas";
-  nixpkgs.config.allowUnfree = true;
 
   hardware = {
-    enableAllFirmware = true;
     opengl.enable = true;
     nvidia.modesetting.enable = true;
   };

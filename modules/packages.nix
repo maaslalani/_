@@ -4,7 +4,6 @@
       entr
       eza
       fd
-      git
       gnupg
       jq
       pastel
@@ -65,7 +64,6 @@
   linux = with pkgs; [
     brave
     brightnessctl
-    discord
     dunst
     gcc
     go_1_21

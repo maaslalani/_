@@ -80,7 +80,7 @@
 
     dstroy = "fd -IH .DS_Store | xargs sudo rm";
 
-    spoon = "open -a ${pkgs.hammerspoon}/Applications/Hammerspoon.app";
+    spoon = "open -a $HOME/.nix-profile/Applications/Hammerspoon.app";
 
     g = "git";
     ga = "git add";
