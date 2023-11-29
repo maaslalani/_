@@ -8,7 +8,14 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
-      networks = { };
+      networks = {
+        # wpa_cli
+        # > add_network
+        # > set_network 0 ssid <SSID>
+        # > set_network 0 key_mgmt WPA-PSK
+        # > set_network 0 psk <PSK>
+        # > enable_network 0
+      };
     };
   };
 
