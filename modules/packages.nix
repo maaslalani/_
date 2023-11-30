@@ -70,8 +70,12 @@
     go_1_21
     mpv
     networkmanager
+    pavucontrol
     pinentry
+    plasma-pa
+    pulseaudioFull
     rofi-wayland
+    sof-firmware
     waybar
     wl-clipboard
     xclip

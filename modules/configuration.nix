@@ -1,8 +1,9 @@
 { pkgs, ... }:
 {
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 2;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.kernelModules = [ "snd-seq" "snd-rawmidi" ];
 
   networking = {
     networkmanager.enable = true;
@@ -20,6 +21,10 @@
     };
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_GB.UTF-8";
 
@@ -30,9 +35,10 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = false;
+    alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    wireplumber.enable = true;
   };
 
   users.users.maas = {
@@ -44,9 +50,13 @@
   services.getty.autologinUser = "maas";
 
   hardware = {
+    enableAllFirmware = true;
     opengl.enable = true;
     nvidia.modesetting.enable = true;
+    firmware = [ pkgs.sof-firmware ];
   };
+
+  nix.gc.automatic = true;
 
   system.stateVersion = "23.05";
 }
