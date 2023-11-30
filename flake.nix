@@ -59,11 +59,16 @@
               home.stateVersion = "23.11";
 
               programs.home-manager.enable = true;
+              services.gpg-agent = {
+                enable = true;
+                pinentryFlavor = "curses";
+              };
 
               imports = [
                 ./modules/git.nix
                 ./modules/helix.nix
                 ./modules/hyprland.nix
+                ./modules/waybar.nix
                 ./modules/direnv.nix
                 ./modules/fonts.nix
                 ./modules/gh.nix
