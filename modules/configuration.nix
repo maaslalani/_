@@ -49,6 +49,11 @@
 
   services.getty.autologinUser = "maas";
 
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavour = "console";
+  };
+
   hardware = {
     enableAllFirmware = true;
     opengl.enable = true;
