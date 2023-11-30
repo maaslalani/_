@@ -3,10 +3,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   networking = {
+    networkmanager.enable = true;
     hostName = "nixos";
     wireless = {
-      enable = true;
       userControlled.enable = true;
       networks = {
         # wpa_cli

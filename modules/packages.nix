@@ -69,6 +69,7 @@
     gcc
     go_1_21
     mpv
+    networkmanager
     pinentry
     rofi-wayland
     waybar
