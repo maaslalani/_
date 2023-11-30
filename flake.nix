@@ -11,9 +11,9 @@
   inputs.fnl.flake = false;
 
   outputs = {self, home-manager, ...}@inputs: let
-      overlays = [
-        (
-          self: super: {
+    overlays = [
+      (
+        self: super: {
             hammerspoon = self.pkgs.stdenv.mkDerivation {
               pname = "hammerspoon";
               version = "unstable";

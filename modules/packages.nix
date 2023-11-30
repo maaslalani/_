@@ -9,6 +9,7 @@
       pastel
       ripgrep
       sd
+      sops
     ]
     ++ (import ./lsp.nix {pkgs = pkgs;});
 
