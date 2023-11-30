@@ -61,7 +61,7 @@
               programs.home-manager.enable = true;
               services.gpg-agent = {
                 enable = true;
-                pinentryFlavor = "curses";
+                pinentryFlavor = "tty";
               };
 
               imports = [

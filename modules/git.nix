@@ -18,7 +18,7 @@ in {
       gc.worktreePruneExpire = "now";
       gc.writeCommitGraph = true;
       github.user = user;
-      gpg.program = "${pkgs.gnupg}/bin/gpg2";
+      gpg.program = "${pkgs.gnupg}/bin/gpg";
       hub.protocol = "https";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
@@ -29,7 +29,7 @@ in {
       rerere.enabled = true;
     };
     signing = {
-      gpgPath = "${pkgs.gnupg}/bin/gpg2";
+      gpgPath = "${pkgs.gnupg}/bin/gpg";
       key = "AECD51CD3C3A50BB9AA21C685A6ED5CBF1A0A000";
       signByDefault = true;
     };
