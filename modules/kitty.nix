@@ -1,9 +1,8 @@
-let
+{pkgs, ...}: let
   colors = import ./colors.nix;
 in {
   programs.kitty = {
     enable = true;
-    theme = "Tokyo Night";
     settings = {
       enable_audio_bell = false;
       copy_on_select = true;
@@ -15,7 +14,10 @@ in {
       window_border_width = 1;
       window_margin_width = 0;
       single_window_margin_width = 0;
-      window_padding_width = 8;
+      window_padding_width =
+        if pkgs.stdenv.isDarwin
+        then 20
+        else 8;
 
       active_border_color = "#282a2e";
       inactive_border_color = "#c5c8c6";
@@ -45,15 +47,38 @@ in {
       macos_show_window_title_in = "none";
 
       background = "#171717";
+      foreground = "#c5c8c6";
+
+      color0 = colors.normal.black;
+      color8 = colors.bright.black;
+      color1 = colors.normal.red;
+      color9 = colors.bright.red;
+      color2 = colors.normal.green;
+      color10 = colors.bright.green;
+      color3 = colors.normal.yellow;
+      color11 = colors.bright.yellow;
+      color4 = colors.normal.blue;
+      color12 = colors.bright.blue;
+      color5 = colors.normal.magenta;
+      color13 = colors.bright.magenta;
+      color6 = colors.normal.cyan;
+      color14 = colors.bright.cyan;
     };
+
+    environment = {
+      DEMO = "true";
+    };
+
+    shellIntegration.enableZshIntegration = true;
     keybindings = {
       "cmd+w" = "no_op";
       "cmd+t" = "no_op";
       "cmd+enter" = "no_op";
     };
+
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 12;
+      size = 16;
     };
   };
 }

@@ -152,7 +152,7 @@
 (var send-escape false)
 (var last-mods {})
 (local control-key-timer
-       (hs.timer.delayed.new 0.1 (fn [] (set send-escape false))))
+       (hs.timer.delayed.new 0.2 (fn [] (set send-escape false))))
 
 (: (hs.eventtap.new [hs.eventtap.event.types.flagsChanged]
                     (fn [evt]

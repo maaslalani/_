@@ -168,7 +168,11 @@
     hms = join [
       "cd $HOME/_"
       "nix --extra-experimental-features nix-command --extra-experimental-features flakes flake lock --update-input fnl"
-      "nix --extra-experimental-features nix-command --extra-experimental-features flakes build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${if pkgs.stdenv.isDarwin then "home" else "linux"}"
+      "nix --extra-experimental-features nix-command --extra-experimental-features flakes build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${
+        if pkgs.stdenv.isDarwin
+        then "home"
+        else "linux"
+      }"
       "${config.xdg.configHome}/nixpkgs/result/activate"
       sz
       "cd -"
@@ -280,8 +284,12 @@ in {
 
       export GPG_TTY=$(tty)
 
+      if [ "$DEMO" = "true" ]; then
+        export PROMPT="%F{#5a56e0}>%f "
+      else
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
+      fi
     '';
     sessionVariables = environment;
     plugins = [
