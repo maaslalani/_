@@ -30,15 +30,20 @@
 
   console.keyMap = "colemak";
 
-  sound.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
+  hardware.pulseaudio.enable = true;
+  sound.enable = true;
+
+  hardware = {
+    enableAllFirmware = true;
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
+    firmware = [ pkgs.sof-firmware ];
+  };
+
+  programs.gnupg.agent = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = false;
   };
 
   users.users.maas = {
@@ -48,13 +53,6 @@
   };
 
   services.getty.autologinUser = "maas";
-
-  hardware = {
-    enableAllFirmware = true;
-    opengl.enable = true;
-    nvidia.modesetting.enable = true;
-    firmware = [ pkgs.sof-firmware ];
-  };
 
   nix.gc.automatic = true;
 

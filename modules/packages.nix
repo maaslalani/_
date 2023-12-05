@@ -4,7 +4,6 @@
       entr
       eza
       fd
-      gnupg
       jq
       pastel
       ripgrep
