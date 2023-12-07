@@ -36,6 +36,7 @@
     hammerspoon
     htop
     imagemagick
+    libfido2
     libwebp
     llvm
     lolcat
@@ -58,6 +59,7 @@
     twurl
     yarn
     yq
+    yubikey-manager
     zig
   ];
 
@@ -79,7 +81,7 @@
     wl-clipboard
     xclip
     zathura
-];
+  ];
 
   charmbracelet = with pkgs; [
     # gum
