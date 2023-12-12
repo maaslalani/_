@@ -88,6 +88,7 @@
     # vhs
     charm
     melt
+    mods
     pop
     skate
     soft-serve
