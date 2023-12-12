@@ -1,4 +1,8 @@
-{ pkgs, config, ... }: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   highlightPath = "${config.xdg.configHome}/helix/runtime/queries/fennel/highlights.scm";
 in {
   config = {
@@ -108,7 +112,7 @@ in {
             tab-width = 2;
             unit = " ";
           };
-          auto-format = true;
+          auto-format = false;
           formatter = {
             command = "prettier";
             args = ["--parser" "html" "--tab-width" "2"];
