@@ -26,6 +26,8 @@
     cowsay
     delve
     deno
+    elmPackages.elm
+    elmPackages.elm-format
     fennel
     ffmpeg_5
     fzf
