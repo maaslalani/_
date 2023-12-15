@@ -28,6 +28,7 @@
     deno
     elmPackages.elm
     elmPackages.elm-format
+    elmPackages.elm-review
     fennel
     ffmpeg_5
     fzf

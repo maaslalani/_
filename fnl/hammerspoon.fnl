@@ -147,12 +147,10 @@
     (hs.alert.closeAll)
     (hs.alert (table.concat display "\n") true)))
 
-(setup start menu)
-
 (var send-escape false)
 (var last-mods {})
 (local control-key-timer
-       (hs.timer.delayed.new 0.2 (fn [] (set send-escape false))))
+       (hs.timer.delayed.new 0.15 (fn [] (set send-escape false))))
 
 (: (hs.eventtap.new [hs.eventtap.event.types.flagsChanged]
                     (fn [evt]
@@ -173,4 +171,6 @@
 
 (: (hs.eventtap.new [hs.eventtap.event.types.keyDown]
                     (fn [evt] (set send-escape false) false)) :start)
+
+(setup start menu)
 
