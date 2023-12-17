@@ -17,6 +17,7 @@ with pkgs.nodePackages_latest; [
   proselint
   revive
   rnix-lsp
+  sass
   serve
   solargraph
   sumneko-lua-language-server

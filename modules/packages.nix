@@ -25,7 +25,6 @@
     coreutils
     cowsay
     delve
-    deno
     elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-review
