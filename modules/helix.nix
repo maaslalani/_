@@ -70,6 +70,10 @@ in {
               w = ":update";
               q = ":quit";
               G = ":sh gh browse";
+              l = {
+                "f" = ":format";
+                "r" = ":lsp-restart";
+              };
             };
           };
         };
