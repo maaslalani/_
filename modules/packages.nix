@@ -1,7 +1,6 @@
 {pkgs, ...}: let
   core = with pkgs;
     [
-      entr
       eza
       fd
       jq
@@ -27,6 +26,7 @@
     delve
     elmPackages.elm
     elmPackages.elm-format
+    elmPackages.elm-live
     elmPackages.elm-review
     fennel
     ffmpeg_5
