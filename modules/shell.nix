@@ -103,6 +103,7 @@
     gdm = "${gd} main || ${gd} master";
     ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
     gl = "git pull";
+    glrb = "${gl} --rebase";
     glo = "git log --oneline -n 20";
     glog = "git log";
     gm = "git merge";
