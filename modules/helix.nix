@@ -58,22 +58,16 @@ in {
           };
 
           normal = {
-            C-n = "goto_file_start";
             X = "extend_line_above";
-            V = ["extend_line_below" "select_mode"];
             G = "goto_file_end";
             g.q = ":reflow";
-            a = ["append_mode" "collapse_selection"];
-            i = ["insert_mode" "collapse_selection"];
-            ret = ["move_line_down" "goto_line_start"];
+            ret = ["move_line_down" "goto_first_nonwhitespace"];
             space = {
               w = ":update";
               q = ":quit";
-              G = ":sh gh browse";
-              l = {
-                "f" = ":format";
-                "r" = ":lsp-restart";
-              };
+              l.f = ":format";
+              l.r = ":lsp-restart";
+              l.g = ":sh gh browse";
             };
           };
         };
@@ -84,15 +78,17 @@ in {
           command = "fennel-language-server";
           args = ["lsp" "stdio"];
         };
+        copilot = {
+          command = "copilot";
+          args = ["--stdio"];
+        };
       };
 
       languages.grammar = [
         {
           name = "fennel";
-          source = {
-            git = "https://github.com/TravonteD/tree-sitter-fennel";
-            rev = "517195970428aacca60891b050aa53eabf4ba78d";
-          };
+          source.git = "https://github.com/TravonteD/tree-sitter-fennel";
+          source.rev = "517195970428aacca60891b050aa53eabf4ba78d";
         }
       ];
 
@@ -107,72 +103,58 @@ in {
           formatter = {command = "goimports";};
         }
         {
+          name = "rust";
+          language-servers = ["rust-analyzer"];
+        }
+        {
           name = "lua";
           auto-format = true;
         }
         {
           name = "html";
-          indent = {
-            tab-width = 2;
-            unit = " ";
-          };
+          indent.tab-width = 2;
+          indent.unit = " ";
           auto-format = false;
-          formatter = {
-            command = "prettier";
-            args = ["--parser" "html" "--tab-width" "2"];
-          };
+          formatter.command = "prettier";
+          formatter.args = ["--parser" "html" "--tab-width" "2"];
         }
         {
           name = "css";
-          indent = {
-            tab-width = 4;
-            unit = " ";
-          };
-          formatter = {
-            command = "prettier";
-            args = ["--parser" "css" "--tab-width" "2"];
-          };
+          indent.tab-width = 4;
+          indent.unit = " ";
+          formatter.command = "prettier";
+          formatter.args = ["--parser" "css" "--tab-width" "2"];
         }
         {
           name = "typescript";
-          indent = {
-            tab-width = 4;
-            unit = " ";
-          };
+          indent.tab-width = 4;
+          indent.unit = " ";
           auto-format = true;
-          formatter = {
-            command = "prettier";
-            args = ["--parser" "typescript" "--tab-width" "4"];
-          };
+          formatter.command = "prettier";
+          formatter.args = ["--parser" "typescript" "--tab-width" "4"];
         }
         {
-          name = "fennel";
           auto-format = true;
           comment-token = ";;";
+          file-types = ["fnl"];
+          formatter.args = ["-"];
+          formatter.command = "fnlfmt";
+          grammar = "fennel";
+          indent.tab-width = 2;
+          indent.unit = "  ";
           injection-regex = "(fennel|fnl)";
+          language-servers = ["fennel-language-server"];
+          name = "fennel";
           roots = [".git"];
           scope = "source.fnl";
-          indent = {
-            tab-width = 2;
-            unit = "  ";
-          };
-          file-types = ["fnl"];
-          formatter = {
-            command = "fnlfmt";
-            args = ["-"];
-          };
-          language-servers = ["fennel-language-server"];
-          grammar = "fennel";
         }
         {
           name = "svg";
           scope = "";
           roots = [];
           file-types = ["svg"];
-          formatter = {
-            command = "svgo";
-            args = ["--pretty" "-"];
-          };
+          formatter.command = "svgo";
+          formatter.args = ["--pretty" "-"];
         }
       ];
     };
