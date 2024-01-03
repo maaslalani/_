@@ -72,7 +72,7 @@
 (local menu {:a {:name :Applications
                  :b {:name :Browser :action (launch :Safari)}
                  :c {:name :Color :action (launch "Color Picker")}
-                 :n {:name :Notes :action (launch :Notes)}
+                 :n {:name :Notes :action (launch :Obsidian)}
                  :r {:name :Reminders :action (launch :Reminders)}
                  :f {:name :Finder :action (launch :Finder)}
                  :d {:name :Discord :action (launch :Discord)}
