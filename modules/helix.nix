@@ -61,7 +61,6 @@ in {
             X = "extend_line_above";
             G = "goto_file_end";
             g.q = ":reflow";
-            ret = ["move_line_down" "goto_first_nonwhitespace"];
             space = {
               w = ":update";
               q = ":quit";
@@ -134,6 +133,7 @@ in {
           formatter.args = ["--parser" "typescript" "--tab-width" "4"];
         }
         {
+          name = "fennel";
           auto-format = true;
           comment-token = ";;";
           file-types = ["fnl"];
@@ -144,7 +144,6 @@ in {
           indent.unit = "  ";
           injection-regex = "(fennel|fnl)";
           language-servers = ["fennel-language-server"];
-          name = "fennel";
           roots = [".git"];
           scope = "source.fnl";
         }
