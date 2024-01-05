@@ -77,9 +77,9 @@ in {
           command = "fennel-language-server";
           args = ["lsp" "stdio"];
         };
-        copilot = {
-          command = "copilot";
-          args = ["--stdio"];
+        vhs-language-server = {
+          command = "vhs";
+          args = ["lsp"];
         };
       };
 
@@ -108,6 +108,12 @@ in {
         {
           name = "lua";
           auto-format = true;
+        }
+        {
+          name = "vhs";
+          auto-format = true;
+          file-types = ["tape"];
+          language-servers = ["vhs-language-server"];
         }
         {
           name = "html";
