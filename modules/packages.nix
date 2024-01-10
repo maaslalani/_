@@ -38,6 +38,7 @@
     hammerspoon
     htop
     imagemagick
+    kakoune
     libfido2
     libwebp
     llvm
@@ -93,7 +94,7 @@
     mods
     pop
     skate
-    soft-serve
+    # soft-serve
   ];
 in {
   home.packages =

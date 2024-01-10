@@ -71,12 +71,12 @@
 ;; Key sequence (defined by nested table keys) will perform the action
 (local menu {:a {:name :Applications
                  :b {:name :Browser :action (launch :Safari)}
-                 :c {:name :Color :action (launch "Color Picker")}
+                 :c {:name :Color :action (launch :Calendar)}
+                 :d {:name :Discord :action (launch :Discord)}
+                 :f {:name :Finder :action (launch :Finder)}
                  :n {:name :Notes :action (launch :Obsidian)}
                  :r {:name :Reminders :action (launch :Reminders)}
-                 :f {:name :Finder :action (launch :Finder)}
-                 :d {:name :Discord :action (launch :Discord)}
-                 :t {:name :Terminal :action (launch :Ghostty)}}
+                 :t {:name :Terminal :action (launch :Ghostty.app)}}
              :f {:name :Focus
                  :action (fn []
                            (hs.hints.windowHints))}
