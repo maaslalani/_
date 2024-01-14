@@ -62,7 +62,7 @@ in {
             G = "goto_file_end";
             g.q = ":reflow";
             space = {
-              w = ":update";
+              w = ":write";
               q = ":quit";
               l.f = ":format";
               l.r = ":lsp-restart";
