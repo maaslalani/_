@@ -11,11 +11,5 @@ in {
     meh - t : open -a Ghostty
 
     meh - p : open /System/Library/PreferencePanes/Passwords.prefPane
-
-    meh - h : yabai -m window --grid 8:8:0:0:4:8
-    meh - j : yabai -m window --grid 8:8:0:4:8:4
-    meh - k : yabai -m window --grid 8:8:0:0:8:4
-    meh - l : yabai -m window --grid 8:8:4:0:4:8
-    meh - o : yabai -m window --grid 8:8:0:0:8:8
   '';
 }

@@ -8,6 +8,7 @@ in {
 
     keybind = ctrl+z=close_surface
     keybind = ctrl+super+f=toggle_fullscreen
+    keybind = super+t=ignore
 
     macos-non-native-fullscreen = true
 
