@@ -43,25 +43,13 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-F5AJRZAs25iWS+m+1X+Q884J01tYXnDHmUPx1nhKvRY=",
+        "narHash": "sha256-/dO2NhpGxVa4PPY0j2NDFoFb573NcyhqEEQxmyznotQ=",
         "path": "fnl",
         "type": "path"
       },
       "original": {
         "path": "fnl",
         "type": "path"
-      }
-    },
-    "hammerspoon": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-Q14NBizKz7LysEFUTjUHCUnVd6+qEYPSgWwrOGeT9Q0=",
-        "type": "tarball",
-        "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/Hammerspoon/hammerspoon/releases/latest/download/Hammerspoon-0.9.100.zip"
       }
     },
     "helix": {
@@ -141,7 +129,6 @@
     "root": {
       "inputs": {
         "fnl": "fnl",
-        "hammerspoon": "hammerspoon",
         "helix": "helix",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
