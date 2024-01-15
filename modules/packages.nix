@@ -35,7 +35,6 @@
     go-swagger
     go_1_21
     gopass
-    hammerspoon
     htop
     imagemagick
     kakoune
@@ -57,9 +56,11 @@
     rustup
     sc-im
     simple-http-server
+    skhd
     spotify-tui
     spotifyd
     twurl
+    yabai
     yarn
     yq
     yubikey-manager
