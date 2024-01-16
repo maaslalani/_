@@ -16,54 +16,29 @@
     alejandra
     awscli2
     bore-cli
-    btop
-    bundix
     cachix
-    chafa
-    circumflex
     coreutils
-    cowsay
-    delve
     elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-live
     elmPackages.elm-review
-    fennel
     ffmpeg_5
     fzf
     git-lfs
-    go-swagger
     go_1_21
-    gopass
     htop
     imagemagick
-    kakoune
-    libfido2
     libwebp
-    llvm
     lolcat
-    lsix
     monitorcontrol
     nodejs
-    nushell
     openssl
     optipng
-    pandoc
-    postgresql
-    python311Packages.grip
     redis
-    rm-improved
     rustup
-    sc-im
-    simple-http-server
     skhd
-    spotify-tui
-    spotifyd
-    twurl
     yabai
-    yarn
     yq
-    yubikey-manager
     zig
   ];
 
