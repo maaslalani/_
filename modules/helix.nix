@@ -54,7 +54,7 @@ in {
           select.esc = normal.esc;
 
           insert = {
-            C-e = "completion";
+            C-n = "completion";
           };
 
           normal = {

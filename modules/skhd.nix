@@ -11,5 +11,7 @@ in {
     meh - t : open -a Ghostty
 
     meh - p : open /System/Library/PreferencePanes/Passwords.prefPane
+
+    ctrl - e : skhd --key escape
   '';
 }
