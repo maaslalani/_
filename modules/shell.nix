@@ -70,7 +70,6 @@
     ta = "tmux attach -t";
     tn = "tmux new";
 
-    t = "SESSION=`ls $SRC | gum filter --height 10` && ${tn} -ds $SESSION -c $SRC/$SESSION $SHELL; ${ts} $SESSION || ${ta} $SESSION";
     tkss = "tmux kill-session -t";
     tksv = "tmux kill-server";
     tls = "tmux list-sessions";
@@ -243,6 +242,24 @@ in {
 
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+      function ts() {
+        (
+          exec </dev/tty
+          exec <&1
+          SESSION=`ls $SRC | gum filter --no-strict`
+          tmux new -ds $SESSION -c $SRC/$SESSION $SHELL 2> /dev/null
+          if [[ -n "$TMUX" ]]
+          then
+            tmux switch -t $SESSION 2> /dev/null
+          else
+            tmux attach -t $SESSION 2> /dev/null
+          fi
+        )
+        zle reset-prompt
+      }
+      zle -N ts
+      bindkey "^a" ts
 
       function hs() {
         BUFFER="$(fc -ln 0 | gum filter --value "$BUFFER")"
