@@ -62,13 +62,13 @@
 
   charmbracelet = with pkgs; [
     # gum
+    # mods
+    # soft-serve
     # vhs
     charm
     melt
-    mods
     pop
     skate
-    # soft-serve
   ];
 in {
   home.packages =
