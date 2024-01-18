@@ -248,12 +248,18 @@ in {
           exec </dev/tty
           exec <&1
           SESSION=`ls $SRC | gum filter --no-strict`
-          tmux new -ds $SESSION -c $SRC/$SESSION $SHELL 2> /dev/null
+          DIRECTORY="$SRC/$SESSION"
+          if [[ -z "$SESSION" ]]
+          then
+            SESSION="dotfiles"
+            DIRECTORY="$HOME/_"
+          fi
+          tmux new -ds "$SESSION" -c "$DIRECTORY" "$SHELL" 2> /dev/null
           if [[ -n "$TMUX" ]]
           then
-            tmux switch -t $SESSION 2> /dev/null
+            tmux switch -t "$SESSION" 2> /dev/null
           else
-            tmux attach -t $SESSION 2> /dev/null
+            tmux attach -t "$SESSION" 2> /dev/null
           fi
         )
         zle reset-prompt

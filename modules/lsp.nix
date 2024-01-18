@@ -4,7 +4,10 @@ with pkgs.elmPackages;
 with pkgs.nodePackages_latest; [
   bash-language-server
   cspell
+  elm-format
   elm-language-server
+  elm-live
+  elm-review
   eslint
   fnlfmt
   golangci-lint

@@ -19,9 +19,6 @@
     cachix
     coreutils
     elmPackages.elm
-    elmPackages.elm-format
-    elmPackages.elm-live
-    elmPackages.elm-review
     ffmpeg_5
     fzf
     git-lfs
@@ -32,6 +29,7 @@
     lolcat
     monitorcontrol
     nodejs
+    ollama
     openssl
     optipng
     redis
