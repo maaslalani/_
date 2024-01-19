@@ -146,7 +146,7 @@
     grg = "go run ./...";
     gtg = "go test ./...";
     gmt = "go mod tidy";
-    gme = "go mod edit -replace $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)=../$(basename \"$(gum file --directory)\")";
+    gme = "go mod edit -replace $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)=$(realpath --relative-to=\"$\{PWD\}\" \"$(gum file --directory ..)\")";
 
     r = "bin/rails";
     rdbm = "${r} db:migrate";
