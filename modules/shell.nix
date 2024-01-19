@@ -23,11 +23,11 @@
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     GOBIN = "${GOPATH}/bin";
     GOPATH = "${config.xdg.configHome}/go";
-    HOMEBREW_BIN = "/opt/homebrew/bin";
-    HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
     HOMEBREW_PREFIX = "/opt/homebrew";
-    HOMEBREW_REPOSITORY = "/opt/homebrew";
-    HOMEBREW_SBIN = "/opt/homebrew/sbin";
+    HOMEBREW_BIN = "${HOMEBREW_PREFIX}/bin";
+    HOMEBREW_REPOSITORY = HOMEBREW_PREFIX;
+    HOMEBREW_CELLAR = "${HOMEBREW_PREFIX}/Cellar";
+    HOMEBREW_SBIN = "${HOMEBREW_PREFIX}/sbin";
     DENO_BIN = "$HOME/.deno/bin";
     JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
     KEYTIMEOUT = 1;
