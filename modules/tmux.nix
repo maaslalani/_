@@ -42,13 +42,16 @@ with builtins; let
 
   currentPath = "-c \"#{pane_current_path}\"";
 
-  binds = {
+  binds = rec {
     "-" = "split-window ${currentPath}";
     "=" = "set-window-option synchronize-panes";
     "C-a" = "send-prefix";
+    "t" = "popup -E zsh -lic tss";
+    "C-t" = t;
     "N" = "new";
     "R" = "source-file ~/.config/tmux/tmux.conf";
     "S" = "set -g status";
+    "`" = "popup -E";
     "c" = "new-window ${currentPath} -n ''";
     "|" = "split-window -h ${currentPath}";
   };

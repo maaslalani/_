@@ -192,7 +192,7 @@
     spnd = "spotifyd --no-daemon";
 
     ncg = "nix-collect-garbage";
-    ns = " open https://search.nixos.org/packages\\?channel=unstable";
+    ns = "open https://search.nixos.org/packages\\?channel=unstable";
 
     sc = "systemctl";
     jc = "journalctl";
@@ -243,7 +243,7 @@ in {
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-      function ts() {
+      function tss() {
         (
           exec </dev/tty
           exec <&1
@@ -264,8 +264,8 @@ in {
         )
         zle reset-prompt
       }
-      zle -N ts
-      bindkey "^a" ts
+      zle -N tss
+      bindkey "^a" tss
 
       function hs() {
         BUFFER="$(fc -ln 0 | gum filter --value "$BUFFER")"
