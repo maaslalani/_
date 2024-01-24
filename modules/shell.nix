@@ -220,7 +220,7 @@ in {
     '';
     shellAliases = aliases;
     shellOptions = [];
-    enableCompletion = true;
+    enableCompletion = false;
     sessionVariables = environment;
   };
 
@@ -279,7 +279,7 @@ in {
         zle -w end-of-line
       }
       zle -N fs
-      bindkey "^t" fs
+      bindkey "^f" fs
     '';
     initExtra = ''
       setopt prompt_subst

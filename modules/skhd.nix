@@ -12,7 +12,7 @@ in {
 
     meh - p : open /System/Library/PreferencePanes/Passwords.prefPane
 
-    ctrl - e : skhd --key escape
+    ctrl - t : skhd --key escape
 
     meh - h : yabai -m window --display 1 && yabai -m display --focus 1 && yabai -m window --grid 1:1:1:1:1:1
     meh - l : yabai -m window --display 2 && yabai -m display --focus 2 && yabai -m window --grid 1:1:1:1:1:1
