@@ -98,6 +98,10 @@ in {
           formatter = {command = "alejandra";};
         }
         {
+          name = "markdown";
+          language-servers = ["marksman" "ltex-ls"];
+        }
+        {
           name = "go";
           formatter = {command = "goimports";};
         }
