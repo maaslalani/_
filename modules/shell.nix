@@ -204,7 +204,7 @@
 
     scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
     weather = "curl http://v2.wttr.in";
-    wiki = "cd $HOME/wiki && $EDITOR README.md && cd -";
+    wiki = "cd $HOME/wiki && $EDITOR . && cd -";
 
     sk8 = "ssh skate.ssh.toys";
 
