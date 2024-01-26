@@ -123,6 +123,7 @@
           ./modules/spotify.nix
           ./modules/tmux.nix
           ./modules/vim.nix
+          ./modules/yabai.nix
           {
             home.username = "maas";
             home.stateVersion = "23.11";

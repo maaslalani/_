@@ -14,10 +14,14 @@ in {
 
     ctrl - t : skhd --key escape
 
-    meh - h : yabai -m window --grid 2:2:0:0:1:2
-    meh - l : yabai -m window --grid 2:2:1:0:1:2
+    alt - l : yabai -m window --focus east
+    alt - h : yabai -m window --focus west
+    shift + alt - l : yabai -m window --warp east
+    shift + alt - h : yabai -m window --warp west
+    cmd + ctrl - l : yabai -m display --focus next
+    cmd + ctrl - h : yabai -m display --focus prev
 
-    meh - H : yabai -m window --display 1 && yabai -m display --focus 1 && yabai -m window --grid 1:1:1:1:1:1
-    meh - L : yabai -m window --display 2 && yabai -m display --focus 2 && yabai -m window --grid 1:1:1:1:1:1
+    meh - l : yabai -m window --display next; yabai -m display --focus next
+    meh - h : yabai -m window --display prev; yabai -m display --focus prev
   '';
 }

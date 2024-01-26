@@ -165,14 +165,15 @@
     # home-manager switch
     hms = join [
       "cd $HOME/_"
-      "nix --extra-experimental-features nix-command --extra-experimental-features flakes flake lock --update-input fnl"
-      "nix --extra-experimental-features nix-command --extra-experimental-features flakes build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${
+      "nix flake lock --update-input fnl"
+      "nix build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${
         if pkgs.stdenv.isDarwin
         then "home"
         else "linux"
       }"
       "${config.xdg.configHome}/nixpkgs/result/activate"
       sz
+      "skhd --reload"
       "cd -"
     ];
     hsm = hms;
