@@ -16,8 +16,8 @@ in {
 
     alt - l : yabai -m window --focus east
     alt - h : yabai -m window --focus west
-    shift + alt - l : yabai -m window --warp east
-    shift + alt - h : yabai -m window --warp west
+    shift + alt - l : yabai -m window --grid 1:2:1:1:1:1
+    shift + alt - h : yabai -m window --grid 1:2:0:1:1:1
     cmd + ctrl - l : yabai -m display --focus next
     cmd + ctrl - h : yabai -m display --focus prev
 
