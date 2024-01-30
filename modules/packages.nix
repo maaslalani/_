@@ -16,6 +16,7 @@
     alejandra
     awscli2
     bore-cli
+    bun
     cachix
     coreutils
     elmPackages.elm
