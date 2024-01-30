@@ -81,6 +81,10 @@ in {
           command = "vhs";
           args = ["lsp"];
         };
+        copilot = {
+          command = "bun";
+          args = ["run" "/usr/local/bin/helix-gpt.js"];
+        };
       };
 
       languages.grammar = [
@@ -96,6 +100,7 @@ in {
           name = "nix";
           auto-format = true;
           formatter = {command = "alejandra";};
+          language-servers = ["nil" "copilot"];
         }
         {
           name = "markdown";
