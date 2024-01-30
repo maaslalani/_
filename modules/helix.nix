@@ -109,10 +109,11 @@ in {
         {
           name = "go";
           formatter = {command = "goimports";};
+          language-servers = ["gopls" "copilot"];
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer"];
+          language-servers = ["rust-analyzer" "copilot"];
         }
         {
           name = "lua";
@@ -138,6 +139,7 @@ in {
           indent.unit = " ";
           formatter.command = "prettier";
           formatter.args = ["--parser" "css" "--tab-width" "2"];
+          language-servers = ["css-languageserver" "copilot"];
         }
         {
           name = "typescript";
@@ -146,6 +148,7 @@ in {
           auto-format = true;
           formatter.command = "prettier";
           formatter.args = ["--parser" "typescript" "--tab-width" "4"];
+          age-servers = ["typescript-language-server" "copilot"];
         }
         {
           name = "fennel";
@@ -158,7 +161,7 @@ in {
           indent.tab-width = 2;
           indent.unit = "  ";
           injection-regex = "(fennel|fnl)";
-          language-servers = ["fennel-language-server"];
+          language-servers = ["fennel-language-server" "copilot"];
           roots = [".git"];
           scope = "source.fnl";
         }
