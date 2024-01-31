@@ -7,43 +7,45 @@
   pathJoin = builtins.concatStringsSep ":";
 
   environment = rec {
-    XDG_DATA_HOME = config.xdg.dataHome;
-    XDG_CONFIG_HOME = config.xdg.configHome;
-    XDG_CACHE_HOME = config.xdg.cacheHome;
-    AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
     AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
+    AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
+    BASH_SILENCE_DEPRECATION_WARNING = 1;
     BREW_SBIN = "/usr/local/sbin";
     BROWSER = "open";
-    RUSTUP_HOME = "${config.xdg.configHome}/.rustup";
-    CARGO_HOME = "${config.xdg.configHome}/.cargo";
     CARGO_BIN = "${CARGO_HOME}/bin";
+    CARGO_HOME = "${config.xdg.configHome}/.cargo";
     CLICOLOR = 1;
     COLORTERM = "truecolor";
+    DENO_BIN = "$HOME/.deno/bin";
     EDITOR = "hx";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     GOBIN = "${GOPATH}/bin";
     GOPATH = "${config.xdg.configHome}/go";
-    HOMEBREW_PREFIX = "/opt/homebrew";
+    HANDLER = "copilot";
     HOMEBREW_BIN = "${HOMEBREW_PREFIX}/bin";
-    HOMEBREW_REPOSITORY = HOMEBREW_PREFIX;
     HOMEBREW_CELLAR = "${HOMEBREW_PREFIX}/Cellar";
+    HOMEBREW_PREFIX = "/opt/homebrew";
+    HOMEBREW_REPOSITORY = HOMEBREW_PREFIX;
     HOMEBREW_SBIN = "${HOMEBREW_PREFIX}/sbin";
-    DENO_BIN = "$HOME/.deno/bin";
     JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
     KEYTIMEOUT = 1;
     KUBECONFIG = pathJoin ["$HOME/.kube/config"];
+    NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_BROKEN = 1;
     NIXPKGS_ALLOW_UNFREE = 1;
     NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = 1;
     NIX_BIN = "$HOME/.nix-profile/bin";
-    BASH_SILENCE_DEPRECATION_WARNING = 1;
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+    RUSTUP_HOME = "${config.xdg.configHome}/.rustup";
+    SHELL = "zsh";
     SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
     SRC = "$HOME/src";
-    SHELL = "zsh";
-    _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
     WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
+    XDG_CACHE_HOME = config.xdg.cacheHome;
+    XDG_CONFIG_HOME = config.xdg.configHome;
+    XDG_DATA_HOME = config.xdg.dataHome;
+    _ZL_DATA = "${config.xdg.dataHome}/z/zlua";
+
     PATH = pathJoin [
       CARGO_BIN
       GOBIN
@@ -84,13 +86,13 @@
     gap = "${ga} --patch";
     gb = "git branch";
     gbc = "${gb} --show-current";
-    gcai = ''MESSAGE=$(${gd} | mods "write a commit message for this diff") && gum write --value="$MESSAGE" && ${gcam} "$MESSAGE"'';
     gc = "git commit";
     gca = "${gc} --amend";
-    gcm = "${gc} -m";
+    gcai = ''MESSAGE=$(${gd} | mods "write a commit message for this diff") && gum write --value="$MESSAGE" && ${gcam} "$MESSAGE"'';
     gcam = "${gc} -am";
     gcane = "${gc} --amend --no-edit";
     gclean = "${gb} | cut -c 3- | gum choose --no-limit | xargs ${gb} -D";
+    gcm = "${gc} -m";
     gco = "git checkout";
     gcp = "git cherry-pick";
     gcpa = "${gcp} --abort";
@@ -98,11 +100,18 @@
     gd- = "git diff HEAD~";
     gdh = "git diff HEAD";
     gdm = "${gd} main || ${gd} master";
+    ghb = "gh browse";
+    ghco = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
+    ghi = "gh issue list";
     ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
+    ghiv = "gh issue view";
+    ghp = "gh pr list";
+    ghpv = "gh pr view";
+    ghv = "gh pr view --web";
     gl = "git pull";
-    glrb = "${gl} --rebase";
     glo = "git log --oneline -n 20";
     glog = "git log";
+    glrb = "${gl} --rebase";
     gm = "git merge";
     gma = "${gm} --abort";
     gopen = "git config --get remote.origin.url | xargs open";
@@ -125,22 +134,15 @@
     gss = "git status";
     gst = "git stash";
     gstp = "${gst} pop";
-    gundo = "git reset HEAD~1 --mixed";
     gsw = "git switch";
     gswc = "git switch --create";
     gswm = "${gsw} main || ${gsw} master";
+    gundo = "git reset HEAD~1 --mixed";
     gw = "git worktree";
     gwa = "${gw} add";
+    gwd = "${gw} remove";
     gwl = "${gw} list";
     gwp = "${gw} prune";
-    gwd = "${gw} remove";
-    ghb = "gh browse";
-    ghco = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
-    ghi = "gh issue list";
-    ghiv = "gh issue view";
-    ghp = "gh pr list";
-    ghpv = "gh pr view";
-    ghv = "gh pr view --web";
 
     goi = "go install";
     grg = "go run ./...";
@@ -313,6 +315,10 @@ in {
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
       fi
+
+      # secret variables
+      export COPILOT_API_KEY=$(pass COPILOT_API_KEY)
+      export OPENAI_API_KEY=$(pass OPENAI_API_KEY)
     '';
     sessionVariables = environment;
     plugins = [

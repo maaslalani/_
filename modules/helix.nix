@@ -148,7 +148,7 @@ in {
           auto-format = true;
           formatter.command = "prettier";
           formatter.args = ["--parser" "typescript" "--tab-width" "4"];
-          age-servers = ["typescript-language-server" "copilot"];
+          language-servers = ["typescript-language-server" "copilot"];
         }
         {
           name = "fennel";
