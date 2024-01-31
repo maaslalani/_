@@ -37,6 +37,7 @@
     redis
     rustup
     skhd
+    watch
     yabai
     yq
     zig
