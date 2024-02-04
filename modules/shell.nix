@@ -183,13 +183,18 @@
     c = "clear";
 
     ls = "eza";
-    lsa = "eza -Fla";
+    lsa = "eza -laF";
     sl = "${ls}";
     tree = "${ls} -T";
 
     md = "mkdir";
 
-    sz = "source ${config.xdg.configHome}/zsh/.zshrc";
+    sz = join [
+      "unset __HM_ZSH_SESS_VARS_SOURCED"
+      "unset __HM_SESS_VARS_SOURCED"
+      "source ${config.xdg.configHome}/zsh/.zshrc"
+      "source ${config.xdg.configHome}/zsh/.zshenv"
+    ];
 
     spd = "spotifyd --no-daemon >/dev/null &";
     spnd = "spotifyd --no-daemon";
@@ -202,8 +207,8 @@
 
     scim = "sc-im";
 
-    dwlos = "printf 热爱开源 | pbcopy";
-    dwnh = "printf 你好 | pbcopy";
+    dwlos = "pbcopy <<< 热爱开源";
+    dwnh = "pbcopy <<< 你好";
 
     scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
     weather = "curl http://v2.wttr.in";
@@ -315,10 +320,6 @@ in {
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
       fi
-
-      # secret variables
-      export COPILOT_API_KEY=$(pass COPILOT_API_KEY)
-      export OPENAI_API_KEY=$(pass OPENAI_API_KEY)
     '';
     sessionVariables = environment;
     plugins = [
