@@ -320,6 +320,10 @@ in {
         export PROMPT="%F{blue}%3~%f %F{magenta}\$GIT_BRANCH%f %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
       fi
+
+      # secrets
+      [ -z "$COPILOT_API_KEY" ] && export COPILOT_API_KEY="$(pass COPILOT_API_KEY)"
+      [ -z "$OPENAI_API_KEY" ] && export OPENAI_API_KEY="$(pass OPENAI_API_KEY)"
     '';
     sessionVariables = environment;
     plugins = [
