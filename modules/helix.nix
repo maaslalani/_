@@ -59,6 +59,7 @@ in {
 
           normal = {
             X = "extend_line_above";
+            V = ["extend_line_below" "select_mode"];
             G = "goto_file_end";
             g.q = ":reflow";
             space = {
