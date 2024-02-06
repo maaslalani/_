@@ -104,6 +104,10 @@ in {
           language-servers = ["nil" "copilot"];
         }
         {
+          name = "bash";
+          language-servers = ["bash-language-server" "copilot"];
+        }
+        {
           name = "markdown";
           language-servers = ["marksman" "ltex-ls"];
         }
