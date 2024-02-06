@@ -148,6 +148,7 @@
     grg = "go run ./...";
     gtg = "go test ./...";
     gmt = "go mod tidy";
+    gmu = "go get -u $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)";
     gme = "go mod edit -replace $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)=$(realpath --relative-to=\"$\{PWD\}\" \"$(gum file --directory ..)\")";
 
     r = "bin/rails";
