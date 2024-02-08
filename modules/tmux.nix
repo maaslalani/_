@@ -43,6 +43,7 @@ with builtins; let
   currentPath = "-c \"#{pane_current_path}\"";
 
   binds = rec {
+    "_" = "attach -t dotfiles";
     "-" = "split-window ${currentPath}";
     "=" = "set-window-option synchronize-panes";
     "C-a" = "send-prefix";

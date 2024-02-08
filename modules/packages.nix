@@ -12,6 +12,7 @@
     ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
+    act
     age
     alejandra
     awscli2
@@ -19,6 +20,7 @@
     bun
     cachix
     coreutils
+    docker
     elmPackages.elm
     ffmpeg_5
     fzf
