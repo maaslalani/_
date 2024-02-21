@@ -28,7 +28,6 @@
     go_1_21
     htop
     imagemagick
-    librsvg
     libwebp
     lolcat
     monitorcontrol

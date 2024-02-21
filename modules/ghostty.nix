@@ -16,6 +16,9 @@ in {
     font-family = JetBrains Mono
     mouse-hide-while-typing = true
 
+    title = " "
+    macos-titlebar-tabs = true
+
     window-padding-x = 16
     window-padding-y = 16
 
