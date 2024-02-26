@@ -16,6 +16,7 @@ with pkgs.nodePackages_latest; [
   ltex-ls
   nil
   nixpkgs-fmt
+  openscad-lsp
   prettier
   proselint
   revive
