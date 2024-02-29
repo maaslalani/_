@@ -31,6 +31,7 @@
     libwebp
     lolcat
     monitorcontrol
+    nilaway
     nodejs
     ollama
     openssl
