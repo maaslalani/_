@@ -83,8 +83,7 @@ in {
           args = ["lsp"];
         };
         copilot = {
-          command = "bun";
-          args = ["run" "/usr/local/bin/helix-gpt.js"];
+          command = "helix-gpt";
         };
       };
 

@@ -26,6 +26,7 @@
     fzf
     git-lfs
     go_1_21
+    helix-gpt
     htop
     imagemagick
     libwebp
