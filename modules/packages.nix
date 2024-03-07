@@ -31,6 +31,7 @@
     imagemagick
     libwebp
     lolcat
+    lsd
     monitorcontrol
     nilaway
     nodejs
