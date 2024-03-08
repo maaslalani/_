@@ -114,6 +114,7 @@ in {
           name = "go";
           formatter = {command = "goimports";};
           language-servers = ["gopls" "copilot"];
+          auto-format = true;
         }
         {
           name = "rust";

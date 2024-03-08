@@ -13,6 +13,7 @@ with pkgs.nodePackages_latest; [
   golangci-lint
   golangci-lint-langserver
   gopls
+  gotools
   ltex-ls
   nil
   nixpkgs-fmt
