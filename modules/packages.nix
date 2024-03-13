@@ -45,6 +45,7 @@
     yabai
     yq
     zig
+    z-lua
   ];
 
   linux = with pkgs; [
