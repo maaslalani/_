@@ -4,6 +4,7 @@ with pkgs.elmPackages;
 with pkgs.nodePackages_latest; [
   bash-language-server
   cspell
+  delve
   elm-format
   elm-language-server
   elm-live

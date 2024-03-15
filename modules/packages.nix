@@ -29,6 +29,7 @@
     helix-gpt
     htop
     imagemagick
+    librsvg
     libwebp
     lolcat
     lsd
@@ -44,8 +45,8 @@
     watch
     yabai
     yq
-    zig
     z-lua
+    zig
   ];
 
   linux = with pkgs; [
