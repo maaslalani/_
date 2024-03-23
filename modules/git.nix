@@ -12,17 +12,21 @@ in {
       color.ui = true;
       commit.gpgsign = true;
       core.commitGraph = true;
+      core.pager = "delta";
       credential.helper =
         if pkgs.stdenv.isDarwin
         then "osxkeychain"
         else "cache";
+      delta.navigate = true;
       diff.algorithm = "patience";
+      diff.colorMoved = "default";
       fetch.prune = true;
       gc.worktreePruneExpire = "now";
       gc.writeCommitGraph = true;
       github.user = user;
       hub.protocol = "https";
       init.defaultBranch = "main";
+      interactive.diffFilter = "delta --color-only";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = true;

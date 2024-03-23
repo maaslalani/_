@@ -20,6 +20,7 @@
     bun
     cachix
     coreutils
+    delta
     docker
     elmPackages.elm
     ffmpeg_5
