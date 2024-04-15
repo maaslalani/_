@@ -252,6 +252,10 @@ in {
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+      function rm () {
+        mv "$@" /tmp
+      }
+
       function tss() {
         (
           exec </dev/tty

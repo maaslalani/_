@@ -5,10 +5,6 @@ with pkgs.nodePackages_latest; [
   bash-language-server
   cspell
   delve
-  elm-format
-  elm-language-server
-  elm-live
-  elm-review
   eslint
   fnlfmt
   golangci-lint
@@ -22,7 +18,6 @@ with pkgs.nodePackages_latest; [
   prettier
   proselint
   revive
-  rnix-lsp
   sass
   serve
   solargraph

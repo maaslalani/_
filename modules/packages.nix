@@ -22,11 +22,10 @@
     coreutils
     delta
     docker
-    elmPackages.elm
     ffmpeg_5
     fzf
     git-lfs
-    go_1_21
+    go
     helix-gpt
     htop
     imagemagick
@@ -35,7 +34,6 @@
     lolcat
     lsd
     monitorcontrol
-    nilaway
     nodejs
     ollama
     openssl
@@ -43,6 +41,7 @@
     redis
     rustup
     skhd
+    unixtools.script
     watch
     yabai
     yq
@@ -55,7 +54,7 @@
     brightnessctl
     dunst
     gcc
-    go_1_21
+    go
     mpv
     networkmanager
     pavucontrol
