@@ -12,7 +12,6 @@
     ++ (import ./lsp.nix {pkgs = pkgs;});
 
   darwin = with pkgs; [
-    # helix-gpt
     act
     age
     alejandra
@@ -27,6 +26,7 @@
     ffmpeg_5
     fzf
     git-lfs
+    gnupg
     go
     htop
     imagemagick

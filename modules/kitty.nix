@@ -66,7 +66,10 @@ in {
     };
 
     environment = {
-      DEMO = if pkgs.stdenv.isDarwin then "true" else "false";
+      DEMO =
+        if pkgs.stdenv.isDarwin
+        then "true"
+        else "false";
     };
 
     shellIntegration.enableZshIntegration = true;

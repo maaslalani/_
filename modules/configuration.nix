@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 2;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "snd-seq" "snd-rawmidi" ];
+  boot.kernelModules = ["snd-seq" "snd-rawmidi"];
 
   networking = {
     networkmanager.enable = true;
@@ -37,7 +36,7 @@
     enableAllFirmware = true;
     opengl.enable = true;
     nvidia.modesetting.enable = true;
-    firmware = [ pkgs.sof-firmware ];
+    firmware = [pkgs.sof-firmware];
   };
 
   programs.gnupg.agent = {
@@ -49,7 +48,7 @@
   users.users.maas = {
     isNormalUser = true;
     description = "Maas Lalani";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = ["networkmanager" "wheel" "audio"];
   };
 
   services.getty.autologinUser = "maas";
