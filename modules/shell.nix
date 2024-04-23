@@ -208,8 +208,7 @@
 
     scim = "sc-im";
 
-    dwlos = "pbcopy <<< 热爱开源";
-    dwnh = "pbcopy <<< 你好";
+    dw = ''gum choose "热爱开源" "你好" | pbcopy'';
 
     scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
     weather = "curl http://v2.wttr.in";
@@ -218,6 +217,8 @@
     sk8 = "ssh skate.ssh.toys";
 
     x = "exit";
+
+    o = "ollama";
   };
 in {
   programs.bash = {
