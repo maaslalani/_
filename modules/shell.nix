@@ -219,6 +219,7 @@
     x = "exit";
 
     o = "ollama";
+    orl = "ollama run llama3";
   };
 in {
   programs.bash = {
