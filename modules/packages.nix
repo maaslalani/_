@@ -24,6 +24,7 @@
     deno
     docker
     ffmpeg_5
+    fish
     fzf
     git-lfs
     gnupg
@@ -42,6 +43,8 @@
     redis
     rustup
     skhd
+    tree-sitter
+    ttyd
     unixtools.script
     watch
     yabai

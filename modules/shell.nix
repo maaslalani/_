@@ -235,6 +235,11 @@ in {
     sessionVariables = environment;
   };
 
+  programs.fish = {
+    enable = true;
+    shellAliases = aliases;
+  };
+
   programs.zsh = {
     autocd = true;
     dotDir = ".config/zsh";
