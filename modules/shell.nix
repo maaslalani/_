@@ -176,7 +176,8 @@
       }"
       "${config.xdg.configHome}/nixpkgs/result/activate"
       sz
-      "skhd --reload"
+      "skhd --restart-service"
+      "yabai --restart-service"
       "cd -"
     ];
     hsm = hms;
