@@ -2,16 +2,16 @@
   skhdPath = "${config.xdg.configHome}/skhd";
 in {
   home.file."${skhdPath}/skhdrc".text = ''
-    meh - b : open -a "Safari"
-    meh - c : open -a "Notion Calendar"
-    meh - d : open -a "Discord"
-    meh - f : open -a "Finder"
-    meh - n : open -a "Obsidian"
-    meh - r : open -a "Reminders"
-    meh - t : open -a "Ghostty"
+    ctrl + shift - b : open -a "Safari"
+    ctrl + shift - c : open -a "Notion Calendar"
+    ctrl + shift - d : open -a "Discord"
+    ctrl + shift - f : open -a "Finder"
+    ctrl + shift - n : open -a "Obsidian"
+    ctrl + shift - r : open -a "Reminders"
+    ctrl + shift - t : open -a "Ghostty"
+    ctrl + shift - p : open /System/Library/PreferencePanes/Passwords.prefPane
 
-    meh - p : open /System/Library/PreferencePanes/Passwords.prefPane
-
+    ctrl - space : skhd --key "cmd - space"
     ctrl - t : skhd --key escape
 
     alt - l : yabai -m window --focus east || yabai -m display --focus next

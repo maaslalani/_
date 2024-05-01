@@ -31,6 +31,7 @@
     go
     htop
     imagemagick
+    kbt
     librsvg
     libwebp
     lolcat
@@ -45,6 +46,7 @@
     skhd
     tree-sitter
     ttyd
+    typioca
     unixtools.script
     watch
     yabai
