@@ -22,6 +22,7 @@
     GOBIN = "${GOPATH}/bin";
     GOPATH = "${config.xdg.configHome}/go";
     HANDLER = "copilot";
+    OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
     HOMEBREW_BIN = "${HOMEBREW_PREFIX}/bin";
     HOMEBREW_CELLAR = "${HOMEBREW_PREFIX}/Cellar";
     HOMEBREW_PREFIX = "/opt/homebrew";
@@ -76,7 +77,7 @@
     tksv = "tmux kill-server";
     tls = "tmux list-sessions";
 
-    _ = "${tn} -ds dotfiles -c ~/_ $SHELL; ${ts} dotfiles || ${ta} dotfiles";
+    _ = "${tn} -ds dotfiles -c ~/src/_ $SHELL; ${ts} dotfiles || ${ta} dotfiles";
     src = "cd $HOME/src";
 
     dstroy = "fd -IH .DS_Store | xargs sudo rm";
@@ -161,13 +162,13 @@
     bi = "${b} install";
     bu = "${b} update";
 
-    nupf = join ["cd $HOME/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
+    nupf = join ["cd $HOME/src/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
 
     nrs = "sudo nixos-rebuild switch";
 
     # home-manager switch
     hms = join [
-      "cd $HOME/_"
+      "cd $HOME/src/_"
       "nix flake lock --update-input fnl"
       "nix build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${
         if pkgs.stdenv.isDarwin
