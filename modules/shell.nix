@@ -214,7 +214,7 @@
 
     scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
     weather = "curl http://v2.wttr.in";
-    wiki = "cd $HOME/wiki && $EDITOR . && cd -";
+    wiki = "cd $SRC/wiki && $EDITOR . && cd -";
 
     sk8 = "ssh skate.ssh.toys";
 
@@ -262,7 +262,7 @@ in {
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
       function rm () {
-        mv "$@" /tmp
+        mv "$@" "~/.Trash/$@-$RANDOM"
       }
 
       function tss() {
