@@ -262,7 +262,7 @@ in {
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
       function rm () {
-        mv "$@" "~/.Trash/$@-$RANDOM"
+        mv "$@" ~/.Trash/$RANDOM-$@
       }
 
       function tss() {
