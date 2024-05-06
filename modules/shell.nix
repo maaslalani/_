@@ -183,12 +183,11 @@
     ];
     hsm = hms;
 
-    rmfr = "rm";
-    rmrf = "rm -rf";
-
     flash = join [
       "cd $HOME/src/zmk"
       "rm corne_*-nice_nano_v2-zmk.uf2"
+      # wait until workflow is finished
+      "gh watch $(gh run -L 1 --json 'databaseId' --jq '.[].databaseId')"
       "gh run download -n firmware"
       "mv corne_left-nice_nano_v2-zmk.uf2 /Volumes/NICENANO"
     ];
@@ -271,7 +270,7 @@ in {
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-      function rm () {
+      function trash () {
         mv "$@" ~/.Trash/$RANDOM-$@
       }
 
