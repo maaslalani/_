@@ -49,6 +49,7 @@
     typioca
     unixtools.script
     watch
+    watchexec
     yabai
     yq
     z-lua
