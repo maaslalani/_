@@ -51,11 +51,9 @@ with builtins; let
     "N" = "new";
     "R" = "source-file ~/.config/tmux/tmux.conf";
     "S" = "set -g status";
-    "`" = "popup -E";
     "c" = "new-window ${currentPath} -n ''";
     "t" = "popup -E zsh -lic tss";
     "|" = "split-window -h ${currentPath}";
-    "'" = "split-window -h ${currentPath}";
   };
 in {
   programs.tmux = {
