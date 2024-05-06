@@ -55,6 +55,7 @@ with builtins; let
     "c" = "new-window ${currentPath} -n ''";
     "t" = "popup -E zsh -lic tss";
     "|" = "split-window -h ${currentPath}";
+    "'" = "split-window -h ${currentPath}";
   };
 in {
   programs.tmux = {

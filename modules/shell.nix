@@ -110,6 +110,7 @@
     ghpv = "gh pr view";
     ghv = "gh pr view --web";
     gl = "git pull";
+    glr = "${gl} --rebase";
     glo = "git log --oneline -n 20";
     glog = "git log";
     glrb = "${gl} --rebase";
