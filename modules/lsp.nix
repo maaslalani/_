@@ -13,6 +13,7 @@ with pkgs.nodePackages_latest; [
   gotools
   ltex-ls
   nil
+  nilaway
   nixpkgs-fmt
   openscad-lsp
   prettier
