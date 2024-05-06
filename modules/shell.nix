@@ -183,6 +183,16 @@
     ];
     hsm = hms;
 
+    rmfr = "rm";
+    rmrf = "rm -rf";
+
+    flash = join [
+      "cd $HOME/src/zmk"
+      "rm corne_*-nice_nano_v2-zmk.uf2"
+      "gh run download -n firmware"
+      "mv corne_left-nice_nano_v2-zmk.uf2 /Volumes/NICENANO"
+    ];
+
     c = "clear";
 
     ls = "eza";
