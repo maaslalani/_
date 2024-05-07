@@ -186,10 +186,12 @@
     flash = join [
       "cd $HOME/src/zmk"
       "git push"
-      "rm corne_*-nice_nano_v2-zmk.uf2"
+      "rm -f corne_left-nice_nano_v2-zmk.uf2"
+      "rm -f corne_right-nice_nano_v2-zmk.uf2"
       "gh run watch $(gh run list -L 1 --json 'databaseId' --jq '.[].databaseId')"
       "gh run download -n firmware"
-      "gum spin sleep 3 --title 'RESET KEYBOARD TO FLASH...'"
+      ''osascript -e "display notification \"Press reset button on keyboard.\" with title \"Ready to Flash\""''
+      "gum spin sleep 7 --title 'RESET KEYBOARD TO FLASH...'"
       "mv corne_left-nice_nano_v2-zmk.uf2 /Volumes/NICENANO"
     ];
 
