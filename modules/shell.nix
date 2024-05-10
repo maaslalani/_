@@ -9,12 +9,11 @@
   environment = rec {
     AWS_CONFIG_FILE = "${config.xdg.configHome}/aws/config";
     AWS_SHARED_CREDENTIALS_FILE = "${config.xdg.configHome}/aws/credentials";
-    BASH_SILENCE_DEPRECATION_WARNING = 1;
+    BASH_SILENCE_DEPRECATION_WARNING = "1";
     BREW_SBIN = "/usr/local/sbin";
     BROWSER = "open";
     CARGO_BIN = "${CARGO_HOME}/bin";
     CARGO_HOME = "${config.xdg.configHome}/.cargo";
-    CLICOLOR = 1;
     COLORTERM = "truecolor";
     DENO_BIN = "$HOME/.deno/bin";
     EDITOR = "hx";
@@ -22,23 +21,20 @@
     GOBIN = "${GOPATH}/bin";
     GOPATH = "${config.xdg.configHome}/go";
     HANDLER = "copilot";
-    OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
     HOMEBREW_BIN = "${HOMEBREW_PREFIX}/bin";
     HOMEBREW_CELLAR = "${HOMEBREW_PREFIX}/Cellar";
     HOMEBREW_PREFIX = "/opt/homebrew";
     HOMEBREW_REPOSITORY = HOMEBREW_PREFIX;
     HOMEBREW_SBIN = "${HOMEBREW_PREFIX}/sbin";
     JAVA_HOME = "/Applications/Android Studio.app/Contents/jre/Contents/Home/";
-    KEYTIMEOUT = 1;
+    KEYTIMEOUT = "1";
     KUBECONFIG = pathJoin ["$HOME/.kube/config"];
     NIXOS_OZONE_WL = "1";
-    NIXPKGS_ALLOW_BROKEN = 1;
-    NIXPKGS_ALLOW_UNFREE = 1;
-    NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = 1;
     NIX_BIN = "$HOME/.nix-profile/bin";
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+    OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
     RUSTUP_HOME = "${config.xdg.configHome}/.rustup";
-    SHELL = "zsh";
+    SHELL = "nu";
     SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
     SRC = "$HOME/src";
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -252,6 +248,12 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = aliases;
+  };
+
+  programs.nushell = {
+    enable = true;
+    shellAliases = aliases;
+    environmentVariables = environment;
   };
 
   programs.zsh = {
