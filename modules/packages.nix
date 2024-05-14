@@ -23,6 +23,7 @@
     delta
     deno
     docker
+    elvish
     ffmpeg_5
     fish
     fzf

@@ -34,7 +34,7 @@
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
     OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
     RUSTUP_HOME = "${config.xdg.configHome}/.rustup";
-    SHELL = "nu";
+    SHELL = "zsh";
     SOLARGRAPH_CACHE = "${config.xdg.cacheHome}/solargraph";
     SRC = "$HOME/src";
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -248,12 +248,6 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = aliases;
-  };
-
-  programs.nushell = {
-    enable = true;
-    shellAliases = aliases;
-    environmentVariables = environment;
   };
 
   programs.zsh = {
