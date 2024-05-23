@@ -108,7 +108,7 @@ in {
         }
         {
           name = "markdown";
-          language-servers = ["marksman" "ltex-ls"];
+          language-servers = ["marksman" "ltex-ls" "copilot"];
         }
         {
           name = "go";
