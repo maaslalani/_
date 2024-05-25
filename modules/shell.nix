@@ -98,13 +98,13 @@
     gdh = "git diff HEAD";
     gdm = "${gd} main || ${gd} master";
     ghb = "gh browse";
-    ghco = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
-    ghi = "gh issue list";
+    ghco = " ${ghpl} | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
+    ghpl = "gh pr list";
+    ghil = "gh issue list";
     ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
     ghiv = "gh issue view";
-    ghp = "gh pr list";
     ghpv = "gh pr view";
-    ghv = "gh pr view --web";
+    ghpvw = "${ghpv} --web";
     gl = "git pull";
     glr = "${gl} --rebase";
     glo = "git log --oneline -n 20";
@@ -112,7 +112,6 @@
     glrb = "${gl} --rebase";
     gm = "git merge";
     gma = "${gm} --abort";
-    gopen = "git config --get remote.origin.url | xargs open";
     gp = "git push";
     gpf = "${gp} --force-with-lease";
     gpos = "${gp} origin +@:staging";
