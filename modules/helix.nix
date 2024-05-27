@@ -113,7 +113,7 @@ in {
         {
           name = "go";
           formatter = {command = "goimports";};
-          language-servers = ["gopls" "copilot"];
+          language-servers = ["gopls" "golangci-lint-lsp" "copilot"];
           auto-format = true;
         }
         {

@@ -42,6 +42,7 @@
     ollama
     openssl
     optipng
+    pinentry
     redis
     rustup
     skhd
