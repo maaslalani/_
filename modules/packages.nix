@@ -42,7 +42,6 @@
     ollama
     openssl
     optipng
-    pinentry
     redis
     rustup
     skhd
@@ -67,7 +66,6 @@
     mpv
     networkmanager
     pavucontrol
-    pinentry
     plasma-pa
     pulseaudioFull
     rofi-wayland
