@@ -223,6 +223,8 @@
     weather = "curl http://v2.wttr.in";
     wiki = "cd $SRC/wiki && $EDITOR . && cd -";
 
+    we = "watchexec --clear clear";
+
     sk8 = "ssh skate.ssh.toys";
 
     x = "exit";
