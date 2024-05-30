@@ -27,6 +27,7 @@
     ffmpeg_5
     fish
     fzf
+    git
     git-lfs
     gnupg
     go
