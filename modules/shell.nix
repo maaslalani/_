@@ -73,7 +73,7 @@
     tksv = "tmux kill-server";
     tls = "tmux list-sessions";
 
-    _ = "${tn} -ds dotfiles -c ~/src/_ $SHELL; ${ts} dotfiles || ${ta} dotfiles";
+    _ = "${tn} -ds dotfiles -c ~/src/dotfiles $SHELL; ${ts} dotfiles || ${ta} dotfiles";
     src = "cd $HOME/src";
 
     dstroy = "fd -IH .DS_Store | xargs sudo rm";
@@ -142,11 +142,14 @@
     gwp = "${gw} prune";
 
     goi = "go install";
-    grg = "go run ./...";
-    gtg = "go test ./...";
+    grr = "go run ./...";
+    gtt = "go test ./...";
     gmt = "go mod tidy";
     gmu = "go get -u $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)";
     gme = "go mod edit -replace $(go list -m -f '{{if not .Indirect}}{{.Path}}{{end}}' all | gum filter --height 10)=$(realpath --relative-to=\"$\{PWD\}\" \"$(gum file --directory ..)\")";
+
+    golint = "golangci-lint run ./...";
+    golintsoft = "golangci-lint run ./... --config .golangci-soft.yml";
 
     r = "bin/rails";
     rdbm = "${r} db:migrate";
@@ -158,13 +161,13 @@
     bi = "${b} install";
     bu = "${b} update";
 
-    nupf = join ["cd $HOME/src/_" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
+    nupf = join ["cd $HOME/src/dotfiles" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
 
     nrs = "sudo nixos-rebuild switch";
 
     # home-manager switch
     hms = join [
-      "cd $HOME/src/_"
+      "cd $HOME/src/dotfiles"
       "nix flake lock --update-input fnl"
       "nix build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${
         if pkgs.stdenv.isDarwin
@@ -230,7 +233,8 @@
     x = "exit";
 
     o = "ollama";
-    orl = "ollama run llama3";
+    olcl = "ollama run codellama";
+    oll = "ollama run llama3";
   };
 in {
   programs.bash = {
