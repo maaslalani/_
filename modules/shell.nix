@@ -98,7 +98,7 @@
     gdh = "git diff HEAD";
     gdm = "${gd} main || ${gd} master";
     ghb = "gh browse";
-    ghco = " ${ghpl} | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
+    ghco = " ${ghpl} | cut -f1,2 | gum choose --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
     ghpl = "gh pr list";
     ghil = "gh issue list";
     ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
