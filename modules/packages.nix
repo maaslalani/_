@@ -20,6 +20,7 @@
     bun
     cachix
     coreutils
+    crystal
     delta
     deno
     docker
