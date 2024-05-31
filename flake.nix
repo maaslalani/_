@@ -2,7 +2,6 @@
   description = "home";
 
   inputs.helix.url = "github:helix-editor/helix";
-  inputs.helix.flake = false;
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/master";

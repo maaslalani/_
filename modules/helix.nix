@@ -9,6 +9,7 @@ in {
     home.file.${highlightPath}.source = "${pkgs.fnl}/highlights.scm";
     programs.helix = {
       enable = true;
+      package = pkgs.helix;
       settings = {
         editor = {
           gutters = [
