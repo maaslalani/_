@@ -1,12 +1,14 @@
 {
   description = "home";
 
-  # inputs.helix.url = "github:helix-editor/helix/master";
+  inputs.helix.url = "github:helix-editor/helix";
+  inputs.helix.flake = false;
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/master";
   inputs.fnl.url = "path:fnl";
   inputs.fnl.flake = false;
+  inputs.zls.url = "github:zigtools/zls";
 
   outputs = {
     self,
@@ -16,8 +18,6 @@
     overlays = [
       (
         self: super: {
-          # helix = inputs.helix.packages.${self.system}.default;
-
           fnl = self.pkgs.stdenv.mkDerivation {
             pname = "fnl";
             version = "unstable";

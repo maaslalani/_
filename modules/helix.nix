@@ -9,7 +9,6 @@ in {
     home.file.${highlightPath}.source = "${pkgs.fnl}/highlights.scm";
     programs.helix = {
       enable = true;
-      # package = pkgs.helix;
       settings = {
         editor = {
           gutters = [
@@ -82,7 +81,7 @@ in {
           command = "vhs";
           args = ["lsp"];
         };
-        copilot = {
+        helix-gpt = {
           command = "helix-gpt";
         };
       };
@@ -100,25 +99,29 @@ in {
           name = "nix";
           auto-format = true;
           formatter = {command = "alejandra";};
-          language-servers = ["nil" "copilot"];
+          language-servers = ["nil" "helix-gpt"];
         }
         {
           name = "bash";
-          language-servers = ["bash-language-server" "copilot"];
+          language-servers = ["bash-language-server" "helix-gpt"];
         }
         {
           name = "markdown";
-          language-servers = ["marksman" "ltex-ls" "copilot"];
+          language-servers = ["marksman" "ltex-ls" "helix-gpt"];
         }
         {
           name = "go";
           formatter = {command = "goimports";};
-          language-servers = ["gopls" "golangci-lint-lsp" "copilot"];
+          language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt"];
           auto-format = true;
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "copilot"];
+          language-servers = ["rust-analyzer" "helix-gpt"];
+        }
+        {
+          name = "zig";
+          language-servers = ["zls" "helix-gpt"];
         }
         {
           name = "lua";
@@ -144,7 +147,7 @@ in {
           indent.unit = " ";
           formatter.command = "prettier";
           formatter.args = ["--parser" "css" "--tab-width" "2"];
-          language-servers = ["css-languageserver" "copilot"];
+          language-servers = ["css-languageserver" "helix-gpt"];
         }
         {
           name = "typescript";
@@ -153,7 +156,7 @@ in {
           auto-format = true;
           formatter.command = "prettier";
           formatter.args = ["--parser" "typescript" "--tab-width" "4"];
-          language-servers = ["typescript-language-server" "copilot"];
+          language-servers = ["typescript-language-server" "helix-gpt"];
         }
         {
           name = "fennel";
@@ -166,7 +169,7 @@ in {
           indent.tab-width = 2;
           indent.unit = "  ";
           injection-regex = "(fennel|fnl)";
-          language-servers = ["fennel-language-server" "copilot"];
+          language-servers = ["fennel-language-server" "helix-gpt"];
           roots = [".git"];
           scope = "source.fnl";
         }

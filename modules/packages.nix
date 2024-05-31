@@ -31,6 +31,7 @@
     git-lfs
     gnupg
     go
+    helix-gpt
     htop
     imagemagick
     kbt
