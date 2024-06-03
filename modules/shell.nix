@@ -233,6 +233,7 @@
     x = "exit";
 
     o = "ollama";
+    olc = "ollama run codestral";
     olcl = "ollama run codellama";
     oll = "ollama run llama3";
   };
