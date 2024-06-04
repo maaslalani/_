@@ -44,6 +44,8 @@
     ollama
     openssl
     optipng
+    postgresql
+    python312Packages.west
     redis
     rustup
     skhd
