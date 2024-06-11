@@ -45,6 +45,7 @@
     openssl
     optipng
     postgresql
+    python312Packages.grip
     python312Packages.west
     redis
     rustup
