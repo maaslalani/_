@@ -161,6 +161,8 @@
     bi = "${b} install";
     bu = "${b} update";
 
+    vm = "ssh localhost -p 23234";
+
     nupf = join ["cd $HOME/src/dotfiles" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
 
     nrs = "sudo nixos-rebuild switch";
