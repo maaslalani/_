@@ -25,11 +25,13 @@
     deno
     docker
     elvish
+    erlang
     ffmpeg_5
     fish
     fzf
     git
     git-lfs
+    gleam
     gnupg
     go
     htop
