@@ -107,6 +107,7 @@
             };
           };
         modules = [
+          ./modules/aerospace.nix
           ./modules/direnv.nix
           ./modules/fonts.nix
           ./modules/gh.nix
@@ -118,10 +119,8 @@
           ./modules/pass.nix
           ./modules/scim.nix
           ./modules/shell.nix
-          ./modules/skhd.nix
           ./modules/spotify.nix
           ./modules/tmux.nix
-          ./modules/yabai.nix
           {
             home.username = "maas";
             home.stateVersion = "23.11";
