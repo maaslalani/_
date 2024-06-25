@@ -5,6 +5,8 @@
 }: let
   aerospaceConfigPath = "${config.xdg.configHome}/aerospace/aerospace.toml";
   toml = pkgs.formats.toml {};
+
+  open = app: "exec-and-forget open -a " + app;
 in {
   home.file."${aerospaceConfigPath}".source = toml.generate "aerospace.toml" {
     after-login-command = [];
@@ -61,7 +63,11 @@ in {
       outer.right = 0;
     };
     mode.main.binding = {
-      alt-enter = "exec-and-forget open -a Ghostty.app";
+      alt-c = open "Calendar.app";
+      alt-d = open "Discord.app";
+      alt-s = open "Safari.app";
+      alt-t = open "Ghostty.app";
+
       alt-slash = "layout tiles horizontal vertical";
       alt-comma = "layout accordion horizontal vertical";
       alt-h = "focus left";
