@@ -51,14 +51,12 @@
     python312Packages.west
     redis
     rustup
-    skhd
     tree-sitter
     ttyd
     typioca
     unixtools.script
     watch
     watchexec
-    yabai
     yq
     z-lua
     zig

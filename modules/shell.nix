@@ -178,7 +178,6 @@
       }"
       "${config.xdg.configHome}/nixpkgs/result/activate"
       sz
-      "skhd --reload"
       "cd -"
     ];
     hsm = hms;
