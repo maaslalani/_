@@ -6,7 +6,7 @@ in {
   programs.git = {
     enable = true;
     lfs.enable = true;
-    ignores = [".DS_Store"];
+    ignores = [".DS_Store" "result"];
     extraConfig = {
       branch.sort = "-committerdate";
       color.ui = true;

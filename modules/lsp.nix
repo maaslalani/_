@@ -28,9 +28,6 @@ with pkgs.nodePackages_latest; [
   terraform-ls
   typescript
   typescript-language-server
-  vscode-css-languageserver-bin
-  vscode-html-languageserver-bin
-  vscode-json-languageserver
   vscode-langservers-extracted
   write-good
   yaml-language-server

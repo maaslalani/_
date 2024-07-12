@@ -73,7 +73,7 @@
     tksv = "tmux kill-server";
     tls = "tmux list-sessions";
 
-    _ = "${tn} -ds dotfiles -c ~/src/dotfiles $SHELL; ${ts} dotfiles || ${ta} dotfiles";
+    _ = "${tn} -ds dotfiles -c ~/_ $SHELL; ${ts} dotfiles || ${ta} dotfiles";
     src = "cd $HOME/src";
 
     dstroy = "fd -IH .DS_Store | xargs sudo rm";
@@ -163,20 +163,18 @@
 
     vm = "ssh localhost -p 23234";
 
-    nupf = join ["cd $HOME/src/dotfiles" "rm flake.lock" hms "${gcam} 'bump flakes'" gp "cd -"];
-
     nrs = "sudo nixos-rebuild switch";
 
     # home-manager switch
     hms = join [
-      "cd $HOME/src/dotfiles"
-      "nix flake lock --update-input fnl"
-      "nix build --out-link ${config.xdg.configHome}/nixpkgs/result --impure .#${
+      "cd $HOME/_"
+      "nix flake update fnl"
+      "nix build .#${
         if pkgs.stdenv.isDarwin
         then "home"
         else "linux"
       }"
-      "${config.xdg.configHome}/nixpkgs/result/activate"
+      "./result/activate"
       sz
       "cd -"
     ];
@@ -225,7 +223,7 @@
 
     scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
     weather = "curl http://v2.wttr.in";
-    wiki = "cd $SRC/wiki && $EDITOR . && cd -";
+    wiki = "cd ~/icloud/wiki && $EDITOR . && cd -";
 
     we = "watchexec --clear clear";
 
