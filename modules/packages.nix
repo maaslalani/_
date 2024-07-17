@@ -34,6 +34,8 @@
     gleam
     gnupg
     go
+    graph-easy
+    graphviz
     htop
     imagemagick
     kbt

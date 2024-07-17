@@ -6,6 +6,7 @@ with pkgs.nodePackages_latest; [
   crystalline
   cspell
   delve
+  dot-language-server
   eslint
   fnlfmt
   golangci-lint

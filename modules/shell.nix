@@ -282,7 +282,7 @@ in {
         (
           exec </dev/tty
           exec <&1
-          SESSION=`ls $SRC | gum filter --no-strict`
+          SESSION=`ls $SRC | gum choose`
           DIRECTORY="$SRC/$SESSION"
           if [[ -z "$SESSION" ]]
           then
