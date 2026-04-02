@@ -1,112 +1,78 @@
-{pkgs, ...}: let
-  core = with pkgs;
+{pkgs, ...}: {
+  home.packages = with pkgs;
     [
+      # github-copilot-cli
+      btop
+      bun
+      cachix
+      chafa
+      cook-cli
+      coreutils
+      crush
+      darwin.trash
+      difftastic
       eza
       fd
+      fnlfmt
+      gnupg
+      goreleaser
+      vhs
+      go
+      google-cloud-sdk
+      graph-easy
+      graphviz
+      gum
+      gws
+      handy
+      imagemagick
       jq
+      jujutsu
+      melt
+      moonside
+      nodejs
+      ollama
+      opencode
+      openssl
       pastel
+      pop
+      python312Packages.grip
+      python312Packages.west
+      redis
       ripgrep
       sd
-      sops
+      serve
+      skate
+      skimpdf
+      tdf
+      tinymist
+      tree-sitter
+      ttyd
+      typescript
+      typioca
+      typst
+      watchexec
+      yq
+      zig
     ]
-    ++ (import ./lsp.nix {pkgs = pkgs;});
-
-  darwin = with pkgs; [
-    act
-    age
-    alejandra
-    awscli2
-    bore-cli
-    bun
-    cachix
-    coreutils
-    crystal
-    delta
-    deno
-    docker
-    elvish
-    erlang
-    ffmpeg_5
-    fish
-    fzf
-    git
-    git-lfs
-    gleam
-    gnupg
-    go
-    graph-easy
-    graphviz
-    htop
-    imagemagick
-    kbt
-    librsvg
-    libwebp
-    lolcat
-    lsd
-    monitorcontrol
-    nodejs
-    ollama
-    openssl
-    optipng
-    postgresql
-    python312Packages.grip
-    python312Packages.west
-    redis
-    rustup
-    tree-sitter
-    ttyd
-    typioca
-    unixtools.script
-    watch
-    watchexec
-    yq
-    z-lua
-    zig
-  ];
-
-  linux = with pkgs; [
-    brave
-    brightnessctl
-    dunst
-    gcc
-    go
-    mpv
-    networkmanager
-    pavucontrol
-    plasma-pa
-    pulseaudioFull
-    rofi-wayland
-    sof-firmware
-    waybar
-    wl-clipboard
-    xclip
-    zathura
-  ];
-
-  charmbracelet = with pkgs; [
-    # gum
-    # mods
-    # soft-serve
-    # vhs
-    charm
-    melt
-    pop
-    skate
-  ];
-in {
-  home.packages =
-    core
-    ++ charmbracelet
-    ++ (
-      if pkgs.stdenv.isDarwin
-      then darwin
-      else linux
-    );
-
-  programs.bat.config.theme = "Nord";
-  programs.bat.enable = true;
-  programs.home-manager.enable = true;
-  programs.taskwarrior.colorTheme = "dark-16";
-  programs.taskwarrior.enable = true;
-  programs.z-lua.enable = true;
+    # lsp
+    ++ [
+      alejandra
+      bash-language-server
+      dot-language-server
+      eslint
+      golangci-lint
+      golangci-lint-langserver
+      gopls
+      gotools
+      lua-language-server
+      nixpkgs-fmt
+      prettier
+      proselint
+      revive
+      taplo
+      typescript-language-server
+      vscode-langservers-extracted
+      write-good
+      yaml-language-server
+    ];
 }

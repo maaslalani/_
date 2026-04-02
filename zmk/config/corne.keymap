@@ -1,0 +1,56 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+
+#include <dt-bindings/zmk/mouse.h>
+
+#define MAIL kp LG(LA(M))
+#define CAL  kp LG(LA(C))
+#define TTY  kp LG(LA(F))
+#define WEB  kp LG(LA(D))
+#define PDF  kp LG(LA(R))
+
+#define M_UP    mmv MOVE_UP
+#define M_DOWN  mmv MOVE_DOWN
+#define M_LEFT  mmv MOVE_LEFT
+#define M_RIGHT mmv MOVE_RIGHT
+
+#define CAP_SCREEN &kp LG(LS(N4))
+#define CAP_WINDOW &kp LG(LS(N5))
+
+/ {
+    combos { };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base {
+            bindings = <
+&kp TAB         &kp Q  &kp W  &kp E     &kp R  &kp T        /* │ */     &kp Y           &kp U    &kp I      &kp O    &kp P     &kp EQUAL
+&mt RCTRL ESC   &kp A  &kp S  &kp D     &kp F  &kp G        /* │ */     &kp H           &kp J    &kp K      &kp L    &kp SEMI  &kp SQT
+&mt LSHFT GRAVE &kp Z  &kp X  &kp C     &kp V  &kp B        /* │ */     &kp N           &kp M    &kp COMMA  &kp DOT  &kp FSLH  &kp MINUS
+                              &kp LGUI  &mo 1  &kp SPACE    /* │ */     &mt LSHFT RET   &mo 2    &kp LALT
+            >;                                              /* │ */
+        };                                                  /* │ */
+                                                            /* │ */
+        symbols {                                           /* │ */
+            bindings = <                                    /* │ */
+&trans    &MAIL   &CAL    &WEB    &TTY    &PDF              /* │ */     &none      &none     &none     &none     &none     &none
+&kp BSPC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5            /* │ */     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp PIPE
+&trans    &none   &none   &none   &none   &none             /* │ */     &none      &none     &none     &kp LBKT  &kp RBKT  &none
+                          &trans  &trans  &trans            /* │ */     &trans     &none     &trans
+            >;                                              /* │ */
+        };                                                  /* │ */
+                                                            /* │ */
+        media {                                             /* │ */
+            bindings = <                                    /* │ */
+&none    &none  &none    &M_UP    CAP_SCREEN  CAP_WINDOW    /* │ */     &none   &none       &none         &none         &none          &none
+&none    &none  &M_LEFT  &M_DOWN  &M_RIGHT     &none        /* │ */     &none   &kp LEFT    &kp DOWN      &kp UP        &kp RIGHT      &kp BSPC
+&none    &none  &none    &none    &none        &none        /* │ */     &none   &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN   &kp C_BRI_UP
+                         &none    &mkp RCLK    &mkp LCLK    /* │ */     &none   &none       &bt BT_CLR
+            >;
+        };
+    };
+};

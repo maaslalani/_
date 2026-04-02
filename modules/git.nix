@@ -3,20 +3,36 @@
   name = "Maas Lalani";
   user = "maaslalani";
 in {
+  programs.gh = {
+    enable = true;
+    settings = {
+      version = "1";
+      aliases = {
+        clone = "repo clone";
+        co = "pr checkout";
+      };
+      editor = "hx";
+    };
+  };
   programs.git = {
+    package = pkgs.git;
     enable = true;
     lfs.enable = true;
     ignores = [".DS_Store" "result"];
-    extraConfig = {
+    settings = {
+      aliases = {
+        cleanup = "!gclean";
+        undo = "!gundo";
+        hist = "!ghist";
+        lo = "!glo";
+        open = "!gopen";
+      };
+      user.email = email;
+      user.name = name;
       branch.sort = "-committerdate";
       color.ui = true;
-      commit.gpgsign = true;
       core.commitGraph = true;
-      core.pager = "delta";
-      credential.helper =
-        if pkgs.stdenv.isDarwin
-        then "osxkeychain"
-        else "cache";
+      credential.helper = "osxkeychain";
       delta.navigate = true;
       diff.algorithm = "patience";
       diff.colorMoved = "default";
@@ -26,7 +42,7 @@ in {
       github.user = user;
       hub.protocol = "https";
       init.defaultBranch = "main";
-      interactive.diffFilter = "delta --color-only";
+      interactive.diffFilter = "delta";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = true;
@@ -37,15 +53,6 @@ in {
     signing = {
       key = "AECD51CD3C3A50BB9AA21C685A6ED5CBF1A0A000";
       signByDefault = true;
-    };
-    userEmail = email;
-    userName = name;
-    aliases = {
-      cleanup = "!gclean";
-      undo = "!gundo";
-      hist = "!ghist";
-      lo = "!glo";
-      open = "!gopen";
     };
   };
 }

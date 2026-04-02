@@ -4,24 +4,14 @@
     fira-code
     hack-font
     ibm-plex
+    inter
     inconsolata
     jetbrains-mono
     liberation_ttf
+    newcomputermodern
     noto-fonts
     roboto-mono
     source-code-pro
     ttf_bitstream_vera
-    (
-      nerdfonts.override {
-        fonts = [
-          "Hack"
-          "FiraCode"
-          "DejaVuSansMono"
-          "SourceCodePro"
-          "RobotoMono"
-          "JetBrainsMono"
-        ];
-      }
-    )
   ];
 }
