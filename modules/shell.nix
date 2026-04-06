@@ -140,8 +140,8 @@
 
     misc = {
       _ = "cd $HOME/_";
-      notes = "cd $HOME/icloud/Documents/notes";
-      todo = "$EDITOR $HOME/icloud/Documents/notes/todo.typ";
+      notes = "cd $NOTES";
+      todo = "$EDITOR $NOTES/todo.typ";
 
       cop = "copilot";
       color = "pastel pick";
@@ -189,6 +189,12 @@ in {
     shellAliases = aliases;
     defaultKeymap = "viins";
     initContent = ''
+      if [ -d "$HOME/icloud" ]; then
+        export NOTES="$HOME/icloud/Documents/notes"
+      else
+        export NOTES="$HOME/Documents/notes"
+      fi
+
       fpath+="$HOME/.nix-profile/share/zsh/site-functions"
       fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
 
