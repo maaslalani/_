@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   colors = {
     primary = {
       background = "#0D1116";
@@ -46,49 +50,54 @@
     bright.cyan
     bright.white
   ];
-
-  paletteConfig =
-    builtins.concatStringsSep "\n"
-    (builtins.genList (i: "palette = ${toString i}=${builtins.elemAt palette i}") (builtins.length palette));
 in {
-  home.file."${config.xdg.configHome}/ghostty/config".text =
-    ''
-      background = ${colors.primary.background}
-      foreground = ${colors.primary.foreground}
+  programs.ghostty = {
+    enable = true;
+    package =
+      if pkgs.stdenv.isDarwin
+      then pkgs.ghostty-bin
+      else pkgs.ghostty;
 
-      keybind = ctrl+super+f=toggle_fullscreen
-      keybind = ctrl+a>ctrl+a=text:\x01
-      keybind = ctrl+a>c=new_tab
-      keybind = ctrl+a>n=next_tab
-      keybind = ctrl+a>p=previous_tab
-      keybind = ctrl+a>x=close_surface
-      keybind = ctrl+a>-=new_split:down
-      keybind = ctrl+a>'=new_split:right
-      keybind = ctrl+a>|=new_split:right
-      keybind = ctrl+a>h=goto_split:left
-      keybind = ctrl+a>j=goto_split:down
-      keybind = ctrl+a>k=goto_split:up
-      keybind = ctrl+a>l=goto_split:right
+    enableZshIntegration = true;
 
-      font-size = 16
-      font-family = JetBrains Mono
-      mouse-hide-while-typing = true
+    settings = {
+      keybind = [
+        "ctrl+super+f=toggle_fullscreen"
+        "ctrl+a>ctrl+a=text:\\x01"
+        "ctrl+a>c=new_tab"
+        "ctrl+a>n=next_tab"
+        "ctrl+a>p=previous_tab"
+        "ctrl+a>x=close_surface"
+        "ctrl+a>-=new_split:down"
+        "ctrl+a>'=new_split:right"
+        "ctrl+a>|=new_split:right"
+        "ctrl+a>h=goto_split:left"
+        "ctrl+a>j=goto_split:down"
+        "ctrl+a>k=goto_split:up"
+        "ctrl+a>l=goto_split:right"
+      ];
+      background = colors.primary.background;
+      foreground = colors.primary.foreground;
 
-      macos-titlebar-style = tabs
+      palette = builtins.genList (i: "${toString i}=${builtins.elemAt palette i}") (builtins.length palette);
 
-      window-padding-x = 16
-      window-padding-y = 16
+      font-size = 16;
+      font-family = "JetBrains Mono";
+      mouse-hide-while-typing = true;
 
-      shell-integration-features = no-cursor
-      cursor-style = block
+      macos-titlebar-style = "tabs";
 
-      unfocused-split-opacity = 1
-      split-divider-color = ${colors.normal.black}
+      window-padding-x = 16;
+      window-padding-y = 16;
 
-      window-inherit-working-directory = true
-      working-directory = ${config.home.homeDirectory}/_
-    ''
-    + "\n"
-    + paletteConfig
-    + "\n";
+      shell-integration-features = "no-cursor";
+      cursor-style = "block";
+
+      unfocused-split-opacity = 1;
+      split-divider-color = colors.normal.black;
+
+      window-inherit-working-directory = true;
+      working-directory = "${config.home.homeDirectory}/_";
+    };
+  };
 }

@@ -15,10 +15,9 @@
       fd
       fnlfmt
       gnupg
-      goreleaser
-      vhs
       go
       google-cloud-sdk
+      goreleaser
       graph-easy
       graphviz
       gum
@@ -35,8 +34,6 @@
       openssl
       pastel
       pop
-      python312Packages.grip
-      python312Packages.west
       redis
       ripgrep
       sd
@@ -50,6 +47,7 @@
       typescript
       typioca
       typst
+      vhs
       watchexec
       yq
       zig
