@@ -156,7 +156,7 @@
         name = "typescript";
         indent.tab-width = 4;
         indent.unit = " ";
-        auto-format = true;
+        auto-format = false;
         formatter.command = "prettier";
         formatter.args = ["--parser" "typescript" "--tab-width" "4"];
         language-servers = ["typescript-language-server"];
