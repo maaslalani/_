@@ -127,6 +127,11 @@
       dstroy = "fd -IH .DS_Store | xargs sudo rm";
     };
 
+    go = {
+      grg = "go run ./...";
+      goi = "go install";
+    };
+
     nix = {
       hms = join [
         "nix build $HOME/_#home -o $HOME/_/result"
@@ -175,7 +180,7 @@
       jbd = "jj bookmark delete";
     };
   in
-    navigation // editor // git // jj // files // nix // misc;
+    navigation // editor // git // jj // files // nix // go // misc;
 in {
   programs.zsh = {
     autocd = true;
@@ -256,6 +261,11 @@ in {
         };
       }
     ];
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.fzf = {

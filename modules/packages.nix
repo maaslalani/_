@@ -10,6 +10,7 @@
       coreutils
       crush
       darwin.trash
+      diagon
       difftastic
       eza
       fd
@@ -23,6 +24,7 @@
       gum
       gws
       handy
+      sc-im
       imagemagick
       jq
       jujutsu
@@ -51,6 +53,7 @@
       watchexec
       yq
       zig
+      zoxide
     ]
     # lsp
     ++ [

@@ -9,6 +9,7 @@
       system = "aarch64-darwin";
       pkgs = inputs.nixpkgs.legacyPackages.${system}.extend (
         self: super: {
+          diagon = self.callPackage ./pkgs/diagon.nix { };
           gws = self.callPackage ./pkgs/gws.nix { };
           handy = self.callPackage ./pkgs/handy.nix { };
           moonside = self.callPackage ./pkgs/moonside.nix { };
