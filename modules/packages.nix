@@ -6,6 +6,8 @@
       bun
       cachix
       chafa
+      charm-freeze
+      glow
       cook-cli
       coreutils
       crush
@@ -40,6 +42,7 @@
       pop
       redis
       ripgrep
+      rustup
       sd
       serve
       skate
@@ -53,6 +56,7 @@
       typst
       vhs
       watchexec
+      worktrunk
       yq
       zig
       zoxide

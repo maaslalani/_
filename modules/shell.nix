@@ -7,7 +7,7 @@
   pathJoin = builtins.concatStringsSep ":";
 
   environment = rec {
-    BROWSER = "open";
+    # BROWSER = "open";
     LOCAL_BIN = "$HOME/.local/bin";
     COLORTERM = "truecolor";
     EDITOR = "hx";
@@ -24,6 +24,7 @@
     SRC = "$HOME/src";
     XDG_CACHE_HOME = config.xdg.cacheHome;
     XDG_CONFIG_HOME = config.xdg.configHome;
+    NODE_NO_WARNINGS = "1";
     XDG_DATA_HOME = config.xdg.dataHome;
 
     PATH = pathJoin [
@@ -76,7 +77,7 @@
       gdh = "git diff HEAD";
       gdm = "${gd} main || ${gd} master";
       ghb = "gh browse";
-      ghco = " ${ghpl} | cut -f1,2 | gum choose --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
+      ghco = " ${ghpl} | cut -f1,2 | gum filter --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
       ghil = "gh issue list";
       ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
       ghiv = "gh issue view";
@@ -133,11 +134,7 @@
     };
 
     nix = {
-      hms = join [
-        "nix build $HOME/_#home -o $HOME/_/result"
-        "$HOME/_/result/activate"
-        sz
-      ];
+      hms = "nix build $HOME/_#home -o $HOME/_/result && $HOME/_/result/activate && ${sz}";
       inherit sz;
       ncg = "nix-collect-garbage";
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
@@ -155,6 +152,7 @@
       todo = "$EDITOR $NOTES/todo.typ";
 
       cop = "copilot";
+      _cop = "npm run cli";
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
@@ -206,6 +204,16 @@ in {
         export NOTES="$HOME/Documents/notes"
       fi
 
+      branch() {
+        local name=$(gh api user --jq '.login')/$1
+        cd $HOME/Developer/copilot
+        if git worktree list | grep -q "\[$name\]"; then
+          wt switch $name
+        else
+          wt switch -c $name --execute npm -- install --loglevel=error --no-audit --no-fund
+        fi
+      }
+
       fpath+="$HOME/.nix-profile/share/zsh/site-functions"
       fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
 
@@ -245,6 +253,8 @@ in {
           unset GIT_STATUS
         fi
       }
+
+      eval "$(wt config shell init zsh)"
 
       export GPG_TTY=$(tty)
 

@@ -1,14 +1,12 @@
 {lib, ...}: let
-  open = app: "exec-and-forget open -a " + app;
-  ghosttyAppId = "com.mitchellh.ghostty";
+  open = app: "exec-and-forget open -a '${app}'";
 
   appWorkspaces = {
-    "${ghosttyAppId}" = "T";
-    "com.apple.Safari" = "S";
-    "com.apple.mail" = "M";
-    "com.apple.MobileSMS" = "M";
+    "com.microsoft.Outlook" = "M";
+    "com.microsoft.teams2" = "T";
+    "com.microsoft.edgemac" = "E";
+    "com.mitchellh.ghostty" = "G";
     "com.hnc.Discord" = "D";
-    "com.apple.iCal" = "C";
   };
 
   onWindowDetected =
@@ -16,7 +14,7 @@
       "if".app-id = appId;
       run =
         ["move-node-to-workspace ${ws}"]
-        ++ lib.optional (appId == ghosttyAppId) "layout floating";
+        ++ lib.optional (appId == "com.mitchellh.ghostty") "layout floating";
     })
     appWorkspaces;
 in {
@@ -46,12 +44,13 @@ in {
         outer.right = 0;
       };
       mode.main.binding = {
-        cmd-alt-c = open "Calendar.app";
-        cmd-alt-d = open "Discord.app";
-        cmd-alt-m = open "Mail.app";
-        cmd-alt-s = open "Safari.app";
+        cmd-alt-m = open "Microsoft Outlook.app";
+        cmd-alt-c = open "Microsoft Teams.app";
+        cmd-alt-s = open "Microsoft Edge.app";
         cmd-alt-t = open "Ghostty.app";
         cmd-alt-p = open "Skim.app";
+
+        cmd-alt-d = open "Discord.app";
       };
     };
   };
