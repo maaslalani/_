@@ -209,6 +209,10 @@ in {
         cd $HOME/Developer/copilot
         if git worktree list | grep -q "\[$name\]"; then
           wt switch $name
+        elif git worktree list | grep -q "\[$1\]"; then
+          wt switch $1
+        elif git ls-remote --heads origin "$1" | grep -q .; then
+          wt switch -c $1 --execute npm -- install --loglevel=error --no-audit --no-fund
         else
           wt switch -c $name --execute npm -- install --loglevel=error --no-audit --no-fund
         fi

@@ -2,6 +2,8 @@
   home.packages = with pkgs;
     [
       # github-copilot-cli
+      asciinema
+      asciinema-agg
       btop
       bun
       cachix
@@ -70,7 +72,6 @@
       golangci-lint
       golangci-lint-langserver
       gopls
-      gotools
       lua-language-server
       nixpkgs-fmt
       prettier

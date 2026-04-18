@@ -7,6 +7,7 @@
     "com.microsoft.edgemac" = "E";
     "com.mitchellh.ghostty" = "G";
     "com.hnc.Discord" = "D";
+    "com.tinyspeck.slackmacgap" = "S";
   };
 
   onWindowDetected =
