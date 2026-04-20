@@ -13,6 +13,7 @@
       diagon
       difftastic
       eza
+      ngrok
       fd
       fnlfmt
       gnupg
@@ -26,6 +27,7 @@
       handy
       sc-im
       imagemagick
+      jdk
       jq
       jujutsu
       melt

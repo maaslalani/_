@@ -145,6 +145,12 @@
 
     misc = {
       _ = "cd $HOME/_";
+      mc = join [
+        "cd $HOME/_"
+        "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
+        "(tmux has-session -t minecraft 2>/dev/null || tmux new-session -d -s minecraft 'cd $HOME/_ && java -jar versions/26.1.2/server-26.1.2.jar nogui')"
+        "ngrok tcp 25565"
+      ];
       notes = "cd $NOTES";
       todo = "$EDITOR $NOTES/todo.typ";
 
@@ -269,11 +275,6 @@ in {
   };
 
   programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
   };
