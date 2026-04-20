@@ -17,7 +17,7 @@
         lsp.display-messages = true;
         lsp.display-inlay-hints = false;
         file-picker = {
-          max-depth = 4;
+          max-depth = 8;
         };
         statusline = {
           mode = {
@@ -65,6 +65,7 @@
         };
         select = {
           inherit esc;
+          A-s = ":pipe sort";
         };
       };
     };

@@ -9,7 +9,6 @@
       cachix
       chafa
       charm-freeze
-      glow
       cook-cli
       coreutils
       crush
@@ -20,6 +19,8 @@
       ngrok
       fd
       fnlfmt
+      gh-dash
+      glow
       gnupg
       go
       google-cloud-sdk
@@ -35,6 +36,7 @@
       jq
       jujutsu
       melt
+      mitmproxy
       moonside
       nodejs
       ollama
