@@ -16,7 +16,7 @@
       diagon
       difftastic
       eza
-      ngrok
+      # ngrok
       fd
       fnlfmt
       gh-dash
