@@ -1,16 +1,22 @@
 with builtins; let
   mkLines = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
   mkSetLines = prefix: mkLines (n: v: "set -g ${prefix}${n} ${v}");
-  mkBindLines = mkLines (n: v: "bind \"${n}\" ${v}");
+  mkBindLines = mkLines (n: v:
+    if (substring 0 3 n) == "-r "
+    then "bind -r \"${substring 3 (stringLength n) n}\" ${v}"
+    else "bind \"${n}\" ${v}");
 
   settings = {
     automatic-rename = "off";
-    default-terminal = "'xterm-256color'";
+    default-terminal = "'tmux-256color'";
+    detach-on-destroy = "off";
     focus-events = "on";
+    history-limit = "50000";
     mouse = "on";
     popup-border-lines = "rounded";
     popup-border-style = "fg=#2a2b3d,bg=default";
-    terminal-overrides = "',xterm-256color:Tc'";
+    renumber-windows = "on";
+    set-clipboard = "on";
   };
 
   pane = {
@@ -49,18 +55,17 @@ with builtins; let
     "-" = "split-window ${cwd}";
     "=" = "set-window-option synchronize-panes";
     "C-a" = "send-prefix";
-    "C-t" = t;
     "N" = "new";
-    "R" = "source-file ~/.config/tmux/tmux.conf";
+    "r" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
     "S" = "set -g status";
     "c" = "new-window ${cwd} -n ''";
     "t" = "popup -E -w 82 -h 26 $SHELL";
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
-    "h" = "select-pane -L";
-    "j" = "select-pane -D";
-    "k" = "select-pane -U";
-    "l" = "select-pane -R";
+    "-r h" = "select-pane -L";
+    "-r j" = "select-pane -D";
+    "-r k" = "select-pane -U";
+    "-r l" = "select-pane -R";
     "o" = "split-window -h -l 80 ${cwd} opencode";
     "i" = ''
       {
@@ -109,7 +114,7 @@ in {
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     extraConfig = ''
       ${mkSetLines "" settings}
       ${mkSetLines "pane-" pane}
@@ -117,6 +122,10 @@ in {
       ${mkSetLines "message-" message}
       ${mkSetLines "status-" status}
       ${mkSetLines "mode-" mode}
+      set -as terminal-features ",xterm-256color:RGB"
+      set -as terminal-features ",ghostty:RGB"
+      bind -T copy-mode-vi y     send -X copy-pipe-and-cancel "pbcopy"
+      bind -T copy-mode-vi Enter send -X copy-pipe-and-cancel "pbcopy"
       ${mkBindLines binds}
     '';
   };

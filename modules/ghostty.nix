@@ -98,6 +98,8 @@ in {
 
       window-inherit-working-directory = true;
       working-directory = "${config.home.homeDirectory}/_";
+
+      command = "${pkgs.tmux}/bin/tmux new-session -A -s Dotfiles -c ${config.home.homeDirectory}/_";
     };
   };
 }
