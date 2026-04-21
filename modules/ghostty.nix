@@ -63,6 +63,9 @@ in {
     settings = {
       keybind = [
         "ctrl+super+f=toggle_fullscreen"
+        "super+t=unbind"
+        "super+d=unbind"
+        "super+shift+d=unbind"
         # "ctrl+a>ctrl+a=text:\\x01"
         # "ctrl+a>c=new_tab"
         # "ctrl+a>n=next_tab"

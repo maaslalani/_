@@ -134,7 +134,7 @@
     };
 
     nix = {
-      hms = "nix build $HOME/_#home -o $HOME/_/result && $HOME/_/result/activate && ${sz}";
+      hms = "nix build $HOME/_#home -o $HOME/_/result && $HOME/_/result/activate && ${sz} && (tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)";
       inherit sz;
       ncg = "nix-collect-garbage";
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
