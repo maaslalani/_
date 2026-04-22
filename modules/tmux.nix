@@ -27,6 +27,7 @@ with builtins; let
   status = {
     justify = "left";
     left = " '#S' ";
+    left-length = "1000";
     left-style = "bg=default,fg=#7879a6,bold";
     right = "'#[fg=#515170] #(whoami) #[fg=#44445e] %d %b %Y  %I:%M%p '";
     right-style = "bg=default,fg=#44445e";
