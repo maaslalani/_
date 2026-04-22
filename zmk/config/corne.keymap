@@ -6,16 +6,16 @@
 
 #include <dt-bindings/zmk/mouse.h>
 
-#define _Q kp LG(LA(Q))
-#define _W kp LG(LA(W))
-#define _E kp LG(LA(E))
-#define _R kp LG(LA(R))
-#define _T kp LG(LA(T))
-#define _Y kp LG(LA(Y))
-#define _U kp LG(LA(U))
-#define _I kp LG(LA(I))
-#define _O kp LG(LA(O))
-#define _P kp LG(LA(P))
+#define _Q &kp LG(LA(Q))
+#define _W &kp LG(LA(W))
+#define _E &kp LG(LA(E))
+#define _R &kp LG(LA(R))
+#define _T &kp LG(LA(T))
+#define _Y &kp LG(LA(Y))
+#define _U &kp LG(LA(U))
+#define _I &kp LG(LA(I))
+#define _O &kp LG(LA(O))
+#define _P &kp LG(LA(P))
 
 #define M_UP    mmv MOVE_UP
 #define M_DOWN  mmv MOVE_DOWN
