@@ -204,6 +204,10 @@ in {
         export NOTES="$HOME/Documents/notes"
       fi
 
+      if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1 && [ -d "$HOME/Developer/copilot" ]; then
+        tmux has-session -t=copilot 2>/dev/null || tmux new-session -ds copilot -c "$HOME/Developer/copilot"
+      fi
+
       branch() {
         local name=$(gh api user --jq '.login')/$1
         cd $HOME/Developer/copilot
