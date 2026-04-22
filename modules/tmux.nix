@@ -52,7 +52,7 @@ with builtins; let
   cwd = "-c \"#{pane_current_path}\"";
 
   binds = rec {
-    "_" = "attach -t Dotfiles";
+    "_" = "new-session -A -s Dotfiles -c ~/_";
     "-" = "split-window ${cwd}";
     "=" = "set-window-option synchronize-panes";
     "C-a" = "send-prefix";
@@ -67,7 +67,7 @@ with builtins; let
     "-r j" = "select-pane -D";
     "-r k" = "select-pane -U";
     "-r l" = "select-pane -R";
-    "o" = "split-window -h -l 80 ${cwd} copilot --allow-all";
+    "o" = "split-window -h -l 80 ${cwd} copilot";
     "i" = ''
       {
         copy-mode
