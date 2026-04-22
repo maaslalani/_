@@ -141,7 +141,7 @@
     };
 
     misc = {
-      _ = "cd $HOME/_";
+      _ = "tmux switch -t Dotfiles";
       mc = join [
         "cd $HOME/_"
         "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
