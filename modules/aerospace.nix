@@ -6,8 +6,8 @@
     "com.microsoft.teams2" = "T";
     "com.microsoft.edgemac" = "E";
     "com.mitchellh.ghostty" = "G";
-    "com.hnc.Discord" = "D";
     "com.tinyspeck.slackmacgap" = "S";
+    "com.hnc.Discord" = "D";
   };
 
   onWindowDetected =
@@ -35,7 +35,7 @@ in {
       accordion-padding = 30;
       default-root-container-layout = "tiles";
       default-root-container-orientation = "auto";
-      key-mapping.preset = "colemak";
+
       gaps = {
         inner.horizontal = 0;
         inner.vertical = 0;
@@ -45,13 +45,11 @@ in {
         outer.right = 0;
       };
       mode.main.binding = {
-        cmd-alt-m = open "Microsoft Outlook.app";
-        cmd-alt-c = open "Microsoft Teams.app";
-        cmd-alt-s = open "Microsoft Edge.app";
-        cmd-alt-t = open "Ghostty.app";
-        cmd-alt-p = open "Skim.app";
-
-        cmd-alt-d = open "Discord.app";
+        cmd-alt-q = open "Slack.app";
+        cmd-alt-w = open "Microsoft Teams.app";
+        cmd-alt-e = open "Microsoft Edge.app";
+        cmd-alt-r = open "Ghostty.app";
+        cmd-alt-t = open "GitHub.app";
       };
     };
   };

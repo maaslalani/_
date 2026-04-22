@@ -6,11 +6,16 @@
 
 #include <dt-bindings/zmk/mouse.h>
 
-#define MAIL kp LG(LA(M))
-#define CAL  kp LG(LA(C))
-#define TTY  kp LG(LA(F))
-#define WEB  kp LG(LA(D))
-#define PDF  kp LG(LA(R))
+#define _Q kp LG(LA(Q))
+#define _W kp LG(LA(W))
+#define _E kp LG(LA(E))
+#define _R kp LG(LA(R))
+#define _T kp LG(LA(T))
+#define _Y kp LG(LA(Y))
+#define _U kp LG(LA(U))
+#define _I kp LG(LA(I))
+#define _O kp LG(LA(O))
+#define _P kp LG(LA(P))
 
 #define M_UP    mmv MOVE_UP
 #define M_DOWN  mmv MOVE_DOWN
@@ -37,16 +42,16 @@
                                                             /* │ */
         symbols {                                           /* │ */
             bindings = <                                    /* │ */
-&trans    &MAIL   &CAL    &WEB    &TTY    &PDF              /* │ */     &none      &none     &none     &none     &none     &none
-&kp BSPC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5            /* │ */     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp PIPE
-&trans    &none   &none   &none   &none   &none             /* │ */     &none      &none     &none     &kp LBKT  &kp RBKT  &none
-                          &trans  &trans  &trans            /* │ */     &trans     &none     &trans
+&trans    _Q         _W          _E      _R      _T         /* │ */     _Y         _U        _I        _O        _P        &none
+&kp BSPC  &kp N1     &kp N2      &kp N3  &kp N4  &kp N5     /* │ */     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp PIPE
+&trans    CAP_SCREEN CAP_WINDOW  &none   &none   &none      /* │ */     &none      &none     &none     &kp LBKT  &kp RBKT  &none
+                                 &trans &trans  &trans      /* │ */     &trans     &none     &trans
             >;                                              /* │ */
         };                                                  /* │ */
                                                             /* │ */
         media {                                             /* │ */
             bindings = <                                    /* │ */
-&none    &none  &none    &M_UP    CAP_SCREEN  CAP_WINDOW    /* │ */     &none   &none       &none         &none         &none          &none
+&none    &none  &none    &M_UP    &none        &none        /* │ */     &none   &none       &none         &none         &none          &none
 &none    &none  &M_LEFT  &M_DOWN  &M_RIGHT     &none        /* │ */     &none   &kp LEFT    &kp DOWN      &kp UP        &kp RIGHT      &kp BSPC
 &none    &none  &none    &none    &none        &none        /* │ */     &none   &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN   &kp C_BRI_UP
                          &none    &mkp RCLK    &mkp LCLK    /* │ */     &none   &none       &bt BT_CLR
