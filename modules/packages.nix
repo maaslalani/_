@@ -2,6 +2,7 @@
   home.packages = with pkgs;
     [
       # github-copilot-cli
+      openscreen
       asciinema
       asciinema-agg
       btop
