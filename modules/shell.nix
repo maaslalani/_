@@ -151,7 +151,7 @@
       notes = "cd $NOTES";
       todo = "$EDITOR $NOTES/todo.typ";
 
-      cop = "copilot";
+      cop = "copilot --yolo";
       _cop = "npm run cli";
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
