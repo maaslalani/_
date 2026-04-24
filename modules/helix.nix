@@ -66,6 +66,8 @@
         select = {
           inherit esc;
           A-s = ":pipe sort";
+          space.g.c = ":pipe-to gh browse -n %{buffer_name}:%{selection_line_start}-%{selection_line_end}";
+          space.g.o = ":pipe-to gh browse %{buffer_name}:%{selection_line_start}-%{selection_line_end}";
         };
       };
     };
