@@ -32,6 +32,7 @@
       gum
       gws
       handy
+      httpie
       sc-im
       imagemagick
       jdk

@@ -83,6 +83,7 @@
       ghiv = "gh issue view";
       ghpl = "gh pr list";
       ghpv = "gh pr view";
+      ghprv = "${ghpv} --web";
       ghpvw = "${ghpv} --web";
       gl = "git pull";
       glr = "${gl} --rebase";
