@@ -154,6 +154,9 @@
 
       cop = "copilot --yolo";
       _cop = "npm run cli";
+
+      nrbw = "npm run build:watch";
+
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
       weather = "curl http://v2.wttr.in";
