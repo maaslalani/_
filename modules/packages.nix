@@ -33,7 +33,7 @@
       hunk
       imagemagick
       iterm2
-      jdk
+      jdk25
       jq
       jujutsu
       melt

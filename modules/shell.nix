@@ -149,8 +149,7 @@
       minecraft = join [
         "cd $HOME/.local/share/minecraft"
         "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
-        "(tmux has-session -t minecraft 2>/dev/null || tmux new-session -d -s minecraft 'cd $HOME/.local/share/minecraft && java -jar versions/26.1.2/server-26.1.2.jar nogui')"
-        "ngrok tcp 25565"
+        "java -Xmx1024M -Xms1024M -jar ~/.local/share/minecraft/server.jar nogui"
       ];
       notes = "cd $NOTES";
       todo = "$EDITOR $NOTES/todo.md";
