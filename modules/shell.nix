@@ -144,9 +144,9 @@
     misc = {
       _ = "tmux switch -t Dotfiles";
       mc = join [
-        "cd $HOME/_"
+        "cd $HOME/.local/share/minecraft"
         "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
-        "(tmux has-session -t minecraft 2>/dev/null || tmux new-session -d -s minecraft 'cd $HOME/_ && java -jar versions/26.1.2/server-26.1.2.jar nogui')"
+        "(tmux has-session -t minecraft 2>/dev/null || tmux new-session -d -s minecraft 'cd $HOME/.local/share/minecraft && java -jar versions/26.1.2/server-26.1.2.jar nogui')"
         "ngrok tcp 25565"
       ];
       notes = "cd $NOTES";
