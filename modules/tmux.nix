@@ -18,6 +18,7 @@ with builtins; let
     renumber-windows = "on";
     set-clipboard = "on";
     extended-keys = "on";
+    extended-keys-format = "csi-u";
   };
 
   pane = {
