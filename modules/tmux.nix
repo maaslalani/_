@@ -17,6 +17,7 @@ with builtins; let
     popup-border-style = "fg=#2a2b3d,bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
+    extended-keys = "on";
   };
 
   pane = {

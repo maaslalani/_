@@ -58,6 +58,7 @@
       tinymist
       tree-sitter
       ttyd
+      pi-coding-agent
       typescript
       typioca
       typst
