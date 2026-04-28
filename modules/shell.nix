@@ -213,14 +213,20 @@ in {
       fi
 
       branch() {
-        local name=$(gh api user --jq '.login')/$1
+        local login=$(gh api user --jq '.login')
+        local name=$1
+        if [[ "$name" != */* ]]; then
+          name=$login/$name
+        fi
         cd $HOME/Developer/copilot
         if git worktree list | grep -q "\[$name\]"; then
           wt switch $name
         elif git worktree list | grep -q "\[$1\]"; then
           wt switch $1
-        elif git ls-remote --heads origin "$1" | grep -q .; then
-          wt switch -c $1 --execute npm -- install --loglevel=error --no-audit --no-fund
+        elif git show-ref --verify --quiet "refs/heads/$name" || git ls-remote --heads origin "$name" | grep -q .; then
+          wt switch $name --execute npm -- install --loglevel=error --no-audit --no-fund
+        elif git show-ref --verify --quiet "refs/heads/$1" || git ls-remote --heads origin "$1" | grep -q .; then
+          wt switch $1 --execute npm -- install --loglevel=error --no-audit --no-fund
         else
           wt switch -c $name --execute npm -- install --loglevel=error --no-audit --no-fund
         fi
