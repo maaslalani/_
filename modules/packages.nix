@@ -1,9 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs;
     [
-      # github-copilot-cli
       azure-cli
-      openscreen
       asciinema
       asciinema-agg
       btop
@@ -18,7 +16,6 @@
       diagon
       difftastic
       eza
-      # ngrok
       fd
       fnlfmt
       gh-dash
@@ -39,7 +36,6 @@
       jq
       jujutsu
       melt
-      mitmproxy
       moonside
       nodejs
       ollama
