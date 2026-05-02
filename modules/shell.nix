@@ -138,6 +138,7 @@
       hms = "nix build $HOME/_#home -o $HOME/_/result && $HOME/_/result/activate && ${sz} && (tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)";
       inherit sz;
       ncg = "nix-collect-garbage";
+      nixd = "sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl kickstart -k system/org.nixos.nix-daemon";
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
     };
 
@@ -164,31 +165,8 @@
       q = "exit";
       ":q" = "exit";
     };
-    jj = rec {
-      j = "jj";
-      js = "jj status";
-      jl = "jj log";
-      jd = "jj diff";
-      jds = "jj diff --stat";
-      jn = "jj new";
-      jde = "jj describe";
-      je = "jj edit";
-      jci = "jj commit";
-      jsq = "jj squash"; # git commit --amend
-      jnm = "jj new main"; # git checkout -b main
-      jp = "jj git push";
-      jpb = "jj git push --bookmark";
-      jf = "jj git fetch";
-      jrb = "jj rebase -d main";
-      ju = "jj undo";
-      jop = "jj op log";
-      jb = "jj bookmark list";
-      jbc = "jj bookmark create";
-      jbm = "jj bookmark move";
-      jbd = "jj bookmark delete";
-    };
   in
-    navigation // editor // git // jj // files // nix // go // misc;
+    navigation // editor // git // files // nix // go // misc;
 in {
   programs.zsh = {
     autocd = true;
@@ -212,26 +190,6 @@ in {
         tmux has-session -t=copilot 2>/dev/null || tmux new-session -ds copilot -c "$HOME/Developer/copilot"
       fi
 
-      branch() {
-        local login=$(gh api user --jq '.login')
-        local name=$1
-        if [[ "$name" != */* ]]; then
-          name=$login/$name
-        fi
-        cd $HOME/Developer/copilot
-        if git worktree list | grep -q "\[$name\]"; then
-          wt switch $name
-        elif git worktree list | grep -q "\[$1\]"; then
-          wt switch $1
-        elif git show-ref --verify --quiet "refs/heads/$name" || git ls-remote --heads origin "$name" | grep -q .; then
-          wt switch $name --execute npm -- install --loglevel=error --no-audit --no-fund
-        elif git show-ref --verify --quiet "refs/heads/$1" || git ls-remote --heads origin "$1" | grep -q .; then
-          wt switch $1 --execute npm -- install --loglevel=error --no-audit --no-fund
-        else
-          wt switch -c $name --execute npm -- install --loglevel=error --no-audit --no-fund
-        fi
-      }
-
       fpath+="$HOME/.nix-profile/share/zsh/site-functions"
       fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
 
@@ -251,19 +209,7 @@ in {
       fi
 
       precmd() {
-        if jj root --ignore-working-copy &>/dev/null; then
-          local change_prefix change_rest bookmark
-          change_prefix=$(jj log --ignore-working-copy -r @ --no-graph -T 'change_id.shortest(8).prefix()' 2>/dev/null)
-          change_rest=$(jj log --ignore-working-copy -r @ --no-graph -T 'change_id.shortest(8).rest()' 2>/dev/null)
-          bookmark=$(jj log --ignore-working-copy -r @ --no-graph -T 'if(bookmarks, bookmarks, "")' 2>/dev/null)
-          local change="%B%F{magenta}$change_prefix%f%b%F{240}$change_rest%f"
-          if [ -n "$bookmark" ]; then
-            GIT_BRANCH="%F{magenta}(%B$bookmark%b)%f $change"
-          else
-            GIT_BRANCH="$change"
-          fi
-          GIT_STATUS=$(jj status --ignore-working-copy 2>/dev/null | awk '/^Working copy changes:/{found=1; next} found && /^[A-Z] /{printf $1} found && !/^[A-Z] /{found=0}')
-        elif [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
+        if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
           GIT_BRANCH="%F{magenta}(%B$(git branch --show-current)%b)%f"
           GIT_STATUS=$(git status --porcelain | cut -c2 | tr -d ' \n')
         else
@@ -271,8 +217,6 @@ in {
           unset GIT_STATUS
         fi
       }
-
-      eval "$(wt config shell init zsh)"
 
       export GPG_TTY=$(tty)
 
