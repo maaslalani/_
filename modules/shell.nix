@@ -222,7 +222,7 @@ in {
           *) name="maaslalani/$name" ;;
         esac
 
-        wt -C "$HOME/Developer/copilot" switch --create -x 'session="copilot-{{ branch | replace("maaslalani/", "") | sanitize }}"; tmux new-session -d -s "$session" "npm install --no-audit --no-fund; exec $SHELL -l"; tmux switch-client -t "$session"' "$name"
+        wt -C "$HOME/Developer/copilot" switch --create -x 'session="copilot-{{ branch | replace("maaslalani/", "") | sanitize }}"; if ! tmux has-session -t "$session" 2>/dev/null; then tmux new-session -d -s "$session" -c "{{ worktree_path }}" && tmux send-keys -t "$session" "npm install --no-audit --no-fund" Enter; fi; tmux switch-client -t "$session"' "$name"
       }
 
       precmd() {
