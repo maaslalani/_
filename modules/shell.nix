@@ -144,6 +144,7 @@
 
     misc = {
       _ = "tmux switch -t Dotfiles";
+      branch = "__branch";
       mc = join [
         "cd $HOME/.local/share/minecraft"
         "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
@@ -207,6 +208,22 @@ in {
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
+
+      __branch() {
+        if [ "$#" -eq 0 ]; then
+          echo "usage: branch <name>" >&2
+          return 2
+        fi
+
+        local name="$1"
+
+        case "$name" in
+          maaslalani/*) ;;
+          *) name="maaslalani/$name" ;;
+        esac
+
+        wt -C "$HOME/Developer/copilot" switch --create -x 'session="copilot-{{ branch | replace("maaslalani/", "") | sanitize }}"; tmux new-session -d -s "$session" "npm install --no-audit --no-fund; exec $SHELL -l"; tmux switch-client -t "$session"' "$name"
+      }
 
       precmd() {
         if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
