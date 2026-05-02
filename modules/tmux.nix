@@ -62,7 +62,7 @@ with builtins; let
     "r" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
     "S" = "set -g status";
     "c" = "new-window ${cwd} -n ''";
-    "t" = ''display-popup -E -w 80 -h 20 'cd $HOME/Developer && NAME=$(ls | fzf --reverse | tr . _) && tmux new-session -ds "$NAME" -c "$PWD/$NAME"; tmux switch-client -t "$NAME"' '';
+    "t" = ''display-popup -E -w 80 -h 20 'cd $HOME/Developer && NAME=$(ls | gum filter | tr . _) && { [ -z "$NAME" ] || { tmux has-session -t "$NAME" 2>/dev/null || tmux new-session -ds "$NAME" -c "$PWD/$NAME"; } && tmux switch-client -t "$NAME"; }' '';
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
     "-r h" = "select-pane -L";
