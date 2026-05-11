@@ -1,5 +1,7 @@
 {
   inputs.helix.url = "github:helix-editor/helix/master";
+  inputs.hunk.url = "github:modem-dev/hunk";
+  inputs.hunk.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/master";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,6 +13,7 @@
         diagon = self.callPackage ./pkgs/diagon.nix {};
         gws = self.callPackage ./pkgs/gws.nix {};
         handy = self.callPackage ./pkgs/handy.nix {};
+        hunk = inputs.hunk.packages.${system}.default;
         moonside = self.callPackage ./pkgs/moonside.nix {};
       }
     );

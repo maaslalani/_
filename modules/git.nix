@@ -32,6 +32,7 @@ in {
       branch.sort = "-committerdate";
       color.ui = true;
       core.commitGraph = true;
+      core.pager = "hunk pager";
       credential.helper = "osxkeychain";
       delta.navigate = true;
       diff.algorithm = "patience";
@@ -42,7 +43,7 @@ in {
       github.user = user;
       hub.protocol = "https";
       init.defaultBranch = "main";
-      interactive.diffFilter = "delta";
+      interactive.diffFilter = "hunk";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = true;

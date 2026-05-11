@@ -218,7 +218,7 @@ in {
         local name="$1"
 
         case "$name" in
-          maaslalani/*) ;;
+          */*) ;;
           *) name="maaslalani/$name" ;;
         esac
 

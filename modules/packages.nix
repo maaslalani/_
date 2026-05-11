@@ -29,6 +29,7 @@
       gum
       gws
       handy
+      hunk
       httpie
       sc-im
       imagemagick
