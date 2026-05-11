@@ -33,6 +33,7 @@
       httpie
       sc-im
       imagemagick
+      iterm2
       jdk
       jq
       jujutsu
