@@ -2,7 +2,7 @@
   home.packages = with pkgs;
     [
       azure-cli
-      asciinema
+      asciinema_3
       asciinema-agg
       btop
       bun
