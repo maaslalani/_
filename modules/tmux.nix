@@ -8,7 +8,7 @@ with builtins; let
 
   settings = {
     automatic-rename = "off";
-    default-terminal = "'tmux-256color'";
+    default-terminal = "'xterm-kitty'";
     detach-on-destroy = "off";
     focus-events = "on";
     history-limit = "50000";
@@ -119,7 +119,7 @@ in {
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
-    terminal = "tmux-256color";
+    terminal = "xterm-kitty";
     extraConfig = ''
       ${mkSetLines "" settings}
       ${mkSetLines "pane-" pane}
