@@ -145,7 +145,7 @@
     misc = {
       _ = "tmux switch -t Dotfiles";
       branch = "__branch";
-      mc = join [
+      minecraft = join [
         "cd $HOME/.local/share/minecraft"
         "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
         "(tmux has-session -t minecraft 2>/dev/null || tmux new-session -d -s minecraft 'cd $HOME/.local/share/minecraft && java -jar versions/26.1.2/server-26.1.2.jar nogui')"
@@ -155,7 +155,7 @@
       todo = "$EDITOR $NOTES/todo.typ";
 
       cop = "copilot --yolo";
-      _cop = "npm run cli";
+      _cop = "test -f ./dist-cli/index.js && ./dist-cli/index.js || npm run build && ./dist-cli/index.js";
 
       nrbw = "npm run build:watch";
 
@@ -210,31 +210,31 @@ in {
       fi
 
       __branch() {
-        if [ "$#" -eq 0 ]; then
-          echo "usage: branch <name>" >&2
-          return 2
-        fi
-
-        local name="$1"
+        local name="''${1:?Usage: branch <name>}"
+        local branch="maaslalani/$name"
+        local session="$name"
+        local worktree="$HOME/Developer/copilot.$name"
         local repo="$HOME/Developer/copilot"
 
-        # Default to maaslalani/ prefix
-        [[ "$name" == */* ]] || name="maaslalani/$name"
-
-        # Switch to existing branch or create a new one
-        local action="switch"
-        local flag=()
-        if ! git -C "$repo" ls-remote --exit-code --heads origin "$name" >/dev/null 2>&1; then
-          flag=(--create)
+        if tmux has-session -t "$session" 2>/dev/null; then
+          tmux switch-client -t "$session"
+          return
         fi
 
-        local session_name="copilot-{{ branch | replace(\"maaslalani/\", \"\") | sanitize }}"
-        local hook='if ! tmux has-session -t "$session" 2>/dev/null; then'
-        hook+=' tmux new-session -d -s "$session" -c "{{ worktree_path }}"'
-        hook+=' && tmux send-keys -t "$session" "npm install --no-audit --no-fund" Enter; fi;'
-        hook+=' tmux switch-client -t "$session"'
+        if [ ! -d "$worktree" ]; then
+          if git -C "$repo" show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null || \
+             git -C "$repo" show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null; then
+            git -C "$repo" worktree add "$worktree" "$branch"
+          else
+            git -C "$repo" worktree add -b "$branch" "$worktree" main
+          fi
+        fi
 
-        wt -C "$repo" switch "''${flag[@]}" "$name" -x "session=\"$session_name\"; $hook"
+        tmux new-session -ds "$session" -c "$worktree" -n "" "$SHELL"
+        tmux new-window -t "$session" -c "$worktree" -n "build"
+        tmux send-keys -t "$session:build" "npm install && npm run build:watch" Enter
+        tmux select-window -t "$session:1"
+        tmux switch-client -t "$session"
       }
 
       precmd() {
