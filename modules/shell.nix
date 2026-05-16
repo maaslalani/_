@@ -216,13 +216,25 @@ in {
         fi
 
         local name="$1"
+        local repo="$HOME/Developer/copilot"
 
-        case "$name" in
-          */*) ;;
-          *) name="maaslalani/$name" ;;
-        esac
+        # Default to maaslalani/ prefix
+        [[ "$name" == */* ]] || name="maaslalani/$name"
 
-        wt -C "$HOME/Developer/copilot" switch --create -x 'session="copilot-{{ branch | replace("maaslalani/", "") | sanitize }}"; if ! tmux has-session -t "$session" 2>/dev/null; then tmux new-session -d -s "$session" -c "{{ worktree_path }}" && tmux send-keys -t "$session" "npm install --no-audit --no-fund" Enter; fi; tmux switch-client -t "$session"' "$name"
+        # Switch to existing branch or create a new one
+        local action="switch"
+        local flag=()
+        if ! git -C "$repo" ls-remote --exit-code --heads origin "$name" >/dev/null 2>&1; then
+          flag=(--create)
+        fi
+
+        local session_name="copilot-{{ branch | replace(\"maaslalani/\", \"\") | sanitize }}"
+        local hook='if ! tmux has-session -t "$session" 2>/dev/null; then'
+        hook+=' tmux new-session -d -s "$session" -c "{{ worktree_path }}"'
+        hook+=' && tmux send-keys -t "$session" "npm install --no-audit --no-fund" Enter; fi;'
+        hook+=' tmux switch-client -t "$session"'
+
+        wt -C "$repo" switch "''${flag[@]}" "$name" -x "session=\"$session_name\"; $hook"
       }
 
       precmd() {
