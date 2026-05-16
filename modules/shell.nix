@@ -155,7 +155,7 @@
       todo = "$EDITOR $NOTES/todo.typ";
 
       cop = "copilot --yolo";
-      _cop = "test -f ./dist-cli/index.js && ./dist-cli/index.js || npm run build && ./dist-cli/index.js";
+      _cop = "(test -f ./dist-cli/index.js || npm run build) && ./dist-cli/index.js --yolo";
 
       nrbw = "npm run build:watch";
 
