@@ -86,6 +86,7 @@
       ghprv = "${ghpv} --web";
       ghpvw = "${ghpv} --web";
       gl = "git pull";
+      glm = "git -C $HOME/Developer/copilot pull";
       glr = "${gl} --rebase";
       glo = "git log --oneline -n 20";
       glog = "git log";
