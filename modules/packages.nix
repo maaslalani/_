@@ -1,14 +1,15 @@
 {pkgs, ...}: {
   home.packages = with pkgs;
     [
-      azure-cli
       asciinema_3
       asciinema-agg
+      azure-cli
       btop
       bun
       cachix
       chafa
       charm-freeze
+      comma
       cook-cli
       coreutils
       crush
@@ -29,9 +30,8 @@
       gum
       gws
       handy
-      hunk
       httpie
-      sc-im
+      hunk
       imagemagick
       iterm2
       jdk
@@ -44,10 +44,12 @@
       opencode
       openssl
       pastel
+      pi-coding-agent
       pop
       redis
       ripgrep
       rustup
+      sc-im
       sd
       serve
       skate
@@ -56,7 +58,6 @@
       tinymist
       tree-sitter
       ttyd
-      pi-coding-agent
       typescript
       typioca
       typst
