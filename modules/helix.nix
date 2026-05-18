@@ -49,7 +49,7 @@
           V = ["extend_line_below" "select_mode"];
           G = "goto_file_end";
           g.q = ":reflow";
-          C-b = ":sh git blame -L %{cursor_line},%{cursor_line} -- %{buffer_name}";
+          C-b = ":sh git blame -L %{cursor_line},%{cursor_line} -- %{buffer_name} | sed 's/).*$/)/'";
           C-r = ":reload";
           space = {
             w = ":write";
