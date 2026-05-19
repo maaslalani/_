@@ -95,6 +95,7 @@
       proselint
       revive
       taplo
+      tsx
       typescript-language-server
       vscode-langservers-extracted
       write-good
