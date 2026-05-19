@@ -68,6 +68,13 @@
       zig
       zoxide
     ]
+    # terminals
+    ++ [
+      alacritty
+      iterm2
+      # warp-terminal
+      wezterm
+    ]
     # lsp
     ++ [
       alejandra

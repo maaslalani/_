@@ -153,7 +153,7 @@
         "ngrok tcp 25565"
       ];
       notes = "cd $NOTES";
-      todo = "$EDITOR $NOTES/todo.typ";
+      todo = "$EDITOR $NOTES/todo.md";
 
       cop = "copilot --yolo";
       _cop = "(test -f ./dist-cli/index.js || npm run build) && ./dist-cli/index.js --yolo";
