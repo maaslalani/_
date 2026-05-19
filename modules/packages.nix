@@ -12,7 +12,6 @@
       comma
       cook-cli
       coreutils
-      crush
       darwin.trash
       diagon
       difftastic
@@ -40,11 +39,8 @@
       melt
       moonside
       nodejs
-      ollama
-      opencode
       openssl
       pastel
-      pi-coding-agent
       pop
       redis
       ripgrep
@@ -67,6 +63,15 @@
       yq
       zig
       zoxide
+    ]
+    # coding agents
+    ++ [
+      claude-code
+      codex
+      crush
+      ollama
+      opencode
+      pi-coding-agent
     ]
     # terminals
     ++ [
