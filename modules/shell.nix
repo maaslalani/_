@@ -213,7 +213,7 @@ in {
         local name="''${1:?Usage: branch <name>}"
         local short_name="''${name#maaslalani/}"
         local branch="maaslalani/$short_name"
-        local session="copilot.$short_name"
+        local session="copilot_$short_name"
         local worktree="$HOME/Developer/copilot.$short_name"
         local repo="$HOME/Developer/copilot"
 
