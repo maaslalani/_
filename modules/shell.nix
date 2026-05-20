@@ -211,9 +211,10 @@ in {
 
       __branch() {
         local name="''${1:?Usage: branch <name>}"
-        local branch="maaslalani/$name"
-        local session="$name"
-        local worktree="$HOME/Developer/copilot.$name"
+        local short_name="''${name#maaslalani/}"
+        local branch="maaslalani/$short_name"
+        local session="copilot.$short_name"
+        local worktree="$HOME/Developer/copilot.$short_name"
         local repo="$HOME/Developer/copilot"
 
         if tmux has-session -t "$session" 2>/dev/null; then
