@@ -5,7 +5,9 @@
     "com.microsoft.Outlook" = "M";
     "com.microsoft.teams2" = "T";
     "com.microsoft.edgemac" = "E";
+    "com.apple.Terminal" = "VT";
     "com.mitchellh.ghostty" = "G";
+    "dev.warp.Warp-Stable" = "W";
     "com.tinyspeck.slackmacgap" = "S";
     "com.hnc.Discord" = "D";
   };
