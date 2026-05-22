@@ -90,8 +90,8 @@ in {
 
       macos-titlebar-style = "tabs";
 
-      window-padding-x = 16;
-      window-padding-y = 16;
+      window-padding-x = 8;
+      window-padding-y = 4;
 
       shell-integration-features = "no-cursor";
       cursor-style = "block";
