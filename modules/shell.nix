@@ -85,6 +85,7 @@
       ghpv = "gh pr view";
       ghprv = "${ghpv} --web";
       ghpvw = "${ghpv} --web";
+      pr = "${ghpv} --web";
       gl = "git pull";
       glm = "git -C $HOME/Developer/copilot pull";
       glr = "${gl} --rebase";
@@ -211,11 +212,18 @@ in {
 
       __branch() {
         local name="''${1:?Usage: branch <name>}"
+        local repo="$HOME/Developer/copilot"
         local short_name="''${name#maaslalani/}"
         local branch="maaslalani/$short_name"
-        local session="copilot_$short_name"
-        local worktree="$HOME/Developer/copilot.$short_name"
-        local repo="$HOME/Developer/copilot"
+
+        if git -C "$repo" ls-remote --exit-code --heads origin "$name" >/dev/null 2>&1; then
+          branch="$name"
+          short_name="''${branch#maaslalani/}"
+        fi
+
+        local safe_name="''${short_name//\//.}"
+        local session="copilot_$safe_name"
+        local worktree="$HOME/Developer/copilot.$safe_name"
 
         if tmux has-session -t "$session" 2>/dev/null; then
           tmux switch-client -t "$session"
@@ -223,9 +231,12 @@ in {
         fi
 
         if [ ! -d "$worktree" ]; then
-          if git -C "$repo" show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null || \
-             git -C "$repo" show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null; then
+          if git -C "$repo" show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null; then
             git -C "$repo" worktree add "$worktree" "$branch"
+          elif git -C "$repo" show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null || \
+               git -C "$repo" ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            git -C "$repo" fetch origin "refs/heads/$branch:refs/remotes/origin/$branch"
+            git -C "$repo" worktree add --track -b "$branch" "$worktree" "origin/$branch"
           else
             git -C "$repo" worktree add -b "$branch" "$worktree" main
           fi
