@@ -60,6 +60,7 @@ with builtins; let
     "C-a" = "send-prefix";
     "N" = "new";
     "r" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
+    "s" = "display-popup -E switch";
     "S" = "set -g status";
     "c" = "new-window ${cwd} -n ''";
     "t" = ''

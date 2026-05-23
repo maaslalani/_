@@ -14,6 +14,7 @@
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     GOBIN = "${GOPATH}/bin";
     GOPATH = "${config.xdg.configHome}/go";
+    CARGO_BIN = "$HOME/.cargo/bin";
     KEYTIMEOUT = "1";
     NIX_BIN = "$HOME/.nix-profile/bin";
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
@@ -31,6 +32,7 @@
       GOBIN
       NIX_BIN
       LOCAL_BIN
+      CARGO_BIN
       "$PATH"
     ];
   };
