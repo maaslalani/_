@@ -160,7 +160,7 @@
       cop = "copilot --yolo";
       _cop = "(test -f ./dist-cli/index.js || npm run build) && ./dist-cli/index.js --yolo";
 
-      nrbw = "npm run build:watch";
+      bw = "npm install && npm run build:watch";
 
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
