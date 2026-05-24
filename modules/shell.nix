@@ -70,7 +70,6 @@
       gcam = "${gc} -am";
       gcane = "${gc} --amend --no-edit";
       gclean = "${gb} | cut -c 3- | gum choose --no-limit | xargs ${gb} -D";
-      gcm = "${gc} -m";
       gco = "git checkout";
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
@@ -267,6 +266,10 @@ in {
         else
           git -C "$REPO" worktree add -b "$BRANCH" "$WORKTREE" main
         fi
+      }
+
+      gcm() {
+        git commit -m "$*"
       }
 
       __branch_start_session() {
