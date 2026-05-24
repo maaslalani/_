@@ -212,43 +212,91 @@ in {
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      __branch() {
-        local name="''${1:?Usage: branch <name>}"
-        local repo="$HOME/Developer/copilot"
-        local short_name="''${name#maaslalani/}"
-        local branch="maaslalani/$short_name"
+      __branch_remote_exists() {
+        local REPO="$1"
+        local BRANCH="$2"
 
-        if git -C "$repo" ls-remote --exit-code --heads origin "$name" >/dev/null 2>&1; then
-          branch="$name"
-          short_name="''${branch#maaslalani/}"
+        git -C "$REPO" ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1
+      }
+
+      __branch_local_exists() {
+        local REPO="$1"
+        local BRANCH="$2"
+
+        git -C "$REPO" show-ref --verify --quiet "refs/heads/$BRANCH" 2>/dev/null
+      }
+
+      __branch_origin_exists() {
+        local REPO="$1"
+        local BRANCH="$2"
+
+        git -C "$REPO" show-ref --verify --quiet "refs/remotes/origin/$BRANCH" 2>/dev/null || \
+          __branch_remote_exists "$REPO" "$BRANCH"
+      }
+
+      __branch_resolve_name() {
+        local REPO="$1"
+        local NAME="$2"
+        local SHORT_NAME="''${NAME#maaslalani/}"
+        local BRANCH="maaslalani/$SHORT_NAME"
+
+        if __branch_remote_exists "$REPO" "$NAME"; then
+          BRANCH="$NAME"
         fi
 
-        local safe_name="''${short_name//\//.}"
-        local session="copilot_$safe_name"
-        local worktree="$HOME/Developer/copilot.$safe_name"
+        echo "$BRANCH"
+      }
 
-        if tmux has-session -t "$session" 2>/dev/null; then
-          tmux switch-client -t "$session"
+      __branch_safe_name() {
+        local BRANCH="$1"
+        local SHORT_NAME="''${BRANCH#maaslalani/}"
+
+        echo "''${SHORT_NAME//\//.}"
+      }
+
+      __branch_add_worktree() {
+        local REPO="$1"
+        local WORKTREE="$2"
+        local BRANCH="$3"
+
+        if __branch_local_exists "$REPO" "$BRANCH"; then
+          git -C "$REPO" worktree add "$WORKTREE" "$BRANCH"
+        elif __branch_origin_exists "$REPO" "$BRANCH"; then
+          git -C "$REPO" fetch origin "refs/heads/$BRANCH:refs/remotes/origin/$BRANCH"
+          git -C "$REPO" worktree add --track -b "$BRANCH" "$WORKTREE" "origin/$BRANCH"
+        else
+          git -C "$REPO" worktree add -b "$BRANCH" "$WORKTREE" main
+        fi
+      }
+
+      __branch_start_session() {
+        local SESSION="$1"
+        local WORKTREE="$2"
+
+        tmux new-session -ds "$SESSION" -c "$WORKTREE" -n "" "$SHELL"
+        tmux new-window -t "$SESSION" -c "$WORKTREE" -n "build" "npm install && npm run build:watch"
+        tmux select-window -t "$SESSION:1"
+        tmux switch-client -t "$SESSION"
+      }
+
+      __branch() {
+        local NAME="''${1:?Usage: branch <name>}"
+        local REPO="$HOME/Developer/copilot"
+        local BRANCH="$(__branch_resolve_name "$REPO" "$NAME")"
+        local SAFE_NAME="$(__branch_safe_name "$BRANCH")"
+        local SESSION="copilot_$SAFE_NAME"
+        local WORKTREE="$HOME/Developer/copilot.$SAFE_NAME"
+
+        if tmux has-session -t "$SESSION" 2>/dev/null; then
+          tmux switch-client -t "$SESSION"
           return
         fi
 
-        if [ ! -d "$worktree" ]; then
-          if git -C "$repo" show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null; then
-            git -C "$repo" worktree add "$worktree" "$branch"
-          elif git -C "$repo" show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null || \
-               git -C "$repo" ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
-            git -C "$repo" fetch origin "refs/heads/$branch:refs/remotes/origin/$branch"
-            git -C "$repo" worktree add --track -b "$branch" "$worktree" "origin/$branch"
-          else
-            git -C "$repo" worktree add -b "$branch" "$worktree" main
-          fi
+        if [ ! -d "$WORKTREE" ]; then
+          __branch_add_worktree "$REPO" "$WORKTREE" "$BRANCH"
         fi
 
-        tmux new-session -ds "$session" -c "$worktree" -n "" "$SHELL"
-        tmux new-window -t "$session" -c "$worktree" -n "build"
-        tmux send-keys -t "$session:build" "npm install && npm run build:watch" Enter
-        tmux select-window -t "$session:1"
-        tmux switch-client -t "$session"
+        __branch_start_session "$SESSION" "$WORKTREE"
       }
 
       precmd() {
