@@ -171,7 +171,8 @@
         "helix": "helix",
         "home-manager": "home-manager",
         "hunk": "hunk",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "switch": "switch"
       }
     },
     "rust-overlay": {
@@ -192,6 +193,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "switch": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779582717,
+        "narHash": "sha256-NArNClM2pNIMo5d6L8iGwVefMWy2Tt/aGrzikxCS6kk=",
+        "owner": "maaslalani",
+        "repo": "switch",
+        "rev": "deb64f8c32e80799507bfca1f57383d32826aa15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maaslalani",
+        "ref": "main",
+        "repo": "switch",
         "type": "github"
       }
     },
