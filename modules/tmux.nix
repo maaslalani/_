@@ -63,9 +63,7 @@ with builtins; let
     "s" = "display-popup -E switch";
     "S" = "set -g status";
     "c" = "new-window ${cwd} -n ''";
-    "t" = ''
-      display-popup -E -w 80 -h 20 'cd "$HOME/Developer" && DIR=$(ls | gum filter) && if [ -n "$DIR" ]; then TARGET_DIR="$PWD/$DIR"; NAME=$(printf "%s" "$DIR" | tr . _); tmux has-session -t "$NAME" 2>/dev/null || tmux new-session -ds "$NAME" -c "$TARGET_DIR"; tmux switch-client -t "$NAME"; fi'
-    '';
+    "t" = "display-popup -E 'switch --view projects'";
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
     "-r h" = "select-pane -L";
