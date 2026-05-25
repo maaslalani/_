@@ -5,11 +5,15 @@
     "com.microsoft.Outlook" = "M";
     "com.microsoft.teams2" = "T";
     "com.microsoft.edgemac" = "E";
-    "com.apple.Terminal" = "VT";
     "com.mitchellh.ghostty" = "G";
-    "dev.warp.Warp-Stable" = "W";
     "com.tinyspeck.slackmacgap" = "S";
     "com.hnc.Discord" = "D";
+
+    "com.apple.Terminal" = "VT";
+    "dev.warp.Warp-Stable" = "W";
+    "com.googlecode.iterm2" = "i";
+    "org.alacritty" = "O";
+    "com.github.wez.wezterm" = "P";
   };
 
   onWindowDetected =
@@ -52,6 +56,12 @@ in {
         cmd-alt-e = open "Microsoft Edge.app";
         cmd-alt-r = open "Ghostty.app";
         cmd-alt-t = open "GitHub.app";
+
+        cmd-alt-y = open "Terminal.app";
+        cmd-alt-u = open "Warp.app";
+        cmd-alt-i = open "iTerm2.app";
+        cmd-alt-o = open "Alacritty.app";
+        cmd-alt-p = open "WezTerm.app";
       };
     };
   };
