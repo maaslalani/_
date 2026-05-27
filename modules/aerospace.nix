@@ -21,7 +21,7 @@
       "if".app-id = appId;
       run =
         ["move-node-to-workspace ${ws}"]
-        ++ lib.optional (appId == "com.mitchellh.ghostty") "layout floating";
+        ++ lib.optional (lib.elem appId ["com.microsoft.teams2" "com.mitchellh.ghostty"]) "layout floating";
     })
     appWorkspaces;
 in {
