@@ -89,9 +89,10 @@ in {
       mouse-hide-while-typing = true;
 
       macos-titlebar-style = "tabs";
+      title = "";
 
-      window-padding-x = 8;
-      window-padding-y = 4;
+      window-padding-x = 16;
+      window-padding-y = 16;
 
       shell-integration-features = "no-cursor";
       cursor-style = "block";
