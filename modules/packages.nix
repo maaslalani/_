@@ -41,6 +41,7 @@
       nodejs
       openssl
       pastel
+      pnpm
       pop
       redis
       ripgrep
