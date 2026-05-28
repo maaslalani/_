@@ -262,7 +262,7 @@ in {
           git -C "$REPO" worktree add "$WORKTREE" "$BRANCH"
         elif __branch_origin_exists "$REPO" "$BRANCH"; then
           git -C "$REPO" fetch origin "refs/heads/$BRANCH:refs/remotes/origin/$BRANCH"
-          git -C "$REPO" worktree add --track -b "$BRANCH" "$WORKTREE" "origin/$BRANCH"
+          git -C "$REPO" worktree add "$WORKTREE" "$BRANCH"
         else
           git -C "$REPO" worktree add -b "$BRANCH" "$WORKTREE" main
         fi
