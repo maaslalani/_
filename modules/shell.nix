@@ -220,6 +220,7 @@ in {
         git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
+        tmux new-window -c $WORKTREE -t $SESSION -adn BUILD:WATCH
       }
 
       __review() {
@@ -230,6 +231,7 @@ in {
         git -C $REPO worktree add $WORKTREE $BRANCH
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
+        tmux new-window -c $WORKTREE -t $SESSION -adn BUILD:WATCH
       }
 
       gcm() {
