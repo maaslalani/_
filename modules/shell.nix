@@ -148,6 +148,7 @@
     misc = {
       _ = "tmux switch -t Dotfiles";
       branch = "__branch";
+      review = "__review";
       minecraft = join [
         "cd $HOME/.local/share/minecraft"
         "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
@@ -211,95 +212,28 @@ in {
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      __branch_remote_exists() {
-        local REPO="$1"
-        local BRANCH="$2"
-
-        git -C "$REPO" ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1
+      __branch() {
+        BRANCH="$1"
+        REPO=$HOME/Developer/copilot
+        WORKTREE=$REPO.$BRANCH
+        SESSION=copilot_$BRANCH
+        git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
+        tmux new-session -dc $WORKTREE -s $SESSION
+        tmux switch-client -t $SESSION
       }
 
-      __branch_local_exists() {
-        local REPO="$1"
-        local BRANCH="$2"
-
-        git -C "$REPO" show-ref --verify --quiet "refs/heads/$BRANCH" 2>/dev/null
-      }
-
-      __branch_origin_exists() {
-        local REPO="$1"
-        local BRANCH="$2"
-
-        git -C "$REPO" show-ref --verify --quiet "refs/remotes/origin/$BRANCH" 2>/dev/null || \
-          __branch_remote_exists "$REPO" "$BRANCH"
-      }
-
-      __branch_resolve_name() {
-        local REPO="$1"
-        local NAME="$2"
-        local SHORT_NAME="''${NAME#maaslalani/}"
-        local BRANCH="maaslalani/$SHORT_NAME"
-
-        if __branch_remote_exists "$REPO" "$NAME"; then
-          BRANCH="$NAME"
-        fi
-
-        echo "$BRANCH"
-      }
-
-      __branch_safe_name() {
-        local BRANCH="$1"
-        local SHORT_NAME="''${BRANCH#maaslalani/}"
-
-        echo "''${SHORT_NAME//\//.}"
-      }
-
-      __branch_add_worktree() {
-        local REPO="$1"
-        local WORKTREE="$2"
-        local BRANCH="$3"
-
-        if __branch_local_exists "$REPO" "$BRANCH"; then
-          git -C "$REPO" worktree add "$WORKTREE" "$BRANCH"
-        elif __branch_origin_exists "$REPO" "$BRANCH"; then
-          git -C "$REPO" fetch origin "refs/heads/$BRANCH:refs/remotes/origin/$BRANCH"
-          git -C "$REPO" worktree add "$WORKTREE" "$BRANCH"
-        else
-          git -C "$REPO" worktree add -b "$BRANCH" "$WORKTREE" main
-        fi
+      __review() {
+        BRANCH="$1"
+        REPO=$HOME/Developer/copilot
+        WORKTREE=$REPO.$BRANCH
+        SESSION=copilot_$BRANCH
+        git -C $REPO worktree add $WORKTREE $BRANCH
+        tmux new-session -dc $WORKTREE -s $SESSION
+        tmux switch-client -t $SESSION
       }
 
       gcm() {
         git commit -m "$*"
-      }
-
-      __branch_start_session() {
-        local SESSION="$1"
-        local WORKTREE="$2"
-
-        tmux new-session -ds "$SESSION" -c "$WORKTREE" -n "" "$SHELL"
-        tmux new-window -t "$SESSION" -c "$WORKTREE" -n "build" "npm install && npm run build:watch"
-        tmux select-window -t "$SESSION:1"
-        tmux switch-client -t "$SESSION"
-      }
-
-      __branch() {
-        local NAME="''${1:?Usage: branch <name>}"
-        local REPO="$HOME/Developer/copilot"
-        local BRANCH="$(__branch_resolve_name "$REPO" "$NAME")"
-        local SAFE_NAME="$(__branch_safe_name "$BRANCH")"
-        local SESSION="copilot_$SAFE_NAME"
-        local WORKTREE="$HOME/Developer/copilot.$SAFE_NAME"
-
-        if tmux has-session -t "$SESSION" 2>/dev/null; then
-          tmux switch-client -t "$SESSION"
-          return
-        fi
-
-        if [ ! -d "$WORKTREE" ]; then
-          __branch_add_worktree "$REPO" "$WORKTREE" "$BRANCH"
-        fi
-
-        __branch_start_session "$SESSION" "$WORKTREE"
       }
 
       precmd() {
