@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs;
     [
-      asciinema_3
+      asciinema
       asciinema-agg
       azure-cli
       btop
