@@ -90,8 +90,8 @@
       gl = "git pull";
       glm = "git -C $HOME/Developer/copilot pull";
       glr = "${gl} --rebase";
-      glo = "git log --oneline -n 20";
-      glog = "git log";
+      glog = "git log --oneline -n 20";
+      glo = "git log -n 20";
       gm = "git merge";
       gma = "${gm} --abort";
       gp = "git push";
