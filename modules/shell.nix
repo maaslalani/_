@@ -215,7 +215,7 @@ in {
       __branch() {
         BRANCH="$1"
         REPO=$HOME/Developer/copilot
-        WORKTREE=$REPO.$BRANCH
+        WORKTREE=$HOME/Developer/copilot.worktrees/$BRANCH
         SESSION=copilot_$BRANCH
         git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
@@ -226,7 +226,7 @@ in {
       __review() {
         BRANCH="$1"
         REPO=$HOME/Developer/copilot
-        WORKTREE=$REPO.$BRANCH
+        WORKTREE=$HOME/Developer/copilot.worktrees/$BRANCH
         SESSION=copilot_$BRANCH
         git -C $REPO worktree add $WORKTREE $BRANCH
         tmux new-session -dc $WORKTREE -s $SESSION
