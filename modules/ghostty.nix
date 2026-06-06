@@ -66,18 +66,6 @@ in {
         "super+t=unbind"
         "super+d=unbind"
         "super+shift+d=unbind"
-        # "ctrl+a>ctrl+a=text:\\x01"
-        # "ctrl+a>c=new_tab"
-        # "ctrl+a>n=next_tab"
-        # "ctrl+a>p=previous_tab"
-        # "ctrl+a>x=close_surface"
-        # "ctrl+a>-=new_split:down"
-        # "ctrl+a>'=new_split:right"
-        # "ctrl+a>|=new_split:right"
-        # "ctrl+a>h=goto_split:left"
-        # "ctrl+a>j=goto_split:down"
-        # "ctrl+a>k=goto_split:up"
-        # "ctrl+a>l=goto_split:right"
       ];
       background = colors.primary.background;
       foreground = colors.primary.foreground;
@@ -89,7 +77,7 @@ in {
       mouse-hide-while-typing = true;
 
       macos-titlebar-style = "tabs";
-      title = "";
+      title = "Terminal";
 
       window-padding-x = 16;
       window-padding-y = 16;
