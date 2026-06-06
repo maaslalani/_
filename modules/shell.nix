@@ -215,6 +215,7 @@ in {
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
         git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
+        ln -s $REPO/node_modules $WORKTREE/node_modules
       }
 
       __review() {
@@ -226,6 +227,7 @@ in {
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
         git -C $REPO worktree add $WORKTREE $BRANCH
+        ln -s $REPO/node_modules $WORKTREE/node_modules
       }
 
       gcm() {
