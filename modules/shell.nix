@@ -27,6 +27,7 @@
     XDG_CONFIG_HOME = config.xdg.configHome;
     NODE_NO_WARNINGS = "1";
     XDG_DATA_HOME = config.xdg.dataHome;
+    NOTES = "$HOME/Documents/notes";
 
     PATH = pathJoin [
       GOBIN
@@ -176,17 +177,18 @@ in {
     };
     shellAliases = aliases;
     defaultKeymap = "viins";
-    initContent = ''
-      if [ -d "$HOME/icloud" ]; then
-        export NOTES="$HOME/icloud/Documents/notes"
+    completionInit = ''
+      autoload -Uz compinit
+      zmodload zsh/stat zsh/datetime
+      _zcompdump=${config.xdg.cacheHome}/zsh/zcompdump
+      [[ -d ${config.xdg.cacheHome}/zsh ]] || mkdir -p ${config.xdg.cacheHome}/zsh
+      if [[ -f $_zcompdump ]] && (( EPOCHSECONDS - $(zstat +mtime $_zcompdump) < 86400 )); then
+        compinit -C -d $_zcompdump
       else
-        export NOTES="$HOME/Documents/notes"
+        compinit -d $_zcompdump
       fi
-
-      if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1 && [ -d "$HOME/Developer/copilot" ]; then
-        tmux has-session -t=copilot 2>/dev/null || tmux new-session -ds copilot -c "$HOME/Developer/copilot"
-      fi
-
+    '';
+    initContent = ''
       fpath+="$HOME/.nix-profile/share/zsh/site-functions"
       fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
 
@@ -243,12 +245,8 @@ in {
 
       export GPG_TTY=$(tty)
 
-      if [ "$DEMO" = "true" ]; then
-        export PROMPT="%F{#5a56e0}>%f "
-      else
-        export PROMPT="%F{blue}%3~%f \$GIT_BRANCH %F{red}\$GIT_STATUS%f
+      export PROMPT="%F{blue}%3~%f \$GIT_BRANCH %F{red}\$GIT_STATUS%f
       %(?.%F{green}>%f.%F{red}>%f) "
-      fi
     '';
     sessionVariables = environment;
     plugins = [
