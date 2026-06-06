@@ -211,10 +211,10 @@ in {
         REPO=$HOME/Developer/copilot
         WORKTREE=$HOME/Developer/copilot.$BRANCH
         SESSION=copilot_$BRANCH
-        git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
+        md $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
-        tmux new-window -c $WORKTREE -t $SESSION -adn BUILD:WATCH
+        git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
       }
 
       __review() {
@@ -222,10 +222,10 @@ in {
         REPO=$HOME/Developer/copilot
         WORKTREE=$HOME/Developer/copilot.$BRANCH
         SESSION=copilot_$BRANCH
-        git -C $REPO worktree add $WORKTREE $BRANCH
+        md $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
-        tmux new-window -c $WORKTREE -t $SESSION -adn BUILD:WATCH
+        git -C $REPO worktree add $WORKTREE $BRANCH
       }
 
       gcm() {

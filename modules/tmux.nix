@@ -66,10 +66,10 @@ with builtins; let
     "t" = "display-popup -E 'switch --view projects'";
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
-    "-r h" = "select-pane -L";
-    "-r j" = "select-pane -D";
-    "-r k" = "select-pane -U";
-    "-r l" = "select-pane -R";
+    "h" = "select-pane -L";
+    "j" = "select-pane -D";
+    "k" = "select-pane -U";
+    "l" = "select-pane -R";
     "o" = "split-window -h -l 80 ${cwd} copilot";
     "i" = ''
       {
