@@ -18,6 +18,7 @@
         hunk = inputs.hunk.packages.${system}.default;
         moonside = self.callPackage ./pkgs/moonside.nix {};
         switch = inputs.switch.packages.${system}.default;
+        tuistory = self.callPackage ./pkgs/tuistory.nix {};
       }
     );
   in {

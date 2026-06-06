@@ -56,6 +56,7 @@
       tinymist
       tree-sitter
       ttyd
+      tuistory
       typescript
       typioca
       typst
