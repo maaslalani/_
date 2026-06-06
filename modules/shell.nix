@@ -211,7 +211,7 @@ in {
         REPO=$HOME/Developer/copilot
         WORKTREE=$HOME/Developer/copilot.$BRANCH
         SESSION=copilot_$BRANCH
-        md $WORKTREE
+        mkdir $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
         git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
@@ -223,7 +223,7 @@ in {
         REPO=$HOME/Developer/copilot
         WORKTREE=$HOME/Developer/copilot.$BRANCH
         SESSION=copilot_$BRANCH
-        md $WORKTREE
+        mkdir $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
         git -C $REPO worktree add $WORKTREE $BRANCH
