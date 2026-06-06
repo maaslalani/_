@@ -139,7 +139,7 @@
     };
 
     nix = {
-      hms = "nix build $HOME/_#home -o $HOME/_/result && $HOME/_/result/activate && ${sz} && (tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)";
+      hms = "nix build $HOME/_#home -o $HOME/_/result && $HOME/_/result/activate && rm -f ${config.xdg.cacheHome}/zsh/zcompdump && ${sz} && (tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)";
       inherit sz;
       ncg = "nix-collect-garbage";
       nixd = "sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl kickstart -k system/org.nixos.nix-daemon";
@@ -179,10 +179,9 @@ in {
     defaultKeymap = "viins";
     completionInit = ''
       autoload -Uz compinit
-      zmodload zsh/stat zsh/datetime
       _zcompdump=${config.xdg.cacheHome}/zsh/zcompdump
       [[ -d ${config.xdg.cacheHome}/zsh ]] || mkdir -p ${config.xdg.cacheHome}/zsh
-      if [[ -f $_zcompdump ]] && (( EPOCHSECONDS - $(zstat +mtime $_zcompdump) < 86400 )); then
+      if [[ -f $_zcompdump ]]; then
         compinit -C -d $_zcompdump
       else
         compinit -d $_zcompdump
