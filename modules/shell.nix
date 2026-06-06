@@ -149,18 +149,11 @@
       _ = "tmux switch -t Dotfiles";
       branch = "__branch";
       review = "__review";
-      minecraft = join [
-        "cd $HOME/.local/share/minecraft"
-        "grep -qx 'eula=true' eula.txt || { echo 'Set eula=true in eula.txt before starting the server.'; false; }"
-        "java -Xmx1024M -Xms1024M -jar ~/.local/share/minecraft/server.jar nogui"
-      ];
       notes = "cd $NOTES";
       todo = "$EDITOR $NOTES/todo.md";
 
       cop = "copilot --yolo";
-      _cop = "(test -f ./dist-cli/index.js || npm run build) && ./dist-cli/index.js --yolo";
-
-      bw = "npm install && npm run build:watch";
+      _cop = "npm run cli -- --yolo";
 
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
