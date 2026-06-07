@@ -46,6 +46,7 @@
       redis
       ripgrep
       rustup
+      sccache
       sc-im
       sd
       serve
