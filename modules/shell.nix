@@ -29,6 +29,10 @@
     XDG_DATA_HOME = config.xdg.dataHome;
     NOTES = "$HOME/Documents/notes";
 
+    CARGO_INCREMENTAL = "0";
+    CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
+    RUSTC_WRAPPER = "sccache";
+
     PATH = pathJoin [
       GOBIN
       NIX_BIN
