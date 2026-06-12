@@ -8,6 +8,7 @@
     "com.mitchellh.ghostty" = "G";
     "com.tinyspeck.slackmacgap" = "S";
     "com.hnc.Discord" = "D";
+    "com.github.githubapp" = "H";
 
     "com.apple.Terminal" = "VT";
     "dev.warp.Warp-Stable" = "W";
@@ -55,7 +56,7 @@ in {
         cmd-alt-w = open "Microsoft Teams.app";
         cmd-alt-e = open "Microsoft Edge.app";
         cmd-alt-r = open "Ghostty.app";
-        cmd-alt-t = open "GitHub.app";
+        cmd-alt-t = open "GitHub Copilot.app";
 
         cmd-alt-y = open "Terminal.app";
         cmd-alt-u = open "Warp.app";
