@@ -160,9 +160,9 @@
       todo = "$EDITOR $NOTES/todo.md";
 
       cop = "copilot --yolo";
-      _cop = "pnpm run cli -- --yolo";
+      _cop = "pnpm run cli";
 
-      npm = pnpm;
+      npm = "pnpm";
 
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
@@ -216,9 +216,10 @@ in {
 
       __branch() {
         BRANCH="$1"
+        SAFE_BRANCH="''${BRANCH//\//-}"
         REPO=$HOME/Developer/copilot
-        WORKTREE=$HOME/Developer/copilot.worktrees/$BRANCH
-        SESSION=copilot_$BRANCH
+        WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
+        SESSION=copilot_$SAFE_BRANCH
         git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
@@ -226,9 +227,10 @@ in {
 
       __review() {
         BRANCH="$1"
+        SAFE_BRANCH="''${BRANCH//\//-}"
         REPO=$HOME/Developer/copilot
-        WORKTREE=$HOME/Developer/copilot.worktrees/$BRANCH
-        SESSION=copilot_$BRANCH
+        WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
+        SESSION=copilot_$SAFE_BRANCH
         git -C $REPO worktree add $WORKTREE $BRANCH
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
