@@ -29,6 +29,8 @@
     XDG_DATA_HOME = config.xdg.dataHome;
     NOTES = "$HOME/Documents/notes";
 
+    SWITCH_PROJECTS = pathJoin ["$HOME/Developer/copilot.worktrees"];
+
     CARGO_INCREMENTAL = "0";
     CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
     RUSTC_WRAPPER = "sccache";
@@ -158,7 +160,9 @@
       todo = "$EDITOR $NOTES/todo.md";
 
       cop = "copilot --yolo";
-      _cop = "npm run cli -- --yolo";
+      _cop = "pnpm run cli -- --yolo";
+
+      npm = pnpm;
 
       color = "pastel pick";
       scratch = "FILE=`mktemp /tmp/scratch.XXXXXX`; $EDITOR $FILE +startinsert && pbcopy < $FILE; rm $FILE";
@@ -213,10 +217,9 @@ in {
       __branch() {
         BRANCH="$1"
         REPO=$HOME/Developer/copilot
-        WORKTREE=$HOME/Developer/copilot.$BRANCH
+        WORKTREE=$HOME/Developer/copilot.worktrees/$BRANCH
         SESSION=copilot_$BRANCH
         git -C $REPO worktree add -b maaslalani/$BRANCH $WORKTREE
-        ln -s $REPO/node_modules $WORKTREE/node_modules
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
       }
@@ -224,10 +227,9 @@ in {
       __review() {
         BRANCH="$1"
         REPO=$HOME/Developer/copilot
-        WORKTREE=$HOME/Developer/copilot.$BRANCH
+        WORKTREE=$HOME/Developer/copilot.worktrees/$BRANCH
         SESSION=copilot_$BRANCH
         git -C $REPO worktree add $WORKTREE $BRANCH
-        ln -s $REPO/node_modules $WORKTREE/node_modules
         tmux new-session -dc $WORKTREE -s $SESSION
         tmux switch-client -t $SESSION
       }
