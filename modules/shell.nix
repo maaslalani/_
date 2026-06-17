@@ -5,6 +5,7 @@
 }: let
   join = builtins.concatStringsSep " && ";
   pathJoin = builtins.concatStringsSep ":";
+  commaJoin = builtins.concatStringsSep ",";
 
   environment = rec {
     # BROWSER = "open";
@@ -29,7 +30,10 @@
     XDG_DATA_HOME = config.xdg.dataHome;
     NOTES = "$HOME/Documents/notes";
 
-    SWITCH_PROJECTS = pathJoin ["$HOME/Developer/copilot.worktrees"];
+    SWITCH_PROJECTS = commaJoin [
+      "$HOME/Developer/copilot.worktrees"
+      "$HOME/.copilot/copilot-worktrees/copilot/"
+    ];
 
     CARGO_INCREMENTAL = "0";
     CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
