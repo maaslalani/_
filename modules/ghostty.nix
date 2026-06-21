@@ -1,8 +1,11 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
+  dotfiles = "${config.home.homeDirectory}/_";
+
   colors = {
     primary = {
       background = "#0D1116";
@@ -32,24 +35,9 @@
     };
   };
 
-  palette = with colors; [
-    normal.black
-    normal.red
-    normal.green
-    normal.yellow
-    normal.blue
-    normal.magenta
-    normal.cyan
-    normal.white
-    bright.black
-    bright.red
-    bright.green
-    bright.yellow
-    bright.blue
-    bright.magenta
-    bright.cyan
-    bright.white
-  ];
+  # ANSI palette colors 0-15: normal (0-7) followed by bright (8-15).
+  ansi = ["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"];
+  paletteColors = lib.attrVals ansi colors.normal ++ lib.attrVals ansi colors.bright;
 in {
   programs.ghostty = {
     enable = true;
@@ -70,7 +58,7 @@ in {
       background = colors.primary.background;
       foreground = colors.primary.foreground;
 
-      palette = builtins.genList (i: "${toString i}=${builtins.elemAt palette i}") (builtins.length palette);
+      palette = lib.imap0 (i: hex: "${toString i}=${hex}") paletteColors;
 
       font-size = 16;
       font-family = "JetBrains Mono";
@@ -89,9 +77,9 @@ in {
       split-divider-color = colors.normal.black;
 
       window-inherit-working-directory = true;
-      working-directory = "${config.home.homeDirectory}/_";
+      working-directory = dotfiles;
 
-      command = "${pkgs.tmux}/bin/tmux new-session -A -s Dotfiles -c ${config.home.homeDirectory}/_";
+      command = "${pkgs.tmux}/bin/tmux new-session -A -s Dotfiles -c ${dotfiles}";
     };
   };
 }

@@ -1,8 +1,8 @@
-{pkgs, ...}: let
-  email = "maas@lalani.dev";
-  name = "Maas Lalani";
-  user = "maaslalani";
-in {
+{
+  pkgs,
+  identity,
+  ...
+}: {
   programs.gh = {
     enable = true;
     settings = {
@@ -20,15 +20,8 @@ in {
     lfs.enable = true;
     ignores = [".DS_Store" "result"];
     settings = {
-      aliases = {
-        cleanup = "!gclean";
-        undo = "!gundo";
-        hist = "!ghist";
-        lo = "!glo";
-        open = "!gopen";
-      };
-      user.email = email;
-      user.name = name;
+      user.email = identity.email;
+      user.name = identity.name;
       branch.sort = "-committerdate";
       color.ui = true;
       core.commitGraph = true;
@@ -40,7 +33,7 @@ in {
       fetch.prune = true;
       gc.worktreePruneExpire = "now";
       gc.writeCommitGraph = true;
-      github.user = user;
+      github.user = identity.githubUser;
       hub.protocol = "https";
       init.defaultBranch = "main";
       interactive.diffFilter = "hunk";

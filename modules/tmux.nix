@@ -1,10 +1,13 @@
-with builtins; let
-  mkLines = f: a: concatStringsSep "\n" (attrValues (mapAttrs f a));
+{lib, ...}: let
+  inherit (builtins) concatStringsSep;
+  inherit (lib) hasPrefix mapAttrsToList removePrefix;
+
+  mkLines = f: a: concatStringsSep "\n" (mapAttrsToList f a);
   mkSetLines = prefix: mkLines (n: v: "set -g ${prefix}${n} ${v}");
   mkBindLines = mkLines (n: v:
-    if (substring 0 3 n) == "-r "
-    then "bind -r \"${substring 3 (stringLength n) n}\" ${v}"
-    else "bind \"${n}\" ${v}");
+    if hasPrefix "-r " n
+    then ''bind -r "${removePrefix "-r " n}" ${v}''
+    else ''bind "${n}" ${v}'');
 
   settings = {
     automatic-rename = "off";
@@ -14,42 +17,53 @@ with builtins; let
     history-limit = "50000";
     mouse = "on";
     popup-border-lines = "rounded";
-    popup-border-style = "fg=#2a2b3d,bg=default";
+    popup-border-style = "fg=${colors.popupBorder},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
     extended-keys = "on";
     extended-keys-format = "csi-u";
   };
 
+  colors = {
+    paneBorder = "#1a1b26";
+    popupBorder = "#2a2b3d";
+    statusAccent = "#7879a6";
+    statusUser = "#515170";
+    statusDim = "#44445e";
+    windowInactive = "#58587a";
+    messageFg = "#fcfcfc";
+    modeBg = "#273457";
+  };
+
   pane = {
-    active-border-style = "fg=#1a1b26,bg=default";
-    border-style = "fg=#1a1b26,bg=default";
+    active-border-style = "fg=${colors.paneBorder},bg=default";
+    border-style = "fg=${colors.paneBorder},bg=default";
   };
 
   status = {
     justify = "left";
     left = " '#S' ";
     left-length = "1000";
-    left-style = "bg=default,fg=#7879a6,bold";
-    right = "'#[fg=#515170] #(whoami) #[fg=#44445e] %d %b %Y  %I:%M%p '";
-    right-style = "bg=default,fg=#44445e";
+    left-style = "bg=default,fg=${colors.statusAccent},bold";
+    right = "'#[fg=${colors.statusUser}] #(whoami) #[fg=${colors.statusDim}] %d %b %Y  %I:%M%p '";
+    right-style = "bg=default,fg=${colors.statusDim}";
     style = "bg=default";
   };
 
   window = {
     status-current-format = "' #I #W * '";
-    status-current-style = "fg=#7879a6,bg=default";
+    status-current-style = "fg=${colors.statusAccent},bg=default";
     status-format = "' #I #W - '";
-    status-style = "fg=#58587a,bg=default";
+    status-style = "fg=${colors.windowInactive},bg=default";
     status-separator = "''";
   };
 
   message = {
     command-style = "fg=white,bg=default";
-    style = "fg=#fcfcfc,bg=default";
+    style = "fg=${colors.messageFg},bg=default";
   };
 
-  mode.style = "fg=#fcfcfc,bg=#273457";
+  mode.style = "fg=${colors.messageFg},bg=${colors.modeBg}";
 
   cwd = "-c \"#{pane_current_path}\"";
 

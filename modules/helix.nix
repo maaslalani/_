@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  mkPrettier = parser: tabWidth: {
+    command = "prettier";
+    args = ["--parser" parser "--tab-width" (toString tabWidth)];
+  };
+in {
   programs.helix = {
     enable = true;
     package = pkgs.helix;
@@ -145,15 +150,13 @@
         indent.tab-width = 2;
         indent.unit = " ";
         auto-format = false;
-        formatter.command = "prettier";
-        formatter.args = ["--parser" "html" "--tab-width" "2"];
+        formatter = mkPrettier "html" 2;
       }
       {
         name = "css";
         indent.tab-width = 4;
         indent.unit = " ";
-        formatter.command = "prettier";
-        formatter.args = ["--parser" "css" "--tab-width" "2"];
+        formatter = mkPrettier "css" 2;
         language-servers = ["css-languageserver"];
       }
       {
@@ -161,8 +164,7 @@
         indent.tab-width = 4;
         indent.unit = " ";
         auto-format = false;
-        formatter.command = "prettier";
-        formatter.args = ["--parser" "typescript" "--tab-width" "4"];
+        formatter = mkPrettier "typescript" 4;
         language-servers = ["typescript-language-server"];
       }
       {

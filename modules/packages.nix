@@ -33,7 +33,6 @@
       httpie
       hunk
       imagemagick
-      iterm2
       jdk25
       jq
       jujutsu

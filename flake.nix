@@ -21,12 +21,18 @@
         tuistory = self.callPackage ./pkgs/tuistory.nix {};
       }
     );
+    identity = {
+      email = "maas@lalani.dev";
+      name = "Maas Lalani";
+      githubUser = "maaslalani";
+    };
   in {
     packages.${system}.moonside = pkgs.moonside;
 
     home =
       (inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {inherit identity;};
         modules = map (f: ./modules/${f}) (builtins.attrNames (builtins.readDir ./modules));
       }).activationPackage;
   };

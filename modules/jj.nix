@@ -1,12 +1,9 @@
-{...}: let
-  email = "maas@lalani.dev";
-  name = "Maas Lalani";
-in {
+{identity, ...}: {
   programs.jujutsu = {
     enable = true;
     settings = {
       user = {
-        inherit email name;
+        inherit (identity) email name;
       };
       ui = {
         default-command = "log";
