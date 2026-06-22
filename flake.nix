@@ -1,5 +1,4 @@
 {
-  inputs.helix.url = "github:helix-editor/helix/master";
   inputs.hunk.url = "github:modem-dev/hunk";
   inputs.hunk.inputs.nixpkgs.follows = "nixpkgs";
   inputs.switch.url = "github:maaslalani/switch/main";

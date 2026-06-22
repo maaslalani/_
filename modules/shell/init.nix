@@ -19,22 +19,22 @@
     fi
 
     __branch() {
-      BRANCH="$1"
-      SAFE_BRANCH="''${BRANCH//\//-}"
-      REPO=$HOME/Developer/copilot
-      WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
-      SESSION=copilot_$SAFE_BRANCH
+      local BRANCH="$1"
+      local SAFE_BRANCH="''${BRANCH//\//-}"
+      local REPO=$HOME/Developer/copilot
+      local WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
+      local SESSION=copilot_$SAFE_BRANCH
       git -C $REPO worktree add -b ${identity.githubUser}/$BRANCH $WORKTREE
       tmux new-session -dc $WORKTREE -s $SESSION
       tmux switch-client -t $SESSION
     }
 
     __review() {
-      BRANCH="$1"
-      SAFE_BRANCH="''${BRANCH//\//-}"
-      REPO=$HOME/Developer/copilot
-      WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
-      SESSION=copilot_$SAFE_BRANCH
+      local BRANCH="$1"
+      local SAFE_BRANCH="''${BRANCH//\//-}"
+      local REPO=$HOME/Developer/copilot
+      local WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
+      local SESSION=copilot_$SAFE_BRANCH
       git -C $REPO worktree add $WORKTREE $BRANCH
       tmux new-session -dc $WORKTREE -s $SESSION
       tmux switch-client -t $SESSION

@@ -79,9 +79,8 @@ in {
     };
 
     languages.language-server = {
-      fennel-language-server = {
-        command = "fennel-language-server";
-        args = ["lsp" "stdio"];
+      fennel-ls = {
+        command = "fennel-ls";
       };
       vhs-language-server = {
         command = "vhs";
@@ -119,7 +118,7 @@ in {
       }
       {
         name = "markdown";
-        language-servers = ["marksman" "ltex-ls"];
+        language-servers = ["marksman"];
       }
       {
         name = "go";
@@ -157,7 +156,7 @@ in {
         indent.tab-width = 4;
         indent.unit = " ";
         formatter = mkPrettier "css" 2;
-        language-servers = ["css-languageserver"];
+        language-servers = ["vscode-css-language-server"];
       }
       {
         name = "typescript";
@@ -178,7 +177,7 @@ in {
         indent.tab-width = 2;
         indent.unit = "  ";
         injection-regex = "(fennel|fnl)";
-        language-servers = ["fennel-language-server"];
+        language-servers = ["fennel-ls"];
         roots = [".git"];
         scope = "source.fnl";
       }

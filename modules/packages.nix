@@ -90,19 +90,24 @@
       bash-language-server
       dot-language-server
       eslint
+      fennel-ls
       golangci-lint
       golangci-lint-langserver
       gopls
+      gotools
       lua-language-server
+      marksman
       nixpkgs-fmt
       prettier
       proselint
       revive
+      svgo
       taplo
       tsx
       typescript-language-server
       vscode-langservers-extracted
       write-good
       yaml-language-server
+      zls
     ];
 }

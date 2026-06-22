@@ -15,7 +15,7 @@
     NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
     OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
     TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
-    SHELL = "zsh";
+    SHELL = "${config.programs.zsh.package}/bin/zsh";
     SHELL_SESSIONS_DISABLE = "1";
     SRC = "$HOME/src";
     XDG_CACHE_HOME = config.xdg.cacheHome;
