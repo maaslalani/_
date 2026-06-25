@@ -25,8 +25,7 @@
     NOTES = "$HOME/Documents/notes";
 
     SWITCH_PROJECTS = commaJoin [
-      "$HOME/Developer/copilot.worktrees"
-      "$HOME/.copilot/copilot-worktrees/copilot/"
+      "$HOME/Developer/copilot-worktrees/copilot/"
     ];
 
     CARGO_INCREMENTAL = "0";

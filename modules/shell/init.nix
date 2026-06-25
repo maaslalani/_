@@ -22,7 +22,7 @@
       local BRANCH="$1"
       local SAFE_BRANCH="''${BRANCH//\//-}"
       local REPO=$HOME/Developer/copilot
-      local WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
+      local WORKTREE=$HOME/Developer/copilot-worktrees/copilot/$SAFE_BRANCH
       local SESSION=copilot_$SAFE_BRANCH
       git -C $REPO worktree add -b ${identity.githubUser}/$BRANCH $WORKTREE
       tmux new-session -dc $WORKTREE -s $SESSION
@@ -33,7 +33,7 @@
       local BRANCH="$1"
       local SAFE_BRANCH="''${BRANCH//\//-}"
       local REPO=$HOME/Developer/copilot
-      local WORKTREE=$HOME/Developer/copilot.worktrees/$SAFE_BRANCH
+      local WORKTREE=$HOME/Developer/copilot-worktrees/copilot/$SAFE_BRANCH
       local SESSION=copilot_$SAFE_BRANCH
       git -C $REPO worktree add $WORKTREE $BRANCH
       tmux new-session -dc $WORKTREE -s $SESSION
