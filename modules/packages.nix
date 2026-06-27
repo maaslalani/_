@@ -52,7 +52,6 @@
       serve
       skate
       skimpdf
-      switch
       tdf
       tinymist
       tree-sitter

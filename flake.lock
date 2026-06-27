@@ -134,29 +134,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hunk": "hunk",
-        "nixpkgs": "nixpkgs",
-        "switch": "switch"
-      }
-    },
-    "switch": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1781223837,
-        "narHash": "sha256-IdbD9cdY/w0Z34bRxQpdOSfyQHcF5s6vaQg2HKP8Tlk=",
-        "owner": "maaslalani",
-        "repo": "switch",
-        "rev": "67045fd5f3d28607315c00a7bf03f1227163bd40",
-        "type": "github"
-      },
-      "original": {
-        "owner": "maaslalani",
-        "ref": "main",
-        "repo": "switch",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {

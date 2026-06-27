@@ -24,10 +24,6 @@
     XDG_DATA_HOME = config.xdg.dataHome;
     NOTES = "$HOME/Documents/notes";
 
-    SWITCH_PROJECTS = commaJoin [
-      "$HOME/Developer/copilot-worktrees/copilot/"
-    ];
-
     CARGO_INCREMENTAL = "0";
     CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
     RUSTC_WRAPPER = "sccache";
