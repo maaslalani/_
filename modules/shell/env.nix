@@ -1,41 +1,28 @@
-{config, ...}: let
-  pathJoin = builtins.concatStringsSep ":";
-  commaJoin = builtins.concatStringsSep ",";
-
-  environment = rec {
-    LOCAL_BIN = "$HOME/.local/bin";
+{config, ...}: {
+  programs.zsh.sessionVariables = rec {
+    CARGO_BIN = "$HOME/.cargo/bin";
+    CARGO_INCREMENTAL = "0";
+    CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
     COLORTERM = "truecolor";
     EDITOR = "hx";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     GOBIN = "${GOPATH}/bin";
     GOPATH = "${config.xdg.configHome}/go";
-    CARGO_BIN = "$HOME/.cargo/bin";
     KEYTIMEOUT = "1";
+    LOCAL_BIN = "$HOME/.local/bin";
     NIX_BIN = "$HOME/.nix-profile/bin";
-    NIX_PATH = pathJoin ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+    NIX_PATH = builtins.concatStringsSep ":" ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+    NODE_NO_WARNINGS = "1";
+    NOTES = "$HOME/Documents/notes";
     OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
-    TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
+    PATH = builtins.concatStringsSep ":" [GOBIN NIX_BIN LOCAL_BIN CARGO_BIN "$PATH"];
+    RUSTC_WRAPPER = "sccache";
     SHELL = "${config.programs.zsh.package}/bin/zsh";
     SHELL_SESSIONS_DISABLE = "1";
     SRC = "$HOME/src";
+    TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
     XDG_CACHE_HOME = config.xdg.cacheHome;
     XDG_CONFIG_HOME = config.xdg.configHome;
-    NODE_NO_WARNINGS = "1";
     XDG_DATA_HOME = config.xdg.dataHome;
-    NOTES = "$HOME/Documents/notes";
-
-    CARGO_INCREMENTAL = "0";
-    CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
-    RUSTC_WRAPPER = "sccache";
-
-    PATH = pathJoin [
-      GOBIN
-      NIX_BIN
-      LOCAL_BIN
-      CARGO_BIN
-      "$PATH"
-    ];
   };
-in {
-  programs.zsh.sessionVariables = environment;
 }

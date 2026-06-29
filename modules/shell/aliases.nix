@@ -1,30 +1,19 @@
-{config, ...}: let
-  join = builtins.concatStringsSep " && ";
-
-  sz = join [
-    "unset __HM_ZSH_SESS_VARS_SOURCED"
-    "unset __HM_SESS_VARS_SOURCED"
-    "source ${config.xdg.configHome}/zsh/.zshrc"
-  ];
-
-  mainOrMaster = cmd: "${cmd} main || ${cmd} master";
-
-  navigation = {
+{config, ...}: {
+  programs.zsh.shellAliases = rec {
+    # navigation
     "..." = "cd ../..";
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
     src = "cd $HOME/src";
     groot = "cd \$(git rev-parse --show-toplevel)";
     recipes = "cd $HOME/Library/Mobile\\ Documents/iCloud~org~cooklang~cooklangapp/Documents";
-  };
 
-  editor = {
+    # editor
     v = "$EDITOR";
     vi = "$EDITOR";
     vim = "$EDITOR";
-  };
 
-  git = rec {
+    # git
     g = "git";
     ga = "git add";
     gap = "${ga} --patch";
@@ -41,7 +30,7 @@
     gd = "git diff";
     gd- = "git diff HEAD~";
     gdh = "git diff HEAD";
-    gdm = mainOrMaster gd;
+    gdm = "${gd} main";
     ghb = "gh browse";
     ghco = " ${ghpl} | cut -f1,2 | gum filter --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
     ghil = "gh issue list";
@@ -68,7 +57,7 @@
     grba = "${grb} --abort";
     grbc = "${grb} --continue";
     grbi = "${grb} --interactive";
-    grbm = mainOrMaster grb;
+    grbm = "${grb} main";
     grev = "git rev-parse HEAD";
     grh = "${gr} --hard";
     grpo = "git remote prune origin";
@@ -79,44 +68,41 @@
     gstp = "${gst} pop";
     gsw = "git switch";
     gswc = "git switch --create";
-    gswm = mainOrMaster gsw;
+    gswm = "${gsw} main";
     gundo = "git reset HEAD~1 --mixed";
     gw = "git worktree";
     gwa = "${gw} add";
     gwd = "${gw} remove";
     gwl = "${gw} list";
     gwp = "${gw} prune";
-  };
 
-  files = rec {
+    # files
     ls = "eza";
     lsa = "eza -laF";
     sl = ls;
     tree = "${ls} -T";
     md = "mkdir";
     dstroy = "fd -IH .DS_Store | xargs sudo rm";
-  };
 
-  go = {
+    # go
     grg = "go run ./...";
     goi = "go install";
-  };
 
-  nix = {
-    hms = join [
+    # nix
+    hms = builtins.concatStringsSep " && " [
       "nix build $HOME/_#home -o $HOME/_/result"
       "$HOME/_/result/activate"
       "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
-      sz
+      "unset __HM_ZSH_SESS_VARS_SOURCED"
+      "unset __HM_SESS_VARS_SOURCED"
+      "source ${config.xdg.configHome}/zsh/.zshrc"
       "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
     ];
-    inherit sz;
     ncg = "nix-collect-garbage";
     nixd = "sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl kickstart -k system/org.nixos.nix-daemon";
     ns = "open https://search.nixos.org/packages\\?channel=unstable";
-  };
 
-  misc = {
+    # misc
     _ = "tmux switch -t Dotfiles";
     branch = "__branch";
     review = "__review";
@@ -135,7 +121,4 @@
     q = "exit";
     ":q" = "exit";
   };
-in {
-  programs.zsh.shellAliases =
-    navigation // editor // git // files // nix // go // misc;
 }
