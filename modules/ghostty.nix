@@ -67,8 +67,8 @@ in {
       macos-titlebar-style = "tabs";
       title = "Terminal";
 
-      window-padding-x = 16;
-      window-padding-y = 16;
+      window-padding-x = 24;
+      window-padding-y = 24;
 
       shell-integration-features = "no-cursor";
       cursor-style = "block";
