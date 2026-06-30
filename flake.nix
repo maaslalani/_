@@ -15,6 +15,17 @@
         hunk = inputs.hunk.packages.${system}.default;
         moonside = self.callPackage ./pkgs/moonside.nix {};
         tuistory = self.callPackage ./pkgs/tuistory.nix {};
+        tmux = super.tmux.overrideAttrs (_: {
+          version = "3.7";
+          # The control-notify fix patched in for 3.6a is upstream as of 3.7.
+          patches = [];
+          src = self.fetchFromGitHub {
+            owner = "tmux";
+            repo = "tmux";
+            tag = "3.7";
+            hash = "sha256-dgqI1jZjnluN/F/AjngzcaMy3TgudmkvDT336YlhGZM=";
+          };
+        });
       }
     );
     identity = {

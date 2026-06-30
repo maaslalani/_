@@ -19,13 +19,15 @@
     autoload -Uz vcs_info add-zsh-hook
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:git:*' check-for-changes true
-    zstyle ':vcs_info:git:*' unstagedstr ' %F{gray}*%f'
+    zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%f'
     zstyle ':vcs_info:git:*' stagedstr ' %F{green}+%f'
     zstyle ':vcs_info:git:*' formats ' %F{magenta}(%B%b%%b)%f%u%c'
     zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%B%b%%b|%a)%f%u%c'
     add-zsh-hook precmd vcs_info
 
     export GPG_TTY=$(tty)
+
+    eval "$(wt config shell init zsh)"
 
     export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}
     %(?.%F{green}>%f.%F{red}>%f) '
