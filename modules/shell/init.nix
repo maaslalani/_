@@ -12,10 +12,14 @@
     bindkey '^?' backward-delete-char
     bindkey '^[[Z' reverse-menu-complete
 
+    if [ -e '/nix/var/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+
     autoload -Uz vcs_info add-zsh-hook
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:git:*' check-for-changes true
-    zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%f'
+    zstyle ':vcs_info:git:*' unstagedstr ' %F{gray}*%f'
     zstyle ':vcs_info:git:*' stagedstr ' %F{green}+%f'
     zstyle ':vcs_info:git:*' formats ' %F{magenta}(%B%b%%b)%f%u%c'
     zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%B%b%%b|%a)%f%u%c'
