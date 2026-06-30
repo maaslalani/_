@@ -12,8 +12,8 @@
     bindkey '^?' backward-delete-char
     bindkey '^[[Z' reverse-menu-complete
 
-    if [ -e '/nix/var/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      . '/nix/var/profiles/default/etc/profile.d/nix-daemon.sh'
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     fi
 
     autoload -Uz vcs_info add-zsh-hook
