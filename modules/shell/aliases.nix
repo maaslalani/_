@@ -20,6 +20,7 @@
     gb = "git branch";
     gbc = "${gb} --show-current";
     gc = "git commit";
+    gcm = "git commit -m";
     gca = "${gc} --amend";
     gcam = "${gc} -am";
     gcane = "${gc} --amend --no-edit";

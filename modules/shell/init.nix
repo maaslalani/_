@@ -1,62 +1,29 @@
-{identity, ...}: {
+{
   programs.zsh.initContent = ''
     fpath+="$HOME/.nix-profile/share/zsh/site-functions"
-    fpath+="$HOME/.nix-profile/share/zsh/5.8/functions"
 
     zstyle ':completion:*' menu select
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
     setopt prompt_subst
-    setopt histignorealldups
 
     bindkey '^P' up-history
     bindkey '^N' down-history
     bindkey '^?' backward-delete-char
     bindkey '^[[Z' reverse-menu-complete
 
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
-
-    __branch() {
-      local BRANCH="$1"
-      local SAFE_BRANCH="''${BRANCH//\//-}"
-      local REPO=$HOME/Developer/copilot
-      local WORKTREE=$HOME/Developer/copilot-worktrees/copilot/$SAFE_BRANCH
-      local SESSION=copilot_$SAFE_BRANCH
-      git -C $REPO worktree add -b ${identity.githubUser}/$BRANCH $WORKTREE
-      tmux new-session -dc $WORKTREE -s $SESSION
-      tmux switch-client -t $SESSION
-    }
-
-    __review() {
-      local BRANCH="$1"
-      local SAFE_BRANCH="''${BRANCH//\//-}"
-      local REPO=$HOME/Developer/copilot
-      local WORKTREE=$HOME/Developer/copilot-worktrees/copilot/$SAFE_BRANCH
-      local SESSION=copilot_$SAFE_BRANCH
-      git -C $REPO worktree add $WORKTREE $BRANCH
-      tmux new-session -dc $WORKTREE -s $SESSION
-      tmux switch-client -t $SESSION
-    }
-
-    gcm() {
-      git commit -m "$*"
-    }
-
-    precmd() {
-      if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-        GIT_BRANCH="%F{magenta}(%B$(git branch --show-current)%b)%f"
-        GIT_STATUS=$(git status --porcelain | cut -c2 | tr -d ' \n')
-      else
-        unset GIT_BRANCH
-        unset GIT_STATUS
-      fi
-    }
+    autoload -Uz vcs_info add-zsh-hook
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:git:*' check-for-changes true
+    zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%f'
+    zstyle ':vcs_info:git:*' stagedstr ' %F{green}+%f'
+    zstyle ':vcs_info:git:*' formats ' %F{magenta}(%B%b%%b)%f%u%c'
+    zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%B%b%%b|%a)%f%u%c'
+    add-zsh-hook precmd vcs_info
 
     export GPG_TTY=$(tty)
 
-    export PROMPT="%F{blue}%3~%f \$GIT_BRANCH %F{red}\$GIT_STATUS%f
-    %(?.%F{green}>%f.%F{red}>%f) "
+    export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}
+    %(?.%F{green}>%f.%F{red}>%f) '
   '';
 }
