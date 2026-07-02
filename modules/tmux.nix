@@ -83,40 +83,6 @@
     "k" = "select-pane -U";
     "l" = "select-pane -R";
     "o" = "split-window -h -l 80 ${cwd} copilot";
-    "i" = ''
-      {
-        copy-mode
-        send -X clear-selection
-        send -X start-of-line
-        send -X start-of-line
-        send -X cursor-up
-        send -X start-of-line
-        send -X start-of-line
-        send -X cursor-up
-        send -X start-of-line
-        send -X start-of-line
-
-        if -F "#{m/r:^> ,#{copy_cursor_line}}" {
-          send -X search-forward "^> "
-          send -X stop-selection
-          send -X -N 2 cursor-right
-          send -X begin-selection
-          send -X end-of-line
-          send -X end-of-line
-          if "#{m/r:^> .,#{copy_cursor_line}}" {
-            send -X cursor-left
-          }
-        } {
-          send -X end-of-line
-          send -X end-of-line
-          send -X begin-selection
-          send -X search-backward "^> "
-          send -X end-of-line
-          send -X end-of-line
-          send -X cursor-right
-          send -X stop-selection
-        }
-      }'';
   };
 in {
   programs.tmux = {
