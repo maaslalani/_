@@ -1,27 +1,22 @@
 {lib, ...}: let
-  inherit (builtins) concatStringsSep;
-  inherit (lib) hasPrefix mapAttrsToList removePrefix;
+  inherit (lib) concatStringsSep hasPrefix mapAttrsToList removePrefix;
 
-  mkLines = f: a: concatStringsSep "\n" (mapAttrsToList f a);
-  mkSetLines = prefix: mkLines (n: v: "set -g ${prefix}${n} ${v}");
-  mkBindLines = mkLines (n: v:
-    if hasPrefix "-r " n
-    then ''bind -r "${removePrefix "-r " n}" ${v}''
-    else ''bind "${n}" ${v}'');
+  mkLines = f: attrs: concatStringsSep "\n" (mapAttrsToList f attrs);
+  mkSetLines = prefix: mkLines (name: value: "set -g ${prefix}${name} ${value}");
+  mkBindLines = mkLines (key: cmd:
+    if hasPrefix "-r " key
+    then ''bind -r "${removePrefix "-r " key}" ${cmd}''
+    else ''bind "${key}" ${cmd}'');
 
   settings = {
     automatic-rename = "off";
-    default-terminal = "'tmux-256color'";
     detach-on-destroy = "off";
-    focus-events = "on";
-    history-limit = "50000";
-    mouse = "on";
+    extended-keys = "on";
+    extended-keys-format = "csi-u";
     popup-border-lines = "rounded";
     popup-border-style = "fg=${colors.popupBorder},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
-    extended-keys = "on";
-    extended-keys-format = "csi-u";
   };
 
   colors = {
@@ -65,7 +60,7 @@
 
   mode.style = "fg=${colors.messageFg},bg=${colors.modeBg}";
 
-  cwd = "-c \"#{pane_current_path}\"";
+  cwd = ''-c "#{pane_current_path}"'';
 
   binds = rec {
     "_" = "new-session -A -s Dotfiles -c ~/_";
@@ -73,7 +68,9 @@
     "=" = "set-window-option synchronize-panes";
     "C-a" = "send-prefix";
     "N" = "new";
-    "r" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
+    "r" = ''command-prompt "rename-session -- '%%'"'';
+    "C-r" = r;
+    "R" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
     "S" = "set -g status";
     "c" = "new-window ${cwd} -n ''";
     "'" = "split-window -h ${cwd}";
@@ -91,7 +88,10 @@ in {
     disableConfirmationPrompt = true;
     enable = true;
     escapeTime = 0;
+    focusEvents = true;
+    historyLimit = 50000;
     keyMode = "vi";
+    mouse = true;
     newSession = false;
     secureSocket = false;
     sensibleOnTop = false;
