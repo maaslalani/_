@@ -59,7 +59,6 @@
       typst
       vhs
       watchexec
-      worktrunk
       yq
       zig
       zoxide

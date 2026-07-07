@@ -27,8 +27,6 @@
 
     export GPG_TTY=$(tty)
 
-    eval "$(wt config shell init zsh)"
-
     export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}
     %(?.%F{green}>%f.%F{red}>%f) '
   '';
