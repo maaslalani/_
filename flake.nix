@@ -9,12 +9,9 @@
     system = "aarch64-darwin";
     pkgs = inputs.nixpkgs.legacyPackages.${system}.extend (
       self: super: {
-        diagon = self.callPackage ./pkgs/diagon.nix {};
-        gws = self.callPackage ./pkgs/gws.nix {};
         handy = self.callPackage ./pkgs/handy.nix {};
         hunk = inputs.hunk.packages.${system}.default;
         moonside = self.callPackage ./pkgs/moonside.nix {};
-        tuistory = self.callPackage ./pkgs/tuistory.nix {};
         tmux = super.tmux.overrideAttrs (_: {
           version = "3.7";
           # The control-notify fix patched in for 3.6a is upstream as of 3.7.

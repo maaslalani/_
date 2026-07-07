@@ -14,7 +14,6 @@
       cook-cli
       coreutils
       darwin.trash
-      diagon
       difftastic
       eza
       fd
@@ -37,7 +36,6 @@
       jq
       jujutsu
       melt
-      moonside
       nodejs
       openssl
       pastel
@@ -56,7 +54,6 @@
       tinymist
       tree-sitter
       ttyd
-      tuistory
       typescript
       typioca
       typst
