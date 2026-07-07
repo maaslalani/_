@@ -3,7 +3,6 @@
     [
       asciinema
       asciinema-agg
-      azure-cli
       bat
       btop
       bun
