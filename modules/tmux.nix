@@ -67,7 +67,7 @@
     "-" = "split-window ${cwd}";
     "=" = "set-window-option synchronize-panes";
     "C-a" = "send-prefix";
-    "N" = "new";
+    "N" = "new ${cwd}";
     "r" = ''command-prompt "rename-session -- '%%'"'';
     "C-r" = r;
     "R" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
