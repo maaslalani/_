@@ -35,6 +35,7 @@
       jq
       jujutsu
       melt
+      mosh
       nodejs
       openssl
       pastel
@@ -66,7 +67,6 @@
     ++ [
       claude-code
       codex
-      crush
       ollama
       opencode
       pi-coding-agent
@@ -74,9 +74,6 @@
     # terminals
     ++ [
       alacritty
-      iterm2
-      # warp-terminal
-      wezterm
     ]
     # lsp
     ++ [
