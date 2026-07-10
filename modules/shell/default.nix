@@ -37,8 +37,6 @@
       RUSTC_WRAPPER = "sccache";
       SHELL = "${config.programs.zsh.package}/bin/zsh";
       SHELL_SESSIONS_DISABLE = "1";
-      SRC = "$HOME/src";
-      PROJECTS = "$HOME/Developer";
       TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
       XDG_CACHE_HOME = config.xdg.cacheHome;
       XDG_CONFIG_HOME = config.xdg.configHome;

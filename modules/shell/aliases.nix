@@ -105,6 +105,7 @@
 
     # misc
     _ = "tmux switch -t Dotfiles";
+    tn = ''NAME=$(ls -1 $HOME/Developer | gum choose) && tmux new-session -A -d -s "$NAME" -c "$HOME/Developer/$NAME" && tmux switch-client -t "$NAME"'';
     branch = "__branch";
     review = "__review";
     notes = "cd $NOTES";
