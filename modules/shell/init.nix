@@ -25,9 +25,20 @@
     zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%B%b%%b|%a)%f%u%c'
     add-zsh-hook precmd vcs_info
 
+    typeset -g git_unpushed=
+    _git_unpushed() {
+      local commit
+      git_unpushed=
+      commit=$(git rev-list --max-count=1 '@{upstream}..HEAD' 2>/dev/null) || return 0
+      if [[ -n "$commit" ]]; then
+        git_unpushed=' %F{yellow}↑%f'
+      fi
+    }
+    add-zsh-hook precmd _git_unpushed
+
     export GPG_TTY=$(tty)
 
-    export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}
+    export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}''${git_unpushed}
     %(?.%F{green}>%f.%F{red}>%f) '
   '';
 }
