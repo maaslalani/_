@@ -1,30 +1,38 @@
 {lib, ...}: let
   open = app: "exec-and-forget open -a '${app}'";
+  mkApp = workspace: {inherit workspace;};
+  mkLauncher = workspace: key: name: (mkApp workspace) // {inherit key name;};
 
-  appWorkspaces = {
-    "com.microsoft.Outlook" = "M";
-    "com.microsoft.teams2" = "T";
-    "com.microsoft.edgemac" = "E";
-    "com.mitchellh.ghostty" = "G";
-    "com.tinyspeck.slackmacgap" = "S";
-    "com.hnc.Discord" = "D";
-    "com.github.githubapp" = "H";
+  apps = {
+    "com.microsoft.Outlook" = mkApp "M";
+    "com.microsoft.teams2" = mkLauncher "T" "w" "Microsoft Teams.app" // {floating = true;};
+    "com.microsoft.edgemac" = mkLauncher "E" "e" "Microsoft Edge.app";
+    "com.mitchellh.ghostty" = mkLauncher "G" "r" "Ghostty.app" // {floating = true;};
+    "com.tinyspeck.slackmacgap" = mkLauncher "S" "q" "Slack.app";
+    "com.hnc.Discord" = mkApp "D";
+    "com.github.githubapp" = mkLauncher "H" "t" "GitHub Copilot.app";
 
-    "com.apple.Terminal" = "VT";
-    "dev.warp.Warp-Stable" = "W";
-    "com.googlecode.iterm2" = "i";
-    "org.alacritty" = "O";
-    "com.github.wez.wezterm" = "P";
+    "com.apple.Terminal" = mkLauncher "VT" "y" "Terminal.app";
+    "dev.warp.Warp-Stable" = mkLauncher "W" "u" "Warp.app";
+    "com.googlecode.iterm2" = mkLauncher "i" "i" "iTerm2.app";
+    "org.alacritty" = mkLauncher "O" "o" "Alacritty.app";
+    "com.github.wez.wezterm" = mkLauncher "P" "p" "WezTerm.app";
   };
 
   onWindowDetected =
-    lib.mapAttrsToList (appId: ws: {
-      "if".app-id = appId;
+    lib.mapAttrsToList (id: app: {
+      "if".app-id = id;
       run =
-        ["move-node-to-workspace ${ws}"]
-        ++ lib.optional (lib.elem appId ["com.microsoft.teams2" "com.mitchellh.ghostty"]) "layout floating";
+        ["move-node-to-workspace ${app.workspace}"]
+        ++ lib.optional (app.floating or false) "layout floating";
     })
-    appWorkspaces;
+    apps;
+
+  bindings = builtins.listToAttrs (
+    lib.mapAttrsToList (_: app:
+      lib.nameValuePair "cmd-alt-${app.key}" (open app.name))
+    (lib.filterAttrs (_: app: app ? key) apps)
+  );
 in {
   xdg.enable = true;
 
@@ -51,19 +59,7 @@ in {
         outer.top = 0;
         outer.right = 0;
       };
-      mode.main.binding = {
-        cmd-alt-q = open "Slack.app";
-        cmd-alt-w = open "Microsoft Teams.app";
-        cmd-alt-e = open "Microsoft Edge.app";
-        cmd-alt-r = open "Ghostty.app";
-        cmd-alt-t = open "GitHub Copilot.app";
-
-        cmd-alt-y = open "Terminal.app";
-        cmd-alt-u = open "Warp.app";
-        cmd-alt-i = open "iTerm2.app";
-        cmd-alt-o = open "Alacritty.app";
-        cmd-alt-p = open "WezTerm.app";
-      };
+      mode.main.binding = bindings;
     };
   };
 }
