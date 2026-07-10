@@ -5,8 +5,6 @@
 }: {
   imports = [
     ./aliases.nix
-    ./env.nix
-    ./init.nix
   ];
 
   programs.zsh = {
@@ -19,6 +17,64 @@
       share = true;
     };
     defaultKeymap = "viins";
+    sessionVariables = rec {
+      CARGO_BIN = "$HOME/.cargo/bin";
+      CARGO_INCREMENTAL = "0";
+      CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
+      COLORTERM = "truecolor";
+      EDITOR = "hx";
+      GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+      GOBIN = "${GOPATH}/bin";
+      GOPATH = "${config.xdg.configHome}/go";
+      KEYTIMEOUT = "1";
+      LOCAL_BIN = "$HOME/.local/bin";
+      NIX_BIN = "$HOME/.nix-profile/bin";
+      NIX_PATH = builtins.concatStringsSep ":" ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
+      NODE_NO_WARNINGS = "1";
+      NOTES = "$HOME/Documents/notes";
+      OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
+      PATH = builtins.concatStringsSep ":" [GOBIN NIX_BIN LOCAL_BIN CARGO_BIN "$PATH"];
+      RUSTC_WRAPPER = "sccache";
+      SHELL = "${config.programs.zsh.package}/bin/zsh";
+      SHELL_SESSIONS_DISABLE = "1";
+      SRC = "$HOME/src";
+      PROJECTS = "$HOME/Developer";
+      TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
+      XDG_CACHE_HOME = config.xdg.cacheHome;
+      XDG_CONFIG_HOME = config.xdg.configHome;
+      XDG_DATA_HOME = config.xdg.dataHome;
+    };
+    initContent = ''
+      fpath+="$HOME/.nix-profile/share/zsh/site-functions"
+
+      zstyle ':completion:*' menu select
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+      setopt prompt_subst
+
+      bindkey '^P' up-history
+      bindkey '^N' down-history
+      bindkey '^?' backward-delete-char
+      bindkey '^[[Z' reverse-menu-complete
+
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+
+      autoload -Uz vcs_info add-zsh-hook
+      zstyle ':vcs_info:*' enable git
+      zstyle ':vcs_info:git:*' check-for-changes true
+      zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%f'
+      zstyle ':vcs_info:git:*' stagedstr ' %F{green}+%f'
+      zstyle ':vcs_info:git:*' formats ' %F{magenta}(%B%b%%b)%f%u%c'
+      zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%B%b%%b|%a)%f%u%c'
+      add-zsh-hook precmd vcs_info
+
+      export GPG_TTY=$(tty)
+
+      export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}
+      %(?.%F{green}>%f.%F{red}>%f) '
+    '';
     completionInit = ''
       autoload -Uz compinit
       _zcompdump=${config.xdg.cacheHome}/zsh/zcompdump
