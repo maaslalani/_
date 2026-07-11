@@ -34,6 +34,7 @@
     jq
     jujutsu
     melt
+    mole
     mosh
     nodejs
     openssl

@@ -13,6 +13,7 @@
       self: super: {
         handy = self.callPackage ./pkgs/handy.nix {};
         hunk = inputs.hunk.packages.${system}.default;
+        mole = self.callPackage ./pkgs/mole.nix {};
         tmux = super.tmux.overrideAttrs (_: {
           version = "3.7";
           # The control-notify fix patched in for 3.6a is upstream as of 3.7.
