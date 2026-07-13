@@ -106,7 +106,7 @@
     # misc
     _ = "tmux switch -t Dotfiles";
     sz = "source ${config.xdg.configHome}/zsh/.zshrc";
-    tn = ''NAME=$(ls -1 $HOME/Developer | gum choose) && (tmux has-session -t "=$NAME" 2>/dev/null || tmux new-session -d -s "$NAME" -c "$HOME/Developer/$NAME") && tmux switch-client -t "$NAME"'';
+    tn = ''NAME=$(ls -1 $HOME/Developer | gum filter) && (tmux has-session -t "=$NAME" 2>/dev/null || tmux new-session -d -s "$NAME" -c "$HOME/Developer/$NAME") && tmux switch-client -t "$NAME"'';
     branch = "__branch";
     review = "__review";
     notes = "cd $NOTES";
