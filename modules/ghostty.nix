@@ -46,7 +46,7 @@ in {
       then pkgs.ghostty-bin
       else pkgs.ghostty;
 
-    enableZshIntegration = true;
+    enableZshIntegration = false;
 
     settings = {
       keybind = [
