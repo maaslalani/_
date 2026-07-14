@@ -105,6 +105,8 @@
     hms = builtins.concatStringsSep " && " [
       "nix build $HOME/_#home -o $HOME/_/result"
       "$HOME/_/result/activate"
+      "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
+      "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
       sz
     ];
     ncg = "nix-collect-garbage";
@@ -114,11 +116,9 @@
     # misc
     _ = "tmux switch -t Dotfiles";
     sz = builtins.concatStringsSep " && " [
-      "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
       "unset __HM_ZSH_SESS_VARS_SOURCED"
       "unset __HM_SESS_VARS_SOURCED"
-      "source ${config.xdg.configHome}/zsh/.zshrc"
-      "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
+      "exec zsh"
     ];
     tn = ''NAME=$(ls -1 $HOME/Developer | gum filter) && SESSION=$(printf %s "$NAME" | tr . -) && (tmux has-session -t "=$SESSION" 2>/dev/null || tmux new-session -d -s "$SESSION" -c "$HOME/Developer/$NAME") && tmux switch-client -t "=$SESSION"'';
     branch = "__branch";
