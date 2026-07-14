@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  identity,
+  ...
+}: {
   programs.zsh.shellAliases = rec {
     # navigation
     "..." = "cd ../..";
@@ -72,7 +76,18 @@
     gswm = "${gsw} main";
     gundo = "git reset HEAD~1 --mixed";
     gw = "git worktree";
-    gwa = "${gw} add";
+    gwa = ''
+      () {
+        if (( $# != 1 )); then
+          print -u2 "usage: gwa <branch>"
+          return 2
+        fi
+
+        local repo_root repo_name
+        repo_root=$(git rev-parse --show-toplevel) || return
+        repo_name=$(basename "$repo_root")
+        git worktree add -b "${identity.githubUser}/$1" "$(dirname "$repo_root")/$repo_name.$1"
+      }'';
     gwd = "${gw} remove";
     gwl = "${gw} list";
     gwp = "${gw} prune";
@@ -93,11 +108,7 @@
     hms = builtins.concatStringsSep " && " [
       "nix build $HOME/_#home -o $HOME/_/result"
       "$HOME/_/result/activate"
-      "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
-      "unset __HM_ZSH_SESS_VARS_SOURCED"
-      "unset __HM_SESS_VARS_SOURCED"
-      "source ${config.xdg.configHome}/zsh/.zshrc"
-      "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
+      sz
     ];
     ncg = "nix-collect-garbage";
     nixd = "sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl kickstart -k system/org.nixos.nix-daemon";
@@ -105,7 +116,13 @@
 
     # misc
     _ = "tmux switch -t Dotfiles";
-    sz = "source ${config.xdg.configHome}/zsh/.zshrc";
+    sz = builtins.concatStringsSep " && " [
+      "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
+      "unset __HM_ZSH_SESS_VARS_SOURCED"
+      "unset __HM_SESS_VARS_SOURCED"
+      "source ${config.xdg.configHome}/zsh/.zshrc"
+      "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
+    ];
     tn = ''NAME=$(ls -1 $HOME/Developer | gum filter) && (tmux has-session -t "=$NAME" 2>/dev/null || tmux new-session -d -s "$NAME" -c "$HOME/Developer/$NAME") && tmux switch-client -t "$NAME"'';
     branch = "__branch";
     review = "__review";
