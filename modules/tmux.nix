@@ -72,8 +72,8 @@
     "C-r" = r;
     "R" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
     "S" = "set -g status";
-    "c" = "new-window ${cwd} -n ''";
-    "s" = ''display-popup -E 'NAME=$(ls -1 "$HOME/Developer" | gum filter) && (tmux has-session -t "=$NAME" 2>/dev/null || tmux new-session -d -s "$NAME" -c "$HOME/Developer/$NAME") && tmux switch-client -t "$NAME"' '';
+    "c" = "new-window ${cwd}";
+    "s" = ''display-popup -E 'NAME=$(ls -1 "$HOME/Developer" | gum filter) && SESSION=$(printf %s "$NAME" | tr . -) && (tmux has-session -t "=$SESSION" 2>/dev/null || tmux new-session -d -s "$SESSION" -c "$HOME/Developer/$NAME") && tmux switch-client -t "=$SESSION"' '';
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
     "h" = "select-pane -L";

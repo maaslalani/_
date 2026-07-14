@@ -83,12 +83,9 @@
           return 2
         fi
 
-        local repo_root repo_name
-        repo_root=$(git rev-parse --show-toplevel) || return
-        repo_name=$(basename "$repo_root")
-        git worktree add -b "${identity.githubUser}/$1" "$(dirname "$repo_root")/$repo_name.$1"
+        git worktree add -b "${identity.githubUser}/$1" "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)").$1"
       }'';
-    gwd = "${gw} remove";
+    gwd = "${gw} remove . && cd ..";
     gwl = "${gw} list";
     gwp = "${gw} prune";
 
@@ -123,7 +120,7 @@
       "source ${config.xdg.configHome}/zsh/.zshrc"
       "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
     ];
-    tn = ''NAME=$(ls -1 $HOME/Developer | gum filter) && (tmux has-session -t "=$NAME" 2>/dev/null || tmux new-session -d -s "$NAME" -c "$HOME/Developer/$NAME") && tmux switch-client -t "$NAME"'';
+    tn = ''NAME=$(ls -1 $HOME/Developer | gum filter) && SESSION=$(printf %s "$NAME" | tr . -) && (tmux has-session -t "=$SESSION" 2>/dev/null || tmux new-session -d -s "$SESSION" -c "$HOME/Developer/$NAME") && tmux switch-client -t "=$SESSION"'';
     branch = "__branch";
     review = "__review";
     notes = "cd $NOTES";
