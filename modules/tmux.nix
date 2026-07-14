@@ -97,7 +97,6 @@ in {
     secureSocket = false;
     sensibleOnTop = false;
     shortcut = "a";
-    terminal = "tmux-256color";
     extraConfig = ''
       ${mkSetLines "" settings}
       ${mkSetLines "pane-" pane}

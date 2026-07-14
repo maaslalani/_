@@ -161,11 +161,11 @@ in {
       bindkey '^N' down-history
       bindkey '^?' backward-delete-char
       bindkey '^[[Z' reverse-menu-complete
-      [[ -n $terminfo[kdch1] ]] && bindkey "$terminfo[kdch1]" delete-char
-      [[ -n $terminfo[khome] ]] && bindkey "$terminfo[khome]" beginning-of-line
-      [[ -n $terminfo[kend] ]] && bindkey "$terminfo[kend]" end-of-line
-      [[ -n $terminfo[kcuu1] ]] && bindkey "$terminfo[kcuu1]" up-line-or-search
-      [[ -n $terminfo[kcud1] ]] && bindkey "$terminfo[kcud1]" down-line-or-search
+      bindkey "$terminfo[kdch1]" delete-char
+      bindkey "$terminfo[khome]" beginning-of-line
+      bindkey "$terminfo[kend]" end-of-line
+      bindkey "$terminfo[kcuu1]" up-line-or-search
+      bindkey "$terminfo[kcud1]" down-line-or-search
 
       if [[ -z $__ETC_PROFILE_NIX_SOURCED && -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
