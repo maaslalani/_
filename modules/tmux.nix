@@ -53,9 +53,8 @@
             --gutter=" " \
             --padding=1,2 \
             --pointer="•" \
-            --prompt="› " \
-            --ghost="Filter worktrees" \
-            --color="bg:-1,bg+:${colors.modeBg},fg:${colors.windowInactive},fg+:${colors.messageFg},hl:${colors.statusAccent},hl+:${colors.statusAccent},query:${colors.messageFg},prompt:${colors.statusAccent},pointer:${colors.statusAccent},ghost:${colors.statusDim},gutter:-1"
+            --prompt="> " \
+            --color="bg:-1,bg+:${colors.popupBorder},fg:${colors.messageFg},fg+:${colors.messageFg},hl:${colors.pickerMatch}:bold,hl+:${colors.pickerMatch}:bold,query:${colors.messageFg},prompt:${colors.statusAccent},pointer:${colors.statusAccent},ghost:${colors.windowInactive},gutter:-1"
       ); then
         exit 0
       fi
@@ -94,6 +93,7 @@
     windowInactive = "#58587a";
     messageFg = "#fcfcfc";
     modeBg = "#273457";
+    pickerMatch = "#bb9af7";
   };
 
   pane = {
