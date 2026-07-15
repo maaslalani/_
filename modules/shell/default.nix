@@ -9,6 +9,15 @@
     rev = "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0";
     sha256 = "8gyZe6OPVLMdfruHJAHcyYeuiyvMTLvuX1UnUOv8eg8=";
   };
+  purePrompt = pkgs.pure-prompt.overrideAttrs (old: {
+    postPatch =
+      (old.postPatch or "")
+      + ''
+        substituteInPlace pure.zsh \
+          --replace-fail 'if [[ $1 == precmd ]]; then' \
+          'if [[ $1 == precmd && -n $prompt_pure_last_prompt ]]; then'
+      '';
+  });
   integrations = ''
     function __init_completion() {
       autoload -Uz compinit
@@ -100,7 +109,7 @@ in {
 
       fpath+=(
         "$HOME/.nix-profile/share/zsh/site-functions"
-        "${pkgs.pure-prompt}/share/zsh/site-functions"
+        "${purePrompt}/share/zsh/site-functions"
       )
 
       zstyle ':completion:*' menu select
@@ -126,9 +135,10 @@ in {
       [[ -n $TTY ]] && export GPG_TTY=$TTY
 
       PURE_PROMPT_SYMBOL='>'
+      PURE_PROMPT_VICMD_SYMBOL='v'
       zstyle ':prompt:pure:git:arrow' color yellow
-      zstyle ':prompt:pure:git:branch' color black
-      zstyle ':prompt:pure:git:branch:cached' color black
+      zstyle ':prompt:pure:git:branch' color magenta
+      zstyle ':prompt:pure:git:branch:cached' color magenta
       zstyle ':prompt:pure:git:dirty' color red
       autoload -Uz promptinit
       promptinit
