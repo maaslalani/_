@@ -19,6 +19,7 @@
 
     # git
     g = "git";
+    clone = ''() { local REPO="$HOME/Developer/$(basename "$1" .git)" && gh clone "$1" "$REPO/.git" -- --bare && git -C "$REPO/.git" worktree add "../$(git -C "$REPO/.git" symbolic-ref --short HEAD)" }'';
     ga = "git add";
     gap = "${ga} --patch";
     gb = "git branch";
