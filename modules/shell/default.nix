@@ -9,79 +9,6 @@
     rev = "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0";
     sha256 = "8gyZe6OPVLMdfruHJAHcyYeuiyvMTLvuX1UnUOv8eg8=";
   };
-  prompt = ''
-    autoload -Uz add-zsh-hook
-    zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:git:*' check-for-changes true
-    zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%f'
-    zstyle ':vcs_info:git:*' stagedstr ' %F{green}+%f'
-    zstyle ':vcs_info:git:*' formats '%u%c'
-    zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%a)%f%u%c'
-
-    prompt_path='%F{blue}%3~%f'
-    export PROMPT='$prompt_path$vcs_info_msg_0_
-    %(?.%F{green}>%f.%F{red}>%f) '
-
-    function __prompt_vcs_info() {
-      builtin cd -q -- "$1" || return
-      autoload -Uz vcs_info
-      vcs_info
-
-      local behind ahead
-      if read -r behind ahead < <(git rev-list --left-right --count '@{upstream}...HEAD' 2>/dev/null); then
-        ((ahead > 0)) && vcs_info_msg_0_+=' %F{yellow}↑%f'
-        ((behind > 0)) && vcs_info_msg_0_+=' %F{yellow}↓%f'
-      fi
-
-      print -r -- "$PWD"
-      print -r -- "$vcs_info_msg_0_"
-    }
-
-    function __prompt_vcs_info_done() {
-      local job=$1 code=$2 output=$3
-      [[ $job == __prompt_vcs_info && $code == 0 ]] || return
-
-      local -a result
-      result=("''${(@f)output}")
-      [[ $result[1] == $PWD ]] || return
-
-      vcs_info_msg_0_=$result[2]
-      [[ -n $ZLE_STATE ]] && zle reset-prompt
-    }
-
-    function __prompt_vcs_info_start() {
-      if [[ $__prompt_vcs_pwd != $PWD ]]; then
-        local root=$PWD path=''${(%):-%3~}
-        while [[ $root != / && ! -e "$root/.git" ]]; do
-          root=''${root:h}
-        done
-
-        if [[ -e "$root/.git" ]]; then
-          local project=''${root:t}
-          local base=''${project%%.*}
-          local branch=''${project#*.}
-          [[ $branch == $project ]] && branch=main
-          path=''${path/$project/$base%F{magenta}.$branch%F{blue}}
-        fi
-
-        prompt_path="%F{blue}$path%f"
-        vcs_info_msg_0_=
-        __prompt_vcs_pwd=$PWD
-        [[ -n $ZLE_STATE ]] && zle reset-prompt
-      fi
-
-      async_job vcs-info __prompt_vcs_info "$PWD"
-    }
-
-    function __init_prompt_vcs() {
-      source ${pkgs.pure-prompt}/share/zsh/site-functions/async
-      async_start_worker vcs-info
-      async_register_callback vcs-info __prompt_vcs_info_done
-      add-zsh-hook precmd __prompt_vcs_info_start
-      __prompt_vcs_info_start
-      unfunction __init_prompt_vcs
-    }
-  '';
   integrations = ''
     function __init_completion() {
       autoload -Uz compinit
@@ -119,7 +46,6 @@
     }
 
     zsh-defer -m -p -r __init_ghostty
-    zsh-defer -m -p -r __init_prompt_vcs
     zsh-defer -m -p -r __init_completion
     zsh-defer -m -p -r __init_zoxide
     zsh-defer -m -p -r __init_fzf
@@ -172,7 +98,10 @@ in {
     initContent = ''
       source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
 
-      fpath+="$HOME/.nix-profile/share/zsh/site-functions"
+      fpath+=(
+        "$HOME/.nix-profile/share/zsh/site-functions"
+        "${pkgs.pure-prompt}/share/zsh/site-functions"
+      )
 
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -196,7 +125,15 @@ in {
 
       [[ -n $TTY ]] && export GPG_TTY=$TTY
 
-      ${prompt}
+      PURE_PROMPT_SYMBOL='>'
+      zstyle ':prompt:pure:git:arrow' color yellow
+      zstyle ':prompt:pure:git:branch' color black
+      zstyle ':prompt:pure:git:branch:cached' color black
+      zstyle ':prompt:pure:git:dirty' color red
+      autoload -Uz promptinit
+      promptinit
+      prompt pure
+
       ${integrations}
     '';
   };
