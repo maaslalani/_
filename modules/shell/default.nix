@@ -15,16 +15,24 @@
     zstyle ':vcs_info:git:*' check-for-changes true
     zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%f'
     zstyle ':vcs_info:git:*' stagedstr ' %F{green}+%f'
-    zstyle ':vcs_info:git:*' formats ' %F{magenta}(%B%b%%b)%f%u%c'
-    zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%B%b%%b|%a)%f%u%c'
+    zstyle ':vcs_info:git:*' formats '%u%c'
+    zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%a)%f%u%c'
 
-    export PROMPT='%F{blue}%3~%f''${vcs_info_msg_0_}
+    prompt_path='%F{blue}%3~%f'
+    export PROMPT='$prompt_path$vcs_info_msg_0_
     %(?.%F{green}>%f.%F{red}>%f) '
 
     function __prompt_vcs_info() {
       builtin cd -q -- "$1" || return
       autoload -Uz vcs_info
       vcs_info
+
+      local behind ahead
+      if read -r behind ahead < <(git rev-list --left-right --count '@{upstream}...HEAD' 2>/dev/null); then
+        ((ahead > 0)) && vcs_info_msg_0_+=' %F{yellow}↑%f'
+        ((behind > 0)) && vcs_info_msg_0_+=' %F{yellow}↓%f'
+      fi
+
       print -r -- "$PWD"
       print -r -- "$vcs_info_msg_0_"
     }
@@ -38,13 +46,28 @@
       [[ $result[1] == $PWD ]] || return
 
       vcs_info_msg_0_=$result[2]
-      [[ -o zle ]] && zle reset-prompt
+      [[ -n $ZLE_STATE ]] && zle reset-prompt
     }
 
     function __prompt_vcs_info_start() {
       if [[ $__prompt_vcs_pwd != $PWD ]]; then
+        local root=$PWD path=''${(%):-%3~}
+        while [[ $root != / && ! -e "$root/.git" ]]; do
+          root=''${root:h}
+        done
+
+        if [[ -e "$root/.git" ]]; then
+          local project=''${root:t}
+          local base=''${project%%.*}
+          local branch=''${project#*.}
+          [[ $branch == $project ]] && branch=main
+          path=''${path/$project/$base%F{magenta}.$branch%F{blue}}
+        fi
+
+        prompt_path="%F{blue}$path%f"
         vcs_info_msg_0_=
         __prompt_vcs_pwd=$PWD
+        [[ -n $ZLE_STATE ]] && zle reset-prompt
       fi
 
       async_job vcs-info __prompt_vcs_info "$PWD"
