@@ -14,7 +14,7 @@
 
   sessionPicker = pkgs.writeShellApplication {
     name = "tmux-session-picker";
-    runtimeInputs = [pkgs.gum pkgs.tmux];
+    runtimeInputs = [pkgs.fzf pkgs.tmux];
     text = ''
       root="$HOME/Developer"
       worktrees=()
@@ -42,7 +42,21 @@
         exit 1
       fi
 
-      if ! name=$(printf '%s\n' "''${worktrees[@]}" | gum filter); then
+      if ! name=$(
+        printf '%s\n' "''${worktrees[@]}" |
+          fzf \
+            --layout=reverse \
+            --info=hidden \
+            --no-separator \
+            --no-scrollbar \
+            --highlight-line \
+            --gutter=" " \
+            --padding=1,2 \
+            --pointer="•" \
+            --prompt="› " \
+            --ghost="Filter worktrees" \
+            --color="bg:-1,bg+:${colors.modeBg},fg:${colors.windowInactive},fg+:${colors.messageFg},hl:${colors.statusAccent},hl+:${colors.statusAccent},query:${colors.messageFg},prompt:${colors.statusAccent},pointer:${colors.statusAccent},ghost:${colors.statusDim},gutter:-1"
+      ); then
         exit 0
       fi
 
