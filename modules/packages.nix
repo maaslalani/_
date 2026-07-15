@@ -93,6 +93,7 @@
     taplo
     tsx
     typescript-language-server
+    uwu-colors
     vscode-langservers-extracted
     write-good
     yaml-language-server

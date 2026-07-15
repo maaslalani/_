@@ -1,4 +1,5 @@
 {
+  colors,
   config,
   pkgs,
   ...
@@ -154,6 +155,19 @@ in {
   };
 
   programs.fzf = {
+    colors = {
+      bg = colors.primary.background;
+      "bg+" = colors.primary.background;
+      fg = colors.primary.foreground;
+      "fg+" = colors.bright.white;
+      ghost = colors.bright.black;
+      gutter = colors.primary.background;
+      info = colors.bright.black;
+      pointer = colors.bright.blue;
+      prompt = colors.bright.blue;
+      query = colors.primary.foreground;
+      separator = colors.bright.black;
+    };
     enable = true;
     enableZshIntegration = false;
   };

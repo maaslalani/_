@@ -46,15 +46,12 @@
         printf '%s\n' "''${worktrees[@]}" |
           fzf \
             --layout=reverse \
-            --info=hidden \
-            --no-separator \
+            --info=inline-right \
             --no-scrollbar \
-            --highlight-line \
             --gutter=" " \
-            --padding=1,2 \
-            --pointer="•" \
-            --prompt="> " \
-            --color="bg:-1,bg+:${colors.popupBorder},fg:${colors.messageFg},fg+:${colors.messageFg},hl:${colors.pickerMatch}:bold,hl+:${colors.pickerMatch}:bold,query:${colors.messageFg},prompt:${colors.statusAccent},pointer:${colors.statusAccent},ghost:${colors.windowInactive},gutter:-1"
+            --padding=1 \
+            --pointer=">" \
+            --prompt=""
       ); then
         exit 0
       fi
@@ -79,21 +76,19 @@
     extended-keys = "on";
     extended-keys-format = "csi-u";
     popup-border-lines = "rounded";
-    popup-border-style = "fg=${colors.popupBorder},bg=default";
+    popup-border-style = "fg=${colors.paneBorder},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
   };
 
   colors = {
     paneBorder = "#1a1b26";
-    popupBorder = "#2a2b3d";
     statusAccent = "#7879a6";
     statusUser = "#515170";
     statusDim = "#44445e";
     windowInactive = "#58587a";
     messageFg = "#fcfcfc";
     modeBg = "#273457";
-    pickerMatch = "#bb9af7";
   };
 
   pane = {

@@ -1,4 +1,8 @@
 {pkgs, ...}: let
+  colorPreview = {
+    name = "uwu-colors";
+    only-features = ["document-colors"];
+  };
   mkPrettier = parser: tabWidth: {
     command = "prettier";
     args = ["--parser" parser "--tab-width" (toString tabWidth)];
@@ -19,6 +23,7 @@ in {
         cursor-shape.insert = "bar";
         color-modes = true;
         true-color = true;
+        lsp.display-color-swatches = true;
         lsp.display-messages = true;
         lsp.display-inlay-hints = false;
         file-picker = {
@@ -90,6 +95,9 @@ in {
         command = "cook";
         args = ["lsp"];
       };
+      uwu-colors = {
+        command = "uwu_colors";
+      };
       tinymist = {
         command = "tinymist";
         config.exportPdf = "onSave";
@@ -115,6 +123,7 @@ in {
         name = "nix";
         auto-format = true;
         formatter = {command = "alejandra";};
+        language-servers = ["nil" "nixd" colorPreview];
       }
       {
         name = "markdown";
