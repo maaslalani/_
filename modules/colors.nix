@@ -5,6 +5,8 @@
       foreground = "#C5C8C6";
     };
 
+    separator = "#5a636e";
+
     normal = {
       black = "#282a2e";
       red = "#D74E6F";

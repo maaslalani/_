@@ -17,7 +17,7 @@
     runtimeInputs = [pkgs.fzf pkgs.tmux];
     text = ''
       root="$HOME/Developer"
-      worktrees=()
+      worktrees=("Dotfiles")
 
       for repository in "$root"/*; do
         [[ -d "$repository" ]] || continue
@@ -56,7 +56,11 @@
         exit 0
       fi
 
-      directory="$root/$name"
+      if [[ "$name" == "Dotfiles" ]]; then
+        directory="$HOME/_"
+      else
+        directory="$root/$name"
+      fi
 
       session="''${name//\//-}"
       session="''${session//./-}"
@@ -76,13 +80,14 @@
     extended-keys = "on";
     extended-keys-format = "csi-u";
     popup-border-lines = "rounded";
-    popup-border-style = "fg=${colors.paneBorder},bg=default";
+    popup-border-style = "fg=${tmuxColors.popupBorder},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
   };
 
-  colors = {
+  tmuxColors = {
     paneBorder = "#1a1b26";
+    popupBorder = "#b9bcb9";
     statusAccent = "#7879a6";
     statusUser = "#515170";
     statusDim = "#44445e";
@@ -92,34 +97,34 @@
   };
 
   pane = {
-    active-border-style = "fg=${colors.paneBorder},bg=default";
-    border-style = "fg=${colors.paneBorder},bg=default";
+    active-border-style = "fg=${tmuxColors.paneBorder},bg=default";
+    border-style = "fg=${tmuxColors.paneBorder},bg=default";
   };
 
   status = {
     justify = "left";
     left = " '#S' ";
     left-length = "1000";
-    left-style = "bg=default,fg=${colors.statusAccent},bold";
-    right = "'#[fg=${colors.statusUser}] #(whoami) #[fg=${colors.statusDim}] %d %b %Y  %I:%M%p '";
-    right-style = "bg=default,fg=${colors.statusDim}";
+    left-style = "bg=default,fg=${tmuxColors.statusAccent},bold";
+    right = "'#[fg=${tmuxColors.statusUser}] #(whoami) #[fg=${tmuxColors.statusDim}] %d %b %Y  %I:%M%p '";
+    right-style = "bg=default,fg=${tmuxColors.statusDim}";
     style = "bg=default";
   };
 
   window = {
     status-current-format = "' #I #W * '";
-    status-current-style = "fg=${colors.statusAccent},bg=default";
+    status-current-style = "fg=${tmuxColors.statusAccent},bg=default";
     status-format = "' #I #W - '";
-    status-style = "fg=${colors.windowInactive},bg=default";
+    status-style = "fg=${tmuxColors.windowInactive},bg=default";
     status-separator = "''";
   };
 
   message = {
     command-style = "fg=white,bg=default";
-    style = "fg=${colors.messageFg},bg=default";
+    style = "fg=${tmuxColors.messageFg},bg=default";
   };
 
-  mode.style = "fg=${colors.messageFg},bg=${colors.modeBg}";
+  mode.style = "fg=${tmuxColors.messageFg},bg=${tmuxColors.modeBg}";
 
   cwd = ''-c "#{pane_current_path}"'';
 

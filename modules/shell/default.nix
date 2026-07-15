@@ -166,7 +166,7 @@ in {
       pointer = colors.bright.blue;
       prompt = colors.bright.blue;
       query = colors.primary.foreground;
-      separator = colors.bright.black;
+      separator = colors.separator;
     };
     enable = true;
     enableZshIntegration = false;

@@ -110,6 +110,7 @@
       "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
       sz
     ];
+    hsm = hms;
     ncg = "nix-collect-garbage";
     nixd = "sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl kickstart -k system/org.nixos.nix-daemon";
     ns = "open https://search.nixos.org/packages\\?channel=unstable";
