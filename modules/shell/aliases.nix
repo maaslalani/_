@@ -84,7 +84,7 @@
           return 2
         fi
 
-        git worktree add -b "${identity.githubUser}/$1" "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)").$1"
+        git worktree add -b "${identity.githubUser}/$1" "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/$1"
       }'';
     gwd = "${gw} remove . && cd ..";
     gwl = "${gw} list";
