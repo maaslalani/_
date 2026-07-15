@@ -121,7 +121,7 @@
       "unset __HM_SESS_VARS_SOURCED"
       "exec zsh"
     ];
-    tn = ''NAME=$(ls -1 $HOME/Developer | gum filter) && SESSION=$(printf %s "$NAME" | tr . -) && (tmux has-session -t "=$SESSION" 2>/dev/null || tmux new-session -d -s "$SESSION" -c "$HOME/Developer/$NAME") && tmux switch-client -t "=$SESSION"'';
+    tn = "tmux-session-picker";
     branch = "__branch";
     review = "__review";
     notes = "cd $NOTES";

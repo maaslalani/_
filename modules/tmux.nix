@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) concatStringsSep hasPrefix mapAttrsToList removePrefix;
 
   mkLines = f: attrs: concatStringsSep "\n" (mapAttrsToList f attrs);
@@ -7,6 +11,67 @@
     if hasPrefix "-r " key
     then ''bind -r "${removePrefix "-r " key}" ${cmd}''
     else ''bind "${key}" ${cmd}'');
+
+  sessionPicker = pkgs.writeShellApplication {
+    name = "tmux-session-picker";
+    runtimeInputs = [pkgs.gum pkgs.tmux];
+    text = ''
+      root="$HOME/Developer"
+      repositories=()
+
+      for path in "$root"/*; do
+        [[ -d "$path" ]] && repositories+=("''${path##*/}")
+      done
+
+      if ((''${#repositories[@]} == 0)); then
+        echo "No directories found in $root" >&2
+        exit 1
+      fi
+
+      if ! repository=$(printf '%s\n' "''${repositories[@]}" | gum filter); then
+        exit 0
+      fi
+
+      directory="$root/$repository"
+      worktrees=()
+
+      for path in "$directory"/*; do
+        [[ -d "$path" && -e "$path/.git" ]] && worktrees+=("$path")
+      done
+
+      case ''${#worktrees[@]} in
+        0)
+          name="$repository"
+          ;;
+        1)
+          directory="''${worktrees[0]}"
+          name="$repository/''${directory##*/}"
+          ;;
+        *)
+          if ! branch=$(
+            for path in "''${worktrees[@]}"; do
+              printf '%s\n' "''${path##*/}"
+            done | gum filter
+          ); then
+            exit 0
+          fi
+
+          directory="$directory/$branch"
+          name="$repository/$branch"
+          ;;
+      esac
+
+      session="''${name//\//-}"
+      session="''${session//./-}"
+      session="''${session//:/-}"
+
+      if ! tmux has-session -t "=$session" 2>/dev/null; then
+        tmux new-session -d -s "$session" -c "$directory"
+      fi
+
+      tmux switch-client -t "=$session"
+    '';
+  };
 
   settings = {
     automatic-rename = "off";
@@ -73,7 +138,7 @@
     "R" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
     "S" = "set -g status";
     "c" = "new-window ${cwd}";
-    "s" = ''display-popup -E 'NAME=$(ls -1 "$HOME/Developer" | gum filter) && SESSION=$(printf %s "$NAME" | tr . -) && (tmux has-session -t "=$SESSION" 2>/dev/null || tmux new-session -d -s "$SESSION" -c "$HOME/Developer/$NAME") && tmux switch-client -t "=$SESSION"' '';
+    "s" = "display-popup -E tmux-session-picker";
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
     "h" = "select-pane -L";
@@ -83,6 +148,8 @@
     "o" = "split-window -h -l 80 ${cwd} copilot";
   };
 in {
+  home.packages = [sessionPicker];
+
   programs.tmux = {
     baseIndex = 1;
     customPaneNavigationAndResize = true;
