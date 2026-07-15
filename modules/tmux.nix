@@ -17,49 +17,36 @@
     runtimeInputs = [pkgs.gum pkgs.tmux];
     text = ''
       root="$HOME/Developer"
-      repositories=()
+      worktrees=()
 
-      for path in "$root"/*; do
-        [[ -d "$path" ]] && repositories+=("''${path##*/}")
+      for repository in "$root"/*; do
+        [[ -d "$repository" ]] || continue
+
+        repositoryWorktrees=()
+        for path in "$repository"/*; do
+          [[ -d "$path" && -e "$path/.git" ]] && repositoryWorktrees+=("$path")
+        done
+
+        if ((''${#repositoryWorktrees[@]} == 0)); then
+          worktrees+=("''${repository##*/}")
+          continue
+        fi
+
+        for path in "''${repositoryWorktrees[@]}"; do
+          worktrees+=("''${repository##*/}/''${path##*/}")
+        done
       done
 
-      if ((''${#repositories[@]} == 0)); then
-        echo "No directories found in $root" >&2
+      if ((''${#worktrees[@]} == 0)); then
+        echo "No worktrees found in $root" >&2
         exit 1
       fi
 
-      if ! repository=$(printf '%s\n' "''${repositories[@]}" | gum filter); then
+      if ! name=$(printf '%s\n' "''${worktrees[@]}" | gum filter); then
         exit 0
       fi
 
-      directory="$root/$repository"
-      worktrees=()
-
-      for path in "$directory"/*; do
-        [[ -d "$path" && -e "$path/.git" ]] && worktrees+=("$path")
-      done
-
-      case ''${#worktrees[@]} in
-        0)
-          name="$repository"
-          ;;
-        1)
-          directory="''${worktrees[0]}"
-          name="$repository/''${directory##*/}"
-          ;;
-        *)
-          if ! branch=$(
-            for path in "''${worktrees[@]}"; do
-              printf '%s\n' "''${path##*/}"
-            done | gum filter
-          ); then
-            exit 0
-          fi
-
-          directory="$directory/$branch"
-          name="$repository/$branch"
-          ;;
-      esac
+      directory="$root/$name"
 
       session="''${name//\//-}"
       session="''${session//./-}"
