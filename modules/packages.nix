@@ -49,7 +49,6 @@
     sd
     serve
     skate
-    skimpdf
     tdf
     tinymist
     tree-sitter
