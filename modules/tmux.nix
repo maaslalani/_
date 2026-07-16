@@ -1,4 +1,5 @@
 {
+  colors,
   lib,
   pkgs,
   ...
@@ -48,8 +49,9 @@
             --layout=reverse \
             --info=inline-right \
             --no-scrollbar \
+            --color="separator:${colors.separator}" \
             --gutter=" " \
-            --padding=1 \
+            --padding=0,1 \
             --pointer=">" \
             --prompt=""
       ); then
