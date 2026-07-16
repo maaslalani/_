@@ -5,8 +5,6 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/master";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.worktrunk.url = "github:max-sixty/worktrunk";
-  inputs.worktrunk.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = inputs: let
     system = "aarch64-darwin";
@@ -38,9 +36,7 @@
       (inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {inherit identity;};
-        modules =
-          [inputs.worktrunk.homeModules.default]
-          ++ map (f: ./modules/${f}) (builtins.attrNames (builtins.readDir ./modules));
+        modules = map (f: ./modules/${f}) (builtins.attrNames (builtins.readDir ./modules));
       }).activationPackage;
   };
 }
