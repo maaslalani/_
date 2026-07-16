@@ -5,18 +5,12 @@
 
   apps = {
     "com.microsoft.Outlook" = mkApp "M";
-    "com.microsoft.teams2" = mkLauncher "T" "w" "Microsoft Teams.app" // {floating = true;};
-    "com.microsoft.edgemac" = mkLauncher "E" "e" "Microsoft Edge.app";
-    "com.mitchellh.ghostty" = mkLauncher "G" "r" "Ghostty.app" // {floating = true;};
-    "com.tinyspeck.slackmacgap" = mkLauncher "S" "q" "Slack.app";
     "com.hnc.Discord" = mkApp "D";
-    "com.github.githubapp" = mkLauncher "H" "t" "GitHub Copilot.app";
 
-    "com.apple.Terminal" = mkLauncher "VT" "y" "Terminal.app";
-    "dev.warp.Warp-Stable" = mkLauncher "W" "u" "Warp.app";
-    "com.googlecode.iterm2" = mkLauncher "i" "i" "iTerm2.app";
-    "org.alacritty" = mkLauncher "O" "o" "Alacritty.app";
-    "com.github.wez.wezterm" = mkLauncher "P" "p" "WezTerm.app";
+    "com.tinyspeck.slackmacgap" = mkLauncher "S" "q" "Slack.app";
+    # w
+    "com.apple.mobilesafari" = mkLauncher "E" "e" "Safari.app";
+    "com.mitchellh.ghostty" = mkLauncher "G" "r" "Ghostty.app" // {floating = true;};
   };
 
   onWindowDetected =
@@ -30,7 +24,7 @@
 
   bindings = builtins.listToAttrs (
     lib.mapAttrsToList (_: app:
-      lib.nameValuePair "cmd-alt-${app.key}" (open app.name))
+      lib.nameValuePair "alt-${app.key}" (open app.name))
     (lib.filterAttrs (_: app: app ? key) apps)
   );
 in {

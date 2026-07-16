@@ -57,7 +57,6 @@
     typioca
     typst
     vhs
-    watchexec
     yq
     zig
     zoxide
