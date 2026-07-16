@@ -37,6 +37,7 @@ in {
       mouse-hide-while-typing = true;
 
       macos-titlebar-style = "tabs";
+      macos-icon = "xray";
       title = "Terminal";
 
       window-padding-x = 24;
