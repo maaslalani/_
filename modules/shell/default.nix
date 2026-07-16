@@ -160,6 +160,8 @@ in {
       "bg+" = colors.primary.background;
       fg = colors.primary.foreground;
       "fg+" = colors.bright.white;
+      hl = colors.normal.magenta;
+      "hl+" = colors.bright.magenta;
       ghost = colors.bright.black;
       gutter = colors.primary.background;
       info = colors.bright.black;
