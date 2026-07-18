@@ -32,7 +32,6 @@
     imagemagick
     jdk25
     jq
-    jujutsu
     melt
     mole
     mosh
