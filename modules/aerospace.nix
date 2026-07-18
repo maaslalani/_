@@ -1,11 +1,33 @@
 {lib, ...}: let
   open = id: "exec-and-forget open -b '${id}'";
 
-  mail = "com.apple.mail";
+  # Communication
   discord = "com.hnc.Discord";
   slack = "com.tinyspeck.slackmacgap";
+  messages = "com.apple.MobileSMS";
+  mail = "com.apple.mail";
+  zoom = "us.zoom.xos";
+
+  # Browsers
   safari = "com.apple.Safari";
+  chrome = "com.google.Chrome";
+  firefox = "org.mozilla.firefox";
+  arc = "company.thebrowser.Browser";
+
+  # Terminals & editors
   ghostty = "com.mitchellh.ghostty";
+  terminal = "com.apple.Terminal";
+  vscode = "com.microsoft.VSCode";
+
+  # Productivity
+  notes = "com.apple.Notes";
+  calendar = "com.apple.iCal";
+  notion = "notion.id";
+  finder = "com.apple.finder";
+
+  # Media
+  music = "com.apple.Music";
+  spotify = "com.spotify.client";
 
   workspaces = {
     "M" = mail;
@@ -13,12 +35,22 @@
     "#" = slack;
     "S" = safari;
     "T" = ghostty;
+    "C" = calendar;
+    "N" = notion;
+    "P" = spotify;
+    "V" = vscode;
+    "Z" = zoom;
   };
 
   launch = {
     "alt-r" = slack;
     "alt-s" = safari;
     "alt-t" = ghostty;
+    "alt-c" = calendar;
+    "alt-d" = discord;
+    "alt-v" = vscode;
+    "alt-f" = finder;
+    "alt-m" = messages;
   };
 
   floating = [ghostty];
