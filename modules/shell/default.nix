@@ -137,6 +137,8 @@ in {
 
       PURE_PROMPT_SYMBOL='>'
       PURE_PROMPT_VICMD_SYMBOL='v'
+      PURE_GIT_UP_ARROW='↑'
+      PURE_GIT_DOWN_ARROW='↓'
       zstyle ':prompt:pure:git:arrow' color yellow
       zstyle ':prompt:pure:git:branch' color magenta
       zstyle ':prompt:pure:git:branch:cached' color magenta
