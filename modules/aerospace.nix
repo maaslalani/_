@@ -1,32 +1,38 @@
 {lib, ...}: let
-  open = app: "exec-and-forget open -a '${app}'";
-  mkApp = workspace: {inherit workspace;};
-  mkLauncher = workspace: key: name: (mkApp workspace) // {inherit key name;};
+  open = id: "exec-and-forget open -b '${id}'";
 
-  apps = {
-    "com.microsoft.Outlook" = mkApp "M";
-    "com.hnc.Discord" = mkApp "D";
+  mail = "com.apple.mail";
+  discord = "com.hnc.Discord";
+  slack = "com.tinyspeck.slackmacgap";
+  safari = "com.apple.Safari";
+  ghostty = "com.mitchellh.ghostty";
 
-    "com.tinyspeck.slackmacgap" = mkLauncher "S" "q" "Slack.app";
-    # w
-    "com.apple.mobilesafari" = mkLauncher "E" "e" "Safari.app";
-    "com.mitchellh.ghostty" = mkLauncher "G" "r" "Ghostty.app" // {floating = true;};
+  workspaces = {
+    "M" = mail;
+    "D" = discord;
+    "#" = slack;
+    "S" = safari;
+    "T" = ghostty;
   };
 
+  launch = {
+    "alt-r" = slack;
+    "alt-s" = safari;
+    "alt-t" = ghostty;
+  };
+
+  floating = [ghostty];
+
   onWindowDetected =
-    lib.mapAttrsToList (id: app: {
+    lib.mapAttrsToList (workspace: id: {
       "if".app-id = id;
       run =
-        ["move-node-to-workspace ${app.workspace}"]
-        ++ lib.optional (app.floating or false) "layout floating";
+        ["move-node-to-workspace '${workspace}'"]
+        ++ lib.optional (builtins.elem id floating) "layout floating";
     })
-    apps;
+    workspaces;
 
-  bindings = builtins.listToAttrs (
-    lib.mapAttrsToList (_: app:
-      lib.nameValuePair "alt-${app.key}" (open app.name))
-    (lib.filterAttrs (_: app: app ? key) apps)
-  );
+  bindings = lib.mapAttrs (_: id: open id) launch;
 in {
   xdg.enable = true;
 
@@ -35,6 +41,10 @@ in {
     launchd.enable = true;
 
     settings = {
+      config-version = 2;
+
+      key-mapping.preset = "colemak";
+
       after-startup-command = [];
 
       on-window-detected = onWindowDetected;
