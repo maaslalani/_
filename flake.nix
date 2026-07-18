@@ -31,12 +31,13 @@
       name = "Maas Lalani";
       githubUser = "maaslalani";
     };
+    homeConfiguration = inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {inherit identity;};
+      modules = map (f: ./modules/${f}) (builtins.attrNames (builtins.readDir ./modules));
+    };
   in {
-    home =
-      (inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit identity;};
-        modules = map (f: ./modules/${f}) (builtins.attrNames (builtins.readDir ./modules));
-      }).activationPackage;
+    home = homeConfiguration.activationPackage;
+    homeConfigurations.maas = homeConfiguration;
   };
 }

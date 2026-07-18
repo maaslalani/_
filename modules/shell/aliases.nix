@@ -104,8 +104,7 @@
 
     # nix
     hms = builtins.concatStringsSep " && " [
-      "nix build $HOME/_#home -o $HOME/_/result"
-      "$HOME/_/result/activate"
+      "nh home switch -c maas -o $HOME/_/result ."
       "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
       "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
       sz
