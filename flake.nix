@@ -1,5 +1,5 @@
 {
-  inputs.hunk.url = "github:modem-dev/hunk";
+  inputs.hunk.url = "github:modem-dev/hunk/main";
   inputs.hunk.inputs.nixpkgs.follows = "nixpkgs";
   inputs.hunk.inputs.bun2nix.inputs.systems.url = "github:nix-systems/aarch64-darwin";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/master";
