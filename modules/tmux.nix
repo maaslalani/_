@@ -148,7 +148,6 @@
     "j" = "select-pane -D";
     "k" = "select-pane -U";
     "l" = "select-pane -R";
-    "o" = "split-window -h -l 80 ${cwd} copilot";
   };
 in {
   home.packages = [sessionPicker];
