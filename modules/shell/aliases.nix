@@ -109,6 +109,7 @@
       "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
       "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
       sz
+      "aerospace reload-config"
     ];
     hsm = hms;
     ncg = "nix-collect-garbage";
