@@ -25,6 +25,7 @@
   notion = "notion.id";
   numbers = "com.apple.iWork.Numbers";
   finder = "com.apple.finder";
+  skim = "net.sourceforge.skim-app.skim";
 
   # Media
   music = "com.apple.Music";
@@ -35,10 +36,9 @@
     "D" = discord;
     "#" = slack;
     "S" = safari;
-    "T" = ghostty;
+    "T" = [ghostty skim];
     "C" = calendar;
     "N" = numbers;
-    "P" = spotify;
     "V" = vscode;
     "Z" = zoom;
   };
@@ -53,18 +53,22 @@
     "alt-f" = finder;
     "alt-m" = messages;
     "alt-n" = numbers;
+    "alt-p" = skim;
   };
 
   floating = [ghostty finder];
 
-  onWindowDetected =
-    lib.mapAttrsToList (workspace: id: {
-      "if".app-id = id;
-      run =
-        ["move-node-to-workspace '${workspace}'"]
-        ++ lib.optional (builtins.elem id floating) "layout floating";
-    })
-    workspaces;
+  onWindowDetected = lib.concatLists (
+    lib.mapAttrsToList (workspace: ids:
+      map (id: {
+        "if".app-id = id;
+        run =
+          ["move-node-to-workspace '${workspace}'"]
+          ++ lib.optional (builtins.elem id floating) "layout floating";
+      })
+      (lib.toList ids))
+    workspaces
+  );
 
   bindings = lib.mapAttrs (_: id: open id) launch;
 in {

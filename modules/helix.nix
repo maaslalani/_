@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   colorPreview = {
     name = "uwu-colors";
     only-features = ["document-colors"];
@@ -100,8 +104,12 @@ in {
       };
       tinymist = {
         command = "tinymist";
-        config.exportPdf = "onSave";
-        config.outputPath = "$root/$dir/build/$name";
+        config = {
+          exportPdf = "onSave";
+          fontPaths = ["${config.home.path}/share/fonts"];
+          outputPath = "$root/$dir/build/$name";
+          systemFonts = false;
+        };
       };
     };
 
