@@ -123,8 +123,6 @@
       "exec zsh"
     ];
     tn = "tmux-session-picker";
-    branch = "__branch";
-    review = "__review";
     notes = "tmux switch -t Notes";
     todo = "$EDITOR $NOTES/todo.md";
 

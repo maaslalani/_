@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   colorPreview = {
     name = "uwu-colors";
     only-features = ["document-colors"];
@@ -14,7 +10,6 @@
 in {
   programs.helix = {
     enable = true;
-    package = pkgs.helix;
     settings = {
       editor = {
         gutters = [

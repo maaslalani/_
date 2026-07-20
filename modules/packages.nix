@@ -14,6 +14,7 @@
     darwin.trash
     difftastic
     eza
+    hunk
     fd
     fnlfmt
     gh-dash

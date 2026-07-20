@@ -156,6 +156,10 @@ in {
     enableZshIntegration = false;
   };
 
+  programs.nh = {
+    enable = true;
+  };
+
   programs.fzf = {
     colors = {
       bg = colors.primary.background;

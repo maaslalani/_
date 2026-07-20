@@ -1,8 +1,4 @@
-{
-  pkgs,
-  identity,
-  ...
-}: {
+{identity, ...}: {
   programs.gh = {
     enable = true;
     settings = {
@@ -15,7 +11,6 @@
     };
   };
   programs.git = {
-    package = pkgs.git;
     enable = true;
     lfs.enable = true;
     ignores = [".DS_Store" "result"];

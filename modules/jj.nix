@@ -1,11 +1,6 @@
-{
-  pkgs,
-  identity,
-  ...
-}: {
+{identity, ...}: {
   programs.jujutsu = {
     enable = true;
-    package = pkgs.jujutsu;
     settings = {
       user = {
         email = identity.email;

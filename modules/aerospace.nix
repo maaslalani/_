@@ -70,7 +70,7 @@
     workspaces
   );
 
-  bindings = lib.mapAttrs (_: id: open id) launch;
+  bindings = lib.mapAttrs (_: open) launch;
 in {
   xdg.enable = true;
 
@@ -82,8 +82,6 @@ in {
       config-version = 2;
 
       key-mapping.preset = "colemak";
-
-      after-startup-command = [];
 
       on-window-detected = onWindowDetected;
 
