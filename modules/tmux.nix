@@ -18,7 +18,7 @@
     runtimeInputs = [pkgs.fzf pkgs.tmux];
     text = ''
       root="$HOME/Developer"
-      worktrees=("Dotfiles")
+      worktrees=("Dotfiles" "Notes")
 
       for repository in "$root"/*; do
         [[ -d "$repository" ]] || continue
@@ -60,6 +60,8 @@
 
       if [[ "$name" == "Dotfiles" ]]; then
         directory="$HOME/_"
+      elif [[ "$name" == "Notes" ]]; then
+        directory="$HOME/icloud/Documents/notes"
       else
         directory="$root/$name"
       fi

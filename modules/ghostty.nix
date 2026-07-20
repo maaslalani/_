@@ -6,6 +6,7 @@
   ...
 }: let
   dotfiles = "${config.home.homeDirectory}/_";
+  notes = "${config.home.homeDirectory}/icloud/Documents/notes";
 
   # ANSI palette colors 0-15: normal (0-7) followed by bright (8-15).
   ansi = ["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"];
@@ -52,7 +53,7 @@ in {
       window-inherit-working-directory = true;
       working-directory = dotfiles;
 
-      command = "${pkgs.tmux}/bin/tmux new-session -A -s Dotfiles -c ${dotfiles}";
+      command = "${pkgs.tmux}/bin/tmux new-session -A -d -s Notes -c ${notes} ';' new-session -A -s Dotfiles -c ${dotfiles}";
     };
   };
 }

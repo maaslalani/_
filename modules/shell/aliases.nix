@@ -125,7 +125,7 @@
     tn = "tmux-session-picker";
     branch = "__branch";
     review = "__review";
-    notes = "cd $NOTES";
+    notes = "tmux switch -t Notes";
     todo = "$EDITOR $NOTES/todo.md";
 
     cop = "copilot --yolo";

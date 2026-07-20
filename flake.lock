@@ -111,7 +111,7 @@
       },
       "original": {
         "owner": "nixos",
-        "ref": "master",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }

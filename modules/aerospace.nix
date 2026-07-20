@@ -23,6 +23,7 @@
   notes = "com.apple.Notes";
   calendar = "com.apple.iCal";
   notion = "notion.id";
+  numbers = "com.apple.iWork.Numbers";
   finder = "com.apple.finder";
 
   # Media
@@ -36,7 +37,7 @@
     "S" = safari;
     "T" = ghostty;
     "C" = calendar;
-    "N" = notion;
+    "N" = numbers;
     "P" = spotify;
     "V" = vscode;
     "Z" = zoom;
@@ -51,9 +52,10 @@
     "alt-v" = vscode;
     "alt-f" = finder;
     "alt-m" = messages;
+    "alt-n" = numbers;
   };
 
-  floating = [ghostty];
+  floating = [ghostty finder];
 
   onWindowDetected =
     lib.mapAttrsToList (workspace: id: {
