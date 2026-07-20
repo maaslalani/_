@@ -44,8 +44,6 @@
     ghiv = "gh issue view";
     ghpl = "gh pr list";
     ghpv = "gh pr view";
-    ghprv = "${ghpv} --web";
-    ghpvw = "${ghpv} --web";
     pr = "${ghpv} --web";
     gl = "git pull";
     glm = "git -C $HOME/Developer/copilot pull";

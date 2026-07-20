@@ -159,21 +159,21 @@ in {
       {
         name = "html";
         indent.tab-width = 2;
-        indent.unit = " ";
+        indent.unit = "  ";
         auto-format = false;
         formatter = mkPrettier "html" 2;
       }
       {
         name = "css";
-        indent.tab-width = 4;
-        indent.unit = " ";
+        indent.tab-width = 2;
+        indent.unit = "  ";
         formatter = mkPrettier "css" 2;
         language-servers = ["vscode-css-language-server"];
       }
       {
         name = "typescript";
         indent.tab-width = 4;
-        indent.unit = " ";
+        indent.unit = "    ";
         auto-format = false;
         formatter = mkPrettier "typescript" 4;
         language-servers = ["typescript-language-server"];
@@ -230,53 +230,4 @@ in {
       }
     ];
   };
-
-  home.file.".config/helix/runtime/queries/cooklang/highlights.scm".source = builtins.toFile "highlights.scm" ''
-    ; Cooklang syntax highlighting queries
-
-    ; Comments — rendered at fg.muted, visually distinct from the brighter step text
-    (comment) @comment
-    (block_comment) @comment
-
-    ; Inline notes are also annotative — treat like comments
-    (note) @comment
-
-    ; Step text — use @variable (fg.default) so it appears brighter than muted comments
-    (text) @variable
-
-    ; Sections
-    (section_name) @markup.heading
-
-    ; Metadata
-    (metadata key: (metadata_key) @keyword)
-    (metadata value: (metadata_value) @string)
-
-    ; Frontmatter
-    (frontmatter) @punctuation.delimiter
-    (frontmatter_content) @string
-
-    ; Ingredients
-    "@" @punctuation.special
-    (ingredient name: (ingredient_name) @function)
-
-    ; Cookware
-    "#" @punctuation.special
-    (cookware name: (cookware_name) @constant)
-
-    ; Timer
-    "~" @punctuation.special
-    (timer name: (timer_name) @constant)
-
-    ; Amounts
-    (quantity) @number
-
-    ; Brackets
-    "{" @punctuation.bracket
-    "}" @punctuation.bracket
-    "(" @punctuation.bracket
-    ")" @punctuation.bracket
-
-    ; Delimiters
-    "---" @punctuation.delimiter
-  '';
 }

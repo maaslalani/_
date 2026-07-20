@@ -84,51 +84,40 @@
     extended-keys = "on";
     extended-keys-format = "csi-u";
     popup-border-lines = "rounded";
-    popup-border-style = "fg=${tmuxColors.popupBorder},bg=default";
+    popup-border-style = "fg=${colors.tmux.popupBorder},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
   };
 
-  tmuxColors = {
-    paneBorder = "#1a1b26";
-    popupBorder = "#b9bcb9";
-    statusAccent = "#7879a6";
-    statusUser = "#515170";
-    statusDim = "#44445e";
-    windowInactive = "#58587a";
-    messageFg = "#fcfcfc";
-    modeBg = "#273457";
-  };
-
   pane = {
-    active-border-style = "fg=${tmuxColors.paneBorder},bg=default";
-    border-style = "fg=${tmuxColors.paneBorder},bg=default";
+    active-border-style = "fg=${colors.tmux.paneBorder},bg=default";
+    border-style = "fg=${colors.tmux.paneBorder},bg=default";
   };
 
   status = {
     justify = "left";
     left = " '#S' ";
     left-length = "1000";
-    left-style = "bg=default,fg=${tmuxColors.statusAccent},bold";
-    right = "'#[fg=${tmuxColors.statusUser}] #(whoami) #[fg=${tmuxColors.statusDim}] %d %b %Y  %I:%M%p '";
-    right-style = "bg=default,fg=${tmuxColors.statusDim}";
+    left-style = "bg=default,fg=${colors.tmux.statusAccent},bold";
+    right = "'#[fg=${colors.tmux.statusUser}] #(whoami) #[fg=${colors.tmux.statusDim}] %d %b %Y  %I:%M%p '";
+    right-style = "bg=default,fg=${colors.tmux.statusDim}";
     style = "bg=default";
   };
 
   window = {
     status-current-format = "' #I #W * '";
-    status-current-style = "fg=${tmuxColors.statusAccent},bg=default";
+    status-current-style = "fg=${colors.tmux.statusAccent},bg=default";
     status-format = "' #I #W - '";
-    status-style = "fg=${tmuxColors.windowInactive},bg=default";
+    status-style = "fg=${colors.tmux.windowInactive},bg=default";
     status-separator = "''";
   };
 
   message = {
     command-style = "fg=white,bg=default";
-    style = "fg=${tmuxColors.messageFg},bg=default";
+    style = "fg=${colors.tmux.messageFg},bg=default";
   };
 
-  mode.style = "fg=${tmuxColors.messageFg},bg=${tmuxColors.modeBg}";
+  mode.style = "fg=${colors.tmux.messageFg},bg=${colors.tmux.modeBg}";
 
   cwd = ''-c "#{pane_current_path}"'';
 

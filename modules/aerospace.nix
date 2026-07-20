@@ -85,20 +85,6 @@ in {
 
       on-window-detected = onWindowDetected;
 
-      enable-normalization-flatten-containers = true;
-      enable-normalization-opposite-orientation-for-nested-containers = true;
-      accordion-padding = 30;
-      default-root-container-layout = "tiles";
-      default-root-container-orientation = "auto";
-
-      gaps = {
-        inner.horizontal = 0;
-        inner.vertical = 0;
-        outer.left = 0;
-        outer.bottom = 0;
-        outer.top = 0;
-        outer.right = 0;
-      };
       mode.main.binding = bindings;
     };
   };

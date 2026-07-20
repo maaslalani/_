@@ -28,5 +28,16 @@
       cyan = "#00FEFE";
       white = "#FFFFFF";
     };
+
+    tmux = {
+      paneBorder = "#1a1b26";
+      popupBorder = "#b9bcb9";
+      statusAccent = "#7879a6";
+      statusUser = "#515170";
+      statusDim = "#44445e";
+      windowInactive = "#58587a";
+      messageFg = "#fcfcfc";
+      modeBg = "#273457";
+    };
   };
 }
