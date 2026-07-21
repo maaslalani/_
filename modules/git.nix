@@ -10,6 +10,7 @@
       editor = "hx";
     };
   };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -42,6 +43,21 @@
     signing = {
       key = identity.signingKey;
       signByDefault = true;
+    };
+  };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        email = identity.email;
+        name = identity.name;
+      };
+      ui = {
+        default-command = "log";
+        pager = ["hunk" "pager"];
+      };
+      git.push-new-bookmarks = true;
     };
   };
 }

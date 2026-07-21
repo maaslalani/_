@@ -1,5 +1,28 @@
 {pkgs, ...}: {
+  home.username = "maas";
+  home.stateVersion = "25.05";
+  home.homeDirectory = "/Users/maas";
+  programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
+  xdg.enable = true;
+
   home.packages = with pkgs; [
+    # fonts
+    dejavu_fonts
+    fira-code
+    hack-font
+    ibm-plex
+    inter
+    inconsolata
+    jetbrains-mono
+    liberation_ttf
+    newcomputermodern
+    noto-fonts
+    roboto-mono
+    source-code-pro
+    ttf_bitstream_vera
+
+    # tools
     asciinema
     asciinema-agg
     bat
@@ -29,7 +52,6 @@
     gws
     handy
     httpie
-    hunk
     imagemagick
     jdk25
     jq

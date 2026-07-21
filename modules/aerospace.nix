@@ -10,26 +10,16 @@
 
   # Browsers
   safari = "com.apple.Safari";
-  chrome = "com.google.Chrome";
-  firefox = "org.mozilla.firefox";
-  arc = "company.thebrowser.Browser";
 
   # Terminals & editors
   ghostty = "com.mitchellh.ghostty";
-  terminal = "com.apple.Terminal";
   vscode = "com.microsoft.VSCode";
 
   # Productivity
-  notes = "com.apple.Notes";
   calendar = "com.apple.iCal";
-  notion = "notion.id";
   numbers = "com.apple.iWork.Numbers";
   finder = "com.apple.finder";
   skim = "net.sourceforge.skim-app.skim";
-
-  # Media
-  music = "com.apple.Music";
-  spotify = "com.spotify.client";
 
   workspaces = {
     "M" = mail;
@@ -72,8 +62,6 @@
 
   bindings = lib.mapAttrs (_: open) launch;
 in {
-  xdg.enable = true;
-
   programs.aerospace = {
     enable = true;
     launchd.enable = true;
