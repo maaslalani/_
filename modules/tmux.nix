@@ -14,51 +14,29 @@
     name = "tmux-session-picker";
     runtimeInputs = [pkgs.fzf pkgs.tmux];
     text = ''
-      root="$HOME/Developer"
-      worktrees=("Dotfiles" "Notes")
+      shopt -s nullglob
+      cd "$HOME/Developer" || exit
 
-      for repository in "$root"/*; do
-        [[ -d "$repository" ]] || continue
+      WORKTREES=("Dotfiles" "Notes")
+      declare -A DIRECTORIES=([Dotfiles]="$HOME/_" [Notes]="$HOME/icloud/Documents/notes")
 
-        found=0
-        for path in "$repository"/*; do
-          if [[ -d "$path" && -e "$path/.git" ]]; then
-            worktrees+=("''${repository##*/}/''${path##*/}")
-            found=1
-          fi
-        done
-
-        ((found)) || worktrees+=("''${repository##*/}")
+      for REPOSITORY in *; do
+        [[ -d "$REPOSITORY" ]] || continue
+        PATHS=("$REPOSITORY"/*/.git)
+        WORKTREES+=("''${PATHS[@]%/.git}")
+        ((''${#PATHS[@]})) || WORKTREES+=("$REPOSITORY")
       done
 
-      if ! name=$(
-        printf '%s\n' "''${worktrees[@]}" |
-          fzf \
-            --layout=reverse \
-            --info=inline-right \
-            --no-scrollbar \
-            --color="separator:${colors.separator}" \
-            --gutter=" " \
-            --padding=0,1 \
-            --pointer=">" \
-            --prompt=""
-      ); then
-        exit 0
-      fi
+      NAME=$(
+        printf '%s\n' "''${WORKTREES[@]}" |
+          fzf --reverse --info=inline-right --no-scrollbar --gutter=" " \
+            --color="separator:${colors.separator}" --padding=0,1 --pointer=">" --prompt=""
+      ) || exit 0
 
-      case "$name" in
-        Dotfiles) directory="$HOME/_" ;;
-        Notes) directory="$HOME/icloud/Documents/notes" ;;
-        *) directory="$root/$name" ;;
-      esac
-
-      session="''${name//[\/.:]/-}"
-
-      if ! tmux has-session -t "=$session" 2>/dev/null; then
-        tmux new-session -d -s "$session" -c "$directory"
-      fi
-
-      tmux switch-client -t "=$session"
+      SESSION="''${NAME//[\/.:]/-}"
+      tmux has-session -t "=$SESSION" 2>/dev/null ||
+        tmux new-session -ds "$SESSION" -c "''${DIRECTORIES[$NAME]:-$PWD/$NAME}"
+      tmux switch-client -t "=$SESSION"
     '';
   };
 
