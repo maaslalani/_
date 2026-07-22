@@ -77,7 +77,7 @@
     status-style = "bg=${colors.normal.black}";
 
     window-status-current-format = " #I #W #{?window_zoomed_flag,+,*} ";
-    window-status-current-style = "fg=${colors.primary.background},bg=${colors.normal.cyan},bold";
+    window-status-current-style = "fg=${colors.normal.white},bg=${colors.normal.black},bold";
     window-status-format = " #I #W - ";
     window-status-separator = "";
     window-status-style = "fg=${colors.separator},bg=${colors.normal.black}";
