@@ -259,6 +259,8 @@ in {
       notes = "tmux switch -t Notes";
       todo = "$EDITOR $NOTES/todo.md";
 
+      dev = "devin --permission-mode bypass";
+
       cop = "copilot --yolo";
       _cop = "pnpm run cli";
 

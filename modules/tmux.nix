@@ -4,14 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib) concatStringsSep hasPrefix mapAttrsToList removePrefix;
+  inherit (lib) concatStringsSep mapAttrsToList;
 
   mkLines = f: attrs: concatStringsSep "\n" (mapAttrsToList f attrs);
-  mkSetLines = prefix: mkLines (name: value: "set -g ${prefix}${name} ${value}");
-  mkBindLines = mkLines (key: cmd:
-    if hasPrefix "-r " key
-    then ''bind -r "${removePrefix "-r " key}" ${cmd}''
-    else ''bind "${key}" ${cmd}'');
+  mkSetLines = mkLines (name: value: ''set -g ${name} "${value}"'');
+  mkBindLines = mkLines (key: cmd: ''bind "${key}" ${cmd}'');
 
   sessionPicker = pkgs.writeShellApplication {
     name = "tmux-session-picker";
@@ -23,25 +20,16 @@
       for repository in "$root"/*; do
         [[ -d "$repository" ]] || continue
 
-        repositoryWorktrees=()
+        found=0
         for path in "$repository"/*; do
-          [[ -d "$path" && -e "$path/.git" ]] && repositoryWorktrees+=("$path")
+          if [[ -d "$path" && -e "$path/.git" ]]; then
+            worktrees+=("''${repository##*/}/''${path##*/}")
+            found=1
+          fi
         done
 
-        if ((''${#repositoryWorktrees[@]} == 0)); then
-          worktrees+=("''${repository##*/}")
-          continue
-        fi
-
-        for path in "''${repositoryWorktrees[@]}"; do
-          worktrees+=("''${repository##*/}/''${path##*/}")
-        done
+        ((found)) || worktrees+=("''${repository##*/}")
       done
-
-      if ((''${#worktrees[@]} == 0)); then
-        echo "No worktrees found in $root" >&2
-        exit 1
-      fi
 
       if ! name=$(
         printf '%s\n' "''${worktrees[@]}" |
@@ -58,17 +46,13 @@
         exit 0
       fi
 
-      if [[ "$name" == "Dotfiles" ]]; then
-        directory="$HOME/_"
-      elif [[ "$name" == "Notes" ]]; then
-        directory="$HOME/icloud/Documents/notes"
-      else
-        directory="$root/$name"
-      fi
+      case "$name" in
+        Dotfiles) directory="$HOME/_" ;;
+        Notes) directory="$HOME/icloud/Documents/notes" ;;
+        *) directory="$root/$name" ;;
+      esac
 
-      session="''${name//\//-}"
-      session="''${session//./-}"
-      session="''${session//:/-}"
+      session="''${name//[\/.:]/-}"
 
       if ! tmux has-session -t "=$session" 2>/dev/null; then
         tmux new-session -d -s "$session" -c "$directory"
@@ -87,37 +71,28 @@
     popup-border-style = "fg=${colors.primary.foreground},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
-  };
 
-  pane = {
-    active-border-style = "fg=${colors.normal.black},bg=default";
-    border-style = "fg=${colors.normal.black},bg=default";
-  };
+    message-command-style = "fg=white,bg=default";
+    message-style = "fg=${colors.bright.white},bg=default";
+    mode-style = "fg=${colors.bright.white},bg=${colors.normal.black}";
 
-  status = {
-    justify = "left";
-    left = " '#S' ";
-    left-length = "1000";
-    left-style = "bg=default,fg=${colors.primary.foreground},bold";
-    right = "'#[fg=${colors.separator}] #(whoami) #[fg=${colors.bright.black}] %d %b %Y  %I:%M%p '";
-    right-style = "bg=default,fg=${colors.bright.black}";
-    style = "bg=default";
-  };
+    pane-active-border-style = "fg=${colors.normal.black},bg=default";
+    pane-border-style = "fg=${colors.normal.black},bg=default";
 
-  window = {
-    status-current-format = "' #I #W * '";
-    status-current-style = "fg=${colors.primary.foreground},bg=default";
-    status-format = "' #I #W - '";
-    status-style = "fg=${colors.separator},bg=default";
-    status-separator = "''";
-  };
+    status-justify = "left";
+    status-left = "#S";
+    status-left-length = "1000";
+    status-left-style = "bg=default,fg=${colors.primary.foreground},bold";
+    status-right = "#[fg=${colors.separator}] #(whoami) #[fg=${colors.bright.black}] %d %b %Y  %I:%M%p ";
+    status-right-style = "bg=default,fg=${colors.bright.black}";
+    status-style = "bg=default";
 
-  message = {
-    command-style = "fg=white,bg=default";
-    style = "fg=${colors.bright.white},bg=default";
+    window-status-current-format = " #I #W * ";
+    window-status-current-style = "fg=${colors.primary.foreground},bg=default";
+    window-status-format = " #I #W - ";
+    window-status-separator = "";
+    window-status-style = "fg=${colors.separator},bg=default";
   };
-
-  mode.style = "fg=${colors.bright.white},bg=${colors.normal.black}";
 
   cwd = ''-c "#{pane_current_path}"'';
 
@@ -125,7 +100,6 @@
     "_" = "new-session -A -s Dotfiles -c ~/_";
     "-" = "split-window ${cwd}";
     "=" = "set-window-option synchronize-panes";
-    "C-a" = "send-prefix";
     "N" = "new ${cwd}";
     "r" = ''command-prompt "rename-session -- '%%'"'';
     "C-r" = r;
@@ -135,10 +109,6 @@
     "s" = "display-popup -E tmux-session-picker";
     "'" = "split-window -h ${cwd}";
     "|" = "split-window -h ${cwd}";
-    "h" = "select-pane -L";
-    "j" = "select-pane -D";
-    "k" = "select-pane -U";
-    "l" = "select-pane -R";
   };
 in {
   home.packages = [sessionPicker];
@@ -153,17 +123,9 @@ in {
     historyLimit = 50000;
     keyMode = "vi";
     mouse = true;
-    newSession = false;
-    secureSocket = false;
-    sensibleOnTop = false;
     shortcut = "a";
     extraConfig = ''
-      ${mkSetLines "" settings}
-      ${mkSetLines "pane-" pane}
-      ${mkSetLines "window-" window}
-      ${mkSetLines "message-" message}
-      ${mkSetLines "status-" status}
-      ${mkSetLines "mode-" mode}
+      ${mkSetLines settings}
       set -as terminal-features ",xterm-256color:RGB"
       set -as terminal-features ",ghostty:RGB"
       bind -T copy-mode-vi y     send -X copy-pipe-and-cancel "pbcopy"
