@@ -33,7 +33,7 @@ in {
 
       palette = lib.imap0 (i: hex: "${toString i}=${hex}") paletteColors;
 
-      font-size = 16;
+      font-size = 14;
       font-family = "JetBrains Mono";
       mouse-hide-while-typing = true;
 
