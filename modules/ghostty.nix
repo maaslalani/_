@@ -42,7 +42,7 @@ in {
       title = "Terminal";
 
       window-padding-x = 24;
-      window-padding-y = 24;
+      window-padding-top = 24;
 
       shell-integration-features = "no-cursor";
       cursor-style = "block";

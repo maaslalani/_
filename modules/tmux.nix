@@ -4,11 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (lib) concatStringsSep mapAttrsToList;
+  inherit (lib) concatMapAttrsStringSep concatStrings getExe;
 
-  mkLines = f: attrs: concatStringsSep "\n" (mapAttrsToList f attrs);
-  mkSetLines = mkLines (name: value: ''set -g ${name} "${value}"'');
-  mkBindLines = mkLines (key: cmd: ''bind "${key}" ${cmd}'');
+  mkSetLines = concatMapAttrsStringSep "\n" (name: value: ''set -g ${name} "${value}"'');
+  mkBindLines = table: concatMapAttrsStringSep "\n" (key: cmd: ''bind -T ${table} "${key}" ${cmd}'');
 
   sessionPicker = pkgs.writeShellApplication {
     name = "tmux-session-picker";
@@ -40,39 +39,58 @@
     '';
   };
 
+  style = fg: "fg=${fg},bg=default";
+  paint = fg: bg: "#[fg=${fg}]#[bg=${bg}]";
+  indicator = flag: color: label: "#{?${flag},${paint colors.primary.background color} ${label} #[default] ,}";
+
+  sessionPrefix = paint colors.bright.white colors.normal.magenta;
+  sessionCopy = paint colors.primary.background colors.normal.yellow;
+  sessionRest = paint colors.normal.yellow colors.normal.blue;
+  sessionStyle = "#{?client_prefix,${sessionPrefix},#{?pane_in_mode,${sessionCopy},${sessionRest}}}";
+
   settings = {
     automatic-rename = "off";
     detach-on-destroy = "off";
     extended-keys = "on";
     extended-keys-format = "csi-u";
     popup-border-lines = "rounded";
-    popup-border-style = "fg=${colors.primary.foreground},bg=default";
+    popup-border-style = style colors.primary.foreground;
     renumber-windows = "on";
     set-clipboard = "on";
 
-    message-command-style = "fg=white,bg=default";
-    message-style = "fg=${colors.bright.white},bg=default";
-    mode-style = "fg=${colors.bright.white},bg=${colors.normal.black}";
+    message-command-style = style colors.bright.white;
+    message-style = style colors.bright.white;
+    mode-style = "fg=${colors.primary.background},bg=${colors.bright.yellow}";
 
-    pane-active-border-style = "fg=${colors.normal.black},bg=default";
-    pane-border-style = "fg=${colors.normal.black},bg=default";
+    pane-active-border-style = style colors.normal.black;
+    pane-border-style = style colors.normal.black;
 
+    status-interval = "60";
     status-justify = "left";
-    status-left = "#S";
+    status-left = "${sessionStyle}#[bold] #S #[default] ";
     status-left-length = "1000";
-    status-left-style = "bg=default,fg=${colors.primary.foreground},bold";
-    status-right = "#[fg=${colors.separator}] #(whoami) #[fg=${colors.bright.black}] %d %b %Y  %I:%M%p ";
-    status-right-style = "bg=default,fg=${colors.bright.black}";
-    status-style = "bg=default";
+    status-right = concatStrings [
+      (indicator "pane_synchronized" colors.normal.red "sync")
+      "${paint colors.separator colors.normal.black}%d %b "
+      "${paint colors.primary.foreground colors.bright.black} %I:%M%p "
+    ];
+    status-style = "bg=${colors.normal.black}";
 
-    window-status-current-format = " #I #W * ";
-    window-status-current-style = "fg=${colors.primary.foreground},bg=default";
+    window-status-current-format = " #I #W #{?window_zoomed_flag,+,*} ";
+    window-status-current-style = "fg=${colors.bright.white},bg=${colors.bright.black},bold";
     window-status-format = " #I #W - ";
     window-status-separator = "";
-    window-status-style = "fg=${colors.separator},bg=default";
+    window-status-style = "fg=${colors.separator},bg=${colors.normal.black}";
   };
 
   cwd = ''-c "#{pane_current_path}"'';
+  hsplit = "split-window -h ${cwd}";
+
+  copyBinds = {
+    "Enter" = ''send -X copy-pipe-and-cancel "pbcopy"'';
+    "v" = "send -X begin-selection";
+    "y" = ''send -X copy-pipe-and-cancel "pbcopy"'';
+  };
 
   binds = rec {
     "_" = "new-session -A -s Dotfiles -c ~/_";
@@ -84,9 +102,9 @@
     "R" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
     "S" = "set -g status";
     "c" = "new-window ${cwd}";
-    "s" = "display-popup -E tmux-session-picker";
-    "'" = "split-window -h ${cwd}";
-    "|" = "split-window -h ${cwd}";
+    "s" = "display-popup -E ${getExe sessionPicker}";
+    "'" = hsplit;
+    "|" = hsplit;
   };
 in {
   home.packages = [sessionPicker];
@@ -104,11 +122,9 @@ in {
     shortcut = "a";
     extraConfig = ''
       ${mkSetLines settings}
-      set -as terminal-features ",xterm-256color:RGB"
-      set -as terminal-features ",ghostty:RGB"
-      bind -T copy-mode-vi y     send -X copy-pipe-and-cancel "pbcopy"
-      bind -T copy-mode-vi Enter send -X copy-pipe-and-cancel "pbcopy"
-      ${mkBindLines binds}
+      set -as terminal-features ",xterm-256color:RGB,ghostty:RGB"
+      ${mkBindLines "copy-mode-vi" copyBinds}
+      ${mkBindLines "prefix" binds}
     '';
   };
 }
