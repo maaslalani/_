@@ -56,7 +56,6 @@
     jdk25
     jq
     melt
-    mole
     mosh
     nodejs
     openssl

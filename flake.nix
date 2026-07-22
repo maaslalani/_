@@ -1,22 +1,13 @@
 {
-  inputs = {
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    };
-  };
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   outputs = inputs: let
     system = "aarch64-darwin";
     inherit (inputs.nixpkgs) lib;
-    pkgs = inputs.nixpkgs.legacyPackages.${system}.extend (
-      self: super: {
-        mole = self.callPackage ./pkgs/mole.nix {};
-      }
-    );
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
+
     identity = {
       email = "maas@lalani.dev";
       name = "Maas Lalani";
