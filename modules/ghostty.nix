@@ -37,12 +37,13 @@ in {
       font-family = "JetBrains Mono";
       mouse-hide-while-typing = true;
 
-      macos-titlebar-style = "tabs";
+      window-decoration = "none";
       macos-icon = "xray";
       title = "Terminal";
 
-      window-padding-x = 24;
-      window-padding-top = 24;
+      window-padding-x = 12;
+      window-padding-balance = true;
+      window-padding-color = "extend";
 
       shell-integration-features = "no-cursor";
       cursor-style = "block";
