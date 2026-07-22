@@ -133,7 +133,7 @@ in {
       [[ -n $TTY ]] && export GPG_TTY=$TTY
 
       PURE_PROMPT_SYMBOL='>'
-      PURE_PROMPT_VICMD_SYMBOL='■'
+      PURE_PROMPT_VICMD_SYMBOL='<'
       PURE_GIT_UP_ARROW='↑'
       PURE_GIT_DOWN_ARROW='↓'
       zstyle ':prompt:pure:git:arrow' color yellow
