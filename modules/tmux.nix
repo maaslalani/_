@@ -84,40 +84,40 @@
     extended-keys = "on";
     extended-keys-format = "csi-u";
     popup-border-lines = "rounded";
-    popup-border-style = "fg=${colors.tmux.popupBorder},bg=default";
+    popup-border-style = "fg=${colors.primary.foreground},bg=default";
     renumber-windows = "on";
     set-clipboard = "on";
   };
 
   pane = {
-    active-border-style = "fg=${colors.tmux.paneBorder},bg=default";
-    border-style = "fg=${colors.tmux.paneBorder},bg=default";
+    active-border-style = "fg=${colors.normal.black},bg=default";
+    border-style = "fg=${colors.normal.black},bg=default";
   };
 
   status = {
     justify = "left";
     left = " '#S' ";
     left-length = "1000";
-    left-style = "bg=default,fg=${colors.tmux.statusAccent},bold";
-    right = "'#[fg=${colors.tmux.statusUser}] #(whoami) #[fg=${colors.tmux.statusDim}] %d %b %Y  %I:%M%p '";
-    right-style = "bg=default,fg=${colors.tmux.statusDim}";
+    left-style = "bg=default,fg=${colors.primary.foreground},bold";
+    right = "'#[fg=${colors.separator}] #(whoami) #[fg=${colors.bright.black}] %d %b %Y  %I:%M%p '";
+    right-style = "bg=default,fg=${colors.bright.black}";
     style = "bg=default";
   };
 
   window = {
     status-current-format = "' #I #W * '";
-    status-current-style = "fg=${colors.tmux.statusAccent},bg=default";
+    status-current-style = "fg=${colors.primary.foreground},bg=default";
     status-format = "' #I #W - '";
-    status-style = "fg=${colors.tmux.windowInactive},bg=default";
+    status-style = "fg=${colors.separator},bg=default";
     status-separator = "''";
   };
 
   message = {
     command-style = "fg=white,bg=default";
-    style = "fg=${colors.tmux.messageFg},bg=default";
+    style = "fg=${colors.bright.white},bg=default";
   };
 
-  mode.style = "fg=${colors.tmux.messageFg},bg=${colors.tmux.modeBg}";
+  mode.style = "fg=${colors.bright.white},bg=${colors.normal.black}";
 
   cwd = ''-c "#{pane_current_path}"'';
 
