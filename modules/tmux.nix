@@ -67,17 +67,17 @@
 
     status-interval = "60";
     status-justify = "left";
-    status-left = "${sessionStyle}#[bold]#S #[default] ";
+    status-left = "${sessionStyle}#[bold] #S #[default] ";
     status-left-length = "1000";
     status-right = concatStrings [
       (indicator "pane_synchronized" colors.normal.red "sync")
       "${paint colors.separator colors.normal.black}%d %b "
-      "${paint colors.primary.foreground colors.bright.black} %I:%M%p"
+      "${paint colors.primary.foreground colors.bright.black} %I:%M%p "
     ];
     status-style = "bg=${colors.normal.black}";
 
     window-status-current-format = " #I #W #{?window_zoomed_flag,+,*} ";
-    window-status-current-style = "fg=${colors.bright.white},bg=${colors.bright.black},bold";
+    window-status-current-style = "fg=${colors.primary.background},bg=${colors.normal.cyan},bold";
     window-status-format = " #I #W - ";
     window-status-separator = "";
     window-status-style = "fg=${colors.separator},bg=${colors.normal.black}";

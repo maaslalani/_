@@ -42,8 +42,7 @@ in {
       title = "Terminal";
 
       window-padding-x = 12;
-      window-padding-balance = true;
-      window-padding-color = "extend";
+      window-padding-y = "12,0";
 
       shell-integration-features = "no-cursor";
       cursor-style = "block";
