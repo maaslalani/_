@@ -258,6 +258,7 @@ in {
       tn = "tmux-session-picker";
       notes = "tmux switch -t Notes";
       todo = "$EDITOR $NOTES/todo.md";
+      insomniac = "sudo pmset -a disablesleep $((1 - $(pmset -g | awk '/SleepDisabled/ {print $2}'))) && pmset -g | grep SleepDisabled";
 
       dev = "devin --permission-mode bypass";
 
