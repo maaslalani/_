@@ -83,7 +83,7 @@
     window-status-style = "fg=${colors.separator},bg=${colors.normal.black}";
   };
 
-  cwd = ''-c "#{pane_current_path}"'';
+  cwd = ''-c "#{pane_path}"'';
   hsplit = "split-window -h ${cwd}";
 
   copyBinds = {

@@ -78,8 +78,6 @@ in {
     defaultKeymap = "viins";
     sessionVariables = rec {
       CARGO_BIN = "$HOME/.cargo/bin";
-      CARGO_INCREMENTAL = "0";
-      CARGO_TARGET_DIR = "${config.xdg.cacheHome}/cargo";
       COLORTERM = "truecolor";
       EDITOR = "hx";
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
