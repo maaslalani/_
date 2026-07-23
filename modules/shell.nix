@@ -85,6 +85,7 @@ in {
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
       GOBIN = "${GOPATH}/bin";
       GOPATH = "${config.xdg.configHome}/go";
+      GROK_HOME = "${config.xdg.dataHome}/grok";
       KEYTIMEOUT = "1";
       LOCAL_BIN = "$HOME/.local/bin";
       NIX_BIN = "$HOME/.nix-profile/bin";
