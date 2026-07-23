@@ -223,6 +223,7 @@ in {
       gwp = "${gw} prune";
 
       # files
+      cat = "bat";
       ls = "eza";
       lsa = "eza -laF";
       sl = ls;
@@ -234,6 +235,19 @@ in {
       grg = "go run ./...";
       goi = "go install";
 
+      # rust
+      cr = "cargo run";
+      cb = "cargo build";
+      ct = "cargo test";
+      cl = "cargo clippy";
+      cf = "cargo fmt";
+      ca = "cargo add";
+
+      # zig
+      zb = "zig build";
+      zbr = "zig build run";
+      zt = "zig build test";
+
       # nix
       hms = builtins.concatStringsSep " && " [
         "nh home switch -c maas -o $HOME/_/result ."
@@ -244,6 +258,8 @@ in {
       ];
       hsm = hms;
       ncg = "nix-collect-garbage";
+      nfu = "nix flake update";
+      ndev = "nix develop";
       nixd = "sudo launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl kickstart -k system/org.nixos.nix-daemon";
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
 

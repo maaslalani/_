@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.username = "maas";
   home.stateVersion = "25.05";
   home.homeDirectory = "/Users/maas";
@@ -65,6 +69,7 @@
     redis
     ripgrep
     rustup
+    (lib.hiPrio rust-analyzer)
     sccache
     sc-im
     sd
