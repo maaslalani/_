@@ -90,9 +90,11 @@
     # coding agents
     claude-code
     codex
+    crush
     ollama
     opencode
     pi-coding-agent
+    grok-build
 
     # terminals
     alacritty
