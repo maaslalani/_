@@ -7,7 +7,6 @@
         clone = "repo clone";
         co = "pr checkout";
       };
-      editor = "hx";
     };
   };
 
