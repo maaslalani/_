@@ -10,6 +10,7 @@
 
   # Browsers
   safari = "com.apple.Safari";
+  chrome = "com.google.Chrome";
 
   # Terminals & editors
   ghostty = "com.mitchellh.ghostty";
@@ -17,18 +18,21 @@
 
   # Productivity
   calendar = "com.apple.iCal";
+  notion = "notion.id";
   numbers = "com.apple.iWork.Numbers";
   finder = "com.apple.finder";
   skim = "net.sourceforge.skim-app.skim";
 
   workspaces = {
-    "M" = mail;
-    "D" = discord;
     "#" = slack;
+    "=" = numbers;
+    "B" = chrome;
+    "C" = calendar;
+    "D" = discord;
+    "M" = mail;
+    "N" = notion;
     "S" = safari;
     "T" = [ghostty skim];
-    "C" = calendar;
-    "N" = numbers;
     "V" = vscode;
     "Z" = zoom;
   };
@@ -36,13 +40,15 @@
   launch = {
     "alt-r" = slack;
     "alt-s" = safari;
+    "alt-b" = chrome;
     "alt-t" = ghostty;
     "alt-c" = calendar;
     "alt-d" = discord;
     "alt-v" = vscode;
     "alt-f" = finder;
     "alt-m" = messages;
-    "alt-n" = numbers;
+    "alt-n" = notion;
+    "alt-equal" = numbers;
     "alt-p" = skim;
   };
 
