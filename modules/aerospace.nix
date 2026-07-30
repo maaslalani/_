@@ -41,10 +41,12 @@
   };
 
   launch = {
-    "alt-r" = slack;
+    "alt-a" = chrome;
+    "alt-r" = chrome;
     "alt-s" = slack;
-    "alt-b" = chrome;
     "alt-t" = ghostty;
+
+    "alt-b" = chrome;
     "alt-c" = calendar;
     "alt-d" = devinInsiders;
     "alt-v" = vscode;
