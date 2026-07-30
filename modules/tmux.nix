@@ -56,6 +56,7 @@
     set-clipboard = "on";
 
     message-command-style = style colors.bright.white;
+    message-format = "#[fill=terminal,${style colors.bright.white}]#{message}";
     message-style = style colors.bright.white;
     mode-style = "fg=${colors.primary.background},bg=${colors.bright.yellow}";
 
