@@ -41,7 +41,7 @@
     };
     signing = {
       key = identity.signingKey;
-      signByDefault = true;
+      signByDefault = false;
     };
   };
 

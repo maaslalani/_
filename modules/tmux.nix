@@ -21,7 +21,7 @@
 
       for REPOSITORY in *; do
         [[ -d "$REPOSITORY" ]] || continue
-        PATHS=("$REPOSITORY"/*/.git)
+        PATHS=("$REPOSITORY"/*/.git "$REPOSITORY"/*/*/.git)
         WORKTREES+=("''${PATHS[@]%/.git}")
         ((''${#PATHS[@]})) || WORKTREES+=("$REPOSITORY")
       done
@@ -40,13 +40,10 @@
   };
 
   style = fg: "fg=${fg},bg=default";
-  paint = fg: bg: "#[fg=${fg}]#[bg=${bg}]";
-  indicator = flag: color: label: "#{?${flag},${paint colors.primary.background color} ${label} #[default] ,}";
+  paint = fg: "#[fg=${fg}]";
+  indicator = flag: label: "#{?${flag},${label} ,}";
 
-  sessionPrefix = paint colors.bright.white colors.normal.magenta;
-  sessionCopy = paint colors.primary.background colors.normal.yellow;
-  sessionRest = paint colors.normal.yellow colors.normal.blue;
-  sessionStyle = "#{?client_prefix,${sessionPrefix},#{?pane_in_mode,${sessionCopy},${sessionRest}}}";
+  sessionStyle = "#{?#{||:#{client_prefix},#{pane_in_mode}},#[reverse],}";
 
   settings = {
     automatic-rename = "off";
@@ -70,20 +67,20 @@
     status-left = "${sessionStyle}#[bold] #S #[default] ";
     status-left-length = "1000";
     status-right = concatStrings [
-      (indicator "pane_synchronized" colors.normal.red "sync")
-      "${paint colors.separator colors.normal.black}%d %b "
-      "${paint colors.primary.foreground colors.bright.black} %I:%M%p "
+      (indicator "pane_synchronized" "sync")
+      "${paint colors.separator}%d %b "
+      "${paint colors.primary.foreground}%I:%M%p "
     ];
-    status-style = "bg=${colors.normal.black}";
+    status-style = "bg=default";
 
     window-status-current-format = " #I #W #{?window_zoomed_flag,+,*} ";
-    window-status-current-style = "fg=${colors.normal.white},bg=${colors.normal.black},bold";
+    window-status-current-style = "${style colors.normal.white},bold";
     window-status-format = " #I #W - ";
     window-status-separator = "";
-    window-status-style = "fg=${colors.separator},bg=${colors.normal.black}";
+    window-status-style = style colors.separator;
   };
 
-  cwd = ''-c "#{current_pane_path}"'';
+  cwd = ''-c "#{current_path}"'';
   hsplit = "split-window -h ${cwd}";
 
   copyBinds = {

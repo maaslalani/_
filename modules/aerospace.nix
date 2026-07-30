@@ -2,7 +2,6 @@
   open = id: "exec-and-forget open -b '${id}'";
 
   # Communication
-  discord = "com.hnc.Discord";
   slack = "com.tinyspeck.slackmacgap";
   messages = "com.apple.MobileSMS";
   mail = "com.apple.mail";
@@ -15,9 +14,12 @@
   # Terminals & editors
   ghostty = "com.mitchellh.ghostty";
   vscode = "com.microsoft.VSCode";
+  devin = "com.exafunction.windsurf";
+  devinInsiders = "com.exafunction.windsurfInsiders";
 
   # Productivity
   calendar = "com.apple.iCal";
+  linear = "com.linear";
   notion = "notion.id";
   numbers = "com.apple.iWork.Numbers";
   finder = "com.apple.finder";
@@ -28,7 +30,8 @@
     "=" = numbers;
     "B" = chrome;
     "C" = calendar;
-    "D" = discord;
+    "D" = [devinInsiders devin];
+    "L" = linear;
     "M" = mail;
     "N" = notion;
     "S" = safari;
@@ -43,9 +46,10 @@
     "alt-b" = chrome;
     "alt-t" = ghostty;
     "alt-c" = calendar;
-    "alt-d" = discord;
+    "alt-d" = devinInsiders;
     "alt-v" = vscode;
     "alt-f" = finder;
+    "alt-l" = linear;
     "alt-m" = messages;
     "alt-n" = notion;
     "alt-equal" = numbers;

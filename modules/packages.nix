@@ -82,6 +82,7 @@
     typescript
     typioca
     typst
+    uv
     vhs
     yq
     zig
