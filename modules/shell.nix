@@ -275,7 +275,7 @@ in {
       todo = "$EDITOR $NOTES/todo.md";
       insomniac = "sudo pmset -a disablesleep $((1 - $(pmset -g | awk '/SleepDisabled/ {print $2}'))) && pmset -g | grep SleepDisabled";
 
-      dev = "devin --permission-mode bypass";
+      dev = "devin-insiders --permission-mode bypass";
 
       cop = "copilot --yolo";
       _cop = "pnpm run cli";

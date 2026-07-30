@@ -34,7 +34,7 @@
     "L" = linear;
     "M" = mail;
     "N" = notion;
-    "S" = safari;
+    "S" = slack;
     "T" = [ghostty skim];
     "V" = vscode;
     "Z" = zoom;
@@ -42,7 +42,7 @@
 
   launch = {
     "alt-r" = slack;
-    "alt-s" = safari;
+    "alt-s" = slack;
     "alt-b" = chrome;
     "alt-t" = ghostty;
     "alt-c" = calendar;
