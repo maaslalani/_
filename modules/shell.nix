@@ -92,7 +92,7 @@ in {
       NOTES = "$HOME/Documents/notes";
       OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
       PATH = builtins.concatStringsSep ":" [GOBIN NIX_BIN LOCAL_BIN CARGO_BIN "$PATH"];
-      RUSTC_WRAPPER = "sccache";
+      RUSTC_WRAPPER = "kache";
       SHELL = "${config.programs.zsh.package}/bin/zsh";
       SHELL_SESSIONS_DISABLE = "1";
       TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";

@@ -70,7 +70,6 @@
     ripgrep
     rustup
     (lib.hiPrio rust-analyzer)
-    sccache
     sc-im
     sd
     serve
