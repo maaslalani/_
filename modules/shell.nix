@@ -188,7 +188,7 @@ in {
       ghpv = "gh pr view";
       pr = "${ghpv} --web";
       gl = "git pull";
-      glm = "git -C $HOME/Developer/copilot pull";
+      glm = ''git -C "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/main" pull'';
       glr = "${gl} --rebase";
       glo = "git log -n 20";
       glog = "git log --oneline -n 20";
@@ -218,6 +218,7 @@ in {
       gundo = "git reset HEAD~1 --mixed";
       gw = "git worktree";
       gwa = ''() { git worktree add -b "${identity.githubUser}/$1" "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/$1" }'';
+      gwc = ''() { local branch="$1"; git worktree add "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/''${branch//\//-}" "$branch" }'';
       gwd = "${gw} remove . && cd ..";
       gwl = "${gw} list";
       gwp = "${gw} prune";
