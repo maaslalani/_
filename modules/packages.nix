@@ -40,6 +40,7 @@
     coreutils
     darwin.trash
     difftastic
+    docker
     eza
     hunk
     fd
@@ -77,6 +78,7 @@
     skate
     tdf
     tinymist
+    tmux
     tree-sitter
     ttyd
     typescript

@@ -76,6 +76,8 @@ in {
     [keys]
     prefix = "ctrl+a"
     workspace_picker = "prefix+s"
+    next_workspace = "prefix+tab"
+    previous_workspace = "prefix+shift+tab"
     split_horizontal = "prefix+double_quote"
     split_vertical = "prefix+quote"
 
@@ -83,6 +85,7 @@ in {
     confirm_close = false
     hide_tab_bar_when_single_tab = true
     pane_borders = false
+    pane_gaps = true
     prompt_new_tab_name = false
   '';
 }
