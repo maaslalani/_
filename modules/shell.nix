@@ -238,7 +238,7 @@ in {
       goi = "go install";
 
       # rust
-      cr = "cargo run";
+      cr = "cd apps/chisel 2>/dev/null; cargo run";
       cb = "cargo build";
       ct = "cargo test";
       cl = "cargo clippy";
