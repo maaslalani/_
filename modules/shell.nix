@@ -178,6 +178,7 @@ in {
       gd = "git diff";
       gd- = "git diff HEAD~";
       gdh = "git diff HEAD";
+      hd = "hunk diff";
       gdm = "${gd} main";
       ghb = "gh browse";
       ghco = " ${ghpl} | cut -f1,2 | gum filter --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
