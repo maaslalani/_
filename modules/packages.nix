@@ -55,6 +55,7 @@
     gum
     gws
     handy
+    herdr
     httpie
     imagemagick
     jdk25

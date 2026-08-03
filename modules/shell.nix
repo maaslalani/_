@@ -253,7 +253,7 @@ in {
       hms = builtins.concatStringsSep " && " [
         "nh home switch -c maas -o $HOME/_/result ."
         "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
-        "(tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null || true)"
+        "(herdr server reload-config 2>/dev/null || true)"
         sz
         "aerospace reload-config"
       ];
@@ -265,14 +265,14 @@ in {
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
 
       # misc
-      _ = "tmux switch -t Dotfiles";
+      _ = "herdr-workspace-picker Dotfiles";
       sz = builtins.concatStringsSep " && " [
         "unset __HM_ZSH_SESS_VARS_SOURCED"
         "unset __HM_SESS_VARS_SOURCED"
         "exec zsh"
       ];
-      tn = "tmux-session-picker";
-      notes = "tmux switch -t Notes";
+      tn = "herdr-workspace-picker";
+      notes = "herdr-workspace-picker Notes";
       todo = "$EDITOR $NOTES/todo.md";
       insomniac = "sudo pmset -a disablesleep $((1 - $(pmset -g | awk '/SleepDisabled/ {print $2}'))) && pmset -g | grep SleepDisabled";
       af = "aerospace fullscreen";

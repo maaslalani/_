@@ -1,17 +1,11 @@
 {
   colors,
-  lib,
   pkgs,
   ...
 }: let
-  inherit (lib) concatMapAttrsStringSep concatStrings getExe;
-
-  mkSetLines = concatMapAttrsStringSep "\n" (name: value: ''set -g ${name} "${value}"'');
-  mkBindLines = table: concatMapAttrsStringSep "\n" (key: cmd: ''bind -T ${table} "${key}" ${cmd}'');
-
-  sessionPicker = pkgs.writeShellApplication {
-    name = "tmux-session-picker";
-    runtimeInputs = [pkgs.fzf pkgs.tmux];
+  workspacePicker = pkgs.writeShellApplication {
+    name = "herdr-workspace-picker";
+    runtimeInputs = [pkgs.coreutils pkgs.fzf pkgs.herdr pkgs.jq];
     text = ''
       shopt -s nullglob
       cd "$HOME/Developer" || exit
@@ -26,103 +20,69 @@
         ((''${#PATHS[@]})) || WORKTREES+=("$REPOSITORY")
       done
 
-      NAME=$(
-        printf '%s\n' "''${WORKTREES[@]}" |
-          fzf --reverse --info=inline-right --no-scrollbar --gutter=" " \
-            --color="separator:${colors.separator}" --padding=0,1 --pointer=">" --prompt=""
-      ) || exit 0
+      NAME="''${1:-}"
+      if [[ -z "$NAME" ]]; then
+        NAME=$(
+          printf '%s\n' "''${WORKTREES[@]}" |
+            fzf --reverse --info=inline-right --no-scrollbar --gutter=" " \
+              --color="separator:${colors.separator}" --padding=0,1 --pointer=">" --prompt=""
+        ) || exit 0
+      fi
 
-      SESSION="''${NAME//[\/.:]/-}"
-      tmux has-session -t "=$SESSION" 2>/dev/null ||
-        tmux new-session -ds "$SESSION" -c "''${DIRECTORIES[$NAME]:-$PWD/$NAME}"
-      tmux switch-client -t "=$SESSION"
+      WORKSPACE_ID=$(
+        herdr workspace list |
+          jq -r --arg name "$NAME" '.result.workspaces[] | select(.label == $name) | .workspace_id' |
+          head -n 1
+      )
+
+      if [[ -n "$WORKSPACE_ID" ]]; then
+        herdr workspace focus "$WORKSPACE_ID" >/dev/null
+      else
+        herdr workspace create --cwd "''${DIRECTORIES[$NAME]:-$PWD/$NAME}" --label "$NAME" --focus >/dev/null
+      fi
     '';
-  };
-
-  style = fg: "fg=${fg},bg=default";
-  paint = fg: "#[fg=${fg}]";
-  indicator = flag: label: "#{?${flag},${label} ,}";
-
-  sessionStyle = "#{?#{||:#{client_prefix},#{pane_in_mode}},#[reverse],}";
-
-  settings = {
-    automatic-rename = "off";
-    detach-on-destroy = "off";
-    extended-keys = "on";
-    extended-keys-format = "csi-u";
-    popup-border-lines = "rounded";
-    popup-border-style = style colors.primary.foreground;
-    renumber-windows = "on";
-    set-clipboard = "on";
-
-    message-command-style = style colors.bright.white;
-    message-format = "#[fill=terminal,${style colors.bright.white}]#{message}";
-    message-style = style colors.bright.white;
-    mode-style = "fg=${colors.primary.background},bg=${colors.bright.yellow}";
-
-    pane-active-border-style = style colors.normal.black;
-    pane-border-style = style colors.normal.black;
-
-    status-interval = "60";
-    status-justify = "left";
-    status-left = "${sessionStyle}#[bold] #S #[default] ";
-    status-left-length = "1000";
-    status-right = concatStrings [
-      (indicator "pane_synchronized" "sync")
-      "${paint colors.separator}%d %b "
-      "${paint colors.primary.foreground}%I:%M%p "
-    ];
-    status-style = "bg=default";
-
-    window-status-current-format = " #I #W #{?window_zoomed_flag,+,*} ";
-    window-status-current-style = "${style colors.normal.white},bold";
-    window-status-format = " #I #W - ";
-    window-status-separator = "";
-    window-status-style = style colors.separator;
-  };
-
-  cwd = ''-c "#{current_path}"'';
-  hsplit = "split-window -h ${cwd}";
-
-  copyBinds = {
-    "Enter" = ''send -X copy-pipe-and-cancel "pbcopy"'';
-    "v" = "send -X begin-selection";
-    "y" = ''send -X copy-pipe-and-cancel "pbcopy"'';
-  };
-
-  binds = rec {
-    "_" = "new-session -A -s Dotfiles -c ~/_";
-    "-" = "split-window ${cwd}";
-    "=" = "set-window-option synchronize-panes";
-    "N" = "new ${cwd}";
-    "r" = ''command-prompt "rename-session -- '%%'"'';
-    "C-r" = r;
-    "R" = ''source-file ~/.config/tmux/tmux.conf \; display "• Reloaded"'';
-    "S" = "set -g status";
-    "c" = "new-window ${cwd}";
-    "s" = "display-popup -E ${getExe sessionPicker}";
-    "'" = hsplit;
-    "|" = hsplit;
   };
 in {
-  home.packages = [sessionPicker];
+  home.packages = [workspacePicker];
 
-  programs.tmux = {
-    baseIndex = 1;
-    customPaneNavigationAndResize = true;
-    disableConfirmationPrompt = true;
-    enable = true;
-    escapeTime = 0;
-    focusEvents = true;
-    historyLimit = 50000;
-    keyMode = "vi";
-    mouse = true;
-    shortcut = "a";
-    extraConfig = ''
-      ${mkSetLines settings}
-      set -as terminal-features ",xterm-256color:RGB,ghostty:RGB"
-      ${mkBindLines "copy-mode-vi" copyBinds}
-      ${mkBindLines "prefix" binds}
-    '';
-  };
+  xdg.configFile."herdr/config.toml".text = ''
+    onboarding = false
+
+    [theme]
+    name = "terminal"
+
+    [theme.custom]
+    accent = "${colors.separator}"
+    panel_bg = "${colors.primary.background}"
+    surface0 = "${colors.primary.background}"
+    surface1 = "${colors.normal.black}"
+    surface_dim = "${colors.normal.black}"
+    overlay0 = "${colors.separator}"
+    overlay1 = "${colors.primary.foreground}"
+    text = "${colors.primary.foreground}"
+    subtext0 = "${colors.separator}"
+    mauve = "${colors.normal.magenta}"
+    green = "${colors.normal.green}"
+    yellow = "${colors.normal.yellow}"
+    red = "${colors.normal.red}"
+    blue = "${colors.normal.blue}"
+    teal = "${colors.normal.cyan}"
+    peach = "${colors.normal.yellow}"
+
+    [terminal]
+    shell_mode = "auto"
+    new_cwd = "follow"
+
+    [keys]
+    prefix = "ctrl+a"
+    workspace_picker = "prefix+s"
+    split_horizontal = "prefix+double_quote"
+    split_vertical = "prefix+quote"
+
+    [ui]
+    confirm_close = false
+    hide_tab_bar_when_single_tab = true
+    pane_borders = false
+    prompt_new_tab_name = false
+  '';
 }
