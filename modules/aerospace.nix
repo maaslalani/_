@@ -60,6 +60,11 @@
 
   floating = [ghostty finder];
 
+  monitors = {
+    "1" = "Built-in Retina Display";
+    "2" = "LG HDR 4K";
+  };
+
   onWindowDetected = lib.concatLists (
     lib.mapAttrsToList (workspace: ids:
       map (id: {
@@ -72,7 +77,12 @@
     workspaces
   );
 
-  bindings = lib.mapAttrs (_: open) launch;
+  bindings =
+    lib.mapAttrs (_: open) launch
+    // lib.mergeAttrsList (lib.mapAttrsToList (key: monitor: {
+      "alt-${key}" = "focus-monitor '${monitor}'";
+      "alt-shift-${key}" = "move-workspace-to-monitor '${monitor}'";
+    }) monitors);
 in {
   programs.aerospace = {
     enable = true;
