@@ -76,8 +76,8 @@ in {
     [keys]
     prefix = "ctrl+a"
     workspace_picker = "prefix+s"
-    next_workspace = "prefix+tab"
-    previous_workspace = "prefix+shift+tab"
+    next_workspace = "prefix+ctrl+j"
+    previous_workspace = "prefix+ctrl+k"
     split_horizontal = "prefix+double_quote"
     split_vertical = "prefix+quote"
 
