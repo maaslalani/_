@@ -101,6 +101,8 @@
 
     # terminals
     alacritty
+    iterm2
+    warp-terminal
 
     # lsp
     alejandra
