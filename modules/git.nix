@@ -18,6 +18,7 @@
       user.email = identity.email;
       user.name = identity.name;
       branch.sort = "-committerdate";
+      checkout.defaultRemote = "origin";
       color.ui = true;
       core.commitGraph = true;
       core.pager = "hunk pager";

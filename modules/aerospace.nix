@@ -48,7 +48,7 @@
 
     "alt-b" = chrome;
     "alt-c" = calendar;
-    "alt-d" = devinInsiders;
+    "alt-w" = devinInsiders;
     "alt-v" = vscode;
     "alt-f" = finder;
     "alt-l" = linear;
