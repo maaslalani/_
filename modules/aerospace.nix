@@ -62,7 +62,7 @@
 
   monitors = {
     "1" = "Built-in Retina Display";
-    "2" = "LG HDR 4K";
+    "2" = "Studio Display";
   };
 
   onWindowDetected = lib.concatLists (
