@@ -172,7 +172,6 @@ in {
       gcam = "${gc} -am";
       gcane = "${gc} --amend --no-edit";
       gclean = "${gb} | cut -c 3- | gum choose --no-limit | xargs ${gb} -D";
-      gco = "git checkout";
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
       gd = "git diff";
@@ -213,6 +212,7 @@ in {
       gss = "git status";
       gst = "git stash";
       gstp = "${gst} pop";
+      gco = ''() { git fetch origin "$1":"$1"; git switch "$1" }'';
       gsw = "git switch";
       gswc = "git switch --create";
       gswm = "${gsw} main";
