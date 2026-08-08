@@ -184,7 +184,7 @@ in {
       ghil = "gh issue list";
       ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
       ghiv = "gh issue view";
-      ghpl = "gh pr list";
+      ghpl = "gh pr list --assignee @me";
       ghpv = "gh pr view";
       pr = "${ghpv} --web";
       gl = "git pull";
