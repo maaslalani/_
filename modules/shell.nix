@@ -218,7 +218,7 @@ in {
       gswm = "${gsw} main";
       gundo = "git reset HEAD~1 --mixed";
       gw = "git worktree";
-      gwa = ''() { git worktree add -b "${identity.githubUser}/$1" "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/$1" }'';
+      gwa = ''() { git worktree add -b "$1" --guess-remote "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/$1" }'';
       gwc = ''() { local branch="$1"; git worktree add "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/''${branch//\//-}" "$branch" }'';
       gwd = "${gw} remove . && cd ..";
       gwl = "${gw} list";

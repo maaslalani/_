@@ -35,8 +35,6 @@
       interactive.diffFilter = "hunk";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
-      pull.rebase = true;
-      pull.twohead = "ort";
       push.autoSetupRemote = true;
       rerere.enabled = true;
     };
