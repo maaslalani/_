@@ -212,7 +212,7 @@ in {
       gss = "git status";
       gst = "git stash";
       gstp = "${gst} pop";
-      gco = ''() { git fetch origin "$1":"$1"; git switch "$1" }'';
+      gco = ''() { git fetch origin "$1":"$1"; git switch "$1"; cd apps/chisel && ./setup.sh }'';
       gsw = "git switch";
       gswc = "git switch --create";
       gswm = "${gsw} main";
