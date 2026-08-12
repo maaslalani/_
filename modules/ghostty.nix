@@ -38,6 +38,7 @@ in {
 
       window-decoration = "none";
       macos-icon = "xray";
+      macos-option-as-alt = true;
       title = "Terminal";
 
       window-padding-x = 12;

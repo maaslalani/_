@@ -178,7 +178,8 @@ in {
       gd- = "git diff HEAD~";
       gdh = "git diff HEAD";
       hd = "hunk diff";
-      gdm = "${gd} main";
+      gmb = "git merge-base origin/main HEAD";
+      gds = "${gd} --stat $(${gmb})..HEAD";
       ghb = "gh browse";
       ghco = " ${ghpl} | cut -f1,2 | gum filter --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
       ghil = "gh issue list";
