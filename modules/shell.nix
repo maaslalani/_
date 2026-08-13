@@ -180,6 +180,7 @@ in {
       hd = "hunk diff";
       gmb = "git merge-base origin/main HEAD";
       gds = "${gd} --stat $(${gmb})..HEAD";
+      gdm = "${gd} $(${gmb})..HEAD";
       ghb = "gh browse";
       ghco = " ${ghpl} | cut -f1,2 | gum filter --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
       ghil = "gh issue list";
@@ -192,6 +193,7 @@ in {
       glm = ''git -C "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/main" pull'';
       glr = "${gl} --rebase";
       glo = "git log -n 20";
+      glob = "${gl} origin `${gbc}`";
       glog = "git log --oneline -n 20";
       gm = "git merge";
       gma = "${gm} --abort";
