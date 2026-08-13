@@ -102,6 +102,7 @@
     # terminals
     alacritty
     iterm2
+    kitty
     warp-terminal
 
     # lsp
