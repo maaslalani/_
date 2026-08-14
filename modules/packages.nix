@@ -87,6 +87,7 @@
     uv
     vhs
     yq
+    zed-editor
     zig
     zoxide
 
