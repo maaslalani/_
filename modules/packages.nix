@@ -97,7 +97,6 @@
     crush
     ollama
     opencode
-    pi-coding-agent
     grok-build
 
     # terminals
