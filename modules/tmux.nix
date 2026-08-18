@@ -69,23 +69,17 @@ in {
     teal = "${colors.normal.cyan}"
     peach = "${colors.normal.yellow}"
 
-    [terminal]
-    shell_mode = "auto"
-    new_cwd = "follow"
-
     [keys]
     prefix = "ctrl+a"
     workspace_picker = "prefix+s"
     next_workspace = "prefix+n"
     previous_workspace = "prefix+p"
-    split_horizontal = "prefix+minus"
     split_vertical = "prefix+quote"
 
     [ui]
     confirm_close = false
     hide_tab_bar_when_single_tab = true
     pane_borders = false
-    pane_gaps = true
     prompt_new_tab_name = false
   '';
 }

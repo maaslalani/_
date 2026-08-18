@@ -22,9 +22,6 @@ in {
         cursor-shape.insert = "bar";
         color-modes = true;
         true-color = true;
-        lsp.display-color-swatches = true;
-        lsp.display-messages = true;
-        lsp.display-inlay-hints = false;
         file-picker = {
           max-depth = 8;
         };
@@ -35,7 +32,6 @@ in {
             insert = "INSERT";
           };
           left = ["mode" "file-name"];
-          center = [];
           right = [
             "diagnostics"
             "selections"
@@ -83,9 +79,6 @@ in {
     };
 
     languages.language-server = {
-      fennel-ls = {
-        command = "fennel-ls";
-      };
       vhs-language-server = {
         command = "vhs";
         args = ["lsp"];
@@ -97,14 +90,11 @@ in {
       uwu-colors = {
         command = "uwu_colors";
       };
-      tinymist = {
-        command = "tinymist";
-        config = {
-          exportPdf = "onSave";
-          fontPaths = ["${config.home.path}/share/fonts"];
-          outputPath = "$root/$dir/build/$name";
-          systemFonts = false;
-        };
+      tinymist.config = {
+        exportPdf = "onSave";
+        fontPaths = ["${config.home.path}/share/fonts"];
+        outputPath = "$root/$dir/build/$name";
+        systemFonts = false;
       };
     };
 
@@ -135,16 +125,6 @@ in {
       {
         name = "go";
         formatter = {command = "goimports";};
-        language-servers = ["gopls" "golangci-lint-lsp"];
-        auto-format = true;
-      }
-      {
-        name = "rust";
-        language-servers = ["rust-analyzer"];
-      }
-      {
-        name = "zig";
-        language-servers = ["zls"];
       }
       {
         name = "lua";
@@ -153,43 +133,29 @@ in {
       {
         name = "vhs";
         auto-format = true;
-        file-types = ["tape"];
         language-servers = ["vhs-language-server"];
       }
       {
         name = "html";
-        indent.tab-width = 2;
-        indent.unit = "  ";
         auto-format = false;
         formatter = mkPrettier "html" 2;
       }
       {
         name = "css";
-        indent.tab-width = 2;
-        indent.unit = "  ";
         formatter = mkPrettier "css" 2;
-        language-servers = ["vscode-css-language-server"];
       }
       {
         name = "typescript";
         indent.tab-width = 4;
         indent.unit = "    ";
-        auto-format = false;
         formatter = mkPrettier "typescript" 4;
-        language-servers = ["typescript-language-server"];
       }
       {
         name = "fennel";
         auto-format = true;
         comment-token = ";;";
         file-types = ["fnl"];
-        formatter.args = ["-"];
-        formatter.command = "fnlfmt";
-        grammar = "fennel";
-        indent.tab-width = 2;
-        indent.unit = "  ";
         injection-regex = "(fennel|fnl)";
-        language-servers = ["fennel-ls"];
         roots = [".git"];
         scope = "source.fnl";
       }
@@ -222,11 +188,8 @@ in {
       }
       {
         name = "typst";
-        language-servers = ["tinymist"];
-        scope = "source.typst";
         file-types = ["typ"];
         roots = [".git"];
-        comment-token = "//";
       }
     ];
   };

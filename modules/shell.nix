@@ -1,16 +1,9 @@
 {
   colors,
   config,
-  identity,
   pkgs,
   ...
 }: let
-  syntaxHighlighting = pkgs.fetchFromGitHub {
-    owner = "zsh-users";
-    repo = "zsh-syntax-highlighting";
-    rev = "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0";
-    sha256 = "8gyZe6OPVLMdfruHJAHcyYeuiyvMTLvuX1UnUOv8eg8=";
-  };
   purePrompt = pkgs.pure-prompt.overrideAttrs (old: {
     postPatch =
       (old.postPatch or "")
@@ -20,49 +13,9 @@
           'if [[ $1 == precmd && -n $prompt_pure_last_prompt ]]; then'
       '';
   });
-  integrations = ''
-    function __init_completion() {
-      autoload -Uz compinit
-      local zcompdump=${config.xdg.cacheHome}/zsh/zcompdump
-      [[ -d ${config.xdg.cacheHome}/zsh ]] || mkdir -p ${config.xdg.cacheHome}/zsh
-      if [[ -f $zcompdump ]]; then
-        compinit -C -d "$zcompdump"
-      else
-        compinit -d "$zcompdump"
-      fi
-      unfunction __init_completion
-    }
-
-    function __init_zoxide() {
-      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
-      unfunction __init_zoxide
-    }
-
-    function __init_fzf() {
-      source <(${pkgs.fzf}/bin/fzf --zsh)
-      unfunction __init_fzf
-    }
-
-    function __init_ghostty() {
-      setopt local_options no_aliases
-      if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
-        source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
-      fi
-      unfunction __init_ghostty
-    }
-
-    function __init_syntax_highlighting() {
-      source ${syntaxHighlighting}/zsh-syntax-highlighting.plugin.zsh
-      unfunction __init_syntax_highlighting
-    }
-
-    zsh-defer -m -p -r __init_ghostty
-    zsh-defer -m -p -r __init_completion
-    zsh-defer -m -p -r __init_zoxide
-    zsh-defer -m -p -r __init_fzf
-    zsh-defer -m __init_syntax_highlighting
-  '';
 in {
+  home.sessionPath = ["${config.xdg.configHome}/go/bin" "$HOME/.local/bin" "$HOME/.cargo/bin"];
+
   programs.zsh = {
     autocd = true;
     enable = true;
@@ -76,38 +29,25 @@ in {
       share = true;
     };
     defaultKeymap = "viins";
-    sessionVariables = rec {
-      CARGO_BIN = "$HOME/.cargo/bin";
+    sessionVariables = {
       COLORTERM = "truecolor";
       EDITOR = "hx";
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-      GOBIN = "${GOPATH}/bin";
+      GOBIN = "${config.xdg.configHome}/go/bin";
       GOPATH = "${config.xdg.configHome}/go";
       GROK_HOME = "${config.xdg.dataHome}/grok";
       KEYTIMEOUT = "1";
-      LOCAL_BIN = "$HOME/.local/bin";
-      NIX_BIN = "$HOME/.nix-profile/bin";
-      NIX_PATH = builtins.concatStringsSep ":" ["$NIX_PATH" "$HOME/.nix-defexpr/channels"];
       NODE_NO_WARNINGS = "1";
       NOTES = "$HOME/Documents/notes";
       OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
-      PATH = builtins.concatStringsSep ":" [GOBIN NIX_BIN LOCAL_BIN CARGO_BIN "$PATH"];
       RUSTC_WRAPPER = "kache";
       SHELL = "${config.programs.zsh.package}/bin/zsh";
       SHELL_SESSIONS_DISABLE = "1";
       TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
-      XDG_CACHE_HOME = config.xdg.cacheHome;
-      XDG_CONFIG_HOME = config.xdg.configHome;
-      XDG_DATA_HOME = config.xdg.dataHome;
     };
-    completionInit = "";
+    syntaxHighlighting.enable = true;
     initContent = ''
-      source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
-
-      fpath+=(
-        "$HOME/.nix-profile/share/zsh/site-functions"
-        "${purePrompt}/share/zsh/site-functions"
-      )
+      fpath+=("${purePrompt}/share/zsh/site-functions")
 
       zstyle ':completion:*' menu select
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -142,8 +82,6 @@ in {
       autoload -Uz promptinit
       promptinit
       prompt pure
-
-      ${integrations}
     '';
     shellAliases = rec {
       # navigation
@@ -256,7 +194,6 @@ in {
       # nix
       hms = builtins.concatStringsSep " && " [
         "nh home switch -c maas -o $HOME/_/result ."
-        "rm -f ${config.xdg.cacheHome}/zsh/zcompdump"
         "(herdr server reload-config 2>/dev/null || true)"
         sz
         "aerospace reload-config"
@@ -297,10 +234,7 @@ in {
     };
   };
 
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = false;
-  };
+  programs.zoxide.enable = true;
 
   programs.nh = {
     enable = true;
@@ -323,6 +257,5 @@ in {
       separator = colors.separator;
     };
     enable = true;
-    enableZshIntegration = false;
   };
 }

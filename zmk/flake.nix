@@ -15,7 +15,9 @@
   }: let
     forAllSystems = nixpkgs.lib.genAttrs (nixpkgs.lib.attrNames zmk-nix.packages);
   in {
-    packages = forAllSystems (system: rec {
+    packages = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in rec {
       default = firmware;
 
       firmware = zmk-nix.legacyPackages.${system}.buildSplitKeyboard {
@@ -35,7 +37,12 @@
         };
       };
 
-      flash = nixpkgs.legacyPackages.${system}.callPackage ./flash.nix {inherit firmware;};
+      flash = pkgs.writeShellScriptBin "flash" ''
+        echo "Waiting for /Volumes/NICENANO..."
+        until [[ -d /Volumes/NICENANO ]]; do sleep 1; done
+        sleep 1
+        ${pkgs.coreutils}/bin/cp ${firmware}/zmk_left.uf2 /Volumes/NICENANO/
+      '';
       update = zmk-nix.packages.${system}.update;
     });
 

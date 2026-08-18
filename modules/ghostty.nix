@@ -13,12 +13,7 @@
 in {
   programs.ghostty = {
     enable = true;
-    package =
-      if pkgs.stdenv.isDarwin
-      then pkgs.ghostty-bin
-      else pkgs.ghostty;
-
-    enableZshIntegration = false;
+    package = pkgs.ghostty-bin;
 
     settings = {
       keybind = [
@@ -45,12 +40,9 @@ in {
       window-padding-y = 12;
 
       shell-integration-features = "no-cursor";
-      cursor-style = "block";
-
       unfocused-split-opacity = 1;
       split-divider-color = colors.normal.black;
 
-      window-inherit-working-directory = true;
       working-directory = dotfiles;
 
       command = "${pkgs.herdr}/bin/herdr";

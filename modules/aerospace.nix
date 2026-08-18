@@ -8,7 +8,6 @@
   zoom = "us.zoom.xos";
 
   # Browsers
-  safari = "com.apple.Safari";
   chrome = "com.google.Chrome";
 
   # Terminals & editors
@@ -26,7 +25,6 @@
   skim = "net.sourceforge.skim-app.skim";
 
   workspaces = {
-    "#" = slack;
     "=" = numbers;
     "B" = chrome;
     "C" = calendar;
@@ -80,9 +78,10 @@
   bindings =
     lib.mapAttrs (_: open) launch
     // lib.mergeAttrsList (lib.mapAttrsToList (key: monitor: {
-      "alt-${key}" = "focus-monitor '${monitor}'";
-      "alt-shift-${key}" = "move-workspace-to-monitor '${monitor}'";
-    }) monitors);
+        "alt-${key}" = "focus-monitor '${monitor}'";
+        "alt-shift-${key}" = "move-workspace-to-monitor '${monitor}'";
+      })
+      monitors);
 in {
   programs.aerospace = {
     enable = true;

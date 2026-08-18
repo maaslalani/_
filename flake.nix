@@ -12,7 +12,6 @@
     identity = {
       email = "maas@lalani.dev";
       name = "Maas Lalani";
-      githubUser = "maaslalani";
       signingKey = "AECD51CD3C3A50BB9AA21C685A6ED5CBF1A0A000";
     };
 

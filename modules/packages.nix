@@ -78,7 +78,6 @@
     skate
     tdf
     tinymist
-    tmux
     tree-sitter
     ttyd
     typescript
@@ -89,7 +88,6 @@
     yq
     zed-editor
     zig
-    zoxide
 
     # coding agents
     claude-code
@@ -98,12 +96,6 @@
     ollama
     opencode
     grok-build
-
-    # terminals
-    alacritty
-    iterm2
-    kitty
-    warp-terminal
 
     # lsp
     alejandra
@@ -117,17 +109,13 @@
     gotools
     lua-language-server
     marksman
-    nixpkgs-fmt
     prettier
-    proselint
-    revive
     svgo
     taplo
     tsx
     typescript-language-server
     uwu-colors
     vscode-langservers-extracted
-    write-good
     yaml-language-server
     zls
   ];

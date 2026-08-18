@@ -6,28 +6,9 @@
 
 #include <dt-bindings/zmk/mouse.h>
 
-#define _Q &kp LG(LA(Q))
-#define _W &kp LG(LA(W))
-#define _E &kp LG(LA(E))
-#define _R &kp LG(LA(R))
-#define _T &kp LG(LA(T))
-#define _Y &kp LG(LA(Y))
-#define _U &kp LG(LA(U))
-#define _I &kp LG(LA(I))
-#define _O &kp LG(LA(O))
-#define _P &kp LG(LA(P))
-
-#define M_UP    mmv MOVE_UP
-#define M_DOWN  mmv MOVE_DOWN
-#define M_LEFT  mmv MOVE_LEFT
-#define M_RIGHT mmv MOVE_RIGHT
-
-#define CAP_SCREEN &kp LG(LS(N4))
-#define CAP_WINDOW &kp LG(LS(N5))
+#define CMD_ALT(key) &kp LG(LA(key))
 
 / {
-    combos { };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -42,17 +23,17 @@
                                                             /* │ */
         symbols {                                           /* │ */
             bindings = <                                    /* │ */
-&trans    _Q         _W          _E      _R      _T         /* │ */     _Y         _U        _I        _O        _P        &none
+&trans    CMD_ALT(Q) CMD_ALT(W)  CMD_ALT(E) CMD_ALT(R) CMD_ALT(T)       /* │ */     CMD_ALT(Y) CMD_ALT(U) CMD_ALT(I) CMD_ALT(O) CMD_ALT(P) &none
 &kp BSPC  &kp N1     &kp N2      &kp N3  &kp N4  &kp N5     /* │ */     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp PIPE
-&trans    CAP_SCREEN CAP_WINDOW  &none   &none   &none      /* │ */     &none      &none     &none     &kp LBKT  &kp RBKT  &none
+&trans    &kp LG(LS(N4)) &kp LG(LS(N5)) &none &none &none  /* │ */     &none      &none     &none     &kp LBKT  &kp RBKT  &none
                                  &trans &trans  &trans      /* │ */     &trans     &none     &trans
             >;                                              /* │ */
         };                                                  /* │ */
                                                             /* │ */
         media {                                             /* │ */
             bindings = <                                    /* │ */
-&none    &none  &none    &M_UP    &none        &none        /* │ */     &none   &none       &none         &none         &none          &none
-&none    &none  &M_LEFT  &M_DOWN  &M_RIGHT     &none        /* │ */     &none   &kp LEFT    &kp DOWN      &kp UP        &kp RIGHT      &kp BSPC
+&none    &none  &none    &mmv MOVE_UP    &none          &none        /* │ */     &none   &none       &none         &none         &none          &none
+&none    &none  &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT &none /* │ */     &none   &kp LEFT    &kp DOWN      &kp UP        &kp RIGHT      &kp BSPC
 &none    &none  &none    &none    &none        &none        /* │ */     &none   &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN   &kp C_BRI_UP
                          &none    &mkp RCLK    &mkp LCLK    /* │ */     &none   &none       &bt BT_CLR
             >;
