@@ -236,6 +236,8 @@ in {
       af = "aerospace fullscreen";
 
       dev = "devin-insiders --permission-mode bypass";
+      devin-onboard = ''XDG_DATA_HOME="$(mktemp -d)" devin'';
+      dev-onboard = ''XDG_DATA_HOME="$(mktemp -d)" cargo run --'';
       devmax = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode bypass";
 
       cop = "copilot --yolo";
