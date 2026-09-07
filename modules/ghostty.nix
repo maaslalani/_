@@ -22,10 +22,10 @@ in {
         "super+d=unbind"
         "super+shift+d=unbind"
       ];
-      background = colors.primary.background;
-      foreground = colors.primary.foreground;
-
-      palette = lib.imap0 (i: hex: "${toString i}=${hex}") paletteColors;
+      # Explicit top-level colors would override both themes, so the custom
+      # palette lives in the `dark` theme below and follows the macOS appearance.
+      theme = "light:GitHub Light Default,dark:dark";
+      window-theme = "system";
 
       font-size = 14;
       font-family = "JetBrains Mono";
@@ -46,6 +46,12 @@ in {
       working-directory = dotfiles;
 
       command = "${pkgs.herdr}/bin/herdr";
+    };
+
+    themes.dark = {
+      background = colors.primary.background;
+      foreground = colors.primary.foreground;
+      palette = lib.imap0 (i: hex: "${toString i}=${hex}") paletteColors;
     };
   };
 }
