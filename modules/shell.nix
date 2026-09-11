@@ -129,22 +129,6 @@ in {
       ghpl = "gh pr list --assignee @me";
       ghpv = "gh pr view";
       pr = "${ghpv} --web";
-      stamp = ''
-        () {
-          local RESULT CODE=0
-          RESULT="$(gh pr view --json reviews \
-            --jq 'any(.reviews[]; .author.login == "${identity.github}" and .state == "APPROVED")' \
-            -- "$@" 2>&1)" || CODE=$?
-          if (( CODE == 0 )); then
-            if [[ "$RESULT" == true ]]; then
-              RESULT="Already approved"
-            else
-              RESULT="$(gh pr review --approve --body stamp -- "$@" 2>&1)" && RESULT="Stamped" || CODE=$?
-            fi
-          fi
-          terminal-notifier -title Stamp -message "$RESULT"
-          return "$CODE"
-        }'';
       gl = "git pull";
       glm = ''git -C "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")/main" pull'';
       glr = "${gl} --rebase";
@@ -255,7 +239,8 @@ in {
       dev = "devin-insiders --permission-mode bypass";
       devin-onboard = ''XDG_DATA_HOME="$(mktemp -d)" devin'';
       dev-onboard = ''XDG_DATA_HOME="$(mktemp -d)" cargo run --'';
-      devmax = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode bypass";
+      dev-max = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode bypass";
+      dev-free = "XDG_DATA_HOME=$HOME/.devin-free devin-insiders --permission-mode bypass";
 
       cop = "copilot --yolo";
       _cop = "pnpm run cli";
