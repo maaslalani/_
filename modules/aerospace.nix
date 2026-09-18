@@ -97,7 +97,14 @@ in {
 
       key-mapping.preset = "colemak";
 
-      on-window-detected = onWindowDetected;
+      on-window-detected =
+        onWindowDetected
+        ++ [
+          {
+            "if".app-id = "net.kovidgoyal.kitty";
+            run = ["layout floating"];
+          }
+        ];
 
       mode.main.binding = bindings;
     };

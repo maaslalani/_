@@ -15,6 +15,7 @@
       '';
   });
 in {
+  home.file.".hushlogin".text = "";
   home.packages = [pkgs.terminal-notifier];
   home.sessionPath = ["${config.xdg.configHome}/go/bin" "$HOME/.local/bin" "$HOME/.cargo/bin"];
 
