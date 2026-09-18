@@ -14,7 +14,7 @@ in {
     };
     settings =
       {
-        background = colors.primary.background;
+        background = "#000000";
         foreground = colors.primary.foreground;
         window_padding_width = 24;
         macos_titlebar_color = "background";

@@ -90,6 +90,7 @@
     zig
 
     # coding agents
+    antigravity-cli
     claude-code
     codex
     crush
