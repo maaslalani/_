@@ -5,24 +5,29 @@
   ...
 }: let
   reviewFilter = ''
-    [any(.reviews[]; .author.login == "${identity.github}" and .state == "APPROVED"),
-      "\(.url | split("/") | .[3:5] | join("/"))#\(.number): \(.title)"] | .[]
+    [any(.latestReviews[]; .author.login == "${identity.github}" and .state == "APPROVED"),
+      .id, "\(.url | split("/") | .[3:5] | join("/"))#\(.number): \(.title)"] | .[]
+  '';
+  approveMutation = ''
+    mutation($id: ID!) {
+      addPullRequestReview(input: {pullRequestId: $id, event: APPROVE, body: "stamp"}) { clientMutationId }
+    }
   '';
   stamp = pkgs.writeShellScriptBin "stamp" ''
     export GH_PROMPT_DISABLED=1
     CODE=0
-    RESULT="$(${pkgs.gh}/bin/gh pr view --json number,title,url,reviews \
+    RESULT="$(${pkgs.gh}/bin/gh pr view --json id,number,title,url,latestReviews \
       --jq ${lib.escapeShellArg reviewFilter} -- "$@" 2>&1)" || CODE=$?
     if (( CODE == 0 )); then
-      APPROVED="''${RESULT%%$'\n'*}"
-      PR="''${RESULT#*$'\n'}"
+      { read -r APPROVED; read -r ID; read -r PR; } <<< "$RESULT"
       if [[ "$APPROVED" == true ]]; then
         RESULT="Already approved $PR"
       else
-        RESULT="$(${pkgs.gh}/bin/gh pr review --approve --body stamp -- "$@" 2>&1)" && RESULT="Stamped $PR" || CODE=$?
+        RESULT="$(${pkgs.gh}/bin/gh api graphql -F id="$ID" -f query=${lib.escapeShellArg approveMutation} 2>&1)" \
+          && RESULT="Stamped $PR" || CODE=$?
       fi
     fi
-    ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$RESULT" || true
+    ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$RESULT" >/dev/null 2>&1 &
     if (( CODE != 0 )); then
       printf '%s\n' "$RESULT" >&2
     fi
@@ -31,7 +36,7 @@
   service = pkgs.writeShellScript "stamp-service" ''
     reject_input() {
       local message="Select exactly one GitHub pull request URL."
-      ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$message" || true
+      ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$message" >/dev/null 2>&1 &
       printf '%s\n' "$message" >&2
       exit 2
     }

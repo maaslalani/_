@@ -81,7 +81,7 @@
 
   bindings =
     lib.mapAttrs (_: open) launch
-    // {"alt-y" = "exec-and-forget ${lib.getExe pkgs.zsh} -ic 'PR=\"$(pbpaste)\" && stamp \"$PR\"'";}
+    // {"alt-y" = "exec-and-forget ~/.nix-profile/bin/stamp \"$(/usr/bin/pbpaste)\"";}
     // lib.mergeAttrsList (lib.mapAttrsToList (key: monitor: {
         "alt-${key}" = "focus-monitor '${monitor}'";
         "alt-shift-${key}" = "move-workspace-to-monitor '${monitor}'";
