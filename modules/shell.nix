@@ -237,6 +237,7 @@ in {
       insomniac = "sudo pmset -a disablesleep $((1 - $(pmset -g | awk '/SleepDisabled/ {print $2}'))) && pmset -g | grep SleepDisabled";
       af = "aerospace fullscreen";
 
+      devin = "devin-insiders";
       dev = "devin-insiders --permission-mode bypass";
       devin-onboard = ''XDG_DATA_HOME="$(mktemp -d)" devin'';
       dev-onboard = ''XDG_DATA_HOME="$(mktemp -d)" cargo run --'';
