@@ -27,6 +27,7 @@
     ttf_bitstream_vera
 
     # tools
+    agent-browser
     asciinema
     asciinema-agg
     bat
@@ -92,7 +93,7 @@
     # coding agents
     antigravity-cli
     claude-code
-    codex
+    # codex
     crush
     ollama
     opencode

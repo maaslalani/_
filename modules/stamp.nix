@@ -13,7 +13,33 @@
       addPullRequestReview(input: {pullRequestId: $id, event: APPROVE, body: "stamp"}) { clientMutationId }
     }
   '';
+  urlHelpers = ''
+    reject_input() {
+      local message="Select exactly one GitHub pull request or review URL."
+      ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$message" >/dev/null 2>&1 &
+      printf '%s\n' "$message" >&2
+      exit 2
+    }
+
+    normalize_url() {
+      local url=$1 pattern
+      url="''${url#"''${url%%[![:space:]]*}"}"
+      url="''${url%"''${url##*[![:space:]]}"}"
+      pattern='^(https://github[.]com|github[.]com|https://[A-Za-z0-9.-]+/review)/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/pull/([1-9][0-9]*)([/#?][^[:space:]]*)?$'
+      [[ "$url" =~ $pattern ]] || return 1
+      printf 'https://github.com/%s/%s/pull/%s\n' "''${BASH_REMATCH[2]}" "''${BASH_REMATCH[3]}" "''${BASH_REMATCH[4]}"
+    }
+  '';
   stamp = pkgs.writeShellScriptBin "stamp" ''
+    ${urlHelpers}
+    (( $# <= 1 )) || reject_input
+    if (( $# == 1 )); then
+      if url="$(normalize_url "$1")"; then
+        set -- "$url"
+      elif [[ "$1" == *://* || "$1" == github.com/* ]]; then
+        reject_input
+      fi
+    fi
     export GH_PROMPT_DISABLED=1
     CODE=0
     RESULT="$(${pkgs.gh}/bin/gh pr view --json id,number,title,url,latestReviews \
@@ -34,20 +60,10 @@
     exit "$CODE"
   '';
   service = pkgs.writeShellScript "stamp-service" ''
-    reject_input() {
-      local message="Select exactly one GitHub pull request URL."
-      ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$message" >/dev/null 2>&1 &
-      printf '%s\n' "$message" >&2
-      exit 2
-    }
-
+    ${urlHelpers}
     [[ $# == 1 ]] || reject_input
-    url=$1
-    url="''${url#"''${url%%[![:space:]]*}"}"
-    url="''${url%"''${url##*[![:space:]]}"}"
-    pattern='^(https://)?github[.]com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/pull/([1-9][0-9]*)([/#?][^[:space:]]*)?$'
-    [[ "$url" =~ $pattern ]] || reject_input
-    exec ${stamp}/bin/stamp "https://github.com/''${BASH_REMATCH[2]}/''${BASH_REMATCH[3]}/pull/''${BASH_REMATCH[4]}"
+    url="$(normalize_url "$1")" || reject_input
+    exec ${stamp}/bin/stamp "$url"
   '';
   plist = pkgs.formats.plist {};
   info = plist.generate "stamp-info.plist" {
