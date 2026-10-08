@@ -1,5 +1,4 @@
-let
-  pkgs = (builtins.getFlake (toString ../.)).inputs.nixpkgs.legacyPackages.aarch64-darwin;
+{pkgs}: let
   module = import ../modules/stamp.nix {
     identity.github = "test-user";
     inherit (pkgs) lib;

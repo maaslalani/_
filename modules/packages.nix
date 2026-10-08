@@ -3,13 +3,6 @@
   lib,
   ...
 }: {
-  home.username = "maas";
-  home.stateVersion = "25.05";
-  home.homeDirectory = "/Users/maas";
-  programs.home-manager.enable = true;
-  nixpkgs.config.allowUnfree = true;
-  xdg.enable = true;
-
   home.packages = with pkgs; [
     # fonts
     dejavu_fonts
@@ -43,7 +36,6 @@
     difftastic
     docker
     eza
-    hunk
     fd
     fnlfmt
     gh-dash
@@ -59,6 +51,7 @@
     handy
     herdr
     httpie
+    hunk
     imagemagick
     jdk25
     jq
@@ -95,9 +88,9 @@
     claude-code
     # codex
     crush
+    grok-build
     ollama
     opencode
-    grok-build
 
     # lsp
     alejandra

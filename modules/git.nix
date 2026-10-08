@@ -15,8 +15,7 @@
     lfs.enable = true;
     ignores = [".DS_Store" "result"];
     settings = {
-      user.email = identity.email;
-      user.name = identity.name;
+      user = {inherit (identity) email name;};
       branch.sort = "-committerdate";
       checkout.defaultRemote = "origin";
       color.ui = true;
@@ -41,10 +40,7 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = {
-        email = identity.email;
-        name = identity.name;
-      };
+      user = {inherit (identity) email name;};
       ui = {
         default-command = "log";
         pager = ["hunk" "pager"];

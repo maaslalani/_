@@ -6,10 +6,6 @@
   ...
 }: let
   dotfiles = "${config.home.homeDirectory}/_";
-
-  # ANSI palette colors 0-15: normal (0-7) followed by bright (8-15).
-  ansi = ["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"];
-  paletteColors = lib.attrVals ansi colors.normal ++ lib.attrVals ansi colors.bright;
 in {
   programs.ghostty = {
     enable = true;
@@ -51,7 +47,7 @@ in {
     themes.dark = {
       background = colors.primary.background;
       foreground = colors.primary.foreground;
-      palette = lib.imap0 (i: hex: "${toString i}=${hex}") paletteColors;
+      palette = lib.imap0 (i: hex: "${toString i}=${hex}") colors.palette;
     };
   };
 }

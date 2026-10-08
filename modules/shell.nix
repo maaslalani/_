@@ -1,7 +1,6 @@
 {
   colors,
   config,
-  identity,
   pkgs,
   ...
 }: let
@@ -108,7 +107,7 @@ in {
       gb = "git branch";
       gbc = "${gb} --show-current";
       gc = "git commit";
-      gcm = "git commit -m";
+      gcm = "${gc} -m";
       gca = "${gc} --amend";
       gcam = "${gc} -am";
       gcane = "${gc} --amend --no-edit";
@@ -116,8 +115,8 @@ in {
       gcp = "git cherry-pick";
       gcpa = "${gcp} --abort";
       gd = "git diff";
-      gd- = "git diff HEAD~";
-      gdh = "git diff HEAD";
+      gd- = "${gd} HEAD~";
+      gdh = "${gd} HEAD";
       hd = "hunk diff";
       gmb = "git merge-base origin/main HEAD";
       gds = "${gd} --stat $(${gmb})..HEAD";
@@ -259,9 +258,7 @@ in {
 
   programs.zoxide.enable = true;
 
-  programs.nh = {
-    enable = true;
-  };
+  programs.nh.enable = true;
 
   programs.fzf = {
     colors = {
@@ -277,7 +274,7 @@ in {
       pointer = colors.bright.blue;
       prompt = colors.bright.blue;
       query = colors.primary.foreground;
-      separator = colors.separator;
+      inherit (colors) separator;
     };
     enable = true;
   };

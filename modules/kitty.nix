@@ -2,10 +2,7 @@
   colors,
   lib,
   ...
-}: let
-  ansi = ["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"];
-  paletteColors = lib.attrVals ansi colors.normal ++ lib.attrVals ansi colors.bright;
-in {
+}: {
   programs.kitty = {
     enable = true;
     font = {
@@ -21,10 +18,6 @@ in {
         macos_show_window_title_in = "none";
         remember_window_position = true;
       }
-      // builtins.listToAttrs (lib.imap0 (i: hex: {
-          name = "color${toString i}";
-          value = hex;
-        })
-        paletteColors);
+      // lib.listToAttrs (lib.imap0 (i: lib.nameValuePair "color${toString i}") colors.palette);
   };
 }

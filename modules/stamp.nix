@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: let
+  gh = "${pkgs.gh}/bin/gh";
+  notify = "${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message";
   reviewFilter = ''
     [any(.latestReviews[]; .author.login == "${identity.github}" and .state == "APPROVED"),
       .id, "\(.url | split("/") | .[3:5] | join("/"))#\(.number): \(.title)"] | .[]
@@ -16,7 +18,7 @@
   urlHelpers = ''
     reject_input() {
       local message="Select exactly one GitHub pull request or review URL."
-      ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$message" >/dev/null 2>&1 &
+      ${notify} "$message" >/dev/null 2>&1 &
       printf '%s\n' "$message" >&2
       exit 2
     }
@@ -42,18 +44,18 @@
     fi
     export GH_PROMPT_DISABLED=1
     CODE=0
-    RESULT="$(${pkgs.gh}/bin/gh pr view --json id,number,title,url,latestReviews \
+    RESULT="$(${gh} pr view --json id,number,title,url,latestReviews \
       --jq ${lib.escapeShellArg reviewFilter} -- "$@" 2>&1)" || CODE=$?
     if (( CODE == 0 )); then
       { read -r APPROVED; read -r ID; read -r PR; } <<< "$RESULT"
       if [[ "$APPROVED" == true ]]; then
         RESULT="Already approved $PR"
       else
-        RESULT="$(${pkgs.gh}/bin/gh api graphql -F id="$ID" -f query=${lib.escapeShellArg approveMutation} 2>&1)" \
+        RESULT="$(${gh} api graphql -F id="$ID" -f query=${lib.escapeShellArg approveMutation} 2>&1)" \
           && RESULT="Stamped $PR" || CODE=$?
       fi
     fi
-    ${pkgs.terminal-notifier}/bin/terminal-notifier -title Stamp -message "$RESULT" >/dev/null 2>&1 &
+    ${notify} "$RESULT" >/dev/null 2>&1 &
     if (( CODE != 0 )); then
       printf '%s\n' "$RESULT" >&2
     fi

@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{lib, ...}: let
   open = id: "exec-and-forget open -b '${id}'";
 
   # Communication
@@ -16,6 +12,7 @@
 
   # Terminals & editors
   ghostty = "com.mitchellh.ghostty";
+  kitty = "net.kovidgoyal.kitty";
   vscode = "com.microsoft.VSCode";
   devin = "com.exafunction.windsurf";
   devinInsiders = "com.exafunction.windsurfInsiders";
@@ -60,24 +57,27 @@
     "alt-p" = skim;
   };
 
-  floating = [ghostty finder];
+  floating = [ghostty finder kitty];
 
   monitors = {
     "1" = "Built-in Retina Display";
     "2" = "Studio Display";
   };
 
-  onWindowDetected = lib.concatLists (
-    lib.mapAttrsToList (workspace: ids:
-      map (id: {
-        "if".app-id = id;
-        run =
-          ["move-node-to-workspace '${workspace}'"]
-          ++ lib.optional (builtins.elem id floating) "layout floating";
-      })
-      (lib.toList ids))
-    workspaces
-  );
+  rule = id: run: {
+    "if".app-id = id;
+    inherit run;
+  };
+  floatingRun = id: lib.optional (builtins.elem id floating) "layout floating";
+  workspaceApps = lib.concatMap lib.toList (lib.attrValues workspaces);
+
+  onWindowDetected =
+    lib.concatLists (
+      lib.mapAttrsToList (workspace: ids:
+        map (id: rule id (["move-node-to-workspace '${workspace}'"] ++ floatingRun id)) (lib.toList ids))
+      workspaces
+    )
+    ++ map (id: rule id ["layout floating"]) (lib.subtractLists workspaceApps floating);
 
   bindings =
     lib.mapAttrs (_: open) launch
@@ -97,14 +97,7 @@ in {
 
       key-mapping.preset = "colemak";
 
-      on-window-detected =
-        onWindowDetected
-        ++ [
-          {
-            "if".app-id = "net.kovidgoyal.kitty";
-            run = ["layout floating"];
-          }
-        ];
+      on-window-detected = onWindowDetected;
 
       mode.main.binding = bindings;
     };
