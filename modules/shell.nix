@@ -237,6 +237,7 @@ in {
       af = "aerospace fullscreen";
 
       dev = "devin-insiders --permission-mode bypass";
+      devc = "devin-insiders --cloud";
       devin-onboard = ''XDG_DATA_HOME="$(mktemp -d)" devin'';
       dev-onboard = ''XDG_DATA_HOME="$(mktemp -d)" cargo run --'';
       dev-max = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode bypass";
