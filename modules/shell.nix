@@ -233,6 +233,7 @@ in {
       ];
       tn = "herdr-workspace-picker";
       notes = "herdr-workspace-picker Notes";
+      mem = ''() { local W L R; W=$(herdr workspace list | jq -r 'first(.result.workspaces[] | select(.label == "Memory") | .workspace_id) // empty'); [[ -n $W ]] && herdr workspace focus $W >/dev/null; [[ -z $W ]] && L=$(herdr workspace create --cwd ~/_ --label Memory --focus | jq -r .result.root_pane.pane_id); [[ -n $L ]] && R=$(herdr pane split $L --direction right --cwd ~/_ --no-focus | jq -r .result.pane.pane_id); [[ -n $R ]] && herdr pane run $L dev >/dev/null && herdr pane run $R "hx MEMORY.md" >/dev/null }'';
       todo = "$EDITOR $NOTES/todo.md";
       insomniac = "sudo pmset -a disablesleep $((1 - $(pmset -g | awk '/SleepDisabled/ {print $2}'))) && pmset -g | grep SleepDisabled";
       af = "aerospace fullscreen";

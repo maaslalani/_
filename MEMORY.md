@@ -22,11 +22,13 @@
 - Minimal: few colors, one font size, bold for emphasis.
 - JetBrains Mono, Iosevka fallback.
 - Numbered options for subjective choices.
+- Use typst when appropriate (typeset documents, PDFs, math, tables).
 
 ## Software
 
 - kitty
 - resvg
+- typst
 
 ## Colors
 
