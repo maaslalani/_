@@ -33,6 +33,7 @@ in {
     defaultKeymap = "viins";
     sessionVariables = {
       COLORTERM = "truecolor";
+      DO_NOT_TRACK = "1";
       EDITOR = "hx";
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
       GOBIN = "${config.xdg.configHome}/go/bin";
