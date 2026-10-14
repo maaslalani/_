@@ -26,22 +26,22 @@
       };
   };
   stamp = builtins.head module.home.packages;
-  workflow = module.home.file."Library/Services/Stamp.workflow".source;
+  app = module.home.file."Library/Services/Stamp.app".source;
 in
   pkgs.runCommand "stamp-tests" {nativeBuildInputs = [pkgs.python3];} ''
     python3 - <<'PY'
     import os
     import pathlib
     import plistlib
-    import shlex
     import subprocess
     import tempfile
     import time
 
-    with open("${workflow}/Contents/document.wflow", "rb") as file:
-        document = plistlib.load(file)
-    command = document["actions"][0]["action"]["ActionParameters"]["COMMAND_STRING"]
-    service = shlex.split(command)[1]
+    with open("${app}/Contents/Info.plist", "rb") as file:
+        info = plistlib.load(file)
+    assert os.access("${app}/Contents/MacOS/" + info["CFBundleExecutable"], os.X_OK)
+    assert info["NSServices"][0]["NSMessage"] == "stamp"
+    service = "${app}/Contents/MacOS/stamp-service"
     canonical = "https://github.com/example/repo/pull/42"
 
     def run(executable, args, expected=canonical, code=0, approved="true", fail="0"):

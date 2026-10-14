@@ -67,95 +67,68 @@
     url="$(normalize_url "$1")" || reject_input
     exec ${stamp}/bin/stamp "$url"
   '';
-  plist = pkgs.formats.plist {};
-  info = plist.generate "stamp-info.plist" {
+  info = (pkgs.formats.plist {}).generate "stamp-info.plist" {
+    CFBundleExecutable = "Stamp";
+    CFBundleIdentifier = "com.github.${identity.github}.stamp";
+    CFBundleName = "Stamp";
+    CFBundlePackageType = "APPL";
+    LSBackgroundOnly = true;
     NSServices = [
       {
         NSIconName = "NSActionTemplate";
         NSMenuItem.default = "Stamp";
-        NSMessage = "runWorkflowAsService";
+        NSMessage = "stamp";
+        NSPortName = "Stamp";
+        NSRequiredContext = {};
         NSSendTypes = ["public.utf8-plain-text" "public.url"];
         NSReturnTypes = [];
       }
     ];
   };
-  document = plist.generate "stamp-document.wflow" {
-    AMApplicationVersion = "2.10";
-    AMDocumentVersion = "2";
-    actions = [
-      {
-        action = {
-          AMAccepts = {
-            Container = "List";
-            Optional = true;
-            Types = ["com.apple.cocoa.string"];
-          };
-          AMActionVersion = "2.0.3";
-          AMApplication = ["Automator"];
-          AMParameterProperties = {
-            COMMAND_STRING = {};
-            CheckedForUserDefaultShell = {};
-            inputMethod = {};
-            shell = {};
-            source = {};
-          };
-          AMProvides = {
-            Container = "List";
-            Types = ["com.apple.cocoa.string"];
-          };
-          ActionBundlePath = "/System/Library/Automator/Run Shell Script.action";
-          ActionName = "Run Shell Script";
-          ActionParameters = {
-            COMMAND_STRING = ''exec ${service} "$@"'';
-            CheckedForUserDefaultShell = true;
-            inputMethod = 1;
-            shell = "/bin/bash";
-            source = "";
-          };
-          BundleIdentifier = "com.apple.RunShellScript";
-          CFBundleVersion = "2.0.3";
-          CanShowSelectedItemsWhenRun = false;
-          CanShowWhenRun = true;
-          Category = ["AMCategoryUtilities"];
-          "Class Name" = "RunShellScriptAction";
-          InputUUID = "7AF17BC7-0FA4-47EE-8C7F-598DA0EFAFC1";
-          OutputUUID = "7AF17BC7-0FA4-47EE-8C7F-598DA0EFAFC2";
-          UUID = "7AF17BC7-0FA4-47EE-8C7F-598DA0EFAFC3";
-          UnlocalizedApplications = ["Automator"];
-          isViewVisible = true;
-        };
-        isViewVisible = true;
+  source = pkgs.writeText "stamp.m" ''
+    #import <AppKit/AppKit.h>
+
+    @interface Provider : NSObject
+    @end
+
+    @implementation Provider
+    - (void)stamp:(NSPasteboard *)pasteboard userData:(NSString *)userData error:(NSString **)error {
+      NSString *input = [pasteboard stringForType:NSPasteboardTypeString] ?: [pasteboard stringForType:NSPasteboardTypeURL] ?: @"";
+      NSTask *task = [NSTask new];
+      task.executableURL = [NSURL fileURLWithPath:[NSBundle.mainBundle pathForAuxiliaryExecutable:@"stamp-service"]];
+      task.arguments = @[input];
+      [task launchAndReturnError:nil];
+      [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0];
+    }
+    @end
+
+    int main(void) {
+      @autoreleasepool {
+        Provider *provider = [Provider new];
+        NSApplication.sharedApplication.servicesProvider = provider;
+        [NSApp run];
       }
-    ];
-    connectors = {};
-    workflowMetaData = {
-      applicationBundleIDsByPath = {};
-      applicationPaths = [];
-      inputTypeIdentifier = "com.apple.Automator.text";
-      outputTypeIdentifier = "com.apple.Automator.nothing";
-      presentationMode = 11;
-      processesInput = false;
-      serviceInputTypeIdentifier = "com.apple.Automator.text";
-      serviceOutputTypeIdentifier = "com.apple.Automator.nothing";
-      serviceProcessesInput = false;
-      systemImageName = "NSActionTemplate";
-      useAutomaticInputType = true;
-      workflowTypeIdentifier = "com.apple.Automator.servicesMenu";
-    };
-  };
-  workflow = pkgs.runCommand "Stamp.workflow" {} ''
-    mkdir -p "$out/Contents"
-    cp ${info} "$out/Contents/Info.plist"
-    cp ${document} "$out/Contents/document.wflow"
+    }
   '';
+  app = pkgs.stdenv.mkDerivation {
+    name = "Stamp.app";
+    dontUnpack = true;
+    buildPhase = ''$CC -O2 -fobjc-arc -framework AppKit ${source} -o Stamp'';
+    installPhase = ''
+      mkdir -p "$out/Contents/MacOS"
+      cp Stamp "$out/Contents/MacOS/Stamp"
+      ln -s ${service} "$out/Contents/MacOS/stamp-service"
+      cp ${info} "$out/Contents/Info.plist"
+    '';
+  };
 in {
   home.activation.stampInlineServices = lib.hm.dag.entryAfter ["writeBoundary"] ''
     run /usr/bin/defaults write -g NSServicesMinimumItemCountForContextSubmenu -int 999
   '';
 
   home.packages = [stamp];
-  home.file."Library/Services/Stamp.workflow" = {
-    source = workflow;
+  home.file."Library/Services/Stamp.app" = {
+    source = app;
     onChange = "/System/Library/CoreServices/pbs -update";
   };
 }
