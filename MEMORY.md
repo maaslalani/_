@@ -16,7 +16,7 @@
 
 ## Visuals
 
-- Only when text can't show it.
+- I prefer visualizations, only when text can't show it.
 - Minimal: few colors, one font size, bold for emphasis.
 - JetBrains Mono, Iosevka fallback.
 - SVG, rendered with `resvg --zoom 2`.
