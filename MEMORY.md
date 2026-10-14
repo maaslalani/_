@@ -17,9 +17,10 @@
 ## Visuals
 
 - I prefer visualizations, only when text can't show it.
+- Always prefer HTML.
+- SVG, rendered with `resvg --zoom 2`.
 - Minimal: few colors, one font size, bold for emphasis.
 - JetBrains Mono, Iosevka fallback.
-- SVG, rendered with `resvg --zoom 2`.
 - Numbered options for subjective choices.
 
 ## Software
