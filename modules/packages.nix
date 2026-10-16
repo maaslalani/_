@@ -32,6 +32,7 @@
     comma
     cook-cli
     coreutils
+    crystal
     darwin.trash
     difftastic
     docker
@@ -95,6 +96,7 @@
     # lsp
     alejandra
     bash-language-server
+    crystalline
     dot-language-server
     eslint
     fennel-ls
