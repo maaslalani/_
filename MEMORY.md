@@ -23,6 +23,9 @@
 - JetBrains Mono, Iosevka fallback.
 - Numbered options for subjective choices.
 - Use typst when appropriate (typeset documents, PDFs, math, tables).
+
+## Design
+
 - Grid-aligned, generous whitespace (Swiss).
 - Function first, no decoration (Rams).
 - Dense data, direct labels, small multiples (Tufte).
