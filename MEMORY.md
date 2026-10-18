@@ -9,20 +9,13 @@
 - Short, lowercase conventional commits.
 - No Python.
 
-## Communication
-
-- Ask when ambiguous.
-- After pushing a PR, stop; don't poll CI.
-
 ## Visuals
 
-- I prefer visualizations, only when text can't show it.
-- Always prefer HTML.
-- SVG, rendered with `resvg --zoom 2`.
-- Minimal: few colors, one font size, bold for emphasis.
-- JetBrains Mono, Iosevka fallback.
-- Numbered options for subjective choices.
-- Use typst when appropriate (typeset documents, PDFs, math, tables).
+- Use Typst to present visualizations.
+- Use packages to avoid duplication.
+- Plots: `lilaq`; numbers/units: zero.
+- Diagrams: `fletcher`; custom drawing: `cetz`.
+- Layout: built-in grid, table, set/show rules.
 
 ## Design
 
@@ -35,15 +28,3 @@
 - kitty
 - resvg
 - typst
-
-## Colors
-
-- background `#0D1116`
-- text `#C5C8C6`
-- dim `#5a636e`
-- red `#D74E6F`
-- green `#31BB71`
-- yellow `#D3E561`
-- blue `#8056FF`
-- magenta `#ED61D7`
-- cyan `#04D7D7`
