@@ -17,6 +17,9 @@
   devin = "com.exafunction.windsurf";
   devinInsiders = "com.exafunction.windsurfInsiders";
 
+  # AI
+  grok = "com.anysphere.sand";
+
   # Productivity
   calendar = "com.apple.iCal";
   linear = "com.linear";
@@ -30,6 +33,7 @@
     "B" = chrome;
     "C" = calendar;
     "D" = [devinInsiders devin];
+    "G" = grok;
     "L" = linear;
     "M" = mail;
     "N" = notion;

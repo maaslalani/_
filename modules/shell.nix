@@ -198,7 +198,7 @@ in {
       goi = "go install";
 
       # rust
-      cr = "cd apps/chisel 2>/dev/null; cargo run -- --permission-mode bypass";
+      cr = "cd apps/chisel 2>/dev/null; cargo run -- --permission-mode smart";
       cb = "cargo build";
       ct = "cargo test";
       cl = "cargo clippy";
@@ -238,12 +238,12 @@ in {
       insomniac = "sudo pmset -a disablesleep $((1 - $(pmset -g | awk '/SleepDisabled/ {print $2}'))) && pmset -g | grep SleepDisabled";
       af = "aerospace fullscreen";
 
-      dev = "devin-insiders --permission-mode bypass";
+      dev = "devin-insiders --permission-mode smart";
       devc = "devin-insiders --cloud";
       devin-onboard = ''XDG_DATA_HOME="$(mktemp -d)" devin'';
       dev-onboard = ''XDG_DATA_HOME="$(mktemp -d)" cargo run --'';
-      dev-max = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode bypass";
-      dev-free = "XDG_DATA_HOME=$HOME/.devin-free devin-insiders --permission-mode bypass";
+      dev-max = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode smart";
+      dev-free = "XDG_DATA_HOME=$HOME/.devin-free devin-insiders --permission-mode smart";
 
       cop = "copilot --yolo";
       _cop = "pnpm run cli";
