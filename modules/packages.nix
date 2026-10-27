@@ -17,7 +17,7 @@
     noto-fonts
     roboto-mono
     source-code-pro
-    ttf_bitstream_vera
+    ttf-bitstream-vera
 
     # tools
     agent-browser
