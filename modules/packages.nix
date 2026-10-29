@@ -85,10 +85,12 @@
     zig
 
     # coding agents
+    amp-cli
     antigravity-cli
     claude-code
     # codex
     crush
+    gemini-cli-bin
     grok-build
     ollama
     opencode

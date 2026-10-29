@@ -16,6 +16,7 @@
   vscode = "com.microsoft.VSCode";
   devin = "com.exafunction.windsurf";
   devinInsiders = "com.exafunction.windsurfInsiders";
+  rex = "com.superlogical.rex";
 
   # AI
   grok = "com.anysphere.sand";
@@ -37,6 +38,7 @@
     "L" = linear;
     "M" = mail;
     "N" = notion;
+    "R" = rex;
     "S" = slack;
     "T" = [ghostty skim];
     "V" = vscode;
