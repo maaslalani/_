@@ -20,7 +20,10 @@
       );
     };
   in {
-    checks.${system}.stamp = import ./tests/stamp.nix {inherit pkgs;};
+    checks.${system} = {
+      rwt = import ./tests/rwt.nix {inherit pkgs;};
+      stamp = import ./tests/stamp.nix {inherit pkgs;};
+    };
     home = homeConfiguration.activationPackage;
     homeConfigurations.maas = homeConfiguration;
   };

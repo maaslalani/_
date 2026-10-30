@@ -183,6 +183,31 @@ in {
           git -C "$ROOT" config "branch.$1.remote" origin && git -C "$ROOT" config "branch.$1.merge" "refs/heads/$1"
           herdr pane run "$(herdr workspace create --cwd "$ROOT/$DIR/apps/chisel" --label "$DIR" --focus | jq -r .result.root_pane.pane_id)" ./setup.sh
         }'';
+      rwt = ''
+        () {
+          setopt localoptions pipefail
+          [[ $# == 1 && -n "$1" ]] || { printf 'Usage: rwt <branch|pull-request-url>\n' >&2; return 2 }
+          [[ "$1" == https://*/pull/* ]] && { 1=$(gh pr view "$1" --json headRefName -q .headRefName) || return }
+          git check-ref-format --branch "$1" >/dev/null || return
+          local ROOT="$HOME/Developer/devin-webapp" DIR="''${1##*/}" WT WS=""
+          local -a CMD=()
+          git -C "$ROOT" worktree prune || return
+          WT=$(git -C "$ROOT" worktree list --porcelain | awk -v b="refs/heads/$1" '$1=="worktree"{w=substr($0,10)} $2==b{print w}') || return
+          if [[ -n "$WT" ]]; then
+            DIR="''${WT##*/}"
+            WS=$(rex ls --json | jq -r --arg l "$DIR" 'first(.sessions[] | select(.label==$l).session_id) // empty') || return
+          else
+            git -C "$ROOT" fetch origin "$1:$1" 2>/dev/null || true
+            WT="$ROOT/$DIR"
+            git -C "$ROOT" worktree add "$WT" "$1" 2>/dev/null || git -C "$ROOT" worktree add "$WT" -b "$1" || return
+            git -C "$ROOT" config "branch.$1.remote" origin && git -C "$ROOT" config "branch.$1.merge" "refs/heads/$1" || return
+            CMD=(-- zsh -c './setup.sh; exec zsh')
+          fi
+          if [[ -z "$WS" ]]; then
+            WS=$(rex new "$DIR" --cwd "$WT/apps/chisel" --json "''${CMD[@]}" | jq -er .session_id) || return
+          fi
+          rex do session.select session_id="$WS" >/dev/null
+        }'';
 
       # files
       cat = "bat";

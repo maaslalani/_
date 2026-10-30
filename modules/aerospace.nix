@@ -49,7 +49,7 @@
     "alt-a" = chrome;
     "alt-r" = chrome;
     "alt-s" = slack;
-    "alt-t" = ghostty;
+    "alt-t" = rex;
 
     "alt-b" = chrome;
     "alt-c" = calendar;

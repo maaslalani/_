@@ -93,6 +93,7 @@
     gemini-cli-bin
     grok-build
     ollama
+    omp
     opencode
 
     # lsp
