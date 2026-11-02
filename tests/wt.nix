@@ -5,14 +5,14 @@
     inherit pkgs;
   };
 in
-  pkgs.runCommand "rwt-tests" {nativeBuildInputs = [pkgs.zsh pkgs.git pkgs.gawk pkgs.jq];} ''
+  pkgs.runCommand "wt-tests" {nativeBuildInputs = [pkgs.zsh pkgs.git pkgs.gawk pkgs.jq];} ''
     zsh -f <<'ZSH'
     setopt errexit nounset pipefail
     export HOME="$TMPDIR/home with spaces"
     TEST_ROOT="$HOME/Developer/devin-webapp"
 
-    rwt() {
-      ${module.programs.zsh.shellAliases.rwt} "$@"
+    wt() {
+      ${module.programs.zsh.shellAliases.wt} "$@"
     }
 
     record() {
@@ -75,7 +75,7 @@ in
     run() {
       local expected="$1" code=0
       shift
-      rwt "$@" > "$CALLS.stdout" 2> "$CALLS.stderr" || code=$?
+      wt "$@" > "$CALLS.stdout" 2> "$CALLS.stderr" || code=$?
       if (( code != expected )); then
         cat "$CALLS" "$CALLS.stdout" "$CALLS.stderr"
         printf 'Expected exit %s, got %s\n' "$expected" "$code" >&2

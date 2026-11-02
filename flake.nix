@@ -21,7 +21,7 @@
     };
   in {
     checks.${system} = {
-      rwt = import ./tests/rwt.nix {inherit pkgs;};
+      wt = import ./tests/wt.nix {inherit pkgs;};
       stamp = import ./tests/stamp.nix {inherit pkgs;};
     };
     home = homeConfiguration.activationPackage;
