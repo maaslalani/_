@@ -171,12 +171,12 @@ in {
           [[ $# == 1 && -n "$1" ]] || { printf 'Usage: wt <branch|pull-request-url>\n' >&2; return 2 }
           [[ "$1" == https://*/pull/* ]] && { 1=$(gh pr view "$1" --json headRefName -q .headRefName) || return }
           git check-ref-format --branch "$1" >/dev/null || return
-          local ROOT="$HOME/Developer/devin-webapp" WT WS
+          local ROOT="$HOME/Developer/devin-webapp" WT WIN
           local -a CMD
           git -C "$ROOT" worktree prune || return
           WT=$(git -C "$ROOT" worktree list --porcelain | awk -v b="refs/heads/$1" '$1=="worktree"{w=substr($0,10)} $2==b{print w}') || return
           if [[ -n "$WT" ]]; then
-            WS=$(rex ls --json | jq -r --arg l "''${WT##*/}" 'first(.sessions[] | select(.label==$l).session_id) // empty') || return
+            WIN=$(rex window ls --json | jq -r --arg l "''${WT##*/}" 'first(.windows[] | select(.label==$l).window_id) // empty') || return
           else
             WT="$ROOT/''${1##*/}"
             git -C "$ROOT" fetch origin "$1:$1" 2>/dev/null || true
@@ -184,8 +184,8 @@ in {
             git -C "$ROOT" config "branch.$1.remote" origin && git -C "$ROOT" config "branch.$1.merge" "refs/heads/$1" || return
             CMD=(-- zsh -c './setup.sh; exec zsh')
           fi
-          [[ -n "$WS" ]] || WS=$(rex new "''${WT##*/}" --cwd "$WT/apps/chisel" --json "''${CMD[@]}" | jq -er .session_id) || return
-          rex do session.select session_id="$WS" >/dev/null
+          [[ -n "$WIN" ]] || WIN=$(rex window new "''${WT##*/}" --cwd "$WT/apps/chisel" --json "''${CMD[@]}" | jq -er .window_id) || return
+          rex window focus "$WIN" >/dev/null
         }'';
 
       # files

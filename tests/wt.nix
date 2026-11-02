@@ -53,10 +53,10 @@ in
 
     rex() {
       record rex "$@"
-      case "$1" in
-        ls) printf '%s\n' "$SESSIONS"; return "$REX_LIST_CODE" ;;
-        new) printf '%s\n' "$CREATED"; return "$NEW_CODE" ;;
-        do) return "$FOCUS_CODE" ;;
+      case "$1 $2" in
+        "window ls") printf '%s\n' "$WINDOWS"; return "$REX_LIST_CODE" ;;
+        "window new") printf '%s\n' "$CREATED"; return "$NEW_CODE" ;;
+        "window focus") return "$FOCUS_CODE" ;;
         *) return 92 ;;
       esac
     }
@@ -66,8 +66,8 @@ in
       : > "$CALLS"
       TEST_BRANCH="maas/topic"
       TEST_WORKTREE="$TEST_ROOT/renamed topic"
-      SESSIONS='{"sessions":[{"label":"other","session_id":"session:other"},{"label":"renamed topic","session_id":"session:existing"}]}'
-      CREATED='{"session_id":"session:new"}'
+      WINDOWS='{"session_id":"session:devin","windows":[{"label":"other","window_id":"window:other"},{"label":"renamed topic","window_id":"window:existing"}]}'
+      CREATED='{"window_id":"window:new","block_ids":["block:new"]}'
       GIT_LIST_CODE=0 FETCH_CODE=0 ADD_CODE=0 CREATE_CODE=0 CONFIG_CODE=0
       PR_CODE=0 REX_LIST_CODE=0 NEW_CODE=0 FOCUS_CODE=0
     }
@@ -89,15 +89,15 @@ in
 
     reset_case reuse
     run 0 "$TEST_BRANCH"
-    check '[.[] | select(.[0] == "rex")] == [["rex","ls","--json"],["rex","do","session.select","session_id=session:existing"]]
+    check '[.[] | select(.[0] == "rex")] == [["rex","window","ls","--json"],["rex","window","focus","window:existing"]]
       and all(.[]; .[3] != "fetch" and .[3] != "config" and .[4] != "add")'
 
-    reset_case missing_session
-    SESSIONS='{"sessions":[]}'
+    reset_case missing_window
+    WINDOWS='{"session_id":"session:devin","windows":[]}'
     run 0 "$TEST_BRANCH"
-    check '[.[] | select(.[0] == "rex")] == [["rex","ls","--json"],
-      ["rex","new","renamed topic","--cwd",$wt + "/apps/chisel","--json"],
-      ["rex","do","session.select","session_id=session:new"]]'
+    check '[.[] | select(.[0] == "rex")] == [["rex","window","ls","--json"],
+      ["rex","window","new","renamed topic","--cwd",$wt + "/apps/chisel","--json"],
+      ["rex","window","focus","window:new"]]'
 
     reset_case remote_branch
     TEST_WORKTREE=""
@@ -107,19 +107,19 @@ in
       and any(.[]; . == ["git","-C",$root,"config","branch." + $branch + ".remote","origin"])
       and any(.[]; . == ["git","-C",$root,"config","branch." + $branch + ".merge","refs/heads/" + $branch])
       and [.[] | select(.[0] == "rex")] == [
-        ["rex","new","topic","--cwd",$root + "/topic/apps/chisel","--json","--","zsh","-c","./setup.sh; exec zsh"],
-        ["rex","do","session.select","session_id=session:new"]]'
+        ["rex","window","new","topic","--cwd",$root + "/topic/apps/chisel","--json","--","zsh","-c","./setup.sh; exec zsh"],
+        ["rex","window","focus","window:new"]]'
 
     reset_case local_branch
     TEST_WORKTREE="" FETCH_CODE=1 ADD_CODE=1
     run 0 "$TEST_BRANCH"
     check 'any(.[]; . == ["git","-C",$root,"worktree","add",$root + "/topic","-b",$branch])
-      and any(.[]; .[0:2] == ["rex","new"])'
+      and any(.[]; .[0:3] == ["rex","window","new"])'
 
     reset_case pull_request
     run 0 https://github.com/example/repo/pull/42
     check '.[0] == ["gh","pr","view","https://github.com/example/repo/pull/42","--json","headRefName","-q",".headRefName"]
-      and .[-1] == ["rex","do","session.select","session_id=session:existing"]'
+      and .[-1] == ["rex","window","focus","window:existing"]'
 
     reset_case missing_argument
     run 2
@@ -143,10 +143,10 @@ in
     run 8 "$TEST_BRANCH"
     check 'all(.[]; .[0] != "rex" and .[4] != "add")'
 
-    reset_case session_list_failure
+    reset_case window_list_failure
     REX_LIST_CODE=9
     run 9 "$TEST_BRANCH"
-    check '[.[] | select(.[0] == "rex")] == [["rex","ls","--json"]]'
+    check '[.[] | select(.[0] == "rex")] == [["rex","window","ls","--json"]]'
 
     reset_case worktree_creation_failure
     TEST_WORKTREE="" ADD_CODE=1 CREATE_CODE=6
@@ -158,15 +158,15 @@ in
     run 5 "$TEST_BRANCH"
     check 'all(.[]; .[0] != "rex")'
 
-    reset_case session_creation_failure
-    SESSIONS='{"sessions":[]}' NEW_CODE=10
+    reset_case window_creation_failure
+    WINDOWS='{"session_id":"session:devin","windows":[]}' NEW_CODE=10
     run 10 "$TEST_BRANCH"
-    check 'all(.[]; .[0:2] != ["rex","do"])'
+    check 'all(.[]; .[0:3] != ["rex","window","focus"])'
 
-    reset_case missing_session_id
-    SESSIONS='{"sessions":[]}' CREATED='{}'
+    reset_case missing_window_id
+    WINDOWS='{"session_id":"session:devin","windows":[]}' CREATED='{}'
     run 1 "$TEST_BRANCH"
-    check 'all(.[]; .[0:2] != ["rex","do"])'
+    check 'all(.[]; .[0:3] != ["rex","window","focus"])'
 
     reset_case focus_failure
     FOCUS_CODE=11
