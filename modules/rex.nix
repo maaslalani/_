@@ -1,0 +1,9 @@
+_: {
+  xdg.configFile."rex/init.lua".text = ''
+    rex.bind("ctrl+a>ctrl+a", "pane.send_key", { key = "ctrl+a" })
+    rex.bind("ctrl+a>h", "pane.focus.left")
+    rex.bind("ctrl+a>j", "pane.focus.down")
+    rex.bind("ctrl+a>k", "pane.focus.up")
+    rex.bind("ctrl+a>l", "pane.focus.right")
+  '';
+}
