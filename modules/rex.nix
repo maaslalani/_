@@ -7,5 +7,7 @@ _: {
     rex.bind("ctrl+a>l", "pane.focus.right")
     rex.bind("ctrl+a>'", "pane.split.right")
     rex.bind("ctrl+a>-", "pane.split.down")
+    rex.bind("ctrl+a>n", "client.tab.next")
+    rex.bind("ctrl+a>p", "client.tab.previous")
   '';
 }
