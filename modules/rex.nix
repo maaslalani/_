@@ -9,5 +9,7 @@ _: {
     rex.bind("ctrl+a>-", "pane.split.down")
     rex.bind("ctrl+a>n", "client.tab.next")
     rex.bind("ctrl+a>p", "client.tab.previous")
+    rex.bind("ctrl+a>,", "client.tab.rename")
+    rex.bind("ctrl+a>shift+n", "client.tab.new")
   '';
 }
