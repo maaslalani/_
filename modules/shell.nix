@@ -229,7 +229,7 @@ in {
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
 
       # misc
-      _ = "herdr-workspace-picker Dotfiles";
+      _ = ''rex window focus Dotfiles >/dev/null 2>&1 || rex window new Dotfiles --cwd "$HOME/_" >/dev/null'';
       sz = builtins.concatStringsSep " && " [
         "unset __HM_ZSH_SESS_VARS_SOURCED"
         "unset __HM_SESS_VARS_SOURCED"
