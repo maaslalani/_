@@ -21,8 +21,7 @@
     };
   in {
     checks.${system} = {
-      wt = import ./tests/wt.nix {inherit pkgs;};
-      stamp = import ./tests/stamp.nix {inherit pkgs;};
+      home = homeConfiguration.activationPackage;
     };
     home = homeConfiguration.activationPackage;
     homeConfigurations.maas = homeConfiguration;

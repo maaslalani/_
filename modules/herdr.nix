@@ -1,5 +1,7 @@
 {
   colors,
+  config,
+  lib,
   pkgs,
   ...
 }: let
@@ -11,7 +13,7 @@
       cd "$HOME/Developer" || exit
 
       WORKTREES=("Dotfiles" "Notes")
-      declare -A DIRECTORIES=([Dotfiles]="$HOME/_" [Notes]="$HOME/icloud/Documents/notes")
+      declare -A DIRECTORIES=([Dotfiles]="$HOME/_" [Notes]=${lib.escapeShellArg config.home.sessionVariables.NOTES})
 
       for REPOSITORY in *; do
         [[ -d "$REPOSITORY" ]] || continue

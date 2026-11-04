@@ -15,7 +15,7 @@
   });
 in {
   home.file.".hushlogin".text = "";
-  home.packages = [pkgs.terminal-notifier];
+  home.packages = [pkgs.kache pkgs.terminal-notifier];
   home.sessionPath = ["${config.xdg.configHome}/go/bin" "$HOME/.local/bin" "$HOME/.cargo/bin"];
 
   programs.zsh = {
@@ -41,9 +41,8 @@ in {
       GROK_HOME = "${config.xdg.dataHome}/grok";
       KEYTIMEOUT = "1";
       NODE_NO_WARNINGS = "1";
-      NOTES = "$HOME/Documents/notes";
       OLLAMA_MODELS = "${config.xdg.dataHome}/ollama/models";
-      RUSTC_WRAPPER = "kache";
+      RUSTC_WRAPPER = "${pkgs.kache}/bin/kache";
       SHELL = "${config.programs.zsh.package}/bin/zsh";
       SHELL_SESSIONS_DISABLE = "1";
       TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
@@ -140,7 +139,7 @@ in {
       gma = "${gm} --abort";
       gp = "git push";
       gpf = "${gp} --force-with-lease";
-      gpos = "${gp} origin +@:staging";
+      gpos = "${gpf} origin HEAD:staging";
       gpsup = "${gp} --set-upstream origin `${gbc}`";
       gr = "git reset";
       grb = "git rebase";
@@ -157,7 +156,7 @@ in {
       gss = "git status";
       gst = "git stash";
       gstp = "${gst} pop";
-      gco = ''() { git fetch origin "$1":"$1"; git switch "$1"; cd apps/chisel && ./setup.sh }'';
+      gco = ''() { git fetch origin "$1":"$1" && git switch "$1" && cd apps/chisel && ./setup.sh }'';
       gsw = "git switch";
       gswc = "git switch --create";
       gswm = "${gsw} main";
@@ -169,23 +168,49 @@ in {
       wt = ''
         () {
           setopt localoptions pipefail
-          [[ $# == 1 && -n "$1" ]] || { printf 'Usage: wt <branch|pull-request-url>\n' >&2; return 2 }
-          [[ "$1" == https://*/pull/* ]] && { 1=$(gh pr view "$1" --json headRefName -q .headRefName) || return }
-          git check-ref-format --branch "$1" >/dev/null || return
-          local ROOT="$HOME/Developer/devin-webapp" WT WIN
+          local ROOT="$HOME/Developer/devin-webapp" WT WIN LABEL BRANCH REF PR
+          local NEW=false TRACK=true
           local -a CMD
-          git -C "$ROOT" worktree prune || return
-          WT=$(git -C "$ROOT" worktree list --porcelain | awk -v b="refs/heads/$1" '$1=="worktree"{w=substr($0,10)} $2==b{print w}') || return
-          if [[ -n "$WT" ]]; then
-            WIN=$(rex window ls --json | jq -r --arg l "''${WT##*/}" 'first(.windows[] | select(.label==$l).window_id) // empty') || return
-          else
-            WT="$ROOT/''${1##*/}"
-            git -C "$ROOT" fetch origin "$1:$1" 2>/dev/null || true
-            git -C "$ROOT" worktree add "$WT" "$1" 2>/dev/null || git -C "$ROOT" worktree add "$WT" -b "$1" || return
-            git -C "$ROOT" config "branch.$1.remote" origin && git -C "$ROOT" config "branch.$1.merge" "refs/heads/$1" || return
-            CMD=(-- zsh -c './setup.sh; exec zsh')
+          if [[ $# == 2 && "$1" == -b ]]; then
+            NEW=true
+            TRACK=false
+            shift
           fi
-          [[ -n "$WIN" ]] || WIN=$(rex window new "''${WT##*/}" --cwd "$WT/apps/chisel" --json "''${CMD[@]}" | jq -er .window_id) || return
+          [[ $# == 1 && -n "$1" ]] || { printf 'Usage: wt <branch|pull-request-url> | wt -b <new-branch>\n' >&2; return 2 }
+          BRANCH="$1"
+          REF="refs/heads/$BRANCH"
+          if [[ "$1" == *://* ]]; then
+            [[ "$NEW" == false && "$1" =~ '^https://github[.]com/usacognition/devin-webapp/pull/[1-9][0-9]*([/#?].*)?$' ]] || {
+              printf 'Expected a usacognition/devin-webapp pull request URL.\n' >&2; return 2
+            }
+            PR=$(gh pr view "$1" --json number,headRefName,isCrossRepository) || return
+            BRANCH=$(jq -er 'if .isCrossRepository then "pr/\(.number)" else .headRefName end' <<< "$PR") || return
+            REF=$(jq -er '"refs/pull/\(.number)/head"' <<< "$PR") || return
+            TRACK=$(jq -er '.isCrossRepository | not | tostring' <<< "$PR") || return
+          fi
+          git check-ref-format --branch "$BRANCH" >/dev/null || return
+          git -C "$ROOT" worktree prune || return
+          WT=$(git -C "$ROOT" worktree list --porcelain | awk -v b="refs/heads/$BRANCH" '$1=="worktree"{w=substr($0,10)} $2==b{print w}') || return
+          if [[ -n "$WT" ]]; then
+            [[ "$NEW" == false ]] || { printf 'Branch already has a worktree: %s\n' "$BRANCH" >&2; return 2 }
+            LABEL="''${WT#$ROOT/}"
+            WIN=$(rex window ls --json | jq -r --arg l "$LABEL" 'first(.windows[] | select(.label==$l).window_id) // empty') || return
+          else
+            WT="$ROOT/$BRANCH"
+            LABEL="$BRANCH"
+            if [[ "$NEW" == false ]] && git -C "$ROOT" show-ref --verify --quiet "refs/heads/$BRANCH"; then
+              git -C "$ROOT" worktree add "$WT" "$BRANCH" || return
+            else
+              [[ "$NEW" == false ]] || REF=refs/heads/main
+              git -C "$ROOT" fetch origin "$REF" || return
+              git -C "$ROOT" worktree add --no-track -b "$BRANCH" "$WT" FETCH_HEAD || return
+              if [[ "$TRACK" == true ]]; then
+                git -C "$ROOT" config "branch.$BRANCH.remote" origin && git -C "$ROOT" config "branch.$BRANCH.merge" "refs/heads/$BRANCH" || return
+              fi
+            fi
+            CMD=(-- zsh -c './setup.sh && exec zsh')
+          fi
+          [[ -n "$WIN" ]] || WIN=$(rex window new "$LABEL" --cwd "$WT/apps/chisel" --json "''${CMD[@]}" | jq -er .window_id) || return
           rex window focus "$WIN" >/dev/null
         }'';
 
@@ -196,14 +221,14 @@ in {
       sl = ls;
       tree = "${ls} -T";
       md = "mkdir";
-      dstroy = "fd -IH .DS_Store | xargs sudo rm";
+      dstroy = "fd --hidden --no-ignore --type f --glob .DS_Store --exec rm -- {}";
 
       # go
       grg = "go run ./...";
       goi = "go install";
 
       # rust
-      cr = "cd apps/chisel 2>/dev/null; cargo run -- --permission-mode smart";
+      cr = ''() { [[ "$PWD" == */apps/chisel ]] || cd apps/chisel || return; cargo run -- --permission-mode smart "$@" }'';
       cb = "cargo build";
       ct = "cargo test";
       cl = "cargo clippy";
@@ -217,10 +242,10 @@ in {
 
       # nix
       hms = builtins.concatStringsSep " && " [
-        "nh home switch -c maas -o $HOME/_/result ."
+        ''nh home switch -c maas -o "$HOME/_/result" "$HOME/_"''
         "(herdr server reload-config 2>/dev/null || true)"
-        sz
         "aerospace reload-config"
+        sz
       ];
       hsm = hms;
       ncg = "nix-collect-garbage";

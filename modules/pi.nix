@@ -9,8 +9,8 @@
       enabledModels = ["openai-codex/gpt-5.6-sol"];
       defaultThinkingLevel = "max";
       packages = [
-        "npm:@dietrichgebert/ponytail"
-        "npm:pi-mcp-adapter"
+        "npm:@dietrichgebert/ponytail@4.9.0"
+        "npm:pi-mcp-adapter@2.26.1"
       ];
       quietStartup = false;
     };

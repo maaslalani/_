@@ -14,7 +14,7 @@
 in {
   programs.helix = {
     enable = true;
-    extraPackages = [(pkgs.callPackage ../pkgs/blame-lsp.nix {})];
+    extraPackages = [pkgs.nil (pkgs.callPackage ../pkgs/blame-lsp.nix {})];
     settings = {
       editor = {
         gutters = [
@@ -125,7 +125,7 @@ in {
         name = "nix";
         auto-format = true;
         formatter = {command = "alejandra";};
-        language-servers = ["nil" "nixd" colorPreview "blame-lsp"];
+        language-servers = ["nil" colorPreview "blame-lsp"];
       }
       {
         name = "markdown";
