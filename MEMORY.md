@@ -11,6 +11,7 @@
 
 ## Visuals
 
+- Use `xterm.js` for TUI prototypes.
 - Use Typst to present visualizations.
 - Use packages to avoid duplication.
 - Plots: `lilaq`; numbers/units: zero.
