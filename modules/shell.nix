@@ -152,6 +152,7 @@ in {
       grh = "${gr} --hard";
       grpo = "git remote prune origin";
       grs = "git restore";
+      rmu = "git clean -fd";
       gs = "${gss} --short";
       gss = "git status";
       gst = "git stash";
