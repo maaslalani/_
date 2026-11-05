@@ -58,7 +58,6 @@
     jq
     melt
     mosh
-    nodejs
     openssl
     pastel
     pnpm

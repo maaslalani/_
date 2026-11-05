@@ -11,5 +11,6 @@ _: {
     rex.bind("ctrl+a>p", "client.tab.previous")
     rex.bind("ctrl+a>,", "client.tab.rename")
     rex.bind("ctrl+a>shift+n", "client.tab.new")
+    rex.bind("cmd+-", "client.font.decrease")
   '';
 }
