@@ -7,7 +7,7 @@
 in {
   xdg.configFile."kache/config.toml".text = ''
     [cache]
-    local_max_size = "150GiB"
+    local_max_size = "300GiB"
     cache_executables = true
     explain_miss = true
   '';
