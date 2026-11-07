@@ -235,6 +235,9 @@ in {
       cf = "cargo fmt";
       ca = "cargo add";
 
+      # unzip
+      uz = "tar -xzf";
+
       # zig
       zb = "zig build";
       zbr = "zig build run";
