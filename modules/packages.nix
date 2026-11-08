@@ -51,6 +51,7 @@
     gws
     handy
     herdr
+    htop
     httpie
     hunk
     imagemagick
