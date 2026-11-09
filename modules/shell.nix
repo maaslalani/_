@@ -1,6 +1,7 @@
 {
   colors,
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -10,9 +11,11 @@
       + ''
         substituteInPlace pure.zsh \
           --replace-fail 'if [[ $1 == precmd ]]; then' \
-          'if [[ $1 == precmd && -n $prompt_pure_last_prompt ]]; then'
+          'if [[ $1 == precmd && -n $prompt_pure_last_prompt ]]; then' \
+          --replace-fail ' && (( $+commands[who] ))' ' && false'
       '';
   });
+  zoxideInit = pkgs.runCommand "zoxide-init.zsh" {} "${config.programs.zoxide.package}/bin/zoxide init zsh > $out";
 in {
   home.file.".hushlogin".text = "";
   home.packages = [pkgs.kache pkgs.terminal-notifier];
@@ -20,6 +23,7 @@ in {
 
   programs.zsh = {
     autocd = true;
+    completionInit = "autoload -U compinit && compinit -C";
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
     envExtra = ''
@@ -48,43 +52,51 @@ in {
       TYPST_FONT_PATHS = "$HOME/.nix-profile/share/fonts";
     };
     syntaxHighlighting.enable = true;
-    initContent = ''
-      fpath+=("${purePrompt}/share/zsh/site-functions")
+    initContent = lib.mkMerge [
+      (lib.mkOrder 900 ''
+        dirname() { print -r -- $1:h }
+        mkdir() { [[ -d $argv[-1] ]] || command mkdir "$@" }
+      '')
+      ''
+        unfunction dirname mkdir
+        fpath+=("${purePrompt}/share/zsh/site-functions")
+        source ${zoxideInit}
 
-      zstyle ':completion:*' menu select
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+        zstyle ':completion:*' menu select
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-      setopt combining_chars prompt_subst
-      disable log
+        setopt combining_chars prompt_subst
+        disable log
 
-      bindkey '^P' up-history
-      bindkey '^N' down-history
-      bindkey '^?' backward-delete-char
-      bindkey '^[[Z' reverse-menu-complete
-      bindkey "$terminfo[kdch1]" delete-char
-      bindkey "$terminfo[khome]" beginning-of-line
-      bindkey "$terminfo[kend]" end-of-line
-      bindkey "$terminfo[kcuu1]" up-line-or-search
-      bindkey "$terminfo[kcud1]" down-line-or-search
+        bindkey '^P' up-history
+        bindkey '^N' down-history
+        bindkey '^?' backward-delete-char
+        bindkey '^[[Z' reverse-menu-complete
+        bindkey "$terminfo[kdch1]" delete-char
+        bindkey "$terminfo[khome]" beginning-of-line
+        bindkey "$terminfo[kend]" end-of-line
+        bindkey "$terminfo[kcuu1]" up-line-or-search
+        bindkey "$terminfo[kcud1]" down-line-or-search
 
-      if [[ -z $__ETC_PROFILE_NIX_SOURCED && -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
+        if [[ -z $__ETC_PROFILE_NIX_SOURCED && -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+        fi
 
-      [[ -n $TTY ]] && export GPG_TTY=$TTY
+        [[ -n $TTY ]] && export GPG_TTY=$TTY
 
-      PURE_PROMPT_SYMBOL='>'
-      PURE_PROMPT_VICMD_SYMBOL='<'
-      PURE_GIT_UP_ARROW='↑'
-      PURE_GIT_DOWN_ARROW='↓'
-      zstyle ':prompt:pure:git:arrow' color yellow
-      zstyle ':prompt:pure:git:branch' color magenta
-      zstyle ':prompt:pure:git:branch:cached' color magenta
-      zstyle ':prompt:pure:git:dirty' color red
-      autoload -Uz promptinit
-      promptinit
-      prompt pure
-    '';
+        PURE_PROMPT_SYMBOL='>'
+        PURE_PROMPT_VICMD_SYMBOL='<'
+        PURE_GIT_UP_ARROW='↑'
+        PURE_GIT_DOWN_ARROW='↓'
+        zstyle ':prompt:pure:git:arrow' color yellow
+        zstyle ':prompt:pure:git:branch' color magenta
+        zstyle ':prompt:pure:git:branch:cached' color magenta
+        zstyle ':prompt:pure:git:dirty' color red
+        autoload -Uz promptinit
+        promptinit
+        prompt pure
+      ''
+    ];
     shellAliases = rec {
       # navigation
       "..." = "cd ../..";
@@ -248,6 +260,7 @@ in {
         ''nh home switch -c maas -o "$HOME/_/result" "$HOME/_"''
         "(herdr server reload-config 2>/dev/null || true)"
         "aerospace reload-config"
+        ''rm -f "$ZDOTDIR/.zcompdump"''
         sz
       ];
       hsm = hms;
@@ -258,7 +271,12 @@ in {
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
 
       # misc
-      _ = ''rex window focus Dotfiles >/dev/null 2>&1 || rex window new Dotfiles --cwd "$HOME/_" >/dev/null'';
+      _ = ''        () {
+                  local S
+                  S=$(rex ls --json | jq -r 'first(.sessions[] | select(.label=="Dotfiles").session_id) // empty') || return
+                  [[ -n "$S" ]] || S=$(rex new Dotfiles --window Dotfiles --cwd "$HOME/_" --json | jq -er .session_id) || return
+                  rex do session.select session_id="$S" >/dev/null
+                }'';
       sz = builtins.concatStringsSep " && " [
         "unset __HM_ZSH_SESS_VARS_SOURCED"
         "unset __HM_SESS_VARS_SOURCED"
@@ -291,7 +309,10 @@ in {
     };
   };
 
-  programs.zoxide.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = false;
+  };
 
   programs.nh.enable = true;
 
