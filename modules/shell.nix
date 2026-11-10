@@ -134,7 +134,7 @@ in {
       gds = "${gd} --stat $(${gmb})..HEAD";
       gdm = "${gd} $(${gmb})..HEAD";
       ghb = "gh browse";
-      ghco = " ${ghpl} | cut -f1,2 | gum filter --header 'Checkout PR' | cut -f1 | xargs gh pr checkout";
+      ghco = ''() { local N=$(${ghpl} | cut -f1,2 | gum filter --header 'Open PR' | cut -f1) && [[ -n "$N" ]] && wt "$(gh repo view --json url --jq .url)/pull/$N" }'';
       ghil = "gh issue list";
       ghist = "git log --pretty=format:\"%C(yellow)%h%Creset %ad | %Cgreen%s%Creset %Cred%d%Creset %Cblue[%an]\" --date=short";
       ghiv = "gh issue view";
