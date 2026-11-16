@@ -27,9 +27,9 @@
       local url=$1 pattern
       url="''${url#"''${url%%[![:space:]]*}"}"
       url="''${url%"''${url##*[![:space:]]}"}"
-      pattern='^(https://github[.]com|github[.]com|https://[A-Za-z0-9.-]+/review)/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/pull/([1-9][0-9]*)([/#?][^[:space:]]*)?$'
+      pattern='^(https://)?(github[.]com|[A-Za-z0-9.-]+/review)/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/pull/([1-9][0-9]*)([/#?][^[:space:]]*)?$'
       [[ "$url" =~ $pattern ]] || return 1
-      printf 'https://github.com/%s/%s/pull/%s\n' "''${BASH_REMATCH[2]}" "''${BASH_REMATCH[3]}" "''${BASH_REMATCH[4]}"
+      printf 'https://github.com/%s/%s/pull/%s\n' "''${BASH_REMATCH[3]}" "''${BASH_REMATCH[4]}" "''${BASH_REMATCH[5]}"
     }
   '';
   stamp = pkgs.writeShellScriptBin "stamp" ''
