@@ -29,6 +29,7 @@
     cachix
     chafa
     charm-freeze
+    cmark-gfm
     comma
     cook-cli
     coreutils
@@ -47,6 +48,7 @@
     goreleaser
     graph-easy
     graphviz
+    python314Packages.grip
     gum
     gws
     handy
@@ -80,6 +82,7 @@
     typst
     uv
     vhs
+    watchexec
     yq
     zed-editor
     zig

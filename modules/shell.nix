@@ -223,12 +223,8 @@ in {
       ns = "open https://search.nixos.org/packages\\?channel=unstable";
 
       # misc
-      _ = ''        () {
-                  local S
-                  S=$(rex ls --json | jq -r 'first(.sessions[] | select(.label=="Dotfiles").session_id) // empty') || return
-                  [[ -n "$S" ]] || S=$(rex new Dotfiles --window Dotfiles --cwd "$HOME/_" --json | jq -er .session_id) || return
-                  rex do session.select session_id="$S" >/dev/null
-                }'';
+      _ = ''rex do session.select session_id="$( (rex session inspect Dotfiles --json 2>/dev/null || rex new Dotfiles --window Dotfiles --cwd "$HOME/_" --json) | jq -r .session_id)" >/dev/null'';
+      _dev = ''rex do session.select session_id="$( (rex session inspect "Devin CLI" --json 2>/dev/null || rex new "Devin CLI" --window main --cwd "$HOME/Developer/devin/main/apps/chisel" --json) | jq -r .session_id)" >/dev/null'';
       sz = builtins.concatStringsSep " && " [
         "unset __HM_ZSH_SESS_VARS_SOURCED"
         "unset __HM_SESS_VARS_SOURCED"
