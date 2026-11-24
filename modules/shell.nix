@@ -238,6 +238,7 @@ in {
 
       dev = "devin-insiders --permission-mode smart";
       devc = "devin-insiders --cloud";
+      devin-dev = "target/debug/devin";
       devin-onboard = ''XDG_DATA_HOME="$(mktemp -d)" devin'';
       dev-onboard = ''XDG_DATA_HOME="$(mktemp -d)" cargo run --'';
       dev-max = "XDG_DATA_HOME=$HOME/.devin-max devin-insiders --permission-mode smart";
